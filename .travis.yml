@@ -11,7 +11,7 @@ notifications:
     on_failure: always
  
 install:
-  - npm install -g GitBook-cli
+  - npm install -g gitbook-cli
   - gitbook install
  
 script:
