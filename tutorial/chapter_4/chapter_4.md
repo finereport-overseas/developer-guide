@@ -5,10 +5,6 @@ After studying [Introduction of plugin.xml](/tutorial/chapter_3/chapter_3.md), l
 This is also an extremely boring tutorial that will not give you any sense of accomplishment. However, if you are a developer who has just been exposed to FR plugins, please be patient.
 
 Take a look at the configuration file we use for packaging in general.
-
-<details>
-<summary>Build.xml</summary>
-
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="jar" name="plugin">
@@ -148,7 +144,6 @@ Take a look at the configuration file we use for packaging in general.
     </target>
 </project>
 ```
-</details>
 
 If you have never been in contact with Ant, you will be confused by this inexplicable XML. It doesn’t matter because this XML is not for viewing. It is for everyone to copy directly. Of course, those who are interested can also read the file carefully. In order to get everyone started quickly, we now only need to know a few of the configurations.
 

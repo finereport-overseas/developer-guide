@@ -1,0 +1,14 @@
+{
+	"plugins":[
+		"anchor-navigation-ex",
+		"code",
+		"pageview-count",
+		"lightbox"
+	],
+	"pluginsConfig": {
+		"anchor-navigation-ex": {
+			"showLevel": false,
+			"showGoTop": true
+		},
+	}
+}
