@@ -13,7 +13,6 @@ Enter the URL of the plugin development project in the pop-up box: <https://gith
 Click the **Clone** button to download the project.
 
 ## Open the Project
-
 After waiting for a period of time, the project has been downloaded. There will be a prompt box, asking whether to open the project right away, select **Yes**.
 
 ![open_project_1](./images/open_project_1.png)
@@ -23,7 +22,6 @@ Have a sip of coffee and wait for IntelliJ IDEA to download dependencies and fin
 ![open_project_2](./images/open_project_2.png)
 
 ## Configure tools.jar
-
 First, you should configure your JDK as the SDK for the project.
 
 ![configure_tools_jar_1](./images/configure_tools_jar_1.png)
@@ -35,7 +33,6 @@ Second, add tools.jar in the JDK directory to the ClassPath <font color="red">(b
 Finally, click **Apply** and then click **OK**.
 
 ## Build the Project
-
 Let's build our project.
 
 ![build_project_1](./images/build_project_1.png)
@@ -49,7 +46,6 @@ Run maven install.
 ![build_project_3](./images/build_project_3.png)
 
 ## Run the Project
-
 The boring build process is finally over. Let's run our project to see if everything goes well. Run *Leaner.main()*.
 
 ![run_project_1](./images/run_project_1.png)
@@ -63,7 +59,6 @@ After switching, for the sake of stability, close the designer and re-run *Leane
 ![run_project_3](./images/run_project_3.png)
 
 ## Important Reminders
-
 Congratulations! Now you have successfully built FR plugin development environment. Before you move on, check out the reminders.
 
 1. Since some of the dependencies are downloaded from the private Maven repository of FanRuan, your network should be allowed to visit 106.14.96.249.

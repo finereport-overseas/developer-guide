@@ -1,4 +1,4 @@
-# Preparation Work
+# Install Essential Tools
 
 > Note: After configuring environment variables, you need to restart the command line to make the configuration take effect.
 
