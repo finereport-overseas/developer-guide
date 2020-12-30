@@ -1,0 +1,783 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Beginner Tutorial - Dataset · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_7/chapter_7.html" />
+    
+    
+    <link rel="prev" href="../chapter_5/chapter_5.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.6" data-path="chapter_6.html">
+            
+                <a href="chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Beginner Tutorial - Dataset</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#beginner-tutorial---dataset"><b></b>Beginner Tutorial - Dataset</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li><ul><li><span class="title-icon "></span><a href="#1-create-a-new-module"><b></b>1) Create a new module</a></li><li><span class="title-icon "></span><a href="#2-define-how-we-get-data-from-the-outside"><b></b>2) Define how we get data from the outside</a></li><li><span class="title-icon "></span><a href="#3-define-the-datamodel"><b></b>3) Define the DataModel</a></li><li><span class="title-icon "></span><a href="#4-define-the-ui"><b></b>4) Define the UI</a></li><li><span class="title-icon "></span><a href="#6-register-the-plugin"><b></b>6) Register the plugin</a></li></ul></ul></ul></div><a href="#beginner-tutorial---dataset" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="beginner-tutorial---dataset"><a name="beginner-tutorial---dataset" class="anchor-navigation-ex-anchor" href="#beginner-tutorial---dataset"><i class="fa fa-link" aria-hidden="true"></i></a>Beginner Tutorial - Dataset</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>As we know, FineReport supports Class Dataset, which helps us define a customized dataset by some Java programming. If you are not familiar with Class Dataset, please check out our demo here: <a href="https://help.fanruan.com/finereport-en/doc-view-650.html" target="_blank">https://help.fanruan.com/finereport-en/doc-view-650.html</a>. However, this functionality is limited because it does not support the front-end configuration. This tutorial is here to solve the problem, and it will teach you how to implement a plugin that defines your own dataset.</p>
+<p>The first class we need to know is <em>com.fr.data.AbstractTableData</em>. It provides four important methods for us:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getColumnCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TableDataException</span>;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">getColumnName</span><span class="hljs-params">( <span class="hljs-keyword">int</span> colIndex )</span> <span class="hljs-keyword">throws</span> TableDataException</span>;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getRowCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TableDataException</span>;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> Object <span class="hljs-title">getValueAt</span><span class="hljs-params">( <span class="hljs-keyword">int</span> rowIndex, <span class="hljs-keyword">int</span> colIndex )</span></span>;
+</code></pre>
+<p>As the names of the methods suggest, FineReport uses these methods to create a table and fill in data. The Class Dataset simply extends this class and implements the four methods.</p>
+<p>While for our dataset plugin, the class for us to extend is not <em>com.fr.data.AbstractTableData</em>, but <em>com.fr.data.AbstractParameterTableData</em>. The key method is this:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> DataModel <span class="hljs-title">createDataModel</span><span class="hljs-params">(Calculator calculator)</span></span>;
+</code></pre>
+<p>The <em>DataModel</em> is an interface, and it is implemented by <em>com.fr.data.AbstractDataModel</em>. If we check out <em>AbstractDataModel</em>, we will find that it has the same four methods as those of the <em>AbstractTableData</em>. This data model thing is just a wrapper for our data.</p>
+<blockquote>
+<p>In most cases, we do not directly implement an interface in our plugin development. An interface X usually has an abstract class AbstractX, and we should extend that AbstractX.</p>
+</blockquote>
+<p>For now, we have explained how FineReport gets our data, but we still need to grab data from the outside (e.g. user input). So how does FineReport grab data from our input? This relies on a very important thing called <em>Calculator</em> (<em>com.fr.script.calculator</em>). Almost every information we need during calculation can get from this object. We don&apos;t need to 100% understand how it works. Just keep in mind that it is the core of the whole calculation process.</p>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<p>After reading the tedious definition, let&apos;s start with a simple example. This will teach you how to build a dataset plugin step by step. Join me if you are ready!</p>
+<h3 id="1-create-a-new-module"><a name="1-create-a-new-module" class="anchor-navigation-ex-anchor" href="#1-create-a-new-module"><i class="fa fa-link" aria-hidden="true"></i></a>1) Create a new module</h3>
+<p>Create a new module called plugin-tabledata-demo. If you don&apos;t remember how, please check the last tutorial: <a href="../chapter_5/chapter_5.html">First Plugin - Hello World!</a></p>
+<p><a href="images/create_module.png" data-lightbox="6f0423cc-7087-4969-9853-ca7ee8aab5f9" data-title="create_module"><img src="images/create_module.png" alt="create_module"></a></p>
+<h3 id="2-define-how-we-get-data-from-the-outside"><a name="2-define-how-we-get-data-from-the-outside" class="anchor-navigation-ex-anchor" href="#2-define-how-we-get-data-from-the-outside"><i class="fa fa-link" aria-hidden="true"></i></a>2) Define how we get data from the outside</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoTableData</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractParameterTableData</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String TAG = <span class="hljs-string">&quot;others&quot;</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DataModel <span class="hljs-title">createDataModel</span><span class="hljs-params">(Calculator calculator)</span> </span>{
+        <span class="hljs-comment">// Get all parameters on the pane.</span>
+        ParameterProvider[] parameters = <span class="hljs-keyword">this</span>.getParameters(calculator);
+        <span class="hljs-comment">// Sometimes the parameters need us to recalculate once, or you will get the default value.</span>
+        parameters = Calculator.processParameters(calculator,parameters);
+        <span class="hljs-keyword">return</span> DemoDataModel.create(parameters, getOthers());
+    }
+
+    <span class="hljs-comment">// Suppose we have some configuration other than parameters</span>
+    <span class="hljs-meta">@Identifier</span>(TAG)
+    <span class="hljs-keyword">private</span> Conf&lt;String&gt; others = Holders.simple(StringUtils.EMPTY);
+
+    <span class="hljs-comment">// Database read and write for server dataset.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getOthers</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> others.get();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOthers</span><span class="hljs-params">(String others)</span></span>{
+        <span class="hljs-keyword">this</span>.others.set(others);
+    }
+
+    <span class="hljs-comment">// XML read and write for template dataset.</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readXML</span><span class="hljs-params">(XMLableReader reader)</span> </span>{
+        <span class="hljs-keyword">super</span>.readXML(reader);
+        <span class="hljs-keyword">if</span> (reader.isChildNode()) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;Attributes&quot;</span>.equals(reader.getTagName())) {
+                setOthers(reader.getAttrAsString(TAG,StringUtils.EMPTY));
+            }
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeXML</span><span class="hljs-params">(XMLPrintWriter writer)</span> </span>{
+        <span class="hljs-keyword">super</span>.writeXML(writer);
+        writer.startTAG(<span class="hljs-string">&quot;Attributes&quot;</span>).attr(TAG,getOthers()).end();
+    }
+}
+</code></pre>
+<h3 id="3-define-the-datamodel"><a name="3-define-the-datamodel" class="anchor-navigation-ex-anchor" href="#3-define-the-datamodel"><i class="fa fa-link" aria-hidden="true"></i></a>3) Define the <em>DataModel</em></h3>
+<p>The <em>DataModel</em> tells FineReport how to get the provided data.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoDataModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDataModel</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> DemoDataModel EMPTY = <span class="hljs-keyword">new</span> DemoDataModel();
+
+    <span class="hljs-comment">// For demo use, just give the fixed column names here.</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String [] COL_NAMES = <span class="hljs-keyword">new</span> String[]{<span class="hljs-string">&quot;KEY&quot;</span>,<span class="hljs-string">&quot;VALUE&quot;</span>,<span class="hljs-string">&quot;OTHERS&quot;</span>};
+
+    <span class="hljs-keyword">private</span> ParameterProvider[] parameters = <span class="hljs-keyword">new</span> ParameterProvider[<span class="hljs-number">0</span>];
+
+    <span class="hljs-keyword">private</span> String others = StringUtils.EMPTY;
+
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DemoDataModel</span><span class="hljs-params">()</span></span>{}
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DemoDataModel <span class="hljs-title">create</span><span class="hljs-params">(ParameterProvider[] parameters, String others)</span></span>{
+        DemoDataModel result = <span class="hljs-keyword">new</span> DemoDataModel();
+        result.parameters = <span class="hljs-keyword">null</span> == parameters ? <span class="hljs-keyword">new</span> ParameterProvider[<span class="hljs-number">0</span>] : parameters;
+        result.others= <span class="hljs-keyword">null</span> == others ? StringUtils.EMPTY : others;
+        <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getColumnCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TableDataException </span>{
+        <span class="hljs-keyword">return</span> COL_NAMES.length;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getColumnName</span><span class="hljs-params">(<span class="hljs-keyword">int</span> colIndex)</span> <span class="hljs-keyword">throws</span> TableDataException </span>{
+        <span class="hljs-keyword">return</span> COL_NAMES[colIndex];
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getRowCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> TableDataException </span>{
+        <span class="hljs-keyword">return</span> parameters.length;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">getValueAt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rowIndex, <span class="hljs-keyword">int</span> colIndex)</span> <span class="hljs-keyword">throws</span> TableDataException </span>{
+        <span class="hljs-keyword">if</span>( <span class="hljs-number">2</span> == colIndex ){
+            <span class="hljs-keyword">return</span> others;
+        }
+        ParameterProvider p = parameters[rowIndex];
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> == colIndex ? p.getName() : p.getValue() ;
+    }
+}
+</code></pre>
+<h3 id="4-define-the-ui"><a name="4-define-the-ui" class="anchor-navigation-ex-anchor" href="#4-define-the-ui"><i class="fa fa-link" aria-hidden="true"></i></a>4) Define the UI</h3>
+<p>After creating <em>DemoTableData</em> and <em>DemoDataModel</em>, the next thing we need is to define the UI for a user to configure our dataset. Otherwise, FineReport has no way to know what the parameters and the &quot;others&quot; are. The class for this is <em>com.fr.design.data.tabledata.tabledatapane.AbstractTableDataPane</em>. It has three important methods:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// To populate data on the pane</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populateBean</span><span class="hljs-params">(T var1)</span></span>;
+<span class="hljs-comment">// To update data</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> T <span class="hljs-title">updateBean</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">// Ttile for the window</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">title4PopupWindow</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<p>Here, T is our DemoTableData. The UI class can be defined like this:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoTableDataPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractTableDataPane</span>&lt;<span class="hljs-title">DemoTableData</span>&gt; </span>{
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> P = TableLayout.PREFERRED;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> F = TableLayout.FILL;
+
+    <span class="hljs-keyword">private</span> UITableEditorPane&lt;ParameterProvider&gt; parameterTableEditorPane;
+    <span class="hljs-keyword">private</span> UITextField tEditor;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DemoTableDataPane</span><span class="hljs-params">()</span> </span>{
+        init();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Create a pane for entering parameters.</span>
+        UITableModelAdapter&lt;ParameterProvider&gt; model = <span class="hljs-keyword">new</span> ParameterTableModel();
+        parameterTableEditorPane = <span class="hljs-keyword">new</span> UITableEditorPane&lt;ParameterProvider&gt;(model);
+
+        <span class="hljs-comment">// Create the text field for &apos;others&apos;</span>
+        tEditor = <span class="hljs-keyword">new</span> UITextField();
+
+        <span class="hljs-comment">// Create the &apos;preview&apos; button</span>
+        UIButton preview = <span class="hljs-keyword">new</span> UIButton(BaseUtils.readIcon(<span class="hljs-string">&quot;/com/fr/design/images/m_file/preview.png&quot;</span>));
+        preview.addActionListener(<span class="hljs-keyword">new</span> ActionListener() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> </span>{
+                SwingUtilities.invokeLater(<span class="hljs-keyword">new</span> Runnable() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+                        PreviewTablePane.previewTableData(DemoTableDataPane.<span class="hljs-keyword">this</span>.updateBean());
+                    }
+                });
+            }
+        });
+
+        <span class="hljs-comment">// Table layout</span>
+        JPanel topPane = TableLayoutHelper.createTableLayoutPane(
+                <span class="hljs-keyword">new</span> Component[][] {{
+                    tEditor, preview
+                }},
+                <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[] {P},
+                <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[] {F, P}
+        );
+
+        <span class="hljs-keyword">this</span>.add(TableLayoutHelper.createTableLayoutPane(
+                <span class="hljs-keyword">new</span> Component[][] {{
+                    topPane
+                }, {
+                    parameterTableEditorPane
+                }},
+                <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[] {P, F},
+                <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[] {F}
+        ));
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populateBean</span><span class="hljs-params">(DemoTableData demoTableData)</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">null</span> == demoTableData) {
+            <span class="hljs-keyword">return</span>;
+        }
+        String others = demoTableData.getOthers();
+        ParameterProvider[] parameters = demoTableData.getParameters(Calculator.createCalculator());
+        tEditor.setText(others);
+        parameterTableEditorPane.populate(parameters);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DemoTableData <span class="hljs-title">updateBean</span><span class="hljs-params">()</span> </span>{
+        DemoTableData demoTableData = <span class="hljs-keyword">new</span> DemoTableData();
+        demoTableData.setOthers(tEditor.getText());
+        List&lt;ParameterProvider&gt; parameterProviderList = parameterTableEditorPane.update();
+        ParameterProvider[] parameters = parameterProviderList.toArray(<span class="hljs-keyword">new</span> ParameterProvider[<span class="hljs-number">0</span>]);
+        demoTableData.setParameters(parameters);
+        <span class="hljs-keyword">return</span> demoTableData;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">title4PopupWindow</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Demo&quot;</span>;
+    }
+}
+</code></pre>
+<h3 id="6-register-the-plugin"><a name="6-register-the-plugin" class="anchor-navigation-ex-anchor" href="#6-register-the-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>6) Register the plugin</h3>
+<p>Finally, write the plugin.xml for our project. The configuration should be like this:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">TableDataDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.tabledata.demo.DemoTableDataBridge&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ServerTableDataDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.tabledata.demo.DemoServerTableDataBridge&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<p>If you have forgotten how to write the plugin.xml, please refer to our last tutorial.</p>
+<p>Build the project and install the plugin. If you see the demo dataset as follows, congrats!! 
+<a href="images/result_1.png" data-lightbox="80cffb9a-8d1c-4564-9426-d08a63643b9f" data-title="result_1"><img src="images/result_1.png" alt="result_1"></a>
+<a href="images/result_2.png" data-lightbox="b19aa032-c645-4066-afb9-b5875fcce053" data-title="result_2"><img src="images/result_2.png" alt="result_2"></a></p>
+<p>The source code for this plugin is also available on Github: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-tabledata-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-tabledata-demo</a></p>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_5/chapter_5.html" class="navigation navigation-prev " aria-label="Previous page: First Plugin - Hello World!">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_7/chapter_7.html" class="navigation navigation-next " aria-label="Next page: Beginner Tutorial - Include your JS&CSS">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - Dataset","level":"2.6","depth":1,"next":{"title":"Beginner Tutorial - Include your JS&CSS","level":"2.7","depth":1,"path":"tutorial/chapter_7/chapter_7.md","ref":"tutorial/chapter_7/chapter_7.md","articles":[]},"previous":{"title":"First Plugin - Hello World!","level":"2.5","depth":1,"path":"tutorial/chapter_5/chapter_5.md","ref":"tutorial/chapter_5/chapter_5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_6/chapter_6.md","mtime":"2020-12-30T08:32:37.713Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

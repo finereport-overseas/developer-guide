@@ -1,0 +1,821 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Beginner Tutorial - Filter · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_11/chapter_11.html" />
+    
+    
+    <link rel="prev" href="../chapter_9/chapter_9.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.10" data-path="chapter_10.html">
+            
+                <a href="chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Beginner Tutorial - Filter</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#beginner-tutorial---locale-finder"><b></b>Beginner Tutorial - Locale Finder</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#embedrequestfilterprovider"><b></b>EmbedRequestFilterProvider</a></li><li><span class="title-icon "></span><a href="#globalrequestfilterprovider"><b></b>GlobalRequestFilterProvider</a></li><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li><ul><li><span class="title-icon "></span><a href="#1-implement-the-cas-filter"><b></b>1) Implement the CAS Filter</a></li><li><span class="title-icon "></span><a href="#2-implement-the-fr-filter"><b></b>2) Implement the FR filter</a></li></ul></ul></ul></div><a href="#beginner-tutorial---locale-finder" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="beginner-tutorial---locale-finder"><a name="beginner-tutorial---locale-finder" class="anchor-navigation-ex-anchor" href="#beginner-tutorial---locale-finder"><i class="fa fa-link" aria-hidden="true"></i></a>Beginner Tutorial - Locale Finder</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>This provider is used as a servlet filter implemented by a plugin. We don&apos;t bother to configure the web.xml. There are two interfaces: <em>EmbedRequestFilterProvider</em> and <em>GlobalRequestFilterProvider</em>.</p>
+<h2 id="embedrequestfilterprovider"><a name="embedrequestfilterprovider" class="anchor-navigation-ex-anchor" href="#embedrequestfilterprovider"><i class="fa fa-link" aria-hidden="true"></i></a>EmbedRequestFilterProvider</h2>
+<p>When using this, requests towards /decision/* will be intercepted.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> javax.servlet.FilterChain;
+<span class="hljs-keyword">import</span> javax.servlet.FilterConfig;
+<span class="hljs-keyword">import</span> javax.servlet.ServletException;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-comment">/**
+ * Embedded Servlet Filter.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">EmbedRequestFilterProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+
+    String MARK_STRING = <span class="hljs-string">&quot;EmbedRequestFilterProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">2</span>;
+
+    <span class="hljs-comment">/**
+     * Initialize the filter. Only takes effect after reboot.
+     * <span class="hljs-doctag">@param</span> filterConfig the filter config
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span></span>;
+
+    <span class="hljs-comment">/**
+     * filter method
+     * <span class="hljs-doctag">@param</span> req HTTP Request
+     * <span class="hljs-doctag">@param</span> res HTTP Response
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">filter</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> IOException, ServletException</span>;
+
+
+    <span class="hljs-comment">/**
+     * Destroy the filter.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<p>In order to register this provider, we should write plugin.xml like this:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EmbedRequestFilterProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.request.filter.DemoEmbedRequestFilterProvider&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<h2 id="globalrequestfilterprovider"><a name="globalrequestfilterprovider" class="anchor-navigation-ex-anchor" href="#globalrequestfilterprovider"><i class="fa fa-link" aria-hidden="true"></i></a>GlobalRequestFilterProvider</h2>
+<p>This one is like the upgraded <em>EmbedRequestFilterProvider</em>. Here is how it looks like:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> javax.servlet.FilterChain;
+<span class="hljs-keyword">import</span> javax.servlet.FilterConfig;
+<span class="hljs-keyword">import</span> javax.servlet.ServletException;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-comment">/**
+ * A global request filter. Only takes effect after reboot.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">GlobalRequestFilterProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+
+    String MARK_STRING = <span class="hljs-string">&quot;GlobalRequestFilterProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * the filter name
+     *
+     * <span class="hljs-doctag">@return</span> filter name
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">filterName</span><span class="hljs-params">()</span></span>;
+
+
+    <span class="hljs-comment">/**
+     * url patterns
+     *
+     * <span class="hljs-doctag">@return</span> the array of url patterns
+     */</span>
+    String[] urlPatterns();
+
+    <span class="hljs-comment">/**
+     * the class name of the external filter
+     * The corresponding jar needs to be placed under the classpath of the web server. The path can be /WEB-INF/lib or /WEB-INF/classes.
+     * <span class="hljs-doctag">@return</span> class name
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">externalFilterClassName</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Initialize the filter. Only takes effect after reboot.
+     * <span class="hljs-doctag">@param</span> filterConfig the filter config
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> <span class="hljs-keyword">throws</span> ServletException</span>;
+
+    <span class="hljs-comment">/**
+     * Initial parameters for the filter
+     * <span class="hljs-doctag">@return</span> parameter map
+     */</span>
+    <span class="hljs-function">Map&lt;String, String&gt; <span class="hljs-title">initializationParameters</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * filter method
+     * <span class="hljs-doctag">@param</span> req HTTP Request
+     * <span class="hljs-doctag">@param</span> res HTTP Response
+     * <span class="hljs-doctag">@param</span> filterChain
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException</span>;
+
+    <span class="hljs-comment">/**
+     * Destroy the filter.
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<p>There are two ways to realize a filter. One is to include an external filter class by using <em>externalFilterClassName()</em>, and the other is to implement the <em>doFilter()</em> method. If both are used, only the external one will take effect.</p>
+<blockquote>
+<p>The filter implemented by <em>GlobalRequestFilterProvider</em> is executed before the one implemented by <em>EmbedRequestFilterProvider</em>.
+If multiple there are multiple filters implemented by <em>GlobalRequestFilterProvider</em>, the execution order is random.</p>
+</blockquote>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<p>Let&apos;s use <em>GlobalRequestFilterProvider</em> to build CAS Single Sign-On.</p>
+<h3 id="1-implement-the-cas-filter"><a name="1-implement-the-cas-filter" class="anchor-navigation-ex-anchor" href="#1-implement-the-cas-filter"><i class="fa fa-link" aria-hidden="true"></i></a>1) Implement the CAS Filter</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CasFilter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractGlobalRequestFilterProvider</span>  </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">filterName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;cas&quot;</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String[] urlPatterns() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{<span class="hljs-string">&quot;/*&quot;</span>};
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">externalFilterClassName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// The class name may differ in vairous versions of CAS client.</span>
+       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;edu.yale.its.tp.cas.client.filter.CASFilter&quot;</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> </span>{
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Map&lt;String, String&gt; <span class="hljs-title">initializationParameters</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Initialize some parameters for the CAS filter. It may also change due to different version of CAS client.</span>
+        Map&lt;String,String&gt; para=<span class="hljs-keyword">new</span> HashMap&lt;String,String&gt;();
+        para.put(<span class="hljs-string">&quot;edu.yale.its.tp.cas.client.filter.loginUrl&quot;</span>,<span class="hljs-string">&quot;http://localhost:8080/cas/login&quot;</span>);
+        para.put(<span class="hljs-string">&quot;edu.yale.its.tp.cas.client.filter.validateUrl&quot;</span>,<span class="hljs-string">&quot;http://localhost:8080/cas/proxyValidate&quot;</span>);
+        para.put(<span class="hljs-string">&quot;edu.yale.its.tp.cas.client.filter.serverName&quot;</span>,<span class="hljs-string">&quot;localhost:8080&quot;</span>);
+        <span class="hljs-keyword">return</span> para;
+    }
+}
+</code></pre>
+<h3 id="2-implement-the-fr-filter"><a name="2-implement-the-fr-filter" class="anchor-navigation-ex-anchor" href="#2-implement-the-fr-filter"><i class="fa fa-link" aria-hidden="true"></i></a>2) Implement the FR filter</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FRLoginFilter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractGlobalRequestFilterProvider</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">filterName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;login&quot;</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String[] urlPatterns() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{<span class="hljs-string">&quot;/*&quot;</span>};
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)</span> </span>{
+       String casUser=getCasUser(req,res);
+        <span class="hljs-keyword">if</span>(isNeedLogin(casUser,req,res)){
+            <span class="hljs-keyword">if</span>(!LoginFR(casUser,req,res)){<span class="hljs-comment">//login the FineReport platform</span>
+                <span class="hljs-comment">// do something if login failed</span>
+            }
+        }
+        <span class="hljs-keyword">try</span> {
+            filterChain.doFilter(req,res);
+        } <span class="hljs-keyword">catch</span> (IOException e) {
+            e.printStackTrace();
+        } <span class="hljs-keyword">catch</span> (ServletException e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span>  Boolean <span class="hljs-title">isNeedLogin</span><span class="hljs-params">(String casUser, HttpServletRequest req, HttpServletResponse res)</span></span>{
+        <span class="hljs-keyword">if</span>(!isLoginedFR(req)){
+            <span class="hljs-keyword">return</span>  <span class="hljs-keyword">true</span>;
+        }
+        String frUser=LoginService.getInstance().getCurrentUserNameFromRequestCookie(req);
+
+        <span class="hljs-keyword">return</span> !ComparatorUtils.equals(casUser,frUser);
+    }
+    <span class="hljs-comment">/**
+     * get CAS user
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@param</span> res
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> String <span class="hljs-title">getCasUser</span><span class="hljs-params">(HttpServletRequest req,HttpServletResponse res)</span></span>{
+        String username;
+        <span class="hljs-comment">// Get the username from CAS</span>
+        Object object = req.getSession().getAttribute(<span class="hljs-string">&quot;_const_cas_assertion_&quot;</span>);
+        <span class="hljs-keyword">if</span> (object != <span class="hljs-keyword">null</span>) {
+            Assertion assertion = (Assertion) object;
+            username = assertion.getPrincipal().getName();
+        } <span class="hljs-keyword">else</span> {
+            username = (String) req.getSession().getAttribute(<span class="hljs-string">&quot;edu.yale.its.tp.cas.client.filter.user&quot;</span>);
+        }
+        <span class="hljs-keyword">return</span>  username;
+    }
+
+    <span class="hljs-comment">/**
+     * Decide whether the user has logged in FineReport Platform.
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> Boolean <span class="hljs-title">isLoginedFR</span><span class="hljs-params">(HttpServletRequest req)</span></span>{
+        String token= TokenResource.COOKIE.getToken(req);
+        <span class="hljs-keyword">return</span> StringUtils.isNotBlank(token);
+    }
+
+    <span class="hljs-comment">/**
+     * Log in FineReport platform
+     * <span class="hljs-doctag">@param</span> username
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@param</span> res
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span>  Boolean <span class="hljs-title">LoginFR</span><span class="hljs-params">(String username,HttpServletRequest req,HttpServletResponse res)</span></span>{
+        <span class="hljs-keyword">try</span>{
+            User user = UserService.getInstance().getUserByUserName(username);
+            <span class="hljs-keyword">if</span> (user == <span class="hljs-keyword">null</span>) {
+               <span class="hljs-keyword">return</span>  <span class="hljs-keyword">false</span>;
+            }
+            String token = LoginService.getInstance().login(req, res, username);
+            req.setAttribute(DecisionServiceConstants.FINE_AUTH_TOKEN_NAME, token);
+           <span class="hljs-keyword">return</span>  <span class="hljs-keyword">true</span>;
+        }<span class="hljs-keyword">catch</span> (Exception e){
+        }
+        <span class="hljs-keyword">return</span>  <span class="hljs-keyword">false</span>;
+    }
+}
+</code></pre>
+<p>Write the plugin.xml to declare both filters:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.request.filter.CasFilter&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.request.filter.FRLoginFilter&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_9/chapter_9.html" class="navigation navigation-prev " aria-label="Previous page: Beginner Tutorial - Locale Finder">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_11/chapter_11.html" class="navigation navigation-next " aria-label="Next page: Beginner Tutorial - DAO">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - Filter","level":"2.10","depth":1,"next":{"title":"Beginner Tutorial - DAO","level":"2.11","depth":1,"path":"tutorial/chapter_11/chapter_11.md","ref":"tutorial/chapter_11/chapter_11.md","articles":[]},"previous":{"title":"Beginner Tutorial - Locale Finder","level":"2.9","depth":1,"path":"tutorial/chapter_9/chapter_9.md","ref":"tutorial/chapter_9/chapter_9.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_10/chapter_10.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,895 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Advanced Tutorial - Export · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_22/chapter_22.html" />
+    
+    
+    <link rel="prev" href="../chapter_20/chapter_20.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.21" data-path="chapter_21.html">
+            
+                <a href="chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Advanced Tutorial - Export</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#advanced-tutorial---export"><b></b>Advanced Tutorial - Export</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><ul><li><span class="title-icon "></span><a href="#appexporter"><b></b>AppExporter</a></li><li><span class="title-icon "></span><a href="#exportcollection"><b></b>ExportCollection</a></li><li><span class="title-icon "></span><a href="#operate"><b></b>Operate</a></li></ul><li><span class="title-icon "></span><a href="#meet-different-export-requirements"><b></b>Meet Different Export Requirements</a></li><ul><li><span class="title-icon "></span><a href="#secondary-process-of-exported-file"><b></b>Secondary Process of Exported File</a></li><li><span class="title-icon "></span><a href="#change-path-to-export-file"><b></b>Change Path to Export File</a></li><li><span class="title-icon "></span><a href="#modify-the-content-and-style-of-export-file"><b></b>Modify the Content and Style of Export File</a></li></ul></ul></ul></div><a href="#advanced-tutorial---export" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="advanced-tutorial---export"><a name="advanced-tutorial---export" class="anchor-navigation-ex-anchor" href="#advanced-tutorial---export"><i class="fa fa-link" aria-hidden="true"></i></a>Advanced Tutorial - Export</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>In this tutorial, we will learn how to extend the functionality of export, including modifying the default export and adding our own ways of export.</p>
+<p>First, let&apos;s learn the classes used in this tutorial.</p>
+<h3 id="appexporter"><a name="appexporter" class="anchor-navigation-ex-anchor" href="#appexporter"><i class="fa fa-link" aria-hidden="true"></i></a>AppExporter</h3>
+<p>This is the actual place to execute export. Usually, we inherit <em>AbstractAppExporter</em> to implement this interface.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestAppExporter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractAppExporter</span> </span>{
+    <span class="hljs-comment">/**
+     * We only need to implement this method, which is the one to execute export process.
+     * <span class="hljs-doctag">@param</span> outputStream  
+     * <span class="hljs-doctag">@param</span> resultWorkBook Export is essentially turn this resultWorkBook into file.
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">export</span><span class="hljs-params">(OutputStream outputStream, ResultWorkBook resultWorkBook)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+
+    }
+
+}
+</code></pre>
+<h3 id="exportcollection"><a name="exportcollection" class="anchor-navigation-ex-anchor" href="#exportcollection"><i class="fa fa-link" aria-hidden="true"></i></a>ExportCollection</h3>
+<p><em>ExportCollection</em> is a wrapper for <em>AppExporter</em>. It provides a method to call the <em>export</em> method from <em>AppExporter</em>. Here is the source code for <em>ExportCollection</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExportCollection</span> </span>{
+
+    <span class="hljs-keyword">private</span> AppExporter exporter;
+    <span class="hljs-keyword">private</span> DeclareRecordType recordType;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ExportCollection <span class="hljs-title">create</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ExportCollection();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">ExportCollection</span><span class="hljs-params">()</span> </span>{
+
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> AppExporter <span class="hljs-title">getExporter</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> exporter;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setExporter</span><span class="hljs-params">(AppExporter exporter)</span> </span>{
+        <span class="hljs-keyword">this</span>.exporter = exporter;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DeclareRecordType <span class="hljs-title">getRecordType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> recordType;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setRecordType</span><span class="hljs-params">(DeclareRecordType recordType)</span> </span>{
+        <span class="hljs-keyword">this</span>.recordType = recordType;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doExport</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, ReportSessionIDInfor sessionIDInfor, String format)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+
+        <span class="hljs-keyword">if</span> (getRecordType() == <span class="hljs-keyword">null</span>) {
+            ErrorHandlerHelper.getErrorHandler().error(req, res, <span class="hljs-string">&quot;Cannot recognize the specifed export format:&quot;</span> + format + <span class="hljs-string">&quot;,\nThe correct format can be PDF,Excel,Word,SVG,CSV,Text or Image.&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        }
+
+        OutputStream outputStream = res.getOutputStream();
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// export and log</span>
+            LogUtils.exportAndLogRecord(exporter, outputStream, <span class="hljs-keyword">new</span> ReportRepositoryDeal(req, sessionIDInfor), recordType);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            FRContext.getLogger().error(e.getMessage(), e);
+            ErrorHandlerHelper.getErrorHandler().error(req, res, e);
+        }
+        <span class="hljs-keyword">try</span> {
+            outputStream.flush();
+            outputStream.close();
+        } <span class="hljs-keyword">catch</span> (IOException e) {
+
+        }
+    }
+}
+</code></pre>
+<p>This class provides getter and setter for <em>AppExporter</em>. One <em>ExportCollection</em> is related to one <em>AppExporter</em>.</p>
+<h3 id="operate"><a name="operate" class="anchor-navigation-ex-anchor" href="#operate"><i class="fa fa-link" aria-hidden="true"></i></a>Operate</h3>
+<p>This one is used to create an <em>ExportCollection</em> instance and set the Content-type of the response. We usually inherit <em>DefaultOperate</em> to use it.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoOperate</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DefaultOperate</span> </span>{
+    <span class="hljs-comment">/**
+     * This method has to be implemented. It returns an ExportCollection instance.
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@param</span> res
+     * <span class="hljs-doctag">@param</span> reportSessionIDInfor
+     * <span class="hljs-doctag">@param</span> fileName
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExportCollection <span class="hljs-title">createCollection</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, ReportSessionIDInfor reportSessionIDInfor, String fileName)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * set Content-type based on export type
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@param</span> res
+     * <span class="hljs-doctag">@param</span> fileName
+     * <span class="hljs-doctag">@param</span> isEmbed
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setContent</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String fileName, <span class="hljs-keyword">boolean</span> isEmbed)</span> </span>{
+        <span class="hljs-keyword">super</span>.setContent(req, res, fileName, isEmbed);
+    }
+}
+</code></pre>
+<h2 id="meet-different-export-requirements"><a name="meet-different-export-requirements" class="anchor-navigation-ex-anchor" href="#meet-different-export-requirements"><i class="fa fa-link" aria-hidden="true"></i></a>Meet Different Export Requirements</h2>
+<p>Before we talk about how to meet some export requirements, let&apos;s look at the provider for registering an export plugin.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ExportExtensionProcessor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Immutable</span> </span>{
+    String MARK_TAG = <span class="hljs-string">&quot;ExportExtensionProcessor&quot;</span>;
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * return the filename of the exported file
+     * <span class="hljs-doctag">@param</span> req export request
+     * <span class="hljs-doctag">@param</span> templateSessionIDInfo session info of the report
+     * <span class="hljs-doctag">@return</span> filename
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">fileName</span><span class="hljs-params">(HttpServletRequest req, TemplateSessionIDInfo templateSessionIDInfo)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+
+    <span class="hljs-comment">/**
+     * return an ExportCollection instance
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@param</span> res
+     * <span class="hljs-doctag">@param</span> reportSessionIDInfor
+     * <span class="hljs-doctag">@param</span> format export type
+     * <span class="hljs-doctag">@param</span> filaName
+     * <span class="hljs-doctag">@param</span> isEmbed whether it is an embeded type
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-function">ExportCollection <span class="hljs-title">createCollection</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, ReportSessionIDInfor reportSessionIDInfor, String format, String filaName, <span class="hljs-keyword">boolean</span> isEmbed)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+}
+</code></pre>
+<p>Register the plugin in plugin.xml.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ExportExtensionProcessor</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.EncodeExportExtension&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h3 id="secondary-process-of-exported-file"><a name="secondary-process-of-exported-file" class="anchor-navigation-ex-anchor" href="#secondary-process-of-exported-file"><i class="fa fa-link" aria-hidden="true"></i></a>Secondary Process of Exported File</h3>
+<p>One of the many export requirements is that the content and style of the default export file do not need to be changed, but the file itself needs to be processed a second time, such as calling the customer&#x2019;s own API to encrypt the file.</p>
+<p>Combined with the <em>ExportExtensionProcessor</em> interface introduced above, we customize an <em>ExportCollention</em> for each export method, which encapsulates the custom <em>AppExporter</em> export processing. However, there is a problem during implementation. It is that we are not familiar with the <em>ResultWorkBook</em> interface. It seems very troublesome to use this interface to export files. When this happens, we don&#x2019;t have to panic. We can use the default <em>AppExporter</em> to export a file on the server, and then directly manipulate the file. Anyway, the entire file needs to be processed twice.</p>
+<p>Let&#x2019;s look at an encryption process for the exported pdf file.</p>
+<p>First of all, we still need to create an <em>AppExporter</em> to encrypt and export pdf.</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Directly extend the defualt PDF exporter
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EncodePDFExporter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PDFExporter</span> </span>{
+    <span class="hljs-comment">/**
+     * override export method
+     *
+     * <span class="hljs-doctag">@param</span> outputStream
+     * <span class="hljs-doctag">@param</span> resultWorkBook
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">export</span><span class="hljs-params">(OutputStream outputStream, ResultWorkBook resultWorkBook)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">/**
+         * Here we use a custom API to export a temp PDF on the server.
+         * Then we retrieve the encoded file object
+         */</span>
+        DealOtherFileImp imp = <span class="hljs-keyword">new</span> DealOtherFileImp(<span class="hljs-keyword">new</span> PDFExporter(), <span class="hljs-string">&quot;.pdf&quot;</span>);
+        File newFile = imp.encodeFile(resultWorkBook, <span class="hljs-keyword">false</span>, <span class="hljs-keyword">null</span>);
+        <span class="hljs-keyword">if</span> (newFile == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">super</span>.export(outputStream, resultWorkBook);
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-comment">// export the new encoded file</span>
+        IEUtils.exportFile(outputStream, newFile);
+    }
+}
+</code></pre>
+<p>After implementing <em>EncodePDFExporter</em>, the next thing to do is to construct an <em>ExportCollection</em> that contains <em>EncodePDFExporter</em>. As mentioned in the introduction of Operate, the <em>ExportCollection</em> is generally created through the <em>Operate</em> interface. The following step is to implement the Operate.</p>
+<pre><code class="lang-java"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EncodePDFOperate</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DefaultOperate</span> </span>{
+    <span class="hljs-comment">/**
+     * create an ExportCollection with an EncodePDFExporter
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@param</span> res
+     * <span class="hljs-doctag">@param</span> reportSessionIDInfor
+     * <span class="hljs-doctag">@param</span> fileName
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExportCollection <span class="hljs-title">createCollection</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, ReportSessionIDInfor reportSessionIDInfor, String fileName)</span> </span>{
+        ExportCollection exportCollection = ExportCollection.create();
+        exportCollection.setExporter(<span class="hljs-keyword">new</span> EncodePDFExporter());
+        exportCollection.setRecordType(DeclareRecordType.EXPORT_TYPE_PDF);
+        <span class="hljs-keyword">this</span>.setContent(req, res, fileName, <span class="hljs-keyword">false</span>);
+        <span class="hljs-keyword">return</span> exportCollection;
+    }
+
+    <span class="hljs-comment">/**
+     * set the content-type and filename
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@param</span> res
+     * <span class="hljs-doctag">@param</span> fileName
+     * <span class="hljs-doctag">@param</span> isEmbed
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setContent</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String fileName, <span class="hljs-keyword">boolean</span> isEmbed)</span> </span>{
+        ExportUtils.setPDFContent(res, fileName, isEmbed);
+    }
+}
+</code></pre>
+<p>The next step is to replace the default logic of exporting pdf with our own custom logic. We use the <em>ExportExtensionProcessor</em> interface and rewrite the <em>createCollection</em> method.</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Default export logic is implemented inside DefaultExportExtension, and we only need to modify PDF export part.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EncodeExportExtension</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DefaultExportExtension</span> </span>{
+    <span class="hljs-comment">/**
+     * Define a map to store the format (e.g. &apos;pdf&apos;) and Operate.
+     * Initialization.
+     */</span>
+    <span class="hljs-keyword">private</span>  <span class="hljs-keyword">static</span> Map&lt;String, Operate&gt; operateMap=<span class="hljs-keyword">new</span> HashMap&lt;String, Operate&gt;();
+    <span class="hljs-keyword">static</span> {
+        operateMap.put(<span class="hljs-string">&quot;pdf&quot;</span>,<span class="hljs-keyword">new</span> EncodePDFOperate());
+
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExportCollection <span class="hljs-title">createCollection</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, ReportSessionIDInfor reportSessionIDInfor, String format, String fileName, <span class="hljs-keyword">boolean</span> isEmbed)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        Operate operate=operateMap.get(format.toLowerCase());<span class="hljs-comment">// get Operate from the defined map</span>
+        <span class="hljs-keyword">if</span>(operate!=<span class="hljs-keyword">null</span>){
+            <span class="hljs-keyword">return</span>  operate.createCollection(req,res,reportSessionIDInfor,fileName);<span class="hljs-comment">// use Operate#createCollection to return the exportCollection</span>
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.createCollection(req, res, reportSessionIDInfor, format, fileName, isEmbed);
+    }
+}
+</code></pre>
+<h3 id="change-path-to-export-file"><a name="change-path-to-export-file" class="anchor-navigation-ex-anchor" href="#change-path-to-export-file"><i class="fa fa-link" aria-hidden="true"></i></a>Change Path to Export File</h3>
+<p>Here is another export requirement. The customer wants the exported file not downloaded to everyone&apos;s client but stored in the server or another file system. The realization is actually similar to the secondary processing of the file. However, this requirement will have an additional point to note, which is the interaction with the front end.</p>
+<p>Because there is no more file export, front-end users will not know whether the export is successful. In this case, we need to modify the front-end js that sends the export request.</p>
+<p>First look briefly at the implementation of <em>AppExporter</em> and <em>Operate</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoPDFExporter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PDFExporter</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">export</span><span class="hljs-params">(OutputStream outputStream, ResultWorkBook resultWorkBook)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        FileOutputStream fileOutputStream=<span class="hljs-keyword">null</span>;
+        JSONObject result=JSONObject.create();
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">/**
+             * export file to the server
+            */</span>
+            fileOutputStream=<span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;D:/ceshi.pdf&quot;</span>));
+            (<span class="hljs-keyword">new</span> PDFExporter()).export(fileOutputStream,resultWorkBook);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            result.put(<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-keyword">true</span>);
+        }<span class="hljs-keyword">catch</span> (Exception e){
+            result.put(<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-keyword">false</span>);
+        }
+        <span class="hljs-comment">/**
+         * return the result to the front-end
+         */</span>
+        outputStream.write(result.toString().getBytes(<span class="hljs-string">&quot;utf-8&quot;</span>));
+        outputStream.flush();
+        outputStream.close();
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Since the client doesn&apos;t download the file by browser, content-type is no more needed.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoPDFOperate</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DefaultOperate</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExportCollection <span class="hljs-title">createCollection</span><span class="hljs-params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, ReportSessionIDInfor reportSessionIDInfor, String s)</span> </span>{
+        ExportCollection exportCollection = ExportCollection.create();
+        exportCollection.setExporter(<span class="hljs-keyword">new</span> DemoPDFExporter());
+        exportCollection.setRecordType(DeclareRecordType.EXPORT_TYPE_PDF);
+        <span class="hljs-keyword">return</span> exportCollection;
+    }
+}
+</code></pre>
+<p>The front-end js is shown below:</p>
+<pre><code class="lang-js">;(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    $.extend(FR.BasePane.prototype, {
+        <span class="hljs-comment">/**
+         * The default implementation of this method is to open url by window.open.
+         * Now we use ajax to send a request and display different result through callback
+         * @param url
+         * @param type
+         */</span>
+        downloadExportFile: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, type</span>) </span>{
+            <span class="hljs-comment">// the new export plugin</span>
+            <span class="hljs-keyword">if</span> (FR.Report.Plugin.XHR2FileSaveProcessor.item &amp;&amp; FR.Plugin.validLevel(FR.Report.Plugin.XHR2FileSaveProcessor, FR.Report.Plugin.XHR2FileSaveProcessor.item)) {
+                FR.Report.Plugin.XHR2FileSaveProcessor.item.action.call(<span class="hljs-keyword">this</span>, url, type);
+                <span class="hljs-keyword">return</span>;
+            }
+            <span class="hljs-keyword">var</span> attr = {title: <span class="hljs-string">&quot;Export&quot;</span>, contentHtml: <span class="hljs-string">&quot;&lt;div class=&apos;fr-core-panel-loading&apos;&gt;&quot;</span> + <span class="hljs-string">&quot;Exporting...&quot;</span> + <span class="hljs-string">&quot;&lt;/div&gt;&quot;</span>};
+            FR.showLoadingDialog(attr);
+            FR.ajax({
+                url: url,
+                success: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
+                    FR.hideLoadingDialog();
+                    <span class="hljs-keyword">var</span> result = FR.jsonDecode(res);
+                    <span class="hljs-keyword">if</span> (result.success) {
+                        FR.Msg.toast(<span class="hljs-string">&quot;Export Success&quot;</span>);
+                    } <span class="hljs-keyword">else</span> {
+                        FR.Msg.toast(<span class="hljs-string">&quot;Export Failure&quot;</span>);
+                    }
+                }
+            })
+        }
+    });
+})()
+</code></pre>
+<h3 id="modify-the-content-and-style-of-export-file"><a name="modify-the-content-and-style-of-export-file" class="anchor-navigation-ex-anchor" href="#modify-the-content-and-style-of-export-file"><i class="fa fa-link" aria-hidden="true"></i></a>Modify the Content and Style of Export File</h3>
+<p>The two aforementioned requirements are for the special processing of exported files. In practice, there is another requirement for the processing of exported content. The realization is generally by modifying the report in the <em>ResultWorkBook</em> of the report, thereby modifying the content and style of the report when exporting. The first thing that comes to mind is to modify it in the export method in <em>AppExporter</em> because this is where the export is finally executed and the object can be obtained directly. This implementation is of course possible, but it will be more troublesome. Each export type must be re-implemented once. At this time, you may notice that the <em>createCollection</em> method of the <em>ExportExtensionProcessor</em> contains the <em>ReportSessionIDInfo</em> object. This can also get the <em>ResultWorkBook</em>, even though the method itself is not intended to do anything to the report itself.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoExportExtension</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DefaultExportExtension</span> </span>{
+    <span class="hljs-comment">/**
+     * Get ResultWorkBook from ReportSessionIDInfor, and modify ResultWorkBook.
+     * <span class="hljs-doctag">@param</span> httpServletRequest
+     * <span class="hljs-doctag">@param</span> httpServletResponse
+     * <span class="hljs-doctag">@param</span> reportSessionIDInfor
+     * <span class="hljs-doctag">@param</span> s
+     * <span class="hljs-doctag">@param</span> s1
+     * <span class="hljs-doctag">@param</span> b
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExportCollection <span class="hljs-title">createCollection</span><span class="hljs-params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, ReportSessionIDInfor reportSessionIDInfor, String s, String s1, <span class="hljs-keyword">boolean</span> b)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        ResultWorkBook reslut =reportSessionIDInfor.getWorkBook2Show();
+        dealReport(reslut);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.createCollection(httpServletRequest, httpServletResponse, reportSessionIDInfor, s, s1, b);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dealReport</span><span class="hljs-params">(ResultWorkBook reslut)</span></span>{
+
+    }
+}
+</code></pre>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_20/chapter_20.html" class="navigation navigation-prev " aria-label="Previous page: Advanced Tutorial - Chart">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_22/chapter_22.html" class="navigation navigation-next " aria-label="Next page: Advanced Tutorial - Modify Designed Report">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Export","level":"2.21","depth":1,"next":{"title":"Advanced Tutorial - Modify Designed Report","level":"2.22","depth":1,"path":"tutorial/chapter_22/chapter_22.md","ref":"tutorial/chapter_22/chapter_22.md","articles":[]},"previous":{"title":"Advanced Tutorial - Chart","level":"2.20","depth":1,"path":"tutorial/chapter_20/chapter_20.md","ref":"tutorial/chapter_20/chapter_20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_21/chapter_21.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

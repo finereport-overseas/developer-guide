@@ -1,0 +1,634 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Build Development Environment · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_3/chapter_3.html" />
+    
+    
+    <link rel="prev" href="../chapter_1/chapter_1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="chapter_2.html">
+            
+                <a href="chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Build Development Environment</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#build-development-environment"><b></b>Build Development Environment</a></li><ul><li><span class="title-icon "></span><a href="#clone-the-project"><b></b>Clone the Project</a></li><li><span class="title-icon "></span><a href="#open-the-project"><b></b>Open the Project</a></li><li><span class="title-icon "></span><a href="#configure-toolsjar"><b></b>Configure tools.jar</a></li><li><span class="title-icon "></span><a href="#build-the-project"><b></b>Build the Project</a></li><li><span class="title-icon "></span><a href="#run-the-project"><b></b>Run the Project</a></li><li><span class="title-icon "></span><a href="#important-reminders"><b></b>Important Reminders</a></li></ul></ul></div><a href="#build-development-environment" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="build-development-environment"><a name="build-development-environment" class="anchor-navigation-ex-anchor" href="#build-development-environment"><i class="fa fa-link" aria-hidden="true"></i></a>Build Development Environment</h1>
+<blockquote>
+<p>Note: Before reading this tutorial, make sure you have installed Java, Ant, Maven and IntelliJ IDEA.</p>
+</blockquote>
+<h2 id="clone-the-project"><a name="clone-the-project" class="anchor-navigation-ex-anchor" href="#clone-the-project"><i class="fa fa-link" aria-hidden="true"></i></a>Clone the Project</h2>
+<p>Open the installed IntelliJ IDEA. On the welcome page shown below, click <strong>Check out from Version Control</strong> and select <strong>Git</strong>.</p>
+<p><a href="images/clone_project_1.png" data-lightbox="9fd475a3-9b01-47c3-a2dd-a1fc52d9c275" data-title="clone_project_1"><img src="images/clone_project_1.png" alt="clone_project_1"></a></p>
+<p>Enter the URL of the plugin development project in the pop-up box: <a href="https://github.com/finereport-overseas/report-starter-10.git" target="_blank">https://github.com/finereport-overseas/report-starter-10.git</a></p>
+<p><a href="images/clone_project_2.png" data-lightbox="5587438d-eec3-489b-9c4c-42f293b5b048" data-title="clone_project_2"><img src="images/clone_project_2.png" alt="clone_project_2"></a></p>
+<p>Click the <strong>Clone</strong> button to download the project.</p>
+<h2 id="open-the-project"><a name="open-the-project" class="anchor-navigation-ex-anchor" href="#open-the-project"><i class="fa fa-link" aria-hidden="true"></i></a>Open the Project</h2>
+<p>After waiting for a period of time, the project has been downloaded. There will be a prompt box, asking whether to open the project right away, select <strong>Yes</strong>.</p>
+<p><a href="images/open_project_1.png" data-lightbox="747cc197-0d21-4f01-8817-bae75fe14d97" data-title="open_project_1"><img src="images/open_project_1.png" alt="open_project_1"></a></p>
+<p>Have a sip of coffee and wait for IntelliJ IDEA to download dependencies and finish indexing. Then you will see the plugin development project like this.</p>
+<p><a href="images/open_project_2.png" data-lightbox="231f695a-cc70-4a73-a41c-6070a6703349" data-title="open_project_2"><img src="images/open_project_2.png" alt="open_project_2"></a></p>
+<h2 id="configure-toolsjar"><a name="configure-toolsjar" class="anchor-navigation-ex-anchor" href="#configure-toolsjar"><i class="fa fa-link" aria-hidden="true"></i></a>Configure tools.jar</h2>
+<p>First, you should configure your JDK as the SDK for the project.</p>
+<p><a href="images/configure_tools_jar_1.png" data-lightbox="11984b1f-3beb-409a-b81e-3eafffeb3372" data-title="configure_tools_jar_1"><img src="images/configure_tools_jar_1.png" alt="configure_tools_jar_1"></a></p>
+<p>Second, add tools.jar in the JDK directory to the ClassPath <font color="red">(based on experiences, more than 95% of the build failures are caused by not adding this JAR)</font>.</p>
+<p><a href="images/configure_tools_jar_2.png" data-lightbox="90a45913-f543-4e96-8799-00335564d325" data-title="configure_tools_jar_2"><img src="images/configure_tools_jar_2.png" alt="configure_tools_jar_2"></a></p>
+<p>Finally, click <strong>Apply</strong> and then click <strong>OK</strong>.</p>
+<h2 id="build-the-project"><a name="build-the-project" class="anchor-navigation-ex-anchor" href="#build-the-project"><i class="fa fa-link" aria-hidden="true"></i></a>Build the Project</h2>
+<p>Let&apos;s build our project.</p>
+<p><a href="images/build_project_1.png" data-lightbox="231b26cc-dc2f-48a7-8e90-60bf42c9688a" data-title="build_project_1"><img src="images/build_project_1.png" alt="build_project_1"></a></p>
+<p>There should be a webroot directory after the build.</p>
+<p><a href="images/build_project_2.png" data-lightbox="64cadecc-c831-45b8-bc34-a507ec99c3e8" data-title="build_project_2"><img src="images/build_project_2.png" alt="build_project_2"></a></p>
+<p>Run maven install.</p>
+<p><a href="images/build_project_3.png" data-lightbox="231e1ca8-4368-4fd0-98a5-4f70712b37b0" data-title="build_project_3"><img src="images/build_project_3.png" alt="build_project_3"></a></p>
+<h2 id="run-the-project"><a name="run-the-project" class="anchor-navigation-ex-anchor" href="#run-the-project"><i class="fa fa-link" aria-hidden="true"></i></a>Run the Project</h2>
+<p>The boring build process is finally over. Let&apos;s run our project to see if everything goes well. Run <em>Leaner.main()</em>.</p>
+<p><a href="images/run_project_1.png" data-lightbox="58a759ad-778c-4389-9961-a2bbc7c2f637" data-title="run_project_1"><img src="images/run_project_1.png" alt="run_project_1"></a></p>
+<p>The designer has been started. Don&apos;t forget to switch the working directory to our project.</p>
+<p><a href="images/run_project_2.png" data-lightbox="ef1522c0-735b-441c-9879-3058c8e319e4" data-title="run_project_2"><img src="images/run_project_2.png" alt="run_project_2"></a></p>
+<p>After switching, for the sake of stability, close the designer and re-run <em>Leaner.main()</em>. See if the working directory is that of our plugin project.</p>
+<p><a href="images/run_project_3.png" data-lightbox="24c82ecd-59df-406e-b695-7b05cec93024" data-title="run_project_3"><img src="images/run_project_3.png" alt="run_project_3"></a></p>
+<h2 id="important-reminders"><a name="important-reminders" class="anchor-navigation-ex-anchor" href="#important-reminders"><i class="fa fa-link" aria-hidden="true"></i></a>Important Reminders</h2>
+<p>Congratulations! Now you have successfully built FR plugin development environment. Before you move on, check out the reminders.</p>
+<ol>
+<li>Since some of the dependencies are downloaded from the private Maven repository of FanRuan, your network should be allowed to visit 106.14.96.249.</li>
+<li>The steps above are for those who have never downloaded the plugin development project. If you have downloaded the project, select <strong>Open</strong> to open the directory where the project is located when opening IDEA. In other words, do not select <strong>Check out from Version Control</strong>.
+The sample project depends on the 10.0 test version snapshot. If you want to rely on a specific version, you can modify the common-version attribute in report-starter-10/pom.xml. Generally, the snapshot of an official version is preferred.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.0-FEATURE-SNAPSHOT</td>
+<td>10.0 feature version snapshot</td>
+</tr>
+<tr>
+<td>10.0-PERSIST-SNAPSHOT</td>
+<td>10.0 official version snapshot</td>
+</tr>
+<tr>
+<td>10.0-RELEASE-SNAPSHOT</td>
+<td>10.0 test version snapshot</td>
+</tr>
+<tr>
+<td>10.0.2019.07.16</td>
+<td>The official version released, 2019.07.16 is the release time</td>
+</tr>
+</tbody>
+</table>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_1/chapter_1.html" class="navigation navigation-prev " aria-label="Previous page: Install Essential Tools">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_3/chapter_3.html" class="navigation navigation-next " aria-label="Next page: Introduction of plugin.xml">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Build Development Environment","level":"2.2","depth":1,"next":{"title":"Introduction of plugin.xml","level":"2.3","depth":1,"path":"tutorial/chapter_3/chapter_3.md","ref":"tutorial/chapter_3/chapter_3.md","articles":[]},"previous":{"title":"Install Essential Tools","level":"2.1","depth":1,"path":"tutorial/chapter_1/chapter_1.md","ref":"tutorial/chapter_1/chapter_1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_2/chapter_2.md","mtime":"2020-12-30T08:32:37.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

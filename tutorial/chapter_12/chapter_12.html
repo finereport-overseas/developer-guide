@@ -1,0 +1,810 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Beginner Tutorial - simple Web API · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_13/chapter_13.html" />
+    
+    
+    <link rel="prev" href="../chapter_11/chapter_11.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.12" data-path="chapter_12.html">
+            
+                <a href="chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Beginner Tutorial - simple Web API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#beginner-tutorial---simple-web-api"><b></b>Beginner Tutorial - simple Web API</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#httphandlerprovider"><b></b>HttpHandlerProvider</a></li><ul><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li></ul><li><span class="title-icon "></span><a href="#urlaliasprovider"><b></b>URLAliasProvider</a></li><ul><li><span class="title-icon "></span><a href="#example_1"><b></b>Example</a></li></ul></ul></ul></div><a href="#beginner-tutorial---simple-web-api" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="beginner-tutorial---simple-web-api"><a name="beginner-tutorial---simple-web-api" class="anchor-navigation-ex-anchor" href="#beginner-tutorial---simple-web-api"><i class="fa fa-link" aria-hidden="true"></i></a>Beginner Tutorial - simple Web API</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>In this tutorial, we will introduce two providers: <em>HttpHandlerProvider</em> and <em>URLAliasProvider</em>. These two are often used together to provide a simple Web API accepting HTTP request.</p>
+<h2 id="httphandlerprovider"><a name="httphandlerprovider" class="anchor-navigation-ex-anchor" href="#httphandlerprovider"><i class="fa fa-link" aria-hidden="true"></i></a>HttpHandlerProvider</h2>
+<p>This is the one to achieve providing a Web API. But it has a problem which will be discussed later. Let&apos;s see what it looks like first:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">HttpHandlerProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+
+    String XML_TAG = <span class="hljs-string">&quot;HttpHandlerProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+
+    HttpHandler[] registerHandlers();
+}
+</code></pre>
+<p>The structure is simple. It just offers an array of <em>HttpHandler</em>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.third.springframework.web.bind.annotation.RequestMethod;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">HttpHandler</span> </span>{
+
+    <span class="hljs-comment">/**
+     * HTTP Method
+     * <span class="hljs-doctag">@return</span> Matches all methods when returning null
+     */</span>
+    <span class="hljs-function">RequestMethod <span class="hljs-title">getMethod</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Web API path
+     * E.g.:
+     *     /
+     *     /foo
+     *     /aaa/bbb
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">getPath</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Is this path open to public?
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isPublic</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Handle the request
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">handle</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+}
+</code></pre>
+<p>The core method is <em>handle()</em>. We define how we handle the requests to our API in this method.</p>
+<h3 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h3>
+<p>The example below is to return a JSON string to the requestor.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.plugin.http.handler;
+
+<span class="hljs-keyword">import</span> com.fr.decision.fun.impl.BaseHttpHandler;
+<span class="hljs-keyword">import</span> com.fr.json.JSONObject;
+<span class="hljs-keyword">import</span> com.fr.third.springframework.web.bind.annotation.RequestMethod;
+<span class="hljs-keyword">import</span> com.fr.web.utils.WebUtils;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseHttpHandler</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> RequestMethod <span class="hljs-title">getMethod</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;/test/jsonp&quot;</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPublic</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handle</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        JSONObject result=JSONObject.create().put(<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-keyword">true</span>);
+        WebUtils.printAsJSON(res,result);
+    }
+}
+</code></pre>
+<p>Next, use <em>HttpHandlerProvider</em> to register this handler:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.plugin.http;
+
+<span class="hljs-keyword">import</span> com.fr.decision.fun.HttpHandler;
+<span class="hljs-keyword">import</span> com.fr.decision.fun.impl.AbstractHttpHandlerProvider;
+<span class="hljs-keyword">import</span> com.fr.plugin.http.handler.DemoHandler;
+<span class="hljs-keyword">import</span> com.fr.plugin.http.handler.TestHandler;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoHandlerProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHttpHandlerProvider</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> HttpHandler[] registerHandlers() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HttpHandler[]{
+                <span class="hljs-keyword">new</span> TestHandler()
+        };
+    }
+}
+</code></pre>
+<p>Register it in the plugin.xml:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">HttpHandlerProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.http.DemoHandlerProvider&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<p>To use the Web API defined:</p>
+<p>Public Address: <a href="http://localhost:8075/webroot/decision/plugin/public/${plugin-id}/test/jsonp" target="_blank">http://localhost:8075/webroot/decision/plugin/public/${plugin-id}/test/jsonp</a></p>
+<p>Private Address: <a href="http://localhost:8075/webroot/decision/plugin/private/${plugin-id}/test/jsonp" target="_blank">http://localhost:8075/webroot/decision/plugin/private/${plugin-id}/test/jsonp</a></p>
+<p>As you may notice, the URL is too long and it depends on the plugin id. Yes, this is the problem we mentioned at the beginning. We will introduce <em>URLAliasProvider</em> to solve it.</p>
+<h2 id="urlaliasprovider"><a name="urlaliasprovider" class="anchor-navigation-ex-anchor" href="#urlaliasprovider"><i class="fa fa-link" aria-hidden="true"></i></a>URLAliasProvider</h2>
+<p>It is to offer an alias to the path of our API.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.url.provider.URLAliasRegister;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">URLAliasProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">URLAliasRegister</span>, <span class="hljs-title">Mutable</span> </span>{
+
+    String XML_TAG = <span class="hljs-string">&quot;URLAliasProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.webservice.url.provider;
+
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.url.alias.URLAlias;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">URLAliasRegister</span> </span>{
+
+    URLAlias[] registerAlias();
+}
+</code></pre>
+<p><em>URLAliasProvider</em> itself does not have additional functions. The main method <em>registerAlias()</em> is from its parent <em>URLAliasRegister</em>. This method returns an array of <em>URLAlias</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.webservice.url.alias;
+
+<span class="hljs-comment">/**
+ * url alias
+ *
+ * Example:
+ *     shortPath: &quot;/foo&quot;
+ *     targetURL: &quot;/plugin/private/com.fr.plugin.my/hello&quot;
+ *     wideRange: false
+ *     If we navigate to &quot;/webroot/decision/url/foo&quot;, it is the same as visiting &quot;/webroot/decision/plugin/private/com.fr.plugin.my/hello&quot;
+ *     If widRange is true&#xFF0C;&quot;/foo/baz&quot; can be mapped to &quot;/webroot/decision/plugin/private/com.fr.plugin.my/hello/baz&quot;
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">URLAlias</span> </span>{
+
+    <span class="hljs-comment">/**
+     * url alias
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">getShortPath</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * target url
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">getTargetURL</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Is wide range mode used?
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isWideRange</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<p>Usually, we use the factory class <em>URLAliasFactory</em> to create an instance.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.webservice.url.alias;
+
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.url.alias.impl.DecisionURLAlias;
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.url.alias.impl.PluginURLAlias;
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.url.alias.impl.RawURLAlias;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">URLAliasFactory</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> URLAlias <span class="hljs-title">createRawAlias</span><span class="hljs-params">(String aliasPath, String targetURL)</span> </span>{
+        <span class="hljs-keyword">return</span> createRawAlias(aliasPath, targetURL, <span class="hljs-keyword">false</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> URLAlias <span class="hljs-title">createRawAlias</span><span class="hljs-params">(String aliasPath, String targetURL, <span class="hljs-keyword">boolean</span> wideRange)</span> </span>{
+        RawURLAlias alias = <span class="hljs-keyword">new</span> RawURLAlias();
+        alias.setShortPath(aliasPath);
+        alias.setTargetURL(targetURL);
+        alias.setWideRange(wideRange);
+        <span class="hljs-keyword">return</span> alias;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> URLAlias <span class="hljs-title">createDecisionAlias</span><span class="hljs-params">(String aliasPath, String decisionTargetURL)</span> </span>{
+        <span class="hljs-keyword">return</span> createDecisionAlias(aliasPath, decisionTargetURL, <span class="hljs-keyword">false</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> URLAlias <span class="hljs-title">createDecisionAlias</span><span class="hljs-params">(String aliasPath, String decisionTargetURL, <span class="hljs-keyword">boolean</span> wideRange)</span> </span>{
+        DecisionURLAlias alias = <span class="hljs-keyword">new</span> DecisionURLAlias();
+        alias.setShortPath(aliasPath);
+        alias.setDecisionTargetURL(decisionTargetURL);
+        alias.setWideRange(wideRange);
+        <span class="hljs-keyword">return</span> alias;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> URLAlias <span class="hljs-title">createPluginAlias</span><span class="hljs-params">(String aliasPath, String pluginPath)</span> </span>{
+        <span class="hljs-keyword">return</span> createPluginAlias(aliasPath, pluginPath, <span class="hljs-keyword">false</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> URLAlias <span class="hljs-title">createPluginAlias</span><span class="hljs-params">(String aliasPath, String pluginPath, <span class="hljs-keyword">boolean</span> isPublic)</span> </span>{
+        <span class="hljs-keyword">return</span> createPluginAlias(aliasPath, pluginPath, isPublic, <span class="hljs-keyword">false</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> URLAlias <span class="hljs-title">createPluginAlias</span><span class="hljs-params">(String aliasPath, String pluginPath, <span class="hljs-keyword">boolean</span> isPublic, <span class="hljs-keyword">boolean</span> wideRange)</span> </span>{
+        PluginURLAlias alias = <span class="hljs-keyword">new</span> PluginURLAlias();
+        alias.setShortPath(aliasPath);
+        alias.setPluginPath(pluginPath);
+        alias.setPublicURL(isPublic);
+        alias.setWideRange(wideRange);
+        <span class="hljs-keyword">return</span> alias;
+    }
+}
+</code></pre>
+<p>In our process of developing a plugin, the most commonly used method is <em>URLAliasFactory.createPluginAlias(String aliasPath, String pluginPath, boolean isPublic)</em>. Make sure the third parameter is the same as the return value of <em>HttpHandler.isPublic()</em>.</p>
+<h3 id="example_1"><a name="example_1" class="anchor-navigation-ex-anchor" href="#example_1"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h3>
+<p>This example is a supplement for the above one:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.plugin.http;
+
+<span class="hljs-keyword">import</span> com.fr.decision.fun.impl.AbstractURLAliasProvider;
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.url.alias.URLAlias;
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.url.alias.URLAliasFactory;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoURLAliasProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractURLAliasProvider</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> URLAlias[] registerAlias() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> URLAlias[]{    
+                URLAliasFactory.createPluginAlias(<span class="hljs-string">&quot;/demo&quot;</span>,<span class="hljs-string">&quot;/test/jsonp&quot;</span>,<span class="hljs-keyword">true</span>)
+        };
+    }
+}
+</code></pre>
+<p>Insert it into the plugin.xml:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">URLAliasProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.http.DemoURLAliasProvider&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<p>Now we can visit the short path: <a href="http://localhost:8075/webroot/decision/url/demo" target="_blank">http://localhost:8075/webroot/decision/url/demo</a>.</p>
+<p>The source code for this plugin is also available on Github: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-http-handler-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-http-handler-demo</a></p>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_11/chapter_11.html" class="navigation navigation-prev " aria-label="Previous page: Beginner Tutorial - DAO">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_13/chapter_13.html" class="navigation navigation-next " aria-label="Next page: Beginner Tutorial - Configuration">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - simple Web API","level":"2.12","depth":1,"next":{"title":"Beginner Tutorial - Configuration","level":"2.13","depth":1,"path":"tutorial/chapter_13/chapter_13.md","ref":"tutorial/chapter_13/chapter_13.md","articles":[]},"previous":{"title":"Beginner Tutorial - DAO","level":"2.11","depth":1,"path":"tutorial/chapter_11/chapter_11.md","ref":"tutorial/chapter_11/chapter_11.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_12/chapter_12.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

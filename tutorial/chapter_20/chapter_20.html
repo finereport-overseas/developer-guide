@@ -1,0 +1,906 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Advanced Tutorial - Chart · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_21/chapter_21.html" />
+    
+    
+    <link rel="prev" href="../chapter_19/chapter_19.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.20" data-path="chapter_20.html">
+            
+                <a href="chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Advanced Tutorial - Chart</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#advanced-tutorial---chart"><b></b>Advanced Tutorial - Chart</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li><ul><li><span class="title-icon "></span><a href="#1-define-data-structure"><b></b>1) Define Data Structure</a></li><li><span class="title-icon "></span><a href="#2-define-the-front-end-chart-object"><b></b>2) Define the Front-end Chart Object</a></li><li><span class="title-icon "></span><a href="#3-define-the-back-end-chart-class"><b></b>3) Define the Back-end Chart Class</a></li><li><span class="title-icon "></span><a href="#4-create-the-data-config-ui"><b></b>4) Create the Data Config UI</a></li><li><span class="title-icon "></span><a href="#5-register-the-chart"><b></b>5) Register the Chart</a></li><li><span class="title-icon "></span><a href="#6-register-the-chart-ui"><b></b>6) Register the Chart UI</a></li><li><span class="title-icon "></span><a href="#7-register-the-plugin"><b></b>7) Register the Plugin</a></li></ul></ul></ul></div><a href="#advanced-tutorial---chart" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="advanced-tutorial---chart"><a name="advanced-tutorial---chart" class="anchor-navigation-ex-anchor" href="#advanced-tutorial---chart"><i class="fa fa-link" aria-hidden="true"></i></a>Advanced Tutorial - Chart</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>In order to develop a custom chart plugin, we need to know about the provider and data structure of the chart library we use. Take the 3-D column chart of Echarts as an example, we should be aware of:</p>
+<ol>
+<li><p>data structure</p>
+<p> | X-Axis Data | Y-Axis Data | Z-Axis Data |
+ | ---- | ---- | ----|
+ | ... | ... | ... |
+ | ... | ... | ... |</p>
+</li>
+<li><p>Echarts API</p>
+<p> Instantiate an object: <em>var instance = echarts.init(dom)</em></p>
+<p> Set options: <em>instance.setOptions(options)</em></p>
+</li>
+</ol>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<p>The example uses the 3-D column chart of Echarts to illustrate how to quickly build a chart plugin for FineReport.</p>
+<h3 id="1-define-data-structure"><a name="1-define-data-structure" class="anchor-navigation-ex-anchor" href="#1-define-data-structure"><i class="fa fa-link" aria-hidden="true"></i></a>1) Define Data Structure</h3>
+<p>Define the data structure used in the chart as xxxDataConfig, which extends <em>AbstractDataConfig</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoDataConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDataConfig</span> </span>{
+    <span class="hljs-keyword">private</span> ExtendedField x = <span class="hljs-keyword">new</span> ExtendedField();
+    <span class="hljs-keyword">private</span> ExtendedField y = <span class="hljs-keyword">new</span> ExtendedField();
+    <span class="hljs-keyword">private</span> ExtendedField z = <span class="hljs-keyword">new</span> ExtendedField();
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> x;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setX</span><span class="hljs-params">(ExtendedField x)</span> </span>{
+        <span class="hljs-keyword">this</span>.x = x;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title">getY</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> y;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setY</span><span class="hljs-params">(ExtendedField y)</span> </span>{
+        <span class="hljs-keyword">this</span>.y = y;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title">getZ</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> z;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setZ</span><span class="hljs-params">(ExtendedField z)</span> </span>{
+        <span class="hljs-keyword">this</span>.z = z;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readAttr</span><span class="hljs-params">(XMLableReader reader)</span> </span>{
+        readExtendedField(x, <span class="hljs-string">&quot;x&quot;</span>, reader);
+        readExtendedField(y, <span class="hljs-string">&quot;y&quot;</span>, reader);
+        readExtendedField(z, <span class="hljs-string">&quot;z&quot;</span>, reader);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeAttr</span><span class="hljs-params">(XMLPrintWriter writer)</span> </span>{
+        writeExtendedField(x, <span class="hljs-string">&quot;x&quot;</span>, writer);
+        writeExtendedField(y, <span class="hljs-string">&quot;y&quot;</span>, writer);
+        writeExtendedField(z, <span class="hljs-string">&quot;z&quot;</span>, writer);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> ExtendedField[] dataSetFields() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ExtendedField[]{
+                x,
+                y,
+                z
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> DemoDataConfig <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException </span>{
+        DemoDataConfig result = <span class="hljs-keyword">new</span> DemoDataConfig();
+        result.setX(<span class="hljs-keyword">this</span>.getX().clone());
+        result.setY(<span class="hljs-keyword">this</span>.getY().clone());
+        result.setZ(<span class="hljs-keyword">this</span>.getZ().clone());
+        <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.hashCode() + AssistUtils.hashCode(<span class="hljs-keyword">this</span>.getX(), <span class="hljs-keyword">this</span>.getY(), <span class="hljs-keyword">this</span>.getZ());
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object obj)</span> </span>{
+        <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">instanceof</span> DemoDataConfig
+                &amp;&amp; AssistUtils.equals(<span class="hljs-keyword">this</span>.getX(), ((DemoDataConfig) obj).getX())
+                &amp;&amp; AssistUtils.equals(<span class="hljs-keyword">this</span>.getY(), ((DemoDataConfig) obj).getY())
+                &amp;&amp; AssistUtils.equals(<span class="hljs-keyword">this</span>.getZ(), ((DemoDataConfig) obj).getZ())
+                ;
+    }
+}
+</code></pre>
+<p>The x field is used to store the x-axis data and so as the y, z field.</p>
+<h3 id="2-define-the-front-end-chart-object"><a name="2-define-the-front-end-chart-object" class="anchor-navigation-ex-anchor" href="#2-define-the-front-end-chart-object"><i class="fa fa-link" aria-hidden="true"></i></a>2) Define the Front-end Chart Object</h3>
+<p>The object is defined in demoWrapper.js.</p>
+<pre><code class="lang-js">demoWrapper = ExtendedChart.extend({
+
+    _init: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dom, option</span>) </span>{
+        <span class="hljs-keyword">var</span> chart = echarts.init(dom);
+        chart.setOption(option);
+        <span class="hljs-keyword">return</span> chart;
+    }
+
+});
+</code></pre>
+<h3 id="3-define-the-back-end-chart-class"><a name="3-define-the-back-end-chart-class" class="anchor-navigation-ex-anchor" href="#3-define-the-back-end-chart-class"><i class="fa fa-link" aria-hidden="true"></i></a>3) Define the Back-end Chart Class</h3>
+<p>The back-end chart object extends <em>AbstractChart</em>, and do not forget to provide the generic type <em>DemoDataConfig</em>.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@FunctionRecorder</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoChart</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractChart</span>&lt;<span class="hljs-title">DemoDataConfig</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String ID = <span class="hljs-string">&quot;DEMO_CHART&quot;</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String NAME = <span class="hljs-string">&quot;Demo Chart&quot;</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">getChartID</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> ID;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getChartName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> NAME;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">demoImagePath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;com/fr/plugin/extended/chart/demo/demo.png&quot;</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Create a JSON Object when previewing. Use this object to pass parameters to the front end.
+     * <span class="hljs-doctag">@param</span> dataConfig
+     * <span class="hljs-doctag">@param</span> jsonObject
+     * <span class="hljs-doctag">@param</span> repo
+     * <span class="hljs-doctag">@param</span> para
+     * <span class="hljs-doctag">@throws</span> JSONException
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-meta">@ExecuteFunctionRecord</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addJSON</span><span class="hljs-params">(DemoDataConfig dataConfig, JSONObject jsonObject, Repository repo, JSONPara para)</span> <span class="hljs-keyword">throws</span> JSONException </span>{
+
+        JSONArray array = JSONFactory.createJSON(JSON.ARRAY);
+
+        List&lt;Object&gt; xValues = dataConfig.getX().getValues();
+        List&lt;Object&gt; yValues = dataConfig.getY().getValues();
+        List&lt;Object&gt; zValues = dataConfig.getZ().getValues();
+
+        <span class="hljs-keyword">double</span> maxValue = Double.MIN_VALUE;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, len = xValues.size(); i &lt; len; i++) {
+            maxValue = Math.max(GeneralUtils.objectToNumber(zValues.get(i)).doubleValue(), maxValue);
+
+            array.put(JSONFactory.createJSON(JSON.ARRAY).put(xValues.get(i)).put(yValues.get(i)).put(zValues.get(i)));
+        }
+
+        jsonObject.put(<span class="hljs-string">&quot;series&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;bar3D&quot;</span>).put(<span class="hljs-string">&quot;data&quot;</span>, array)
+                .put(<span class="hljs-string">&quot;bevelSize&quot;</span>, <span class="hljs-number">0.2</span>).put(<span class="hljs-string">&quot;bevelSmoothness&quot;</span>, <span class="hljs-number">2</span>).put(<span class="hljs-string">&quot;shading&quot;</span>, <span class="hljs-string">&quot;color&quot;</span>));
+
+        jsonObject.put(<span class="hljs-string">&quot;xAxis3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;category&quot;</span>))
+                .put(<span class="hljs-string">&quot;yAxis3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;category&quot;</span>))
+                .put(<span class="hljs-string">&quot;zAxis3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;value&quot;</span>));
+
+        jsonObject.put(<span class="hljs-string">&quot;grid3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;boxWidth&quot;</span>, <span class="hljs-number">200</span>).put(<span class="hljs-string">&quot;boxDepth&quot;</span>, <span class="hljs-number">80</span>));
+
+        jsonObject.put(<span class="hljs-string">&quot;visualMap&quot;</span>, JSONFactory.createJSON(JSON.OBJECT)
+                .put(<span class="hljs-string">&quot;max&quot;</span>, maxValue)
+                .put(<span class="hljs-string">&quot;color&quot;</span>, JSONFactory.createJSON(JSON.ARRAY).put(<span class="hljs-string">&quot;#d94e5d&quot;</span>).put(<span class="hljs-string">&quot;#eac736&quot;</span>).put(<span class="hljs-string">&quot;#50a3ba&quot;</span>)));
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> String[] requiredJS() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{
+                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/web/demoWrapper.js&quot;</span>,
+                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/web/echarts.js&quot;</span>,
+                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/web/echarts-gl.js&quot;</span>
+        };
+    }
+
+    <span class="hljs-comment">/**
+     * the same as the front-end object name
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">wrapperName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demoWrapper&quot;</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> HyperLinkPara[] hyperLinkParas() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HyperLinkPara[<span class="hljs-number">0</span>];
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> List&lt;StringFormula&gt; <span class="hljs-title">formulas</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+
+}
+</code></pre>
+<h3 id="4-create-the-data-config-ui"><a name="4-create-the-data-config-ui" class="anchor-navigation-ex-anchor" href="#4-create-the-data-config-ui"><i class="fa fa-link" aria-hidden="true"></i></a>4) Create the Data Config UI</h3>
+<p>There are two data types that can be used in a chart: table data and report data.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoTableDataPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtendedChartTableDataPane</span>&lt;<span class="hljs-title">DemoDataConfig</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> UIComboBox xComboBox;
+    <span class="hljs-keyword">private</span> UIComboBox yComboBox;
+    <span class="hljs-keyword">private</span> UIComboBox zComboBox;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> String[] fieldLabels() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{
+                <span class="hljs-string">&quot;X-Axis&quot;</span>,
+                <span class="hljs-string">&quot;Y-Axis&quot;</span>,
+                <span class="hljs-string">&quot;Z-Axis&quot;</span>
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> UIComboBox[] filedComboBoxes() {
+        <span class="hljs-keyword">if</span> (xComboBox == <span class="hljs-keyword">null</span>) {
+            xComboBox = <span class="hljs-keyword">new</span> UIComboBox();
+            yComboBox = <span class="hljs-keyword">new</span> UIComboBox();
+            zComboBox = <span class="hljs-keyword">new</span> UIComboBox();
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UIComboBox[]{
+                xComboBox,
+                yComboBox,
+                zComboBox
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populate</span><span class="hljs-params">(DemoDataConfig dataConf)</span> </span>{
+        populateField(xComboBox, dataConf.getX());
+        populateField(yComboBox, dataConf.getY());
+        populateField(zComboBox, dataConf.getZ());
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> DemoDataConfig <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
+        DemoDataConfig dataConfig = <span class="hljs-keyword">new</span> DemoDataConfig();
+
+        updateField(xComboBox, dataConfig.getX());
+        updateField(yComboBox, dataConfig.getY());
+        updateField(zComboBox, dataConfig.getZ());
+
+        <span class="hljs-keyword">return</span> dataConfig;
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoReportDataPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtendedChartReportDataPane</span>&lt;<span class="hljs-title">DemoDataConfig</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> TinyFormulaPane xPane;
+    <span class="hljs-keyword">private</span> TinyFormulaPane yPane;
+    <span class="hljs-keyword">private</span> TinyFormulaPane zPane;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> String[] fieldLabel() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{
+                <span class="hljs-string">&quot;X-Axis&quot;</span>,
+                <span class="hljs-string">&quot;Y-Axis&quot;</span>,
+                <span class="hljs-string">&quot;Z-Axis&quot;</span>
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> TinyFormulaPane[] formulaPanes() {
+        <span class="hljs-keyword">if</span> (xPane == <span class="hljs-keyword">null</span>) {
+            xPane = <span class="hljs-keyword">new</span> TinyFormulaPane();
+            yPane = <span class="hljs-keyword">new</span> TinyFormulaPane();
+            zPane = <span class="hljs-keyword">new</span> TinyFormulaPane();
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TinyFormulaPane[]{
+                xPane,
+                yPane,
+                zPane
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populate</span><span class="hljs-params">(DemoDataConfig dataConf)</span> </span>{
+        populateField(xPane, dataConf.getX());
+        populateField(yPane, dataConf.getY());
+        populateField(zPane, dataConf.getZ());
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> DemoDataConfig <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
+        DemoDataConfig dataConfig = <span class="hljs-keyword">new</span> DemoDataConfig();
+
+        updateField(xPane, dataConfig.getX());
+        updateField(yPane, dataConfig.getY());
+        updateField(zPane, dataConfig.getZ());
+
+        <span class="hljs-keyword">return</span> dataConfig;
+    }
+}
+</code></pre>
+<h3 id="5-register-the-chart"><a name="5-register-the-chart" class="anchor-navigation-ex-anchor" href="#5-register-the-chart"><i class="fa fa-link" aria-hidden="true"></i></a>5) Register the Chart</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtentChartProvider</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> AbstractChart <span class="hljs-title">createChart</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoChart();
+    }
+}
+</code></pre>
+<h3 id="6-register-the-chart-ui"><a name="6-register-the-chart-ui" class="anchor-navigation-ex-anchor" href="#6-register-the-chart-ui"><i class="fa fa-link" aria-hidden="true"></i></a>6) Register the Chart UI</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoUI</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtendedChartUIProvider</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> AbstractExtendedChartTableDataPane <span class="hljs-title">getTableDataSourcePane</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoTableDataPane();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> AbstractReportDataContentPane <span class="hljs-title">getReportDataSourcePane</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoReportDataPane();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String[] getDemoImagePath() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[] {
+                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/images/demo.png&quot;</span>
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getIconPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;com/fr/plugin/chart/demo/images/icon.png&quot;</span>;
+    }
+}
+</code></pre>
+<h3 id="7-register-the-plugin"><a name="7-register-the-plugin" class="anchor-navigation-ex-anchor" href="#7-register-the-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>7) Register the Plugin</h3>
+<p>Create a plugin.xml to register the implementation.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-chart</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">IndependentChartProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.chart.demo.Demo&quot;</span> <span class="hljs-attr">plotID</span>=<span class="hljs-string">&quot;DEMO_CHART&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-chart</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">extra-chart-designer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">IndependentChartUIProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.chart.demo.DemoUI&quot;</span> <span class="hljs-attr">plotID</span>=<span class="hljs-string">&quot;DEMO_CHART&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-chart-designer</span>&gt;</span>
+</code></pre>
+<p>The full code of this example is placed here: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-chart-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-chart-demo</a></p>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_19/chapter_19.html" class="navigation navigation-prev " aria-label="Previous page: Advanced Tutorial - Data Connection">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_21/chapter_21.html" class="navigation navigation-next " aria-label="Next page: Advanced Tutorial - Export">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Chart","level":"2.20","depth":1,"next":{"title":"Advanced Tutorial - Export","level":"2.21","depth":1,"path":"tutorial/chapter_21/chapter_21.md","ref":"tutorial/chapter_21/chapter_21.md","articles":[]},"previous":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"path":"tutorial/chapter_19/chapter_19.md","ref":"tutorial/chapter_19/chapter_19.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_20/chapter_20.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

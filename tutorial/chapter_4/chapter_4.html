@@ -1,0 +1,768 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction of build.xml · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_5/chapter_5.html" />
+    
+    
+    <link rel="prev" href="../chapter_3/chapter_3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.4" data-path="chapter_4.html">
+            
+                <a href="chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Introduction of build.xml</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#introduction-of-buildxml"><b></b>Introduction of build.xml</a></li><ul><li><span class="title-icon "></span><a href="#configuration-of-dependencies"><b></b>Configuration of Dependencies</a></li><li><span class="title-icon "></span><a href="#configuration-of-other-stuff"><b></b>Configuration of Other Stuff</a></li><ul><li><span class="title-icon "></span><a href="#plugin-name"><b></b>Plugin Name</a></li><li><span class="title-icon "></span><a href="#encrypting-the-plugin"><b></b>Encrypting the Plugin</a></li><li><span class="title-icon "></span><a href="#copy-resource-files"><b></b>Copy Resource Files</a></li></ul></ul></ul></div><a href="#introduction-of-buildxml" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="introduction-of-buildxml"><a name="introduction-of-buildxml" class="anchor-navigation-ex-anchor" href="#introduction-of-buildxml"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction of build.xml</h1>
+<p>After studying <a href="../chapter_3/chapter_3.html">Introduction of plugin.xml</a>, let&apos;s look at the package description file build.xml.</p>
+<p>This is also an extremely boring tutorial that will not give you any sense of accomplishment. However, if you are a developer who has just been exposed to FR plugins, please be patient.</p>
+<p>Take a look at the configuration file we use for packaging in general.</p>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> standalone=<span class="hljs-string">&quot;no&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">basedir</span>=<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-attr">default</span>=<span class="hljs-string">&quot;jar&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plugin&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- JDK path&#xFF0C;change it based on your own condition--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;jdk.home&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;G:/JDK/jdk1.8.0_45&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;libs&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${basedir}/lib&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dependenceLibs&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${basedir}/dependence&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;FRLibs&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${basedir}/../webroot/WEB-INF/lib&quot;</span>/&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;destLoc&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;.&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;classes&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;classes&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">xmlproperty</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;${basedir}/plugin.xml&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;current-version&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${plugin.version}&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;current-id&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${plugin.id}&quot;</span>/&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Plugin version--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plugin-version&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${current-version}&quot;</span>/&gt;</span>
+    <span class="hljs-comment">&lt;!-- Plugin name--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plugin-name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;wx-remind&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plugin-jar&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;fr-plugin-${plugin-name}-${plugin-version}.jar&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;prepare&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${classes}&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;compile.classpath&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${FRLibs}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.jar&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${libs}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.jar&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${dependenceLibs}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.jar&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">patternset</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;resources4Jar&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/.settings/**&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;.classpath&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;.project&quot;</span>/&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.java&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.db&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.g&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/package.html&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">patternset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;copy_resources&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">echo</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;copy images, JS, CSS, etc. from ${resources_from}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;tmp&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;tmp&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${resources_from}\src\main\java&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">patternset</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;resources4Jar&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;tmp&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${resources_from}\src\main\resources&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">patternset</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;resources4Jar&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;${classes}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;tmp&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;tmp&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;compile_javas&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">echo</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;compile .java under ${compile_files}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">javac</span> <span class="hljs-attr">destdir</span>=<span class="hljs-string">&quot;${classes}&quot;</span> <span class="hljs-attr">debug</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">optimize</span>=<span class="hljs-string">&quot;on&quot;</span> <span class="hljs-attr">source</span>=<span class="hljs-string">&quot;${source_jdk_version}&quot;</span>
+               <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;${target_jdk_version}&quot;</span>
+               <span class="hljs-attr">fork</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">memoryMaximumSize</span>=<span class="hljs-string">&quot;512m&quot;</span> <span class="hljs-attr">listfiles</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">srcdir</span>=<span class="hljs-string">&quot;${basedir}&quot;</span>
+               <span class="hljs-attr">executable</span>=<span class="hljs-string">&quot;${compile_jdk_version}/bin/javac&quot;</span> <span class="hljs-attr">includeantruntime</span>=<span class="hljs-string">&quot;on&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">src</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;${basedir}/src&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/.svn/**&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">compilerarg</span> <span class="hljs-attr">line</span>=<span class="hljs-string">&quot;-encoding UTF8 &quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">classpath</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;compile.classpath&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">javac</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">taskdef</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;pretreatment&quot;</span> <span class="hljs-attr">classname</span>=<span class="hljs-string">&quot;com.fr.plugin.pack.PluginPretreatmentTask&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">classpath</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;compile.classpath&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">taskdef</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">pretreatment</span> <span class="hljs-attr">baseDir</span>=<span class="hljs-string">&quot;${basedir}&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;jar_classes&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">echo</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;JAR packaging:${jar_name}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;${basedir}/${jar_name}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">jar</span> <span class="hljs-attr">jarfile</span>=<span class="hljs-string">&quot;${basedir}/${jar_name}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${classes}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">jar</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;super_jar&quot;</span> <span class="hljs-attr">depends</span>=<span class="hljs-string">&quot;prepare&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">antcall</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;copy_resources&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;resources_from&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${basedir}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">antcall</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">antcall</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;compile_javas&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;source_jdk_version&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1.6&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;target_jdk_version&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1.6&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;compile_jdk_version&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${jdk.home}&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;compile_files&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${basedir}/src&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">antcall</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">echo</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;compile plugin success!&quot;</span>/&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">antcall</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;jar_classes&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;jar_name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${plugin-jar}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">antcall</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${classes}&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;jar&quot;</span> <span class="hljs-attr">depends</span>=<span class="hljs-string">&quot;super_jar&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">antcall</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;zip&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;zip&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plugin-folder&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;fr-plugin-${plugin-name}-${plugin-version}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">echo</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;----------zip files----------&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">mkdir</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${plugin-folder}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;${plugin-folder}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;.&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;*.jar&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plugin.xml&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;${plugin-folder}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${libs}&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.jar&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">zip</span> <span class="hljs-attr">destfile</span>=<span class="hljs-string">&quot;${basedir}/${plugin-folder}.zip&quot;</span> <span class="hljs-attr">basedir</span>=<span class="hljs-string">&quot;.&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;${plugin-folder}/*.jar&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;${plugin-folder}/plugin.xml&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">zip</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">xmlproperty</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;${basedir}/plugin.xml&quot;</span>/&gt;</span>
+        <span class="hljs-comment">&lt;!--
+        &lt;move file=&quot;${plugin-folder}.zip&quot; todir=&quot;${destLoc}/${plugin.name}&quot;/&gt;
+        --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${plugin-folder}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;${plugin-jar}&quot;</span> /&gt;</span>
+        <span class="hljs-comment">&lt;!--&lt;delete file=&quot;${basedir}/${plugin-folder}.zip&quot; /&gt;--&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span>
+</code></pre>
+<p>If you have never been in contact with Ant, you will be confused by this inexplicable XML. It doesn&#x2019;t matter because this XML is not for viewing. It is for everyone to copy directly. Of course, those who are interested can also read the file carefully. In order to get everyone started quickly, we now only need to know a few of the configurations.</p>
+<h2 id="configuration-of-dependencies"><a name="configuration-of-dependencies" class="anchor-navigation-ex-anchor" href="#configuration-of-dependencies"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration of Dependencies</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;jdk.home&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;G:/JDK/jdk1.6.0_43&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;libs&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${basedir}/lib&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dependenceLibs&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;${basedir}/dependence&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;FRLibs&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;G:/ReportCode10.0/jar&quot;</span>/&gt;</span>
+</code></pre>
+<ul>
+<li>jdk.home: the directory where JDK is installed on our computer</li>
+<li>FRLibs: the directory placing FR&apos;s own JAR</li>
+</ul>
+<p>The above two are basically used in every plugin, so try to put them in a common location.</p>
+<ul>
+<li>libs: the directory used to place third party JAR on which this plugin relies [will eventually be put inside the plugin installer]</li>
+<li>dependenceLibs: the directory used to place other plugin JAR on which this plugin relies [will eventually be put inside the plugin installer]</li>
+</ul>
+<p>These two are not used by all plugins.</p>
+<p>So the basic file structure of a regular plugin project is:</p>
+<p><a href="images/file_structure.jpg" data-lightbox="9f3fc07a-408e-4066-9741-4b3152287074" data-title="file_structure"><img src="images/file_structure.jpg" alt="file_structure"></a></p>
+<p>Below is build.bat, the directories of JDK and Ant should be changed to your own. If you use built-in Ant in IntelliJ IDEA, build.bat is unnecessary.</p>
+<pre><code class="lang-bat"><span class="hljs-built_in">set</span> JAVA_HOME=G:\JDK\jdk1.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>_45
+<span class="hljs-built_in">set</span> ANT_OPTS=-Xmx512M -Xss100m
+<span class="hljs-function">G:\<span class="hljs-title">apache</span>-<span class="hljs-title">ant</span>-1.9.5\<span class="hljs-title">bin</span>\<span class="hljs-title">ant</span> -<span class="hljs-title">f</span> <span class="hljs-title">build.xml</span> <span class="hljs-title">jar</span>
+</span></code></pre>
+<h2 id="configuration-of-other-stuff"><a name="configuration-of-other-stuff" class="anchor-navigation-ex-anchor" href="#configuration-of-other-stuff"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration of Other Stuff</h2>
+<h3 id="plugin-name"><a name="plugin-name" class="anchor-navigation-ex-anchor" href="#plugin-name"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Name</h3>
+<p>It is different from the plugin name in our previous document. This is just a key identifier for the name of the plugin JAR and the installer.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plugin-name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;my-demo&quot;</span>/&gt;</span>
+</code></pre>
+<p>If you are skilled in Ant, you can modify the subsequent properties yourself. We will skip them for this tutorial.</p>
+<p>After building with Ant, we will get a plugin installer. Yes, it is just a zip file.</p>
+<h3 id="encrypting-the-plugin"><a name="encrypting-the-plugin" class="anchor-navigation-ex-anchor" href="#encrypting-the-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>Encrypting the Plugin</h3>
+<p>The configuration on lines 73-76 of build.xml is the encryption method that comes with the FR plugin engine. Encryption is different from obfuscation, so general decompilation methods cannot retrieve the code of the plugin. It can be removed.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">taskdef</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;pretreatment&quot;</span> <span class="hljs-attr">classname</span>=<span class="hljs-string">&quot;com.fr.plugin.pack.PluginPretreatmentTask&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">classpath</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;compile.classpath&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">taskdef</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">pretreatment</span> <span class="hljs-attr">baseDir</span>=<span class="hljs-string">&quot;${basedir}&quot;</span>/&gt;</span>
+</code></pre>
+<h3 id="copy-resource-files"><a name="copy-resource-files" class="anchor-navigation-ex-anchor" href="#copy-resource-files"><i class="fa fa-link" aria-hidden="true"></i></a>Copy Resource Files</h3>
+<p>If your project is not a maven project, or the resource file has a special configuration, you can customize by modifying the target copy_resources.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">target</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;copy_resources&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">echo</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;copy images, JS, CSS, etc. from ${resources_from}&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;tmp&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;tmp&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${resources_from}\src\main\java&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">patternset</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;resources4Jar&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;tmp&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;${resources_from}\src\main\resources&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">patternset</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;resources4Jar&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;${classes}&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;tmp&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">copy</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;tmp&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+</code></pre>
+<p>This is so much for this tutorial. Please read carefully to ensure that you are clear about the configuration. Of course, if you have already known about the structure of build.xml, you can jump to the next tutorial. </p>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_3/chapter_3.html" class="navigation navigation-prev " aria-label="Previous page: Introduction of plugin.xml">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_5/chapter_5.html" class="navigation navigation-next " aria-label="Next page: First Plugin - Hello World!">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction of build.xml","level":"2.4","depth":1,"next":{"title":"First Plugin - Hello World!","level":"2.5","depth":1,"path":"tutorial/chapter_5/chapter_5.md","ref":"tutorial/chapter_5/chapter_5.md","articles":[]},"previous":{"title":"Introduction of plugin.xml","level":"2.3","depth":1,"path":"tutorial/chapter_3/chapter_3.md","ref":"tutorial/chapter_3/chapter_3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_4/chapter_4.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

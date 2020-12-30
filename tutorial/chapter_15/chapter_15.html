@@ -1,0 +1,898 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Beginner Tutorial - A Real-world Problem · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_16/chapter_16.html" />
+    
+    
+    <link rel="prev" href="../chapter_14/chapter_14.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.15" data-path="chapter_15.html">
+            
+                <a href="chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Beginner Tutorial - A Real-world Problem</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#beginner-tutorial---a-real-world-problem"><b></b>Beginner Tutorial - A Real-world Problem</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#requirement"><b></b>Requirement</a></li><li><span class="title-icon "></span><a href="#requirement-analysis"><b></b>Requirement Analysis</a></li><li><span class="title-icon "></span><a href="#implementation"><b></b>Implementation</a></li><ul><li><span class="title-icon "></span><a href="#add-additional-info"><b></b>Add Additional Info</a></li><li><span class="title-icon "></span><a href="#ip-whitelist"><b></b>IP Whitelist</a></li></ul></ul></ul></div><a href="#beginner-tutorial---a-real-world-problem" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="beginner-tutorial---a-real-world-problem"><a name="beginner-tutorial---a-real-world-problem" class="anchor-navigation-ex-anchor" href="#beginner-tutorial---a-real-world-problem"><i class="fa fa-link" aria-hidden="true"></i></a>Beginner Tutorial - A Real-world Problem</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>In this tutorial, we will learn how to solve a real-world problem from scratch. We analyze the requirements to find out the implementation methods and then build the plugin with the APIs learned previously.</p>
+<h2 id="requirement"><a name="requirement" class="anchor-navigation-ex-anchor" href="#requirement"><i class="fa fa-link" aria-hidden="true"></i></a>Requirement</h2>
+<ol>
+<li>The system needs to add some additional info, including the official website address of the company used by the software (with a hyperlink address), company phone number, and email address. They should be displayed in the navigation bar of the platform.</li>
+<li>Add an IP white list. The requests to the platform are only allowed when they are within the IP range of the white list.</li>
+</ol>
+<h2 id="requirement-analysis"><a name="requirement-analysis" class="anchor-navigation-ex-anchor" href="#requirement-analysis"><i class="fa fa-link" aria-hidden="true"></i></a>Requirement Analysis</h2>
+<ol>
+<li>Since the additional info is generally unchanged, we can save it in the properties file.</li>
+<li>Additional information should be displayed in the navigation bar of the platform, therefore we need to import our JS. The JS file needs to be written in FineUI.</li>
+<li>For the storage of IP ranges, we can place them into the existing FineDB table by using the configuration API.</li>
+<li>Also, the IP white list needs a front-end page to configure, which can be placed as a tab under System Management. The actual get and set behaviors are implemented through the HTTP request handler API.</li>
+<li>Finally, we use the request filter to restrict access according to the IP white list.</li>
+</ol>
+<h2 id="implementation"><a name="implementation" class="anchor-navigation-ex-anchor" href="#implementation"><i class="fa fa-link" aria-hidden="true"></i></a>Implementation</h2>
+<h3 id="add-additional-info"><a name="add-additional-info" class="anchor-navigation-ex-anchor" href="#add-additional-info"><i class="fa fa-link" aria-hidden="true"></i></a>Add Additional Info</h3>
+<h4 id="1-back-end-implementation"><a name="1-back-end-implementation" class="anchor-navigation-ex-anchor" href="#1-back-end-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>1) Back-end Implementation</h4>
+<p>We read the info from a properties file, and this info can be achieved by an HTTP request handler. </p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractHttpHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseHttpHandler</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String STATE_NAME = <span class="hljs-string">&quot;success&quot;</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> RequestMethod <span class="hljs-title">getMethod</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> urlPath();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPublic</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handle</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        JSONObject para = receiveJSONPara(req);
+        JSONObject resultJson = JSONObject.create().put(STATE_NAME, <span class="hljs-keyword">false</span>);
+        deal(req, res, para, resultJson);
+        WebUtils.printAsJSON(res, resultJson);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+
+    <span class="hljs-comment">/**
+     * Get parameters in JSON
+     *
+     * <span class="hljs-doctag">@param</span> req
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@throws</span> IOException
+     * <span class="hljs-doctag">@throws</span> UnsupportedEncodingException
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> JSONObject <span class="hljs-title">receiveJSONPara</span><span class="hljs-params">(HttpServletRequest req)</span> <span class="hljs-keyword">throws</span> IOException, UnsupportedEncodingException </span>{
+        JSONObject result = JSONObject.create();
+        <span class="hljs-keyword">try</span> {
+            BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(req.getInputStream(), <span class="hljs-string">&quot;utf-8&quot;</span>));
+            String line = <span class="hljs-keyword">null</span>;
+            StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+            <span class="hljs-keyword">while</span> ((line = br.readLine()) != <span class="hljs-keyword">null</span>) {
+                sb.append(line);
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JSONObject(sb.toString());
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+        <span class="hljs-keyword">return</span> result;
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExtendAttrHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHttpHandler</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String PROPERTY_NAME = <span class="hljs-string">&quot;extendAttr&quot;</span>;
+    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL_PATH = <span class="hljs-string">&quot;/demo/extend/attr&quot;</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> URL_PATH;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        Properties pro = PropertiesUtils.getProperties(PROPERTY_NAME);
+        String address = pro.getProperty(<span class="hljs-string">&quot;address&quot;</span>);
+        String companyPhone = pro.getProperty(<span class="hljs-string">&quot;companyPhone&quot;</span>);
+        String companyEmail = pro.getProperty(<span class="hljs-string">&quot;companyEmail&quot;</span>);
+        JSONObject data = JSONObject.create().put(<span class="hljs-string">&quot;address&quot;</span>, address).put(<span class="hljs-string">&quot;companyPhone&quot;</span>, companyPhone).put(<span class="hljs-string">&quot;companyEmail&quot;</span>, companyEmail);
+        result.put(AbstractHttpHandler.STATE_NAME, <span class="hljs-keyword">true</span>).put(<span class="hljs-string">&quot;data&quot;</span>, data);
+    }
+}
+</code></pre>
+<p>Then add a configuration file to the resources folder. The file name is extendAttr.properties.</p>
+<h4 id="2-front-end-implementation"><a name="2-front-end-implementation" class="anchor-navigation-ex-anchor" href="#2-front-end-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>2) Front-end Implementation</h4>
+<p>After finishing the back-end work, it is time to move on to the front end. FineUI can define constant resources and the navigation bar is one of them. The definition is this:</p>
+<pre><code class="lang-js">BI.constant(<span class="hljs-string">&quot;dec.constant.header.items&quot;</span>, [
+    {
+        type: <span class="hljs-string">&quot;dec.header.message&quot;</span>
+    }, {
+        type: <span class="hljs-string">&quot;dec.account&quot;</span>
+    }
+]);
+</code></pre>
+<p>We can use the following method to obtain the defined array:</p>
+<pre><code class="lang-js">BI.Constants.getConstant(<span class="hljs-string">&quot;dec.constant.header.items&quot;</span>)
+</code></pre>
+<p>Now the array is configurable, and we can use <em>BI.config</em> method to modify the things displayed in the navigation bar.</p>
+<pre><code class="lang-js">BI.config(<span class="hljs-string">&quot;dec.constant.header.items&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{
+    items.unshift({
+        type: <span class="hljs-string">&quot;dec.plugin.header.extend.attr&quot;</span>
+    });
+    <span class="hljs-keyword">return</span> items;
+});
+</code></pre>
+<p>By using this method, a new element can be added to the front of the array. This element is a component defined by us:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> extendAttr = BI.inherit(BI.Widget,{
+    beforeInit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{
+        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
+        Dec.reqGet(<span class="hljs-string">&quot;/url/demo/extend/attr&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
+            <span class="hljs-keyword">if</span>(res.success){
+                self.address = res.data.address;
+                self.companyPhone = res.data.companyPhone;
+                self.companyEmail = res.data.companyEmail;
+                callback();
+            }
+        })
+
+    },
+    render:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> {
+            type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span>,
+            hgap:<span class="hljs-number">10</span>,
+            items:[{
+                type: <span class="hljs-string">&quot;bi.text_button&quot;</span>,
+                cls: <span class="hljs-string">&quot;plugin-header-extend-attr&quot;</span>,
+                text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Address&quot;</span>) + <span class="hljs-string">&quot;: &quot;</span> + self.address,
+                handler: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                    <span class="hljs-built_in">window</span>.open(self.address)
+                }
+            },{
+                type: <span class="hljs-string">&quot;bi.label&quot;</span>,
+                cls: <span class="hljs-string">&quot;plugin-header-extend-attr&quot;</span>,
+                text:BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Phone&quot;</span>)  + <span class="hljs-string">&quot;: &quot;</span> + self.companyPhone
+            },{
+                type: <span class="hljs-string">&quot;bi.label&quot;</span>,
+                cls: <span class="hljs-string">&quot;plugin-header-extend-attr&quot;</span>,
+                text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Email&quot;</span>) + <span class="hljs-string">&quot;: &quot;</span> + self.companyEmail
+            }]
+        }
+
+    }
+});
+BI.shortcut(<span class="hljs-string">&quot;dec.plugin.header.extend.attr&quot;</span>,extendAttr);
+</code></pre>
+<p>In the <em>beforeInit</em> method, the additional info is obtained by the platform&apos;s API.</p>
+<p><a href="images/platform_api.png" data-lightbox="c58ef86b-da91-4502-80b5-037a12d2ea73" data-title="platform_api"><img src="images/platform_api.png" alt="platform_api"></a></p>
+<p>Notice that the parameters of requests sent by <em>Dec.reqXXX</em> are all in JSON format. Therefore we cannot get them through <em>req.getParameter</em>.</p>
+<h3 id="ip-whitelist"><a name="ip-whitelist" class="anchor-navigation-ex-anchor" href="#ip-whitelist"><i class="fa fa-link" aria-hidden="true"></i></a>IP Whitelist</h3>
+<p>The implementation can be divided into three steps: the storage of the IP range implemented in the back end, the front-end UI of the IP white list, and the restriction of access according to the white list.</p>
+<h4 id="1-back-end-ip-get-and-set"><a name="1-back-end-ip-get-and-set" class="anchor-navigation-ex-anchor" href="#1-back-end-ip-get-and-set"><i class="fa fa-link" aria-hidden="true"></i></a>1) Back-end IP Get and Set</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IPConfigGetHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHttpHandler</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL_PATH = <span class="hljs-string">&quot;/demo/ip/get&quot;</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> URL_PATH;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        String startIP = IPConfig.getInstance().getStartIP();
+        String endIP = IPConfig.getInstance().getEndIP();
+        JSONObject data = JSONObject.create().put(<span class="hljs-string">&quot;startIP&quot;</span>,startIP).put(<span class="hljs-string">&quot;endIP&quot;</span>,endIP);
+        result.put(AbstractHttpHandler.STATE_NAME,<span class="hljs-keyword">true</span>).put(<span class="hljs-string">&quot;data&quot;</span>,data);
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IPConfigSetHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHttpHandler</span></span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL_PATH = <span class="hljs-string">&quot;/demo/ip/set&quot;</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> URL_PATH;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        String startIP = para.getString(<span class="hljs-string">&quot;startIP&quot;</span>, StringUtils.EMPTY);
+        String endIP = para.getString(<span class="hljs-string">&quot;endIP&quot;</span>, StringUtils.EMPTY);
+        IPConfig.getInstance().setStartIP(startIP);
+        IPConfig.getInstance().setEndIP(endIP);
+        result.put(AbstractHttpHandler.STATE_NAME, <span class="hljs-keyword">true</span>);
+    }
+}
+</code></pre>
+<h4 id="2-front-end-implementation_1"><a name="2-front-end-implementation_1" class="anchor-navigation-ex-anchor" href="#2-front-end-implementation_1"><i class="fa fa-link" aria-hidden="true"></i></a>2) Front-end Implementation</h4>
+<p>Mount the UI for setting the IP range under the node of the <strong>System Management</strong>. The method of adding a tab is the same as that of adding an item to the navigation bar. The type of the target node is &quot;dec.constant.system.tabs&quot;.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> IP = BI.inherit(BI.Widget, {
+    beforeInit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{ <span class="hljs-comment">// get startIP and endIP</span>
+        <span class="hljs-keyword">var</span> self=<span class="hljs-keyword">this</span>;
+        Dec.reqGet(<span class="hljs-string">&quot;/url/demo/ip/get&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
+            <span class="hljs-keyword">if</span>(res.success){
+                self.startIP = res.data.startIP;
+                self.endIP = res.data.endIP;
+                callback();
+            }
+        })
+
+    },
+    render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValidIP</span>(<span class="hljs-params">ip</span>) </span>{
+            <span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/</span>
+            <span class="hljs-keyword">return</span> reg.test(ip);
+        }
+
+            <span class="hljs-keyword">return</span> {
+                    type: <span class="hljs-string">&quot;bi.vertical&quot;</span>,
+                    cls: <span class="hljs-string">&quot;bi-card&quot;</span>,
+                    items: [
+                        {
+                            type: <span class="hljs-string">&quot;dec.card.vertical&quot;</span>,
+                            hgap: <span class="hljs-number">10</span>,
+                            text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_IP_Config&quot;</span>),
+                            showButtons: <span class="hljs-literal">true</span>,
+                            content: {
+                                type: <span class="hljs-string">&quot;bi.vertical&quot;</span>,
+                                vgap: <span class="hljs-number">15</span>,
+                                items: [{
+                                    type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span>,
+                                    hgap:<span class="hljs-number">10</span>,
+                                    items: [{
+                                        type: <span class="hljs-string">&quot;bi.label&quot;</span>,
+                                        textAlign: <span class="hljs-string">&quot;right&quot;</span>,
+                                        cls: <span class="hljs-string">&quot;dec-font-weight-bold&quot;</span>,
+                                        text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Start_IP&quot;</span>),
+                                        title: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Start_IP&quot;</span>),
+                                        width: <span class="hljs-number">100</span>
+                                    }, {
+                                        type: <span class="hljs-string">&quot;bi.text_editor&quot;</span>,
+                                        textAlign: <span class="hljs-string">&quot;left&quot;</span>,
+                                        cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
+                                        value:self.startIP,
+                                        errorText: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_IP_Check_Message&quot;</span>),
+                                        lgap: <span class="hljs-number">5</span>,
+                                        width: <span class="hljs-number">300</span>,
+                                        validationChecker: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
+                                            <span class="hljs-keyword">return</span> isValidIP(v);
+                                        },
+                                        allowBlank: <span class="hljs-literal">true</span>,
+                                        ref:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) </span>{
+                                            self.startIPWidget=_ref;
+                                        }
+                                    }]
+                                },
+                                    {
+                                        type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span>,
+                                        hgap:<span class="hljs-number">10</span>,
+                                        items: [{
+                                            type: <span class="hljs-string">&quot;bi.label&quot;</span>,
+                                            textAlign: <span class="hljs-string">&quot;right&quot;</span>,
+                                            cls: <span class="hljs-string">&quot;dec-font-weight-bold&quot;</span>,
+                                            text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_End_IP&quot;</span>),
+                                            title: BI.i18nText(<span class="hljs-string">&quot;FIne-Plugin_Dec_End_IP&quot;</span>),
+                                            width: <span class="hljs-number">100</span>
+                                        }, {
+                                            type: <span class="hljs-string">&quot;bi.text_editor&quot;</span>,
+                                            textAlign: <span class="hljs-string">&quot;left&quot;</span>,
+                                            cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
+                                            value:self.endIP,
+                                            errorText: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_IP_Check_Message&quot;</span>),
+                                            lgap: <span class="hljs-number">5</span>,
+                                            width: <span class="hljs-number">300</span>,
+                                            validationChecker: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
+                                                <span class="hljs-keyword">return</span> isValidIP(v);
+                                            },
+                                            allowBlank: <span class="hljs-literal">true</span>,
+                                            ref:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) </span>{
+                                                self.endIPWidget=_ref;
+                                            }
+                                        }]
+                                    }]
+                            },
+                            listeners: [{
+                                eventName: <span class="hljs-string">&quot;EVENT_CHANGE&quot;</span>,
+                                action: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                                    Dec.reqPost(<span class="hljs-string">&quot;/url/demo/ip/set&quot;</span>,self.getValue(),<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
+
+                                    })
+                                }
+                            }]
+                        }
+                    ]
+
+                };
+    },
+    getValue:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> self=<span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> {
+            startIP:self.startIPWidget.getValue(),
+            endIP:self.endIPWidget.getValue()
+        }
+    }
+});
+BI.shortcut(<span class="hljs-string">&quot;dec.plugin.system.ip&quot;</span>, IP);
+</code></pre>
+<p>The effect of the above component:</p>
+<p><a href="images/effect.png" data-lightbox="f4db4e48-287f-418a-8677-e0256fb20a48" data-title="effect"><img src="images/effect.png" alt="effect"></a></p>
+<h4 id="3-access-restriction"><a name="3-access-restriction" class="anchor-navigation-ex-anchor" href="#3-access-restriction"><i class="fa fa-link" aria-hidden="true"></i></a>3) Access Restriction</h4>
+<p>The settings of the IP white list are all set and now we should put them to work. Use the <em>GlobalRequestFilterProvider</em> to add a filter to block requests that are not on the list.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)</span> </span>{
+    System.out.println(req.getRequestURL()+<span class="hljs-string">&quot;?&quot;</span>+req.getQueryString());
+    <span class="hljs-keyword">try</span> {
+        String currentIP = WebUtils.getIpAddr(req);
+        String startIP = IPConfig.getInstance().getStartIP();
+        String endIP = IPConfig.getInstance().getEndIP();
+        <span class="hljs-keyword">if</span>(ComparatorUtils.compare(currentIP,startIP) &lt; <span class="hljs-number">0</span> || ComparatorUtils.compare(currentIP,endIP) &gt; <span class="hljs-number">0</span>){
+            WebUtils.printAsString(res,<span class="hljs-string">&quot;Not in the white list!&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        }
+        filterChain.doFilter(req,res);
+    } <span class="hljs-keyword">catch</span> (Exception e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<p>The source code for this plugin is also available on Github: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-project" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-project</a></p>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_14/chapter_14.html" class="navigation navigation-prev " aria-label="Previous page: Beginner Tutorial - FineUI">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_16/chapter_16.html" class="navigation navigation-next " aria-label="Next page: Advanced Tutorial - Authentication">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - A Real-world Problem","level":"2.15","depth":1,"next":{"title":"Advanced Tutorial - Authentication","level":"2.16","depth":1,"path":"tutorial/chapter_16/chapter_16.md","ref":"tutorial/chapter_16/chapter_16.md","articles":[]},"previous":{"title":"Beginner Tutorial - FineUI","level":"2.14","depth":1,"path":"tutorial/chapter_14/chapter_14.md","ref":"tutorial/chapter_14/chapter_14.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_15/chapter_15.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

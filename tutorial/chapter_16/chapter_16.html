@@ -1,0 +1,896 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Advanced Tutorial - Authentication · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_17/chapter_17.html" />
+    
+    
+    <link rel="prev" href="../chapter_15/chapter_15.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.16" data-path="chapter_16.html">
+            
+                <a href="chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Advanced Tutorial - Authentication</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#advanced-tutorial---authentication"><b></b>Advanced Tutorial - Authentication</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#customize-authentication"><b></b>Customize Authentication</a></li><ul><li><span class="title-icon "></span><a href="#httpauthorizeprovider"><b></b>HttpAuthorizeProvider</a></li><li><span class="title-icon "></span><a href="#passportprovider"><b></b>PassportProvider</a></li></ul><li><span class="title-icon "></span><a href="#integrated-authentication"><b></b>Integrated Authentication</a></li><li><span class="title-icon "></span><a href="#listen-on-login-or-logout"><b></b>Listen on Login or Logout</a></li></ul></ul></div><a href="#advanced-tutorial---authentication" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="advanced-tutorial---authentication"><a name="advanced-tutorial---authentication" class="anchor-navigation-ex-anchor" href="#advanced-tutorial---authentication"><i class="fa fa-link" aria-hidden="true"></i></a>Advanced Tutorial - Authentication</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>In this tutorial, we will talk about almost everything regarding authentication in FineReport.</p>
+<h2 id="customize-authentication"><a name="customize-authentication" class="anchor-navigation-ex-anchor" href="#customize-authentication"><i class="fa fa-link" aria-hidden="true"></i></a>Customize Authentication</h2>
+<h3 id="httpauthorizeprovider"><a name="httpauthorizeprovider" class="anchor-navigation-ex-anchor" href="#httpauthorizeprovider"><i class="fa fa-link" aria-hidden="true"></i></a>HttpAuthorizeProvider</h3>
+<p>Customize authentication can be achieved through HTTP Authentication. However, the regular way to implement HTTP Authentication has to use another server. By using this API, we can define the authentication in a plugin instead of deploying a server.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">HttpAuthorizeProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+
+    String MARK_STRING = <span class="hljs-string">&quot;HttpAuthorizeProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+      * When it returns Scope.REPLACE, boolean authorize(String username, String inputPassword, String savedPassword, String hashPassword) will be invoked.
+      * When it returns Scope.CHECK, boolean authorize(String uuid, String returnMessage) will be invoked.
+     */</span>
+    <span class="hljs-function">Scope <span class="hljs-title">scope</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Authentication method
+     * <span class="hljs-doctag">@param</span> username the username of the login user
+     * <span class="hljs-doctag">@param</span> inputPassword the password input by the login user
+     * <span class="hljs-doctag">@param</span> savedPassword the password saved in the built-in db
+     * <span class="hljs-doctag">@param</span> hashPassword the hashed inputpassword
+     * <span class="hljs-doctag">@return</span> true if successfully login&#xFF0C;false otherwise
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">authorize</span><span class="hljs-params">(String username, String inputPassword, String savedPassword, String hashPassword)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Authentication method
+     * The parameters are the response from the authentication server.
+     * <span class="hljs-doctag">@return</span> true if successfully login&#xFF0C;false otherwise
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">authorize</span><span class="hljs-params">(String uuid, String returnMessage)</span></span>;
+
+    <span class="hljs-keyword">enum</span> Scope {
+        <span class="hljs-comment">/**
+         * Replace the authentication process of HTTP Authentication with your own method.
+         */</span>
+        REPLACE,
+        <span class="hljs-comment">/**
+         * Just additionally check the response from the authentication server.
+         */</span>
+        CHECK
+    }
+}
+</code></pre>
+<p>To inject the plugin:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">HttpAuthorizeProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.login.DemoHttpAuthorizeProvider&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<p>With this provider, we can do additional login validation on username, the password input by the user and the password saved in DB.</p>
+<p>If the custom authentication requires some other configuration, we will need <em>PassportProvider</em> to add a brand new authentication method.</p>
+<h3 id="passportprovider"><a name="passportprovider" class="anchor-navigation-ex-anchor" href="#passportprovider"><i class="fa fa-link" aria-hidden="true"></i></a>PassportProvider</h3>
+<p>This provider is to add your own authentication method.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.decision.authorize.Passport;
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.bean.authentication.PassportBean;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PassportProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+
+    String MARK_STRING = <span class="hljs-string">&quot;PassportProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * name of passport type
+     *
+     * <span class="hljs-doctag">@return</span> name of passport type
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">passportType</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * register the Java bean of your passport
+     * <span class="hljs-doctag">@return</span> bean
+     */</span>
+    Class&lt;? extends PassportBean&gt; classForPassportBean();
+
+    <span class="hljs-comment">/**
+     * register the db config of your passport
+     * <span class="hljs-doctag">@return</span> config
+     */</span>
+    Class&lt;? extends Passport&gt; classForPassportConfig();
+
+}
+</code></pre>
+<p>Let&apos;s have a look at the two related interfaces: <em>Passport</em> and <em>PassportBean</em>.</p>
+<h4 id="passport"><a name="passport" class="anchor-navigation-ex-anchor" href="#passport"><i class="fa fa-link" aria-hidden="true"></i></a>Passport</h4>
+<p>This <em>Passport</em> is mainly for two usages. One is for defining our own authentication. The other is for data persistence during the authentication process.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.authorize;
+
+<span class="hljs-comment">/**
+ * The interface for passport verfication
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Passport</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">checkTicket</span><span class="hljs-params">(String username, String inputPassword, String savedPassword, String hashPassword)</span></span>;<span class="hljs-comment">// authenticate according to user input</span>
+
+    <span class="hljs-function">String <span class="hljs-title">markType</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">// custom authentication type</span>
+}
+</code></pre>
+<p>Let&apos;s look at an example here:</p>
+<pre><code class="lang-java"><span class="hljs-meta">@FunctionRecorder</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoPassport</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractPassport</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEMO_PASSPORT_TYPE = <span class="hljs-string">&quot;demo&quot;</span>;
+    <span class="hljs-meta">@Identifier</span>(<span class="hljs-string">&quot;suffix&quot;</span>)
+    <span class="hljs-keyword">private</span> Conf&lt;String&gt; suffix = Holders.simple(StringUtils.EMPTY); <span class="hljs-comment">//add a config, @Identifier required</span>
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">markType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> DEMO_PASSPORT_TYPE;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-meta">@ExecuteFunctionRecord</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">checkTicket</span><span class="hljs-params">(String username, String inputPassword, String savedPassword, String hashPassword)</span> </span>{
+        <span class="hljs-comment">// A simple example. The username must end with the suffix and the password must match.</span>
+        <span class="hljs-keyword">return</span> username.endsWith(getSuffix()) &amp;&amp; savedPassword.equals(hashPassword);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getSuffix</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> suffix.get();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSuffix</span><span class="hljs-params">(String suffix)</span> </span>{
+        <span class="hljs-keyword">this</span>.suffix.set(suffix);
+    }
+}
+</code></pre>
+<p>The job of <em>DemoPassport</em> has been explained clearly in the comments.</p>
+<h4 id="passportbean"><a name="passportbean" class="anchor-navigation-ex-anchor" href="#passportbean"><i class="fa fa-link" aria-hidden="true"></i></a>PassportBean</h4>
+<p><em>PassportBean</em> is to help the front end interact with the <em>Passport</em>. It injects configuration into the front end page, and get the new value from user input.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.webservice.bean.authentication;
+
+<span class="hljs-keyword">import</span> com.fr.decision.authorize.Passport;
+<span class="hljs-keyword">import</span> com.fr.decision.webservice.bean.BaseBean;
+<span class="hljs-keyword">import</span> com.fr.third.fasterxml.jackson.annotation.JsonTypeInfo;
+
+<span class="hljs-meta">@JsonTypeInfo</span>(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = <span class="hljs-string">&quot;@class&quot;</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PassportBean</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Passport</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseBean</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">3002910431724542517L</span>;
+
+    <span class="hljs-keyword">private</span> String type;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PassportBean</span><span class="hljs-params">()</span> </span>{
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> markType();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setType</span><span class="hljs-params">(String type)</span> </span>{
+        <span class="hljs-keyword">this</span>.type = markType();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">markType</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> PassportBean&lt;T&gt; <span class="hljs-title">createPassportBean</span><span class="hljs-params">(T passport)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> Passport <span class="hljs-title">createPassport</span><span class="hljs-params">()</span></span>;
+
+}
+</code></pre>
+<p>Check the example below, and you will be clear about the usage.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@JsonSubTypes</span>.Type(value = DemoPassportBean.class, name = <span class="hljs-string">&quot;com.fr.plugin.passport.demo.DemoPassportBean&quot;</span>) <span class="hljs-comment">// This annotation is a must-have.</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoPassportBean</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PassportBean</span>&lt;<span class="hljs-title">DemoPassport</span>&gt; </span>{
+
+    <span class="hljs-keyword">private</span> String suffix;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">markType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> DemoPassport.DEMO_PASSPORT_TYPE;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> PassportBean&lt;DemoPassport&gt; <span class="hljs-title">createPassportBean</span><span class="hljs-params">(DemoPassport demoPassport)</span> </span>{
+        <span class="hljs-keyword">this</span>.suffix = demoPassport.getSuffix();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Passport <span class="hljs-title">createPassport</span><span class="hljs-params">()</span> </span>{
+        DemoPassport demoPassport = <span class="hljs-keyword">new</span> DemoPassport();
+        demoPassport.setSuffix(<span class="hljs-keyword">this</span>.getSuffix());
+        <span class="hljs-keyword">return</span> demoPassport;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getSuffix</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> suffix;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSuffix</span><span class="hljs-params">(String suffix)</span> </span>{
+        <span class="hljs-keyword">this</span>.suffix = suffix;
+    }
+}
+</code></pre>
+<p>After we define our <em>Passport</em> and <em>PassportBean</em>, it is time to complete the <em>PassportProvider</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoPassportProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractPassportProvider</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">passportType</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> DemoPassport.DEMO_PASSPORT_TYPE;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Class&lt;? extends PassportBean&gt; classForPassportBean() {
+        <span class="hljs-keyword">return</span> DemoPassportBean.class;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Class&lt;? extends Passport&gt; classForPassportConfig() {
+        <span class="hljs-keyword">return</span> DemoPassport.class;
+    }
+}
+</code></pre>
+<p>Then inject the implementation with the plugin.xml.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">PassportProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.passport.demo.DemoPassportProvider&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<h4 id="ui-implementation"><a name="ui-implementation" class="anchor-navigation-ex-anchor" href="#ui-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>UI Implementation</h4>
+<p>You may have guessed it right, we are gonna use FineUI to add a new authentication type under <strong>User Management</strong>. The types of authentication are also a constant array called &quot;dec.user.setting.authentications&quot;. Use <em>BI.config</em> to add ours.</p>
+<pre><code class="lang-js">BI.config(<span class="hljs-string">&quot;dec.user.setting.authentications&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{
+    items.push({
+        value: <span class="hljs-string">&quot;demo&quot;</span>,  <span class="hljs-comment">// match the passport type</span>
+        text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Passport_Name&quot;</span>),
+        <span class="hljs-string">&quot;@class&quot;</span>: <span class="hljs-string">&quot;com.fr.plugin.passport.demo.DemoPassportBean&quot;</span>, <span class="hljs-comment">// the whole path to the PassportBean class</span>
+        component: {
+            type: <span class="hljs-string">&quot;dec.user.setting.demo&quot;</span> <span class="hljs-comment">// the custom component defined above</span>
+        }
+    });
+    <span class="hljs-keyword">return</span> items;
+});
+</code></pre>
+<p>The custom component &quot;dec.user.setting.demo&quot; is defined like this:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> WIDTH = <span class="hljs-number">125</span>;
+
+<span class="hljs-keyword">var</span> demo = BI.inherit(BI.Widget, {
+
+    props: {
+        baseCls: <span class="hljs-string">&quot;&quot;</span>,
+        configs: {} <span class="hljs-comment">// the configured property, which is passed from outside</span>
+    },
+
+    render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>, o = <span class="hljs-keyword">this</span>.options;
+        <span class="hljs-keyword">return</span> {
+            type: <span class="hljs-string">&quot;bi.vertical&quot;</span>,
+            bgap: <span class="hljs-number">15</span>,
+            items: [
+                {
+                    type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span>,
+                    items: [
+                        {
+                            type: <span class="hljs-string">&quot;bi.layout&quot;</span>,
+                            width: WIDTH
+                        }, {
+                            type: <span class="hljs-string">&quot;bi.label&quot;</span>,
+                            textAlign: <span class="hljs-string">&quot;left&quot;</span>,
+                            cls: <span class="hljs-string">&quot;dec-font-weight-bold&quot;</span>,
+                            text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Username_Suffix&quot;</span>) + <span class="hljs-string">&quot;:&quot;</span>,
+                            title: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Username_Suffix&quot;</span>),
+                            width: <span class="hljs-number">100</span>
+                        }, {
+                            type: <span class="hljs-string">&quot;bi.editor&quot;</span>,
+                            $value: <span class="hljs-string">&quot;http-url&quot;</span>,
+                            ref: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) </span>{
+                                self.suffix = _ref;
+                            },
+                            width: <span class="hljs-number">400</span>,
+                            height: <span class="hljs-number">24</span>,
+                            watermark: <span class="hljs-string">&quot;&quot;</span>,
+                            value: o.configs.suffix <span class="hljs-comment">// the suffix from the configuration</span>
+                        }
+                    ]
+                }
+            ]
+
+        };
+    },
+
+    getValue: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            suffix: <span class="hljs-keyword">this</span>.suffix.getValue()
+        };
+    }
+});
+BI.shortcut(<span class="hljs-string">&quot;dec.user.setting.demo&quot;</span>, demo);
+</code></pre>
+<p>Now a new authentication type can be used. This requires the username must have a specific suffix. Otherwise, it is not allowed to log in, even if the password is correct.</p>
+<p><a href="images/result.png" data-lightbox="7e62ec53-3b4f-437a-848f-ed54c9464da6" data-title="result"><img src="images/result.png" alt="result"></a></p>
+<p>The full code of this example is placed here: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-passport-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-passport-demo</a>.</p>
+<h2 id="integrated-authentication"><a name="integrated-authentication" class="anchor-navigation-ex-anchor" href="#integrated-authentication"><i class="fa fa-link" aria-hidden="true"></i></a>Integrated Authentication</h2>
+<p>Many requirements about authentication are Single Sign-On, using framework like Oauth 2.0. On these circumstances, the main login process takes place in the user&apos;s authentication server. FineReport only needs to retrieve the info of the login user (e.g. username) and let him in or not. How it is been done is explained quite clearly in <a href="../chapter_10/chapter_10.html">Beginner Tutorial - Filter</a>.</p>
+<h2 id="listen-on-login-or-logout"><a name="listen-on-login-or-logout" class="anchor-navigation-ex-anchor" href="#listen-on-login-or-logout"><i class="fa fa-link" aria-hidden="true"></i></a>Listen on Login or Logout</h2>
+<p>If you want to do something else after login or logout, this one is for you.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">LogInOutEventProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+
+    String MARK_STRING = <span class="hljs-string">&quot;LogInOutEventProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">2</span>;
+
+    <span class="hljs-comment">/**
+     * action to be performed after login
+     *
+     * <span class="hljs-doctag">@param</span> result login result
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loginAction</span><span class="hljs-params">(LogInOutResultInfo result)</span></span>;
+
+    <span class="hljs-comment">/**
+     * action to be performed after logout
+     *
+     * <span class="hljs-doctag">@param</span> result
+     * <span class="hljs-doctag">@return</span> the url after logout, return null to go to login page
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">logoutAction</span><span class="hljs-params">(LogInOutResultInfo result)</span></span>;
+
+}
+</code></pre>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">LogInOutEventProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.login.LoginOutEvent&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_15/chapter_15.html" class="navigation navigation-prev " aria-label="Previous page: Beginner Tutorial - A Real-world Problem">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_17/chapter_17.html" class="navigation navigation-next " aria-label="Next page: Advanced Tutorial - Widget">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Authentication","level":"2.16","depth":1,"next":{"title":"Advanced Tutorial - Widget","level":"2.17","depth":1,"path":"tutorial/chapter_17/chapter_17.md","ref":"tutorial/chapter_17/chapter_17.md","articles":[]},"previous":{"title":"Beginner Tutorial - A Real-world Problem","level":"2.15","depth":1,"path":"tutorial/chapter_15/chapter_15.md","ref":"tutorial/chapter_15/chapter_15.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_16/chapter_16.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,649 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>First Plugin - Hello World! · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_6/chapter_6.html" />
+    
+    
+    <link rel="prev" href="../chapter_4/chapter_4.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.5" data-path="chapter_5.html">
+            
+                <a href="chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.19" data-path="../chapter_19/chapter_19.html">
+            
+                <a href="../chapter_19/chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >First Plugin - Hello World!</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#first-plugin---hello-world"><b></b>First Plugin - Hello World!</a></li><ul><li><span class="title-icon "></span><a href="#add-a-module"><b></b>Add a Module</a></li><li><span class="title-icon "></span><a href="#configure-everything"><b></b>Configure Everything</a></li><li><span class="title-icon "></span><a href="#develop-the-plugin"><b></b>Develop the Plugin</a></li><li><span class="title-icon "></span><a href="#write-configuration-files"><b></b>Write Configuration Files</a></li><li><span class="title-icon "></span><a href="#build-the-project"><b></b>Build the Project</a></li></ul></ul></div><a href="#first-plugin---hello-world" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="first-plugin---hello-world"><a name="first-plugin---hello-world" class="anchor-navigation-ex-anchor" href="#first-plugin---hello-world"><i class="fa fa-link" aria-hidden="true"></i></a>First Plugin - Hello World!</h1>
+<h2 id="add-a-module"><a name="add-a-module" class="anchor-navigation-ex-anchor" href="#add-a-module"><i class="fa fa-link" aria-hidden="true"></i></a>Add a Module</h2>
+<ol>
+<li>Right-click the project directory &gt; <strong>New</strong> &gt; <strong>Module</strong>.
+<a href="images/add_module_1.png" data-lightbox="07d35f98-556c-4b07-97ee-b4ce97407c68" data-title="add_module_1"><img src="images/add_module_1.png" alt="add_module_1"></a></li>
+<li>Choose the JDK configured before.
+<a href="images/add_module_2.png" data-lightbox="b2d14432-cf8c-4da1-88eb-c02ee79a72cd" data-title="add_module_2"><img src="images/add_module_2.png" alt="add_module_2"></a></li>
+<li>Configure ArtifactId of your module. If you are new to Maven, you could ignore the meaning of this id for now. Just treat it as the name of your directory.
+<a href="images/add_module_3.png" data-lightbox="f4c6ef7c-4889-4a1a-8e14-76fa306415a2" data-title="add_module_3"><img src="images/add_module_3.png" alt="add_module_3"></a></li>
+<li>After configuring the module name, click <strong>Finish</strong>. You&apos;ll see the new module under our project.
+<a href="images/add_module_4.png" data-lightbox="247ea856-53fa-4ac5-ab4e-7191f53d2714" data-title="add_module_4"><img src="images/add_module_4.png" alt="add_module_4"></a>
+<a href="images/add_module_5.png" data-lightbox="99752dea-7a4a-4828-88c9-59e2d82c7c5f" data-title="add_module_5"><img src="images/add_module_5.png" alt="add_module_5"></a></li>
+</ol>
+<h2 id="configure-everything"><a name="configure-everything" class="anchor-navigation-ex-anchor" href="#configure-everything"><i class="fa fa-link" aria-hidden="true"></i></a>Configure Everything</h2>
+<ol>
+<li>Click <strong>Project Structure</strong> on the upper right corner.
+<a href="images/configure_1.png" data-lightbox="e59d00e1-7707-4aa9-9e06-7e67f8eff813" data-title="configure_1"><img src="images/configure_1.png" alt="configure_1"></a></li>
+<li>Mark folders as Sources, Tests or Resources. Generally, this process is automated by Maven for us.
+<a href="images/configure_2.png" data-lightbox="bd03b88b-c5f0-44a5-aa94-4f256c31e6f8" data-title="configure_2"><img src="images/configure_2.png" alt="configure_2"></a></li>
+<li>Change the output path of our module. Our plugin ID for this example is com.fr.plugin.function.demo. The output directory is ${WORK_HOME}/plugins/plugin-com.fr.plugin.function.demo-1.0/classes. You have to follow this format in order to debug the plugin.
+<a href="images/configure_3.png" data-lightbox="28f11498-8b01-4a5a-ae76-3139aff5b817" data-title="configure_3"><img src="images/configure_3.png" alt="configure_3"></a></li>
+<li>Add dependencies to this project. They should be inherited from the parent module (starter).
+<a href="images/configure_4.png" data-lightbox="fc814d1b-26c8-494b-9e05-aa46436e57df" data-title="configure_4"><img src="images/configure_4.png" alt="configure_4"></a></li>
+<li>Of course, all the configurations above can be done in pom.xml. Here is an example of changing the output path. Don&apos;t forget to import changes after modifying pom.xml.
+<a href="images/configure_5.png" data-lightbox="9c6575b3-2b05-43be-aeeb-353b6678106e" data-title="configure_5"><img src="images/configure_5.png" alt="configure_5"></a></li>
+</ol>
+<h2 id="develop-the-plugin"><a name="develop-the-plugin" class="anchor-navigation-ex-anchor" href="#develop-the-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>Develop the Plugin</h2>
+<ol>
+<li>Write a custom function. It simply returns the first parameter with a &quot;Hello World!&quot; prefix.
+<a href="images/code.png" data-lightbox="43e87b89-5204-49f2-b2d6-bb73930ed3b5" data-title="code"><img src="images/code.png" alt="code"></a></li>
+<li><p>Since we want to encapsulate it as a plugin, we have to add annotations for &quot;function point recorder&quot;. Here we can review an XML element that we did not explain in the <a href="../chapter_3/chapter_3.html">Introduction of plugin.xml</a>: </p>
+<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.function.demo.HelloWorld&quot;</span>/&gt;</span>
+</code></pre>
+<p> @FunctionRecorder is used to register a function point and @ExecuteFunctionRecord is for recording the usage of that method. Unless we add them, our plugin won&apos;t work.</p>
+<p> Above we used the function point annotation for FR 9.0. We can also refer to the function point annotation of MyAbs in the plugin-function in the project [new annotation method in FR 10.0]. Both annotations can be used in FR 10.0.</p>
+</li>
+</ol>
+<h2 id="write-configuration-files"><a name="write-configuration-files" class="anchor-navigation-ex-anchor" href="#write-configuration-files"><i class="fa fa-link" aria-hidden="true"></i></a>Write Configuration Files</h2>
+<ol>
+<li>This is the plugin.xml for HelloWorld.
+<a href="images/write_config_1.png" data-lightbox="d4f31779-033f-4ec8-b916-bec5e2350a1c" data-title="write_config_1"><img src="images/write_config_1.png" alt="write_config_1"></a>
+Remember, the main-package is generally the package path that can contain your core classes. The function-recorder can point to the corresponding class of your function point annotation.<blockquote>
+<p>Note: function point records should not be added to the interface that only works on the designer, or the server cannot load the plugin.</p>
+</blockquote>
+</li>
+<li><p>More about this interface.</p>
+<pre><code class="lang-java"> <span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+ <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">FunctionDefineProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Level</span> </span>{
+
+     String MARK_STRING = <span class="hljs-string">&quot;FunctionDefineProvider&quot;</span>;
+ }
+</code></pre>
+<p> This interface <em>FunctionDefineProvider</em> is to introduce our custom function. It belongs to the core module (extra-core). The tag name should be the same as the MARK_STRING of the interface. In this case, the tag name is &quot;FunctionDefineProvider&quot;.</p>
+<p> So the basic XML element is:</p>
+<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">FunctionDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.function.demo.HelloWorld&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<p> However, this interface is special, so two additional attributes need to be configured. We need to offer the name and description of the custom function.</p>
+<p> So the complete XML element is:</p>
+<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">FunctionDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.function.demo.HelloWorld&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;HelloWorld&quot;</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;First Plugin&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+</li>
+<li>The build.xml is based on our last tutorial. Edit the corresponding properties.
+<a href="images/write_config_2.png" data-lightbox="3495f295-0db5-4b6d-acb7-d6ed269a80ec" data-title="write_config_2"><img src="images/write_config_2.png" alt="write_config_2"></a></li>
+</ol>
+<h2 id="build-the-project"><a name="build-the-project" class="anchor-navigation-ex-anchor" href="#build-the-project"><i class="fa fa-link" aria-hidden="true"></i></a>Build the Project</h2>
+<ol>
+<li>Right-click the module (plugin-hello-world), Click <strong>Build Module &apos;plugin-hello-world&apos;</strong>.
+<a href="images/build_project_1.png" data-lightbox="908b13e3-1101-41cf-9f03-6318bf6a87c2" data-title="build_project_1"><img src="images/build_project_1.png" alt="build_project_1"></a>
+<a href="images/build_project_2.png" data-lightbox="48828592-6f82-4ef9-9db0-0449d359bf24" data-title="build_project_2"><img src="images/build_project_2.png" alt="build_project_2"></a></li>
+<li>Copy the plugin.xml to the plugin folder.
+<a href="images/build_project_3.png" data-lightbox="0d89b7ad-a3d4-4a4e-a88b-845e90d1d97b" data-title="build_project_3"><img src="images/build_project_3.png" alt="build_project_3"></a></li>
+<li>Run <em>Leaner.main()</em> to start the designer. See if there is our function HelloWorld.
+<a href="images/build_project_4.png" data-lightbox="ad661342-f3ae-42f8-bd40-e70936f5b34f" data-title="build_project_4"><img src="images/build_project_4.png" alt="build_project_4"></a></li>
+<li>Preview the report to make sure it really works... Awesome!
+<a href="images/build_project_5.png" data-lightbox="7741ca01-c210-44be-8315-9a0ecbe1150d" data-title="build_project_5"><img src="images/build_project_5.png" alt="build_project_5"></a></li>
+<li>Finally, package the plugin with the built-in Ant in IntelliJ IDEA.
+<a href="images/build_project_6.png" data-lightbox="7f41f728-fbce-4611-a9cb-cd9837121acc" data-title="build_project_6"><img src="images/build_project_6.png" alt="build_project_6"></a><div id="gitalk-container"></div></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_4/chapter_4.html" class="navigation navigation-prev " aria-label="Previous page: Introduction of build.xml">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_6/chapter_6.html" class="navigation navigation-next " aria-label="Next page: Beginner Tutorial - Dataset">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"First Plugin - Hello World!","level":"2.5","depth":1,"next":{"title":"Beginner Tutorial - Dataset","level":"2.6","depth":1,"path":"tutorial/chapter_6/chapter_6.md","ref":"tutorial/chapter_6/chapter_6.md","articles":[]},"previous":{"title":"Introduction of build.xml","level":"2.4","depth":1,"path":"tutorial/chapter_4/chapter_4.md","ref":"tutorial/chapter_4/chapter_4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_5/chapter_5.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

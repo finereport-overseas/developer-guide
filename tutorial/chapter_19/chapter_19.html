@@ -1,0 +1,788 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Advanced Tutorial - Data Connection · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter_20/chapter_20.html" />
+    
+    
+    <link rel="prev" href="../chapter_18/chapter_18.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Plugin Development Tutorial</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter_1/chapter_1.html">
+            
+                <a href="../chapter_1/chapter_1.html">
+            
+                    
+                    Install Essential Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter_2/chapter_2.html">
+            
+                <a href="../chapter_2/chapter_2.html">
+            
+                    
+                    Build Development Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter_3/chapter_3.html">
+            
+                <a href="../chapter_3/chapter_3.html">
+            
+                    
+                    Introduction of plugin.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter_4/chapter_4.html">
+            
+                <a href="../chapter_4/chapter_4.html">
+            
+                    
+                    Introduction of build.xml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter_5/chapter_5.html">
+            
+                <a href="../chapter_5/chapter_5.html">
+            
+                    
+                    First Plugin - Hello World!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../chapter_6/chapter_6.html">
+            
+                <a href="../chapter_6/chapter_6.html">
+            
+                    
+                    Beginner Tutorial - Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../chapter_7/chapter_7.html">
+            
+                <a href="../chapter_7/chapter_7.html">
+            
+                    
+                    Beginner Tutorial - Include your JS&CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../chapter_8/chapter_8.html">
+            
+                <a href="../chapter_8/chapter_8.html">
+            
+                    
+                    Beginner Tutorial - Replace Resource Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../chapter_9/chapter_9.html">
+            
+                <a href="../chapter_9/chapter_9.html">
+            
+                    
+                    Beginner Tutorial - Locale Finder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../chapter_10/chapter_10.html">
+            
+                <a href="../chapter_10/chapter_10.html">
+            
+                    
+                    Beginner Tutorial - Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../chapter_11/chapter_11.html">
+            
+                <a href="../chapter_11/chapter_11.html">
+            
+                    
+                    Beginner Tutorial - DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../chapter_12/chapter_12.html">
+            
+                <a href="../chapter_12/chapter_12.html">
+            
+                    
+                    Beginner Tutorial - simple Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../chapter_13/chapter_13.html">
+            
+                <a href="../chapter_13/chapter_13.html">
+            
+                    
+                    Beginner Tutorial - Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.14" data-path="../chapter_14/chapter_14.html">
+            
+                <a href="../chapter_14/chapter_14.html">
+            
+                    
+                    Beginner Tutorial - FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.15" data-path="../chapter_15/chapter_15.html">
+            
+                <a href="../chapter_15/chapter_15.html">
+            
+                    
+                    Beginner Tutorial - A Real-world Problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.16" data-path="../chapter_16/chapter_16.html">
+            
+                <a href="../chapter_16/chapter_16.html">
+            
+                    
+                    Advanced Tutorial - Authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.17" data-path="../chapter_17/chapter_17.html">
+            
+                <a href="../chapter_17/chapter_17.html">
+            
+                    
+                    Advanced Tutorial - Widget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.18" data-path="../chapter_18/chapter_18.html">
+            
+                <a href="../chapter_18/chapter_18.html">
+            
+                    
+                    Advanced Tutorial - Theme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.19" data-path="chapter_19.html">
+            
+                <a href="chapter_19.html">
+            
+                    
+                    Advanced Tutorial - Data Connection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.20" data-path="../chapter_20/chapter_20.html">
+            
+                <a href="../chapter_20/chapter_20.html">
+            
+                    
+                    Advanced Tutorial - Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.21" data-path="../chapter_21/chapter_21.html">
+            
+                <a href="../chapter_21/chapter_21.html">
+            
+                    
+                    Advanced Tutorial - Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.22" data-path="../chapter_22/chapter_22.html">
+            
+                <a href="../chapter_22/chapter_22.html">
+            
+                    
+                    Advanced Tutorial - Modify Designed Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Advanced Tutorial - Data Connection</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#advanced-tutorial---data-connection"><b></b>Advanced Tutorial - Data Connection</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#connectionprovider"><b></b>ConnectionProvider</a></li><li><span class="title-icon "></span><a href="#connection"><b></b>Connection</a></li><li><span class="title-icon "></span><a href="#basicbeanpane"><b></b>BasicBeanPane</a></li><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li></ul></ul></div><a href="#advanced-tutorial---data-connection" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="advanced-tutorial---data-connection"><a name="advanced-tutorial---data-connection" class="anchor-navigation-ex-anchor" href="#advanced-tutorial---data-connection"><i class="fa fa-link" aria-hidden="true"></i></a>Advanced Tutorial - Data Connection</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>This chapter will talk about data connection providers in FineReport. We know that the default types of connection are JDBC and JNDI. We can use this provider to add a new connection.</p>
+<p>Since a data connection is tightly bound with the data set, we will use the example in <a href="../chapter_6/chapter_6.html">Beginner Tutorial - Dataset</a> and add the data connection part to it.</p>
+<h2 id="connectionprovider"><a name="connectionprovider" class="anchor-navigation-ex-anchor" href="#connectionprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ConnectionProvider</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.data.impl.Connection;
+<span class="hljs-keyword">import</span> com.fr.design.beans.BasicBeanPane;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ConnectionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+
+    String XML_TAG = <span class="hljs-string">&quot;ConnectionProvider&quot;</span>;
+
+    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">2</span>;
+
+    <span class="hljs-comment">/**
+     * the name of the popup title
+     *
+     * <span class="hljs-doctag">@return</span> name
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">nameForConnection</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * the icon of the data connection
+     *
+     * <span class="hljs-doctag">@return</span> icon path
+     */</span>
+    <span class="hljs-function">String <span class="hljs-title">iconPathForConnection</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * the class of the connection
+     *
+     * <span class="hljs-doctag">@return</span> connection class
+     */</span>
+    Class&lt;? extends com.fr.data.impl.Connection&gt; classForConnection();
+
+    <span class="hljs-comment">/**
+     * the pane of the connection
+     *
+     * <span class="hljs-doctag">@return</span> connection pane
+     */</span>
+    Class&lt;? extends BasicBeanPane&lt;? extends Connection&gt;&gt; appearanceForConnection();
+}
+</code></pre>
+<p>The <em>classForConnection()</em> and <em>appearanceForConnection()</em> introduce two new class: <em>Connection</em> and <em>BasicBeanPane&lt;? extends Connection&gt;</em>. We must implement these two before creating a new data conection.</p>
+<h2 id="connection"><a name="connection" class="anchor-navigation-ex-anchor" href="#connection"><i class="fa fa-link" aria-hidden="true"></i></a>Connection</h2>
+<p>This interface represents an actual data connection. Usually, we do not directly implement this interface but extend <em>AbstractDatabaseConnection</em>. Below is an example.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoConnection</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDatabaseConnection</span> </span>{
+
+    <span class="hljs-keyword">private</span> Conf&lt;String&gt; globalColName = Holders.simple(StringUtils.EMPTY);
+    <span class="hljs-keyword">private</span> Conf&lt;String&gt; globalColValue = Holders.simple(StringUtils.EMPTY);
+
+    <span class="hljs-comment">/**
+     * To test the connection. Throw exception if it fails.
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testConnection</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-keyword">if</span>(StringUtils.isBlank(<span class="hljs-keyword">this</span>.getGlobalColName())){
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception();
+        }
+    }
+
+    <span class="hljs-comment">/**
+     * Return the driver of a connection. No need here.
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDriver</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getGlobalColName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> globalColName.get();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setGlobalColName</span><span class="hljs-params">(String globalColName)</span> </span>{
+        <span class="hljs-keyword">this</span>.globalColName.set(globalColName);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getGlobalColValue</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> globalColValue.get();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setGlobalColValue</span><span class="hljs-params">(String globalColValue)</span> </span>{
+        <span class="hljs-keyword">this</span>.globalColValue.set(globalColValue);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readXML</span><span class="hljs-params">(XMLableReader reader)</span> </span>{
+        <span class="hljs-keyword">super</span>.readXML(reader);
+        <span class="hljs-keyword">if</span>(reader.isChildNode()){
+            String tagName=reader.getTagName();
+            <span class="hljs-keyword">if</span>(ComparatorUtils.equals(<span class="hljs-string">&quot;Attr&quot;</span>,tagName)){
+                <span class="hljs-keyword">this</span>.setGlobalColName(reader.getAttrAsString(<span class="hljs-string">&quot;colName&quot;</span>,StringUtils.EMPTY));
+                <span class="hljs-keyword">this</span>.setGlobalColValue(reader.getAttrAsString(<span class="hljs-string">&quot;colValue&quot;</span>,StringUtils.EMPTY));
+            }
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeXML</span><span class="hljs-params">(XMLPrintWriter writer)</span> </span>{
+        <span class="hljs-keyword">super</span>.writeXML(writer);
+        writer.startTAG(<span class="hljs-string">&quot;Attr&quot;</span>).attr(<span class="hljs-string">&quot;colName&quot;</span>,<span class="hljs-keyword">this</span>.getGlobalColName()).attr(<span class="hljs-string">&quot;colValue&quot;</span>,<span class="hljs-keyword">this</span>.getGlobalColValue()).end();
+    }
+}
+</code></pre>
+<h2 id="basicbeanpane"><a name="basicbeanpane" class="anchor-navigation-ex-anchor" href="#basicbeanpane"><i class="fa fa-link" aria-hidden="true"></i></a>BasicBeanPane</h2>
+<p>This is just an implemented JPanel wrapper. The things we need to do are:</p>
+<ol>
+<li>Initialize the pane and add components.</li>
+<li>Reload the current pane according to a connection instance.</li>
+<li>Get a connection instance based on the input on the pane.</li>
+<li>Provide the title of the pane.</li>
+</ol>
+<p>FineReport provides a <em>DataConnectionPane</em> which has a defined &quot;Test Connection&quot; button and a &quot;Charset&quot; combo box. We can create our connection pane by inheriting <em>DataConnectionPane</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoConnectionPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DatabaseConnectionPane</span>&lt;<span class="hljs-title">DemoConnection</span>&gt; </span>{
+    <span class="hljs-comment">// define a text field for column name</span>
+    <span class="hljs-keyword">private</span> UITextField colName;
+    <span class="hljs-comment">// for column value</span>
+    <span class="hljs-keyword">private</span> UITextField colValue;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> P = TableLayout.PREFERRED;
+
+    <span class="hljs-comment">/**
+     * Defined in DatabaseConnectionPane. To get the main panel.
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> JPanel <span class="hljs-title">mainPanel</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> creatMainPanel();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isFineBI</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Defined in DatabaseConnectionPane. Reload the setting panel according to the connection object.
+     * <span class="hljs-doctag">@param</span> demoConnection
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populateSubDatabaseConnectionBean</span><span class="hljs-params">(DemoConnection demoConnection)</span> </span>{
+        <span class="hljs-keyword">this</span>.colName.setText(demoConnection.getGlobalColName());
+        <span class="hljs-keyword">this</span>.colValue.setText(demoConnection.getGlobalColValue());
+    }
+
+    <span class="hljs-comment">/**
+     * Generate a new connection obj based on the setting panel.
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> DemoConnection <span class="hljs-title">updateSubDatabaseConnectionBean</span><span class="hljs-params">()</span> </span>{
+        DemoConnection demoConnection = <span class="hljs-keyword">new</span> DemoConnection();
+        demoConnection.setGlobalColName(<span class="hljs-keyword">this</span>.colName.getText());
+        demoConnection.setGlobalColValue(<span class="hljs-keyword">this</span>.colValue.getText());
+        <span class="hljs-keyword">return</span> demoConnection;
+    }
+
+    <span class="hljs-comment">/**
+     * title of the window
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">title4PopupWindow</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demoConnection&quot;</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Here add two text fields to the panel.
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> JPanel <span class="hljs-title">creatMainPanel</span><span class="hljs-params">()</span> </span>{
+        colName = <span class="hljs-keyword">new</span> UITextField();
+        colValue = <span class="hljs-keyword">new</span> UITextField();
+        Component[][] tables = {{
+                <span class="hljs-keyword">new</span> UILabel(<span class="hljs-string">&quot;Column Name&quot;</span>), colName
+        }, {
+                <span class="hljs-keyword">new</span> UILabel(<span class="hljs-string">&quot;Column Value&quot;</span>), colValue
+        }};
+        JPanel tableLayoutPane = TableLayoutHelper.createTableLayoutPane(tables, <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[]{P, P}, <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[]{P, <span class="hljs-number">400</span>});
+        tableLayoutPane.setBorder(UITitledBorder.createBorderWithTitle(<span class="hljs-string">&quot;demo Connection&quot;</span>));
+        <span class="hljs-keyword">return</span> tableLayoutPane;
+    }
+}
+</code></pre>
+<p>Register the data connection with the provider.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoConnectionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProvider</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">nameForConnection</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demoConnection&quot;</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">iconPathForConnection</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Class&lt;? extends Connection&gt; classForConnection() {
+        <span class="hljs-keyword">return</span> DemoConnection.class;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Class&lt;? extends BasicBeanPane&lt;? extends Connection&gt;&gt; appearanceForConnection() {
+        <span class="hljs-keyword">return</span> DemoConnectionPane.class;
+    }
+}
+</code></pre>
+<p>Finally, register the provider in plugin.xml.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ConnectionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.xxx.xxx.DemoConnectionProvider&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<p>The effect of this example is this.</p>
+<p><a href="images/result_1.png" data-lightbox="a3c58a74-37ce-43ee-a95d-6c633398a5f1" data-title="result_1"><img src="images/result_1.png" alt="result_1"></a>
+<a href="images/result_2.png" data-lightbox="1129f591-3102-4ed9-ad05-861e783bc08a" data-title="result_2"><img src="images/result_2.png" alt="result_2"></a></p>
+<p>You can find the full executable code here: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-data-source-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-data-source-demo</a></p>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter_18/chapter_18.html" class="navigation navigation-prev " aria-label="Previous page: Advanced Tutorial - Theme">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter_20/chapter_20.html" class="navigation navigation-next " aria-label="Next page: Advanced Tutorial - Chart">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"next":{"title":"Advanced Tutorial - Chart","level":"2.20","depth":1,"path":"tutorial/chapter_20/chapter_20.md","ref":"tutorial/chapter_20/chapter_20.md","articles":[]},"previous":{"title":"Advanced Tutorial - Theme","level":"2.18","depth":1,"path":"tutorial/chapter_18/chapter_18.md","ref":"tutorial/chapter_18/chapter_18.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_19/chapter_19.md","mtime":"2020-12-30T08:32:37.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
