@@ -3,12 +3,21 @@
 		"anchor-navigation-ex",
 		"code",
 		"pageview-count",
-		"lightbox"
+		"lightbox",
+		"mygitalk"
 	],
 	"pluginsConfig": {
 		"anchor-navigation-ex": {
 			"showLevel": false,
 			"showGoTop": true
-		}
+		}, 
+		"mygitalk":{
+            "clientID": "08230253bee67abb4384",
+            "clientSecret": "509e24756efaf3cc4423400c03fa755c1bcf2785",
+            "repo": "developer-guide",
+            "owner": "finereport-overseas",
+			"admin": ["finereport-joe"],
+            "distractionFreeMode": false
+        }
 	}
 }

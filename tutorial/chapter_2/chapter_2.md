@@ -71,17 +71,3 @@ The sample project depends on the 10.0 test version snapshot. If you want to rel
 | 10.0-PERSIST-SNAPSHOT | 10.0 official version snapshot|
 | 10.0-RELEASE-SNAPSHOT | 10.0 test version snapshot    |
 | 10.0.2019.07.16 | The official version released, 2019.07.16 is the release time  |
-
-<link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.7.0/gitalk.min.css"></link>
-<script src="//cdn.bootcss.com/gitalk/1.7.0/gitalk.min.js"></script>
-<div id="gitalk-container"></div>
-<script>
-    var gitalk = new Gitalk({
-        clientID: '08230253bee67abb4384',
-        clientSecret: '509e24756efaf3cc4423400c03fa755c1bcf2785',
-        repo: 'developer-guide',
-        owner: 'finereport-joe',
-        admin: ['finereport-joe'],
-        id: location.pathname
-    })
-</script>

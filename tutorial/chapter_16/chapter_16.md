@@ -354,17 +354,3 @@ public interface LogInOutEventProvider extends Mutable {
     <LogInOutEventProvider class="com.fr.plugin.login.LoginOutEvent"/>
 </extra-decision>
 ```
-
-<link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.7.0/gitalk.min.css"></link>
-<script src="//cdn.bootcss.com/gitalk/1.7.0/gitalk.min.js"></script>
-<div id="gitalk-container"></div>
-<script>
-    var gitalk = new Gitalk({
-        clientID: '08230253bee67abb4384',
-        clientSecret: '509e24756efaf3cc4423400c03fa755c1bcf2785',
-        repo: 'developer-guide',
-        owner: 'finereport-joe',
-        admin: ['finereport-joe'],
-        id: location.pathname
-    })
-</script>

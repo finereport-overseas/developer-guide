@@ -173,17 +173,3 @@ See the full code of this example here: https://github.com/finereport-overseas/r
 Github of FineUI project: https://github.com/fanruan/fineui
 
 Static resource: http://fanruan.design/fineui/2.0/fineui.min.css, http://fanruan.design/fineui/2.0/fineui.min.js
-
-<link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.7.0/gitalk.min.css"></link>
-<script src="//cdn.bootcss.com/gitalk/1.7.0/gitalk.min.js"></script>
-<div id="gitalk-container"></div>
-<script>
-    var gitalk = new Gitalk({
-        clientID: '08230253bee67abb4384',
-        clientSecret: '509e24756efaf3cc4423400c03fa755c1bcf2785',
-        repo: 'developer-guide',
-        owner: 'finereport-joe',
-        admin: ['finereport-joe'],
-        id: location.pathname
-    })
-</script>
