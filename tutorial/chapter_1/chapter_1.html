@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Install Essential Tools · GitBook</title>
+        <title>Install Essential Tools · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -465,12 +464,12 @@
 <p>Note: After configuring environment variables, you need to restart the command line to make the configuration take effect.</p>
 </blockquote>
 <h2 id="install-jdk"><a name="install-jdk" class="anchor-navigation-ex-anchor" href="#install-jdk"><i class="fa fa-link" aria-hidden="true"></i></a>Install JDK</h2>
-<p>Since January 2019, Oracle JDK starts to charge, it is recommended to use the version before Oracle JDK1.8.0_201. You can also download <a href="https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html" target="_blank">Amazon Corretto JDK</a>.   </p>
+<p>Since January 2019, Oracle JDK starts to charge, it is recommended to use the version before Oracle JDK1.8.0_202. You can also download <a href="https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html" target="_blank">Amazon Corretto JDK</a>.   </p>
 <p>Choose the version that suits your operating system, and then install it according to the <a href="https://www.tutorialspoint.com/java/java_environment_setup.htm" target="_blank">tutorial</a> here. After the installation, execute this command at the command line:</p>
 <pre><code class="lang-bash">java -version
 </code></pre>
 <p>If the output looks like this, the installation is successful:</p>
-<pre><code class="lang-bash">java version <span class="hljs-string">&quot;1.8.0_181&quot;</span>
+<pre><code class="lang-bash">java version <span class="hljs-string">"1.8.0_181"</span>
 Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
 Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
 </code></pre>
@@ -490,7 +489,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
 Maven home: C:\Apache\apache-maven-3.5.4\bin\..
 Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jre1.8.0_181
 Default locale: zh_CN, platform encoding: GBK
-OS name: <span class="hljs-string">&quot;windows 10&quot;</span>, version: <span class="hljs-string">&quot;10.0&quot;</span>, arch: <span class="hljs-string">&quot;amd64&quot;</span>, family: <span class="hljs-string">&quot;windows&quot;</span>
+OS name: <span class="hljs-string">"windows 10"</span>, version: <span class="hljs-string">"10.0"</span>, <span class="hljs-built_in">arch</span>: <span class="hljs-string">"amd64"</span>, family: <span class="hljs-string">"windows"</span>
 </code></pre>
 <h2 id="install-git"><a name="install-git" class="anchor-navigation-ex-anchor" href="#install-git"><i class="fa fa-link" aria-hidden="true"></i></a>Install Git</h2>
 <p>Git is used to manage the source code of the plugin development project. Click <a href="https://git-scm.com/" target="_blank">here</a> to download Git and install it. After the installation is complete, execute this command at the command line:</p>
@@ -502,7 +501,7 @@ OS name: <span class="hljs-string">&quot;windows 10&quot;</span>, version: <span
 <p>Git is not essential, but it is strongly recommended to install for the convenience of downloading plugin demos. Of course, you can also use the built-in Git tool of IntelliJ IDEA.</p>
 <h2 id="install-intellij-idea"><a name="install-intellij-idea" class="anchor-navigation-ex-anchor" href="#install-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>Install IntelliJ IDEA</h2>
 <p>IntelliJ IDEA is an IDE for our development. You can go to the official <a href="https://www.jetbrains.com/idea/download" target="_blank">Jetbrains website</a> and download the community version. After the download is complete, just install it.</p>
-<p><a href="images/idea_setup.png" data-lightbox="a0a869cb-2d7f-49d4-a636-5ef9683fa6bc" data-title="IDEA Setup"><img src="images/idea_setup.png" alt="IDEA Setup"></a></p>
+<p><a href="images/idea_setup.png" data-lightbox="5c12c010-4ff5-4a70-8568-303a749a1485" data-title="IDEA Setup"><img src="images/idea_setup.png" alt="IDEA Setup"></img></a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -546,12 +545,56 @@ OS name: <span class="hljs-string">&quot;windows 10&quot;</span>, version: <span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Install Essential Tools","level":"2.1","depth":1,"next":{"title":"Build Development Environment","level":"2.2","depth":1,"path":"tutorial/chapter_2/chapter_2.md","ref":"tutorial/chapter_2/chapter_2.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_1/chapter_1.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Install Essential Tools","level":"2.1","depth":1,"next":{"title":"Build Development Environment","level":"2.2","depth":1,"path":"tutorial/chapter_2/chapter_2.md","ref":"tutorial/chapter_2/chapter_2.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_1/chapter_1.md","mtime":"2026-04-07T06:04:11.293Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -596,11 +639,7 @@ OS name: <span class="hljs-string">&quot;windows 10&quot;</span>, version: <span
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

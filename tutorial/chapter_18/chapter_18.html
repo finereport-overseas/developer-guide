@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Advanced Tutorial - Theme · GitBook</title>
+        <title>Advanced Tutorial - Theme · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -469,241 +468,241 @@
 
 <span class="hljs-keyword">import</span> com.fr.stable.fun.mark.WebCoalition; 
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ThemeVariousProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebCoalition</span> </span>{ 
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ThemeVariousProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WebCoalition</span> { 
 
-    String MARK_STRING = <span class="hljs-string">&quot;ThemeVariousProvider&quot;</span>; 
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ThemeVariousProvider"</span>; 
 
-    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>; 
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; 
 
     <span class="hljs-comment">/** 
      * the name of the theme 
      * <span class="hljs-doctag">@return</span> name 
      */</span> 
-    <span class="hljs-function">String <span class="hljs-title">name</span><span class="hljs-params">()</span></span>; 
+    String <span class="hljs-title function_">name</span><span class="hljs-params">()</span>; 
 
     <span class="hljs-comment">/** 
      * the description of the theme 
      * <span class="hljs-doctag">@return</span> description 
      */</span> 
-    <span class="hljs-function">String <span class="hljs-title">text</span><span class="hljs-params">()</span></span>; 
+    String <span class="hljs-title function_">text</span><span class="hljs-params">()</span>; 
 
     <span class="hljs-comment">/** 
      * the path to the cover image of the theme 
      * <span class="hljs-doctag">@return</span> image path 
      */</span> 
-    <span class="hljs-function">String <span class="hljs-title">coverPath</span><span class="hljs-params">()</span></span>; 
+    String <span class="hljs-title function_">coverPath</span><span class="hljs-params">()</span>; 
 }
 </code></pre>
-<p>Let&apos;s use a demo to understand the usage.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoTheme</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractThemeVariousProvider</span> </span>{ 
+<p>Let's use a demo to understand the usage.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoTheme</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractThemeVariousProvider</span> { 
     <span class="hljs-meta">@Override</span> 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">name</span><span class="hljs-params">()</span> </span>{ 
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demotheme&quot;</span>; 
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">name</span><span class="hljs-params">()</span> { 
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"demotheme"</span>; 
     } 
 
     <span class="hljs-meta">@Override</span> 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">text</span><span class="hljs-params">()</span> </span>{ 
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demo&quot;</span>; 
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">text</span><span class="hljs-params">()</span> { 
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"demo"</span>; 
     } 
 
     <span class="hljs-meta">@Override</span> 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">coverPath</span><span class="hljs-params">()</span> </span>{ 
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>; 
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">coverPath</span><span class="hljs-params">()</span> { 
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>; 
     } 
 
     <span class="hljs-meta">@Override</span> 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Atom <span class="hljs-title">attach</span><span class="hljs-params">()</span> </span>{ 
+    <span class="hljs-keyword">public</span> Atom <span class="hljs-title function_">attach</span><span class="hljs-params">()</span> { 
         <span class="hljs-keyword">return</span> MainComponent.KEY; 
     } 
 
     <span class="hljs-meta">@Override</span> 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Atom <span class="hljs-title">client</span><span class="hljs-params">()</span> </span>{ 
+    <span class="hljs-keyword">public</span> Atom <span class="hljs-title function_">client</span><span class="hljs-params">()</span> { 
         <span class="hljs-keyword">return</span> DemoThemeAtom.KEY; 
     } 
 }
 </code></pre>
 <p>The <em>client()</em> returns our own <em>DemoThemeAtom</em>:</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoThemeAtom</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{ 
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> DemoThemeAtom KEY=<span class="hljs-keyword">new</span> DemoThemeAtom(); 
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoThemeAtom</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Component</span> { 
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> DemoThemeAtom KEY=<span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoThemeAtom</span>(); 
     <span class="hljs-meta">@Override</span> 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ScriptPath <span class="hljs-title">script</span><span class="hljs-params">(RequestClient requestClient)</span> </span>{ 
-        <span class="hljs-keyword">return</span> ScriptPath.build(<span class="hljs-string">&quot;/com/fr/plugin/theme/demo/demo.theme.js&quot;</span>); 
+    <span class="hljs-keyword">public</span> ScriptPath <span class="hljs-title function_">script</span><span class="hljs-params">(RequestClient requestClient)</span> { 
+        <span class="hljs-keyword">return</span> ScriptPath.build(<span class="hljs-string">"/com/fr/plugin/theme/demo/demo.theme.js"</span>); 
     } 
 
     <span class="hljs-meta">@Override</span> 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Filter <span class="hljs-title">filter</span><span class="hljs-params">()</span> </span>{ 
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Filter() { 
+    <span class="hljs-keyword">public</span> Filter <span class="hljs-title function_">filter</span><span class="hljs-params">()</span> { 
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Filter</span>() { 
             <span class="hljs-meta">@Override</span> 
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">accept</span><span class="hljs-params">()</span> </span>{ 
+            <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">()</span> { 
                 <span class="hljs-comment">/*The JS file will be imported only if the theme is chosen.*/</span> 
-                 <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;com.fr.plugin.theme.demo&quot;</span>.equals(AppearanceConfig.getInstance().getThemeId()); 
+                 <span class="hljs-keyword">return</span> <span class="hljs-string">"com.fr.plugin.theme.demo"</span>.equals(AppearanceConfig.getInstance().getThemeId()); 
             } 
         }; 
     } 
 }
 </code></pre>
-<p>The job of the back-end part is to import our JS and CSS file. It is rather simple. Now let&apos;s move on to the front end.</p>
+<p>The job of the back-end part is to import our JS and CSS file. It is rather simple. Now let's move on to the front end.</p>
 <h2 id="frontend-implementation"><a name="frontend-implementation" class="anchor-navigation-ex-anchor" href="#frontend-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>Frontend Implementation</h2>
 <p>Of course, the front-end implementation is also done with FineUI. </p>
 <h3 id="modify-the-default"><a name="modify-the-default" class="anchor-navigation-ex-anchor" href="#modify-the-default"><i class="fa fa-link" aria-hidden="true"></i></a>Modify the Default</h3>
 <p>FineUI provides several methods to modify the default platform. This is enough if the change we want is not too much.</p>
-<p>Firstly, let&apos;s learn about the layout of the default platform.</p>
-<p><a href="images/default_layout.png" data-lightbox="a50093a3-e52d-4b43-af74-1f001e5a01c0" data-title="default_layout"><img src="images/default_layout.png" alt="default_layout"></a></p>
+<p>Firstly, let's learn about the layout of the default platform.</p>
+<p><a href="images/default_layout.png" data-lightbox="bb0e45ab-b350-4f79-a1a8-d980bd870182" data-title="default_layout"><img src="images/default_layout.png" alt="default_layout"></img></a></p>
 <p>The layout is a upper-left-right layout. The upper red area is the header, the left green area is the left menu, and the right yellow one is where to display contents.</p>
 <p>Below shows how to modify the default config.</p>
 <pre><code class="lang-js"><span class="hljs-comment">// modify the height and width of header and left bar. </span>
-BI.config(<span class="hljs-string">&quot;dec.constant.config&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{ 
-    config.config4Frame.north.height=<span class="hljs-number">50</span>; 
-    config.config4Frame.west.width=<span class="hljs-number">150</span>; 
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.config"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) { 
+    config.<span class="hljs-property">config4Frame</span>.<span class="hljs-property">north</span>.<span class="hljs-property">height</span>=<span class="hljs-number">50</span>; 
+    config.<span class="hljs-property">config4Frame</span>.<span class="hljs-property">west</span>.<span class="hljs-property">width</span>=<span class="hljs-number">150</span>; 
     <span class="hljs-keyword">return</span> config; 
 }); 
 
 <span class="hljs-comment">// unpin the directory pane </span>
-BI.config(<span class="hljs-string">&quot;dec.constant.config&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{ 
-    config.config4EntryPane.pinable=<span class="hljs-literal">false</span>; 
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.config"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) { 
+    config.<span class="hljs-property">config4EntryPane</span>.<span class="hljs-property">pinable</span>=<span class="hljs-literal">false</span>; 
 });
 </code></pre>
 <p>To modify the header:</p>
 <pre><code class="lang-js"><span class="hljs-comment">// add contact to the header </span>
-BI.config(<span class="hljs-string">&quot;dec.constant.header.items&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{ 
-    items.unshift({ 
-        type: <span class="hljs-string">&quot;bi.label&quot;</span>, 
-        text: <span class="hljs-string">&quot;phone:123456789&quot;</span> 
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.header.items"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) { 
+    items.<span class="hljs-title function_">unshift</span>({ 
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>, 
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"phone:123456789"</span> 
     }); 
     <span class="hljs-keyword">return</span> items; 
 });
 </code></pre>
 <p>To modify the left menu:</p>
 <pre><code class="lang-js"><span class="hljs-comment">// add two items to the left menu </span>
-BI.config(<span class="hljs-string">&quot;dec.constant.menu.items&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{ 
-    items.splice(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, { 
-        value: <span class="hljs-string">&quot;analysis&quot;</span>, 
-        text: <span class="hljs-string">&quot;dashboard&quot;</span>, 
-        cls: <span class="hljs-string">&quot;analysis-menu-font&quot;</span>, 
-        cardType: <span class="hljs-string">&quot;bi.design&quot;</span> 
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.menu.items"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) { 
+    items.<span class="hljs-title function_">splice</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, { 
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"analysis"</span>, 
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"dashboard"</span>, 
+        <span class="hljs-attr">cls</span>: <span class="hljs-string">"analysis-menu-font"</span>, 
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"bi.design"</span> 
     }, { 
-        value: <span class="hljs-string">&quot;config&quot;</span>, 
-        text: <span class="hljs-string">&quot;data preparation&quot;</span>, 
-        cls: <span class="hljs-string">&quot;config-menu-font&quot;</span>, 
-        cardType: <span class="hljs-string">&quot;bi.conf&quot;</span> 
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"config"</span>, 
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"data preparation"</span>, 
+        <span class="hljs-attr">cls</span>: <span class="hljs-string">"config-menu-font"</span>, 
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"bi.conf"</span> 
     }); 
     <span class="hljs-keyword">return</span> items; 
 });
 </code></pre>
 <p>To modify the directory panel:</p>
-<pre><code class="lang-js"><span class="hljs-comment">// add a &quot;share with me&quot; button and panel </span>
-BI.config(<span class="hljs-string">&quot;dec.constant.workbench.panel.tabs&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{ 
-    <span class="hljs-keyword">return</span> items.concat([{ 
-        value: <span class="hljs-string">&quot;share&quot;</span>, 
-        title: BI.i18nText(<span class="hljs-string">&quot;Dec-Share_to_Me&quot;</span>), 
-        cls: <span class="hljs-string">&quot;share-to-me-font&quot;</span>, 
-        cardType: <span class="hljs-string">&quot;dec.workbench.share&quot;</span> 
+<pre><code class="lang-js"><span class="hljs-comment">// add a "share with me" button and panel </span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.workbench.panel.tabs"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) { 
+    <span class="hljs-keyword">return</span> items.<span class="hljs-title function_">concat</span>([{ 
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"share"</span>, 
+        <span class="hljs-attr">title</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Dec-Share_to_Me"</span>), 
+        <span class="hljs-attr">cls</span>: <span class="hljs-string">"share-to-me-font"</span>, 
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"dec.workbench.share"</span> 
     }]); 
 });
 </code></pre>
 <p>Some other APIs for the directory panel and content panel:</p>
-<pre><code class="lang-js">BI.extend(Dec.Utils, { 
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">extend</span>(<span class="hljs-title class_">Dec</span>.<span class="hljs-property">Utils</span>, { 
 
     <span class="hljs-comment">// get the sub directory by id </span>
-    getWorkbenchSubDirectoryById: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">pId, callback</span>) </span>{ 
+    <span class="hljs-attr">getWorkbenchSubDirectoryById</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">pId, callback</span>) { 
 
     }, 
 
     <span class="hljs-comment">//  get the sub directory by keyword </span>
-    searchWorkbenchSubDirectory: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">keyword, callback</span>) </span>{ 
+    <span class="hljs-attr">searchWorkbenchSubDirectory</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">keyword, callback</span>) { 
 
     }, 
 
     <span class="hljs-comment">// favorite or unfavorite </span>
-    handlerCollect: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">id, isFavorite, callback</span>) </span>{ 
+    <span class="hljs-attr">handlerCollect</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">id, isFavorite, callback</span>) { 
 
     }, 
 
     <span class="hljs-comment">// get favorites list </span>
-    getFavoritesList: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{ 
+    <span class="hljs-attr">getFavoritesList</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) { 
 
     } 
 });
 </code></pre>
-<pre><code class="lang-js"><span class="hljs-comment">// BI.Services.getService(&quot;dec.service.tabs&quot;).addItem() </span>
-<span class="hljs-keyword">var</span> Service = BI.inherit(BI.OB, { 
+<pre><code class="lang-js"><span class="hljs-comment">// BI.Services.getService("dec.service.tabs").addItem() </span>
+<span class="hljs-keyword">var</span> <span class="hljs-title class_">Service</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">OB</span>, { 
 
     <span class="hljs-comment">// open a new tab on the tabPane. Just pass the bean of the directory node. </span>
-    addItem: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">entry</span>) </span>{ 
+    <span class="hljs-attr">addItem</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">entry</span>) { 
 
     }, 
 
     <span class="hljs-comment">// close a tab </span>
-    closeTab: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{ 
+    <span class="hljs-attr">closeTab</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) { 
 
     }, 
 
     <span class="hljs-comment">// open a custom tab on the tabPane </span>
-    openCustomTab: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">cardName, cardValue, cardType</span>) </span>{ 
+    <span class="hljs-attr">openCustomTab</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">cardName, cardValue, cardType</span>) { 
 
     }, 
 
     <span class="hljs-comment">// refresh a tab </span>
-    refreshTab: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">cardValue, options</span>) </span>{ 
+    <span class="hljs-attr">refreshTab</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">cardValue, options</span>) { 
 
     }, 
 
     <span class="hljs-comment">// close the current tab </span>
-    closeActiveTab: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
+    <span class="hljs-attr">closeActiveTab</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { 
 
     }, 
 
     <span class="hljs-comment">// get the showing tabs </span>
-    getShowingTab: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
+    <span class="hljs-attr">getShowingTab</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { 
 
     } 
 });
 </code></pre>
 <p>However, if we want to change the default layout to our own, the above tools are not enough.</p>
 <h3 id="modify-the-layout"><a name="modify-the-layout" class="anchor-navigation-ex-anchor" href="#modify-the-layout"><i class="fa fa-link" aria-hidden="true"></i></a>Modify the Layout</h3>
-<p>Use <em>BI.config</em> to modify this provider &quot;dec.provider.layout&quot;.</p>
-<pre><code class="lang-js">BI.config(<span class="hljs-string">&quot;dec.provider.layout&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) </span>{
-    provider.setConfig(
+<p>Use <em>BI.config</em> to modify this provider "dec.provider.layout".</p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.layout"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">setConfig</span>(
         {
-            type: <span class="hljs-string">&quot;bi.border&quot;</span>,
-            items: {
-                north: {
-                    el: {
-                        type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                        cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
-                        text: <span class="hljs-string">&quot;north&quot;</span>
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.border"</span>,
+            <span class="hljs-attr">items</span>: {
+                <span class="hljs-attr">north</span>: {
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border"</span>,
+                        <span class="hljs-attr">text</span>: <span class="hljs-string">"north"</span>
                     },
-                    height: <span class="hljs-number">40</span>
+                    <span class="hljs-attr">height</span>: <span class="hljs-number">40</span>
                 },
-                south: {
-                    el: {
-                        type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                        cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
-                        text: <span class="hljs-string">&quot;south&quot;</span>
+                <span class="hljs-attr">south</span>: {
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border"</span>,
+                        <span class="hljs-attr">text</span>: <span class="hljs-string">"south"</span>
                     },
-                    height: <span class="hljs-number">30</span>
+                    <span class="hljs-attr">height</span>: <span class="hljs-number">30</span>
                 },
-                west: {
-                    el: {
-                        type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                        cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
-                        text: <span class="hljs-string">&quot;west&quot;</span>
+                <span class="hljs-attr">west</span>: {
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border"</span>,
+                        <span class="hljs-attr">text</span>: <span class="hljs-string">"west"</span>
                     },
-                    width: <span class="hljs-number">200</span>
+                    <span class="hljs-attr">width</span>: <span class="hljs-number">200</span>
                 },
-                east: {
-                    el: {
-                        type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                        cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
-                        text: <span class="hljs-string">&quot;east&quot;</span>
+                <span class="hljs-attr">east</span>: {
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border"</span>,
+                        <span class="hljs-attr">text</span>: <span class="hljs-string">"east"</span>
                     },
-                    width: <span class="hljs-number">100</span>
+                    <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>
                 },
-                center: {
-                    el: {
-                        type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                        cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
-                        text: <span class="hljs-string">&quot;east&quot;</span>
+                <span class="hljs-attr">center</span>: {
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border"</span>,
+                        <span class="hljs-attr">text</span>: <span class="hljs-string">"east"</span>
                     }
                 }
             }
@@ -715,115 +714,115 @@ BI.config(<span class="hljs-string">&quot;dec.constant.workbench.panel.tabs&quot
 <h2 id="demo"><a name="demo" class="anchor-navigation-ex-anchor" href="#demo"><i class="fa fa-link" aria-hidden="true"></i></a>Demo</h2>
 <p>The target of this demo is to put the first-level directory under the header and mix the left menu into the directory panel.</p>
 <p>First, we use <em>BI.config</em> to modify the whole layout with our own component.</p>
-<pre><code class="lang-js">BI.config(<span class="hljs-string">&quot;dec.provider.layout&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) </span>{ 
-    provider.setConfig({ 
-        type: <span class="hljs-string">&quot;dec.demo.provider&quot;</span> 
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.layout"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) { 
+    provider.<span class="hljs-title function_">setConfig</span>({ 
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.demo.provider"</span> 
     }); 
     <span class="hljs-keyword">return</span> provider; 
 });
 </code></pre>
-<p>Let&apos;s look at the structure of the component.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> provider = BI.inherit (BI.Widget, { 
+<p>Let's look at the structure of the component.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> provider = <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">inherit</span> (<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, { 
     <span class="hljs-comment">/** 
      * return a data model used by this component 
-     * @returns {*} 
-     * @private 
+     * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">*</span>} 
+     * <span class="hljs-doctag">@private</span> 
      */</span> 
-    _store: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
-        <span class="hljs-keyword">return</span> BI.Models.getModel(<span class="hljs-string">&quot;dec.demo.theme.model&quot;</span>); 
+    <span class="hljs-attr">_store</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { 
+        <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Models</span>.<span class="hljs-title function_">getModel</span>(<span class="hljs-string">"dec.demo.theme.model"</span>); 
     }, 
-    beforeInit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{ 
-        <span class="hljs-keyword">this</span>.store.initData(callback);  }, 
+    <span class="hljs-attr">beforeInit</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) { 
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">store</span>.<span class="hljs-title function_">initData</span>(callback);  }, 
 
-    render:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
+    <span class="hljs-attr">render</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { 
         <span class="hljs-keyword">return</span> { 
-            type: <span class="hljs-string">&quot;bi.absolute&quot;</span>, 
-            items: [ 
-                {  he: { 
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.absolute"</span>, 
+            <span class="hljs-attr">items</span>: [ 
+                {  <span class="hljs-attr">he</span>: { 
                         <span class="hljs-comment">/** 
                          * The first element is also absolute layout. There are two children elements. 
                          * dec.workbench.tabs the tabPane to show reports 
                          * dec.workbench.panel the directory panel 
                          */</span> 
-                        type: <span class="hljs-string">&quot;bi.absolute&quot;</span>, 
-                        items: [ 
-                            {  he: { 
-                                    type: <span class="hljs-string">&quot;dec.workbench.tabs&quot;</span> 
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.absolute"</span>, 
+                        <span class="hljs-attr">items</span>: [ 
+                            {  <span class="hljs-attr">he</span>: { 
+                                    <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.workbench.tabs"</span> 
                                 }, 
-                                top: <span class="hljs-number">0</span>, bottom: <span class="hljs-number">0</span>, right: <span class="hljs-number">0</span>, 
-                                left: <span class="hljs-number">240</span> <span class="hljs-comment">// 240 is the same as the width of &quot;dec.workbench.panel&quot; </span>
-                            }, {  he: { 
-                                    type: <span class="hljs-string">&quot;dec.workbench.panel&quot;</span>, 
-                                    width: <span class="hljs-number">240</span> 
+                                <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>, 
+                                <span class="hljs-attr">left</span>: <span class="hljs-number">240</span> <span class="hljs-comment">// 240 is the same as the width of "dec.workbench.panel" </span>
+                            }, {  <span class="hljs-attr">he</span>: { 
+                                    <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.workbench.panel"</span>, 
+                                    <span class="hljs-attr">width</span>: <span class="hljs-number">240</span> 
                                 }, 
-                                top: <span class="hljs-number">0</span>, bottom: <span class="hljs-number">0</span>, 
-                                left: <span class="hljs-number">0</span> 
+                                <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span>, 
+                                <span class="hljs-attr">left</span>: <span class="hljs-number">0</span> 
                             } 
                         ] 
                     }, 
-                    top: <span class="hljs-number">80</span>, left: <span class="hljs-number">0</span>, right: <span class="hljs-number">0</span>, bottom: <span class="hljs-number">0</span> <span class="hljs-comment">// set top to 80 because there are a header and a directory list above </span>
+                    <span class="hljs-attr">top</span>: <span class="hljs-number">80</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span> <span class="hljs-comment">// set top to 80 because there are a header and a directory list above </span>
                 }, { 
                     <span class="hljs-comment">/** 
                      * use the default component 
-                     */</span>  he: { 
-                        type: <span class="hljs-string">&quot;dec.header&quot;</span> 
+                     */</span>  <span class="hljs-attr">he</span>: { 
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.header"</span> 
                     }, 
-                    height: <span class="hljs-number">40</span>, 
-                    top: <span class="hljs-number">0</span>, left: <span class="hljs-number">0</span>, right: <span class="hljs-number">0</span> 
+                    <span class="hljs-attr">height</span>: <span class="hljs-number">40</span>, 
+                    <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span> 
                 },{ 
                     <span class="hljs-comment">/** 
                      * this one is defined by ourselves 
-                     */</span>  he:{ 
-                        type:<span class="hljs-string">&quot;dec.first.item.list&quot;</span>, 
-                        height: <span class="hljs-number">40</span>, 
-                        layouts: [ 
+                     */</span>  <span class="hljs-attr">he</span>:{ 
+                        <span class="hljs-attr">type</span>:<span class="hljs-string">"dec.first.item.list"</span>, 
+                        <span class="hljs-attr">height</span>: <span class="hljs-number">40</span>, 
+                        <span class="hljs-attr">layouts</span>: [ 
                             { 
-                                type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span> 
+                                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical_adapt"</span> 
                             } 
                         ]  }, 
-                    height:<span class="hljs-number">40</span>, 
-                    top: <span class="hljs-number">40</span>, left: <span class="hljs-number">0</span>, right: <span class="hljs-number">0</span> 
+                    <span class="hljs-attr">height</span>:<span class="hljs-number">40</span>, 
+                    <span class="hljs-attr">top</span>: <span class="hljs-number">40</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span> 
                 } 
             ] 
         } 
     } 
 }); 
-BI.shortcut(<span class="hljs-string">&quot;dec.demo.provider&quot;</span>,provider);
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.demo.provider"</span>,provider);
 </code></pre>
-<p>This component has been explained very clearly by the comment, so I won&#x2019;t explain it in detail here. But notice there is a method <em>_store</em> that hasn&apos;t been introduced before. This method returns a model, which is a new concept. As mentioned before, the component is used to display the front-end UI, but it does not store data, such as the directory tree id. That&apos;s why we introduce a model here.</p>
-<pre><code class="lang-js">;!(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) </span>{ 
-    <span class="hljs-keyword">var</span> Model=BI.inherit(Fix.Model,{ <span class="hljs-comment">// define a model inheriting Fix.Model </span>
-        state:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// define data of the model </span>
+<p>This component has been explained very clearly by the comment, so I won’t explain it in detail here. But notice there is a method <em>_store</em> that hasn't been introduced before. This method returns a model, which is a new concept. As mentioned before, the component is used to display the front-end UI, but it does not store data, such as the directory tree id. That's why we introduce a model here.</p>
+<pre><code class="lang-js">;!(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) { 
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Model</span>=<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-title class_">Fix</span>.<span class="hljs-property">Model</span>,{ <span class="hljs-comment">// define a model inheriting Fix.Model </span>
+        <span class="hljs-attr">state</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { <span class="hljs-comment">// define data of the model </span>
             <span class="hljs-keyword">return</span> { 
                 <span class="hljs-comment">/** 
                  * use this to store the selected directory id 
                  */</span> 
-                selectDirectory:<span class="hljs-string">&quot;&quot;</span> 
+                <span class="hljs-attr">selectDirectory</span>:<span class="hljs-string">""</span> 
             } 
         }, 
         <span class="hljs-comment">/** 
          * use childContext to pass the model data to sub-components 
          */</span> 
-        childContext:[<span class="hljs-string">&quot;selectDirectory&quot;</span>], 
+        <span class="hljs-attr">childContext</span>:[<span class="hljs-string">"selectDirectory"</span>], 
         <span class="hljs-comment">/** 
          * define methods used by components  */</span> 
-        actions:{ 
+        <span class="hljs-attr">actions</span>:{ 
             <span class="hljs-comment">/** 
              * initialize the selectDirectory 
-             * @param callback 
+             * <span class="hljs-doctag">@param</span> callback 
              */</span> 
-            initData:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{ 
-                <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>, o = <span class="hljs-keyword">this</span>.options; 
+            <span class="hljs-attr">initData</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) { 
+                <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>, o = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>; 
                 <span class="hljs-comment">/** 
                  * use the provided method to get all directories under DecCst.DIRECTORY_TREE_ROOT_ID 
                  * notice how we use selectDirectory here: model.xxx 
                  * the usage in a component is the same 
                  */</span> 
-                Dec.Utils.getWorkbenchSubDirectoryById(DecCst.DIRECTORY_TREE_ROOT_ID, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{  <span class="hljs-keyword">var</span> result = res.data; 
-                    <span class="hljs-keyword">if</span>(result&amp;&amp;result.length&gt;<span class="hljs-number">0</span>){ 
-                        self.model.selectDiretory=result[<span class="hljs-number">0</span>].id; 
+                <span class="hljs-title class_">Dec</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getWorkbenchSubDirectoryById</span>(<span class="hljs-title class_">DecCst</span>.<span class="hljs-property">DIRECTORY_TREE_ROOT_ID</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {  <span class="hljs-keyword">var</span> result = res.<span class="hljs-property">data</span>; 
+                    <span class="hljs-keyword">if</span>(result&amp;&amp;result.<span class="hljs-property">length</span>&gt;<span class="hljs-number">0</span>){ 
+                        self.<span class="hljs-property">model</span>.<span class="hljs-property">selectDiretory</span>=result[<span class="hljs-number">0</span>].<span class="hljs-property">id</span>; 
                     } 
-                    callback&amp;&amp;callback(); 
+                    callback&amp;&amp;<span class="hljs-title function_">callback</span>(); 
                 }) 
             } 
         } 
@@ -831,99 +830,99 @@ BI.shortcut(<span class="hljs-string">&quot;dec.demo.provider&quot;</span>,provi
     <span class="hljs-comment">/** 
      * use BI.model to register it 
      */</span> 
-    BI.model(<span class="hljs-string">&quot;dec.demo.theme.model&quot;</span>, Model); 
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">model</span>(<span class="hljs-string">"dec.demo.theme.model"</span>, <span class="hljs-title class_">Model</span>); 
 })(jQuery);
 </code></pre>
-<p>The overall structure is defined in the &quot;dec.demo.provider&quot; component and the horizontally arranged first-level directory also uses a custom component. Let&#x2019;s take a look at this component.</p>
-<pre><code class="lang-js">;!(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) </span>{
-    <span class="hljs-keyword">var</span> firstList=BI.inherit(BI.Widget,{
-        props:{
-            height: <span class="hljs-number">40</span>,
-            layouts: [
+<p>The overall structure is defined in the "dec.demo.provider" component and the horizontally arranged first-level directory also uses a custom component. Let’s take a look at this component.</p>
+<pre><code class="lang-js">;!(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
+    <span class="hljs-keyword">var</span> firstList=<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>,{
+        <span class="hljs-attr">props</span>:{
+            <span class="hljs-attr">height</span>: <span class="hljs-number">40</span>,
+            <span class="hljs-attr">layouts</span>: [
                 {
-                    type: <span class="hljs-string">&quot;bi.center&quot;</span>
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.center"</span>
                 }
             ]
         },
         <span class="hljs-comment">/**
          * this component also use a model
-         * @returns {*}
-         * @private
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">*</span>}
+         * <span class="hljs-doctag">@private</span>
          */</span>
-        _store: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">return</span> BI.Models.getModel(<span class="hljs-string">&quot;dec.first.item.list.model&quot;</span>);
+        <span class="hljs-attr">_store</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Models</span>.<span class="hljs-title function_">getModel</span>(<span class="hljs-string">"dec.first.item.list.model"</span>);
         },
         <span class="hljs-comment">/**
          * call initData from the model
          */</span>
-        beforeInit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{
-            <span class="hljs-keyword">this</span>.store.initData(callback);
+        <span class="hljs-attr">beforeInit</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">store</span>.<span class="hljs-title function_">initData</span>(callback);
         },
         <span class="hljs-comment">/**
          * this is to observe the modified data defined in the corresponding model
-         * e.g. items is defined in &quot;dec.first.item.list.model&quot;. When the value of items changes, the function will be called
+         * e.g. items is defined in "dec.first.item.list.model". When the value of items changes, the function will be called
          * the parameter of the function is the changed value of items
          */</span>
-        watch:{
-            <span class="hljs-string">&quot;items&quot;</span>:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">vals</span>) </span>{
-                <span class="hljs-keyword">this</span>.populate(vals);
+        <span class="hljs-attr">watch</span>:{
+            <span class="hljs-string">"items"</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params">vals</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">populate</span>(vals);
             }
         },
-        render:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>, o = <span class="hljs-keyword">this</span>.options;
+        <span class="hljs-attr">render</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>, o = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
             <span class="hljs-comment">/**
              * create a new bi.button_group, which is provided by default
              * use the element property to mount the button group to this component
-             * @type {*|*|*|*|*}
+             * <span class="hljs-doctag">@type</span> {<span class="hljs-type">*|*|*|*|*</span>}
              */</span>
-            <span class="hljs-keyword">this</span>.buttonGroup = BI.createWidget({
-                element: <span class="hljs-keyword">this</span>,
-                type: <span class="hljs-string">&quot;bi.button_group&quot;</span>,
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">buttonGroup</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">createWidget</span>({
+                <span class="hljs-attr">element</span>: <span class="hljs-variable language_">this</span>,
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.button_group"</span>,
                 <span class="hljs-comment">/**
                  * here set the items for bi.button_group
                  */</span>
-                items: BI.createItems(self.model.items,{
-                    type: <span class="hljs-string">&quot;dec.first.items.button&quot;</span>, <span class="hljs-comment">// the component here is another custom one</span>
-                    height: o.height
+                <span class="hljs-attr">items</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">createItems</span>(self.<span class="hljs-property">model</span>.<span class="hljs-property">items</span>,{
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.first.items.button"</span>, <span class="hljs-comment">// the component here is another custom one</span>
+                    <span class="hljs-attr">height</span>: o.<span class="hljs-property">height</span>
                 }),
-                value: self.model.selectDiretory, <span class="hljs-comment">// use the model&apos;s selectDirectory</span>
-                layouts: o.layouts
+                <span class="hljs-attr">value</span>: self.<span class="hljs-property">model</span>.<span class="hljs-property">selectDiretory</span>, <span class="hljs-comment">// use the model's selectDirectory</span>
+                <span class="hljs-attr">layouts</span>: o.<span class="hljs-property">layouts</span>
             });
-            <span class="hljs-keyword">this</span>.buttonGroup.on(BI.Controller.EVENT_CHANGE, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                self.fireEvent(BI.Controller.EVENT_CHANGE, <span class="hljs-built_in">arguments</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">buttonGroup</span>.<span class="hljs-title function_">on</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Controller</span>.<span class="hljs-property">EVENT_CHANGE</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                self.<span class="hljs-title function_">fireEvent</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Controller</span>.<span class="hljs-property">EVENT_CHANGE</span>, <span class="hljs-variable language_">arguments</span>);
             });
             <span class="hljs-comment">/**
              * add a listener to observe the value change. When the selected button switches, the function will be called.
              * this function uses setSelectDirectory from the model to notify other components
              */</span>
-            <span class="hljs-keyword">this</span>.buttonGroup.on(BI.ButtonGroup.EVENT_CHANGE, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value, obj</span>) </span>{
-                self.store.setSelectDiretory(value)
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">buttonGroup</span>.<span class="hljs-title function_">on</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">ButtonGroup</span>.<span class="hljs-property">EVENT_CHANGE</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">value, obj</span>) {
+                self.<span class="hljs-property">store</span>.<span class="hljs-title function_">setSelectDiretory</span>(value)
             });
         },
         <span class="hljs-comment">/**
          * refresh the button group
-         * @param items
+         * <span class="hljs-doctag">@param</span> <span class="hljs-variable">items</span>
          */</span>
-        populate: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{
-            <span class="hljs-keyword">var</span> o = <span class="hljs-keyword">this</span>.options;
-            <span class="hljs-keyword">this</span>.buttonGroup.populate(BI.createItems(items, {
-                type: <span class="hljs-string">&quot;dec.first.items.button&quot;</span>,
-                height: o.height
+        <span class="hljs-attr">populate</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+            <span class="hljs-keyword">var</span> o = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">buttonGroup</span>.<span class="hljs-title function_">populate</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">createItems</span>(items, {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.first.items.button"</span>,
+                <span class="hljs-attr">height</span>: o.<span class="hljs-property">height</span>
             }));
         }
     })
-    BI.shortcut(<span class="hljs-string">&quot;dec.first.item.list&quot;</span>,firstList)
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.first.item.list"</span>,firstList)
 })(jQuery);
 </code></pre>
 <p>A new model is also used for this component.</p>
-<pre><code class="lang-js">;!(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) </span>{
-    <span class="hljs-keyword">var</span> Model = BI.inherit(Fix.Model, {
+<pre><code class="lang-js">;!(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Model</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-title class_">Fix</span>.<span class="hljs-property">Model</span>, {
         <span class="hljs-comment">/**
-         * @returns {{firstItems: Array}}
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">{firstItems: Array</span>}}
          */</span>
-        state: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-attr">state</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> {
-                firstItems: []
+                <span class="hljs-attr">firstItems</span>: []
             }
         },
         <span class="hljs-comment">/**
@@ -931,368 +930,368 @@ BI.shortcut(<span class="hljs-string">&quot;dec.demo.provider&quot;</span>,provi
          * then this model can use selectDirectory directly
          *
          */</span>
-        context: [<span class="hljs-string">&quot;selectDirectory&quot;</span>],
+        <span class="hljs-attr">context</span>: [<span class="hljs-string">"selectDirectory"</span>],
         <span class="hljs-comment">/**
          * computed is similar to state
          * the property defined in state can be retrieved without a function
          * the property defined in computed should be return value of a function
          */</span>
-        computed: {
+        <span class="hljs-attr">computed</span>: {
             <span class="hljs-comment">/**
              * the items here modify the original firstItems
              * add a property to every item, and set the class of the item when its value equals selectDirectory
              *
-             * @returns {*}
+             * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">*</span>}
              */</span>
-            items: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                <span class="hljs-keyword">var</span> self=<span class="hljs-keyword">this</span>;
-                <span class="hljs-keyword">return</span> BI.map(self.model.firstItems, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) </span>{
-                    <span class="hljs-keyword">var</span> temp={value: item.id};
-                    <span class="hljs-keyword">if</span>(item.id==self.model.selectDirectory){
-                        temp.cls=<span class="hljs-string">&quot;plugin-first-item-select&quot;</span>;
+            <span class="hljs-attr">items</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                <span class="hljs-keyword">var</span> self=<span class="hljs-variable language_">this</span>;
+                <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">map</span>(self.<span class="hljs-property">model</span>.<span class="hljs-property">firstItems</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {
+                    <span class="hljs-keyword">var</span> temp={<span class="hljs-attr">value</span>: item.<span class="hljs-property">id</span>};
+                    <span class="hljs-keyword">if</span>(item.<span class="hljs-property">id</span>==self.<span class="hljs-property">model</span>.<span class="hljs-property">selectDirectory</span>){
+                        temp.<span class="hljs-property">cls</span>=<span class="hljs-string">"plugin-first-item-select"</span>;
                     }
-                    <span class="hljs-keyword">return</span> BI.extend(temp, item);
+                    <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">extend</span>(temp, item);
                 });
             }
         },
         <span class="hljs-comment">/**
          * define several methods
          */</span>
-        actions: {
-            initData: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{
-                <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>, o = <span class="hljs-keyword">this</span>.options;
-                Dec.Utils.getWorkbenchSubDirectoryById(DecCst.DIRECTORY_TREE_ROOT_ID, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
-                    self.model.firstItems=res.data;
-                    callback&amp;&amp;callback();
+        <span class="hljs-attr">actions</span>: {
+            <span class="hljs-attr">initData</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) {
+                <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>, o = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
+                <span class="hljs-title class_">Dec</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getWorkbenchSubDirectoryById</span>(<span class="hljs-title class_">DecCst</span>.<span class="hljs-property">DIRECTORY_TREE_ROOT_ID</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+                    self.<span class="hljs-property">model</span>.<span class="hljs-property">firstItems</span>=res.<span class="hljs-property">data</span>;
+                    callback&amp;&amp;<span class="hljs-title function_">callback</span>();
                 })
             },
             <span class="hljs-comment">/**
              * to set the value of selectDirectory
-             * @param v
+             * <span class="hljs-doctag">@param</span> <span class="hljs-variable">v</span>
              */</span>
-            setSelectDirectory:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
-                <span class="hljs-keyword">this</span>.model.selectDirectory=v;
+            <span class="hljs-attr">setSelectDirectory</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">selectDirectory</span>=v;
             }
         }
     })
-    BI.model(<span class="hljs-string">&quot;dec.first.item.list.model&quot;</span>, Model);
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">model</span>(<span class="hljs-string">"dec.first.item.list.model"</span>, <span class="hljs-title class_">Model</span>);
 })(jQuery);
 </code></pre>
-<p>Back to the &quot;dec.first.item.list&quot; component, here is also a custom button component &quot;dec.first.items.button&quot;.</p>
+<p>Back to the "dec.first.item.list" component, here is also a custom button component "dec.first.items.button".</p>
 <p>Here is the implementation of this button component.</p>
-<pre><code class="lang-js">;!(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) </span>{
+<pre><code class="lang-js">;!(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
     <span class="hljs-comment">/**
      * the button inherits BI.BasicButton
      */</span>
-    <span class="hljs-keyword">var</span> listButton = BI.inherit(BI.BasicButton, {
+    <span class="hljs-keyword">var</span> listButton = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">BasicButton</span>, {
 
-        props: {
-            isShadowShowingOnSelected: <span class="hljs-literal">true</span>,
-            once: <span class="hljs-literal">true</span>,
-            readonly: <span class="hljs-literal">true</span>,
-            height: <span class="hljs-number">80</span>,
-            width: <span class="hljs-number">80</span>,
-            cls:<span class="hljs-string">&quot;plugin-first-item-unselect&quot;</span> <span class="hljs-comment">// the class when it is unselected</span>
+        <span class="hljs-attr">props</span>: {
+            <span class="hljs-attr">isShadowShowingOnSelected</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">once</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">readonly</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">80</span>,
+            <span class="hljs-attr">width</span>: <span class="hljs-number">80</span>,
+            <span class="hljs-attr">cls</span>:<span class="hljs-string">"plugin-first-item-unselect"</span> <span class="hljs-comment">// the class when it is unselected</span>
         },
-        render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>, o = <span class="hljs-keyword">this</span>.options;
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>, o = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
             <span class="hljs-comment">/**
              * add a label to show text
-             * @type {*|*|*|*|*}
+             * <span class="hljs-doctag">@type</span> {<span class="hljs-type">*|*|*|*|*</span>}
              */</span>
-            <span class="hljs-keyword">this</span>.text = BI.createWidget({
-                type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                cls:o.cls,
-                element: <span class="hljs-keyword">this</span>,
-                text: o.text,
-                height: o.height,
-                width: o.width
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">text</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">createWidget</span>({
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                <span class="hljs-attr">cls</span>:o.<span class="hljs-property">cls</span>,
+                <span class="hljs-attr">element</span>: <span class="hljs-variable language_">this</span>,
+                <span class="hljs-attr">text</span>: o.<span class="hljs-property">text</span>,
+                <span class="hljs-attr">height</span>: o.<span class="hljs-property">height</span>,
+                <span class="hljs-attr">width</span>: o.<span class="hljs-property">width</span>
             })
         },
-        setText: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
-            listButton.superclass.setSelected.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+        <span class="hljs-attr">setText</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) {
+            listButton.<span class="hljs-property">superclass</span>.<span class="hljs-property">setSelected</span>.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);
         },
-        setSelected: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
-            listButton.superclass.setSelected.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+        <span class="hljs-attr">setSelected</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) {
+            listButton.<span class="hljs-property">superclass</span>.<span class="hljs-property">setSelected</span>.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);
         }
     });
-    BI.shortcut(<span class="hljs-string">&quot;dec.first.items.button&quot;</span>,listButton)
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.first.items.button"</span>,listButton)
 })(jQuery);
 </code></pre>
-<p>Now the components of the horizontally arranged first-level directories are implemented. The next thing to deal with is the directory tree. The current directory tree uses the built-in &quot;dec.workbench.panel&quot; component, but this will display all the directories. However the requirement is to display the sub-nodes of the first-level directory currently selected. Thus we must set up a component to replace it.</p>
-<pre><code class="lang-js">;!(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>)</span>{
-    <span class="hljs-keyword">var</span> Nav = BI.inherit(BI.Widget, {
+<p>Now the components of the horizontally arranged first-level directories are implemented. The next thing to deal with is the directory tree. The current directory tree uses the built-in "dec.workbench.panel" component, but this will display all the directories. However the requirement is to display the sub-nodes of the first-level directory currently selected. Thus we must set up a component to replace it.</p>
+<pre><code class="lang-js">;!(<span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>){
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Nav</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
 
-        props: {
-            baseCls: <span class="hljs-string">&quot;dec-management-nav dec-popover&quot;</span>,
-            pinedPane: <span class="hljs-literal">false</span>
+        <span class="hljs-attr">props</span>: {
+            <span class="hljs-attr">baseCls</span>: <span class="hljs-string">"dec-management-nav dec-popover"</span>,
+            <span class="hljs-attr">pinedPane</span>: <span class="hljs-literal">false</span>
         },
         <span class="hljs-comment">/**
          * set the model
-         * @returns {*}
-         * @private
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">*</span>}
+         * <span class="hljs-doctag">@private</span>
          */</span>
-        _store: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">return</span> BI.Models.getModel(<span class="hljs-string">&quot;dec.model.modules&quot;</span>);
+        <span class="hljs-attr">_store</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Models</span>.<span class="hljs-title function_">getModel</span>(<span class="hljs-string">"dec.model.modules"</span>);
         },
         <span class="hljs-comment">/**
          * add listeners
          */</span>
-        watch: {
-            selectedManageNav: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
-                <span class="hljs-keyword">this</span>.tree.setValue(v);
+        <span class="hljs-attr">watch</span>: {
+            <span class="hljs-attr">selectedManageNav</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">tree</span>.<span class="hljs-title function_">setValue</span>(v);
             },
-            items: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                <span class="hljs-keyword">this</span>.populate(<span class="hljs-keyword">this</span>.model.items);
+            <span class="hljs-attr">items</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">populate</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">items</span>);
             }
         },
 
-        beforeInit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">render</span>) </span>{
-            <span class="hljs-keyword">this</span>.store.initData(render);
+        <span class="hljs-attr">beforeInit</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">render</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">store</span>.<span class="hljs-title function_">initData</span>(render);
         },
 
-        render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>, o = <span class="hljs-keyword">this</span>.options;
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>, o = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
             <span class="hljs-keyword">return</span> {
                 <span class="hljs-comment">// vertical layout</span>
-                type: <span class="hljs-string">&quot;bi.vertical&quot;</span>,
-                hgap: <span class="hljs-number">10</span>,
-                items: [
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical"</span>,
+                <span class="hljs-attr">hgap</span>: <span class="hljs-number">10</span>,
+                <span class="hljs-attr">items</span>: [
                     {
-                        type: <span class="hljs-string">&quot;bi.custom_tree&quot;</span>,
-                        cls: <span class="hljs-string">&quot;dec-text&quot;</span>,
-                        ref: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) </span>{ <span class="hljs-comment">//_ref refers to this sub-component</span>
-                            self.tree = _ref;
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.custom_tree"</span>,
+                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"dec-text"</span>,
+                        <span class="hljs-attr">ref</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) { <span class="hljs-comment">//_ref refers to this sub-component</span>
+                            self.<span class="hljs-property">tree</span> = _ref;
                         },
-                        el: {
-                            type: <span class="hljs-string">&quot;bi.loader&quot;</span>,
-                            next: <span class="hljs-literal">false</span>,
-                            el: {
-                                type: <span class="hljs-string">&quot;bi.button_tree&quot;</span>,
-                                chooseType: <span class="hljs-number">0</span>,
-                                layouts: [{
-                                    type: <span class="hljs-string">&quot;bi.vertical&quot;</span>,
-                                    vgap: <span class="hljs-number">5</span>
+                        <span class="hljs-attr">el</span>: {
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.loader"</span>,
+                            <span class="hljs-attr">next</span>: <span class="hljs-literal">false</span>,
+                            <span class="hljs-attr">el</span>: {
+                                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.button_tree"</span>,
+                                <span class="hljs-attr">chooseType</span>: <span class="hljs-number">0</span>,
+                                <span class="hljs-attr">layouts</span>: [{
+                                    <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical"</span>,
+                                    <span class="hljs-attr">vgap</span>: <span class="hljs-number">5</span>
                                 }]
                             }
                         },
-                        listeners: [{ <span class="hljs-comment">// add a value change event to the tree. Open a tab when the event happens</span>
-                            eventName: <span class="hljs-string">&quot;EVENT_CHANGE&quot;</span>,
-                            action: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                                self.store.openTab(<span class="hljs-keyword">this</span>.getValue()[<span class="hljs-number">0</span>]);
+                        <span class="hljs-attr">listeners</span>: [{ <span class="hljs-comment">// add a value change event to the tree. Open a tab when the event happens</span>
+                            <span class="hljs-attr">eventName</span>: <span class="hljs-string">"EVENT_CHANGE"</span>,
+                            <span class="hljs-attr">action</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                                self.<span class="hljs-property">store</span>.<span class="hljs-title function_">openTab</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getValue</span>()[<span class="hljs-number">0</span>]);
                             }
                         }],
-                        itemsCreator: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">op, callback</span>) </span>{
-                            <span class="hljs-keyword">if</span> (!op.node) {
-                                self.store.initRootNodes(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{
-                                    callback(items);
+                        <span class="hljs-attr">itemsCreator</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">op, callback</span>) {
+                            <span class="hljs-keyword">if</span> (!op.<span class="hljs-property">node</span>) {
+                                self.<span class="hljs-property">store</span>.<span class="hljs-title function_">initRootNodes</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+                                    <span class="hljs-title function_">callback</span>(items);
                                 });
                             } <span class="hljs-keyword">else</span> {
-                                self.store.getSubItemsByPId(op.node.id, op.node.layer + <span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{
-                                    callback(items);
+                                self.<span class="hljs-property">store</span>.<span class="hljs-title function_">getSubItemsByPId</span>(op.<span class="hljs-property">node</span>.<span class="hljs-property">id</span>, op.<span class="hljs-property">node</span>.<span class="hljs-property">layer</span> + <span class="hljs-number">1</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+                                    <span class="hljs-title function_">callback</span>(items);
                                 });
                             }
                         },
-                        items: <span class="hljs-keyword">this</span>._formatItems(<span class="hljs-keyword">this</span>.model.items, <span class="hljs-number">0</span>)
+                        <span class="hljs-attr">items</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_formatItems</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">items</span>, <span class="hljs-number">0</span>)
                     }
                 ]
             };
         },
 
         <span class="hljs-comment">// parse the tree nodes recursively</span>
-        _formatItems: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nodes, layer</span>) </span>{
-            <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
-            BI.each(nodes, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">i, node</span>) </span>{
-                <span class="hljs-keyword">var</span> extend = {layer: layer};
-                <span class="hljs-keyword">if</span> (node.isParent === <span class="hljs-literal">true</span> || BI.isNotEmptyArray(node.children)) {
-                    extend.type = <span class="hljs-string">&quot;dec.nav.node&quot;</span>;
-                    BI.defaults(node, extend);
-                    self._formatItems(node.children, layer + <span class="hljs-number">1</span>);
+        <span class="hljs-attr">_formatItems</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">nodes, layer</span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+            <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">each</span>(nodes, <span class="hljs-keyword">function</span> (<span class="hljs-params">i, node</span>) {
+                <span class="hljs-keyword">var</span> extend = {<span class="hljs-attr">layer</span>: layer};
+                <span class="hljs-keyword">if</span> (node.<span class="hljs-property">isParent</span> === <span class="hljs-literal">true</span> || <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">isNotEmptyArray</span>(node.<span class="hljs-property">children</span>)) {
+                    extend.<span class="hljs-property">type</span> = <span class="hljs-string">"dec.nav.node"</span>;
+                    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">defaults</span>(node, extend);
+                    self.<span class="hljs-title function_">_formatItems</span>(node.<span class="hljs-property">children</span>, layer + <span class="hljs-number">1</span>);
                 } <span class="hljs-keyword">else</span> {
-                    extend.type = <span class="hljs-string">&quot;dec.nav.item&quot;</span>;
-                    BI.defaults(node, extend);
+                    extend.<span class="hljs-property">type</span> = <span class="hljs-string">"dec.nav.item"</span>;
+                    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">defaults</span>(node, extend);
                 }
             });
             <span class="hljs-keyword">return</span> nodes;
         },
 
-        populate: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nodes</span>) </span>{
-            nodes = <span class="hljs-keyword">this</span>._formatItems(nodes, <span class="hljs-number">0</span>);
-            <span class="hljs-keyword">this</span>.tree.populate(nodes);
+        <span class="hljs-attr">populate</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">nodes</span>) {
+            nodes = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_formatItems</span>(nodes, <span class="hljs-number">0</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">tree</span>.<span class="hljs-title function_">populate</span>(nodes);
         }
     });
-    Nav.EVENT_VALUE_CHANGE = <span class="hljs-string">&quot;EVENT_VALUE_CHANGE&quot;</span>;
-    BI.shortcut(<span class="hljs-string">&quot;my.theme.directory&quot;</span>, Nav);
+    <span class="hljs-title class_">Nav</span>.<span class="hljs-property">EVENT_VALUE_CHANGE</span> = <span class="hljs-string">"EVENT_VALUE_CHANGE"</span>;
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"my.theme.directory"</span>, <span class="hljs-title class_">Nav</span>);
 
-    BI.config(<span class="hljs-string">&quot;dec.workbench.panel&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{
-        config.type = <span class="hljs-string">&quot;my.theme.directory&quot;</span>;
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.workbench.panel"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) {
+        config.<span class="hljs-property">type</span> = <span class="hljs-string">"my.theme.directory"</span>;
         <span class="hljs-keyword">return</span> config;
     });
 })(jQuery);
 </code></pre>
-<pre><code class="lang-js">;!(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>)</span>{
-    <span class="hljs-keyword">var</span> Model = BI.inherit(Fix.Model, {
-        _init: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">this</span>.platform = Dec.globleModel;
+<pre><code class="lang-js">;!(<span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>){
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Model</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-title class_">Fix</span>.<span class="hljs-property">Model</span>, {
+        <span class="hljs-attr">_init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">platform</span> = <span class="hljs-title class_">Dec</span>.<span class="hljs-property">globleModel</span>;
         },
 
-        state: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-attr">state</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
             <span class="hljs-keyword">return</span> {
-                modules: [],
-                reports: []
+                <span class="hljs-attr">modules</span>: [],
+                <span class="hljs-attr">reports</span>: []
             };
         },
 
-        context: [<span class="hljs-string">&quot;isPin&quot;</span>,<span class="hljs-string">&quot;selectDirectory&quot;</span>],<span class="hljs-comment">// inherit selectDirectory</span>
-        watch:{
-            selectDirectory:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// set listener to selectDirectory. Reload directories when selectDirectory changes</span>
-                <span class="hljs-keyword">this</span>.initReports();
+        <span class="hljs-attr">context</span>: [<span class="hljs-string">"isPin"</span>,<span class="hljs-string">"selectDirectory"</span>],<span class="hljs-comment">// inherit selectDirectory</span>
+        <span class="hljs-attr">watch</span>:{
+            <span class="hljs-attr">selectDirectory</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { <span class="hljs-comment">// set listener to selectDirectory. Reload directories when selectDirectory changes</span>
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initReports</span>();
             }
         },
-        computed: {
-            selectedManageNav: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.platform.selectedManageNav;
+        <span class="hljs-attr">computed</span>: {
+            <span class="hljs-attr">selectedManageNav</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">platform</span>.<span class="hljs-property">selectedManageNav</span>;
             },
-            items: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
-                <span class="hljs-keyword">var</span> constant = BI.Constants.getConstant(<span class="hljs-string">&quot;dec.constant.management.navigation&quot;</span>);
+            <span class="hljs-attr">items</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+                <span class="hljs-keyword">var</span> constant = <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Constants</span>.<span class="hljs-title function_">getConstant</span>(<span class="hljs-string">"dec.constant.management.navigation"</span>);
                 <span class="hljs-keyword">var</span> results = [];
 
-                results = BI.concat(results, <span class="hljs-keyword">this</span>.model.reports);
+                results = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">concat</span>(results, <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">reports</span>);
 
-                results.push({
-                    id: <span class="hljs-string">&quot;decision-management-root&quot;</span>,
-                    value: <span class="hljs-string">&quot;decision-management-root&quot;</span>,
-                    isParent: <span class="hljs-literal">true</span>,
-                    open: <span class="hljs-literal">true</span>,
-                    cls: <span class="hljs-string">&quot;setting-font&quot;</span>,
-                    text: BI.i18nText(<span class="hljs-string">&quot;Dec-Authority_PlatformModule&quot;</span>)
+                results.<span class="hljs-title function_">push</span>({
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">"decision-management-root"</span>,
+                    <span class="hljs-attr">value</span>: <span class="hljs-string">"decision-management-root"</span>,
+                    <span class="hljs-attr">isParent</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,
+                    <span class="hljs-attr">cls</span>: <span class="hljs-string">"setting-font"</span>,
+                    <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Dec-Authority_PlatformModule"</span>)
                 });
 
-                BI.each(constant, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) </span>{
-                    <span class="hljs-keyword">var</span> match = BI.find(self.model.modules, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, i</span>) </span>{
-                        <span class="hljs-keyword">return</span> item.id === i.id;
+                <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">each</span>(constant, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {
+                    <span class="hljs-keyword">var</span> match = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">find</span>(self.<span class="hljs-property">model</span>.<span class="hljs-property">modules</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, i</span>) {
+                        <span class="hljs-keyword">return</span> item.<span class="hljs-property">id</span> === i.<span class="hljs-property">id</span>;
                     });
                     <span class="hljs-keyword">if</span> (match) {
-                        results.push(BI.extend({}, match, item));
+                        results.<span class="hljs-title function_">push</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">extend</span>({}, match, item));
                     }
                 });
 
 
-                BI.each(results, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) </span>{
-                    <span class="hljs-keyword">if</span> (item.value === self.platform.selectedManageNav &amp;&amp; (item.pId === <span class="hljs-string">&quot;decision-management-maintenance&quot;</span>)) {
-                        BI.some(results, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, i</span>) </span>{
-                            <span class="hljs-keyword">if</span> (i.id === <span class="hljs-string">&quot;decision-management-maintenance&quot;</span>) {
-                                i.open = <span class="hljs-literal">true</span>;
+                <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">each</span>(results, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {
+                    <span class="hljs-keyword">if</span> (item.<span class="hljs-property">value</span> === self.<span class="hljs-property">platform</span>.<span class="hljs-property">selectedManageNav</span> &amp;&amp; (item.<span class="hljs-property">pId</span> === <span class="hljs-string">"decision-management-maintenance"</span>)) {
+                        <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">some</span>(results, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, i</span>) {
+                            <span class="hljs-keyword">if</span> (i.<span class="hljs-property">id</span> === <span class="hljs-string">"decision-management-maintenance"</span>) {
+                                i.<span class="hljs-property">open</span> = <span class="hljs-literal">true</span>;
                                 <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
                             }
                         });
                     }
-                    <span class="hljs-keyword">if</span> (item.value === self.model.selectedManageNav) {
-                        item.selected = <span class="hljs-literal">true</span>;
+                    <span class="hljs-keyword">if</span> (item.<span class="hljs-property">value</span> === self.<span class="hljs-property">model</span>.<span class="hljs-property">selectedManageNav</span>) {
+                        item.<span class="hljs-property">selected</span> = <span class="hljs-literal">true</span>;
                     }
-                    <span class="hljs-keyword">if</span> (!item.pId) {
-                        item.pId = <span class="hljs-string">&quot;management&quot;</span>;
-                    }
-                });
-                BI.each(constant, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) </span>{
-                    <span class="hljs-keyword">if</span> (item.dev) {
-                        results.push(BI.extend({}, item));
+                    <span class="hljs-keyword">if</span> (!item.<span class="hljs-property">pId</span>) {
+                        item.<span class="hljs-property">pId</span> = <span class="hljs-string">"management"</span>;
                     }
                 });
-                <span class="hljs-keyword">return</span> BI.Tree.transformToTreeFormat(results);
+                <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">each</span>(constant, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {
+                    <span class="hljs-keyword">if</span> (item.<span class="hljs-property">dev</span>) {
+                        results.<span class="hljs-title function_">push</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">extend</span>({}, item));
+                    }
+                });
+                <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Tree</span>.<span class="hljs-title function_">transformToTreeFormat</span>(results);
             }
         },
-        actions: {
+        <span class="hljs-attr">actions</span>: {
             <span class="hljs-comment">/**
              * initialization
-             * @param callback
+             * <span class="hljs-doctag">@param</span> <span class="hljs-variable">callback</span>
              */</span>
-            initData: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{
-                <span class="hljs-keyword">this</span>.initDecisionModules();
-                <span class="hljs-keyword">this</span>.initReports(callback);
+            <span class="hljs-attr">initData</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initDecisionModules</span>();
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initReports</span>(callback);
             },
 
-            initDecisionModules: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
-                Dec.Plugin.getManagementModules(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">modules</span>) </span>{
-                    self.model.modules = modules;
+            <span class="hljs-attr">initDecisionModules</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+                <span class="hljs-title class_">Dec</span>.<span class="hljs-property">Plugin</span>.<span class="hljs-title function_">getManagementModules</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">modules</span>) {
+                    self.<span class="hljs-property">model</span>.<span class="hljs-property">modules</span> = modules;
                 });
             },
             <span class="hljs-comment">/**
              * initial the directories
-             * @param callback
+             * <span class="hljs-doctag">@param</span> <span class="hljs-variable">callback</span>
              */</span>
-            initReports: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{
-                <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
-                <span class="hljs-keyword">var</span> parent=self.model.selectDiretory;
-                <span class="hljs-keyword">if</span>(BI.isEmptyString(parent)){
-                    parent=DecCst.DIRECTORY_TREE_ROOT_ID;
+            <span class="hljs-attr">initReports</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) {
+                <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+                <span class="hljs-keyword">var</span> parent=self.<span class="hljs-property">model</span>.<span class="hljs-property">selectDiretory</span>;
+                <span class="hljs-keyword">if</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">isEmptyString</span>(parent)){
+                    parent=<span class="hljs-title class_">DecCst</span>.<span class="hljs-property">DIRECTORY_TREE_ROOT_ID</span>;
                 }
-                Dec.Utils.getWorkbenchSubDirectoryById(parent, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
-                    self.model.reports = self._formatReportItems(res.data);
-                    callback&amp;&amp;callback();
+                <span class="hljs-title class_">Dec</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getWorkbenchSubDirectoryById</span>(parent, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+                    self.<span class="hljs-property">model</span>.<span class="hljs-property">reports</span> = self.<span class="hljs-title function_">_formatReportItems</span>(res.<span class="hljs-property">data</span>);
+                    callback&amp;&amp;<span class="hljs-title function_">callback</span>();
                 });
             },
 
-            getSubItemsByPId: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">pId, layer, callback</span>) </span>{
-                <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
-                Dec.Plugin.getEntriesByPid(pId, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
-                    BI.some(self.model.reports, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) </span>{
-                        <span class="hljs-keyword">if</span> (item.id === pId) {
-                            item.open = <span class="hljs-literal">true</span>;
+            <span class="hljs-attr">getSubItemsByPId</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">pId, layer, callback</span>) {
+                <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+                <span class="hljs-title class_">Dec</span>.<span class="hljs-property">Plugin</span>.<span class="hljs-title function_">getEntriesByPid</span>(pId, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+                    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">some</span>(self.<span class="hljs-property">model</span>.<span class="hljs-property">reports</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {
+                        <span class="hljs-keyword">if</span> (item.<span class="hljs-property">id</span> === pId) {
+                            item.<span class="hljs-property">open</span> = <span class="hljs-literal">true</span>;
                             <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
                         }
                     });
-                    self.model.reports = self.model.reports.concat(self._formatReportItems(res.data));
+                    self.<span class="hljs-property">model</span>.<span class="hljs-property">reports</span> = self.<span class="hljs-property">model</span>.<span class="hljs-property">reports</span>.<span class="hljs-title function_">concat</span>(self.<span class="hljs-title function_">_formatReportItems</span>(res.<span class="hljs-property">data</span>));
                 });
             },
             <span class="hljs-comment">/**
              * the method to open a tab
-             * @param tab
+             * <span class="hljs-doctag">@param</span> <span class="hljs-variable">tab</span>
              */</span>
-            openTab: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">tab</span>) </span>{
-                <span class="hljs-keyword">var</span> <span class="hljs-built_in">module</span> = BI.find(BI.Constants.getConstant(<span class="hljs-string">&quot;dec.constant.management.navigation&quot;</span>), <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) </span>{
-                    <span class="hljs-keyword">return</span> item.value === tab;
+            <span class="hljs-attr">openTab</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">tab</span>) {
+                <span class="hljs-keyword">var</span> <span class="hljs-variable language_">module</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">find</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Constants</span>.<span class="hljs-title function_">getConstant</span>(<span class="hljs-string">"dec.constant.management.navigation"</span>), <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {
+                    <span class="hljs-keyword">return</span> item.<span class="hljs-property">value</span> === tab;
                 });
-                <span class="hljs-keyword">var</span> report = BI.find(<span class="hljs-keyword">this</span>.model.reports, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) </span>{
-                    <span class="hljs-keyword">return</span> item.value === tab;
+                <span class="hljs-keyword">var</span> report = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">find</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">reports</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {
+                    <span class="hljs-keyword">return</span> item.<span class="hljs-property">value</span> === tab;
                 });
-                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">module</span>) {
-                    BI.Services.getService(<span class="hljs-string">&quot;dec.service.tabs&quot;</span>).addItem(<span class="hljs-built_in">module</span>);
+                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">module</span>) {
+                    <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.tabs"</span>).<span class="hljs-title function_">addItem</span>(<span class="hljs-variable language_">module</span>);
                 } <span class="hljs-keyword">else</span> {
-                    BI.Services.getService(<span class="hljs-string">&quot;dec.service.tabs&quot;</span>).addItem(report);
+                    <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.tabs"</span>).<span class="hljs-title function_">addItem</span>(report);
                 }
             }
         },
 
-        _formatReportItems: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nodes</span>) </span>{
-            <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
-            <span class="hljs-keyword">var</span> iconClsMap = BI.Constants.getConstant(<span class="hljs-string">&quot;dec.constant.look.icons.map&quot;</span>);
-            <span class="hljs-keyword">var</span> temps = BI.deepClone(nodes);
-            BI.each(temps, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">i, node</span>) </span>{
+        <span class="hljs-attr">_formatReportItems</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">nodes</span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+            <span class="hljs-keyword">var</span> iconClsMap = <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Constants</span>.<span class="hljs-title function_">getConstant</span>(<span class="hljs-string">"dec.constant.look.icons.map"</span>);
+            <span class="hljs-keyword">var</span> temps = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">deepClone</span>(nodes);
+            <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">each</span>(temps, <span class="hljs-keyword">function</span> (<span class="hljs-params">i, node</span>) {
                 <span class="hljs-keyword">var</span> extend = {
-                    value: node.id
+                    <span class="hljs-attr">value</span>: node.<span class="hljs-property">id</span>
                 };
-                <span class="hljs-keyword">var</span> cls = iconClsMap[node.nodeIcon];
+                <span class="hljs-keyword">var</span> cls = iconClsMap[node.<span class="hljs-property">nodeIcon</span>];
                 <span class="hljs-keyword">if</span> (cls) {
-                    extend.iconCls = cls;
+                    extend.<span class="hljs-property">iconCls</span> = cls;
                 } <span class="hljs-keyword">else</span> {
-                    extend.iconCls = node.isParent ? <span class="hljs-string">&quot;dir-panel-folder-font&quot;</span> : <span class="hljs-string">&quot;dir-panel-template-font&quot;</span>;
+                    extend.<span class="hljs-property">iconCls</span> = node.<span class="hljs-property">isParent</span> ? <span class="hljs-string">"dir-panel-folder-font"</span> : <span class="hljs-string">"dir-panel-template-font"</span>;
                 }
-                BI.defaults(node, extend);
+                <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">defaults</span>(node, extend);
             });
             <span class="hljs-keyword">return</span> temps;
         }
     });
-    BI.model(<span class="hljs-string">&quot;dec.model.modules&quot;</span>, Model);
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">model</span>(<span class="hljs-string">"dec.model.modules"</span>, <span class="hljs-title class_">Model</span>);
 })(jQuery);
 </code></pre>
 <p>Also, we can import other JS files in a JS file with this:</p>
-<pre><code class="lang-js">BI.$<span class="hljs-keyword">import</span>(Dec.fineServletURL+<span class="hljs-string">&quot;/file?path=/com/fr/plugin/theme/list/button.js&quot;</span>);
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.$import(<span class="hljs-title class_">Dec</span>.<span class="hljs-property">fineServletURL</span>+<span class="hljs-string">"/file?path=/com/fr/plugin/theme/list/button.js"</span>);
 </code></pre>
 <p>Finally, our new theme is successfully created.</p>
-<p><a href="images/result.png" data-lightbox="c3ac0f76-acf2-4417-a982-8088482bb52a" data-title="result"><img src="images/result.png" alt="result"></a></p>
+<p><a href="images/result.png" data-lightbox="e73003cf-4e8b-41fe-bdae-1ba69e4f1b78" data-title="result"><img src="images/result.png" alt="result"></img></a></p>
 <p>The full code of this example is placed here: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-theme-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-theme-demo</a></p>
 <div id="gitalk-container"></div>
                                 
@@ -1337,12 +1336,56 @@ BI.shortcut(<span class="hljs-string">&quot;dec.demo.provider&quot;</span>,provi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Theme","level":"2.18","depth":1,"next":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"path":"tutorial/chapter_19/chapter_19.md","ref":"tutorial/chapter_19/chapter_19.md","articles":[]},"previous":{"title":"Advanced Tutorial - Widget","level":"2.17","depth":1,"path":"tutorial/chapter_17/chapter_17.md","ref":"tutorial/chapter_17/chapter_17.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_18/chapter_18.md","mtime":"2020-12-30T08:32:37.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Theme","level":"2.18","depth":1,"next":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"path":"tutorial/chapter_19/chapter_19.md","ref":"tutorial/chapter_19/chapter_19.md","articles":[]},"previous":{"title":"Advanced Tutorial - Widget","level":"2.17","depth":1,"path":"tutorial/chapter_17/chapter_17.md","ref":"tutorial/chapter_17/chapter_17.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_18/chapter_18.md","mtime":"2026-04-07T06:04:11.297Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -1387,11 +1430,7 @@ BI.shortcut(<span class="hljs-string">&quot;dec.demo.provider&quot;</span>,provi
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

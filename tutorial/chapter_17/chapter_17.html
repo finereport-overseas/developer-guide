@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Advanced Tutorial - Widget · GitBook</title>
+        <title>Advanced Tutorial - Widget · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -464,16 +463,16 @@
 <h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
 <p>This chapter introduces how to add a custom-defined widget to the FineReport designer.</p>
 <h2 id="javascriptfilehandler--cssfilehandler"><a name="javascriptfilehandler--cssfilehandler" class="anchor-navigation-ex-anchor" href="#javascriptfilehandler--cssfilehandler"><i class="fa fa-link" aria-hidden="true"></i></a>JavaScriptFileHandler &amp; CssFileHandler</h2>
-<p>Before talking about the widget providers, let&apos;s look at these two: <em>JavaScriptFileHandler</em> and <em>CssFileHandler</em>. In <a href="../chapter_7/chapter_7.html">Beginner Tutorial - Include your JS&amp;CSS</a>, we know that the JS and CSS files are injected into the platform through <em>WebResourceProvider</em>, but we haven&apos;t known how to inject them into the report display. This is what <em>JavaScriptFileHandler</em> and <em>CssFileHandler</em> for.</p>
+<p>Before talking about the widget providers, let's look at these two: <em>JavaScriptFileHandler</em> and <em>CssFileHandler</em>. In <a href="../chapter_7/chapter_7.html">Beginner Tutorial - Include your JS&amp;CSS</a>, we know that the JS and CSS files are injected into the platform through <em>WebResourceProvider</em>, but we haven't known how to inject them into the report display. This is what <em>JavaScriptFileHandler</em> and <em>CssFileHandler</em> for.</p>
 <h3 id="javascriptfilehandler"><a name="javascriptfilehandler" class="anchor-navigation-ex-anchor" href="#javascriptfilehandler"><i class="fa fa-link" aria-hidden="true"></i></a>JavaScriptFileHandler</h3>
 <p>This is to import the JS file when displaying a report.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">JavaScriptFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebFileHandler</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">JavaScriptFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WebFileHandler</span> {
 
-    String XML_TAG = <span class="hljs-string">&quot;JavaScriptFileHandler&quot;</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"JavaScriptFileHandler"</span>;
 
-    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
 }
 </code></pre>
 <p>The interface itself does not add new methods. The method needed to implement is defined in <em>WebFileHandler</em>. It returns an array of paths to custom JS files to support importing multiple JS files.</p>
@@ -481,76 +480,76 @@
 
 <span class="hljs-keyword">import</span> com.fr.stable.fun.impl.AbstractJavaScriptFileHandler;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReportJavaScriptFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractJavaScriptFileHandler</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ReportJavaScriptFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractJavaScriptFileHandler</span> {
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> String[] pathsForFiles() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{<span class="hljs-string">&quot;/com/fr/plugin/web/js/report/style.text.js&quot;</span>};
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{<span class="hljs-string">"/com/fr/plugin/web/js/report/style.text.js"</span>};
     }
 }
 </code></pre>
 <p>To register the implementation:</p>
 <pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- register in the core module --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">JavaScriptFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.xxx.youclassname&quot;</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">JavaScriptFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.youclassname"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- register in the form module --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">extra-form</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">JavaScriptFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.xxx.youclassname&quot;</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">JavaScriptFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.youclassname"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-form</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- register in the report module --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">JavaScriptFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.xxx.youclassname&quot;</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">JavaScriptFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.youclassname"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
 </code></pre>
 <h3 id="cssfilehandler"><a name="cssfilehandler" class="anchor-navigation-ex-anchor" href="#cssfilehandler"><i class="fa fa-link" aria-hidden="true"></i></a>CssFileHandler</h3>
 <p><em>CssFileHandler</em> is much like <em>JavaScriptFileHandler</em>, except that it applies to CSS files.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CssFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebFileHandler</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CssFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WebFileHandler</span> {
 
-    String XML_TAG = <span class="hljs-string">&quot;CssFileHandler&quot;</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CssFileHandler"</span>;
 
-    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
 }
 </code></pre>
 <pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.plugin.report;
 
 <span class="hljs-keyword">import</span> com.fr.stable.fun.impl.AbstractCssFileHandler;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReportCssFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractCssFileHandler</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ReportCssFileHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCssFileHandler</span> {
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> String[] pathsForFiles() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{<span class="hljs-string">&quot;/com/fr/plugin/web/js/report/style.text.css&quot;</span>};
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{<span class="hljs-string">"/com/fr/plugin/web/js/report/style.text.css"</span>};
     }
 }
 </code></pre>
 <p>To register the implementation:</p>
 <pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- register in the core module --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">CssFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.xxx.youclassname&quot;</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">CssFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.youclassname"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- register in the form module --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">extra-form</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">CssFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.xxx.youclassname&quot;</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">CssFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.youclassname"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-form</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- register in the report module --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">CssFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.xxx.youclassname&quot;</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">CssFileHandler</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.youclassname"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
 </code></pre>
 <h2 id="add-a-widget-to-parameter-panel"><a name="add-a-widget-to-parameter-panel" class="anchor-navigation-ex-anchor" href="#add-a-widget-to-parameter-panel"><i class="fa fa-link" aria-hidden="true"></i></a>Add a Widget to Parameter Panel</h2>
 <p>Use <em>ParameterWidgetOptionProvider</em> to add a new widget to the parameter panel.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ParameterWidgetOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ParameterWidgetOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
 
-    String XML_TAG = <span class="hljs-string">&quot;ParameterWidgetOptionProvider&quot;</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ParameterWidgetOptionProvider"</span>;
 
-    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
 
     <span class="hljs-comment">/**
      * the class of the custom widget, which should extend com.fr.form.ui.Widget
      * <span class="hljs-doctag">@return</span> widget class
      */</span>
-    Class&lt;? extends Widget&gt; classForWidget();
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt; classForWidget();
 
     <span class="hljs-comment">/**
      * the UI class of the custom widget, which should extend com.fr.form.designer.creator.XWidgetCreator
@@ -562,26 +561,26 @@
      * the path to the icon of the widget shown in the designer
      * <span class="hljs-doctag">@return</span> the path to the icon
      */</span>
-    <span class="hljs-function">String <span class="hljs-title">iconPathForWidget</span><span class="hljs-params">()</span></span>;
+    String <span class="hljs-title function_">iconPathForWidget</span><span class="hljs-params">()</span>;
 
     <span class="hljs-comment">/**
      * the name of the custom widget
      * <span class="hljs-doctag">@return</span> widget name
      */</span>
-    <span class="hljs-function">String <span class="hljs-title">nameForWidget</span><span class="hljs-params">()</span></span>;
+    String <span class="hljs-title function_">nameForWidget</span><span class="hljs-params">()</span>;
 }
 </code></pre>
-<p>There are two classes that need to be extended: <em>Widget</em> and <em>XWidgetCreator</em>. Let&apos;s take a look at how this should be done.</p>
+<p>There are two classes that need to be extended: <em>Widget</em> and <em>XWidgetCreator</em>. Let's take a look at how this should be done.</p>
 <h3 id="widget"><a name="widget" class="anchor-navigation-ex-anchor" href="#widget"><i class="fa fa-link" aria-hidden="true"></i></a>Widget</h3>
 <p>This is the parent class for a widget. Ususally we should also implement <em>DataControl</em> in our own widget.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestWidget</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Widget</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DataControl</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestWidget</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">DataControl</span> {
     <span class="hljs-comment">/**
      * The type of the widget. Use lower case only.
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getXType</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;testwidget&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getXType</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"testwidget"</span>;
     }
 
     <span class="hljs-comment">/**
@@ -589,8 +588,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEditor</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEditor</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
 
     <span class="hljs-comment">/**
@@ -599,7 +598,7 @@
      */</span>
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> String[] supportedEvents() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">0</span>];
     }
 
     <span class="hljs-comment">/**
@@ -607,8 +606,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] getValueType() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] getValueType() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">0</span>];
     }
 
     <span class="hljs-comment">/**
@@ -617,7 +616,7 @@
      */</span>
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setWidgetValue</span><span class="hljs-params">(WidgetValue widgetValue)</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setWidgetValue</span><span class="hljs-params">(WidgetValue widgetValue)</span> {
 
     }
 
@@ -626,8 +625,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> WidgetValue <span class="hljs-title">getWidgetValue</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">public</span> WidgetValue <span class="hljs-title function_">getWidgetValue</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
     <span class="hljs-comment">/**
@@ -638,7 +637,7 @@
      * <span class="hljs-doctag">@param</span> attrSourceCache
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">createValueResult</span><span class="hljs-params">(DataControl dataControl, Calculator calculator, JSONObject widgetResult, JSONObject attrSourceCache)</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">createValueResult</span><span class="hljs-params">(DataControl dataControl, Calculator calculator, JSONObject widgetResult, JSONObject attrSourceCache)</span> {
 
     }
 
@@ -647,8 +646,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFormatText</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getFormatText</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
     <span class="hljs-comment">/**
@@ -657,8 +656,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDataBindDefaultValue</span><span class="hljs-params">(Calculator calculator)</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDataBindDefaultValue</span><span class="hljs-params">(Calculator calculator)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
     <span class="hljs-comment">/**
@@ -668,29 +667,29 @@
      */</span>
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> String[] dependence(CalculatorProvider calculatorProvider) {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">0</span>];
     }
 }
 </code></pre>
 <p>Below is an example used to illustrate how to create a widget. It is based on the existing <em>TextEditor</em>, adding font color to the attributes. The <em>DataControl</em> interface is implemented in <em>TextEditor</em>.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoWidget</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TextEditor</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoWidget</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">TextEditor</span> {
     <span class="hljs-comment">/**
      * Add a property fontColor.
      * Need to create getter and setter.
      */</span>
-    <span class="hljs-keyword">private</span> Color fontColor = Color.BLACK;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">Color</span> <span class="hljs-variable">fontColor</span> <span class="hljs-operator">=</span> Color.BLACK;
 
     <span class="hljs-comment">/**
      * widget type
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getXType</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;styletext&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getXType</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"styletext"</span>;
     }
 
     <span class="hljs-comment">/**
-     * To return the attribute JSON. It is passed to the front end as &quot;widget.options&quot;
+     * To return the attribute JSON. It is passed to the front end as "widget.options"
      * Here add a new property fontColor.
      * <span class="hljs-doctag">@param</span> repository
      * <span class="hljs-doctag">@param</span> calculator
@@ -700,24 +699,24 @@
      */</span>
     <span class="hljs-meta">@Override</span>
     <span class="hljs-meta">@ExecuteFunctionRecord</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> JSONObject <span class="hljs-title">createJSONConfig</span><span class="hljs-params">(Repository repository, Calculator calculator, NodeVisitor nodeVisitor)</span> <span class="hljs-keyword">throws</span> JSONException </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.createJSONConfig(repository, calculator, nodeVisitor).put(<span class="hljs-string">&quot;fontColor&quot;</span>, StableUtils.javaColorToCSSColor(<span class="hljs-keyword">this</span>.fontColor));
+    <span class="hljs-keyword">public</span> JSONObject <span class="hljs-title function_">createJSONConfig</span><span class="hljs-params">(Repository repository, Calculator calculator, NodeVisitor nodeVisitor)</span> <span class="hljs-keyword">throws</span> JSONException {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.createJSONConfig(repository, calculator, nodeVisitor).put(<span class="hljs-string">"fontColor"</span>, StableUtils.javaColorToCSSColor(<span class="hljs-built_in">this</span>.fontColor));
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DemoWidget</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">super</span>();
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">DemoWidget</span><span class="hljs-params">()</span> {
+        <span class="hljs-built_in">super</span>();
     }
 
     <span class="hljs-comment">/**
      * Read settings from the template (XML).
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readXML</span><span class="hljs-params">(XMLableReader xmLableReader)</span> </span>{
-        <span class="hljs-keyword">super</span>.readXML(xmLableReader);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readXML</span><span class="hljs-params">(XMLableReader xmLableReader)</span> {
+        <span class="hljs-built_in">super</span>.readXML(xmLableReader);
         <span class="hljs-keyword">if</span> (xmLableReader.isChildNode()) {
-            String tagName = xmLableReader.getTagName();
-            <span class="hljs-keyword">if</span> (ComparatorUtils.equals(tagName, <span class="hljs-string">&quot;FontColor&quot;</span>)) {
-                <span class="hljs-keyword">this</span>.setFontColor(rgbTOColor(xmLableReader.getElementValue()));
+            <span class="hljs-type">String</span> <span class="hljs-variable">tagName</span> <span class="hljs-operator">=</span> xmLableReader.getTagName();
+            <span class="hljs-keyword">if</span> (ComparatorUtils.equals(tagName, <span class="hljs-string">"FontColor"</span>)) {
+                <span class="hljs-built_in">this</span>.setFontColor(rgbTOColor(xmLableReader.getElementValue()));
             }
         }
     }
@@ -727,41 +726,41 @@
      */</span>
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeXML</span><span class="hljs-params">(XMLPrintWriter xmlPrintWriter)</span> </span>{
-        <span class="hljs-keyword">super</span>.writeXML(xmlPrintWriter);
-        xmlPrintWriter.startTAG(<span class="hljs-string">&quot;FontColor&quot;</span>).textNode(StableUtils.javaColorToCSSColor(<span class="hljs-keyword">this</span>.fontColor)).end();
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">writeXML</span><span class="hljs-params">(XMLPrintWriter xmlPrintWriter)</span> {
+        <span class="hljs-built_in">super</span>.writeXML(xmlPrintWriter);
+        xmlPrintWriter.startTAG(<span class="hljs-string">"FontColor"</span>).textNode(StableUtils.javaColorToCSSColor(<span class="hljs-built_in">this</span>.fontColor)).end();
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Color <span class="hljs-title">getFontColor</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> Color <span class="hljs-title function_">getFontColor</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> fontColor;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setFontColor</span><span class="hljs-params">(Color fontColor)</span> </span>{
-        <span class="hljs-keyword">this</span>.fontColor = fontColor;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setFontColor</span><span class="hljs-params">(Color fontColor)</span> {
+        <span class="hljs-built_in">this</span>.fontColor = fontColor;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">private</span> Color <span class="hljs-title">rgbTOColor</span><span class="hljs-params">(String rgbStr)</span> </span>{
-        <span class="hljs-keyword">int</span> start = rgbStr.indexOf(<span class="hljs-string">&quot;(&quot;</span>);
-        <span class="hljs-keyword">int</span> end = rgbStr.indexOf(<span class="hljs-string">&quot;)&quot;</span>);
+    <span class="hljs-keyword">private</span> Color <span class="hljs-title function_">rgbTOColor</span><span class="hljs-params">(String rgbStr)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> rgbStr.indexOf(<span class="hljs-string">"("</span>);
+        <span class="hljs-type">int</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> rgbStr.indexOf(<span class="hljs-string">")"</span>);
         <span class="hljs-keyword">if</span> (start &lt; <span class="hljs-number">0</span> || end &lt; <span class="hljs-number">0</span> || start &gt; end) {
             <span class="hljs-keyword">return</span> Color.RED;
         }
-        String colorString = rgbStr.substring(start + <span class="hljs-number">1</span>, end);
-        String[] array = colorString.split(<span class="hljs-string">&quot;,&quot;</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Color(Integer.parseInt(array[<span class="hljs-number">0</span>]), Integer.parseInt(array[<span class="hljs-number">1</span>]), Integer.parseInt(array[<span class="hljs-number">2</span>]));
+        <span class="hljs-type">String</span> <span class="hljs-variable">colorString</span> <span class="hljs-operator">=</span> rgbStr.substring(start + <span class="hljs-number">1</span>, end);
+        String[] array = colorString.split(<span class="hljs-string">","</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Color</span>(Integer.parseInt(array[<span class="hljs-number">0</span>]), Integer.parseInt(array[<span class="hljs-number">1</span>]), Integer.parseInt(array[<span class="hljs-number">2</span>]));
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEditor</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEditor</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
 }
 </code></pre>
 <h3 id="xwidgetcreator"><a name="xwidgetcreator" class="anchor-navigation-ex-anchor" href="#xwidgetcreator"><i class="fa fa-link" aria-hidden="true"></i></a>XWidgetCreator</h3>
 <p>This is the UI for the property setting of a widget in the parameter panel and form. First we will introduce what methods should be implemented in order to use this class.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestEditor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">XWidgetCreator</span> </span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TestEditor</span><span class="hljs-params">(Widget widget, Dimension dimension)</span> </span>{
-        <span class="hljs-keyword">super</span>(widget, dimension);
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestEditor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">XWidgetCreator</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">TestEditor</span><span class="hljs-params">(Widget widget, Dimension dimension)</span> {
+        <span class="hljs-built_in">super</span>(widget, dimension);
     }
 
     <span class="hljs-comment">/**
@@ -769,8 +768,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> JComponent <span class="hljs-title">initEditor</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">protected</span> JComponent <span class="hljs-title function_">initEditor</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
     <span class="hljs-comment">/**
@@ -780,8 +779,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> XLayoutContainer <span class="hljs-title">getCreatorWrapper</span><span class="hljs-params">(String widgetName)</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.getCreatorWrapper(widgetName);
+    <span class="hljs-keyword">protected</span> XLayoutContainer <span class="hljs-title function_">getCreatorWrapper</span><span class="hljs-params">(String widgetName)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.getCreatorWrapper(widgetName);
     }
 
     <span class="hljs-comment">/**
@@ -791,8 +790,8 @@
      * <span class="hljs-doctag">@param</span> minHeight
       */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addToWrapper</span><span class="hljs-params">(XLayoutContainer xLayoutContainer, <span class="hljs-keyword">int</span> width, <span class="hljs-keyword">int</span> minHeight)</span> </span>{
-        <span class="hljs-keyword">super</span>.addToWrapper(xLayoutContainer, width, minHeight);
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addToWrapper</span><span class="hljs-params">(XLayoutContainer xLayoutContainer, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> minHeight)</span> {
+        <span class="hljs-built_in">super</span>.addToWrapper(xLayoutContainer, width, minHeight);
     }
 
     <span class="hljs-comment">/**
@@ -800,8 +799,8 @@
      * <span class="hljs-doctag">@param</span> g
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">paintComponent</span><span class="hljs-params">(Graphics g)</span> </span>{
-        <span class="hljs-keyword">super</span>.paintComponent(g);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paintComponent</span><span class="hljs-params">(Graphics g)</span> {
+        <span class="hljs-built_in">super</span>.paintComponent(g);
     }
 
     <span class="hljs-comment">/**
@@ -811,14 +810,14 @@
      */</span>
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> CRPropertyDescriptor[] supportedDescriptor() <span class="hljs-keyword">throws</span> IntrospectionException {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.supportedDescriptor();
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.supportedDescriptor();
     }
 }
 </code></pre>
 <p>In our example, the UI class inherits from the <em>XTextEditor</em>, which is the UI for the <em>TextEditor</em>.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XStyleTextEditor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">XTextEditor</span> </span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">XStyleTextEditor</span><span class="hljs-params">(TextEditor textEditor, Dimension dimension)</span> </span>{
-        <span class="hljs-keyword">super</span>(textEditor, dimension);
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">XStyleTextEditor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">XTextEditor</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">XStyleTextEditor</span><span class="hljs-params">(TextEditor textEditor, Dimension dimension)</span> {
+        <span class="hljs-built_in">super</span>(textEditor, dimension);
     }
 
     <span class="hljs-comment">/**
@@ -829,37 +828,37 @@
      */</span>
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> CRPropertyDescriptor[] supportedDescriptor() <span class="hljs-keyword">throws</span> IntrospectionException {
-        CRPropertyDescriptor[] sup = <span class="hljs-keyword">super</span>.supportedDescriptor();
+        CRPropertyDescriptor[] sup = <span class="hljs-built_in">super</span>.supportedDescriptor();
         <span class="hljs-comment">/**
-         * &quot;fontColor&quot; is the new property name.
+         * "fontColor" is the new property name.
          * this.data.getClass() is the widget class.
-         * getFontColor and setFontColor are the getter and setter for the property. That&apos;s why we should define them in DemoWidget.
+         * getFontColor and setFontColor are the getter and setter for the property. That's why we should define them in DemoWidget.
          * setI18NName returns the label name. We are supposed to use Locale Finder in real development.
          * setEditorClass is to set the editing pane of the property. StyleColorAttrEditor is what we implemented to edit color.
-         * putKeyValue(&quot;category&quot;, &quot;Fine-Design_Report_Advanced&quot;) is to set the parent pane for the current property.
+         * putKeyValue("category", "Fine-Design_Report_Advanced") is to set the parent pane for the current property.
          */</span>
-        CRPropertyDescriptor styleAttr = <span class="hljs-keyword">new</span> CRPropertyDescriptor(<span class="hljs-string">&quot;fontColor&quot;</span>, <span class="hljs-keyword">this</span>.data.getClass(),<span class="hljs-string">&quot;getFontColor&quot;</span>,<span class="hljs-string">&quot;setFontColor&quot;</span>).setI18NName(<span class="hljs-string">&quot;Font Color&quot;</span>)
-                .setEditorClass(StyleColorAttrEditor.class).putKeyValue(<span class="hljs-string">&quot;category&quot;</span>, <span class="hljs-string">&quot;Fine-Design_Report_Advanced&quot;</span>);
-        <span class="hljs-keyword">return</span> ArrayUtils.addAll(sup,<span class="hljs-keyword">new</span> CRPropertyDescriptor[]{styleAttr});
+        <span class="hljs-type">CRPropertyDescriptor</span> <span class="hljs-variable">styleAttr</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CRPropertyDescriptor</span>(<span class="hljs-string">"fontColor"</span>, <span class="hljs-built_in">this</span>.data.getClass(),<span class="hljs-string">"getFontColor"</span>,<span class="hljs-string">"setFontColor"</span>).setI18NName(<span class="hljs-string">"Font Color"</span>)
+                .setEditorClass(StyleColorAttrEditor.class).putKeyValue(<span class="hljs-string">"category"</span>, <span class="hljs-string">"Fine-Design_Report_Advanced"</span>);
+        <span class="hljs-keyword">return</span> ArrayUtils.addAll(sup,<span class="hljs-keyword">new</span> <span class="hljs-title class_">CRPropertyDescriptor</span>[]{styleAttr});
     }
 }
 </code></pre>
 <p>There is an editor class called <em>StyleColorAttrEditor</em> referred to above. As long as the property is not of a basic type, the correspoding editor class needs to be created by ourselves.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StyleColorAttrEditor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractPropertyEditor</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StyleColorAttrEditor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractPropertyEditor</span> {
     <span class="hljs-comment">/**
      * A button to set font color.
      */</span>
-    <span class="hljs-keyword">private</span> UIColorButton colorButton = <span class="hljs-keyword">new</span> UIColorButton();
+    <span class="hljs-keyword">private</span> <span class="hljs-type">UIColorButton</span> <span class="hljs-variable">colorButton</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIColorButton</span>();
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StyleColorAttrEditor</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">super</span>();
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">StyleColorAttrEditor</span><span class="hljs-params">()</span> {
+        <span class="hljs-built_in">super</span>();
         <span class="hljs-comment">/**
          * Add a change listener to the color select button.
          * The color change will modify the propertyChangeEvent of the property pane.
          */</span>
-        colorButton.addColorChangeListener(<span class="hljs-keyword">new</span> ChangeListener(){
+        colorButton.addColorChangeListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ChangeListener</span>(){
             <span class="hljs-meta">@Override</span>
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">stateChanged</span><span class="hljs-params">(ChangeEvent e)</span> </span>{
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">stateChanged</span><span class="hljs-params">(ChangeEvent e)</span> {
                 firePropertyChanged();
             }
         });
@@ -870,10 +869,10 @@
      * <span class="hljs-doctag">@param</span> value
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(Object value)</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setValue</span><span class="hljs-params">(Object value)</span> {
         <span class="hljs-keyword">if</span> (value <span class="hljs-keyword">instanceof</span> Color){
-            <span class="hljs-keyword">this</span>.colorButton.setColor((Color) value);
-            <span class="hljs-keyword">this</span>.colorButton.repaint();
+            <span class="hljs-built_in">this</span>.colorButton.setColor((Color) value);
+            <span class="hljs-built_in">this</span>.colorButton.repaint();
         }
     }
 
@@ -882,8 +881,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">getValue</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.colorButton.getColor();
+    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">getValue</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.colorButton.getColor();
     }
 
     <span class="hljs-comment">/**
@@ -891,7 +890,7 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Component <span class="hljs-title">getCustomEditor</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> Component <span class="hljs-title function_">getCustomEditor</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> colorButton;
     }
 
@@ -900,29 +899,29 @@
      * <span class="hljs-doctag">@throws</span> ValidationException
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">validateValue</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ValidationException </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">validateValue</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ValidationException {
 
     }
 }
 </code></pre>
 <p>Now we have accomplished the definition of the widget and its UI. Then we should register them in <em>ParameterWidgetOptionProvider</em>.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoParaFormWidgetProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractParameterWidgetOptionProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FormWidgetOptionProvider</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoParaFormWidgetProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractParameterWidgetOptionProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">FormWidgetOptionProvider</span> {
     <span class="hljs-comment">/**
      * Method required in FormWidgetOptionProvider.
      * <span class="hljs-doctag">@return</span> true if the widget is a container
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isContainer</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isContainer</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">paste2Container</span><span class="hljs-params">(T t)</span> </span>{
+    <span class="hljs-keyword">public</span> &lt;T&gt; <span class="hljs-keyword">void</span> <span class="hljs-title function_">paste2Container</span><span class="hljs-params">(T t)</span> {
 
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> Class&lt;? extends Widget&gt; classForWidget() {
+    <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt; classForWidget() {
         <span class="hljs-keyword">return</span> DemoWidget.class;
     }
 
@@ -932,113 +931,113 @@
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">iconPathForWidget</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;/com/fr/plugin/widget/demo/images/text_field_16.png&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">iconPathForWidget</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"/com/fr/plugin/widget/demo/images/text_field_16.png"</span>;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">nameForWidget</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Style Text Editor&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">nameForWidget</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Style Text Editor"</span>;
     }
 }
 </code></pre>
 <p>The class above can be applied to parameter panel and form. In fact, the implementation is available for both of them.</p>
 <h3 id="register-the-widget-on-the-front-end"><a name="register-the-widget-on-the-front-end" class="anchor-navigation-ex-anchor" href="#register-the-widget-on-the-front-end"><i class="fa fa-link" aria-hidden="true"></i></a>Register the Widget on the Front End</h3>
-<p>All the widgets on the front end are extended from <em>FR.Widget</em>. Let&apos;s define a new component for our example widget.</p>
-<pre><code class="lang-js">;!(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+<p>All the widgets on the front end are extended from <em>FR.Widget</em>. Let's define a new component for our example widget.</p>
+<pre><code class="lang-js">;!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
     <span class="hljs-comment">/**
      * Extend FR.TextEditor.
      */</span>
-    FR.StyleTextEditor=FR.extend(FR.TextEditor,{
+    <span class="hljs-variable constant_">FR</span>.<span class="hljs-property">StyleTextEditor</span>=<span class="hljs-variable constant_">FR</span>.<span class="hljs-title function_">extend</span>(<span class="hljs-variable constant_">FR</span>.<span class="hljs-property">TextEditor</span>,{
         <span class="hljs-comment">/**
          * the initialization method
-         * @private
+         * <span class="hljs-doctag">@private</span>
          */</span>
-        _init: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-            FR.StyleTextEditor.superclass._init.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+        <span class="hljs-attr">_init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-variable constant_">FR</span>.<span class="hljs-property">StyleTextEditor</span>.<span class="hljs-property">superclass</span>.<span class="hljs-property">_init</span>.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);
         },
         <span class="hljs-comment">/**
          * Get options passed from the back end.
          * Apply the font color to the element.
-         * @returns {*|jQuery|HTMLElement}
-         * @private
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">*|jQuery|HTMLElement</span>}
+         * <span class="hljs-doctag">@private</span>
          */</span>
-        _createEditComp: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-attr">_createEditComp</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
 
-            <span class="hljs-keyword">var</span> o=<span class="hljs-keyword">this</span>.options;
+            <span class="hljs-keyword">var</span> o=<span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
 
-            <span class="hljs-keyword">return</span> $(<span class="hljs-string">&quot;&lt;input style=&apos;color:&quot;</span>+o.fontColor+<span class="hljs-string">&quot;&apos; type=&apos;text&apos;/&gt;&quot;</span>);
+            <span class="hljs-keyword">return</span> $(<span class="hljs-string">"&lt;input style='color:"</span>+o.<span class="hljs-property">fontColor</span>+<span class="hljs-string">"' type='text'/&gt;"</span>);
         }
     });
     <span class="hljs-comment">/**
      * Use shortcut to register the widget. The name should be unique and the same as the return value of Widget#getXType.
      */</span>
-    $.shortcut(<span class="hljs-string">&quot;styletext&quot;</span>, FR.StyleTextEditor);
+    $.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"styletext"</span>, <span class="hljs-variable constant_">FR</span>.<span class="hljs-property">StyleTextEditor</span>);
 })();
 </code></pre>
-<p>Don&apos;t forget to use <em>JavaScriptFileHandler</em> mentioned at the beginning to include this JS file.</p>
+<p>Don't forget to use <em>JavaScriptFileHandler</em> mentioned at the beginning to include this JS file.</p>
 <p>Finally, we can register the implementation in the plugin.xml.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ParameterWidgetOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.widget.demo.para.DemoParaFormWidgetProvider&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ParameterWidgetOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.widget.demo.para.DemoParaFormWidgetProvider"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
 </code></pre>
 <p>The effect of the example is like below:</p>
-<p><a href="images/parameter_effect_1.png" data-lightbox="ea973fb2-bb21-4328-ac48-9390c16f2f3c" data-title="parameter_effect_1"><img src="images/parameter_effect_1.png" alt="parameter_effect_1"></a>
-<a href="images/parameter_effect_2.png" data-lightbox="0ac16d3d-4b46-4df0-bcb9-676a60123ae0" data-title="parameter_effect_2"><img src="images/parameter_effect_2.png" alt="parameter_effect_2"></a></p>
+<p><a href="images/parameter_effect_1.png" data-lightbox="c5d46790-e3b7-40fb-95d3-7a9cf726a79a" data-title="parameter_effect_1"><img src="images/parameter_effect_1.png" alt="parameter_effect_1"></img></a>
+<a href="images/parameter_effect_2.png" data-lightbox="6d65b574-e1d4-4424-829e-25603b72c9a0" data-title="parameter_effect_2"><img src="images/parameter_effect_2.png" alt="parameter_effect_2"></img></a></p>
 <h2 id="add-a-widget-to-form"><a name="add-a-widget-to-form" class="anchor-navigation-ex-anchor" href="#add-a-widget-to-form"><i class="fa fa-link" aria-hidden="true"></i></a>Add a Widget to Form</h2>
 <p>The interface <em>FormWidgetOptionProvider</em> inherits from <em>ParameterWidgetOptionProvider</em>. So it is much the same as <em>ParameterWidgetOptionProvider</em> except for its way of registering.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">FormWidgetOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.widget.demo.para.DemoParaFormWidgetProvider&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">FormWidgetOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.widget.demo.para.DemoParaFormWidgetProvider"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
 </code></pre>
 <h2 id="add-a-widget-to-cell"><a name="add-a-widget-to-cell" class="anchor-navigation-ex-anchor" href="#add-a-widget-to-cell"><i class="fa fa-link" aria-hidden="true"></i></a>Add a Widget to Cell</h2>
-<p>First, let&apos;s see what the provider looks like.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CellWidgetOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ParameterWidgetOptionProvider</span> </span>{
+<p>First, let's see what the provider looks like.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CellWidgetOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ParameterWidgetOptionProvider</span> {
 
-    String XML_TAG = <span class="hljs-string">&quot;CellWidgetOptionProvider&quot;</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CellWidgetOptionProvider"</span>;
 
     <span class="hljs-comment">/**
      * The appearance of the cell widget
      * <span class="hljs-doctag">@return</span>
      */</span>
-    Class&lt;? extends BasicBeanPane&lt;? extends Widget&gt;&gt; appearanceForWidget();
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BasicBeanPane</span>&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt;&gt; appearanceForWidget();
 
 }
 </code></pre>
 <p>As you can see, it also inherits from the <em>ParameterWidgetOptionProvider</em>. The only difference is that the UI setting method <em>appearanceForWidget</em> has to return subclass of <em>BasicBeanPane</em>.</p>
 <p>I am not gonna talk too much about <em>BasicBeanPane</em> here. Just use the example below, and you will get the rough idea of how to add the style text editor as a cell widget.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ColorSelectPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">JPanel</span> </span>{
-    <span class="hljs-keyword">private</span> UIColorButton colorButton = <span class="hljs-keyword">new</span> UIColorButton();
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ColorSelectPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">JPanel</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">UIColorButton</span> <span class="hljs-variable">colorButton</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIColorButton</span>();
 
     <span class="hljs-comment">/**
      * Create a color select pane. The label and UIColorButton arrange horizontally.
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ColorSelectPane</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">this</span>.setLayout(<span class="hljs-keyword">new</span> BorderLayout());
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ColorSelectPane</span><span class="hljs-params">()</span> {
+        <span class="hljs-built_in">this</span>.setLayout(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BorderLayout</span>());
 
-        <span class="hljs-keyword">double</span> f = TableLayout.FILL;
-        <span class="hljs-keyword">double</span> p = TableLayout.PREFERRED;
-        Component[][] components = <span class="hljs-keyword">new</span> Component[][]{
-                <span class="hljs-keyword">new</span> Component[]{<span class="hljs-keyword">new</span> UILabel(<span class="hljs-string">&quot;Font Color&quot;</span>), colorButton},
+        <span class="hljs-type">double</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> TableLayout.FILL;
+        <span class="hljs-type">double</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> TableLayout.PREFERRED;
+        Component[][] components = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Component</span>[][]{
+                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Component</span>[]{<span class="hljs-keyword">new</span> <span class="hljs-title class_">UILabel</span>(<span class="hljs-string">"Font Color"</span>), colorButton},
         };
-        <span class="hljs-keyword">double</span>[] rowSize = {p};
-        <span class="hljs-keyword">double</span>[] columnSize = {p, f};
-        <span class="hljs-keyword">int</span>[][] rowCount = {{<span class="hljs-number">1</span>, <span class="hljs-number">1</span>}};
-        JPanel panel = TableLayoutHelper.createGapTableLayoutPane(components, rowSize, columnSize, rowCount, IntervalConstants.INTERVAL_W3, IntervalConstants.INTERVAL_L1);
-        <span class="hljs-keyword">this</span>.add(panel, BorderLayout.CENTER);
+        <span class="hljs-type">double</span>[] rowSize = {p};
+        <span class="hljs-type">double</span>[] columnSize = {p, f};
+        <span class="hljs-type">int</span>[][] rowCount = {{<span class="hljs-number">1</span>, <span class="hljs-number">1</span>}};
+        <span class="hljs-type">JPanel</span> <span class="hljs-variable">panel</span> <span class="hljs-operator">=</span> TableLayoutHelper.createGapTableLayoutPane(components, rowSize, columnSize, rowCount, IntervalConstants.INTERVAL_W3, IntervalConstants.INTERVAL_L1);
+        <span class="hljs-built_in">this</span>.add(panel, BorderLayout.CENTER);
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Color <span class="hljs-title">getColor</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.colorButton.getColor();
+    <span class="hljs-keyword">public</span> Color <span class="hljs-title function_">getColor</span><span class="hljs-params">()</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.colorButton.getColor();
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setColor</span><span class="hljs-params">(Color color)</span></span>{
-        <span class="hljs-keyword">this</span>.colorButton.setColor(color);
-        <span class="hljs-keyword">this</span>.colorButton.repaint();
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setColor</span><span class="hljs-params">(Color color)</span>{
+        <span class="hljs-built_in">this</span>.colorButton.setColor(color);
+        <span class="hljs-built_in">this</span>.colorButton.repaint();
     }
 }
 </code></pre>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StyleCellTextDefinePane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TextFieldEditorDefinePane</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StyleCellTextDefinePane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">TextFieldEditorDefinePane</span> {
     <span class="hljs-keyword">private</span> ColorSelectPane colorSelectPane;
 
     <span class="hljs-comment">/**
@@ -1046,9 +1045,9 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> JPanel <span class="hljs-title">setFirstContentPane</span><span class="hljs-params">()</span> </span>{
-        JPanel supPane = <span class="hljs-keyword">super</span>.setFirstContentPane();
-        colorSelectPane = <span class="hljs-keyword">new</span> ColorSelectPane();
+    <span class="hljs-keyword">protected</span> JPanel <span class="hljs-title function_">setFirstContentPane</span><span class="hljs-params">()</span> {
+        <span class="hljs-type">JPanel</span> <span class="hljs-variable">supPane</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">super</span>.setFirstContentPane();
+        colorSelectPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ColorSelectPane</span>();
         supPane.add(colorSelectPane, BorderLayout.CENTER);
         <span class="hljs-keyword">return</span> supPane;
     }
@@ -1058,10 +1057,10 @@
      * <span class="hljs-doctag">@param</span> textEditor
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populateSubFieldEditorBean</span><span class="hljs-params">(TextEditor textEditor)</span> </span>{
-        <span class="hljs-keyword">super</span>.populateSubFieldEditorBean(textEditor);
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populateSubFieldEditorBean</span><span class="hljs-params">(TextEditor textEditor)</span> {
+        <span class="hljs-built_in">super</span>.populateSubFieldEditorBean(textEditor);
         <span class="hljs-keyword">if</span>(textEditor <span class="hljs-keyword">instanceof</span> DemoWidget){
-            <span class="hljs-keyword">this</span>.colorSelectPane.setColor(((DemoWidget) textEditor).getFontColor());
+            <span class="hljs-built_in">this</span>.colorSelectPane.setColor(((DemoWidget) textEditor).getFontColor());
         }
     }
 
@@ -1070,10 +1069,10 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> TextEditor <span class="hljs-title">updateSubFieldEditorBean</span><span class="hljs-params">()</span> </span>{
-        TextEditor supEditor = <span class="hljs-keyword">super</span>.updateSubFieldEditorBean();
+    <span class="hljs-keyword">protected</span> TextEditor <span class="hljs-title function_">updateSubFieldEditorBean</span><span class="hljs-params">()</span> {
+        <span class="hljs-type">TextEditor</span> <span class="hljs-variable">supEditor</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">super</span>.updateSubFieldEditorBean();
         <span class="hljs-keyword">if</span> (supEditor <span class="hljs-keyword">instanceof</span> DemoWidget){
-            ((DemoWidget) supEditor).setFontColor(<span class="hljs-keyword">this</span>.colorSelectPane.getColor());
+            ((DemoWidget) supEditor).setFontColor(<span class="hljs-built_in">this</span>.colorSelectPane.getColor());
         }
         <span class="hljs-keyword">return</span> supEditor;
     }
@@ -1082,41 +1081,41 @@
      * <span class="hljs-doctag">@return</span> a custom widget object.
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> TextEditor <span class="hljs-title">newTextEditorInstance</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoWidget();
+    <span class="hljs-keyword">protected</span> TextEditor <span class="hljs-title function_">newTextEditorInstance</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoWidget</span>();
     }
 }
 </code></pre>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoCellWidgetOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractCellWidgetOptionProvider</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoCellWidgetOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCellWidgetOptionProvider</span> {
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> Class&lt;? extends Widget&gt; classForWidget() {
+    <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt; classForWidget() {
         <span class="hljs-keyword">return</span> DemoWidget.class;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> Class&lt;? extends BasicBeanPane&lt;? extends Widget&gt;&gt; appearanceForWidget() {
+    <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BasicBeanPane</span>&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt;&gt; appearanceForWidget() {
         <span class="hljs-keyword">return</span> StyleCellTextDefinePane.class;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">iconPathForWidget</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;/com/fr/plugin/widget/demo/images/text_field_16.png&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">iconPathForWidget</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"/com/fr/plugin/widget/demo/images/text_field_16.png"</span>;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">nameForWidget</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Style Text Editor&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">nameForWidget</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Style Text Editor"</span>;
     }
 }
 </code></pre>
 <p>Register the implementation in the plugin.xml.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">CellWidgetOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.widget.demo.para.DemoParaFormWidgetProvider&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">CellWidgetOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.widget.demo.para.DemoParaFormWidgetProvider"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
 </code></pre>
 <p>The effect of the example is shown below:</p>
-<p><a href="images/cell_effect_1.png" data-lightbox="8201324b-7536-48d0-a228-9373e2246639" data-title="cell_effect_1"><img src="images/cell_effect_1.png" alt="cell_effect_1"></a>
-<a href="images/cell_effect_2.png" data-lightbox="12a6abb0-3aaf-4116-81fa-81c9dd977a87" data-title="cell_effect_2"><img src="images/cell_effect_2.png" alt="cell_effect_2"></a></p>
+<p><a href="images/cell_effect_1.png" data-lightbox="16be32b6-feb1-4840-a763-00002295d15a" data-title="cell_effect_1"><img src="images/cell_effect_1.png" alt="cell_effect_1"></img></a>
+<a href="images/cell_effect_2.png" data-lightbox="cfe6c7b2-36e5-4f3c-870b-b8ffea5a048a" data-title="cell_effect_2"><img src="images/cell_effect_2.png" alt="cell_effect_2"></img></a></p>
 <p>The full code of this example is placed here: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-widget-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-widget-demo</a></p>
 <div id="gitalk-container"></div>
                                 
@@ -1161,12 +1160,56 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Widget","level":"2.17","depth":1,"next":{"title":"Advanced Tutorial - Theme","level":"2.18","depth":1,"path":"tutorial/chapter_18/chapter_18.md","ref":"tutorial/chapter_18/chapter_18.md","articles":[]},"previous":{"title":"Advanced Tutorial - Authentication","level":"2.16","depth":1,"path":"tutorial/chapter_16/chapter_16.md","ref":"tutorial/chapter_16/chapter_16.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_17/chapter_17.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Widget","level":"2.17","depth":1,"next":{"title":"Advanced Tutorial - Theme","level":"2.18","depth":1,"path":"tutorial/chapter_18/chapter_18.md","ref":"tutorial/chapter_18/chapter_18.md","articles":[]},"previous":{"title":"Advanced Tutorial - Authentication","level":"2.16","depth":1,"path":"tutorial/chapter_16/chapter_16.md","ref":"tutorial/chapter_16/chapter_16.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_17/chapter_17.md","mtime":"2026-04-07T06:04:11.296Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -1211,11 +1254,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

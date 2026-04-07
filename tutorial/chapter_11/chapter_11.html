@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Beginner Tutorial - DAO · GitBook</title>
+        <title>Beginner Tutorial - DAO · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -471,11 +470,11 @@
 <span class="hljs-comment">/**
  * For a plugin to register custom tables
  */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DBAccessProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span>, <span class="hljs-title">DBAccessible</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DBAccessProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span>, DBAccessible {
 
-    String XML_TAG = <span class="hljs-string">&quot;DBAccessProvider&quot;</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"DBAccessProvider"</span>;
 
-    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
 }
 </code></pre>
 <p>The methods of <em>DBAccessProvider</em> are inherited from <em>DBAccessible</em> and <em>DBInjectable</em>:</p>
@@ -483,7 +482,7 @@
 
 <span class="hljs-keyword">import</span> com.fr.stable.db.dao.DAOProvider;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DBAccessible</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DBInjectable</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DBAccessible</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">DBInjectable</span> {
     DAOProvider[] registerDAO();
 }
 </code></pre>
@@ -491,15 +490,15 @@
 
 <span class="hljs-keyword">import</span> com.fr.stable.db.accessor.DBAccessor;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DBInjectable</span> </span>{
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onDBAvailable</span><span class="hljs-params">(DBAccessor dbAccessor)</span></span>;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DBInjectable</span> {
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">onDBAvailable</span><span class="hljs-params">(DBAccessor dbAccessor)</span>;
 }
 </code></pre>
 <p>DBAccessProvider#registerDAO: to register custom DAO, the main method to be focused on.</p>
-<p>DBAccessProvider#onDBAvailable&#xFF1A;to do some initialization with <em>DBAccessor</em>.</p>
+<p>DBAccessProvider#onDBAvailable：to do some initialization with <em>DBAccessor</em>.</p>
 <p>To register the provider:</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">DBAccessProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.dao.DemoDBAccessProvider&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">DBAccessProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.dao.DemoDBAccessProvider"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
 </code></pre>
 <h2 id="register-a-table-and-dao"><a name="register-a-table-and-dao" class="anchor-navigation-ex-anchor" href="#register-a-table-and-dao"><i class="fa fa-link" aria-hidden="true"></i></a>Register a table and DAO</h2>
@@ -508,19 +507,19 @@
 
 <span class="hljs-keyword">import</span> com.fr.stable.db.entity.BaseEntity;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DAOProvider</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseEntity</span>&gt; </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DAOProvider</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseEntity</span>&gt; {
 
-    <span class="hljs-function">Class&lt;T&gt; <span class="hljs-title">getEntityClass</span><span class="hljs-params">()</span></span>;
+    Class&lt;T&gt; <span class="hljs-title function_">getEntityClass</span><span class="hljs-params">()</span>;
 
-    Class&lt;? extends BaseDAO&lt;T&gt;&gt; getDAOClass();
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseDAO</span>&lt;T&gt;&gt; getDAOClass();
 }
 </code></pre>
 <p>DAOProvider#getEntityClass: to get an entity that describes the structure of a table.</p>
 <p>DAOProvider#getDAOClass: to get a class that implements the detailed data operation to a table.</p>
 <h3 id="entity"><a name="entity" class="anchor-navigation-ex-anchor" href="#entity"><i class="fa fa-link" aria-hidden="true"></i></a>Entity</h3>
-<p>Declare the structure of a table with annotation. In most cases, we extend <em>BaseEntity</em>, which already includes the &apos;id&apos; column, to add our columns.</p>
+<p>Declare the structure of a table with annotation. In most cases, we extend <em>BaseEntity</em>, which already includes the 'id' column, to add our columns.</p>
 <p>@Entity: to declare the class as an entity.</p>
-<p>@Table: to declare the table mapped with this clas. The attribute &apos;name&apos; is to set the table name.</p>
+<p>@Table: to declare the table mapped with this clas. The attribute 'name' is to set the table name.</p>
 <p>@Column: to declare the mapping between the property and the field.</p>
 <p>Commonly used attributes:</p>
 <table>
@@ -574,36 +573,36 @@
 <span class="hljs-keyword">import</span> com.fr.third.javax.persistence.Table;
 
 <span class="hljs-meta">@Entity</span>
-<span class="hljs-meta">@Table</span>(name = <span class="hljs-string">&quot;fine_plugin_demo&quot;</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoEntity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseEntity</span> </span>{
-    <span class="hljs-meta">@Column</span>(name=<span class="hljs-string">&quot;name&quot;</span>)
+<span class="hljs-meta">@Table(name = "fine_plugin_demo")</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoEntity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseEntity</span> {
+    <span class="hljs-meta">@Column(name="name")</span>
     <span class="hljs-keyword">private</span> String name;
-    <span class="hljs-meta">@Column</span>(name=<span class="hljs-string">&quot;value&quot;</span>)
+    <span class="hljs-meta">@Column(name="value")</span>
     <span class="hljs-keyword">private</span> String value;
-    <span class="hljs-meta">@Column</span>(name=<span class="hljs-string">&quot;num&quot;</span>,precision = <span class="hljs-number">10</span>,scale = <span class="hljs-number">2</span>)
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> num;
+    <span class="hljs-meta">@Column(name="num",precision = 10,scale = 2)</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> num;
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>{
-        <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> {
+        <span class="hljs-built_in">this</span>.name = name;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(String value)</span> </span>{
-        <span class="hljs-keyword">this</span>.value = value;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setValue</span><span class="hljs-params">(String value)</span> {
+        <span class="hljs-built_in">this</span>.value = value;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> name;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getValue</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getValue</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> value;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getNum</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getNum</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> num;
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setNum</span><span class="hljs-params">(<span class="hljs-keyword">double</span> num)</span> </span>{
-        <span class="hljs-keyword">this</span>.num = num;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setNum</span><span class="hljs-params">(<span class="hljs-type">double</span> num)</span> {
+        <span class="hljs-built_in">this</span>.num = num;
     }
 }
 </code></pre>
@@ -613,13 +612,13 @@
 <span class="hljs-keyword">import</span> com.fr.stable.db.dao.BaseDAO;
 <span class="hljs-keyword">import</span> com.fr.stable.db.session.DAOSession;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoDao</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseDAO</span>&lt;<span class="hljs-title">DemoEntity</span>&gt; </span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DemoDao</span><span class="hljs-params">(DAOSession daoSession)</span> </span>{
-        <span class="hljs-keyword">super</span>(daoSession);
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoDao</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseDAO</span>&lt;DemoEntity&gt; {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">DemoDao</span><span class="hljs-params">(DAOSession daoSession)</span> {
+        <span class="hljs-built_in">super</span>(daoSession);
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> Class&lt;DemoEntity&gt; <span class="hljs-title">getEntityClass</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">protected</span> Class&lt;DemoEntity&gt; <span class="hljs-title function_">getEntityClass</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> DemoEntity.class;
     }
 }
@@ -627,13 +626,13 @@
 <h3 id="register-the-table-and-dao-defined"><a name="register-the-table-and-dao-defined" class="anchor-navigation-ex-anchor" href="#register-the-table-and-dao-defined"><i class="fa fa-link" aria-hidden="true"></i></a>Register the table and DAO defined</h3>
 <pre><code class="lang-java"><span class="hljs-meta">@Override</span>
 <span class="hljs-keyword">public</span> DAOProvider[] registerDAO() {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DAOProvider[]{<span class="hljs-keyword">new</span> DAOProvider() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DAOProvider</span>[]{<span class="hljs-keyword">new</span> <span class="hljs-title class_">DAOProvider</span>() {
         <span class="hljs-meta">@Override</span>
-        <span class="hljs-function"><span class="hljs-keyword">public</span> Class <span class="hljs-title">getEntityClass</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">public</span> Class <span class="hljs-title function_">getEntityClass</span><span class="hljs-params">()</span> {
             <span class="hljs-keyword">return</span> DemoEntity.class;
         }
         <span class="hljs-meta">@Override</span>
-        <span class="hljs-keyword">public</span> Class&lt;? extends BaseDAO&gt; getDAOClass() {
+        <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseDAO</span>&gt; getDAOClass() {
             <span class="hljs-keyword">return</span> DemoDao.class;
         }
     }};
@@ -641,28 +640,28 @@
 </code></pre>
 <h2 id="database-access-implementation"><a name="database-access-implementation" class="anchor-navigation-ex-anchor" href="#database-access-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>Database Access Implementation</h2>
 <p>For now, we have implemented the registration of our table and DAO. The next thing is to define how to access the table and do CRUD.</p>
-<p>First, let&apos;s look at the defined <em>DBAccessProvider</em>:</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoDBAccessProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDBAccessProvider</span> </span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> DBAccessor dbAccessor = <span class="hljs-keyword">null</span>;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DBAccessor <span class="hljs-title">getDbAccessor</span><span class="hljs-params">()</span> </span>{
+<p>First, let's look at the defined <em>DBAccessProvider</em>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoDBAccessProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractDBAccessProvider</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">DBAccessor</span> <span class="hljs-variable">dbAccessor</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DBAccessor <span class="hljs-title function_">getDbAccessor</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> dbAccessor;
     }
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> DAOProvider[] registerDAO() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DAOProvider[]{<span class="hljs-keyword">new</span> DAOProvider() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DAOProvider</span>[]{<span class="hljs-keyword">new</span> <span class="hljs-title class_">DAOProvider</span>() {
             <span class="hljs-meta">@Override</span>
-            <span class="hljs-function"><span class="hljs-keyword">public</span> Class <span class="hljs-title">getEntityClass</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">public</span> Class <span class="hljs-title function_">getEntityClass</span><span class="hljs-params">()</span> {
                 <span class="hljs-keyword">return</span> DemoEntity.class;
             }
             <span class="hljs-meta">@Override</span>
-            <span class="hljs-keyword">public</span> Class&lt;? extends BaseDAO&gt; getDAOClass() {
+            <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseDAO</span>&gt; getDAOClass() {
                 <span class="hljs-keyword">return</span> DemoDao.class;
             }
         }};
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDBAvailable</span><span class="hljs-params">(DBAccessor dbAccessor)</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onDBAvailable</span><span class="hljs-params">(DBAccessor dbAccessor)</span> {
         DemoDBAccessProvider.dbAccessor=dbAccessor;
     }
 }
@@ -675,18 +674,18 @@
 
 <span class="hljs-keyword">import</span> com.fr.stable.db.dao.DAOContext;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DBAction</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
-    <span class="hljs-function">T <span class="hljs-title">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DBAction</span>&lt;T&gt; {
+    T <span class="hljs-title function_">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception;
 }
 </code></pre>
 <h3 id="data-query"><a name="data-query" class="anchor-navigation-ex-anchor" href="#data-query"><i class="fa fa-link" aria-hidden="true"></i></a>Data Query</h3>
 <p>This is a demo of how to query data from the table defined in <em>DemoEntity</em>:</p>
 <pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-    List&lt;DemoEntity&gt; values  =  DemoDBAccessProvider.getDbAccessor().runQueryAction(<span class="hljs-keyword">new</span> DBAction&lt;List&lt;DemoEntity&gt;&gt;() {
+    List&lt;DemoEntity&gt; values  =  DemoDBAccessProvider.getDbAccessor().runQueryAction(<span class="hljs-keyword">new</span> <span class="hljs-title class_">DBAction</span>&lt;List&lt;DemoEntity&gt;&gt;() {
         <span class="hljs-meta">@Override</span>
-        <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;DemoEntity&gt; <span class="hljs-title">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-            daoContext.getDAO(DemoDao.class).find(QueryFactory.create().addRestriction(RestrictionFactory.eq(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;Joe&quot;</span>)));
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">public</span> List&lt;DemoEntity&gt; <span class="hljs-title function_">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception {
+            daoContext.getDAO(DemoDao.class).find(QueryFactory.create().addRestriction(RestrictionFactory.eq(<span class="hljs-string">"name"</span>, <span class="hljs-string">"Joe"</span>)));
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
         }
     });
 } <span class="hljs-keyword">catch</span> (Exception e) {
@@ -697,22 +696,22 @@
 <pre><code class="lang-java">QueryCondition queryCondition= QueryFactory.create();
 queryCondition.setCount(<span class="hljs-number">1</span>);
 queryCondition.setSkip(<span class="hljs-number">1</span>);
-queryCondition.addRestriction(RestrictionFactory.eq(<span class="hljs-string">&quot;num&quot;</span>,<span class="hljs-number">1111.45</span>));
-queryCondition.addGroupBy(<span class="hljs-string">&quot;id&quot;</span>);
-queryCondition.addSort(<span class="hljs-string">&quot;name&quot;</span>);
+queryCondition.addRestriction(RestrictionFactory.eq(<span class="hljs-string">"num"</span>,<span class="hljs-number">1111.45</span>));
+queryCondition.addGroupBy(<span class="hljs-string">"id"</span>);
+queryCondition.addSort(<span class="hljs-string">"name"</span>);
 </code></pre>
 <h3 id="data-modification"><a name="data-modification" class="anchor-navigation-ex-anchor" href="#data-modification"><i class="fa fa-link" aria-hidden="true"></i></a>Data Modification</h3>
 <p>Add record:</p>
 <pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-      DemoDBAccessProvider.getDbAccessor().runDMLAction(<span class="hljs-keyword">new</span> DBAction&lt;DemoEntity&gt;() {
+      DemoDBAccessProvider.getDbAccessor().runDMLAction(<span class="hljs-keyword">new</span> <span class="hljs-title class_">DBAction</span>&lt;DemoEntity&gt;() {
         <span class="hljs-meta">@Override</span>
-        <span class="hljs-function"><span class="hljs-keyword">public</span> DemoEntity <span class="hljs-title">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-            DemoEntity entity=<span class="hljs-keyword">new</span> DemoEntity();
+        <span class="hljs-keyword">public</span> DemoEntity <span class="hljs-title function_">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception {
+            DemoEntity entity=<span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoEntity</span>();
             entity.setId(UUID.randomUUID().toString());
-            entity.setName(<span class="hljs-string">&quot;Joe&quot;</span>);
+            entity.setName(<span class="hljs-string">"Joe"</span>);
             entity.setNum(<span class="hljs-number">123</span>);
             daoContext.getDAO(DemoDao.class).add(entity);
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
         }
     });
 } <span class="hljs-keyword">catch</span> (Exception e) {
@@ -721,14 +720,14 @@ queryCondition.addSort(<span class="hljs-string">&quot;name&quot;</span>);
 </code></pre>
 <p>Delete record:</p>
 <pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-    DemoDBAccessProvider.getDbAccessor().runDMLAction(<span class="hljs-keyword">new</span> DBAction&lt;DemoEntity&gt;() {
+    DemoDBAccessProvider.getDbAccessor().runDMLAction(<span class="hljs-keyword">new</span> <span class="hljs-title class_">DBAction</span>&lt;DemoEntity&gt;() {
         <span class="hljs-meta">@Override</span>
-        <span class="hljs-function"><span class="hljs-keyword">public</span> DemoEntity <span class="hljs-title">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-            DemoEntity entity=<span class="hljs-keyword">new</span> DemoEntity();
-            entity.setId(<span class="hljs-string">&quot;123123&quot;</span>);
-            daoContext.getDAO(DemoDao.class).remove(<span class="hljs-string">&quot;id&quot;</span>);<span class="hljs-comment">// delete by id</span>
-            daoContext.getDAO(DemoDao.class).remove(<span class="hljs-keyword">new</span> QueryConditionImpl().addRestriction(RestrictionFactory.eq(<span class="hljs-string">&quot;id&quot;</span>, entity.getId())));<span class="hljs-comment">// delete by queryCondition</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">public</span> DemoEntity <span class="hljs-title function_">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception {
+            DemoEntity entity=<span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoEntity</span>();
+            entity.setId(<span class="hljs-string">"123123"</span>);
+            daoContext.getDAO(DemoDao.class).remove(<span class="hljs-string">"id"</span>);<span class="hljs-comment">// delete by id</span>
+            daoContext.getDAO(DemoDao.class).remove(<span class="hljs-keyword">new</span> <span class="hljs-title class_">QueryConditionImpl</span>().addRestriction(RestrictionFactory.eq(<span class="hljs-string">"id"</span>, entity.getId())));<span class="hljs-comment">// delete by queryCondition</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
         }
     });
 } <span class="hljs-keyword">catch</span> (Exception e) {
@@ -737,14 +736,14 @@ queryCondition.addSort(<span class="hljs-string">&quot;name&quot;</span>);
 </code></pre>
 <p>Update record:</p>
 <pre><code class="lang-java"><span class="hljs-keyword">try</span> {
-    DemoDBAccessProvider.getDbAccessor().runDMLAction(<span class="hljs-keyword">new</span> DBAction&lt;DemoEntity&gt;() {
+    DemoDBAccessProvider.getDbAccessor().runDMLAction(<span class="hljs-keyword">new</span> <span class="hljs-title class_">DBAction</span>&lt;DemoEntity&gt;() {
         <span class="hljs-meta">@Override</span>
-        <span class="hljs-function"><span class="hljs-keyword">public</span> DemoEntity <span class="hljs-title">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-            DemoEntity entity=<span class="hljs-keyword">new</span> DemoEntity();
-            entity.setId(<span class="hljs-string">&quot;123123&quot;</span>);
+        <span class="hljs-keyword">public</span> DemoEntity <span class="hljs-title function_">run</span><span class="hljs-params">(DAOContext daoContext)</span> <span class="hljs-keyword">throws</span> Exception {
+            DemoEntity entity=<span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoEntity</span>();
+            entity.setId(<span class="hljs-string">"123123"</span>);
             daoContext.getDAO(DemoDao.class).update(entity);<span class="hljs-comment">// update by id</span>
             daoContext.getDAO(DemoDao.class).addOrUpdate(entity);<span class="hljs-comment">// add or update</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
         }
     });
 } <span class="hljs-keyword">catch</span> (Exception e) {
@@ -794,12 +793,56 @@ queryCondition.addSort(<span class="hljs-string">&quot;name&quot;</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - DAO","level":"2.11","depth":1,"next":{"title":"Beginner Tutorial - simple Web API","level":"2.12","depth":1,"path":"tutorial/chapter_12/chapter_12.md","ref":"tutorial/chapter_12/chapter_12.md","articles":[]},"previous":{"title":"Beginner Tutorial - Filter","level":"2.10","depth":1,"path":"tutorial/chapter_10/chapter_10.md","ref":"tutorial/chapter_10/chapter_10.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_11/chapter_11.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - DAO","level":"2.11","depth":1,"next":{"title":"Beginner Tutorial - simple Web API","level":"2.12","depth":1,"path":"tutorial/chapter_12/chapter_12.md","ref":"tutorial/chapter_12/chapter_12.md","articles":[]},"previous":{"title":"Beginner Tutorial - Filter","level":"2.10","depth":1,"path":"tutorial/chapter_10/chapter_10.md","ref":"tutorial/chapter_10/chapter_10.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_11/chapter_11.md","mtime":"2026-04-07T06:04:11.294Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -844,11 +887,7 @@ queryCondition.addSort(<span class="hljs-string">&quot;name&quot;</span>);
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

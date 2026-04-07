@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Advanced Tutorial - Chart · GitBook</title>
+        <title>Advanced Tutorial - Chart · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -479,52 +478,52 @@
 <p>The example uses the 3-D column chart of Echarts to illustrate how to quickly build a chart plugin for FineReport.</p>
 <h3 id="1-define-data-structure"><a name="1-define-data-structure" class="anchor-navigation-ex-anchor" href="#1-define-data-structure"><i class="fa fa-link" aria-hidden="true"></i></a>1) Define Data Structure</h3>
 <p>Define the data structure used in the chart as xxxDataConfig, which extends <em>AbstractDataConfig</em>.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoDataConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDataConfig</span> </span>{
-    <span class="hljs-keyword">private</span> ExtendedField x = <span class="hljs-keyword">new</span> ExtendedField();
-    <span class="hljs-keyword">private</span> ExtendedField y = <span class="hljs-keyword">new</span> ExtendedField();
-    <span class="hljs-keyword">private</span> ExtendedField z = <span class="hljs-keyword">new</span> ExtendedField();
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoDataConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractDataConfig</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">ExtendedField</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ExtendedField</span>();
+    <span class="hljs-keyword">private</span> <span class="hljs-type">ExtendedField</span> <span class="hljs-variable">y</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ExtendedField</span>();
+    <span class="hljs-keyword">private</span> <span class="hljs-type">ExtendedField</span> <span class="hljs-variable">z</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ExtendedField</span>();
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title function_">getX</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> x;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setX</span><span class="hljs-params">(ExtendedField x)</span> </span>{
-        <span class="hljs-keyword">this</span>.x = x;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setX</span><span class="hljs-params">(ExtendedField x)</span> {
+        <span class="hljs-built_in">this</span>.x = x;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title">getY</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title function_">getY</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> y;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setY</span><span class="hljs-params">(ExtendedField y)</span> </span>{
-        <span class="hljs-keyword">this</span>.y = y;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setY</span><span class="hljs-params">(ExtendedField y)</span> {
+        <span class="hljs-built_in">this</span>.y = y;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title">getZ</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> ExtendedField <span class="hljs-title function_">getZ</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> z;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setZ</span><span class="hljs-params">(ExtendedField z)</span> </span>{
-        <span class="hljs-keyword">this</span>.z = z;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setZ</span><span class="hljs-params">(ExtendedField z)</span> {
+        <span class="hljs-built_in">this</span>.z = z;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readAttr</span><span class="hljs-params">(XMLableReader reader)</span> </span>{
-        readExtendedField(x, <span class="hljs-string">&quot;x&quot;</span>, reader);
-        readExtendedField(y, <span class="hljs-string">&quot;y&quot;</span>, reader);
-        readExtendedField(z, <span class="hljs-string">&quot;z&quot;</span>, reader);
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readAttr</span><span class="hljs-params">(XMLableReader reader)</span> {
+        readExtendedField(x, <span class="hljs-string">"x"</span>, reader);
+        readExtendedField(y, <span class="hljs-string">"y"</span>, reader);
+        readExtendedField(z, <span class="hljs-string">"z"</span>, reader);
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeAttr</span><span class="hljs-params">(XMLPrintWriter writer)</span> </span>{
-        writeExtendedField(x, <span class="hljs-string">&quot;x&quot;</span>, writer);
-        writeExtendedField(y, <span class="hljs-string">&quot;y&quot;</span>, writer);
-        writeExtendedField(z, <span class="hljs-string">&quot;z&quot;</span>, writer);
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">writeAttr</span><span class="hljs-params">(XMLPrintWriter writer)</span> {
+        writeExtendedField(x, <span class="hljs-string">"x"</span>, writer);
+        writeExtendedField(y, <span class="hljs-string">"y"</span>, writer);
+        writeExtendedField(z, <span class="hljs-string">"z"</span>, writer);
     }
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> ExtendedField[] dataSetFields() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ExtendedField[]{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ExtendedField</span>[]{
                 x,
                 y,
                 z
@@ -532,25 +531,25 @@
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> DemoDataConfig <span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException </span>{
-        DemoDataConfig result = <span class="hljs-keyword">new</span> DemoDataConfig();
-        result.setX(<span class="hljs-keyword">this</span>.getX().clone());
-        result.setY(<span class="hljs-keyword">this</span>.getY().clone());
-        result.setZ(<span class="hljs-keyword">this</span>.getZ().clone());
+    <span class="hljs-keyword">public</span> DemoDataConfig <span class="hljs-title function_">clone</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> CloneNotSupportedException {
+        <span class="hljs-type">DemoDataConfig</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoDataConfig</span>();
+        result.setX(<span class="hljs-built_in">this</span>.getX().clone());
+        result.setY(<span class="hljs-built_in">this</span>.getY().clone());
+        result.setZ(<span class="hljs-built_in">this</span>.getZ().clone());
         <span class="hljs-keyword">return</span> result;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.hashCode() + AssistUtils.hashCode(<span class="hljs-keyword">this</span>.getX(), <span class="hljs-keyword">this</span>.getY(), <span class="hljs-keyword">this</span>.getZ());
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.hashCode() + AssistUtils.hashCode(<span class="hljs-built_in">this</span>.getX(), <span class="hljs-built_in">this</span>.getY(), <span class="hljs-built_in">this</span>.getZ());
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object obj)</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(Object obj)</span> {
         <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">instanceof</span> DemoDataConfig
-                &amp;&amp; AssistUtils.equals(<span class="hljs-keyword">this</span>.getX(), ((DemoDataConfig) obj).getX())
-                &amp;&amp; AssistUtils.equals(<span class="hljs-keyword">this</span>.getY(), ((DemoDataConfig) obj).getY())
-                &amp;&amp; AssistUtils.equals(<span class="hljs-keyword">this</span>.getZ(), ((DemoDataConfig) obj).getZ())
+                &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.getX(), ((DemoDataConfig) obj).getX())
+                &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.getY(), ((DemoDataConfig) obj).getY())
+                &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.getZ(), ((DemoDataConfig) obj).getZ())
                 ;
     }
 }
@@ -558,11 +557,11 @@
 <p>The x field is used to store the x-axis data and so as the y, z field.</p>
 <h3 id="2-define-the-front-end-chart-object"><a name="2-define-the-front-end-chart-object" class="anchor-navigation-ex-anchor" href="#2-define-the-front-end-chart-object"><i class="fa fa-link" aria-hidden="true"></i></a>2) Define the Front-end Chart Object</h3>
 <p>The object is defined in demoWrapper.js.</p>
-<pre><code class="lang-js">demoWrapper = ExtendedChart.extend({
+<pre><code class="lang-js">demoWrapper = <span class="hljs-title class_">ExtendedChart</span>.<span class="hljs-title function_">extend</span>({
 
-    _init: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dom, option</span>) </span>{
-        <span class="hljs-keyword">var</span> chart = echarts.init(dom);
-        chart.setOption(option);
+    <span class="hljs-attr">_init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">dom, option</span>) {
+        <span class="hljs-keyword">var</span> chart = echarts.<span class="hljs-title function_">init</span>(dom);
+        chart.<span class="hljs-title function_">setOption</span>(option);
         <span class="hljs-keyword">return</span> chart;
     }
 
@@ -571,23 +570,23 @@
 <h3 id="3-define-the-back-end-chart-class"><a name="3-define-the-back-end-chart-class" class="anchor-navigation-ex-anchor" href="#3-define-the-back-end-chart-class"><i class="fa fa-link" aria-hidden="true"></i></a>3) Define the Back-end Chart Class</h3>
 <p>The back-end chart object extends <em>AbstractChart</em>, and do not forget to provide the generic type <em>DemoDataConfig</em>.</p>
 <pre><code class="lang-java"><span class="hljs-meta">@FunctionRecorder</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoChart</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractChart</span>&lt;<span class="hljs-title">DemoDataConfig</span>&gt; </span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String ID = <span class="hljs-string">&quot;DEMO_CHART&quot;</span>;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String NAME = <span class="hljs-string">&quot;Demo Chart&quot;</span>;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoChart</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractChart</span>&lt;DemoDataConfig&gt; {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">ID</span> <span class="hljs-operator">=</span> <span class="hljs-string">"DEMO_CHART"</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">NAME</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Demo Chart"</span>;
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">getChartID</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">protected</span> String <span class="hljs-title function_">getChartID</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> ID;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getChartName</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getChartName</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> NAME;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">demoImagePath</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;com/fr/plugin/extended/chart/demo/demo.png&quot;</span>;
+    <span class="hljs-keyword">protected</span> String <span class="hljs-title function_">demoImagePath</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"com/fr/plugin/extended/chart/demo/demo.png"</span>;
     }
 
     <span class="hljs-comment">/**
@@ -600,41 +599,41 @@
      */</span>
     <span class="hljs-meta">@Override</span>
     <span class="hljs-meta">@ExecuteFunctionRecord</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addJSON</span><span class="hljs-params">(DemoDataConfig dataConfig, JSONObject jsonObject, Repository repo, JSONPara para)</span> <span class="hljs-keyword">throws</span> JSONException </span>{
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addJSON</span><span class="hljs-params">(DemoDataConfig dataConfig, JSONObject jsonObject, Repository repo, JSONPara para)</span> <span class="hljs-keyword">throws</span> JSONException {
 
-        JSONArray array = JSONFactory.createJSON(JSON.ARRAY);
+        <span class="hljs-type">JSONArray</span> <span class="hljs-variable">array</span> <span class="hljs-operator">=</span> JSONFactory.createJSON(JSON.ARRAY);
 
         List&lt;Object&gt; xValues = dataConfig.getX().getValues();
         List&lt;Object&gt; yValues = dataConfig.getY().getValues();
         List&lt;Object&gt; zValues = dataConfig.getZ().getValues();
 
-        <span class="hljs-keyword">double</span> maxValue = Double.MIN_VALUE;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, len = xValues.size(); i &lt; len; i++) {
+        <span class="hljs-type">double</span> <span class="hljs-variable">maxValue</span> <span class="hljs-operator">=</span> Double.MIN_VALUE;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, len = xValues.size(); i &lt; len; i++) {
             maxValue = Math.max(GeneralUtils.objectToNumber(zValues.get(i)).doubleValue(), maxValue);
 
             array.put(JSONFactory.createJSON(JSON.ARRAY).put(xValues.get(i)).put(yValues.get(i)).put(zValues.get(i)));
         }
 
-        jsonObject.put(<span class="hljs-string">&quot;series&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;bar3D&quot;</span>).put(<span class="hljs-string">&quot;data&quot;</span>, array)
-                .put(<span class="hljs-string">&quot;bevelSize&quot;</span>, <span class="hljs-number">0.2</span>).put(<span class="hljs-string">&quot;bevelSmoothness&quot;</span>, <span class="hljs-number">2</span>).put(<span class="hljs-string">&quot;shading&quot;</span>, <span class="hljs-string">&quot;color&quot;</span>));
+        jsonObject.put(<span class="hljs-string">"series"</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">"type"</span>, <span class="hljs-string">"bar3D"</span>).put(<span class="hljs-string">"data"</span>, array)
+                .put(<span class="hljs-string">"bevelSize"</span>, <span class="hljs-number">0.2</span>).put(<span class="hljs-string">"bevelSmoothness"</span>, <span class="hljs-number">2</span>).put(<span class="hljs-string">"shading"</span>, <span class="hljs-string">"color"</span>));
 
-        jsonObject.put(<span class="hljs-string">&quot;xAxis3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;category&quot;</span>))
-                .put(<span class="hljs-string">&quot;yAxis3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;category&quot;</span>))
-                .put(<span class="hljs-string">&quot;zAxis3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;value&quot;</span>));
+        jsonObject.put(<span class="hljs-string">"xAxis3D"</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">"type"</span>, <span class="hljs-string">"category"</span>))
+                .put(<span class="hljs-string">"yAxis3D"</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">"type"</span>, <span class="hljs-string">"category"</span>))
+                .put(<span class="hljs-string">"zAxis3D"</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">"type"</span>, <span class="hljs-string">"value"</span>));
 
-        jsonObject.put(<span class="hljs-string">&quot;grid3D&quot;</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">&quot;boxWidth&quot;</span>, <span class="hljs-number">200</span>).put(<span class="hljs-string">&quot;boxDepth&quot;</span>, <span class="hljs-number">80</span>));
+        jsonObject.put(<span class="hljs-string">"grid3D"</span>, JSONFactory.createJSON(JSON.OBJECT).put(<span class="hljs-string">"boxWidth"</span>, <span class="hljs-number">200</span>).put(<span class="hljs-string">"boxDepth"</span>, <span class="hljs-number">80</span>));
 
-        jsonObject.put(<span class="hljs-string">&quot;visualMap&quot;</span>, JSONFactory.createJSON(JSON.OBJECT)
-                .put(<span class="hljs-string">&quot;max&quot;</span>, maxValue)
-                .put(<span class="hljs-string">&quot;color&quot;</span>, JSONFactory.createJSON(JSON.ARRAY).put(<span class="hljs-string">&quot;#d94e5d&quot;</span>).put(<span class="hljs-string">&quot;#eac736&quot;</span>).put(<span class="hljs-string">&quot;#50a3ba&quot;</span>)));
+        jsonObject.put(<span class="hljs-string">"visualMap"</span>, JSONFactory.createJSON(JSON.OBJECT)
+                .put(<span class="hljs-string">"max"</span>, maxValue)
+                .put(<span class="hljs-string">"color"</span>, JSONFactory.createJSON(JSON.ARRAY).put(<span class="hljs-string">"#d94e5d"</span>).put(<span class="hljs-string">"#eac736"</span>).put(<span class="hljs-string">"#50a3ba"</span>)));
     }
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">protected</span> String[] requiredJS() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{
-                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/web/demoWrapper.js&quot;</span>,
-                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/web/echarts.js&quot;</span>,
-                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/web/echarts-gl.js&quot;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{
+                <span class="hljs-string">"com/fr/plugin/chart/demo/web/demoWrapper.js"</span>,
+                <span class="hljs-string">"com/fr/plugin/chart/demo/web/echarts.js"</span>,
+                <span class="hljs-string">"com/fr/plugin/chart/demo/web/echarts-gl.js"</span>
         };
     }
 
@@ -643,46 +642,46 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">wrapperName</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demoWrapper&quot;</span>;
+    <span class="hljs-keyword">protected</span> String <span class="hljs-title function_">wrapperName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"demoWrapper"</span>;
     }
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">protected</span> HyperLinkPara[] hyperLinkParas() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HyperLinkPara[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HyperLinkPara</span>[<span class="hljs-number">0</span>];
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> List&lt;StringFormula&gt; <span class="hljs-title">formulas</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">protected</span> List&lt;StringFormula&gt; <span class="hljs-title function_">formulas</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
 }
 </code></pre>
 <h3 id="4-create-the-data-config-ui"><a name="4-create-the-data-config-ui" class="anchor-navigation-ex-anchor" href="#4-create-the-data-config-ui"><i class="fa fa-link" aria-hidden="true"></i></a>4) Create the Data Config UI</h3>
 <p>There are two data types that can be used in a chart: table data and report data.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoTableDataPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtendedChartTableDataPane</span>&lt;<span class="hljs-title">DemoDataConfig</span>&gt; </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoTableDataPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractExtendedChartTableDataPane</span>&lt;DemoDataConfig&gt; {
     <span class="hljs-keyword">private</span> UIComboBox xComboBox;
     <span class="hljs-keyword">private</span> UIComboBox yComboBox;
     <span class="hljs-keyword">private</span> UIComboBox zComboBox;
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">protected</span> String[] fieldLabels() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{
-                <span class="hljs-string">&quot;X-Axis&quot;</span>,
-                <span class="hljs-string">&quot;Y-Axis&quot;</span>,
-                <span class="hljs-string">&quot;Z-Axis&quot;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{
+                <span class="hljs-string">"X-Axis"</span>,
+                <span class="hljs-string">"Y-Axis"</span>,
+                <span class="hljs-string">"Z-Axis"</span>
         };
     }
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">protected</span> UIComboBox[] filedComboBoxes() {
-        <span class="hljs-keyword">if</span> (xComboBox == <span class="hljs-keyword">null</span>) {
-            xComboBox = <span class="hljs-keyword">new</span> UIComboBox();
-            yComboBox = <span class="hljs-keyword">new</span> UIComboBox();
-            zComboBox = <span class="hljs-keyword">new</span> UIComboBox();
+        <span class="hljs-keyword">if</span> (xComboBox == <span class="hljs-literal">null</span>) {
+            xComboBox = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIComboBox</span>();
+            yComboBox = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIComboBox</span>();
+            zComboBox = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIComboBox</span>();
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UIComboBox[]{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIComboBox</span>[]{
                 xComboBox,
                 yComboBox,
                 zComboBox
@@ -690,15 +689,15 @@
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populate</span><span class="hljs-params">(DemoDataConfig dataConf)</span> </span>{
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populate</span><span class="hljs-params">(DemoDataConfig dataConf)</span> {
         populateField(xComboBox, dataConf.getX());
         populateField(yComboBox, dataConf.getY());
         populateField(zComboBox, dataConf.getZ());
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> DemoDataConfig <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
-        DemoDataConfig dataConfig = <span class="hljs-keyword">new</span> DemoDataConfig();
+    <span class="hljs-keyword">protected</span> DemoDataConfig <span class="hljs-title function_">update</span><span class="hljs-params">()</span> {
+        <span class="hljs-type">DemoDataConfig</span> <span class="hljs-variable">dataConfig</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoDataConfig</span>();
 
         updateField(xComboBox, dataConfig.getX());
         updateField(yComboBox, dataConfig.getY());
@@ -708,28 +707,28 @@
     }
 }
 </code></pre>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoReportDataPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtendedChartReportDataPane</span>&lt;<span class="hljs-title">DemoDataConfig</span>&gt; </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoReportDataPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractExtendedChartReportDataPane</span>&lt;DemoDataConfig&gt; {
     <span class="hljs-keyword">private</span> TinyFormulaPane xPane;
     <span class="hljs-keyword">private</span> TinyFormulaPane yPane;
     <span class="hljs-keyword">private</span> TinyFormulaPane zPane;
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">protected</span> String[] fieldLabel() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[]{
-                <span class="hljs-string">&quot;X-Axis&quot;</span>,
-                <span class="hljs-string">&quot;Y-Axis&quot;</span>,
-                <span class="hljs-string">&quot;Z-Axis&quot;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{
+                <span class="hljs-string">"X-Axis"</span>,
+                <span class="hljs-string">"Y-Axis"</span>,
+                <span class="hljs-string">"Z-Axis"</span>
         };
     }
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">protected</span> TinyFormulaPane[] formulaPanes() {
-        <span class="hljs-keyword">if</span> (xPane == <span class="hljs-keyword">null</span>) {
-            xPane = <span class="hljs-keyword">new</span> TinyFormulaPane();
-            yPane = <span class="hljs-keyword">new</span> TinyFormulaPane();
-            zPane = <span class="hljs-keyword">new</span> TinyFormulaPane();
+        <span class="hljs-keyword">if</span> (xPane == <span class="hljs-literal">null</span>) {
+            xPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TinyFormulaPane</span>();
+            yPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TinyFormulaPane</span>();
+            zPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TinyFormulaPane</span>();
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TinyFormulaPane[]{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TinyFormulaPane</span>[]{
                 xPane,
                 yPane,
                 zPane
@@ -737,15 +736,15 @@
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populate</span><span class="hljs-params">(DemoDataConfig dataConf)</span> </span>{
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populate</span><span class="hljs-params">(DemoDataConfig dataConf)</span> {
         populateField(xPane, dataConf.getX());
         populateField(yPane, dataConf.getY());
         populateField(zPane, dataConf.getZ());
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> DemoDataConfig <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
-        DemoDataConfig dataConfig = <span class="hljs-keyword">new</span> DemoDataConfig();
+    <span class="hljs-keyword">protected</span> DemoDataConfig <span class="hljs-title function_">update</span><span class="hljs-params">()</span> {
+        <span class="hljs-type">DemoDataConfig</span> <span class="hljs-variable">dataConfig</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoDataConfig</span>();
 
         updateField(xPane, dataConfig.getX());
         updateField(yPane, dataConfig.getY());
@@ -756,47 +755,47 @@
 }
 </code></pre>
 <h3 id="5-register-the-chart"><a name="5-register-the-chart" class="anchor-navigation-ex-anchor" href="#5-register-the-chart"><i class="fa fa-link" aria-hidden="true"></i></a>5) Register the Chart</h3>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtentChartProvider</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractExtentChartProvider</span> {
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> AbstractChart <span class="hljs-title">createChart</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoChart();
+    <span class="hljs-keyword">protected</span> AbstractChart <span class="hljs-title function_">createChart</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoChart</span>();
     }
 }
 </code></pre>
 <h3 id="6-register-the-chart-ui"><a name="6-register-the-chart-ui" class="anchor-navigation-ex-anchor" href="#6-register-the-chart-ui"><i class="fa fa-link" aria-hidden="true"></i></a>6) Register the Chart UI</h3>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoUI</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractExtendedChartUIProvider</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoUI</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractExtendedChartUIProvider</span> {
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> AbstractExtendedChartTableDataPane <span class="hljs-title">getTableDataSourcePane</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoTableDataPane();
+    <span class="hljs-keyword">protected</span> AbstractExtendedChartTableDataPane <span class="hljs-title function_">getTableDataSourcePane</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoTableDataPane</span>();
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> AbstractReportDataContentPane <span class="hljs-title">getReportDataSourcePane</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoReportDataPane();
+    <span class="hljs-keyword">protected</span> AbstractReportDataContentPane <span class="hljs-title function_">getReportDataSourcePane</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoReportDataPane</span>();
     }
 
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public</span> String[] getDemoImagePath() {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String[] {
-                <span class="hljs-string">&quot;com/fr/plugin/chart/demo/images/demo.png&quot;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[] {
+                <span class="hljs-string">"com/fr/plugin/chart/demo/images/demo.png"</span>
         };
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getIconPath</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;com/fr/plugin/chart/demo/images/icon.png&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getIconPath</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"com/fr/plugin/chart/demo/images/icon.png"</span>;
     }
 }
 </code></pre>
 <h3 id="7-register-the-plugin"><a name="7-register-the-plugin" class="anchor-navigation-ex-anchor" href="#7-register-the-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>7) Register the Plugin</h3>
 <p>Create a plugin.xml to register the implementation.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-chart</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">IndependentChartProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.chart.demo.Demo&quot;</span> <span class="hljs-attr">plotID</span>=<span class="hljs-string">&quot;DEMO_CHART&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">IndependentChartProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.chart.demo.Demo"</span> <span class="hljs-attr">plotID</span>=<span class="hljs-string">"DEMO_CHART"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-chart</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">extra-chart-designer</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">IndependentChartUIProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.chart.demo.DemoUI&quot;</span> <span class="hljs-attr">plotID</span>=<span class="hljs-string">&quot;DEMO_CHART&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">IndependentChartUIProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.chart.demo.DemoUI"</span> <span class="hljs-attr">plotID</span>=<span class="hljs-string">"DEMO_CHART"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-chart-designer</span>&gt;</span>
 </code></pre>
 <p>The full code of this example is placed here: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-chart-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-chart-demo</a></p>
@@ -843,12 +842,56 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Chart","level":"2.20","depth":1,"next":{"title":"Advanced Tutorial - Export","level":"2.21","depth":1,"path":"tutorial/chapter_21/chapter_21.md","ref":"tutorial/chapter_21/chapter_21.md","articles":[]},"previous":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"path":"tutorial/chapter_19/chapter_19.md","ref":"tutorial/chapter_19/chapter_19.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_20/chapter_20.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Chart","level":"2.20","depth":1,"next":{"title":"Advanced Tutorial - Export","level":"2.21","depth":1,"path":"tutorial/chapter_21/chapter_21.md","ref":"tutorial/chapter_21/chapter_21.md","articles":[]},"previous":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"path":"tutorial/chapter_19/chapter_19.md","ref":"tutorial/chapter_19/chapter_19.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_20/chapter_20.md","mtime":"2026-04-07T06:04:11.301Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -893,11 +936,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

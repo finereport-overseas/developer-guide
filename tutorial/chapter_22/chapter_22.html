@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Advanced Tutorial - Modify Designed Report · GitBook</title>
+        <title>Advanced Tutorial - Modify Designed Report · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -84,7 +83,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -419,8 +418,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -462,12 +461,12 @@
 <h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
 <p>When making a report, we often encounter that the effect of a report we want to achieve cannot be achieved using the designer. This type of demand is generally very dynamic, and there is no way to directly involve it in the designer. For example, some content needs to be always displayed at the bottom of the paper when using pagination preview, however, we have no idea of how long the content of the above extension will be. To solve this problem, we can use the product-provided engine calculation interface to modify some logic in the report generation process. This chapter will introduce the use of the interface, as well as two simple examples of how to modify the report content.</p>
 <h3 id="actor"><a name="actor" class="anchor-navigation-ex-anchor" href="#actor"><i class="fa fa-link" aria-hidden="true"></i></a>Actor</h3>
-<p>First, let&#x2019;s take a look at the process of our report from CPT to HTML. Take the paging preview as an example.</p>
-<p><a href="images/intro.png" data-lightbox="517a315a-ee84-4990-8407-1637e92149d8" data-title="intro"><img src="images/intro.png" alt="intro"></a></p>
+<p>First, let’s take a look at the process of our report from CPT to HTML. Take the paging preview as an example.</p>
+<p><a href="images/intro.png" data-lightbox="0c2d6425-7909-4dbd-a3b9-9fadc372a148" data-title="intro"><img src="images/intro.png" alt="intro"></img></a></p>
 <p>Here, tpl.cpt is an original template. <em>ResultWordBook</em> is the result template through a series of calculations, and this intermediate calculation is implemented by the <em>PageActor</em> object. Therefore, we can modify the result report by modifying the properties of <em>ResultWorkBook</em>.</p>
 <p>The calculation object of each preview method is also different. <em>PageActor</em> is for pagination preview, <em>WriteActor</em> is for Data Entry Preview, and the calculation object of data analysis is <em>ViewActor</em>. In fact, they all implement the <em>Actor</em> interface.</p>
 <p>When implementing this in actual development, the best practice is to directly inherit the corresponding calculation object according to the preview method. For example, the following demo is to modify the result of pagination preview and inherit the <em>PageActor</em>.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoPageActor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageActor</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoPageActor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">PageActor</span> {
     <span class="hljs-comment">/**
      * the method to get result workbook from template
      * <span class="hljs-doctag">@param</span> templateWorkBook a CPT object
@@ -478,8 +477,8 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ResultWorkBook <span class="hljs-title">getResultBookFromCacheIfNeed</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, String tpl, ReportCache reportCache, Map&lt;String, Object&gt; map, <span class="hljs-keyword">int</span> sheet)</span> </span>{
-        ResultWorkBook wb = <span class="hljs-keyword">super</span>.getResultBookFromCacheIfNeed(templateWorkBook, tpl, reportCache, map, sheet);
+    <span class="hljs-keyword">public</span> ResultWorkBook <span class="hljs-title function_">getResultBookFromCacheIfNeed</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, String tpl, ReportCache reportCache, Map&lt;String, Object&gt; map, <span class="hljs-type">int</span> sheet)</span> {
+        <span class="hljs-type">ResultWorkBook</span> <span class="hljs-variable">wb</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">super</span>.getResultBookFromCacheIfNeed(templateWorkBook, tpl, reportCache, map, sheet);
         dealResult(wb);<span class="hljs-comment">// our method here</span>
         <span class="hljs-keyword">return</span> wb;
     }
@@ -488,22 +487,22 @@
      * modify the result
      * <span class="hljs-doctag">@param</span> wb
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dealResult</span><span class="hljs-params">(ResultWorkBook wb)</span></span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dealResult</span><span class="hljs-params">(ResultWorkBook wb)</span>{
 
     }
 }
 </code></pre>
 <p>Register the above class as a plugin:</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">WebActor</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.actor.DemoPageActor&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">WebActor</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.actor.DemoPageActor"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
 </code></pre>
 <h2 id="examples"><a name="examples" class="anchor-navigation-ex-anchor" href="#examples"><i class="fa fa-link" aria-hidden="true"></i></a>Examples</h2>
 <h3 id="example-1"><a name="example-1" class="anchor-navigation-ex-anchor" href="#example-1"><i class="fa fa-link" aria-hidden="true"></i></a>Example 1</h3>
 <p>This example is to achieve the requirement mentioned in the introduction. The report content is vertically expanded, and the content length is unpredictable. We need to fix something at the bottom of the paper on the last page of the report.</p>
 <p>When facing such a requirement, we first need to think of a general plan. The designer cannot directly set the content position. But we can put a supplementary line on top of the fixed content, and set the content position by modifying the height of the supplementary line. Also, there should be something to mark the supplementary line. A simple way is to use a fixed cell element.</p>
-<p>After the general plan is decided, let&apos;s look at how to realize it:</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoPageActor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageActor</span> </span>{
+<p>After the general plan is decided, let's look at how to realize it:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoPageActor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">PageActor</span> {
     <span class="hljs-comment">/**
      * the method to get result workbook from template
      * <span class="hljs-doctag">@param</span> templateWorkBook a CPT object
@@ -514,9 +513,9 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ResultWorkBook <span class="hljs-title">getResultBookFromCacheIfNeed</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, String tpl, ReportCache reportCache, Map&lt;String, Object&gt; map, <span class="hljs-keyword">int</span> sheet)</span> </span>{
-        ResultWorkBook wb = <span class="hljs-keyword">super</span>.getResultBookFromCacheIfNeed(templateWorkBook, tpl, reportCache, map, sheet);
-        <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;2.cpt&quot;</span>.equals(tpl)||<span class="hljs-string">&quot;/2.cpt&quot;</span>.equals(tpl)){<span class="hljs-comment">// Only modify the report named &quot;2.cpt&quot;</span>
+    <span class="hljs-keyword">public</span> ResultWorkBook <span class="hljs-title function_">getResultBookFromCacheIfNeed</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, String tpl, ReportCache reportCache, Map&lt;String, Object&gt; map, <span class="hljs-type">int</span> sheet)</span> {
+        <span class="hljs-type">ResultWorkBook</span> <span class="hljs-variable">wb</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">super</span>.getResultBookFromCacheIfNeed(templateWorkBook, tpl, reportCache, map, sheet);
+        <span class="hljs-keyword">if</span>(<span class="hljs-string">"2.cpt"</span>.equals(tpl)||<span class="hljs-string">"/2.cpt"</span>.equals(tpl)){<span class="hljs-comment">// Only modify the report named "2.cpt"</span>
             dealResult(wb);<span class="hljs-comment">// our method here</span>
         }
 
@@ -527,32 +526,32 @@
      * modify the result
      * <span class="hljs-doctag">@param</span> wb
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">private</span>  <span class="hljs-keyword">void</span>  <span class="hljs-title">dealResult</span><span class="hljs-params">(ResultWorkBook wb)</span></span>{
-        PageSetChain pageSetChain = (PageSetChain) <span class="hljs-keyword">this</span>.getPageSet(wb);<span class="hljs-comment">// get page set of the workbook</span>
-        <span class="hljs-keyword">int</span> size = pageSetChain.size();<span class="hljs-comment">// page size</span>
-        <span class="hljs-keyword">int</span> internalHeight = <span class="hljs-number">0</span>;<span class="hljs-comment">// the height of the fixed cell element</span>
-        <span class="hljs-keyword">int</span> lastcontentHeight=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">private</span>  <span class="hljs-keyword">void</span>  <span class="hljs-title function_">dealResult</span><span class="hljs-params">(ResultWorkBook wb)</span>{
+        <span class="hljs-type">PageSetChain</span> <span class="hljs-variable">pageSetChain</span> <span class="hljs-operator">=</span> (PageSetChain) <span class="hljs-built_in">this</span>.getPageSet(wb);<span class="hljs-comment">// get page set of the workbook</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> pageSetChain.size();<span class="hljs-comment">// page size</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">internalHeight</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<span class="hljs-comment">// the height of the fixed cell element</span>
+        <span class="hljs-type">int</span> lastcontentHeight=<span class="hljs-number">0</span>;
         <span class="hljs-keyword">if</span>(size==<span class="hljs-number">1</span>){
             <span class="hljs-comment">// Only one page</span>
-            ReportPage lastPage = (ReportPage) pageSetChain.getPage(size - <span class="hljs-number">1</span>);
+            <span class="hljs-type">ReportPage</span> <span class="hljs-variable">lastPage</span> <span class="hljs-operator">=</span> (ReportPage) pageSetChain.getPage(size - <span class="hljs-number">1</span>);
             lastcontentHeight = lastPage.getContentHeight();
-            <span class="hljs-keyword">int</span> paperHeight = (<span class="hljs-keyword">int</span>) Math.round(lastPage.getPaperHeight().toPixD(<span class="hljs-number">96</span>));
-            internalHeight = paperHeight - lastcontentHeight - (<span class="hljs-keyword">int</span>)Math.round(lastPage.getMarginBottom().toPixD(<span class="hljs-number">96</span>)) - (<span class="hljs-keyword">int</span>)Math.round(lastPage.getMarginTop().toPixD(<span class="hljs-number">96</span>));
+            <span class="hljs-type">int</span> <span class="hljs-variable">paperHeight</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) Math.round(lastPage.getPaperHeight().toPixD(<span class="hljs-number">96</span>));
+            internalHeight = paperHeight - lastcontentHeight - (<span class="hljs-type">int</span>)Math.round(lastPage.getMarginBottom().toPixD(<span class="hljs-number">96</span>)) - (<span class="hljs-type">int</span>)Math.round(lastPage.getMarginTop().toPixD(<span class="hljs-number">96</span>));
         }<span class="hljs-keyword">else</span>{
             <span class="hljs-comment">// Multiple pages</span>
-            ReportPage lastPage = (ReportPage) pageSetChain.getPage(size - <span class="hljs-number">1</span>);
-            ReportPage firstPage = (ReportPage) pageSetChain.getPage(<span class="hljs-number">0</span>);
+            <span class="hljs-type">ReportPage</span> <span class="hljs-variable">lastPage</span> <span class="hljs-operator">=</span> (ReportPage) pageSetChain.getPage(size - <span class="hljs-number">1</span>);
+            <span class="hljs-type">ReportPage</span> <span class="hljs-variable">firstPage</span> <span class="hljs-operator">=</span> (ReportPage) pageSetChain.getPage(<span class="hljs-number">0</span>);
             lastcontentHeight = lastPage.getContentHeight();
-            <span class="hljs-keyword">int</span> firsttcontentHeight = firstPage.getContentHeight();
+            <span class="hljs-type">int</span> <span class="hljs-variable">firsttcontentHeight</span> <span class="hljs-operator">=</span> firstPage.getContentHeight();
             internalHeight = firsttcontentHeight - lastcontentHeight;
         }
-        <span class="hljs-keyword">int</span> len = wb.getReportCount();
-        PageRWorkSheet sheet = (PageRWorkSheet) wb.getResultReport(len-<span class="hljs-number">1</span>);<span class="hljs-comment">// get the last sheet</span>
-        Iterator it = sheet.getCellCase().cellIterator();<span class="hljs-comment">// the iterator to get cell elements</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> wb.getReportCount();
+        <span class="hljs-type">PageRWorkSheet</span> <span class="hljs-variable">sheet</span> <span class="hljs-operator">=</span> (PageRWorkSheet) wb.getResultReport(len-<span class="hljs-number">1</span>);<span class="hljs-comment">// get the last sheet</span>
+        <span class="hljs-type">Iterator</span> <span class="hljs-variable">it</span> <span class="hljs-operator">=</span> sheet.getCellCase().cellIterator();<span class="hljs-comment">// the iterator to get cell elements</span>
         <span class="hljs-keyword">while</span> (it.hasNext()){
-            CellElement cellElement = (CellElement) it.next();
-            <span class="hljs-keyword">if</span>(cellElement!=<span class="hljs-keyword">null</span>&amp;&amp;<span class="hljs-string">&quot;fr_flag&quot;</span>.equals(cellElement.getValue())){<span class="hljs-comment">// get the cell element we are looking for</span>
-                <span class="hljs-keyword">int</span> row = cellElement.getRow();
+            <span class="hljs-type">CellElement</span> <span class="hljs-variable">cellElement</span> <span class="hljs-operator">=</span> (CellElement) it.next();
+            <span class="hljs-keyword">if</span>(cellElement!=<span class="hljs-literal">null</span>&amp;&amp;<span class="hljs-string">"fr_flag"</span>.equals(cellElement.getValue())){<span class="hljs-comment">// get the cell element we are looking for</span>
+                <span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> cellElement.getRow();
                 sheet.setRowHeight(row, FU.valueOfPix(internalHeight-<span class="hljs-number">10</span>, <span class="hljs-number">96</span>));<span class="hljs-comment">// cut 10 px to avoid extra pagination after adding content</span>
                 cellElement.setValue(StringUtils.EMPTY);<span class="hljs-comment">// set the content to empty</span>
             }
@@ -562,7 +561,7 @@
 </code></pre>
 <h3 id="example-2"><a name="example-2" class="anchor-navigation-ex-anchor" href="#example-2"><i class="fa fa-link" aria-hidden="true"></i></a>Example 2</h3>
 <p>Example 1 is to directly modify the <em>ResultWorkBook</em> object to affect the final display. In fact, it can also be achieved by modifying the original report.</p>
-<p>Notice that the first parameter <em>TemplateWorkBook </em>in the <em>getResultBookFromCacheIfNeed</em> method is the original workbook. Modifying this is similar to modifying the template in the designer, except that the CPT will not be saved after the modification. Let&apos;s use this idea to implement a requirement. The requirement is to pass a parameter to display the only sheet we want for a multi-sheet report. For such a requirement, we can modify the original workbook, delete other sheets, and then use the modified workbook to participate in the calculation.</p>
+<p>Notice that the first parameter <em>TemplateWorkBook </em>in the <em>getResultBookFromCacheIfNeed</em> method is the original workbook. Modifying this is similar to modifying the template in the designer, except that the CPT will not be saved after the modification. Let's use this idea to implement a requirement. The requirement is to pass a parameter to display the only sheet we want for a multi-sheet report. For such a requirement, we can modify the original workbook, delete other sheets, and then use the modified workbook to participate in the calculation.</p>
 <p>Modified on the basis of Example 1.</p>
 <pre><code class="lang-java"> <span class="hljs-comment">/**
      * add a method to modify TemplateWorkBook
@@ -570,28 +569,28 @@
      * <span class="hljs-doctag">@param</span> showIndex
      * <span class="hljs-doctag">@return</span>
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">private</span> TemplateWorkBook <span class="hljs-title">dealTemplate</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, <span class="hljs-keyword">int</span> showIndex)</span> </span>{
-        <span class="hljs-keyword">int</span> len = templateWorkBook.getReportCount();
+    <span class="hljs-keyword">private</span> TemplateWorkBook <span class="hljs-title function_">dealTemplate</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, <span class="hljs-type">int</span> showIndex)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> templateWorkBook.getReportCount();
         <span class="hljs-keyword">if</span> (showIndex &gt; len || len &lt; <span class="hljs-number">1</span>) {<span class="hljs-comment">// skip if the index is abnormal</span>
             <span class="hljs-keyword">return</span> templateWorkBook;
         }
         <span class="hljs-comment">// create a new workbook and add the sheet to be displayed</span>
-        WorkBook workBook = <span class="hljs-keyword">new</span> WorkBook();
+        <span class="hljs-type">WorkBook</span> <span class="hljs-variable">workBook</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">WorkBook</span>();
         workBook.addReport(templateWorkBook.getTemplateReport(showIndex - <span class="hljs-number">1</span>));
         <span class="hljs-keyword">return</span> workBook;
     }
 }
 </code></pre>
 <p>Then modify the <em>getResultBookFromCacheIfNeed</em> method.</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ResultWorkBook <span class="hljs-title">getResultBookFromCacheIfNeed</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, String tpl, ReportCache reportCache, Map&lt;String, Object&gt; map, <span class="hljs-keyword">int</span> sheet)</span> </span>{
-    <span class="hljs-keyword">if</span> (map.containsKey(<span class="hljs-string">&quot;showSheet&quot;</span>)) {<span class="hljs-comment">// deal the workbook when a &apos;showSheet&apos;</span>
-        Number index = GeneralUtils.objectToNumber(map.get(<span class="hljs-string">&quot;showSheet&quot;</span>), <span class="hljs-keyword">true</span>);
-        <span class="hljs-keyword">if</span> (index != <span class="hljs-keyword">null</span>) {
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> ResultWorkBook <span class="hljs-title function_">getResultBookFromCacheIfNeed</span><span class="hljs-params">(TemplateWorkBook templateWorkBook, String tpl, ReportCache reportCache, Map&lt;String, Object&gt; map, <span class="hljs-type">int</span> sheet)</span> {
+    <span class="hljs-keyword">if</span> (map.containsKey(<span class="hljs-string">"showSheet"</span>)) {<span class="hljs-comment">// deal the workbook when a 'showSheet'</span>
+        <span class="hljs-type">Number</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> GeneralUtils.objectToNumber(map.get(<span class="hljs-string">"showSheet"</span>), <span class="hljs-literal">true</span>);
+        <span class="hljs-keyword">if</span> (index != <span class="hljs-literal">null</span>) {
             templateWorkBook = dealTemplate(templateWorkBook, index.intValue());
         }
     }
-    ResultWorkBook wb = <span class="hljs-keyword">super</span>.getResultBookFromCacheIfNeed(templateWorkBook, tpl, reportCache, map, sheet);
-    <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;2.cpt&quot;</span>.equals(tpl) || <span class="hljs-string">&quot;/2.cpt&quot;</span>.equals(tpl)) {
+    <span class="hljs-type">ResultWorkBook</span> <span class="hljs-variable">wb</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">super</span>.getResultBookFromCacheIfNeed(templateWorkBook, tpl, reportCache, map, sheet);
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">"2.cpt"</span>.equals(tpl) || <span class="hljs-string">"/2.cpt"</span>.equals(tpl)) {
         dealResult(wb);
     }
 
@@ -638,12 +637,56 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Modify Designed Report","level":"2.22","depth":1,"previous":{"title":"Advanced Tutorial - Export","level":"2.21","depth":1,"path":"tutorial/chapter_21/chapter_21.md","ref":"tutorial/chapter_21/chapter_21.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_22/chapter_22.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Modify Designed Report","level":"2.22","depth":1,"previous":{"title":"Advanced Tutorial - Export","level":"2.21","depth":1,"path":"tutorial/chapter_21/chapter_21.md","ref":"tutorial/chapter_21/chapter_21.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_22/chapter_22.md","mtime":"2026-04-07T06:04:11.301Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -688,11 +731,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

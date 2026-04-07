@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Advanced Tutorial - Data Connection · GitBook</title>
+        <title>Advanced Tutorial - Data Connection · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -471,45 +470,45 @@
 <span class="hljs-keyword">import</span> com.fr.design.beans.BasicBeanPane;
 <span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ConnectionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ConnectionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
 
-    String XML_TAG = <span class="hljs-string">&quot;ConnectionProvider&quot;</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ConnectionProvider"</span>;
 
-    <span class="hljs-keyword">int</span> CURRENT_LEVEL = <span class="hljs-number">2</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;
 
     <span class="hljs-comment">/**
      * the name of the popup title
      *
      * <span class="hljs-doctag">@return</span> name
      */</span>
-    <span class="hljs-function">String <span class="hljs-title">nameForConnection</span><span class="hljs-params">()</span></span>;
+    String <span class="hljs-title function_">nameForConnection</span><span class="hljs-params">()</span>;
 
     <span class="hljs-comment">/**
      * the icon of the data connection
      *
      * <span class="hljs-doctag">@return</span> icon path
      */</span>
-    <span class="hljs-function">String <span class="hljs-title">iconPathForConnection</span><span class="hljs-params">()</span></span>;
+    String <span class="hljs-title function_">iconPathForConnection</span><span class="hljs-params">()</span>;
 
     <span class="hljs-comment">/**
      * the class of the connection
      *
      * <span class="hljs-doctag">@return</span> connection class
      */</span>
-    Class&lt;? extends com.fr.data.impl.Connection&gt; classForConnection();
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">com</span>.fr.data.impl.Connection&gt; classForConnection();
 
     <span class="hljs-comment">/**
      * the pane of the connection
      *
      * <span class="hljs-doctag">@return</span> connection pane
      */</span>
-    Class&lt;? extends BasicBeanPane&lt;? extends Connection&gt;&gt; appearanceForConnection();
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BasicBeanPane</span>&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Connection</span>&gt;&gt; appearanceForConnection();
 }
 </code></pre>
 <p>The <em>classForConnection()</em> and <em>appearanceForConnection()</em> introduce two new class: <em>Connection</em> and <em>BasicBeanPane&lt;? extends Connection&gt;</em>. We must implement these two before creating a new data conection.</p>
 <h2 id="connection"><a name="connection" class="anchor-navigation-ex-anchor" href="#connection"><i class="fa fa-link" aria-hidden="true"></i></a>Connection</h2>
 <p>This interface represents an actual data connection. Usually, we do not directly implement this interface but extend <em>AbstractDatabaseConnection</em>. Below is an example.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoConnection</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractDatabaseConnection</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoConnection</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractDatabaseConnection</span> {
 
     <span class="hljs-keyword">private</span> Conf&lt;String&gt; globalColName = Holders.simple(StringUtils.EMPTY);
     <span class="hljs-keyword">private</span> Conf&lt;String&gt; globalColValue = Holders.simple(StringUtils.EMPTY);
@@ -519,9 +518,9 @@
      * <span class="hljs-doctag">@throws</span> Exception
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testConnection</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
-        <span class="hljs-keyword">if</span>(StringUtils.isBlank(<span class="hljs-keyword">this</span>.getGlobalColName())){
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception();
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testConnection</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception {
+        <span class="hljs-keyword">if</span>(StringUtils.isBlank(<span class="hljs-built_in">this</span>.getGlobalColName())){
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Exception</span>();
         }
     }
 
@@ -530,42 +529,42 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDriver</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDriver</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getGlobalColName</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getGlobalColName</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> globalColName.get();
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setGlobalColName</span><span class="hljs-params">(String globalColName)</span> </span>{
-        <span class="hljs-keyword">this</span>.globalColName.set(globalColName);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setGlobalColName</span><span class="hljs-params">(String globalColName)</span> {
+        <span class="hljs-built_in">this</span>.globalColName.set(globalColName);
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getGlobalColValue</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getGlobalColValue</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> globalColValue.get();
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setGlobalColValue</span><span class="hljs-params">(String globalColValue)</span> </span>{
-        <span class="hljs-keyword">this</span>.globalColValue.set(globalColValue);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setGlobalColValue</span><span class="hljs-params">(String globalColValue)</span> {
+        <span class="hljs-built_in">this</span>.globalColValue.set(globalColValue);
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readXML</span><span class="hljs-params">(XMLableReader reader)</span> </span>{
-        <span class="hljs-keyword">super</span>.readXML(reader);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readXML</span><span class="hljs-params">(XMLableReader reader)</span> {
+        <span class="hljs-built_in">super</span>.readXML(reader);
         <span class="hljs-keyword">if</span>(reader.isChildNode()){
             String tagName=reader.getTagName();
-            <span class="hljs-keyword">if</span>(ComparatorUtils.equals(<span class="hljs-string">&quot;Attr&quot;</span>,tagName)){
-                <span class="hljs-keyword">this</span>.setGlobalColName(reader.getAttrAsString(<span class="hljs-string">&quot;colName&quot;</span>,StringUtils.EMPTY));
-                <span class="hljs-keyword">this</span>.setGlobalColValue(reader.getAttrAsString(<span class="hljs-string">&quot;colValue&quot;</span>,StringUtils.EMPTY));
+            <span class="hljs-keyword">if</span>(ComparatorUtils.equals(<span class="hljs-string">"Attr"</span>,tagName)){
+                <span class="hljs-built_in">this</span>.setGlobalColName(reader.getAttrAsString(<span class="hljs-string">"colName"</span>,StringUtils.EMPTY));
+                <span class="hljs-built_in">this</span>.setGlobalColValue(reader.getAttrAsString(<span class="hljs-string">"colValue"</span>,StringUtils.EMPTY));
             }
         }
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeXML</span><span class="hljs-params">(XMLPrintWriter writer)</span> </span>{
-        <span class="hljs-keyword">super</span>.writeXML(writer);
-        writer.startTAG(<span class="hljs-string">&quot;Attr&quot;</span>).attr(<span class="hljs-string">&quot;colName&quot;</span>,<span class="hljs-keyword">this</span>.getGlobalColName()).attr(<span class="hljs-string">&quot;colValue&quot;</span>,<span class="hljs-keyword">this</span>.getGlobalColValue()).end();
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">writeXML</span><span class="hljs-params">(XMLPrintWriter writer)</span> {
+        <span class="hljs-built_in">super</span>.writeXML(writer);
+        writer.startTAG(<span class="hljs-string">"Attr"</span>).attr(<span class="hljs-string">"colName"</span>,<span class="hljs-built_in">this</span>.getGlobalColName()).attr(<span class="hljs-string">"colValue"</span>,<span class="hljs-built_in">this</span>.getGlobalColValue()).end();
     }
 }
 </code></pre>
@@ -577,26 +576,26 @@
 <li>Get a connection instance based on the input on the pane.</li>
 <li>Provide the title of the pane.</li>
 </ol>
-<p>FineReport provides a <em>DataConnectionPane</em> which has a defined &quot;Test Connection&quot; button and a &quot;Charset&quot; combo box. We can create our connection pane by inheriting <em>DataConnectionPane</em>.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoConnectionPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DatabaseConnectionPane</span>&lt;<span class="hljs-title">DemoConnection</span>&gt; </span>{
+<p>FineReport provides a <em>DataConnectionPane</em> which has a defined "Test Connection" button and a "Charset" combo box. We can create our connection pane by inheriting <em>DataConnectionPane</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoConnectionPane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">DatabaseConnectionPane</span>&lt;DemoConnection&gt; {
     <span class="hljs-comment">// define a text field for column name</span>
     <span class="hljs-keyword">private</span> UITextField colName;
     <span class="hljs-comment">// for column value</span>
     <span class="hljs-keyword">private</span> UITextField colValue;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> P = TableLayout.PREFERRED;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> <span class="hljs-variable">P</span> <span class="hljs-operator">=</span> TableLayout.PREFERRED;
 
     <span class="hljs-comment">/**
      * Defined in DatabaseConnectionPane. To get the main panel.
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> JPanel <span class="hljs-title">mainPanel</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">protected</span> JPanel <span class="hljs-title function_">mainPanel</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> creatMainPanel();
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isFineBI</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">protected</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isFineBI</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
 
     <span class="hljs-comment">/**
@@ -604,9 +603,9 @@
      * <span class="hljs-doctag">@param</span> demoConnection
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">populateSubDatabaseConnectionBean</span><span class="hljs-params">(DemoConnection demoConnection)</span> </span>{
-        <span class="hljs-keyword">this</span>.colName.setText(demoConnection.getGlobalColName());
-        <span class="hljs-keyword">this</span>.colValue.setText(demoConnection.getGlobalColValue());
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populateSubDatabaseConnectionBean</span><span class="hljs-params">(DemoConnection demoConnection)</span> {
+        <span class="hljs-built_in">this</span>.colName.setText(demoConnection.getGlobalColName());
+        <span class="hljs-built_in">this</span>.colValue.setText(demoConnection.getGlobalColValue());
     }
 
     <span class="hljs-comment">/**
@@ -615,10 +614,10 @@
      */</span>
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> DemoConnection <span class="hljs-title">updateSubDatabaseConnectionBean</span><span class="hljs-params">()</span> </span>{
-        DemoConnection demoConnection = <span class="hljs-keyword">new</span> DemoConnection();
-        demoConnection.setGlobalColName(<span class="hljs-keyword">this</span>.colName.getText());
-        demoConnection.setGlobalColValue(<span class="hljs-keyword">this</span>.colValue.getText());
+    <span class="hljs-keyword">protected</span> DemoConnection <span class="hljs-title function_">updateSubDatabaseConnectionBean</span><span class="hljs-params">()</span> {
+        <span class="hljs-type">DemoConnection</span> <span class="hljs-variable">demoConnection</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoConnection</span>();
+        demoConnection.setGlobalColName(<span class="hljs-built_in">this</span>.colName.getText());
+        demoConnection.setGlobalColValue(<span class="hljs-built_in">this</span>.colValue.getText());
         <span class="hljs-keyword">return</span> demoConnection;
     }
 
@@ -627,60 +626,60 @@
      * <span class="hljs-doctag">@return</span>
      */</span>
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">title4PopupWindow</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demoConnection&quot;</span>;
+    <span class="hljs-keyword">protected</span> String <span class="hljs-title function_">title4PopupWindow</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"demoConnection"</span>;
     }
 
     <span class="hljs-comment">/**
      * Here add two text fields to the panel.
      * <span class="hljs-doctag">@return</span>
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> JPanel <span class="hljs-title">creatMainPanel</span><span class="hljs-params">()</span> </span>{
-        colName = <span class="hljs-keyword">new</span> UITextField();
-        colValue = <span class="hljs-keyword">new</span> UITextField();
+    <span class="hljs-keyword">public</span> JPanel <span class="hljs-title function_">creatMainPanel</span><span class="hljs-params">()</span> {
+        colName = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UITextField</span>();
+        colValue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UITextField</span>();
         Component[][] tables = {{
-                <span class="hljs-keyword">new</span> UILabel(<span class="hljs-string">&quot;Column Name&quot;</span>), colName
+                <span class="hljs-keyword">new</span> <span class="hljs-title class_">UILabel</span>(<span class="hljs-string">"Column Name"</span>), colName
         }, {
-                <span class="hljs-keyword">new</span> UILabel(<span class="hljs-string">&quot;Column Value&quot;</span>), colValue
+                <span class="hljs-keyword">new</span> <span class="hljs-title class_">UILabel</span>(<span class="hljs-string">"Column Value"</span>), colValue
         }};
-        JPanel tableLayoutPane = TableLayoutHelper.createTableLayoutPane(tables, <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[]{P, P}, <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[]{P, <span class="hljs-number">400</span>});
-        tableLayoutPane.setBorder(UITitledBorder.createBorderWithTitle(<span class="hljs-string">&quot;demo Connection&quot;</span>));
+        <span class="hljs-type">JPanel</span> <span class="hljs-variable">tableLayoutPane</span> <span class="hljs-operator">=</span> TableLayoutHelper.createTableLayoutPane(tables, <span class="hljs-keyword">new</span> <span class="hljs-title class_">double</span>[]{P, P}, <span class="hljs-keyword">new</span> <span class="hljs-title class_">double</span>[]{P, <span class="hljs-number">400</span>});
+        tableLayoutPane.setBorder(UITitledBorder.createBorderWithTitle(<span class="hljs-string">"demo Connection"</span>));
         <span class="hljs-keyword">return</span> tableLayoutPane;
     }
 }
 </code></pre>
 <p>Register the data connection with the provider.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoConnectionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractConnectionProvider</span> </span>{
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoConnectionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractConnectionProvider</span> {
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">nameForConnection</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;demoConnection&quot;</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">nameForConnection</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"demoConnection"</span>;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">iconPathForConnection</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">iconPathForConnection</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> Class&lt;? extends Connection&gt; classForConnection() {
+    <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Connection</span>&gt; classForConnection() {
         <span class="hljs-keyword">return</span> DemoConnection.class;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> Class&lt;? extends BasicBeanPane&lt;? extends Connection&gt;&gt; appearanceForConnection() {
+    <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BasicBeanPane</span>&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Connection</span>&gt;&gt; appearanceForConnection() {
         <span class="hljs-keyword">return</span> DemoConnectionPane.class;
     }
 }
 </code></pre>
 <p>Finally, register the provider in plugin.xml.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ConnectionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.xxx.xxx.DemoConnectionProvider&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ConnectionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.xxx.xxx.DemoConnectionProvider"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
 </code></pre>
 <h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
 <p>The effect of this example is this.</p>
-<p><a href="images/result_1.png" data-lightbox="a3c58a74-37ce-43ee-a95d-6c633398a5f1" data-title="result_1"><img src="images/result_1.png" alt="result_1"></a>
-<a href="images/result_2.png" data-lightbox="1129f591-3102-4ed9-ad05-861e783bc08a" data-title="result_2"><img src="images/result_2.png" alt="result_2"></a></p>
+<p><a href="images/result_1.png" data-lightbox="5accdbd0-706b-482f-8fad-19463f7992ce" data-title="result_1"><img src="images/result_1.png" alt="result_1"></img></a>
+<a href="images/result_2.png" data-lightbox="fa64c547-0b9b-4859-8bfd-35662257aa03" data-title="result_2"><img src="images/result_2.png" alt="result_2"></img></a></p>
 <p>You can find the full executable code here: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-data-source-demo" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-data-source-demo</a></p>
 <div id="gitalk-container"></div>
                                 
@@ -725,12 +724,56 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"next":{"title":"Advanced Tutorial - Chart","level":"2.20","depth":1,"path":"tutorial/chapter_20/chapter_20.md","ref":"tutorial/chapter_20/chapter_20.md","articles":[]},"previous":{"title":"Advanced Tutorial - Theme","level":"2.18","depth":1,"path":"tutorial/chapter_18/chapter_18.md","ref":"tutorial/chapter_18/chapter_18.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_19/chapter_19.md","mtime":"2020-12-30T08:32:37.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced Tutorial - Data Connection","level":"2.19","depth":1,"next":{"title":"Advanced Tutorial - Chart","level":"2.20","depth":1,"path":"tutorial/chapter_20/chapter_20.md","ref":"tutorial/chapter_20/chapter_20.md","articles":[]},"previous":{"title":"Advanced Tutorial - Theme","level":"2.18","depth":1,"path":"tutorial/chapter_18/chapter_18.md","ref":"tutorial/chapter_18/chapter_18.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_19/chapter_19.md","mtime":"2026-04-07T06:04:11.297Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -775,11 +818,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

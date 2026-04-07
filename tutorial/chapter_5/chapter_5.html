@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>First Plugin - Hello World! · GitBook</title>
+        <title>First Plugin - Hello World! · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -464,43 +463,43 @@
 <h2 id="add-a-module"><a name="add-a-module" class="anchor-navigation-ex-anchor" href="#add-a-module"><i class="fa fa-link" aria-hidden="true"></i></a>Add a Module</h2>
 <ol>
 <li>Right-click the project directory &gt; <strong>New</strong> &gt; <strong>Module</strong>.
-<a href="images/add_module_1.png" data-lightbox="07d35f98-556c-4b07-97ee-b4ce97407c68" data-title="add_module_1"><img src="images/add_module_1.png" alt="add_module_1"></a></li>
+<a href="images/add_module_1.png" data-lightbox="6e69dc62-f977-4dd6-a459-abb73757c61c" data-title="add_module_1"><img src="images/add_module_1.png" alt="add_module_1"></img></a></li>
 <li>Choose the JDK configured before.
-<a href="images/add_module_2.png" data-lightbox="b2d14432-cf8c-4da1-88eb-c02ee79a72cd" data-title="add_module_2"><img src="images/add_module_2.png" alt="add_module_2"></a></li>
+<a href="images/add_module_2.png" data-lightbox="72b70aae-1644-441f-b6e5-f242d2acf45a" data-title="add_module_2"><img src="images/add_module_2.png" alt="add_module_2"></img></a></li>
 <li>Configure ArtifactId of your module. If you are new to Maven, you could ignore the meaning of this id for now. Just treat it as the name of your directory.
-<a href="images/add_module_3.png" data-lightbox="f4c6ef7c-4889-4a1a-8e14-76fa306415a2" data-title="add_module_3"><img src="images/add_module_3.png" alt="add_module_3"></a></li>
-<li>After configuring the module name, click <strong>Finish</strong>. You&apos;ll see the new module under our project.
-<a href="images/add_module_4.png" data-lightbox="247ea856-53fa-4ac5-ab4e-7191f53d2714" data-title="add_module_4"><img src="images/add_module_4.png" alt="add_module_4"></a>
-<a href="images/add_module_5.png" data-lightbox="99752dea-7a4a-4828-88c9-59e2d82c7c5f" data-title="add_module_5"><img src="images/add_module_5.png" alt="add_module_5"></a></li>
+<a href="images/add_module_3.png" data-lightbox="0bee4641-288a-444f-b601-7bc8db024919" data-title="add_module_3"><img src="images/add_module_3.png" alt="add_module_3"></img></a></li>
+<li>After configuring the module name, click <strong>Finish</strong>. You'll see the new module under our project.
+<a href="images/add_module_4.png" data-lightbox="8482fe92-a625-4e51-90d9-2878030cd53e" data-title="add_module_4"><img src="images/add_module_4.png" alt="add_module_4"></img></a>
+<a href="images/add_module_5.png" data-lightbox="2919c6a6-fc30-47c8-93b9-22cb6914ef49" data-title="add_module_5"><img src="images/add_module_5.png" alt="add_module_5"></img></a></li>
 </ol>
 <h2 id="configure-everything"><a name="configure-everything" class="anchor-navigation-ex-anchor" href="#configure-everything"><i class="fa fa-link" aria-hidden="true"></i></a>Configure Everything</h2>
 <ol>
 <li>Click <strong>Project Structure</strong> on the upper right corner.
-<a href="images/configure_1.png" data-lightbox="e59d00e1-7707-4aa9-9e06-7e67f8eff813" data-title="configure_1"><img src="images/configure_1.png" alt="configure_1"></a></li>
+<a href="images/configure_1.png" data-lightbox="8f7c2ee4-d6b2-439d-8ebf-64164e3f818c" data-title="configure_1"><img src="images/configure_1.png" alt="configure_1"></img></a></li>
 <li>Mark folders as Sources, Tests or Resources. Generally, this process is automated by Maven for us.
-<a href="images/configure_2.png" data-lightbox="bd03b88b-c5f0-44a5-aa94-4f256c31e6f8" data-title="configure_2"><img src="images/configure_2.png" alt="configure_2"></a></li>
+<a href="images/configure_2.png" data-lightbox="981bbcd8-b385-421a-894f-73fd03a7fc33" data-title="configure_2"><img src="images/configure_2.png" alt="configure_2"></img></a></li>
 <li>Change the output path of our module. Our plugin ID for this example is com.fr.plugin.function.demo. The output directory is ${WORK_HOME}/plugins/plugin-com.fr.plugin.function.demo-1.0/classes. You have to follow this format in order to debug the plugin.
-<a href="images/configure_3.png" data-lightbox="28f11498-8b01-4a5a-ae76-3139aff5b817" data-title="configure_3"><img src="images/configure_3.png" alt="configure_3"></a></li>
+<a href="images/configure_3.png" data-lightbox="7e7fc4c4-38a0-4eff-9e15-e5243f87b296" data-title="configure_3"><img src="images/configure_3.png" alt="configure_3"></img></a></li>
 <li>Add dependencies to this project. They should be inherited from the parent module (starter).
-<a href="images/configure_4.png" data-lightbox="fc814d1b-26c8-494b-9e05-aa46436e57df" data-title="configure_4"><img src="images/configure_4.png" alt="configure_4"></a></li>
-<li>Of course, all the configurations above can be done in pom.xml. Here is an example of changing the output path. Don&apos;t forget to import changes after modifying pom.xml.
-<a href="images/configure_5.png" data-lightbox="9c6575b3-2b05-43be-aeeb-353b6678106e" data-title="configure_5"><img src="images/configure_5.png" alt="configure_5"></a></li>
+<a href="images/configure_4.png" data-lightbox="f3f54441-a222-4146-98eb-943f25f5eab8" data-title="configure_4"><img src="images/configure_4.png" alt="configure_4"></img></a></li>
+<li>Of course, all the configurations above can be done in pom.xml. Here is an example of changing the output path. Don't forget to import changes after modifying pom.xml.
+<a href="images/configure_5.png" data-lightbox="5dd5be1b-da7d-4e07-9c65-a58f7eb97fc2" data-title="configure_5"><img src="images/configure_5.png" alt="configure_5"></img></a></li>
 </ol>
 <h2 id="develop-the-plugin"><a name="develop-the-plugin" class="anchor-navigation-ex-anchor" href="#develop-the-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>Develop the Plugin</h2>
 <ol>
-<li>Write a custom function. It simply returns the first parameter with a &quot;Hello World!&quot; prefix.
-<a href="images/code.png" data-lightbox="43e87b89-5204-49f2-b2d6-bb73930ed3b5" data-title="code"><img src="images/code.png" alt="code"></a></li>
-<li><p>Since we want to encapsulate it as a plugin, we have to add annotations for &quot;function point recorder&quot;. Here we can review an XML element that we did not explain in the <a href="../chapter_3/chapter_3.html">Introduction of plugin.xml</a>: </p>
-<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.function.demo.HelloWorld&quot;</span>/&gt;</span>
+<li>Write a custom function. It simply returns the first parameter with a "Hello World!" prefix.
+<a href="images/code.png" data-lightbox="dc45d59b-8617-4590-870f-a30757b7b827" data-title="code"><img src="images/code.png" alt="code"></img></a></li>
+<li><p>Since we want to encapsulate it as a plugin, we have to add annotations for "function point recorder". Here we can review an XML element that we did not explain in the <a href="../chapter_3/chapter_3.html">Introduction of plugin.xml</a>: </p>
+<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.function.demo.HelloWorld"</span>/&gt;</span>
 </code></pre>
-<p> @FunctionRecorder is used to register a function point and @ExecuteFunctionRecord is for recording the usage of that method. Unless we add them, our plugin won&apos;t work.</p>
+<p> @FunctionRecorder is used to register a function point and @ExecuteFunctionRecord is for recording the usage of that method. Unless we add them, our plugin won't work.</p>
 <p> Above we used the function point annotation for FR 9.0. We can also refer to the function point annotation of MyAbs in the plugin-function in the project [new annotation method in FR 10.0]. Both annotations can be used in FR 10.0.</p>
 </li>
 </ol>
 <h2 id="write-configuration-files"><a name="write-configuration-files" class="anchor-navigation-ex-anchor" href="#write-configuration-files"><i class="fa fa-link" aria-hidden="true"></i></a>Write Configuration Files</h2>
 <ol>
 <li>This is the plugin.xml for HelloWorld.
-<a href="images/write_config_1.png" data-lightbox="d4f31779-033f-4ec8-b916-bec5e2350a1c" data-title="write_config_1"><img src="images/write_config_1.png" alt="write_config_1"></a>
+<a href="images/write_config_1.png" data-lightbox="7df6facd-e434-471a-977d-540a06b397b0" data-title="write_config_1"><img src="images/write_config_1.png" alt="write_config_1"></img></a>
 Remember, the main-package is generally the package path that can contain your core classes. The function-recorder can point to the corresponding class of your function point annotation.<blockquote>
 <p>Note: function point records should not be added to the interface that only works on the designer, or the server cannot load the plugin.</p>
 </blockquote>
@@ -508,40 +507,40 @@ Remember, the main-package is generally the package path that can contain your c
 <li><p>More about this interface.</p>
 <pre><code class="lang-java"> <span class="hljs-keyword">package</span> com.fr.stable.fun;
 
- <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">FunctionDefineProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Level</span> </span>{
+ <span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FunctionDefineProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Level</span> {
 
-     String MARK_STRING = <span class="hljs-string">&quot;FunctionDefineProvider&quot;</span>;
+     <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"FunctionDefineProvider"</span>;
  }
 </code></pre>
-<p> This interface <em>FunctionDefineProvider</em> is to introduce our custom function. It belongs to the core module (extra-core). The tag name should be the same as the MARK_STRING of the interface. In this case, the tag name is &quot;FunctionDefineProvider&quot;.</p>
+<p> This interface <em>FunctionDefineProvider</em> is to introduce our custom function. It belongs to the core module (extra-core). The tag name should be the same as the MARK_STRING of the interface. In this case, the tag name is "FunctionDefineProvider".</p>
 <p> So the basic XML element is:</p>
 <pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">FunctionDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.function.demo.HelloWorld&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">FunctionDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.function.demo.HelloWorld"</span>/&gt;</span>
  <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
 </code></pre>
 <p> However, this interface is special, so two additional attributes need to be configured. We need to offer the name and description of the custom function.</p>
 <p> So the complete XML element is:</p>
 <pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">FunctionDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.function.demo.HelloWorld&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;HelloWorld&quot;</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;First Plugin&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">FunctionDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.function.demo.HelloWorld"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"HelloWorld"</span> <span class="hljs-attr">description</span>=<span class="hljs-string">"First Plugin"</span>/&gt;</span>
  <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
 </code></pre>
 </li>
 <li>The build.xml is based on our last tutorial. Edit the corresponding properties.
-<a href="images/write_config_2.png" data-lightbox="3495f295-0db5-4b6d-acb7-d6ed269a80ec" data-title="write_config_2"><img src="images/write_config_2.png" alt="write_config_2"></a></li>
+<a href="images/write_config_2.png" data-lightbox="675147ec-680a-4edc-9bdb-1c185de0fa9e" data-title="write_config_2"><img src="images/write_config_2.png" alt="write_config_2"></img></a></li>
 </ol>
 <h2 id="build-the-project"><a name="build-the-project" class="anchor-navigation-ex-anchor" href="#build-the-project"><i class="fa fa-link" aria-hidden="true"></i></a>Build the Project</h2>
 <ol>
-<li>Right-click the module (plugin-hello-world), Click <strong>Build Module &apos;plugin-hello-world&apos;</strong>.
-<a href="images/build_project_1.png" data-lightbox="908b13e3-1101-41cf-9f03-6318bf6a87c2" data-title="build_project_1"><img src="images/build_project_1.png" alt="build_project_1"></a>
-<a href="images/build_project_2.png" data-lightbox="48828592-6f82-4ef9-9db0-0449d359bf24" data-title="build_project_2"><img src="images/build_project_2.png" alt="build_project_2"></a></li>
+<li>Right-click the module (plugin-hello-world), Click <strong>Build Module 'plugin-hello-world'</strong>.
+<a href="images/build_project_1.png" data-lightbox="dfdd1db7-bbcf-4b7b-9b0c-207f40117974" data-title="build_project_1"><img src="images/build_project_1.png" alt="build_project_1"></img></a>
+<a href="images/build_project_2.png" data-lightbox="8dd1e705-fc2c-459b-9fed-c2425ebc6790" data-title="build_project_2"><img src="images/build_project_2.png" alt="build_project_2"></img></a></li>
 <li>Copy the plugin.xml to the plugin folder.
-<a href="images/build_project_3.png" data-lightbox="0d89b7ad-a3d4-4a4e-a88b-845e90d1d97b" data-title="build_project_3"><img src="images/build_project_3.png" alt="build_project_3"></a></li>
+<a href="images/build_project_3.png" data-lightbox="a3c40c15-4894-45f9-9528-b238063b17f9" data-title="build_project_3"><img src="images/build_project_3.png" alt="build_project_3"></img></a></li>
 <li>Run <em>Leaner.main()</em> to start the designer. See if there is our function HelloWorld.
-<a href="images/build_project_4.png" data-lightbox="ad661342-f3ae-42f8-bd40-e70936f5b34f" data-title="build_project_4"><img src="images/build_project_4.png" alt="build_project_4"></a></li>
+<a href="images/build_project_4.png" data-lightbox="c6cd3c0b-8898-4f1b-ba7f-b278ea38e076" data-title="build_project_4"><img src="images/build_project_4.png" alt="build_project_4"></img></a></li>
 <li>Preview the report to make sure it really works... Awesome!
-<a href="images/build_project_5.png" data-lightbox="7741ca01-c210-44be-8315-9a0ecbe1150d" data-title="build_project_5"><img src="images/build_project_5.png" alt="build_project_5"></a></li>
+<a href="images/build_project_5.png" data-lightbox="5342e168-4b56-4b7b-b716-61982d91cd7b" data-title="build_project_5"><img src="images/build_project_5.png" alt="build_project_5"></img></a></li>
 <li>Finally, package the plugin with the built-in Ant in IntelliJ IDEA.
-<a href="images/build_project_6.png" data-lightbox="7f41f728-fbce-4611-a9cb-cd9837121acc" data-title="build_project_6"><img src="images/build_project_6.png" alt="build_project_6"></a><div id="gitalk-container"></div></li>
+<a href="images/build_project_6.png" data-lightbox="252fda70-32b0-455b-9cf9-83ca395143b7" data-title="build_project_6"><img src="images/build_project_6.png" alt="build_project_6"></img></a><div id="gitalk-container"></div></li>
 </ol>
 
                                 
@@ -586,12 +585,56 @@ Remember, the main-package is generally the package path that can contain your c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"First Plugin - Hello World!","level":"2.5","depth":1,"next":{"title":"Beginner Tutorial - Dataset","level":"2.6","depth":1,"path":"tutorial/chapter_6/chapter_6.md","ref":"tutorial/chapter_6/chapter_6.md","articles":[]},"previous":{"title":"Introduction of build.xml","level":"2.4","depth":1,"path":"tutorial/chapter_4/chapter_4.md","ref":"tutorial/chapter_4/chapter_4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_5/chapter_5.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"First Plugin - Hello World!","level":"2.5","depth":1,"next":{"title":"Beginner Tutorial - Dataset","level":"2.6","depth":1,"path":"tutorial/chapter_6/chapter_6.md","ref":"tutorial/chapter_6/chapter_6.md","articles":[]},"previous":{"title":"Introduction of build.xml","level":"2.4","depth":1,"path":"tutorial/chapter_4/chapter_4.md","ref":"tutorial/chapter_4/chapter_4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_5/chapter_5.md","mtime":"2026-04-07T06:04:11.302Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -636,11 +679,7 @@ Remember, the main-package is generally the package path that can contain your c
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

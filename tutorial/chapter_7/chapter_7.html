@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Beginner Tutorial - Include your JS&CSS · GitBook</title>
+        <title>Beginner Tutorial - Include your JS&CSS · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -467,81 +466,81 @@
 
 <span class="hljs-keyword">import</span> com.fr.web.struct.Atom;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">WebCoalition</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mutable</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">WebCoalition</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
     <span class="hljs-comment">/**
      * The main component to be attached
      * <span class="hljs-doctag">@return</span> Main component
      */</span>
-    <span class="hljs-function">Atom <span class="hljs-title">attach</span><span class="hljs-params">()</span></span>;
+    Atom <span class="hljs-title function_">attach</span><span class="hljs-params">()</span>;
 
     <span class="hljs-comment">/**
      * The client component we defined
      * <span class="hljs-doctag">@return</span> Client component
      */</span>
-    <span class="hljs-function">Atom <span class="hljs-title">client</span><span class="hljs-params">()</span></span>;
+    Atom <span class="hljs-title function_">client</span><span class="hljs-params">()</span>;
 }
 </code></pre>
-<p>As shown above, it needs two <em>Atoms</em>. Let&apos;s take a look at what an <em>Atom</em> is before explaining the provider.</p>
+<p>As shown above, it needs two <em>Atoms</em>. Let's take a look at what an <em>Atom</em> is before explaining the provider.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.web.struct;
 
 <span class="hljs-keyword">import</span> com.fr.web.struct.browser.RequestClient;
 <span class="hljs-keyword">import</span> com.fr.web.struct.category.ScriptPath;
 <span class="hljs-keyword">import</span> com.fr.web.struct.category.StylePath;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Atom</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Atom</span> {
     <span class="hljs-comment">/**
      * Provide the path of the JS file we want to include.
      * <span class="hljs-doctag">@param</span> client A client object
      * <span class="hljs-doctag">@return</span> The path of the JS file
      */</span>
-    <span class="hljs-function">ScriptPath <span class="hljs-title">script</span><span class="hljs-params">(RequestClient client)</span></span>;
+    ScriptPath <span class="hljs-title function_">script</span><span class="hljs-params">(RequestClient client)</span>;
     <span class="hljs-comment">/**
      * Provide the path of the CSS file we want to include.
      * <span class="hljs-doctag">@param</span> client A client object
      * <span class="hljs-doctag">@return</span> The path of the CSS file
      */</span>
-    <span class="hljs-function">StylePath <span class="hljs-title">style</span><span class="hljs-params">(RequestClient client)</span></span>;
+    StylePath <span class="hljs-title function_">style</span><span class="hljs-params">(RequestClient client)</span>;
 
     <span class="hljs-comment">/**
      * Decide whether to load this Atom by a filter
      * <span class="hljs-doctag">@return</span> A filter
      */</span>
-    <span class="hljs-function">Filter <span class="hljs-title">filter</span><span class="hljs-params">()</span></span>;
+    Filter <span class="hljs-title function_">filter</span><span class="hljs-params">()</span>;
 }
 </code></pre>
-<p>An <em>Atom</em> includes a path of the JS file, a path of the CSS file, and a filter to control whether to load this Atom. We notify there is a <em>RequestClinet</em> as well.  It is just a description of the client&apos;s browser.</p>
+<p>An <em>Atom</em> includes a path of the JS file, a path of the CSS file, and a filter to control whether to load this Atom. We notify there is a <em>RequestClinet</em> as well.  It is just a description of the client's browser.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.web.struct.browser;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">RequestClient</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">RequestClient</span> {
     <span class="hljs-comment">/**
      * Whether the request comes from IE
      * <span class="hljs-doctag">@return</span> whether the request comes from IE
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isIE</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isIE</span><span class="hljs-params">()</span>;
     <span class="hljs-comment">/**
      * Whether the request comes from low-version IE
      * <span class="hljs-doctag">@return</span> Whether the request comes from low-version IE
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isLowIEVersion</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isLowIEVersion</span><span class="hljs-params">()</span>;
 }
 </code></pre>
 <p>It is pretty clear that the <em>RequestClinet</em> interface is used to make our plugin compatible with IE. In fact, we can also achieve this within the JS file.</p>
-<p>Then let&apos;s look at what the <em>Filter</em> is:</p>
+<p>Then let's look at what the <em>Filter</em> is:</p>
 <pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.web.struct;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Filter</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Filter</span> {
     <span class="hljs-comment">/**
      * Whether to load this resource
      * <span class="hljs-doctag">@return</span> Whether to load this resource
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">accept</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">()</span>;
 }
 </code></pre>
 <p>The following shows how <em>ScriptPath</em> and <em>StylePath</em> can be created. It is rather simple:</p>
-<pre><code class="lang-java">ScriptPath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo/demo.js&quot;</span>);
-StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo/demo.css&quot;</span>);
+<pre><code class="lang-java">ScriptPath.build(<span class="hljs-string">"com/fr/plugin/jscss/include/demo/demo.js"</span>);
+StylePath.build(<span class="hljs-string">"com/fr/plugin/jscss/include/demo/demo.css"</span>);
 </code></pre>
-<p>Finally, let&apos;s get back to the <em>WebCoalition</em>. Since JS files in FineReport do not take effect at the same time (e.g. The JS files for the platform will not load in reports.). Even for the platform. the JS files from various modules do not load immediately with the initialization of the platform. Therefore, we need our component load with its target component.</p>
+<p>Finally, let's get back to the <em>WebCoalition</em>. Since JS files in FineReport do not take effect at the same time (e.g. The JS files for the platform will not load in reports.). Even for the platform. the JS files from various modules do not load immediately with the initialization of the platform. Therefore, we need our component load with its target component.</p>
 <p>The common main components are:
 |  Main Component  | Component Usage  |
 |  ----  | ----  |
@@ -552,8 +551,8 @@ StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo
 <h3 id="1-create-a-new-module"><a name="1-create-a-new-module" class="anchor-navigation-ex-anchor" href="#1-create-a-new-module"><i class="fa fa-link" aria-hidden="true"></i></a>1) Create a new module</h3>
 <p>First thing is to create a new module for our plugin. Its name here is plugin-JSCSS-include.</p>
 <h3 id="2-define-js--css"><a name="2-define-js--css" class="anchor-navigation-ex-anchor" href="#2-define-js--css"><i class="fa fa-link" aria-hidden="true"></i></a>2) Define JS &amp; CSS</h3>
-<pre><code class="lang-javascript">;(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    $(<span class="hljs-string">&quot;&lt;div/&gt;&quot;</span>).addClass(<span class="hljs-string">&quot;plugin-jscss-include-demo&quot;</span>).html(<span class="hljs-string">&quot;Hello World!&quot;</span>).appendTo(<span class="hljs-string">&quot;body&quot;</span>);
+<pre><code class="lang-javascript">;(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    $(<span class="hljs-string">"&lt;div/&gt;"</span>).<span class="hljs-title function_">addClass</span>(<span class="hljs-string">"plugin-jscss-include-demo"</span>).<span class="hljs-title function_">html</span>(<span class="hljs-string">"Hello World!"</span>).<span class="hljs-title function_">appendTo</span>(<span class="hljs-string">"body"</span>);
 })();
 </code></pre>
 <pre><code class="lang-css"> <span class="hljs-selector-class">.plugin-jscss-include-demo</span>{
@@ -580,26 +579,26 @@ StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo
 <span class="hljs-keyword">import</span> com.fr.web.struct.category.StylePath;
 
 <span class="hljs-meta">@FunctionRecorder</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileDef</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> FileDef KEY = <span class="hljs-keyword">new</span> FileDef();
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">FileDef</span><span class="hljs-params">()</span></span>{}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileDef</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Component</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">FileDef</span> <span class="hljs-variable">KEY</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileDef</span>();
+    <span class="hljs-keyword">private</span> <span class="hljs-title function_">FileDef</span><span class="hljs-params">()</span>{}
     <span class="hljs-comment">/**
      * Provide the path of the JS file we want to include.
      * <span class="hljs-doctag">@param</span> client A client object
      * <span class="hljs-doctag">@return</span> The path of the JS file
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ScriptPath <span class="hljs-title">script</span><span class="hljs-params">(RequestClient client)</span> </span>{
+    <span class="hljs-keyword">public</span> ScriptPath <span class="hljs-title function_">script</span><span class="hljs-params">(RequestClient client)</span> {
         <span class="hljs-comment">// Return ScriptPath.Empty if no need.</span>
-        <span class="hljs-keyword">return</span> ScriptPath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo/web/demo.js&quot;</span>);
+        <span class="hljs-keyword">return</span> ScriptPath.build(<span class="hljs-string">"com/fr/plugin/jscss/include/demo/web/demo.js"</span>);
     }
     <span class="hljs-comment">/**
      * Provide the path of the CSS file we want to include.
      * <span class="hljs-doctag">@param</span> client A client object
      * <span class="hljs-doctag">@return</span> The path of the CSS file
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> StylePath <span class="hljs-title">style</span><span class="hljs-params">(RequestClient client)</span> </span>{
+    <span class="hljs-keyword">public</span> StylePath <span class="hljs-title function_">style</span><span class="hljs-params">(RequestClient client)</span> {
         <span class="hljs-comment">// Return StylePath.Empty if no need.</span>
-        <span class="hljs-keyword">return</span> StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo/web/demo.css&quot;</span>);
+        <span class="hljs-keyword">return</span> StylePath.build(<span class="hljs-string">"com/fr/plugin/jscss/include/demo/web/demo.css"</span>);
     }
 
     <span class="hljs-comment">/**
@@ -607,11 +606,11 @@ StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo
      * <span class="hljs-doctag">@return</span> A filter
      */</span>
     <span class="hljs-meta">@ExecuteFunctionRecord</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Filter <span class="hljs-title">filter</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Filter() {
+    <span class="hljs-keyword">public</span> Filter <span class="hljs-title function_">filter</span><span class="hljs-params">()</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Filter</span>() {
             <span class="hljs-meta">@Override</span>
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">accept</span><span class="hljs-params">()</span> </span>{
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">()</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
             }
         };
     }
@@ -625,14 +624,14 @@ StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo
 <span class="hljs-keyword">import</span> com.fr.decision.web.MainComponent;
 <span class="hljs-keyword">import</span> com.fr.web.struct.Atom;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JSCSSBridge</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractWebResourceProvider</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JSCSSBridge</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractWebResourceProvider</span> {
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Atom <span class="hljs-title">attach</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> Atom <span class="hljs-title function_">attach</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> MainComponent.KEY;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Atom <span class="hljs-title">client</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> Atom <span class="hljs-title function_">client</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> FileDef.KEY;
     }
 }
@@ -641,11 +640,11 @@ StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo
 <h3 id="5-register-the-plugin"><a name="5-register-the-plugin" class="anchor-navigation-ex-anchor" href="#5-register-the-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>5) Register the plugin</h3>
 <p>Finally, write the plugin.xml for our project. The configuration should be like this:</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">WebResourceProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.jscss.include.demo.JSCSSBridge&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">WebResourceProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.jscss.include.demo.JSCSSBridge"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
 </code></pre>
 <p>Build the project and install the plugin. You should see this after logging in the platform:</p>
-<p><a href="images/result.png" data-lightbox="be8fbe96-adc3-4d8e-8899-65bb43daf37d" data-title="result"><img src="images/result.png" alt="result"></a></p>
+<p><a href="images/result.png" data-lightbox="baf09356-301d-44b9-a460-b3cc00f7512d" data-title="result"><img src="images/result.png" alt="result"></img></a></p>
 <p>The source code for this plugin is also available on Github: <a href="https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-JSCSS-include" target="_blank">https://github.com/finereport-overseas/report-starter-10/tree/master/plugin-JSCSS-include</a></p>
 <div id="gitalk-container"></div>
                                 
@@ -690,12 +689,56 @@ StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - Include your JS&CSS","level":"2.7","depth":1,"next":{"title":"Beginner Tutorial - Replace Resource Files","level":"2.8","depth":1,"path":"tutorial/chapter_8/chapter_8.md","ref":"tutorial/chapter_8/chapter_8.md","articles":[]},"previous":{"title":"Beginner Tutorial - Dataset","level":"2.6","depth":1,"path":"tutorial/chapter_6/chapter_6.md","ref":"tutorial/chapter_6/chapter_6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_7/chapter_7.md","mtime":"2020-12-30T08:32:37.713Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - Include your JS&CSS","level":"2.7","depth":1,"next":{"title":"Beginner Tutorial - Replace Resource Files","level":"2.8","depth":1,"path":"tutorial/chapter_8/chapter_8.md","ref":"tutorial/chapter_8/chapter_8.md","articles":[]},"previous":{"title":"Beginner Tutorial - Dataset","level":"2.6","depth":1,"path":"tutorial/chapter_6/chapter_6.md","ref":"tutorial/chapter_6/chapter_6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_7/chapter_7.md","mtime":"2026-04-07T06:04:11.307Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -740,11 +783,7 @@ StylePath.build(<span class="hljs-string">&quot;com/fr/plugin/jscss/include/demo
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

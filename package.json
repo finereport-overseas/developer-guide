@@ -1,0 +1,19 @@
+{
+  "name": "developer-guide",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve"
+  },
+  "devDependencies": {
+    "gitbook-plugin-anchor-navigation-ex": "^1.0.14",
+    "gitbook-plugin-code": "^0.1.0",
+    "gitbook-plugin-lightbox": "^1.2.0",
+    "gitbook-plugin-mygitalk": "^0.2.6",
+    "gitbook-plugin-pageview-count": "^1.0.1",
+    "honkit": "^6.1.6"
+  }
+}

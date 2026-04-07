@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Beginner Tutorial - A Real-world Problem · GitBook</title>
+        <title>Beginner Tutorial - A Real-world Problem · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -480,35 +479,35 @@
 <h3 id="add-additional-info"><a name="add-additional-info" class="anchor-navigation-ex-anchor" href="#add-additional-info"><i class="fa fa-link" aria-hidden="true"></i></a>Add Additional Info</h3>
 <h4 id="1-back-end-implementation"><a name="1-back-end-implementation" class="anchor-navigation-ex-anchor" href="#1-back-end-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>1) Back-end Implementation</h4>
 <p>We read the info from a properties file, and this info can be achieved by an HTTP request handler. </p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractHttpHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseHttpHandler</span> </span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String STATE_NAME = <span class="hljs-string">&quot;success&quot;</span>;
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractHttpHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseHttpHandler</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">STATE_NAME</span> <span class="hljs-operator">=</span> <span class="hljs-string">"success"</span>;
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> RequestMethod <span class="hljs-title">getMethod</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">public</span> RequestMethod <span class="hljs-title function_">getMethod</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPath</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPath</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> urlPath();
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title function_">urlPath</span><span class="hljs-params">()</span>;
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPublic</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPublic</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handle</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-        JSONObject para = receiveJSONPara(req);
-        JSONObject resultJson = JSONObject.create().put(STATE_NAME, <span class="hljs-keyword">false</span>);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handle</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> Exception {
+        <span class="hljs-type">JSONObject</span> <span class="hljs-variable">para</span> <span class="hljs-operator">=</span> receiveJSONPara(req);
+        <span class="hljs-type">JSONObject</span> <span class="hljs-variable">resultJson</span> <span class="hljs-operator">=</span> JSONObject.create().put(STATE_NAME, <span class="hljs-literal">false</span>);
         deal(req, res, para, resultJson);
         WebUtils.printAsJSON(res, resultJson);
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception;
 
     <span class="hljs-comment">/**
      * Get parameters in JSON
@@ -518,16 +517,16 @@
      * <span class="hljs-doctag">@throws</span> IOException
      * <span class="hljs-doctag">@throws</span> UnsupportedEncodingException
      */</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> JSONObject <span class="hljs-title">receiveJSONPara</span><span class="hljs-params">(HttpServletRequest req)</span> <span class="hljs-keyword">throws</span> IOException, UnsupportedEncodingException </span>{
-        JSONObject result = JSONObject.create();
+    <span class="hljs-keyword">public</span> JSONObject <span class="hljs-title function_">receiveJSONPara</span><span class="hljs-params">(HttpServletRequest req)</span> <span class="hljs-keyword">throws</span> IOException, UnsupportedEncodingException {
+        <span class="hljs-type">JSONObject</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> JSONObject.create();
         <span class="hljs-keyword">try</span> {
-            BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(req.getInputStream(), <span class="hljs-string">&quot;utf-8&quot;</span>));
-            String line = <span class="hljs-keyword">null</span>;
-            StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
-            <span class="hljs-keyword">while</span> ((line = br.readLine()) != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(req.getInputStream(), <span class="hljs-string">"utf-8"</span>));
+            <span class="hljs-type">String</span> <span class="hljs-variable">line</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+            <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();
+            <span class="hljs-keyword">while</span> ((line = br.readLine()) != <span class="hljs-literal">null</span>) {
                 sb.append(line);
             }
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JSONObject(sb.toString());
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JSONObject</span>(sb.toString());
         } <span class="hljs-keyword">catch</span> (Exception e) {
             e.printStackTrace();
         }
@@ -535,223 +534,223 @@
     }
 }
 </code></pre>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExtendAttrHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHttpHandler</span> </span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String PROPERTY_NAME = <span class="hljs-string">&quot;extendAttr&quot;</span>;
-    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL_PATH = <span class="hljs-string">&quot;/demo/extend/attr&quot;</span>;
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ExtendAttrHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractHttpHandler</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">PROPERTY_NAME</span> <span class="hljs-operator">=</span> <span class="hljs-string">"extendAttr"</span>;
+    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">URL_PATH</span> <span class="hljs-operator">=</span> <span class="hljs-string">"/demo/extend/attr"</span>;
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">urlPath</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> URL_PATH;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-        Properties pro = PropertiesUtils.getProperties(PROPERTY_NAME);
-        String address = pro.getProperty(<span class="hljs-string">&quot;address&quot;</span>);
-        String companyPhone = pro.getProperty(<span class="hljs-string">&quot;companyPhone&quot;</span>);
-        String companyEmail = pro.getProperty(<span class="hljs-string">&quot;companyEmail&quot;</span>);
-        JSONObject data = JSONObject.create().put(<span class="hljs-string">&quot;address&quot;</span>, address).put(<span class="hljs-string">&quot;companyPhone&quot;</span>, companyPhone).put(<span class="hljs-string">&quot;companyEmail&quot;</span>, companyEmail);
-        result.put(AbstractHttpHandler.STATE_NAME, <span class="hljs-keyword">true</span>).put(<span class="hljs-string">&quot;data&quot;</span>, data);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception {
+        <span class="hljs-type">Properties</span> <span class="hljs-variable">pro</span> <span class="hljs-operator">=</span> PropertiesUtils.getProperties(PROPERTY_NAME);
+        <span class="hljs-type">String</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> pro.getProperty(<span class="hljs-string">"address"</span>);
+        <span class="hljs-type">String</span> <span class="hljs-variable">companyPhone</span> <span class="hljs-operator">=</span> pro.getProperty(<span class="hljs-string">"companyPhone"</span>);
+        <span class="hljs-type">String</span> <span class="hljs-variable">companyEmail</span> <span class="hljs-operator">=</span> pro.getProperty(<span class="hljs-string">"companyEmail"</span>);
+        <span class="hljs-type">JSONObject</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> JSONObject.create().put(<span class="hljs-string">"address"</span>, address).put(<span class="hljs-string">"companyPhone"</span>, companyPhone).put(<span class="hljs-string">"companyEmail"</span>, companyEmail);
+        result.put(AbstractHttpHandler.STATE_NAME, <span class="hljs-literal">true</span>).put(<span class="hljs-string">"data"</span>, data);
     }
 }
 </code></pre>
 <p>Then add a configuration file to the resources folder. The file name is extendAttr.properties.</p>
 <h4 id="2-front-end-implementation"><a name="2-front-end-implementation" class="anchor-navigation-ex-anchor" href="#2-front-end-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>2) Front-end Implementation</h4>
 <p>After finishing the back-end work, it is time to move on to the front end. FineUI can define constant resources and the navigation bar is one of them. The definition is this:</p>
-<pre><code class="lang-js">BI.constant(<span class="hljs-string">&quot;dec.constant.header.items&quot;</span>, [
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">constant</span>(<span class="hljs-string">"dec.constant.header.items"</span>, [
     {
-        type: <span class="hljs-string">&quot;dec.header.message&quot;</span>
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.header.message"</span>
     }, {
-        type: <span class="hljs-string">&quot;dec.account&quot;</span>
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.account"</span>
     }
 ]);
 </code></pre>
 <p>We can use the following method to obtain the defined array:</p>
-<pre><code class="lang-js">BI.Constants.getConstant(<span class="hljs-string">&quot;dec.constant.header.items&quot;</span>)
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Constants</span>.<span class="hljs-title function_">getConstant</span>(<span class="hljs-string">"dec.constant.header.items"</span>)
 </code></pre>
 <p>Now the array is configurable, and we can use <em>BI.config</em> method to modify the things displayed in the navigation bar.</p>
-<pre><code class="lang-js">BI.config(<span class="hljs-string">&quot;dec.constant.header.items&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) </span>{
-    items.unshift({
-        type: <span class="hljs-string">&quot;dec.plugin.header.extend.attr&quot;</span>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.header.items"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+    items.<span class="hljs-title function_">unshift</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.plugin.header.extend.attr"</span>
     });
     <span class="hljs-keyword">return</span> items;
 });
 </code></pre>
 <p>By using this method, a new element can be added to the front of the array. This element is a component defined by us:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> extendAttr = BI.inherit(BI.Widget,{
-    beforeInit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{
-        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
-        Dec.reqGet(<span class="hljs-string">&quot;/url/demo/extend/attr&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
-            <span class="hljs-keyword">if</span>(res.success){
-                self.address = res.data.address;
-                self.companyPhone = res.data.companyPhone;
-                self.companyEmail = res.data.companyEmail;
-                callback();
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> extendAttr = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>,{
+    <span class="hljs-attr">beforeInit</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) {
+        <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+        <span class="hljs-title class_">Dec</span>.<span class="hljs-title function_">reqGet</span>(<span class="hljs-string">"/url/demo/extend/attr"</span>,<span class="hljs-string">""</span>,<span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+            <span class="hljs-keyword">if</span>(res.<span class="hljs-property">success</span>){
+                self.<span class="hljs-property">address</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">address</span>;
+                self.<span class="hljs-property">companyPhone</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">companyPhone</span>;
+                self.<span class="hljs-property">companyEmail</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">companyEmail</span>;
+                <span class="hljs-title function_">callback</span>();
             }
         })
 
     },
-    render:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
+    <span class="hljs-attr">render</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
         <span class="hljs-keyword">return</span> {
-            type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span>,
-            hgap:<span class="hljs-number">10</span>,
-            items:[{
-                type: <span class="hljs-string">&quot;bi.text_button&quot;</span>,
-                cls: <span class="hljs-string">&quot;plugin-header-extend-attr&quot;</span>,
-                text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Address&quot;</span>) + <span class="hljs-string">&quot;: &quot;</span> + self.address,
-                handler: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                    <span class="hljs-built_in">window</span>.open(self.address)
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical_adapt"</span>,
+            <span class="hljs-attr">hgap</span>:<span class="hljs-number">10</span>,
+            <span class="hljs-attr">items</span>:[{
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.text_button"</span>,
+                <span class="hljs-attr">cls</span>: <span class="hljs-string">"plugin-header-extend-attr"</span>,
+                <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_Address"</span>) + <span class="hljs-string">": "</span> + self.<span class="hljs-property">address</span>,
+                <span class="hljs-attr">handler</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(self.<span class="hljs-property">address</span>)
                 }
             },{
-                type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                cls: <span class="hljs-string">&quot;plugin-header-extend-attr&quot;</span>,
-                text:BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Phone&quot;</span>)  + <span class="hljs-string">&quot;: &quot;</span> + self.companyPhone
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                <span class="hljs-attr">cls</span>: <span class="hljs-string">"plugin-header-extend-attr"</span>,
+                <span class="hljs-attr">text</span>:<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_Phone"</span>)  + <span class="hljs-string">": "</span> + self.<span class="hljs-property">companyPhone</span>
             },{
-                type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                cls: <span class="hljs-string">&quot;plugin-header-extend-attr&quot;</span>,
-                text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Email&quot;</span>) + <span class="hljs-string">&quot;: &quot;</span> + self.companyEmail
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                <span class="hljs-attr">cls</span>: <span class="hljs-string">"plugin-header-extend-attr"</span>,
+                <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_Email"</span>) + <span class="hljs-string">": "</span> + self.<span class="hljs-property">companyEmail</span>
             }]
         }
 
     }
 });
-BI.shortcut(<span class="hljs-string">&quot;dec.plugin.header.extend.attr&quot;</span>,extendAttr);
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.plugin.header.extend.attr"</span>,extendAttr);
 </code></pre>
-<p>In the <em>beforeInit</em> method, the additional info is obtained by the platform&apos;s API.</p>
-<p><a href="images/platform_api.png" data-lightbox="c58ef86b-da91-4502-80b5-037a12d2ea73" data-title="platform_api"><img src="images/platform_api.png" alt="platform_api"></a></p>
+<p>In the <em>beforeInit</em> method, the additional info is obtained by the platform's API.</p>
+<p><a href="images/platform_api.png" data-lightbox="8cced658-89b9-4bc9-9aac-c735b6aa0790" data-title="platform_api"><img src="images/platform_api.png" alt="platform_api"></img></a></p>
 <p>Notice that the parameters of requests sent by <em>Dec.reqXXX</em> are all in JSON format. Therefore we cannot get them through <em>req.getParameter</em>.</p>
 <h3 id="ip-whitelist"><a name="ip-whitelist" class="anchor-navigation-ex-anchor" href="#ip-whitelist"><i class="fa fa-link" aria-hidden="true"></i></a>IP Whitelist</h3>
 <p>The implementation can be divided into three steps: the storage of the IP range implemented in the back end, the front-end UI of the IP white list, and the restriction of access according to the white list.</p>
 <h4 id="1-back-end-ip-get-and-set"><a name="1-back-end-ip-get-and-set" class="anchor-navigation-ex-anchor" href="#1-back-end-ip-get-and-set"><i class="fa fa-link" aria-hidden="true"></i></a>1) Back-end IP Get and Set</h4>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IPConfigGetHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHttpHandler</span> </span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL_PATH = <span class="hljs-string">&quot;/demo/ip/get&quot;</span>;
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IPConfigGetHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractHttpHandler</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">URL_PATH</span> <span class="hljs-operator">=</span> <span class="hljs-string">"/demo/ip/get"</span>;
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">urlPath</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> URL_PATH;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-        String startIP = IPConfig.getInstance().getStartIP();
-        String endIP = IPConfig.getInstance().getEndIP();
-        JSONObject data = JSONObject.create().put(<span class="hljs-string">&quot;startIP&quot;</span>,startIP).put(<span class="hljs-string">&quot;endIP&quot;</span>,endIP);
-        result.put(AbstractHttpHandler.STATE_NAME,<span class="hljs-keyword">true</span>).put(<span class="hljs-string">&quot;data&quot;</span>,data);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception {
+        <span class="hljs-type">String</span> <span class="hljs-variable">startIP</span> <span class="hljs-operator">=</span> IPConfig.getInstance().getStartIP();
+        <span class="hljs-type">String</span> <span class="hljs-variable">endIP</span> <span class="hljs-operator">=</span> IPConfig.getInstance().getEndIP();
+        <span class="hljs-type">JSONObject</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> JSONObject.create().put(<span class="hljs-string">"startIP"</span>,startIP).put(<span class="hljs-string">"endIP"</span>,endIP);
+        result.put(AbstractHttpHandler.STATE_NAME,<span class="hljs-literal">true</span>).put(<span class="hljs-string">"data"</span>,data);
     }
 }
 </code></pre>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IPConfigSetHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractHttpHandler</span></span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String URL_PATH = <span class="hljs-string">&quot;/demo/ip/set&quot;</span>;
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IPConfigSetHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractHttpHandler</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">URL_PATH</span> <span class="hljs-operator">=</span> <span class="hljs-string">"/demo/ip/set"</span>;
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">urlPath</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">urlPath</span><span class="hljs-params">()</span> {
         <span class="hljs-keyword">return</span> URL_PATH;
     }
 
     <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-        String startIP = para.getString(<span class="hljs-string">&quot;startIP&quot;</span>, StringUtils.EMPTY);
-        String endIP = para.getString(<span class="hljs-string">&quot;endIP&quot;</span>, StringUtils.EMPTY);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deal</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, JSONObject para, JSONObject result)</span> <span class="hljs-keyword">throws</span> Exception {
+        <span class="hljs-type">String</span> <span class="hljs-variable">startIP</span> <span class="hljs-operator">=</span> para.getString(<span class="hljs-string">"startIP"</span>, StringUtils.EMPTY);
+        <span class="hljs-type">String</span> <span class="hljs-variable">endIP</span> <span class="hljs-operator">=</span> para.getString(<span class="hljs-string">"endIP"</span>, StringUtils.EMPTY);
         IPConfig.getInstance().setStartIP(startIP);
         IPConfig.getInstance().setEndIP(endIP);
-        result.put(AbstractHttpHandler.STATE_NAME, <span class="hljs-keyword">true</span>);
+        result.put(AbstractHttpHandler.STATE_NAME, <span class="hljs-literal">true</span>);
     }
 }
 </code></pre>
 <h4 id="2-front-end-implementation_1"><a name="2-front-end-implementation_1" class="anchor-navigation-ex-anchor" href="#2-front-end-implementation_1"><i class="fa fa-link" aria-hidden="true"></i></a>2) Front-end Implementation</h4>
-<p>Mount the UI for setting the IP range under the node of the <strong>System Management</strong>. The method of adding a tab is the same as that of adding an item to the navigation bar. The type of the target node is &quot;dec.constant.system.tabs&quot;.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> IP = BI.inherit(BI.Widget, {
-    beforeInit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) </span>{ <span class="hljs-comment">// get startIP and endIP</span>
-        <span class="hljs-keyword">var</span> self=<span class="hljs-keyword">this</span>;
-        Dec.reqGet(<span class="hljs-string">&quot;/url/demo/ip/get&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
-            <span class="hljs-keyword">if</span>(res.success){
-                self.startIP = res.data.startIP;
-                self.endIP = res.data.endIP;
-                callback();
+<p>Mount the UI for setting the IP range under the node of the <strong>System Management</strong>. The method of adding a tab is the same as that of adding an item to the navigation bar. The type of the target node is "dec.constant.system.tabs".</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> <span class="hljs-variable constant_">IP</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+    <span class="hljs-attr">beforeInit</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) { <span class="hljs-comment">// get startIP and endIP</span>
+        <span class="hljs-keyword">var</span> self=<span class="hljs-variable language_">this</span>;
+        <span class="hljs-title class_">Dec</span>.<span class="hljs-title function_">reqGet</span>(<span class="hljs-string">"/url/demo/ip/get"</span>,<span class="hljs-string">""</span>,<span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+            <span class="hljs-keyword">if</span>(res.<span class="hljs-property">success</span>){
+                self.<span class="hljs-property">startIP</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">startIP</span>;
+                self.<span class="hljs-property">endIP</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">endIP</span>;
+                <span class="hljs-title function_">callback</span>();
             }
         })
 
     },
-    render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
+    <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
 
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValidIP</span>(<span class="hljs-params">ip</span>) </span>{
+        <span class="hljs-keyword">function</span> <span class="hljs-title function_">isValidIP</span>(<span class="hljs-params">ip</span>) {
             <span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/</span>
-            <span class="hljs-keyword">return</span> reg.test(ip);
+            <span class="hljs-keyword">return</span> reg.<span class="hljs-title function_">test</span>(ip);
         }
 
             <span class="hljs-keyword">return</span> {
-                    type: <span class="hljs-string">&quot;bi.vertical&quot;</span>,
-                    cls: <span class="hljs-string">&quot;bi-card&quot;</span>,
-                    items: [
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical"</span>,
+                    <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-card"</span>,
+                    <span class="hljs-attr">items</span>: [
                         {
-                            type: <span class="hljs-string">&quot;dec.card.vertical&quot;</span>,
-                            hgap: <span class="hljs-number">10</span>,
-                            text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_IP_Config&quot;</span>),
-                            showButtons: <span class="hljs-literal">true</span>,
-                            content: {
-                                type: <span class="hljs-string">&quot;bi.vertical&quot;</span>,
-                                vgap: <span class="hljs-number">15</span>,
-                                items: [{
-                                    type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span>,
-                                    hgap:<span class="hljs-number">10</span>,
-                                    items: [{
-                                        type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                                        textAlign: <span class="hljs-string">&quot;right&quot;</span>,
-                                        cls: <span class="hljs-string">&quot;dec-font-weight-bold&quot;</span>,
-                                        text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Start_IP&quot;</span>),
-                                        title: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_Start_IP&quot;</span>),
-                                        width: <span class="hljs-number">100</span>
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.card.vertical"</span>,
+                            <span class="hljs-attr">hgap</span>: <span class="hljs-number">10</span>,
+                            <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_IP_Config"</span>),
+                            <span class="hljs-attr">showButtons</span>: <span class="hljs-literal">true</span>,
+                            <span class="hljs-attr">content</span>: {
+                                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical"</span>,
+                                <span class="hljs-attr">vgap</span>: <span class="hljs-number">15</span>,
+                                <span class="hljs-attr">items</span>: [{
+                                    <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical_adapt"</span>,
+                                    <span class="hljs-attr">hgap</span>:<span class="hljs-number">10</span>,
+                                    <span class="hljs-attr">items</span>: [{
+                                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                                        <span class="hljs-attr">textAlign</span>: <span class="hljs-string">"right"</span>,
+                                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"dec-font-weight-bold"</span>,
+                                        <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_Start_IP"</span>),
+                                        <span class="hljs-attr">title</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_Start_IP"</span>),
+                                        <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>
                                     }, {
-                                        type: <span class="hljs-string">&quot;bi.text_editor&quot;</span>,
-                                        textAlign: <span class="hljs-string">&quot;left&quot;</span>,
-                                        cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
-                                        value:self.startIP,
-                                        errorText: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_IP_Check_Message&quot;</span>),
-                                        lgap: <span class="hljs-number">5</span>,
-                                        width: <span class="hljs-number">300</span>,
-                                        validationChecker: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
-                                            <span class="hljs-keyword">return</span> isValidIP(v);
+                                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.text_editor"</span>,
+                                        <span class="hljs-attr">textAlign</span>: <span class="hljs-string">"left"</span>,
+                                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border"</span>,
+                                        <span class="hljs-attr">value</span>:self.<span class="hljs-property">startIP</span>,
+                                        <span class="hljs-attr">errorText</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_IP_Check_Message"</span>),
+                                        <span class="hljs-attr">lgap</span>: <span class="hljs-number">5</span>,
+                                        <span class="hljs-attr">width</span>: <span class="hljs-number">300</span>,
+                                        <span class="hljs-attr">validationChecker</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) {
+                                            <span class="hljs-keyword">return</span> <span class="hljs-title function_">isValidIP</span>(v);
                                         },
-                                        allowBlank: <span class="hljs-literal">true</span>,
-                                        ref:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) </span>{
-                                            self.startIPWidget=_ref;
+                                        <span class="hljs-attr">allowBlank</span>: <span class="hljs-literal">true</span>,
+                                        <span class="hljs-attr">ref</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) {
+                                            self.<span class="hljs-property">startIPWidget</span>=_ref;
                                         }
                                     }]
                                 },
                                     {
-                                        type: <span class="hljs-string">&quot;bi.vertical_adapt&quot;</span>,
-                                        hgap:<span class="hljs-number">10</span>,
-                                        items: [{
-                                            type: <span class="hljs-string">&quot;bi.label&quot;</span>,
-                                            textAlign: <span class="hljs-string">&quot;right&quot;</span>,
-                                            cls: <span class="hljs-string">&quot;dec-font-weight-bold&quot;</span>,
-                                            text: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_End_IP&quot;</span>),
-                                            title: BI.i18nText(<span class="hljs-string">&quot;FIne-Plugin_Dec_End_IP&quot;</span>),
-                                            width: <span class="hljs-number">100</span>
+                                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical_adapt"</span>,
+                                        <span class="hljs-attr">hgap</span>:<span class="hljs-number">10</span>,
+                                        <span class="hljs-attr">items</span>: [{
+                                            <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                                            <span class="hljs-attr">textAlign</span>: <span class="hljs-string">"right"</span>,
+                                            <span class="hljs-attr">cls</span>: <span class="hljs-string">"dec-font-weight-bold"</span>,
+                                            <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_End_IP"</span>),
+                                            <span class="hljs-attr">title</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"FIne-Plugin_Dec_End_IP"</span>),
+                                            <span class="hljs-attr">width</span>: <span class="hljs-number">100</span>
                                         }, {
-                                            type: <span class="hljs-string">&quot;bi.text_editor&quot;</span>,
-                                            textAlign: <span class="hljs-string">&quot;left&quot;</span>,
-                                            cls: <span class="hljs-string">&quot;bi-border&quot;</span>,
-                                            value:self.endIP,
-                                            errorText: BI.i18nText(<span class="hljs-string">&quot;Fine-Plugin_Dec_IP_Check_Message&quot;</span>),
-                                            lgap: <span class="hljs-number">5</span>,
-                                            width: <span class="hljs-number">300</span>,
-                                            validationChecker: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
-                                                <span class="hljs-keyword">return</span> isValidIP(v);
+                                            <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.text_editor"</span>,
+                                            <span class="hljs-attr">textAlign</span>: <span class="hljs-string">"left"</span>,
+                                            <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border"</span>,
+                                            <span class="hljs-attr">value</span>:self.<span class="hljs-property">endIP</span>,
+                                            <span class="hljs-attr">errorText</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Fine-Plugin_Dec_IP_Check_Message"</span>),
+                                            <span class="hljs-attr">lgap</span>: <span class="hljs-number">5</span>,
+                                            <span class="hljs-attr">width</span>: <span class="hljs-number">300</span>,
+                                            <span class="hljs-attr">validationChecker</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) {
+                                                <span class="hljs-keyword">return</span> <span class="hljs-title function_">isValidIP</span>(v);
                                             },
-                                            allowBlank: <span class="hljs-literal">true</span>,
-                                            ref:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) </span>{
-                                                self.endIPWidget=_ref;
+                                            <span class="hljs-attr">allowBlank</span>: <span class="hljs-literal">true</span>,
+                                            <span class="hljs-attr">ref</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params">_ref</span>) {
+                                                self.<span class="hljs-property">endIPWidget</span>=_ref;
                                             }
                                         }]
                                     }]
                             },
-                            listeners: [{
-                                eventName: <span class="hljs-string">&quot;EVENT_CHANGE&quot;</span>,
-                                action: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-                                    Dec.reqPost(<span class="hljs-string">&quot;/url/demo/ip/set&quot;</span>,self.getValue(),<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
+                            <span class="hljs-attr">listeners</span>: [{
+                                <span class="hljs-attr">eventName</span>: <span class="hljs-string">"EVENT_CHANGE"</span>,
+                                <span class="hljs-attr">action</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                                    <span class="hljs-title class_">Dec</span>.<span class="hljs-title function_">reqPost</span>(<span class="hljs-string">"/url/demo/ip/set"</span>,self.<span class="hljs-title function_">getValue</span>(),<span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
 
                                     })
                                 }
@@ -761,28 +760,28 @@ BI.shortcut(<span class="hljs-string">&quot;dec.plugin.header.extend.attr&quot;<
 
                 };
     },
-    getValue:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> self=<span class="hljs-keyword">this</span>;
+    <span class="hljs-attr">getValue</span>:<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">var</span> self=<span class="hljs-variable language_">this</span>;
         <span class="hljs-keyword">return</span> {
-            startIP:self.startIPWidget.getValue(),
-            endIP:self.endIPWidget.getValue()
+            <span class="hljs-attr">startIP</span>:self.<span class="hljs-property">startIPWidget</span>.<span class="hljs-title function_">getValue</span>(),
+            <span class="hljs-attr">endIP</span>:self.<span class="hljs-property">endIPWidget</span>.<span class="hljs-title function_">getValue</span>()
         }
     }
 });
-BI.shortcut(<span class="hljs-string">&quot;dec.plugin.system.ip&quot;</span>, IP);
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.plugin.system.ip"</span>, <span class="hljs-variable constant_">IP</span>);
 </code></pre>
 <p>The effect of the above component:</p>
-<p><a href="images/effect.png" data-lightbox="f4db4e48-287f-418a-8677-e0256fb20a48" data-title="effect"><img src="images/effect.png" alt="effect"></a></p>
+<p><a href="images/effect.png" data-lightbox="c690d1cb-6a99-44d5-8a60-295870ee3016" data-title="effect"><img src="images/effect.png" alt="effect"></img></a></p>
 <h4 id="3-access-restriction"><a name="3-access-restriction" class="anchor-navigation-ex-anchor" href="#3-access-restriction"><i class="fa fa-link" aria-hidden="true"></i></a>3) Access Restriction</h4>
 <p>The settings of the IP white list are all set and now we should put them to work. Use the <em>GlobalRequestFilterProvider</em> to add a filter to block requests that are not on the list.</p>
-<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)</span> </span>{
-    System.out.println(req.getRequestURL()+<span class="hljs-string">&quot;?&quot;</span>+req.getQueryString());
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doFilter</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)</span> {
+    System.out.println(req.getRequestURL()+<span class="hljs-string">"?"</span>+req.getQueryString());
     <span class="hljs-keyword">try</span> {
-        String currentIP = WebUtils.getIpAddr(req);
-        String startIP = IPConfig.getInstance().getStartIP();
-        String endIP = IPConfig.getInstance().getEndIP();
+        <span class="hljs-type">String</span> <span class="hljs-variable">currentIP</span> <span class="hljs-operator">=</span> WebUtils.getIpAddr(req);
+        <span class="hljs-type">String</span> <span class="hljs-variable">startIP</span> <span class="hljs-operator">=</span> IPConfig.getInstance().getStartIP();
+        <span class="hljs-type">String</span> <span class="hljs-variable">endIP</span> <span class="hljs-operator">=</span> IPConfig.getInstance().getEndIP();
         <span class="hljs-keyword">if</span>(ComparatorUtils.compare(currentIP,startIP) &lt; <span class="hljs-number">0</span> || ComparatorUtils.compare(currentIP,endIP) &gt; <span class="hljs-number">0</span>){
-            WebUtils.printAsString(res,<span class="hljs-string">&quot;Not in the white list!&quot;</span>);
+            WebUtils.printAsString(res,<span class="hljs-string">"Not in the white list!"</span>);
             <span class="hljs-keyword">return</span>;
         }
         filterChain.doFilter(req,res);
@@ -835,12 +834,56 @@ BI.shortcut(<span class="hljs-string">&quot;dec.plugin.system.ip&quot;</span>, I
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - A Real-world Problem","level":"2.15","depth":1,"next":{"title":"Advanced Tutorial - Authentication","level":"2.16","depth":1,"path":"tutorial/chapter_16/chapter_16.md","ref":"tutorial/chapter_16/chapter_16.md","articles":[]},"previous":{"title":"Beginner Tutorial - FineUI","level":"2.14","depth":1,"path":"tutorial/chapter_14/chapter_14.md","ref":"tutorial/chapter_14/chapter_14.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_15/chapter_15.md","mtime":"2020-12-30T08:32:37.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Beginner Tutorial - A Real-world Problem","level":"2.15","depth":1,"next":{"title":"Advanced Tutorial - Authentication","level":"2.16","depth":1,"path":"tutorial/chapter_16/chapter_16.md","ref":"tutorial/chapter_16/chapter_16.md","articles":[]},"previous":{"title":"Beginner Tutorial - FineUI","level":"2.14","depth":1,"path":"tutorial/chapter_14/chapter_14.md","ref":"tutorial/chapter_14/chapter_14.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_15/chapter_15.md","mtime":"2026-04-07T06:04:11.295Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -885,11 +928,7 @@ BI.shortcut(<span class="hljs-string">&quot;dec.plugin.system.ip&quot;</span>, I
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

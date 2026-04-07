@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction of plugin.xml · GitBook</title>
+        <title>Introduction of plugin.xml · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 6.1.7">
         
         
         
@@ -37,7 +36,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -45,7 +44,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -86,7 +85,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -421,8 +420,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -464,9 +463,9 @@
 <blockquote>
 <p>This is a chapter that will not give you any sense of accomplishment, and it is also kind of boring. But if you are a developer who has just been exposed to FR plugins, please be patient.</p>
 </blockquote>
-<p>Before developing our first plugin, let&apos;s take a look at plugin.xml (the configuration file of a plugin). In fact, it is the resume of a plugin. Its role is to tell the designer or the server &quot;who am I, what can I do&quot;, and wait for the designer or the server to assign work.</p>
-<p>Let us look at the following example. Now don&apos;t worry about how it works, we just want to know what editable contents it provides us.</p>
-<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> standalone=<span class="hljs-string">&quot;no&quot;</span><span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+<p>Before developing our first plugin, let's take a look at plugin.xml (the configuration file of a plugin). In fact, it is the resume of a plugin. Its role is to tell the designer or the server "who am I, what can I do", and wait for the designer or the server to assign work.</p>
+<p>Let us look at the following example. Now don't worry about how it works, we just want to know what editable contents it provides us.</p>
+<pre><code class="lang-xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> standalone=<span class="hljs-string">"no"</span>?&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>com.fr.plugin.myfunction.id<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>&lt;![CDATA[ Plugin Title ]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">active</span>&gt;</span>yes<span class="hljs-tag">&lt;/<span class="hljs-name">active</span>&gt;</span>
@@ -477,13 +476,13 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>&lt;![CDATA[ Plugin Description ]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">change-notes</span>&gt;</span>&lt;![CDATA[ Plugin Change Notes ]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">change-notes</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">main-package</span>&gt;</span>com.fr.plugin.myfunction<span class="hljs-tag">&lt;/<span class="hljs-name">main-package</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.myfunction.Demo&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.myfunction.Demo"</span>/&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.myfunction.Demo&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.myfunction.Demo"</span>/&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
 </code></pre>
-<p>We can divide the above example into two parts. The first part is &quot;who am I&quot;.</p>
+<p>We can divide the above example into two parts. The first part is "who am I".</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>com.fr.plugin.function.demo<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>&lt;![CDATA[ Plugin Title ]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">active</span>&gt;</span>yes<span class="hljs-tag">&lt;/<span class="hljs-name">active</span>&gt;</span>
@@ -494,7 +493,7 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>&lt;![CDATA[ Plugin Description ]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">change-notes</span>&gt;</span>&lt;![CDATA[ Plugin Change Notes ]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">change-notes</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">main-package</span>&gt;</span>com.fr.plugin.function.demo<span class="hljs-tag">&lt;/<span class="hljs-name">main-package</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.function.demo.HelloWorld&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.function.demo.HelloWorld"</span>/&gt;</span>
 </code></pre>
 <ul>
 <li>id: the unique identifier of the plugin, which is equal to our ID Number</li>
@@ -507,20 +506,20 @@
 <li>description: the short description pf the plugin</li>
 <li>change-notes: the changelog of the plugin</li>
 <li>main-package: the path of the main package of the plugin (P.S. You can ignore this one right now, as long as you know there is such a thing. Detailed instructions will be in the following tutorial)</li>
-<li>function-recorder: the recorder of the plugin&apos;s function points (P.S. You can also ignore this. Just know that there is such a thing.)</li>
+<li>function-recorder: the recorder of the plugin's function points (P.S. You can also ignore this. Just know that there is such a thing.)</li>
 </ul>
-<p>The second part tells &quot;what can I do&quot;.</p>
+<p>The second part tells "what can I do".</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.fr.plugin.myfunction.Demo&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.myfunction.Demo"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
 </code></pre>
 <p>This is the function declaration of the interface: </p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span> = &quot;<span class="hljs-attr">com.fr.plugin.myfunction.Demo</span>&quot; /&gt;</span>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">GlobalRequestFilterProvider</span> <span class="hljs-attr">class</span> = <span class="hljs-string">"com.fr.plugin.myfunction.Demo"</span> /&gt;</span>
 </code></pre>
 <p>The basic structure is  </p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Interface-Mark-String</span> <span class="hljs-attr">class</span> = &quot;<span class="hljs-attr">class</span> <span class="hljs-attr">name</span>&quot; /&gt;</span>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Interface-Mark-String</span> <span class="hljs-attr">class</span> = <span class="hljs-string">"class name"</span> /&gt;</span>
 </code></pre>
-<p>We will introduce what is the mark string of each interface in the following tutorials. Some special interfaces have to provide some other attributes and sub-interface elements. Again, no need to worry about it right now. Let&#x2019;s start with the general first.</p>
+<p>We will introduce what is the mark string of each interface in the following tutorials. Some special interfaces have to provide some other attributes and sub-interface elements. Again, no need to worry about it right now. Let’s start with the general first.</p>
 <p>Then, since FR is built on various modules, our interface implementation has to be declared under the label of the corresponding module. The XML tag of the XXX module is extra-XXX.</p>
 <blockquote>
 <p>Note: Different modules can be declared in one plugin, and implementations of different interfaces can also be declared under the same module label. </p>
@@ -570,12 +569,56 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction of plugin.xml","level":"2.3","depth":1,"next":{"title":"Introduction of build.xml","level":"2.4","depth":1,"path":"tutorial/chapter_4/chapter_4.md","ref":"tutorial/chapter_4/chapter_4.md","articles":[]},"previous":{"title":"Build Development Environment","level":"2.2","depth":1,"path":"tutorial/chapter_2/chapter_2.md","ref":"tutorial/chapter_2/chapter_2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_3/chapter_3.md","mtime":"2020-12-30T08:32:37.709Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:33:25.953Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction of plugin.xml","level":"2.3","depth":1,"next":{"title":"Introduction of build.xml","level":"2.4","depth":1,"path":"tutorial/chapter_4/chapter_4.md","ref":"tutorial/chapter_4/chapter_4.md","articles":[]},"previous":{"title":"Build Development Environment","level":"2.2","depth":1,"path":"tutorial/chapter_2/chapter_2.md","ref":"tutorial/chapter_2/chapter_2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/chapter_3/chapter_3.md","mtime":"2026-04-07T06:04:11.302Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-04-07T06:04:29.544Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
@@ -620,11 +663,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
