@@ -1,0 +1,41 @@
+name: Build GitBook and deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gitbook-gh-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "10"
+
+      - name: Install GitBook CLI and book plugins
+        run: |
+          npm install -g gitbook-cli
+          gitbook install
+
+      - name: Build
+        run: gitbook build
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_book
+          commit_message: "Deploy GitBook [skip ci] — ${{ github.sha }}"
