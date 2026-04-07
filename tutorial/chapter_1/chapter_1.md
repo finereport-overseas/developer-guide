@@ -3,7 +3,7 @@
 > Note: After configuring environment variables, you need to restart the command line to make the configuration take effect.
 
 ## Install JDK
-Since January 2019, Oracle JDK starts to charge, it is recommended to use the version before Oracle JDK1.8.0_202. You can also download [Amazon Corretto JDK](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html).   
+Since January 2019, Oracle JDK starts to charge, it is recommended to use the version before Oracle JDK1.8.0_201. You can also download [Amazon Corretto JDK](https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html).   
 
 Choose the version that suits your operating system, and then install it according to the [tutorial](https://www.tutorialspoint.com/java/java_environment_setup.htm) here. After the installation, execute this command at the command line:
 ``` bash
