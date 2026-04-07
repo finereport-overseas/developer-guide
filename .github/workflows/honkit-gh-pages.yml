@@ -1,4 +1,4 @@
-name: Build GitBook and deploy to GitHub Pages
+name: Build HonKit book and deploy to GitHub Pages
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: gitbook-gh-pages
+  group: honkit-gh-pages
   cancel-in-progress: true
 
 jobs:
@@ -23,19 +23,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "10"
+          node-version: "24"
+          cache: npm
 
-      - name: Install GitBook CLI and book plugins
-        run: |
-          npm install -g gitbook-cli
-          gitbook install
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build
-        run: gitbook build
+        run: npm run build
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_book
-          commit_message: "Deploy GitBook [skip ci] — ${{ github.sha }}"
+          commit_message: "Deploy HonKit [skip ci] — ${{ github.sha }}"
