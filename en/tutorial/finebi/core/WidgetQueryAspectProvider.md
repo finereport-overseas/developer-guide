@@ -1,0 +1,3 @@
+# WidgetQueryAspectProvider
+
+> Coming soon.

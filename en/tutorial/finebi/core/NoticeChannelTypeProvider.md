@@ -1,0 +1,3 @@
+# NoticeChannelTypeProvider
+
+> Coming soon.

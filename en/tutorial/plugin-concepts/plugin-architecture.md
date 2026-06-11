@@ -1,0 +1,3 @@
+# plugin-architecture
+
+> Coming soon.

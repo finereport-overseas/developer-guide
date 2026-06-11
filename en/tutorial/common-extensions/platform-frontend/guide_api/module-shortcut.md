@@ -1,0 +1,3 @@
+# module-shortcut
+
+> Coming soon.

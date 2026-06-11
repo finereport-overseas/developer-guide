@@ -1,0 +1,3 @@
+# ActiveAuthorityInheritTriggerProvider
+
+> Coming soon.

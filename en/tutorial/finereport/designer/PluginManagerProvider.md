@@ -1,0 +1,3 @@
+# PluginManagerProvider
+
+> Coming soon.
