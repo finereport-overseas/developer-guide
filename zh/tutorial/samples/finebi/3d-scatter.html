@@ -1,0 +1,4276 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <title>FineBI 插件示例 · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.1.7">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="3d-scatter.html" />
+    
+    
+    <link rel="prev" href="../finereport/style-text-widget.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../getting-started/environment-setup/essential-tools.html">
+            
+                <a href="../../getting-started/environment-setup/essential-tools.html">
+            
+                    
+                    快速开始
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../getting-started/environment-setup/essential-tools.html">
+            
+                <a href="../../getting-started/environment-setup/essential-tools.html">
+            
+                    
+                    开发环境搭建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../getting-started/environment-setup/essential-tools.html">
+            
+                <a href="../../getting-started/environment-setup/essential-tools.html">
+            
+                    
+                    必备工具安装和配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../../getting-started/environment-setup/plugin-dev-env.html">
+            
+                <a href="../../getting-started/environment-setup/plugin-dev-env.html">
+            
+                    
+                    配置 FineReport 插件开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../../getting-started/environment-setup/finebi-dev-env.html">
+            
+                <a href="../../getting-started/environment-setup/finebi-dev-env.html">
+            
+                    
+                    配置 FineBI 插件开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                <a href="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                    
+                    运行与调试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                <a href="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                    
+                    JavaScript 调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../getting-started/run-and-debug/debug-finereport-designer.html">
+            
+                <a href="../../getting-started/run-and-debug/debug-finereport-designer.html">
+            
+                    
+                    FineReport 设计器调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.3" data-path="../../getting-started/run-and-debug/remote-debug.html">
+            
+                <a href="../../getting-started/run-and-debug/remote-debug.html">
+            
+                    
+                    远程设计调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.4" data-path="../../getting-started/run-and-debug/plugin-install-failure.html">
+            
+                <a href="../../getting-started/run-and-debug/plugin-install-failure.html">
+            
+                    
+                    插件安装失败
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.5" data-path="../../getting-started/run-and-debug/logging-tips.html">
+            
+                <a href="../../getting-started/run-and-debug/logging-tips.html">
+            
+                    
+                    日志查看技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../getting-started/first-plugin/create-with-template.html">
+            
+                <a href="../../getting-started/first-plugin/create-with-template.html">
+            
+                    
+                    创建第一个插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../getting-started/first-plugin/create-with-template.html">
+            
+                <a href="../../getting-started/first-plugin/create-with-template.html">
+            
+                    
+                    使用模板创建 (Gradle 插件)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../getting-started/first-plugin/plugin-xml-config.html">
+            
+                <a href="../../getting-started/first-plugin/plugin-xml-config.html">
+            
+                    
+                    plugin.xml 基础配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                <a href="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                    
+                    发布与部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                <a href="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                    
+                    打包插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../getting-started/publish-and-deploy/plugin-license.html">
+            
+                <a href="../../getting-started/publish-and-deploy/plugin-license.html">
+            
+                    
+                    插件授权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.3" data-path="../../getting-started/publish-and-deploy/upload-to-app-center.html">
+            
+                <a href="../../getting-started/publish-and-deploy/upload-to-app-center.html">
+            
+                    
+                    上传到应用中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../coding-standards/javascript-standards.html">
+            
+                <a href="../../coding-standards/javascript-standards.html">
+            
+                    
+                    基础开发规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../coding-standards/javascript-standards.html">
+            
+                <a href="../../coding-standards/javascript-standards.html">
+            
+                    
+                    JavaScript 代码规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../coding-standards/javascript-format-standards.html">
+            
+                <a href="../../coding-standards/javascript-format-standards.html">
+            
+                    
+                    格式规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../coding-standards/java-standards.html">
+            
+                <a href="../../coding-standards/java-standards.html">
+            
+                    
+                    Java 代码规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.2.1" data-path="../../coding-standards/format-standards.html">
+            
+                <a href="../../coding-standards/format-standards.html">
+            
+                    
+                    格式规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.2" data-path="../../coding-standards/java-logging-standards.html">
+            
+                <a href="../../coding-standards/java-logging-standards.html">
+            
+                    
+                    日志规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.3" data-path="../../coding-standards/java-naming-standards.html">
+            
+                <a href="../../coding-standards/java-naming-standards.html">
+            
+                    
+                    命名规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.4" data-path="../../coding-standards/java-output-standards.html">
+            
+                <a href="../../coding-standards/java-output-standards.html">
+            
+                    
+                    输出规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.5" data-path="../../coding-standards/java-other-standards.html">
+            
+                <a href="../../coding-standards/java-other-standards.html">
+            
+                    
+                    其他规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.6" data-path="../../coding-standards/java-business-standards.html">
+            
+                <a href="../../coding-standards/java-business-standards.html">
+            
+                    
+                    业务代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../plugin-concepts/plugin-architecture.html">
+            
+                <a href="../../plugin-concepts/plugin-architecture.html">
+            
+                    
+                    插件基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../../plugin-concepts/plugin-architecture.html">
+            
+                <a href="../../plugin-concepts/plugin-architecture.html">
+            
+                    
+                    插件架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../../plugin-concepts/plugin-features.html">
+            
+                <a href="../../plugin-concepts/plugin-features.html">
+            
+                    
+                    插件功能点记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../../plugin-concepts/plugin-lifecycle.html">
+            
+                <a href="../../plugin-concepts/plugin-lifecycle.html">
+            
+                    
+                    插件生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../../plugin-concepts/plugin-context.html">
+            
+                <a href="../../plugin-concepts/plugin-context.html">
+            
+                    
+                    插件上下文对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../plugin-concepts/plugin-entry-points.html">
+            
+                <a href="../../plugin-concepts/plugin-entry-points.html">
+            
+                    
+                    插件接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                <a href="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                    
+                    特殊接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1.1" data-path="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                <a href="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                    
+                    PluginLifecycleMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../common-extensions/core/DBAccessProvider.html">
+            
+                <a href="../../common-extensions/core/DBAccessProvider.html">
+            
+                    
+                    公共接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.1" data-path="../../common-extensions/core/DBAccessProvider.html">
+            
+                <a href="../../common-extensions/core/DBAccessProvider.html">
+            
+                    
+                    核心接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.1.1" data-path="../../common-extensions/core/AlternateResultProvider.html">
+            
+                <a href="../../common-extensions/core/AlternateResultProvider.html">
+            
+                    
+                    AlternateResultProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.2" data-path="../../common-extensions/core/AttachmentDownloader.html">
+            
+                <a href="../../common-extensions/core/AttachmentDownloader.html">
+            
+                    
+                    AttachmentDownloader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.3" data-path="../../common-extensions/core/ClusterForwardProvider.html">
+            
+                <a href="../../common-extensions/core/ClusterForwardProvider.html">
+            
+                    
+                    ClusterForwardProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.4" data-path="../../common-extensions/core/CssFileHandler.html">
+            
+                <a href="../../common-extensions/core/CssFileHandler.html">
+            
+                    
+                    CssFileHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.5" data-path="../../common-extensions/core/DSModifyProvider.html">
+            
+                <a href="../../common-extensions/core/DSModifyProvider.html">
+            
+                    
+                    DSModifyProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.6" data-path="../../common-extensions/core/DataSourceDriverLoader.html">
+            
+                <a href="../../common-extensions/core/DataSourceDriverLoader.html">
+            
+                    
+                    DataSourceDriverLoader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.7" data-path="../../common-extensions/core/DBAccessProvider.html">
+            
+                <a href="../../common-extensions/core/DBAccessProvider.html">
+            
+                    
+                    DBAccessProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.8" data-path="../../common-extensions/core/DialectCreator.html">
+            
+                <a href="../../common-extensions/core/DialectCreator.html">
+            
+                    
+                    DialectCreator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.9" data-path="../../common-extensions/core/EmailServiceProvider.html">
+            
+                <a href="../../common-extensions/core/EmailServiceProvider.html">
+            
+                    
+                    EmailServiceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.10" data-path="../../common-extensions/core/ExcelExportCellValueProvider.html">
+            
+                <a href="../../common-extensions/core/ExcelExportCellValueProvider.html">
+            
+                    
+                    ExcelExportCellValueProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.11" data-path="../../common-extensions/core/FileContentEditorProvider.html">
+            
+                <a href="../../common-extensions/core/FileContentEditorProvider.html">
+            
+                    
+                    FileContentEditorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.12" data-path="../../common-extensions/core/FunctionGroup.html">
+            
+                <a href="../../common-extensions/core/FunctionGroup.html">
+            
+                    
+                    FunctionDefContainer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.13" data-path="../../common-extensions/core/FunctionDefineProvider.html">
+            
+                <a href="../../common-extensions/core/FunctionDefineProvider.html">
+            
+                    
+                    FunctionDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.14" data-path="../../common-extensions/core/IOFileAttrMark.html">
+            
+                <a href="../../common-extensions/core/IOFileAttrMark.html">
+            
+                    
+                    IOFileAttrMark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.15" data-path="../../common-extensions/core/IconProvider.html">
+            
+                <a href="../../common-extensions/core/IconProvider.html">
+            
+                    
+                    IconProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.16" data-path="../../common-extensions/core/JavaScriptFileHandler.html">
+            
+                <a href="../../common-extensions/core/JavaScriptFileHandler.html">
+            
+                    
+                    JavaScriptFileHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.17" data-path="../../common-extensions/core/JsonOutputHandlerProvider.html">
+            
+                <a href="../../common-extensions/core/JsonOutputHandlerProvider.html">
+            
+                    
+                    JsonOutputHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.18" data-path="../../common-extensions/core/LocaleFinder.html">
+            
+                <a href="../../common-extensions/core/LocaleFinder.html">
+            
+                    
+                    LocaleFinder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.19" data-path="../../common-extensions/core/PDFExporterCreator.html">
+            
+                <a href="../../common-extensions/core/PDFExporterCreator.html">
+            
+                    
+                    PDFExporterCreator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.20" data-path="../../common-extensions/core/RequestInterceptor.html">
+            
+                <a href="../../common-extensions/core/RequestInterceptor.html">
+            
+                    
+                    RequestInterceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.21" data-path="../../common-extensions/core/RequestParameterHandler.html">
+            
+                <a href="../../common-extensions/core/RequestParameterHandler.html">
+            
+                    
+                    RequestParameterHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.22" data-path="../../common-extensions/core/ResourcePathTransformer.html">
+            
+                <a href="../../common-extensions/core/ResourcePathTransformer.html">
+            
+                    
+                    ResourcePathTransformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.23" data-path="../../common-extensions/core/ResourceRepositoryFactoryProvider.html">
+            
+                <a href="../../common-extensions/core/ResourceRepositoryFactoryProvider.html">
+            
+                    
+                    ResourceRepositoryFactoryProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.24" data-path="../../common-extensions/core/SMSServiceProvider.html">
+            
+                <a href="../../common-extensions/core/SMSServiceProvider.html">
+            
+                    
+                    SMSServiceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.25" data-path="../../common-extensions/core/Service.html">
+            
+                <a href="../../common-extensions/core/Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.26" data-path="../../common-extensions/core/SessionManageProcessor.html">
+            
+                <a href="../../common-extensions/core/SessionManageProcessor.html">
+            
+                    
+                    SessionManageProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.27" data-path="../../common-extensions/core/SessionPrivilegeFilterProvider.html">
+            
+                <a href="../../common-extensions/core/SessionPrivilegeFilterProvider.html">
+            
+                    
+                    SessionPrivilegeFilterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.28" data-path="../../common-extensions/core/SiteTransformer.html">
+            
+                <a href="../../common-extensions/core/SiteTransformer.html">
+            
+                    
+                    SiteTransformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.29" data-path="../../common-extensions/core/StableKeyArgsProvider.html">
+            
+                <a href="../../common-extensions/core/StableKeyArgsProvider.html">
+            
+                    
+                    StableKeyArgsProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.30" data-path="../../common-extensions/core/TableDataBuildProvider.html">
+            
+                <a href="../../common-extensions/core/TableDataBuildProvider.html">
+            
+                    
+                    TableDataBuildProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.31" data-path="../../common-extensions/core/TableDataProvider.html">
+            
+                <a href="../../common-extensions/core/TableDataProvider.html">
+            
+                    
+                    TableDataProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.32" data-path="../../common-extensions/core/TransferPackageProvider.html">
+            
+                <a href="../../common-extensions/core/TransferPackageProvider.html">
+            
+                    
+                    TransferPackageProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.33" data-path="../../common-extensions/core/WebLocaleProvider.html">
+            
+                <a href="../../common-extensions/core/WebLocaleProvider.html">
+            
+                    
+                    WebLocaleProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2" data-path="../../common-extensions/platform/AccessProvider.html">
+            
+                <a href="../../common-extensions/platform/AccessProvider.html">
+            
+                    
+                    平台接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.2.1" data-path="../../common-extensions/platform/AccessProvider.html">
+            
+                <a href="../../common-extensions/platform/AccessProvider.html">
+            
+                    
+                    AccessProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.2" data-path="../../common-extensions/platform/CharTypeVerifierProvider.html">
+            
+                <a href="../../common-extensions/platform/CharTypeVerifierProvider.html">
+            
+                    
+                    CharTypeVerifierProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.3" data-path="../../common-extensions/platform/ComposeWebResourceProvider.html">
+            
+                <a href="../../common-extensions/platform/ComposeWebResourceProvider.html">
+            
+                    
+                    ComposeWebResourceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.4" data-path="../../common-extensions/platform/ControllerRegisterProvider.html">
+            
+                <a href="../../common-extensions/platform/ControllerRegisterProvider.html">
+            
+                    
+                    ControllerRegisterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.5" data-path="../../common-extensions/platform/EmailSendProvider.html">
+            
+                <a href="../../common-extensions/platform/EmailSendProvider.html">
+            
+                    
+                    EmailSendProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.6" data-path="../../common-extensions/platform/EmbedRequestFilterProvider.html">
+            
+                <a href="../../common-extensions/platform/EmbedRequestFilterProvider.html">
+            
+                    
+                    EmbedRequestFilterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.7" data-path="../../common-extensions/platform/GlobalRequestFilterProvider.html">
+            
+                <a href="../../common-extensions/platform/GlobalRequestFilterProvider.html">
+            
+                    
+                    GlobalRequestFilterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.8" data-path="../../common-extensions/platform/HttpAuthorizeProvider.html">
+            
+                <a href="../../common-extensions/platform/HttpAuthorizeProvider.html">
+            
+                    
+                    HttpAuthorizeProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.9" data-path="../../common-extensions/platform/HttpHandlerProvider.html">
+            
+                <a href="../../common-extensions/platform/HttpHandlerProvider.html">
+            
+                    
+                    HttpHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.10" data-path="../../common-extensions/platform/LogInOutEventProvider.html">
+            
+                <a href="../../common-extensions/platform/LogInOutEventProvider.html">
+            
+                    
+                    LogInOutEventProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.11" data-path="../../common-extensions/platform/MessageEventProvider.html">
+            
+                <a href="../../common-extensions/platform/MessageEventProvider.html">
+            
+                    
+                    MessageEventProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.12" data-path="../../common-extensions/platform/PassportProvider.html">
+            
+                <a href="../../common-extensions/platform/PassportProvider.html">
+            
+                    
+                    PassportProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.13" data-path="../../common-extensions/platform/RequestPreHandleProvider.html">
+            
+                <a href="../../common-extensions/platform/RequestPreHandleProvider.html">
+            
+                    
+                    RequestPreHandleProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.14" data-path="../../common-extensions/platform/ReportScheduleResultProvider.html">
+            
+                <a href="../../common-extensions/platform/ReportScheduleResultProvider.html">
+            
+                    
+                    ReportScheduleResultProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.15" data-path="../../common-extensions/platform/SystemOptionProvider.html">
+            
+                <a href="../../common-extensions/platform/SystemOptionProvider.html">
+            
+                    
+                    SystemOptionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.16" data-path="../../common-extensions/platform/TransferDataSetManagerProvider.html">
+            
+                <a href="../../common-extensions/platform/TransferDataSetManagerProvider.html">
+            
+                    
+                    TransferDataSetManagerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.17" data-path="../../common-extensions/platform/TransmissionEncryptionProcessor.html">
+            
+                <a href="../../common-extensions/platform/TransmissionEncryptionProcessor.html">
+            
+                    
+                    TransmissionEncryptionProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.18" data-path="../../common-extensions/platform/URLAliasProvider.html">
+            
+                <a href="../../common-extensions/platform/URLAliasProvider.html">
+            
+                    
+                    URLAliasProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.19" data-path="../../common-extensions/platform/UniversalConnectionProvider.html">
+            
+                <a href="../../common-extensions/platform/UniversalConnectionProvider.html">
+            
+                    
+                    UniversalConnectionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.20" data-path="../../common-extensions/platform/UniversalServerTableDataProvider.html">
+            
+                <a href="../../common-extensions/platform/UniversalServerTableDataProvider.html">
+            
+                    
+                    UniversalServerTableDataProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.21" data-path="../../common-extensions/platform/WebResourceProvider.html">
+            
+                <a href="../../common-extensions/platform/WebResourceProvider.html">
+            
+                    
+                    WebResourceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.22" data-path="../../common-extensions/platform/OutputFormulaProvider.html">
+            
+                <a href="../../common-extensions/platform/OutputFormulaProvider.html">
+            
+                    
+                    OutputFormulaProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.23" data-path="../../common-extensions/platform/OutputFormulaExtractorProvider.html">
+            
+                <a href="../../common-extensions/platform/OutputFormulaExtractorProvider.html">
+            
+                    
+                    OutputFormulaExtractorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3" data-path="../../common-extensions/platform-frontend/platform-frontend.html">
+            
+                <a href="../../common-extensions/platform-frontend/platform-frontend.html">
+            
+                    
+                    平台前端接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.1" data-path="../../common-extensions/platform-frontend/fineui-beginner.html">
+            
+                <a href="../../common-extensions/platform-frontend/fineui-beginner.html">
+            
+                    
+                    Beginner - FineUI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.1.1" data-path="../../common-extensions/platform-frontend/platform-config.html">
+            
+                <a href="../../common-extensions/platform-frontend/platform-config.html">
+            
+                    
+                    决策平台配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.1.2" data-path="../../common-extensions/platform-frontend/create-first-component.html">
+            
+                <a href="../../common-extensions/platform-frontend/create-first-component.html">
+            
+                    
+                    创建第一个组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.1.3" data-path="../../common-extensions/platform-frontend/frontend-dev-env.html">
+            
+                <a href="../../common-extensions/platform-frontend/frontend-dev-env.html">
+            
+                    
+                    搭建纯前端插件开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.1.4" data-path="../../common-extensions/platform-frontend/first-executable-example.html">
+            
+                <a href="../../common-extensions/platform-frontend/first-executable-example.html">
+            
+                    
+                    第一个可执行的例子
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.2" data-path="../../common-extensions/platform-frontend/theme-api.html">
+            
+                <a href="../../common-extensions/platform-frontend/theme-api.html">
+            
+                    
+                    主题开发接口
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.2.1" data-path="../../common-extensions/platform-frontend/set-theme.html">
+            
+                <a href="../../common-extensions/platform-frontend/set-theme.html">
+            
+                    
+                    设定主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.2.2" data-path="../../common-extensions/platform-frontend/theme-favorites-support.html">
+            
+                <a href="../../common-extensions/platform-frontend/theme-favorites-support.html">
+            
+                    
+                    开发主题时支持收藏功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.3" data-path="../../common-extensions/platform-frontend/left-options.html">
+            
+                <a href="../../common-extensions/platform-frontend/left-options.html">
+            
+                    
+                    侧边栏与管理系统模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.3.1" data-path="../../common-extensions/platform-frontend/add-sidebar-node.html">
+            
+                <a href="../../common-extensions/platform-frontend/add-sidebar-node.html">
+            
+                    
+                    增加侧边栏节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.3.2" data-path="../../common-extensions/platform-frontend/add-management-node.html">
+            
+                <a href="../../common-extensions/platform-frontend/add-management-node.html">
+            
+                    
+                    增加管理系统节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.4" data-path="../../common-extensions/platform-frontend/schedule.html">
+            
+                <a href="../../common-extensions/platform-frontend/schedule.html">
+            
+                    
+                    定时调度模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.4.1" data-path="../../common-extensions/platform-frontend/schedule-task-api.html">
+            
+                <a href="../../common-extensions/platform-frontend/schedule-task-api.html">
+            
+                    
+                    定时调度添加一个任务前端开发接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.5" data-path="../../common-extensions/platform-frontend/db-conn.html">
+            
+                <a href="../../common-extensions/platform-frontend/db-conn.html">
+            
+                    
+                    数据连接和数据集模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.5.1" data-path="../../common-extensions/platform-frontend/db-connection-plugin.html">
+            
+                <a href="../../common-extensions/platform-frontend/db-connection-plugin.html">
+            
+                    
+                    新数据连接数据库插件接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.5.2" data-path="../../common-extensions/platform-frontend/server-dataset-api.html">
+            
+                <a href="../../common-extensions/platform-frontend/server-dataset-api.html">
+            
+                    
+                    服务器数据集接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.6" data-path="../../common-extensions/platform-frontend/user-auth.html">
+            
+                <a href="../../common-extensions/platform-frontend/user-auth.html">
+            
+                    
+                    用户管理与认证模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.6.1" data-path="../../common-extensions/platform-frontend/custom-login-auth.html">
+            
+                <a href="../../common-extensions/platform-frontend/custom-login-auth.html">
+            
+                    
+                    自定义登录认证方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.7" data-path="../../common-extensions/platform-frontend/cluster.html">
+            
+                <a href="../../common-extensions/platform-frontend/cluster.html">
+            
+                    
+                    集群配置
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.7.1" data-path="../../common-extensions/platform-frontend/cluster-config.html">
+            
+                <a href="../../common-extensions/platform-frontend/cluster-config.html">
+            
+                    
+                    新增集群配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.8" data-path="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                    
+                    指南&API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.8.1" data-path="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                    
+                    全局service
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.8.1.1" data-path="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                    
+                    dec.service.frame.tab_pane
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.8.1.2" data-path="../../common-extensions/platform-frontend/guide_api/global-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/global-service.html">
+            
+                    
+                    dec.service.global
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.8.2" data-path="../../common-extensions/platform-frontend/guide_api/module-shortcut.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/module-shortcut.html">
+            
+                    
+                    模块组件 - shortcut
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="../../finereport/designer/BackgroundQuickUIProvider.html">
+            
+                <a href="../../finereport/designer/BackgroundQuickUIProvider.html">
+            
+                    
+                    FineReport 接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.1" data-path="../../finereport/designer/BackgroundQuickUIProvider.html">
+            
+                <a href="../../finereport/designer/BackgroundQuickUIProvider.html">
+            
+                    
+                    设计器接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.1.1" data-path="../../finereport/designer/BackgroundQuickUIProvider.html">
+            
+                <a href="../../finereport/designer/BackgroundQuickUIProvider.html">
+            
+                    
+                    BackgroundQuickUIProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.2" data-path="../../finereport/designer/CellWidgetOptionProvider.html">
+            
+                <a href="../../finereport/designer/CellWidgetOptionProvider.html">
+            
+                    
+                    CellWidgetOptionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.3" data-path="../../finereport/designer/ConnectionProvider.html">
+            
+                <a href="../../finereport/designer/ConnectionProvider.html">
+            
+                    
+                    ConnectionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.4" data-path="../../finereport/designer/DesignerFrameUpButtonProvider.html">
+            
+                <a href="../../finereport/designer/DesignerFrameUpButtonProvider.html">
+            
+                    
+                    DesignerFrameUpButtonProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.5" data-path="../../finereport/designer/DesignerStartOpenFileProcessor.html">
+            
+                <a href="../../finereport/designer/DesignerStartOpenFileProcessor.html">
+            
+                    
+                    DesignerStartOpenFileProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.6" data-path="../../finereport/designer/ExportAttrTabProvider.html">
+            
+                <a href="../../finereport/designer/ExportAttrTabProvider.html">
+            
+                    
+                    ExportAttrTabProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.7" data-path="../../finereport/designer/ExtraButtonToolBarProvider.html">
+            
+                <a href="../../finereport/designer/ExtraButtonToolBarProvider.html">
+            
+                    
+                    ExtraButtonToolBarProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.8" data-path="../../finereport/designer/GlobalListenerProvider.html">
+            
+                <a href="../../finereport/designer/GlobalListenerProvider.html">
+            
+                    
+                    GlobalListenerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.9" data-path="../../finereport/designer/HyperlinkProvider.html">
+            
+                <a href="../../finereport/designer/HyperlinkProvider.html">
+            
+                    
+                    HyperlinkProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.10" data-path="../../finereport/designer/JavaScriptActionProvider.html">
+            
+                <a href="../../finereport/designer/JavaScriptActionProvider.html">
+            
+                    
+                    JavaScriptActionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.11" data-path="../../finereport/designer/MenuHandler.html">
+            
+                <a href="../../finereport/designer/MenuHandler.html">
+            
+                    
+                    MenuHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.12" data-path="../../finereport/designer/MultiStyleUIConfigProvider.html">
+            
+                <a href="../../finereport/designer/MultiStyleUIConfigProvider.html">
+            
+                    
+                    MultiStyleUIConfigProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.13" data-path="../../finereport/designer/ParameterWidgetOptionProvider.html">
+            
+                <a href="../../finereport/designer/ParameterWidgetOptionProvider.html">
+            
+                    
+                    ParameterWidgetOptionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.14" data-path="../../finereport/designer/PluginManagerProvider.html">
+            
+                <a href="../../finereport/designer/PluginManagerProvider.html">
+            
+                    
+                    PluginManagerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.15" data-path="../../finereport/designer/PresentKindProvider.html">
+            
+                <a href="../../finereport/designer/PresentKindProvider.html">
+            
+                    
+                    PresentKindProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.16" data-path="../../finereport/designer/PreviewProvider.html">
+            
+                <a href="../../finereport/designer/PreviewProvider.html">
+            
+                    
+                    PreviewProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.17" data-path="../../finereport/designer/RegPaneProvider.html">
+            
+                <a href="../../finereport/designer/RegPaneProvider.html">
+            
+                    
+                    RegPaneProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.18" data-path="../../finereport/designer/RightSelectionHandlerProvider.html">
+            
+                <a href="../../finereport/designer/RightSelectionHandlerProvider.html">
+            
+                    
+                    RightSelectionHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.19" data-path="../../finereport/designer/ServerTableDataDefineProvider.html">
+            
+                <a href="../../finereport/designer/ServerTableDataDefineProvider.html">
+            
+                    
+                    ServerTableDataDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.20" data-path="../../finereport/designer/SubmitProvider.html">
+            
+                <a href="../../finereport/designer/SubmitProvider.html">
+            
+                    
+                    SubmitProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.21" data-path="../../finereport/designer/TableDataDefineProvider.html">
+            
+                <a href="../../finereport/designer/TableDataDefineProvider.html">
+            
+                    
+                    TableDataDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.22" data-path="../../finereport/designer/TextFieldAdapterProvider.html">
+            
+                <a href="../../finereport/designer/TextFieldAdapterProvider.html">
+            
+                    
+                    TextFieldAdapterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.23" data-path="../../finereport/designer/ToolbarItemProvider.html">
+            
+                <a href="../../finereport/designer/ToolbarItemProvider.html">
+            
+                    
+                    ToolbarItemProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.24" data-path="../../finereport/designer/VerifyDefineProvider.html">
+            
+                <a href="../../finereport/designer/VerifyDefineProvider.html">
+            
+                    
+                    VerifyDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2" data-path="../../finereport/report/WaterMarkProvider.html">
+            
+                <a href="../../finereport/report/WaterMarkProvider.html">
+            
+                    
+                    报表接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.2.1" data-path="../../finereport/report/WaterMarkProvider.html">
+            
+                <a href="../../finereport/report/WaterMarkProvider.html">
+            
+                    
+                    WaterMarkProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.2" data-path="../../finereport/report/ActorProvider.html">
+            
+                <a href="../../finereport/report/ActorProvider.html">
+            
+                    
+                    ActorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.3" data-path="../../finereport/report/CellPropertyProvider.html">
+            
+                <a href="../../finereport/report/CellPropertyProvider.html">
+            
+                    
+                    CellPropertyProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.4" data-path="../../finereport/report/CellTagTransformer.html">
+            
+                <a href="../../finereport/report/CellTagTransformer.html">
+            
+                    
+                    CellTagTransformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.5" data-path="../../finereport/report/CellValueProvider.html">
+            
+                <a href="../../finereport/report/CellValueProvider.html">
+            
+                    
+                    CellValueProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.6" data-path="../../finereport/report/CommentExcelProcessor.html">
+            
+                <a href="../../finereport/report/CommentExcelProcessor.html">
+            
+                    
+                    CommentExcelProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.7" data-path="../../finereport/report/CustomI18NProvider.html">
+            
+                <a href="../../finereport/report/CustomI18NProvider.html">
+            
+                    
+                    CustomI18NProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.8" data-path="../../finereport/report/ErrorMessageProcessor.html">
+            
+                <a href="../../finereport/report/ErrorMessageProcessor.html">
+            
+                    
+                    ErrorMessageProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.9" data-path="../../finereport/report/ExcelExportAppProvider.html">
+            
+                <a href="../../finereport/report/ExcelExportAppProvider.html">
+            
+                    
+                    ExcelExportAppProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.10" data-path="../../finereport/report/ExportExtensionProcessor.html">
+            
+                <a href="../../finereport/report/ExportExtensionProcessor.html">
+            
+                    
+                    ExportExtensionProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.11" data-path="../../finereport/report/ExportOperateProvider.html">
+            
+                <a href="../../finereport/report/ExportOperateProvider.html">
+            
+                    
+                    ExportOperateProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.12" data-path="../../finereport/report/ExtensionButtonProvider.html">
+            
+                <a href="../../finereport/report/ExtensionButtonProvider.html">
+            
+                    
+                    ExtensionButtonProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.13" data-path="../../finereport/report/FormatActionProvider.html">
+            
+                <a href="../../finereport/report/FormatActionProvider.html">
+            
+                    
+                    FormatActionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.14" data-path="../../finereport/report/JavaScriptFileHandler.html">
+            
+                <a href="../../finereport/report/JavaScriptFileHandler.html">
+            
+                    
+                    JavaScriptFileHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.15" data-path="../../finereport/report/JavaScriptPlaceHolder.html">
+            
+                <a href="../../finereport/report/JavaScriptPlaceHolder.html">
+            
+                    
+                    JavaScriptPlaceHolder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.16" data-path="../../finereport/report/MessageObjectProvider.html">
+            
+                <a href="../../finereport/report/MessageObjectProvider.html">
+            
+                    
+                    MessageObjectProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.17" data-path="../../finereport/report/PrintCellValueProvider.html">
+            
+                <a href="../../finereport/report/PrintCellValueProvider.html">
+            
+                    
+                    PrintCellValueProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.18" data-path="../../finereport/report/ReportExceptionHandlerProvider.html">
+            
+                <a href="../../finereport/report/ReportExceptionHandlerProvider.html">
+            
+                    
+                    ReportExceptionHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.19" data-path="../../finereport/report/ReportPretreatmentProcessor.html">
+            
+                <a href="../../finereport/report/ReportPretreatmentProcessor.html">
+            
+                    
+                    ReportPretreatmentProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.20" data-path="../../finereport/report/ReportSessionHelpProvider.html">
+            
+                <a href="../../finereport/report/ReportSessionHelpProvider.html">
+            
+                    
+                    ReportSessionHelpProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.21" data-path="../../finereport/report/StringTypeAttrProvider.html">
+            
+                <a href="../../finereport/report/StringTypeAttrProvider.html">
+            
+                    
+                    StringTypeAttrProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.22" data-path="../../finereport/report/StylePlaceHolder.html">
+            
+                <a href="../../finereport/report/StylePlaceHolder.html">
+            
+                    
+                    StylePlaceHolder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.23" data-path="../../finereport/report/WidgetModifyProvider.html">
+            
+                <a href="../../finereport/report/WidgetModifyProvider.html">
+            
+                    
+                    WidgetModifyProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.3" data-path="../../finereport/chart/ChartTypeProvider.html">
+            
+                <a href="../../finereport/chart/ChartTypeProvider.html">
+            
+                    
+                    图表接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.3.1" data-path="../../finereport/chart/ChartTypeProvider.html">
+            
+                <a href="../../finereport/chart/ChartTypeProvider.html">
+            
+                    
+                    ChartTypeProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.3.2" data-path="../../finereport/chart/ChartTypeUIProvider.html">
+            
+                <a href="../../finereport/chart/ChartTypeUIProvider.html">
+            
+                    
+                    ChartTypeUIProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.4" data-path="../../finereport/form/FormExportProcessor.html">
+            
+                <a href="../../finereport/form/FormExportProcessor.html">
+            
+                    
+                    决策报表接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.4.1" data-path="../../finereport/form/FormExportProcessor.html">
+            
+                <a href="../../finereport/form/FormExportProcessor.html">
+            
+                    
+                    FormExportProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="../../finebi/core/BIDialectProvider.html">
+            
+                <a href="../../finebi/core/BIDialectProvider.html">
+            
+                    
+                    FineBI 接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.4.1" data-path="../../finebi/core/BIDialectProvider.html">
+            
+                <a href="../../finebi/core/BIDialectProvider.html">
+            
+                    
+                    核心接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.4.1.1" data-path="../../finebi/core/BIDialectProvider.html">
+            
+                <a href="../../finebi/core/BIDialectProvider.html">
+            
+                    
+                    BIDialectProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.2" data-path="../../finebi/core/DatasourceCustomProvider.html">
+            
+                <a href="../../finebi/core/DatasourceCustomProvider.html">
+            
+                    
+                    DatasourceCustomProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.3" data-path="../../finebi/core/NumberFormatProvider.html">
+            
+                <a href="../../finebi/core/NumberFormatProvider.html">
+            
+                    
+                    NumberFormatProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.4" data-path="../../finebi/core/ExcelRowCreatorProvider.html">
+            
+                <a href="../../finebi/core/ExcelRowCreatorProvider.html">
+            
+                    
+                    ExcelRowCreatorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.5" data-path="../../finebi/core/CustomDatasetProvider.html">
+            
+                <a href="../../finebi/core/CustomDatasetProvider.html">
+            
+                    
+                    CustomDatasetProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.6" data-path="../../finebi/core/DateFormatProvider.html">
+            
+                <a href="../../finebi/core/DateFormatProvider.html">
+            
+                    
+                    DateFormatProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.7" data-path="../../finebi/core/ActiveAuthorityInheritTriggerProvider.html">
+            
+                <a href="../../finebi/core/ActiveAuthorityInheritTriggerProvider.html">
+            
+                    
+                    ActiveAuthorityInheritTriggerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.8" data-path="../../finebi/core/CustomComponentProvider.html">
+            
+                <a href="../../finebi/core/CustomComponentProvider.html">
+            
+                    
+                    CustomComponentProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.9" data-path="../../finebi/core/ExportHandleProvider.html">
+            
+                <a href="../../finebi/core/ExportHandleProvider.html">
+            
+                    
+                    ExportHandleProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.10" data-path="../../finebi/core/ImportHandlerProvider.html">
+            
+                <a href="../../finebi/core/ImportHandlerProvider.html">
+            
+                    
+                    ImportHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.11" data-path="../../finebi/core/NoticeChannelTypeProvider.html">
+            
+                <a href="../../finebi/core/NoticeChannelTypeProvider.html">
+            
+                    
+                    NoticeChannelTypeProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.12" data-path="../../finebi/core/PublicLinkExportProvider.html">
+            
+                <a href="../../finebi/core/PublicLinkExportProvider.html">
+            
+                    
+                    PublicLinkExportProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.13" data-path="../../finebi/core/ReportChangeListenProvider.html">
+            
+                <a href="../../finebi/core/ReportChangeListenProvider.html">
+            
+                    
+                    ReportChangeListenProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.14" data-path="../../finebi/core/ServerTablesProvider.html">
+            
+                <a href="../../finebi/core/ServerTablesProvider.html">
+            
+                    
+                    ServerTablesProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.15" data-path="../../finebi/core/TableChangeListenProvider.html">
+            
+                <a href="../../finebi/core/TableChangeListenProvider.html">
+            
+                    
+                    TableChangeListenProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.16" data-path="../../finebi/core/WidgetQueryAspectProvider.html">
+            
+                <a href="../../finebi/core/WidgetQueryAspectProvider.html">
+            
+                    
+                    WidgetQueryAspectProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.17" data-path="../../finebi/core/UpdateLoadProvider.html">
+            
+                <a href="../../finebi/core/UpdateLoadProvider.html">
+            
+                    
+                    UpdateLoadProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2" data-path="../../finebi/frontend/fineui-intro.html">
+            
+                <a href="../../finebi/frontend/fineui-intro.html">
+            
+                    
+                    前端接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.4.2.1" data-path="../../finebi/frontend/fineui-intro.html">
+            
+                <a href="../../finebi/frontend/fineui-intro.html">
+            
+                    
+                    了解 FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.2" data-path="../../finebi/frontend/intercept-modify.html">
+            
+                <a href="../../finebi/frontend/intercept-modify.html">
+            
+                    
+                    拦截修改类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.3" data-path="../../finebi/frontend/info-retrieval.html">
+            
+                <a href="../../finebi/frontend/info-retrieval.html">
+            
+                    
+                    信息获取类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.4" data-path="../../finebi/frontend/ui-modification.html">
+            
+                <a href="../../finebi/frontend/ui-modification.html">
+            
+                    
+                    UI 修改类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.5" data-path="../../finebi/frontend/other-features.html">
+            
+                <a href="../../finebi/frontend/other-features.html">
+            
+                    
+                    其他功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../api-reference/common/config-api.html">
+            
+                <a href="../../api-reference/common/config-api.html">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../api-reference/common/config-api.html">
+            
+                <a href="../../api-reference/common/config-api.html">
+            
+                    
+                    公共 API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../api-reference/common/config-api.html">
+            
+                <a href="../../api-reference/common/config-api.html">
+            
+                    
+                    配置信息 API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../api-reference/common/finekit/log-kit.html">
+            
+                <a href="../../api-reference/common/finekit/log-kit.html">
+            
+                    
+                    finekit
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.2.1" data-path="../../api-reference/common/finekit/log-kit.html">
+            
+                <a href="../../api-reference/common/finekit/log-kit.html">
+            
+                    
+                    LogKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2.2" data-path="../../api-reference/common/finekit/flush-kit.html">
+            
+                <a href="../../api-reference/common/finekit/flush-kit.html">
+            
+                    
+                    FlushKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2.3" data-path="../../api-reference/common/finekit/network-kit.html">
+            
+                <a href="../../api-reference/common/finekit/network-kit.html">
+            
+                    
+                    NetworkKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2.4" data-path="../../api-reference/common/finekit/authority-kit.html">
+            
+                <a href="../../api-reference/common/finekit/authority-kit.html">
+            
+                    
+                    AuthorityKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../api-reference/finereport/designer-api.html">
+            
+                <a href="../../api-reference/finereport/designer-api.html">
+            
+                    
+                    FineReport API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../api-reference/finereport/designer-api.html">
+            
+                <a href="../../api-reference/finereport/designer-api.html">
+            
+                    
+                    设计器 API (fr-designer)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" >
+            
+                <a target="_blank" href="https://help.fanruan.com/finereport-en/doc-view-632.html">
+            
+                    
+                    引擎 API (fr-engine)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" >
+            
+                <a target="_blank" href="https://help.fanruan.com/finereport-en/doc-view-3935.html">
+            
+                    
+                    JS API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" >
+            
+                <a target="_blank" href="https://help.fanruan.com/finereport-en/doc-view-594.html">
+            
+                    
+                    FineReport 前端二次开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../api-reference/finebi/spider-api.html">
+            
+                <a href="../../api-reference/finebi/spider-api.html">
+            
+                    
+                    FineBI API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../../api-reference/finebi/spider-api.html">
+            
+                <a href="../../api-reference/finebi/spider-api.html">
+            
+                    
+                    数据准备 API (bi-spider)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1.1" data-path="../../api-reference/finebi/spider-api.html">
+            
+                <a href="../../api-reference/finebi/spider-api.html">
+            
+                    
+                    TaskEventListener监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../../api-reference/finebi/chart-api.html">
+            
+                <a href="../../api-reference/finebi/chart-api.html">
+            
+                    
+                    可视化 API (bi-chart)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.3" data-path="../../api-reference/finebi/engine-api.html">
+            
+                <a href="../../api-reference/finebi/engine-api.html">
+            
+                    
+                    引擎 API (bi-engine)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../api-reference/web-api.html">
+            
+                <a href="../../api-reference/web-api.html">
+            
+                    
+                    Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../finereport/3d-bar-chart.html">
+            
+                <a href="../finereport/3d-bar-chart.html">
+            
+                    
+                    插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../finereport/3d-bar-chart.html">
+            
+                <a href="../finereport/3d-bar-chart.html">
+            
+                    
+                    FineReport 插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1.1" data-path="../finereport/3d-bar-chart.html">
+            
+                <a href="../finereport/3d-bar-chart.html">
+            
+                    
+                    自定义图表（3D条形图）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.2" data-path="../finereport/td-datasource.html">
+            
+                <a href="../finereport/td-datasource.html">
+            
+                    
+                    自定义数据源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1.2.1" data-path="../finereport/td-dataconnection.html">
+            
+                <a href="../finereport/td-dataconnection.html">
+            
+                    
+                    自定义数据连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.2.2" data-path="../finereport/td-datasource.html">
+            
+                <a href="../finereport/td-datasource.html">
+            
+                    
+                    自定义数据集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.3" data-path="../finereport/fr-export.html">
+            
+                <a href="../finereport/fr-export.html">
+            
+                    
+                    自定义导出（加密pdf）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.4" data-path="../finereport/style-text-widget.html">
+            
+                <a href="../finereport/style-text-widget.html">
+            
+                    
+                    自定义控件（样式文本框）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2.2" data-path="3d-scatter.html">
+            
+                <a href="3d-scatter.html">
+            
+                    
+                    FineBI 插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="3.2.2.1" data-path="3d-scatter.html">
+            
+                <a href="3d-scatter.html">
+            
+                    
+                    自定义图表（地图）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2.2" data-path="custom-widget.html">
+            
+                <a href="custom-widget.html">
+            
+                    
+                    自定义组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2.3" data-path="rest-api-connector.html">
+            
+                <a href="rest-api-connector.html">
+            
+                    
+                    自定义数据源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2.4" data-path="custom-filter.html">
+            
+                <a href="custom-filter.html">
+            
+                    
+                    自定义过滤组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../platform/platform-theme.html">
+            
+                <a href="../platform/platform-theme.html">
+            
+                    
+                    平台公共插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.3.1" data-path="../platform/platform-theme.html">
+            
+                <a href="../platform/platform-theme.html">
+            
+                    
+                    自定义平台主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../support/troubleshooting.html">
+            
+                <a href="../../support/troubleshooting.html">
+            
+                    
+                    支持与社区
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../support/troubleshooting.html">
+            
+                <a href="../../support/troubleshooting.html">
+            
+                    
+                    故障排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../support/developer-forum.html">
+            
+                <a href="../../support/developer-forum.html">
+            
+                    
+                    开发者论坛
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../support/official-support.html">
+            
+                <a href="../../support/official-support.html">
+            
+                    
+                    官方技术支持
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本書使用 HonKit 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >FineBI 插件示例</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#自定义图表（地图）"><b></b>自定义图表（地图）</a></li><ul><li><span class="title-icon "></span><a href="#插件接口"><b></b>插件接口</a></li><ul><li><span class="title-icon "></span><a href="#customcomponentprovider"><b></b>CustomComponentProvider</a></li><li><span class="title-icon "></span><a href="#abstractcustomcomponentprovider"><b></b>AbstractCustomComponentProvider</a></li></ul><li><span class="title-icon "></span><a href="#基础教程"><b></b>基础教程</a></li><ul><li><span class="title-icon "></span><a href="#一、向前端图表类型添加图表选项"><b></b>一、向前端图表类型添加图表选项</a></li><li><span class="title-icon "></span><a href="#二、向前端图表类型添加对应的配置"><b></b>二、向前端图表类型添加对应的配置</a></li><li><span class="title-icon "></span><a href="#三、将图表显示到前端页面上"><b></b>三、将图表显示到前端页面上</a></li><li><span class="title-icon "></span><a href="#四、前端读取数据"><b></b>四、前端读取数据</a></li></ul><li><span class="title-icon "></span><a href="#进阶教程"><b></b>进阶教程</a></li><ul><li><span class="title-icon "></span><a href="#一、数据处理接口"><b></b>一、数据处理接口</a></li><li><span class="title-icon "></span><a href="#二、页面刷新接口"><b></b>二、页面刷新接口</a></li><li><span class="title-icon "></span><a href="#三、保存配置接口"><b></b>三、保存配置接口</a></li><li><span class="title-icon "></span><a href="#四、组件联动（dimensionselected，支持跳转和联动）"><b></b>四、组件联动（dimensionSelected，支持跳转和联动）</a></li><li><span class="title-icon "></span><a href="#五、自定义组件（配置项扩展）"><b></b>五、自定义组件（配置项扩展）</a></li></ul></ul></ul></div><a href="#自定义图表（地图）" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="自定义图表（地图）"><a name="自定义图表（地图）" class="anchor-navigation-ex-anchor" href="#自定义图表（地图）"><i class="fa fa-link" aria-hidden="true"></i></a>自定义图表（地图）</h1>
+<p>本示例通过 <code>CustomComponentProvider</code> 接口，实现一个基于高德地图的自定义图表插件，覆盖从基础渲染到进阶联动的完整开发流程。</p>
+<hr></hr>
+<h2 id="插件接口"><a name="插件接口" class="anchor-navigation-ex-anchor" href="#插件接口"><i class="fa fa-link" aria-hidden="true"></i></a>插件接口</h2>
+<h3 id="customcomponentprovider"><a name="customcomponentprovider" class="anchor-navigation-ex-anchor" href="#customcomponentprovider"><i class="fa fa-link" aria-hidden="true"></i></a>CustomComponentProvider</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.finebi.provider.api.component;
+
+<span class="hljs-keyword">import</span> com.finebi.common.context.OperationContext;
+<span class="hljs-keyword">import</span> com.finebi.provider.api.component.data.DataModel;
+<span class="hljs-keyword">import</span> com.fr.common.annotations.Open;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.web.struct.AssembleComponent;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomComponentProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CustomComponentProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/** 自定义图表名称 */</span>
+    String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** 自定义图表类型 */</span>
+    String <span class="hljs-title function_">getType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** 自定义图表 icon */</span>
+    String <span class="hljs-title function_">getIcon</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** 空自定义图表提示，不写默认取 icon */</span>
+    String <span class="hljs-title function_">getPreviewIcon</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** 自定义图表编辑 dom，不写默认取预览 */</span>
+    String <span class="hljs-title function_">getEditPageHTML</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** 自定义图表渲染 js、css 注入（编辑态） */</span>
+    AssembleComponent <span class="hljs-title function_">editClient</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** 自定义图表预览 dom，注入依赖文件和挂载节点 */</span>
+    String <span class="hljs-title function_">getPreviewPageHTML</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** 自定义图表渲染 js、css 注入（预览态） */</span>
+    AssembleComponent <span class="hljs-title function_">previewClient</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** 自定义图表配置文件，返回 JSON 字符串 */</span>
+    String <span class="hljs-title function_">config</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** 是否需要进行自定义数据处理 */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">needDataProcess</span><span class="hljs-params">(CustomComponentContext var1)</span>;
+
+    <span class="hljs-comment">/** 对 BI 计算后即将返回前端的数据进行自定义处理 */</span>
+    List&lt;DataModel&gt; <span class="hljs-title function_">process</span><span class="hljs-params">(List&lt;DataModel&gt; var1, CustomComponentContext var2)</span>;
+}
+</code></pre>
+<h3 id="abstractcustomcomponentprovider"><a name="abstractcustomcomponentprovider" class="anchor-navigation-ex-anchor" href="#abstractcustomcomponentprovider"><i class="fa fa-link" aria-hidden="true"></i></a>AbstractCustomComponentProvider</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.finebi.provider.api.component;
+
+<span class="hljs-keyword">import</span> com.finebi.common.context.OperationContext;
+<span class="hljs-keyword">import</span> com.finebi.provider.api.component.data.DataModel;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.API;
+<span class="hljs-keyword">import</span> com.fr.web.struct.AssembleComponent;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-meta">@API(level = 1)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractCustomComponentProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CustomComponentProvider</span> {
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPreviewIcon</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getIcon();
+    }
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEditPageHTML</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getPreviewPageHTML(context);
+    }
+
+    <span class="hljs-keyword">public</span> AssembleComponent <span class="hljs-title function_">editClient</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.previewClient(context);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">currentAPILevel</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; }
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">mark4Provider</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getClass().getName(); }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">needDataProcess</span><span class="hljs-params">(CustomComponentContext customComponentContext)</span> { <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; }
+
+    <span class="hljs-keyword">public</span> List&lt;DataModel&gt; <span class="hljs-title function_">process</span><span class="hljs-params">(List&lt;DataModel&gt; dataModels, CustomComponentContext customComponentContext)</span> {
+        <span class="hljs-keyword">return</span> dataModels;
+    }
+}
+</code></pre>
+<hr></hr>
+<h2 id="基础教程"><a name="基础教程" class="anchor-navigation-ex-anchor" href="#基础教程"><i class="fa fa-link" aria-hidden="true"></i></a>基础教程</h2>
+<h3 id="一、向前端图表类型添加图表选项"><a name="一、向前端图表类型添加图表选项" class="anchor-navigation-ex-anchor" href="#一、向前端图表类型添加图表选项"><i class="fa fa-link" aria-hidden="true"></i></a>一、向前端图表类型添加图表选项</h3>
+<p>继承 <code>AbstractCustomComponentProvider</code>，实现相应方法：</p>
+<pre><code class="lang-java"><span class="hljs-comment">// MapHotComponentProvider.java</span>
+<span class="hljs-meta">@EnableMetrics</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MapHotComponentProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCustomComponentProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> PluginConstantsEK.PLUGIN_MAP_NAME;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getType</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> PluginConstantsEK.PLUGIN_MAP_TYPE;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getIcon</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-type">String</span> <span class="hljs-variable">render</span> <span class="hljs-operator">=</span> TemplateUtils.render(<span class="hljs-string">"${fineServletURL}"</span>);
+            <span class="hljs-keyword">return</span> render + <span class="hljs-string">"/resources?path=/com/finebi/plugin/tptj/ivan/chart/demo/amap/icon.png"</span>;
+        } <span class="hljs-keyword">catch</span> (Exception ignore) {}
+        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+    }
+
+    <span class="hljs-meta">@Focus(id = PluginConstantsEK.PLUGIN_ID, text = PluginConstantsEK.PLUGIN_NAME, source = Original.PLUGIN)</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPreviewPageHTML</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;div id=\"amap-demo-container\"&gt;&lt;/div&gt;"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> AssembleComponent <span class="hljs-title function_">previewClient</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> MapHotComponent.KEY;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">config</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> IOUtils.readResourceAsString(<span class="hljs-string">"com/finebi/plugin/tptj/ivan/chart/demo/amap/config/config.json"</span>);
+    }
+}
+</code></pre>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- plugin.xml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">CustomComponentProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.finebi.plugin.tptj.ivan.chart.demo.amap.MapHotComponentProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<p><a href="images/amap_basic_effect.png" data-lightbox="f8ad68b7-dab3-4237-afb6-323f928a7069" data-title="基础图表选项效果图"><img src="images/amap_basic_effect.png" alt="基础图表选项效果图"></img></a></p>
+<hr></hr>
+<h3 id="二、向前端图表类型添加对应的配置"><a name="二、向前端图表类型添加对应的配置" class="anchor-navigation-ex-anchor" href="#二、向前端图表类型添加对应的配置"><i class="fa fa-link" aria-hidden="true"></i></a>二、向前端图表类型添加对应的配置</h3>
+<p>实现 <code>config()</code> 方法，返回 JSON 格式字符串。</p>
+<pre><code class="lang-json"><span class="hljs-comment">// config.json（地图示例）</span>
+{
+  <span class="hljs-string">"dataRegions"</span>: [
+    { <span class="hljs-string">"name"</span>: <span class="hljs-string">"lat"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_LAT"</span> },
+    { <span class="hljs-string">"name"</span>: <span class="hljs-string">"lng"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_LNG"</span> }
+  ],
+  <span class="hljs-string">"attrRegions"</span>: [
+    {
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"细粒度"</span>,
+      <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_FG"</span>,
+      <span class="hljs-string">"multiFields"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">"settings"</span>: []
+    }
+  ],
+  <span class="hljs-string">"chartStyles"</span>: [
+    {
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"mapProp"</span>,
+      <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_MAP_ATTRIBUTE"</span>,
+      <span class="hljs-string">"multiFields"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">"settings"</span>: [
+        { <span class="hljs-string">"name"</span>: <span class="hljs-string">"centerLng"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_CENTER_LNG"</span>, <span class="hljs-string">"type"</span>: <span class="hljs-string">"Input"</span>, <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"102.3716"</span> },
+        { <span class="hljs-string">"name"</span>: <span class="hljs-string">"centerLat"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_CENTER_LAT"</span>, <span class="hljs-string">"type"</span>: <span class="hljs-string">"Input"</span>, <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"36.6808"</span> },
+        { <span class="hljs-string">"name"</span>: <span class="hljs-string">"defaultZoom"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_DEFAULT_ZOOM"</span>, <span class="hljs-string">"type"</span>: <span class="hljs-string">"Input"</span>, <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"4"</span> },
+        {
+          <span class="hljs-string">"name"</span>: <span class="hljs-string">"style"</span>,
+          <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_STYLE"</span>,
+          <span class="hljs-string">"type"</span>: <span class="hljs-string">"Select"</span>,
+          <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"normal"</span>,
+          <span class="hljs-string">"items"</span>: [
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"标准"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"normal"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"幻影黑"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"dark"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"月光银"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"light"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"远山黛"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"whitesmoke"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"草色青"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"fresh"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"雅士灰"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"grey"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"涂鸦"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"graffiti"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"马卡龙"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"macaron"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"靛青蓝"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"blue"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"极夜蓝"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"darkblue"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"酱籽"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"wine"</span> }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p><a href="images/amap_config_effect_1.png" data-lightbox="103b3212-a1e2-4358-a9bc-9c2f977ace8b" data-title="配置面板效果图1"><img src="images/amap_config_effect_1.png" alt="配置面板效果图1"></img></a></p>
+<p><a href="images/amap_config_effect_2.png" data-lightbox="3165b784-25f1-4c5b-893f-ab402546a4e3" data-title="配置面板效果图2"><img src="images/amap_config_effect_2.png" alt="配置面板效果图2"></img></a></p>
+<h4 id="json-配置文件说明"><a name="json-配置文件说明" class="anchor-navigation-ex-anchor" href="#json-配置文件说明"><i class="fa fa-link" aria-hidden="true"></i></a>JSON 配置文件说明</h4>
+<ul>
+<li><strong>dataRegions</strong>（JSONARRAY）：数据区域，目前最多支持两条</li>
+<li><strong>attrRegions</strong>（JSONARRAY）：图形属性区域，<code>settings</code> 支持的类型：<code>JSONARRAY</code>、<code>color</code>、<code>size</code>、<code>symbol</code>、<code>Checkbox</code>、<code>RadioGroup</code>、<code>Segment</code>、<code>Select</code>、<code>ColorPicker</code>、<code>Input</code></li>
+<li><strong>chartStyles</strong>（JSONARRAY）：组件样式区域，<code>type</code> 支持：<code>Checkbox</code>、<code>RadioGroup</code>、<code>Segment</code>、<code>Select</code>、<code>ColorPicker</code>、<code>Input</code></li>
+</ul>
+<blockquote>
+<p><strong>注：</strong> 配置项不支持自定义格式、不支持配置项联动，仅支持以上几种基础格式。<code>name</code> 代表 id（前端 JS 通过 name 获取对应值），<code>text</code> 代表显示名称（支持国际化 key）。</p>
+</blockquote>
+<details>
+<summary>config.json 全配置示例</summary>
+
+```json
+{
+    "dataRegions": [
+        { "name": "自定义数据1", "text": "国际化key" },
+        { "name": "自定义数据2" }
+    ],
+    "attrRegions": [
+        { "name": "颜色1", "multiFields": false, "settings": "color" },
+        { "name": "大小1", "multiFields": true, "settings": "size" },
+        { "name": "形状1", "multiFields": false, "settings": "symbol" },
+        {
+            "name": "自定选项",
+            "multiFields": false,
+            "settings": [
+                { "name": "Checkbox", "type": "Checkbox", "defaultValue": ["2","3"], "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"},{"text":"选项2","value":"3"}] },
+                { "name": "RadioGroup", "type": "RadioGroup", "defaultValue": "2", "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"}] },
+                { "name": "Segment", "type": "Segment", "defaultValue": "2", "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"}] },
+                { "name": "Select", "type": "Select", "defaultValue": "1", "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"}] },
+                { "name": "ColorPicker", "type": "ColorPicker", "defaultValue": "#ffffff" },
+                { "name": "Input", "type": "Input", "defaultValue": "test" }
+            ]
+        }
+    ],
+    "chartStyles": [
+        {
+            "name": "自定选项",
+            "settings": [
+                { "name": "Checkbox", "type": "Checkbox", "defaultValue": ["2","3"], "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"},{"text":"选项2","value":"3"}] },
+                { "name": "RadioGroup", "type": "RadioGroup", "defaultValue": "2", "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"}] },
+                { "name": "Segment", "type": "Segment", "defaultValue": "2", "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"}] },
+                { "name": "Select", "type": "Select", "defaultValue": "1", "items": [{"text":"选项1","value":"1"},{"text":"选项2","value":"2"}] },
+                { "name": "ColorPicker", "type": "ColorPicker", "defaultValue": "#ffffff" },
+                { "name": "Input", "type": "Input", "defaultValue": "test" }
+            ]
+        }
+    ]
+}
+```
+
+</details>
+
+<hr></hr>
+<h3 id="三、将图表显示到前端页面上"><a name="三、将图表显示到前端页面上" class="anchor-navigation-ex-anchor" href="#三、将图表显示到前端页面上"><i class="fa fa-link" aria-hidden="true"></i></a>三、将图表显示到前端页面上</h3>
+<p>前端通过 <code>BIPlugin.init(render)</code> 注册渲染函数：</p>
+<pre><code class="lang-js"><span class="hljs-comment">// render图表渲染方法签名</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">
+    data,                <span class="hljs-comment">// 数据</span>
+    config,              <span class="hljs-comment">// 配置</span>
+    saveSessionCallback,
+    closeSessionCallBack,
+    extensionCallBack
+</span>) {}
+
+<span class="hljs-comment">// 注册渲染方法</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<p>高德地图具体实现示例：</p>
+<pre><code class="lang-js">(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+    <span class="hljs-comment">// 查找初始化时的 dom 对象（在 getPreviewPageHTML 中定义）</span>
+    <span class="hljs-keyword">const</span> dom = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"amap-demo-container"</span>);
+
+    <span class="hljs-comment">// 必须设置宽高，否则图表渲染不出来</span>
+    dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+    dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+
+    <span class="hljs-comment">// 获取配置项</span>
+    <span class="hljs-keyword">const</span> mapAttribute = config[<span class="hljs-string">"chartStyle"</span>][<span class="hljs-string">"地图属性"</span>][<span class="hljs-string">"value"</span>];
+
+    <span class="hljs-comment">// 地图组件初始化</span>
+    <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, {
+      <span class="hljs-attr">resizeEnable</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">center</span>: [mapAttribute[<span class="hljs-number">0</span>], mapAttribute[<span class="hljs-number">1</span>]],
+      <span class="hljs-attr">zoom</span>: mapAttribute[<span class="hljs-number">2</span>],
+    });
+
+    <span class="hljs-comment">// 地图设置样式</span>
+    map.<span class="hljs-title function_">setMapStyle</span>(<span class="hljs-string">"amap://styles/"</span> + mapAttribute[<span class="hljs-number">3</span>]);
+
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">"resize"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+      dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+    });
+  }
+
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+})(jQuery);
+</code></pre>
+<p><a href="images/amap_render_effect.png" data-lightbox="abee80f7-16fd-4e15-9d8a-493ac2dd26ae" data-title="前端渲染效果图"><img src="images/amap_render_effect.png" alt="前端渲染效果图"></img></a></p>
+<hr></hr>
+<h3 id="四、前端读取数据"><a name="四、前端读取数据" class="anchor-navigation-ex-anchor" href="#四、前端读取数据"><i class="fa fa-link" aria-hidden="true"></i></a>四、前端读取数据</h3>
+<p><code>data</code> 包含维度和指标数据，<code>config</code> 包含图形属性和组件样式配置。</p>
+<pre><code class="lang-js">(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+        <span class="hljs-keyword">const</span> dom = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"amap-demo-container"</span>);
+        dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+        dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+
+        <span class="hljs-keyword">const</span> mapAttribute = config[<span class="hljs-string">"chartStyle"</span>][<span class="hljs-string">"地图属性"</span>][<span class="hljs-string">"value"</span>];
+
+        <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, {
+            <span class="hljs-attr">resizeEnable</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">center</span>: [mapAttribute[<span class="hljs-number">0</span>], mapAttribute[<span class="hljs-number">1</span>]],
+            <span class="hljs-attr">zoom</span>: mapAttribute[<span class="hljs-number">2</span>],
+        });
+        map.<span class="hljs-title function_">setMapStyle</span>(<span class="hljs-string">"amap://styles/"</span> + mapAttribute[<span class="hljs-number">3</span>]);
+
+        <span class="hljs-comment">// 获取全部的经纬度点数据</span>
+        <span class="hljs-keyword">const</span> points = <span class="hljs-title function_">_getAllPoint</span>(data.<span class="hljs-property">dataMapping</span>, data.<span class="hljs-property">dataModels</span>[<span class="hljs-number">0</span>]);
+
+        <span class="hljs-keyword">if</span> (points != <span class="hljs-literal">null</span>) {
+            <span class="hljs-keyword">var</span> pointCluster = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">MarkerCluster</span>(map, points, {
+                <span class="hljs-attr">gridSize</span>: <span class="hljs-number">60</span>,
+                <span class="hljs-attr">renderClusterMarker</span>: _renderCarClusterMarker,
+                <span class="hljs-attr">renderMarker</span>: _renderMarker,
+            });
+        }
+
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">"resize"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+            dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+        });
+    }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">_renderCarClusterMarker</span>(<span class="hljs-params">context</span>) {
+        <span class="hljs-keyword">const</span> div = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">'div'</span>);
+        <span class="hljs-keyword">let</span> bgColor;
+        <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">10</span>) bgColor = <span class="hljs-string">'hsla(108,100%,40%,1)'</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">100</span>) bgColor = <span class="hljs-string">'hsl(201,100%,40%)'</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">1000</span>) bgColor = <span class="hljs-string">'hsla(36,100%,50%,1)'</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">10000</span>) bgColor = <span class="hljs-string">'hsla(0,100%,60%,1)'</span>;
+        <span class="hljs-keyword">else</span> bgColor = <span class="hljs-string">'hsla(0,100%,40%,1)'</span>;
+        <span class="hljs-keyword">const</span> size = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(<span class="hljs-number">30</span> + <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(context.<span class="hljs-property">count</span> / context.<span class="hljs-property">count</span>, <span class="hljs-number">1</span> / <span class="hljs-number">5</span>) * <span class="hljs-number">20</span>);
+        div.<span class="hljs-property">style</span>.<span class="hljs-property">cssText</span> = <span class="hljs-string">`background-color:<span class="hljs-subst">${bgColor}</span>;width:<span class="hljs-subst">${size}</span>px;height:<span class="hljs-subst">${size}</span>px;border-radius:<span class="hljs-subst">${size/<span class="hljs-number">2</span>}</span>px;line-height:<span class="hljs-subst">${size}</span>px;text-align:center;color:#fff;font-size:14px;`</span>;
+        div.<span class="hljs-property">innerHTML</span> = context.<span class="hljs-property">count</span>;
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setOffset</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Pixel</span>(-size / <span class="hljs-number">2</span>, -size / <span class="hljs-number">2</span>));
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setContent</span>(div);
+    }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">_renderMarker</span>(<span class="hljs-params">context</span>) {
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setContent</span>(<span class="hljs-string">'&lt;div style="background-color:rgba(255,255,178,.9);height:18px;width:18px;border:1px solid rgba(255,255,178,1);border-radius:12px;box-shadow:rgba(0,0,0,1) 0px 0px 3px;"&gt;&lt;/div&gt;'</span>);
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setOffset</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Pixel</span>(-<span class="hljs-number">9</span>, -<span class="hljs-number">9</span>));
+    }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">_getAllPoint</span>(<span class="hljs-params">dataMapping, dataModel</span>) {
+        <span class="hljs-keyword">let</span> lngId = dataMapping[<span class="hljs-string">'经度'</span>];
+        <span class="hljs-keyword">let</span> latId = dataMapping[<span class="hljs-string">'纬度'</span>];
+        <span class="hljs-keyword">let</span> lngIndex, latIndex;
+        dataModel.<span class="hljs-property">fields</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> {
+            <span class="hljs-keyword">if</span> (lngId.<span class="hljs-title function_">indexOf</span>(item.<span class="hljs-property">id</span>) &gt;= <span class="hljs-number">0</span>) lngIndex = index;
+            <span class="hljs-keyword">if</span> (latId.<span class="hljs-title function_">indexOf</span>(item.<span class="hljs-property">id</span>) &gt;= <span class="hljs-number">0</span>) latIndex = index;
+        });
+        <span class="hljs-keyword">const</span> points = [];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; dataModel.<span class="hljs-property">rowCount</span>; i++) {
+            points.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">lnglat</span>: [dataModel.<span class="hljs-property">colData</span>[lngIndex][i], dataModel.<span class="hljs-property">colData</span>[latIndex][i]] });
+        }
+        <span class="hljs-keyword">return</span> points;
+    }
+
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+})(jQuery);
+</code></pre>
+<blockquote>
+<p><strong>注：</strong> 接口无法直接获取明细数据，若希望使用明细数据，可将其转为维度，或添加细粒度属性。</p>
+</blockquote>
+<p><strong>通过细粒度划分效果：</strong></p>
+<p><a href="images/amap_data_finegrained.png" data-lightbox="ece54f9a-9d1b-417a-ab1f-49f7077317ce" data-title="前端读取数据效果图（细粒度）"><img src="images/amap_data_finegrained.png" alt="前端读取数据效果图（细粒度）"></img></a></p>
+<p><strong>通过维度划分效果：</strong></p>
+<p><a href="images/amap_data_dimension.png" data-lightbox="42158805-d5ec-4fbf-9577-d311580f774f" data-title="前端读取数据效果图（维度）"><img src="images/amap_data_dimension.png" alt="前端读取数据效果图（维度）"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.1/0.0.1.zip" target="_blank">基础教程 DEMO 源码</a></p>
+</blockquote>
+<hr></hr>
+<h2 id="进阶教程"><a name="进阶教程" class="anchor-navigation-ex-anchor" href="#进阶教程"><i class="fa fa-link" aria-hidden="true"></i></a>进阶教程</h2>
+<h3 id="一、数据处理接口"><a name="一、数据处理接口" class="anchor-navigation-ex-anchor" href="#一、数据处理接口"><i class="fa fa-link" aria-hidden="true"></i></a>一、数据处理接口</h3>
+<p><strong>场景：</strong> 产品已有的数据处理方式无法满足需求，希望在数据返回前端前进行额外处理。</p>
+<blockquote>
+<p>注意：插件拿到的数据是产品已经处理过的，插件处理在产品处理后执行。</p>
+</blockquote>
+<p>重写 <code>needDataProcess</code> 和 <code>process</code> 方法：</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">needDataProcess</span><span class="hljs-params">(CustomComponentContext customComponentContext)</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}
+
+<span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> List&lt;DataModel&gt; <span class="hljs-title function_">process</span><span class="hljs-params">(List&lt;DataModel&gt; dataModels, CustomComponentContext customComponentContext)</span> {
+    <span class="hljs-comment">// 示例：每次只随机返回一个点的数据</span>
+    <span class="hljs-keyword">return</span> dataModels.stream().map(dataModel -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">DataModel</span>() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> List&lt;Dimension&gt; <span class="hljs-title function_">getFields</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> dataModel.getFields(); }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> List&lt;List&lt;Object&gt;&gt; <span class="hljs-title function_">getColData</span><span class="hljs-params">()</span> {
+            List&lt;List&lt;Object&gt;&gt; colData = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(dataModel.getFields().size());
+            dataModel.getColData().forEach(d -&gt;
+                colData.add(Collections.singletonList(d.get((<span class="hljs-type">int</span>)(Math.random() * d.size())))));
+            <span class="hljs-keyword">return</span> colData;
+        }
+    }).collect(Collectors.toList());
+}
+</code></pre>
+<p><a href="images/amap_advanced_dataprocess.png" data-lightbox="61fe8f28-8aff-4948-ad2f-2c736ce92698" data-title="数据处理接口效果图"><img src="images/amap_advanced_dataprocess.png" alt="数据处理接口效果图"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.2/0.0.2.zip" target="_blank">数据处理 DEMO 源码</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="二、页面刷新接口"><a name="二、页面刷新接口" class="anchor-navigation-ex-anchor" href="#二、页面刷新接口"><i class="fa fa-link" aria-hidden="true"></i></a>二、页面刷新接口</h3>
+<p><strong>场景：</strong> 需要用户手动触发图表刷新，而非整个页面刷新。</p>
+<p>调用 <code>extensionCallBack('refresh')</code> 刷新图表 iframe：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">"#amap-demo-click"</span>).<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// 每次执行该方法都会刷新 iframe，调用前需有逻辑判断</span>
+        <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">'refresh'</span>);
+    };
+}
+
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<p><a href="images/amap_advanced_refresh.png" data-lightbox="f3117c67-7f3b-4106-b72a-c31d76f41e8e" data-title="页面刷新效果图"><img src="images/amap_advanced_refresh.png" alt="页面刷新效果图"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.3/0.0.3.zip" target="_blank">刷新接口 DEMO 源码</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="三、保存配置接口"><a name="三、保存配置接口" class="anchor-navigation-ex-anchor" href="#三、保存配置接口"><i class="fa fa-link" aria-hidden="true"></i></a>三、保存配置接口</h3>
+<p><strong>场景：</strong> 刷新图表后，希望保留用户操作前的状态（如地图中心点、缩放等级）。</p>
+<p>保存的配置存放在 <code>config.customConfig</code> 中，下次渲染时读取：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+    <span class="hljs-keyword">let</span> map;
+    <span class="hljs-keyword">const</span> customConfig = config.<span class="hljs-property">customConfig</span>;
+    <span class="hljs-keyword">if</span> (customConfig != <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(customConfig).<span class="hljs-property">length</span> &gt; <span class="hljs-number">2</span>) {
+        <span class="hljs-comment">// 读取上次保存的配置</span>
+        map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, { <span class="hljs-attr">center</span>: [customConfig.<span class="hljs-property">lng</span>, customConfig.<span class="hljs-property">lat</span>], <span class="hljs-attr">zoom</span>: customConfig.<span class="hljs-property">zoom</span> });
+    } <span class="hljs-keyword">else</span> {
+        map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, { <span class="hljs-attr">center</span>: [mapAttribute[<span class="hljs-number">0</span>], mapAttribute[<span class="hljs-number">1</span>]], <span class="hljs-attr">zoom</span>: mapAttribute[<span class="hljs-number">2</span>] });
+    }
+
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">"#amap-demo-click"</span>).<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// 保存当前中心点和缩放等级</span>
+        <span class="hljs-title function_">saveSessionCallback</span>({
+            <span class="hljs-attr">zoom</span>: map.<span class="hljs-title function_">getZoom</span>(),
+            <span class="hljs-attr">lng</span>: map.<span class="hljs-title function_">getCenter</span>().<span class="hljs-property">lng</span>,
+            <span class="hljs-attr">lat</span>: map.<span class="hljs-title function_">getCenter</span>().<span class="hljs-property">lat</span>,
+        });
+        <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">'refresh'</span>);
+    };
+}
+
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<p><a href="images/amap_advanced_saveconfig.png" data-lightbox="771c2612-9539-4875-b4f4-578184699719" data-title="保存配置效果图"><img src="images/amap_advanced_saveconfig.png" alt="保存配置效果图"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.4/0.0.4.zip" target="_blank">保存配置 DEMO 源码</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="四、组件联动（dimensionselected，支持跳转和联动）"><a name="四、组件联动（dimensionselected，支持跳转和联动）" class="anchor-navigation-ex-anchor" href="#四、组件联动（dimensionselected，支持跳转和联动）"><i class="fa fa-link" aria-hidden="true"></i></a>四、组件联动（dimensionSelected，支持跳转和联动）</h3>
+<p><strong>场景：</strong> 点击图表数据点时联动仪表板内其他组件，或进行页面跳转。</p>
+<p>根据用户数据类型选择合适事件：</p>
+<pre><code class="lang-js"><span class="hljs-comment">// 点击指标事件（数据栏里是指标【绿色】时使用）</span>
+<span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"pointSelected"</span>, {
+    <span class="hljs-attr">pos</span>: { <span class="hljs-attr">x</span>: 鼠标位置x, <span class="hljs-attr">y</span>: 鼠标位置y },
+    <span class="hljs-attr">measure</span>: measureId,   <span class="hljs-comment">// 点击指标的维度 id</span>
+    <span class="hljs-attr">row</span>: currentClicked,  <span class="hljs-comment">// 点击行的各字段值 { id: 字段值 }</span>
+});
+
+<span class="hljs-comment">// 点击维度事件（数据栏里是维度【蓝色】时使用）</span>
+<span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"dimensionSelected"</span>, {
+    <span class="hljs-attr">pos</span>: { <span class="hljs-attr">x</span>: 鼠标位置x, <span class="hljs-attr">y</span>: 鼠标位置y },
+    <span class="hljs-attr">measure</span>: measureId,
+    <span class="hljs-attr">row</span>: currentClicked,
+});
+</code></pre>
+<p>完整示例（非聚合点点击联动）：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">_renderMarker</span>(<span class="hljs-params">context</span>) {
+    context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setContent</span>(<span class="hljs-string">'...'</span>);
+    context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setOffset</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Pixel</span>(-<span class="hljs-number">9</span>, -<span class="hljs-number">9</span>));
+
+    <span class="hljs-keyword">let</span> datum = context.<span class="hljs-property">data</span>[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">const</span> currentClicked = {
+        [datum.<span class="hljs-property">idId</span>]: datum.<span class="hljs-property">idVal</span>,
+        [datum.<span class="hljs-property">lngId</span>]: datum.<span class="hljs-property">lngVal</span>,
+        [datum.<span class="hljs-property">latId</span>]: datum.<span class="hljs-property">latVal</span>
+    };
+    <span class="hljs-keyword">const</span> currentId = datum.<span class="hljs-property">lngId</span>;
+
+    context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-params">ev</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> demo = {
+            <span class="hljs-attr">pos</span>: { <span class="hljs-attr">x</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">event</span>.<span class="hljs-property">pageX</span>, <span class="hljs-attr">y</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">event</span>.<span class="hljs-property">pageY</span> },
+            <span class="hljs-attr">measure</span>: currentId,
+            <span class="hljs-attr">row</span>: currentClicked,
+        };
+        <span class="hljs-comment">// 根据字段类型选择联动方式</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> field <span class="hljs-keyword">of</span> data.<span class="hljs-property">dataModels</span>[<span class="hljs-number">0</span>].<span class="hljs-property">fields</span>) {
+            <span class="hljs-keyword">if</span> (field.<span class="hljs-property">id</span> === currentId) {
+                <span class="hljs-keyword">if</span> (field.<span class="hljs-property">isDimension</span>) <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"dimensionSelected"</span>, demo);
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (field.<span class="hljs-property">isMeasure</span>) <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"pointSelected"</span>, demo);
+                <span class="hljs-keyword">break</span>;
+            }
+        }
+    });
+}
+</code></pre>
+<p><a href="images/amap_advanced_linkage.png" data-lightbox="61e53e78-3cac-49d2-a96c-7fc2a2b829ce" data-title="组件联动效果图"><img src="images/amap_advanced_linkage.png" alt="组件联动效果图"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.6/0.0.6.zip" target="_blank">联动 DEMO 源码</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="五、自定义组件（配置项扩展）"><a name="五、自定义组件（配置项扩展）" class="anchor-navigation-ex-anchor" href="#五、自定义组件（配置项扩展）"><i class="fa fa-link" aria-hidden="true"></i></a>五、自定义组件（配置项扩展）</h3>
+<p><strong>场景：</strong> 需要实现复杂的配置项（超出内置类型），可在 <code>config.json</code> 中指定自定义组件类型，并在插件中将该组件注入到 subject。</p>
+<pre><code class="lang-js"><span class="hljs-comment">// config.json 中指定自定义组件</span>
+{
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"自定义组件"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"bi.test.widget"</span>,
+    <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"1"</span>
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// 自定义组件实现（需注入到 subjectPage）</span>
+!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Demo</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+        <span class="hljs-attr">props</span>: { <span class="hljs-attr">baseCls</span>: <span class="hljs-string">""</span> },
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical"</span>,
+                <span class="hljs-attr">width</span>: <span class="hljs-number">300</span>,
+                <span class="hljs-attr">items</span>: [{
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical_adapt"</span>,
+                        <span class="hljs-attr">items</span>: [
+                            { <span class="hljs-attr">el</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">"名称"</span>, <span class="hljs-attr">textAlign</span>: <span class="hljs-string">"left"</span> }, <span class="hljs-attr">width</span>: <span class="hljs-number">70</span>, <span class="hljs-attr">rgap</span>: <span class="hljs-number">10</span> },
+                            {
+                                <span class="hljs-attr">el</span>: {
+                                    <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.editor"</span>,
+                                    <span class="hljs-attr">value</span>: self.<span class="hljs-property">options</span>.<span class="hljs-property">value</span>,
+                                    <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border bi-border-radius"</span>,
+                                    <span class="hljs-attr">width</span>: <span class="hljs-number">150</span>,
+                                    <span class="hljs-attr">height</span>: <span class="hljs-number">24</span>,
+                                    <span class="hljs-attr">allowClear</span>: <span class="hljs-literal">false</span>,
+                                    <span class="hljs-attr">listeners</span>: [{
+                                        <span class="hljs-attr">eventName</span>: <span class="hljs-string">"EVENT_CHANGE"</span>,
+                                        <span class="hljs-attr">action</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                                            self.<span class="hljs-property">options</span>.<span class="hljs-title function_">setValue</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getValue</span>());
+                                        }
+                                    }]
+                                }
+                            }
+                        ]
+                    },
+                    <span class="hljs-attr">tgap</span>: <span class="hljs-number">10</span>
+                }]
+            };
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"bi.amap.demo"</span>, <span class="hljs-title class_">Demo</span>);
+})();
+</code></pre>
+<p><a href="images/amap_custom_widget_config.png" data-lightbox="0fd3552b-7e11-4fe7-9c77-344c7a8e41ef" data-title="自定义组件配置项示意图"><img src="images/amap_custom_widget_config.png" alt="自定义组件配置项示意图"></img></a></p>
+<p><a href="images/amap_custom_widget_effect.png" data-lightbox="fc6e3414-fdce-4dc4-9891-0dbebe22d141" data-title="自定义组件效果图"><img src="images/amap_custom_widget_effect.png" alt="自定义组件效果图"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.7/0.0.7.zip" target="_blank">自定义组件 DEMO 源码</a></p>
+</blockquote>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../finereport/style-text-widget.html" class="navigation navigation-prev " aria-label="Previous page: 自定义控件（样式文本框）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3d-scatter.html" class="navigation navigation-next " aria-label="Next page: 自定义图表（地图）">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"FineBI 插件示例","level":"3.2.2","depth":2,"next":{"title":"自定义图表（地图）","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},"previous":{"title":"自定义控件（样式文本框）","level":"3.2.1.4","depth":3,"path":"tutorial/samples/finereport/style-text-widget.md","ref":"tutorial/samples/finereport/style-text-widget.md","articles":[]},"articles":[{"title":"自定义图表（地图）","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},{"title":"自定义组件","level":"3.2.2.2","depth":3,"path":"tutorial/samples/finebi/custom-widget.md","ref":"tutorial/samples/finebi/custom-widget.md","articles":[]},{"title":"自定义数据源","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},{"title":"自定义过滤组件","level":"3.2.2.4","depth":3,"path":"tutorial/samples/finebi/custom-filter.md","ref":"tutorial/samples/finebi/custom-filter.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/3d-scatter.md","mtime":"2026-06-11T06:23:55.497Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:24:16.279Z"},"basePath":"../../..","book":{"language":"zh"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../../gitbook/gitbook.js"></script>
+    <script src="../../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

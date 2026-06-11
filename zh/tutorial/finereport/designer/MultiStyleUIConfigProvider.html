@@ -1,0 +1,4333 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <title>MultiStyleUIConfigProvider · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.1.7">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ParameterWidgetOptionProvider.html" />
+    
+    
+    <link rel="prev" href="MenuHandler.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../getting-started/environment-setup/essential-tools.html">
+            
+                <a href="../../getting-started/environment-setup/essential-tools.html">
+            
+                    
+                    快速开始
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../getting-started/environment-setup/essential-tools.html">
+            
+                <a href="../../getting-started/environment-setup/essential-tools.html">
+            
+                    
+                    开发环境搭建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../../getting-started/environment-setup/essential-tools.html">
+            
+                <a href="../../getting-started/environment-setup/essential-tools.html">
+            
+                    
+                    必备工具安装和配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../../getting-started/environment-setup/plugin-dev-env.html">
+            
+                <a href="../../getting-started/environment-setup/plugin-dev-env.html">
+            
+                    
+                    配置 FineReport 插件开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../../getting-started/environment-setup/finebi-dev-env.html">
+            
+                <a href="../../getting-started/environment-setup/finebi-dev-env.html">
+            
+                    
+                    配置 FineBI 插件开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                <a href="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                    
+                    运行与调试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                <a href="../../getting-started/run-and-debug/javascript-debug.html">
+            
+                    
+                    JavaScript 调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../../getting-started/run-and-debug/debug-finereport-designer.html">
+            
+                <a href="../../getting-started/run-and-debug/debug-finereport-designer.html">
+            
+                    
+                    FineReport 设计器调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.3" data-path="../../getting-started/run-and-debug/remote-debug.html">
+            
+                <a href="../../getting-started/run-and-debug/remote-debug.html">
+            
+                    
+                    远程设计调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.4" data-path="../../getting-started/run-and-debug/plugin-install-failure.html">
+            
+                <a href="../../getting-started/run-and-debug/plugin-install-failure.html">
+            
+                    
+                    插件安装失败
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.5" data-path="../../getting-started/run-and-debug/logging-tips.html">
+            
+                <a href="../../getting-started/run-and-debug/logging-tips.html">
+            
+                    
+                    日志查看技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../getting-started/first-plugin/create-with-template.html">
+            
+                <a href="../../getting-started/first-plugin/create-with-template.html">
+            
+                    
+                    创建第一个插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../../getting-started/first-plugin/create-with-template.html">
+            
+                <a href="../../getting-started/first-plugin/create-with-template.html">
+            
+                    
+                    使用模板创建 (Gradle 插件)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../../getting-started/first-plugin/plugin-xml-config.html">
+            
+                <a href="../../getting-started/first-plugin/plugin-xml-config.html">
+            
+                    
+                    plugin.xml 基础配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                <a href="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                    
+                    发布与部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                <a href="../../getting-started/publish-and-deploy/package-plugin.html">
+            
+                    
+                    打包插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../../getting-started/publish-and-deploy/plugin-license.html">
+            
+                <a href="../../getting-started/publish-and-deploy/plugin-license.html">
+            
+                    
+                    插件授权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.3" data-path="../../getting-started/publish-and-deploy/upload-to-app-center.html">
+            
+                <a href="../../getting-started/publish-and-deploy/upload-to-app-center.html">
+            
+                    
+                    上传到应用中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../coding-standards/javascript-standards.html">
+            
+                <a href="../../coding-standards/javascript-standards.html">
+            
+                    
+                    基础开发规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../coding-standards/javascript-standards.html">
+            
+                <a href="../../coding-standards/javascript-standards.html">
+            
+                    
+                    JavaScript 代码规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="../../coding-standards/javascript-format-standards.html">
+            
+                <a href="../../coding-standards/javascript-format-standards.html">
+            
+                    
+                    格式规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../coding-standards/java-standards.html">
+            
+                <a href="../../coding-standards/java-standards.html">
+            
+                    
+                    Java 代码规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.2.1" data-path="../../coding-standards/format-standards.html">
+            
+                <a href="../../coding-standards/format-standards.html">
+            
+                    
+                    格式规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.2" data-path="../../coding-standards/java-logging-standards.html">
+            
+                <a href="../../coding-standards/java-logging-standards.html">
+            
+                    
+                    日志规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.3" data-path="../../coding-standards/java-naming-standards.html">
+            
+                <a href="../../coding-standards/java-naming-standards.html">
+            
+                    
+                    命名规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.4" data-path="../../coding-standards/java-output-standards.html">
+            
+                <a href="../../coding-standards/java-output-standards.html">
+            
+                    
+                    输出规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.5" data-path="../../coding-standards/java-other-standards.html">
+            
+                <a href="../../coding-standards/java-other-standards.html">
+            
+                    
+                    其他规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.6" data-path="../../coding-standards/java-business-standards.html">
+            
+                <a href="../../coding-standards/java-business-standards.html">
+            
+                    
+                    业务代码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../plugin-concepts/plugin-architecture.html">
+            
+                <a href="../../plugin-concepts/plugin-architecture.html">
+            
+                    
+                    插件基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../../plugin-concepts/plugin-architecture.html">
+            
+                <a href="../../plugin-concepts/plugin-architecture.html">
+            
+                    
+                    插件架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../../plugin-concepts/plugin-features.html">
+            
+                <a href="../../plugin-concepts/plugin-features.html">
+            
+                    
+                    插件功能点记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../../plugin-concepts/plugin-lifecycle.html">
+            
+                <a href="../../plugin-concepts/plugin-lifecycle.html">
+            
+                    
+                    插件生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../../plugin-concepts/plugin-context.html">
+            
+                <a href="../../plugin-concepts/plugin-context.html">
+            
+                    
+                    插件上下文对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../plugin-concepts/plugin-entry-points.html">
+            
+                <a href="../../plugin-concepts/plugin-entry-points.html">
+            
+                    
+                    插件接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                <a href="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                    
+                    特殊接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1.1" data-path="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                <a href="../../special-extensions/PluginLifecycleMonitor.html">
+            
+                    
+                    PluginLifecycleMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../common-extensions/core/DBAccessProvider.html">
+            
+                <a href="../../common-extensions/core/DBAccessProvider.html">
+            
+                    
+                    公共接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.1" data-path="../../common-extensions/core/DBAccessProvider.html">
+            
+                <a href="../../common-extensions/core/DBAccessProvider.html">
+            
+                    
+                    核心接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.1.1" data-path="../../common-extensions/core/AlternateResultProvider.html">
+            
+                <a href="../../common-extensions/core/AlternateResultProvider.html">
+            
+                    
+                    AlternateResultProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.2" data-path="../../common-extensions/core/AttachmentDownloader.html">
+            
+                <a href="../../common-extensions/core/AttachmentDownloader.html">
+            
+                    
+                    AttachmentDownloader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.3" data-path="../../common-extensions/core/ClusterForwardProvider.html">
+            
+                <a href="../../common-extensions/core/ClusterForwardProvider.html">
+            
+                    
+                    ClusterForwardProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.4" data-path="../../common-extensions/core/CssFileHandler.html">
+            
+                <a href="../../common-extensions/core/CssFileHandler.html">
+            
+                    
+                    CssFileHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.5" data-path="../../common-extensions/core/DSModifyProvider.html">
+            
+                <a href="../../common-extensions/core/DSModifyProvider.html">
+            
+                    
+                    DSModifyProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.6" data-path="../../common-extensions/core/DataSourceDriverLoader.html">
+            
+                <a href="../../common-extensions/core/DataSourceDriverLoader.html">
+            
+                    
+                    DataSourceDriverLoader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.7" data-path="../../common-extensions/core/DBAccessProvider.html">
+            
+                <a href="../../common-extensions/core/DBAccessProvider.html">
+            
+                    
+                    DBAccessProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.8" data-path="../../common-extensions/core/DialectCreator.html">
+            
+                <a href="../../common-extensions/core/DialectCreator.html">
+            
+                    
+                    DialectCreator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.9" data-path="../../common-extensions/core/EmailServiceProvider.html">
+            
+                <a href="../../common-extensions/core/EmailServiceProvider.html">
+            
+                    
+                    EmailServiceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.10" data-path="../../common-extensions/core/ExcelExportCellValueProvider.html">
+            
+                <a href="../../common-extensions/core/ExcelExportCellValueProvider.html">
+            
+                    
+                    ExcelExportCellValueProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.11" data-path="../../common-extensions/core/FileContentEditorProvider.html">
+            
+                <a href="../../common-extensions/core/FileContentEditorProvider.html">
+            
+                    
+                    FileContentEditorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.12" data-path="../../common-extensions/core/FunctionGroup.html">
+            
+                <a href="../../common-extensions/core/FunctionGroup.html">
+            
+                    
+                    FunctionDefContainer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.13" data-path="../../common-extensions/core/FunctionDefineProvider.html">
+            
+                <a href="../../common-extensions/core/FunctionDefineProvider.html">
+            
+                    
+                    FunctionDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.14" data-path="../../common-extensions/core/IOFileAttrMark.html">
+            
+                <a href="../../common-extensions/core/IOFileAttrMark.html">
+            
+                    
+                    IOFileAttrMark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.15" data-path="../../common-extensions/core/IconProvider.html">
+            
+                <a href="../../common-extensions/core/IconProvider.html">
+            
+                    
+                    IconProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.16" data-path="../../common-extensions/core/JavaScriptFileHandler.html">
+            
+                <a href="../../common-extensions/core/JavaScriptFileHandler.html">
+            
+                    
+                    JavaScriptFileHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.17" data-path="../../common-extensions/core/JsonOutputHandlerProvider.html">
+            
+                <a href="../../common-extensions/core/JsonOutputHandlerProvider.html">
+            
+                    
+                    JsonOutputHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.18" data-path="../../common-extensions/core/LocaleFinder.html">
+            
+                <a href="../../common-extensions/core/LocaleFinder.html">
+            
+                    
+                    LocaleFinder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.19" data-path="../../common-extensions/core/PDFExporterCreator.html">
+            
+                <a href="../../common-extensions/core/PDFExporterCreator.html">
+            
+                    
+                    PDFExporterCreator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.20" data-path="../../common-extensions/core/RequestInterceptor.html">
+            
+                <a href="../../common-extensions/core/RequestInterceptor.html">
+            
+                    
+                    RequestInterceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.21" data-path="../../common-extensions/core/RequestParameterHandler.html">
+            
+                <a href="../../common-extensions/core/RequestParameterHandler.html">
+            
+                    
+                    RequestParameterHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.22" data-path="../../common-extensions/core/ResourcePathTransformer.html">
+            
+                <a href="../../common-extensions/core/ResourcePathTransformer.html">
+            
+                    
+                    ResourcePathTransformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.23" data-path="../../common-extensions/core/ResourceRepositoryFactoryProvider.html">
+            
+                <a href="../../common-extensions/core/ResourceRepositoryFactoryProvider.html">
+            
+                    
+                    ResourceRepositoryFactoryProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.24" data-path="../../common-extensions/core/SMSServiceProvider.html">
+            
+                <a href="../../common-extensions/core/SMSServiceProvider.html">
+            
+                    
+                    SMSServiceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.25" data-path="../../common-extensions/core/Service.html">
+            
+                <a href="../../common-extensions/core/Service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.26" data-path="../../common-extensions/core/SessionManageProcessor.html">
+            
+                <a href="../../common-extensions/core/SessionManageProcessor.html">
+            
+                    
+                    SessionManageProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.27" data-path="../../common-extensions/core/SessionPrivilegeFilterProvider.html">
+            
+                <a href="../../common-extensions/core/SessionPrivilegeFilterProvider.html">
+            
+                    
+                    SessionPrivilegeFilterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.28" data-path="../../common-extensions/core/SiteTransformer.html">
+            
+                <a href="../../common-extensions/core/SiteTransformer.html">
+            
+                    
+                    SiteTransformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.29" data-path="../../common-extensions/core/StableKeyArgsProvider.html">
+            
+                <a href="../../common-extensions/core/StableKeyArgsProvider.html">
+            
+                    
+                    StableKeyArgsProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.30" data-path="../../common-extensions/core/TableDataBuildProvider.html">
+            
+                <a href="../../common-extensions/core/TableDataBuildProvider.html">
+            
+                    
+                    TableDataBuildProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.31" data-path="../../common-extensions/core/TableDataProvider.html">
+            
+                <a href="../../common-extensions/core/TableDataProvider.html">
+            
+                    
+                    TableDataProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.32" data-path="../../common-extensions/core/TransferPackageProvider.html">
+            
+                <a href="../../common-extensions/core/TransferPackageProvider.html">
+            
+                    
+                    TransferPackageProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.1.33" data-path="../../common-extensions/core/WebLocaleProvider.html">
+            
+                <a href="../../common-extensions/core/WebLocaleProvider.html">
+            
+                    
+                    WebLocaleProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2" data-path="../../common-extensions/platform/AccessProvider.html">
+            
+                <a href="../../common-extensions/platform/AccessProvider.html">
+            
+                    
+                    平台接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.2.1" data-path="../../common-extensions/platform/AccessProvider.html">
+            
+                <a href="../../common-extensions/platform/AccessProvider.html">
+            
+                    
+                    AccessProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.2" data-path="../../common-extensions/platform/CharTypeVerifierProvider.html">
+            
+                <a href="../../common-extensions/platform/CharTypeVerifierProvider.html">
+            
+                    
+                    CharTypeVerifierProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.3" data-path="../../common-extensions/platform/ComposeWebResourceProvider.html">
+            
+                <a href="../../common-extensions/platform/ComposeWebResourceProvider.html">
+            
+                    
+                    ComposeWebResourceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.4" data-path="../../common-extensions/platform/ControllerRegisterProvider.html">
+            
+                <a href="../../common-extensions/platform/ControllerRegisterProvider.html">
+            
+                    
+                    ControllerRegisterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.5" data-path="../../common-extensions/platform/EmailSendProvider.html">
+            
+                <a href="../../common-extensions/platform/EmailSendProvider.html">
+            
+                    
+                    EmailSendProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.6" data-path="../../common-extensions/platform/EmbedRequestFilterProvider.html">
+            
+                <a href="../../common-extensions/platform/EmbedRequestFilterProvider.html">
+            
+                    
+                    EmbedRequestFilterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.7" data-path="../../common-extensions/platform/GlobalRequestFilterProvider.html">
+            
+                <a href="../../common-extensions/platform/GlobalRequestFilterProvider.html">
+            
+                    
+                    GlobalRequestFilterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.8" data-path="../../common-extensions/platform/HttpAuthorizeProvider.html">
+            
+                <a href="../../common-extensions/platform/HttpAuthorizeProvider.html">
+            
+                    
+                    HttpAuthorizeProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.9" data-path="../../common-extensions/platform/HttpHandlerProvider.html">
+            
+                <a href="../../common-extensions/platform/HttpHandlerProvider.html">
+            
+                    
+                    HttpHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.10" data-path="../../common-extensions/platform/LogInOutEventProvider.html">
+            
+                <a href="../../common-extensions/platform/LogInOutEventProvider.html">
+            
+                    
+                    LogInOutEventProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.11" data-path="../../common-extensions/platform/MessageEventProvider.html">
+            
+                <a href="../../common-extensions/platform/MessageEventProvider.html">
+            
+                    
+                    MessageEventProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.12" data-path="../../common-extensions/platform/PassportProvider.html">
+            
+                <a href="../../common-extensions/platform/PassportProvider.html">
+            
+                    
+                    PassportProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.13" data-path="../../common-extensions/platform/RequestPreHandleProvider.html">
+            
+                <a href="../../common-extensions/platform/RequestPreHandleProvider.html">
+            
+                    
+                    RequestPreHandleProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.14" data-path="../../common-extensions/platform/ReportScheduleResultProvider.html">
+            
+                <a href="../../common-extensions/platform/ReportScheduleResultProvider.html">
+            
+                    
+                    ReportScheduleResultProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.15" data-path="../../common-extensions/platform/SystemOptionProvider.html">
+            
+                <a href="../../common-extensions/platform/SystemOptionProvider.html">
+            
+                    
+                    SystemOptionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.16" data-path="../../common-extensions/platform/TransferDataSetManagerProvider.html">
+            
+                <a href="../../common-extensions/platform/TransferDataSetManagerProvider.html">
+            
+                    
+                    TransferDataSetManagerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.17" data-path="../../common-extensions/platform/TransmissionEncryptionProcessor.html">
+            
+                <a href="../../common-extensions/platform/TransmissionEncryptionProcessor.html">
+            
+                    
+                    TransmissionEncryptionProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.18" data-path="../../common-extensions/platform/URLAliasProvider.html">
+            
+                <a href="../../common-extensions/platform/URLAliasProvider.html">
+            
+                    
+                    URLAliasProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.19" data-path="../../common-extensions/platform/UniversalConnectionProvider.html">
+            
+                <a href="../../common-extensions/platform/UniversalConnectionProvider.html">
+            
+                    
+                    UniversalConnectionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.20" data-path="../../common-extensions/platform/UniversalServerTableDataProvider.html">
+            
+                <a href="../../common-extensions/platform/UniversalServerTableDataProvider.html">
+            
+                    
+                    UniversalServerTableDataProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.21" data-path="../../common-extensions/platform/WebResourceProvider.html">
+            
+                <a href="../../common-extensions/platform/WebResourceProvider.html">
+            
+                    
+                    WebResourceProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.22" data-path="../../common-extensions/platform/OutputFormulaProvider.html">
+            
+                <a href="../../common-extensions/platform/OutputFormulaProvider.html">
+            
+                    
+                    OutputFormulaProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.2.23" data-path="../../common-extensions/platform/OutputFormulaExtractorProvider.html">
+            
+                <a href="../../common-extensions/platform/OutputFormulaExtractorProvider.html">
+            
+                    
+                    OutputFormulaExtractorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3" data-path="../../common-extensions/platform-frontend/platform-frontend.html">
+            
+                <a href="../../common-extensions/platform-frontend/platform-frontend.html">
+            
+                    
+                    平台前端接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.1" data-path="../../common-extensions/platform-frontend/fineui-beginner.html">
+            
+                <a href="../../common-extensions/platform-frontend/fineui-beginner.html">
+            
+                    
+                    Beginner - FineUI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.1.1" data-path="../../common-extensions/platform-frontend/platform-config.html">
+            
+                <a href="../../common-extensions/platform-frontend/platform-config.html">
+            
+                    
+                    决策平台配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.1.2" data-path="../../common-extensions/platform-frontend/create-first-component.html">
+            
+                <a href="../../common-extensions/platform-frontend/create-first-component.html">
+            
+                    
+                    创建第一个组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.1.3" data-path="../../common-extensions/platform-frontend/frontend-dev-env.html">
+            
+                <a href="../../common-extensions/platform-frontend/frontend-dev-env.html">
+            
+                    
+                    搭建纯前端插件开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.1.4" data-path="../../common-extensions/platform-frontend/first-executable-example.html">
+            
+                <a href="../../common-extensions/platform-frontend/first-executable-example.html">
+            
+                    
+                    第一个可执行的例子
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.2" data-path="../../common-extensions/platform-frontend/theme-api.html">
+            
+                <a href="../../common-extensions/platform-frontend/theme-api.html">
+            
+                    
+                    主题开发接口
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.2.1" data-path="../../common-extensions/platform-frontend/set-theme.html">
+            
+                <a href="../../common-extensions/platform-frontend/set-theme.html">
+            
+                    
+                    设定主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.2.2" data-path="../../common-extensions/platform-frontend/theme-favorites-support.html">
+            
+                <a href="../../common-extensions/platform-frontend/theme-favorites-support.html">
+            
+                    
+                    开发主题时支持收藏功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.3" data-path="../../common-extensions/platform-frontend/left-options.html">
+            
+                <a href="../../common-extensions/platform-frontend/left-options.html">
+            
+                    
+                    侧边栏与管理系统模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.3.1" data-path="../../common-extensions/platform-frontend/add-sidebar-node.html">
+            
+                <a href="../../common-extensions/platform-frontend/add-sidebar-node.html">
+            
+                    
+                    增加侧边栏节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.3.2" data-path="../../common-extensions/platform-frontend/add-management-node.html">
+            
+                <a href="../../common-extensions/platform-frontend/add-management-node.html">
+            
+                    
+                    增加管理系统节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.4" data-path="../../common-extensions/platform-frontend/schedule.html">
+            
+                <a href="../../common-extensions/platform-frontend/schedule.html">
+            
+                    
+                    定时调度模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.4.1" data-path="../../common-extensions/platform-frontend/schedule-task-api.html">
+            
+                <a href="../../common-extensions/platform-frontend/schedule-task-api.html">
+            
+                    
+                    定时调度添加一个任务前端开发接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.5" data-path="../../common-extensions/platform-frontend/db-conn.html">
+            
+                <a href="../../common-extensions/platform-frontend/db-conn.html">
+            
+                    
+                    数据连接和数据集模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.5.1" data-path="../../common-extensions/platform-frontend/db-connection-plugin.html">
+            
+                <a href="../../common-extensions/platform-frontend/db-connection-plugin.html">
+            
+                    
+                    新数据连接数据库插件接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.5.2" data-path="../../common-extensions/platform-frontend/server-dataset-api.html">
+            
+                <a href="../../common-extensions/platform-frontend/server-dataset-api.html">
+            
+                    
+                    服务器数据集接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.6" data-path="../../common-extensions/platform-frontend/user-auth.html">
+            
+                <a href="../../common-extensions/platform-frontend/user-auth.html">
+            
+                    
+                    用户管理与认证模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.6.1" data-path="../../common-extensions/platform-frontend/custom-login-auth.html">
+            
+                <a href="../../common-extensions/platform-frontend/custom-login-auth.html">
+            
+                    
+                    自定义登录认证方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.7" data-path="../../common-extensions/platform-frontend/cluster.html">
+            
+                <a href="../../common-extensions/platform-frontend/cluster.html">
+            
+                    
+                    集群配置
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.7.1" data-path="../../common-extensions/platform-frontend/cluster-config.html">
+            
+                <a href="../../common-extensions/platform-frontend/cluster-config.html">
+            
+                    
+                    新增集群配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.8" data-path="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                    
+                    指南&API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.8.1" data-path="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                    
+                    全局service
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.2.3.8.1.1" data-path="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/tab-pane-service.html">
+            
+                    
+                    dec.service.frame.tab_pane
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.8.1.2" data-path="../../common-extensions/platform-frontend/guide_api/global-service.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/global-service.html">
+            
+                    
+                    dec.service.global
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2.3.8.2" data-path="../../common-extensions/platform-frontend/guide_api/module-shortcut.html">
+            
+                <a href="../../common-extensions/platform-frontend/guide_api/module-shortcut.html">
+            
+                    
+                    模块组件 - shortcut
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="BackgroundQuickUIProvider.html">
+            
+                <a href="BackgroundQuickUIProvider.html">
+            
+                    
+                    FineReport 接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.1" data-path="BackgroundQuickUIProvider.html">
+            
+                <a href="BackgroundQuickUIProvider.html">
+            
+                    
+                    设计器接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.1.1" data-path="BackgroundQuickUIProvider.html">
+            
+                <a href="BackgroundQuickUIProvider.html">
+            
+                    
+                    BackgroundQuickUIProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.2" data-path="CellWidgetOptionProvider.html">
+            
+                <a href="CellWidgetOptionProvider.html">
+            
+                    
+                    CellWidgetOptionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.3" data-path="ConnectionProvider.html">
+            
+                <a href="ConnectionProvider.html">
+            
+                    
+                    ConnectionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.4" data-path="DesignerFrameUpButtonProvider.html">
+            
+                <a href="DesignerFrameUpButtonProvider.html">
+            
+                    
+                    DesignerFrameUpButtonProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.5" data-path="DesignerStartOpenFileProcessor.html">
+            
+                <a href="DesignerStartOpenFileProcessor.html">
+            
+                    
+                    DesignerStartOpenFileProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.6" data-path="ExportAttrTabProvider.html">
+            
+                <a href="ExportAttrTabProvider.html">
+            
+                    
+                    ExportAttrTabProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.7" data-path="ExtraButtonToolBarProvider.html">
+            
+                <a href="ExtraButtonToolBarProvider.html">
+            
+                    
+                    ExtraButtonToolBarProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.8" data-path="GlobalListenerProvider.html">
+            
+                <a href="GlobalListenerProvider.html">
+            
+                    
+                    GlobalListenerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.9" data-path="HyperlinkProvider.html">
+            
+                <a href="HyperlinkProvider.html">
+            
+                    
+                    HyperlinkProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.10" data-path="JavaScriptActionProvider.html">
+            
+                <a href="JavaScriptActionProvider.html">
+            
+                    
+                    JavaScriptActionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.11" data-path="MenuHandler.html">
+            
+                <a href="MenuHandler.html">
+            
+                    
+                    MenuHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.4.3.1.12" data-path="MultiStyleUIConfigProvider.html">
+            
+                <a href="MultiStyleUIConfigProvider.html">
+            
+                    
+                    MultiStyleUIConfigProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.13" data-path="ParameterWidgetOptionProvider.html">
+            
+                <a href="ParameterWidgetOptionProvider.html">
+            
+                    
+                    ParameterWidgetOptionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.14" data-path="PluginManagerProvider.html">
+            
+                <a href="PluginManagerProvider.html">
+            
+                    
+                    PluginManagerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.15" data-path="PresentKindProvider.html">
+            
+                <a href="PresentKindProvider.html">
+            
+                    
+                    PresentKindProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.16" data-path="PreviewProvider.html">
+            
+                <a href="PreviewProvider.html">
+            
+                    
+                    PreviewProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.17" data-path="RegPaneProvider.html">
+            
+                <a href="RegPaneProvider.html">
+            
+                    
+                    RegPaneProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.18" data-path="RightSelectionHandlerProvider.html">
+            
+                <a href="RightSelectionHandlerProvider.html">
+            
+                    
+                    RightSelectionHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.19" data-path="ServerTableDataDefineProvider.html">
+            
+                <a href="ServerTableDataDefineProvider.html">
+            
+                    
+                    ServerTableDataDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.20" data-path="SubmitProvider.html">
+            
+                <a href="SubmitProvider.html">
+            
+                    
+                    SubmitProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.21" data-path="TableDataDefineProvider.html">
+            
+                <a href="TableDataDefineProvider.html">
+            
+                    
+                    TableDataDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.22" data-path="TextFieldAdapterProvider.html">
+            
+                <a href="TextFieldAdapterProvider.html">
+            
+                    
+                    TextFieldAdapterProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.23" data-path="ToolbarItemProvider.html">
+            
+                <a href="ToolbarItemProvider.html">
+            
+                    
+                    ToolbarItemProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.1.24" data-path="VerifyDefineProvider.html">
+            
+                <a href="VerifyDefineProvider.html">
+            
+                    
+                    VerifyDefineProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2" data-path="../report/WaterMarkProvider.html">
+            
+                <a href="../report/WaterMarkProvider.html">
+            
+                    
+                    报表接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.2.1" data-path="../report/WaterMarkProvider.html">
+            
+                <a href="../report/WaterMarkProvider.html">
+            
+                    
+                    WaterMarkProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.2" data-path="../report/ActorProvider.html">
+            
+                <a href="../report/ActorProvider.html">
+            
+                    
+                    ActorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.3" data-path="../report/CellPropertyProvider.html">
+            
+                <a href="../report/CellPropertyProvider.html">
+            
+                    
+                    CellPropertyProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.4" data-path="../report/CellTagTransformer.html">
+            
+                <a href="../report/CellTagTransformer.html">
+            
+                    
+                    CellTagTransformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.5" data-path="../report/CellValueProvider.html">
+            
+                <a href="../report/CellValueProvider.html">
+            
+                    
+                    CellValueProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.6" data-path="../report/CommentExcelProcessor.html">
+            
+                <a href="../report/CommentExcelProcessor.html">
+            
+                    
+                    CommentExcelProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.7" data-path="../report/CustomI18NProvider.html">
+            
+                <a href="../report/CustomI18NProvider.html">
+            
+                    
+                    CustomI18NProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.8" data-path="../report/ErrorMessageProcessor.html">
+            
+                <a href="../report/ErrorMessageProcessor.html">
+            
+                    
+                    ErrorMessageProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.9" data-path="../report/ExcelExportAppProvider.html">
+            
+                <a href="../report/ExcelExportAppProvider.html">
+            
+                    
+                    ExcelExportAppProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.10" data-path="../report/ExportExtensionProcessor.html">
+            
+                <a href="../report/ExportExtensionProcessor.html">
+            
+                    
+                    ExportExtensionProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.11" data-path="../report/ExportOperateProvider.html">
+            
+                <a href="../report/ExportOperateProvider.html">
+            
+                    
+                    ExportOperateProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.12" data-path="../report/ExtensionButtonProvider.html">
+            
+                <a href="../report/ExtensionButtonProvider.html">
+            
+                    
+                    ExtensionButtonProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.13" data-path="../report/FormatActionProvider.html">
+            
+                <a href="../report/FormatActionProvider.html">
+            
+                    
+                    FormatActionProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.14" data-path="../report/JavaScriptFileHandler.html">
+            
+                <a href="../report/JavaScriptFileHandler.html">
+            
+                    
+                    JavaScriptFileHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.15" data-path="../report/JavaScriptPlaceHolder.html">
+            
+                <a href="../report/JavaScriptPlaceHolder.html">
+            
+                    
+                    JavaScriptPlaceHolder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.16" data-path="../report/MessageObjectProvider.html">
+            
+                <a href="../report/MessageObjectProvider.html">
+            
+                    
+                    MessageObjectProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.17" data-path="../report/PrintCellValueProvider.html">
+            
+                <a href="../report/PrintCellValueProvider.html">
+            
+                    
+                    PrintCellValueProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.18" data-path="../report/ReportExceptionHandlerProvider.html">
+            
+                <a href="../report/ReportExceptionHandlerProvider.html">
+            
+                    
+                    ReportExceptionHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.19" data-path="../report/ReportPretreatmentProcessor.html">
+            
+                <a href="../report/ReportPretreatmentProcessor.html">
+            
+                    
+                    ReportPretreatmentProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.20" data-path="../report/ReportSessionHelpProvider.html">
+            
+                <a href="../report/ReportSessionHelpProvider.html">
+            
+                    
+                    ReportSessionHelpProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.21" data-path="../report/StringTypeAttrProvider.html">
+            
+                <a href="../report/StringTypeAttrProvider.html">
+            
+                    
+                    StringTypeAttrProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.22" data-path="../report/StylePlaceHolder.html">
+            
+                <a href="../report/StylePlaceHolder.html">
+            
+                    
+                    StylePlaceHolder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.2.23" data-path="../report/WidgetModifyProvider.html">
+            
+                <a href="../report/WidgetModifyProvider.html">
+            
+                    
+                    WidgetModifyProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.3" data-path="../chart/ChartTypeProvider.html">
+            
+                <a href="../chart/ChartTypeProvider.html">
+            
+                    
+                    图表接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.3.1" data-path="../chart/ChartTypeProvider.html">
+            
+                <a href="../chart/ChartTypeProvider.html">
+            
+                    
+                    ChartTypeProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.3.2" data-path="../chart/ChartTypeUIProvider.html">
+            
+                <a href="../chart/ChartTypeUIProvider.html">
+            
+                    
+                    ChartTypeUIProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3.4" data-path="../form/FormExportProcessor.html">
+            
+                <a href="../form/FormExportProcessor.html">
+            
+                    
+                    决策报表接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.3.4.1" data-path="../form/FormExportProcessor.html">
+            
+                <a href="../form/FormExportProcessor.html">
+            
+                    
+                    FormExportProcessor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="../../finebi/core/BIDialectProvider.html">
+            
+                <a href="../../finebi/core/BIDialectProvider.html">
+            
+                    
+                    FineBI 接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.4.1" data-path="../../finebi/core/BIDialectProvider.html">
+            
+                <a href="../../finebi/core/BIDialectProvider.html">
+            
+                    
+                    核心接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.4.1.1" data-path="../../finebi/core/BIDialectProvider.html">
+            
+                <a href="../../finebi/core/BIDialectProvider.html">
+            
+                    
+                    BIDialectProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.2" data-path="../../finebi/core/DatasourceCustomProvider.html">
+            
+                <a href="../../finebi/core/DatasourceCustomProvider.html">
+            
+                    
+                    DatasourceCustomProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.3" data-path="../../finebi/core/NumberFormatProvider.html">
+            
+                <a href="../../finebi/core/NumberFormatProvider.html">
+            
+                    
+                    NumberFormatProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.4" data-path="../../finebi/core/ExcelRowCreatorProvider.html">
+            
+                <a href="../../finebi/core/ExcelRowCreatorProvider.html">
+            
+                    
+                    ExcelRowCreatorProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.5" data-path="../../finebi/core/CustomDatasetProvider.html">
+            
+                <a href="../../finebi/core/CustomDatasetProvider.html">
+            
+                    
+                    CustomDatasetProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.6" data-path="../../finebi/core/DateFormatProvider.html">
+            
+                <a href="../../finebi/core/DateFormatProvider.html">
+            
+                    
+                    DateFormatProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.7" data-path="../../finebi/core/ActiveAuthorityInheritTriggerProvider.html">
+            
+                <a href="../../finebi/core/ActiveAuthorityInheritTriggerProvider.html">
+            
+                    
+                    ActiveAuthorityInheritTriggerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.8" data-path="../../finebi/core/CustomComponentProvider.html">
+            
+                <a href="../../finebi/core/CustomComponentProvider.html">
+            
+                    
+                    CustomComponentProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.9" data-path="../../finebi/core/ExportHandleProvider.html">
+            
+                <a href="../../finebi/core/ExportHandleProvider.html">
+            
+                    
+                    ExportHandleProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.10" data-path="../../finebi/core/ImportHandlerProvider.html">
+            
+                <a href="../../finebi/core/ImportHandlerProvider.html">
+            
+                    
+                    ImportHandlerProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.11" data-path="../../finebi/core/NoticeChannelTypeProvider.html">
+            
+                <a href="../../finebi/core/NoticeChannelTypeProvider.html">
+            
+                    
+                    NoticeChannelTypeProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.12" data-path="../../finebi/core/PublicLinkExportProvider.html">
+            
+                <a href="../../finebi/core/PublicLinkExportProvider.html">
+            
+                    
+                    PublicLinkExportProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.13" data-path="../../finebi/core/ReportChangeListenProvider.html">
+            
+                <a href="../../finebi/core/ReportChangeListenProvider.html">
+            
+                    
+                    ReportChangeListenProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.14" data-path="../../finebi/core/ServerTablesProvider.html">
+            
+                <a href="../../finebi/core/ServerTablesProvider.html">
+            
+                    
+                    ServerTablesProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.15" data-path="../../finebi/core/TableChangeListenProvider.html">
+            
+                <a href="../../finebi/core/TableChangeListenProvider.html">
+            
+                    
+                    TableChangeListenProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.16" data-path="../../finebi/core/WidgetQueryAspectProvider.html">
+            
+                <a href="../../finebi/core/WidgetQueryAspectProvider.html">
+            
+                    
+                    WidgetQueryAspectProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.1.17" data-path="../../finebi/core/UpdateLoadProvider.html">
+            
+                <a href="../../finebi/core/UpdateLoadProvider.html">
+            
+                    
+                    UpdateLoadProvider
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2" data-path="../../finebi/frontend/fineui-intro.html">
+            
+                <a href="../../finebi/frontend/fineui-intro.html">
+            
+                    
+                    前端接入点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.4.2.1" data-path="../../finebi/frontend/fineui-intro.html">
+            
+                <a href="../../finebi/frontend/fineui-intro.html">
+            
+                    
+                    了解 FineUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.2" data-path="../../finebi/frontend/intercept-modify.html">
+            
+                <a href="../../finebi/frontend/intercept-modify.html">
+            
+                    
+                    拦截修改类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.3" data-path="../../finebi/frontend/info-retrieval.html">
+            
+                <a href="../../finebi/frontend/info-retrieval.html">
+            
+                    
+                    信息获取类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.4" data-path="../../finebi/frontend/ui-modification.html">
+            
+                <a href="../../finebi/frontend/ui-modification.html">
+            
+                    
+                    UI 修改类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4.2.5" data-path="../../finebi/frontend/other-features.html">
+            
+                <a href="../../finebi/frontend/other-features.html">
+            
+                    
+                    其他功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../api-reference/common/config-api.html">
+            
+                <a href="../../api-reference/common/config-api.html">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../api-reference/common/config-api.html">
+            
+                <a href="../../api-reference/common/config-api.html">
+            
+                    
+                    公共 API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../api-reference/common/config-api.html">
+            
+                <a href="../../api-reference/common/config-api.html">
+            
+                    
+                    配置信息 API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../api-reference/common/finekit/log-kit.html">
+            
+                <a href="../../api-reference/common/finekit/log-kit.html">
+            
+                    
+                    finekit
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.2.1" data-path="../../api-reference/common/finekit/log-kit.html">
+            
+                <a href="../../api-reference/common/finekit/log-kit.html">
+            
+                    
+                    LogKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2.2" data-path="../../api-reference/common/finekit/flush-kit.html">
+            
+                <a href="../../api-reference/common/finekit/flush-kit.html">
+            
+                    
+                    FlushKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2.3" data-path="../../api-reference/common/finekit/network-kit.html">
+            
+                <a href="../../api-reference/common/finekit/network-kit.html">
+            
+                    
+                    NetworkKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2.4" data-path="../../api-reference/common/finekit/authority-kit.html">
+            
+                <a href="../../api-reference/common/finekit/authority-kit.html">
+            
+                    
+                    AuthorityKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../api-reference/finereport/designer-api.html">
+            
+                <a href="../../api-reference/finereport/designer-api.html">
+            
+                    
+                    FineReport API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../api-reference/finereport/designer-api.html">
+            
+                <a href="../../api-reference/finereport/designer-api.html">
+            
+                    
+                    设计器 API (fr-designer)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" >
+            
+                <a target="_blank" href="https://help.fanruan.com/finereport-en/doc-view-632.html">
+            
+                    
+                    引擎 API (fr-engine)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" >
+            
+                <a target="_blank" href="https://help.fanruan.com/finereport-en/doc-view-3935.html">
+            
+                    
+                    JS API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" >
+            
+                <a target="_blank" href="https://help.fanruan.com/finereport-en/doc-view-594.html">
+            
+                    
+                    FineReport 前端二次开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../api-reference/finebi/spider-api.html">
+            
+                <a href="../../api-reference/finebi/spider-api.html">
+            
+                    
+                    FineBI API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../../api-reference/finebi/spider-api.html">
+            
+                <a href="../../api-reference/finebi/spider-api.html">
+            
+                    
+                    数据准备 API (bi-spider)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1.1" data-path="../../api-reference/finebi/spider-api.html">
+            
+                <a href="../../api-reference/finebi/spider-api.html">
+            
+                    
+                    TaskEventListener监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../../api-reference/finebi/chart-api.html">
+            
+                <a href="../../api-reference/finebi/chart-api.html">
+            
+                    
+                    可视化 API (bi-chart)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.3" data-path="../../api-reference/finebi/engine-api.html">
+            
+                <a href="../../api-reference/finebi/engine-api.html">
+            
+                    
+                    引擎 API (bi-engine)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../api-reference/web-api.html">
+            
+                <a href="../../api-reference/web-api.html">
+            
+                    
+                    Web API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../samples/finereport/3d-bar-chart.html">
+            
+                <a href="../../samples/finereport/3d-bar-chart.html">
+            
+                    
+                    插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../samples/finereport/3d-bar-chart.html">
+            
+                <a href="../../samples/finereport/3d-bar-chart.html">
+            
+                    
+                    FineReport 插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1.1" data-path="../../samples/finereport/3d-bar-chart.html">
+            
+                <a href="../../samples/finereport/3d-bar-chart.html">
+            
+                    
+                    自定义图表（3D条形图）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.2" data-path="../../samples/finereport/td-datasource.html">
+            
+                <a href="../../samples/finereport/td-datasource.html">
+            
+                    
+                    自定义数据源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1.2.1" data-path="../../samples/finereport/td-dataconnection.html">
+            
+                <a href="../../samples/finereport/td-dataconnection.html">
+            
+                    
+                    自定义数据连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.2.2" data-path="../../samples/finereport/td-datasource.html">
+            
+                <a href="../../samples/finereport/td-datasource.html">
+            
+                    
+                    自定义数据集
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.3" data-path="../../samples/finereport/fr-export.html">
+            
+                <a href="../../samples/finereport/fr-export.html">
+            
+                    
+                    自定义导出（加密pdf）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.1.4" data-path="../../samples/finereport/style-text-widget.html">
+            
+                <a href="../../samples/finereport/style-text-widget.html">
+            
+                    
+                    自定义控件（样式文本框）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../samples/finebi/3d-scatter.html">
+            
+                <a href="../../samples/finebi/3d-scatter.html">
+            
+                    
+                    FineBI 插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.2.1" data-path="../../samples/finebi/3d-scatter.html">
+            
+                <a href="../../samples/finebi/3d-scatter.html">
+            
+                    
+                    自定义图表（地图）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2.2" data-path="../../samples/finebi/custom-widget.html">
+            
+                <a href="../../samples/finebi/custom-widget.html">
+            
+                    
+                    自定义组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2.3" data-path="../../samples/finebi/rest-api-connector.html">
+            
+                <a href="../../samples/finebi/rest-api-connector.html">
+            
+                    
+                    自定义数据源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2.4" data-path="../../samples/finebi/custom-filter.html">
+            
+                <a href="../../samples/finebi/custom-filter.html">
+            
+                    
+                    自定义过滤组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../samples/platform/platform-theme.html">
+            
+                <a href="../../samples/platform/platform-theme.html">
+            
+                    
+                    平台公共插件示例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.3.1" data-path="../../samples/platform/platform-theme.html">
+            
+                <a href="../../samples/platform/platform-theme.html">
+            
+                    
+                    自定义平台主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../support/troubleshooting.html">
+            
+                <a href="../../support/troubleshooting.html">
+            
+                    
+                    支持与社区
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../support/troubleshooting.html">
+            
+                <a href="../../support/troubleshooting.html">
+            
+                    
+                    故障排查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../support/developer-forum.html">
+            
+                <a href="../../support/developer-forum.html">
+            
+                    
+                    开发者论坛
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../support/official-support.html">
+            
+                <a href="../../support/official-support.html">
+            
+                    
+                    官方技术支持
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本書使用 HonKit 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >MultiStyleUIConfigProvider</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#multistyleuiconfigprovider"><b></b>MultiStyleUIConfigProvider</a></li><ul><li><span class="title-icon "></span><a href="#一、特殊名词介绍"><b></b>一、特殊名词介绍</a></li><li><span class="title-icon "></span><a href="#二、背景、场景介绍"><b></b>二、背景、场景介绍</a></li><li><span class="title-icon "></span><a href="#三、接口介绍"><b></b>三、接口介绍</a></li><li><span class="title-icon "></span><a href="#四、支持版本"><b></b>四、支持版本</a></li><li><span class="title-icon "></span><a href="#五、插件注册"><b></b>五、插件注册</a></li><li><span class="title-icon "></span><a href="#六、原理说明"><b></b>六、原理说明</a></li><li><span class="title-icon "></span><a href="#七、特殊限制说明"><b></b>七、特殊限制说明</a></li><li><span class="title-icon "></span><a href="#八、常用链接"><b></b>八、常用链接</a></li><li><span class="title-icon "></span><a href="#九、开源案例"><b></b>九、开源案例</a></li></ul></ul></div><a href="#multistyleuiconfigprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="multistyleuiconfigprovider"><a name="multistyleuiconfigprovider" class="anchor-navigation-ex-anchor" href="#multistyleuiconfigprovider"><i class="fa fa-link" aria-hidden="true"></i></a>MultiStyleUIConfigProvider</h1>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>所属模块</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>完整类名</td>
+<td><code>com.fr.design.fun.MultiStyleUIConfigProvider</code></td>
+</tr>
+<tr>
+<td>官方文档</td>
+<td><a href="https://wiki.fanruan.com/display/PD/MultiStyleUIConfigProvider" target="_blank">查看文档</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="一、特殊名词介绍"><a name="一、特殊名词介绍" class="anchor-navigation-ex-anchor" href="#一、特殊名词介绍"><i class="fa fa-link" aria-hidden="true"></i></a>一、特殊名词介绍</h2>
+<p>无</p>
+<h2 id="二、背景、场景介绍"><a name="二、背景、场景介绍" class="anchor-navigation-ex-anchor" href="#二、背景、场景介绍"><i class="fa fa-link" aria-hidden="true"></i></a>二、背景、场景介绍</h2>
+<p>在制作模板的过程中，每个用户公司都会逐渐形成自身的一套特有的样式风格，为了方便用户快速配置样式，报表设计器中提供了预定义样式的功能，以便让用户快速配置报表的样式。标准设计器中提供了基本的格式、字体、对齐、边框、背景的预定义。但是样式中还可能包含其他属性可自由定义的。MultiStyleUIConfigProvider和StyleUIConfigProvider接口就是用来提供自定义的样式配置扩展的</p>
+<p><a href="images/multistyle_predefined_styles.png" data-lightbox="1ee29d82-0c47-4816-8350-782a6fd19d1d" data-title="预定义样式列表"><img src="images/multistyle_predefined_styles.png" alt="预定义样式列表"></img></a>
+<a href="images/multistyle_demo_ui.png" data-lightbox="bf87f0d5-237e-49dd-b8c5-e30f86a6b501" data-title="多样式 Demo 界面"><img src="images/multistyle_demo_ui.png" alt="多样式 Demo 界面"></img></a></p>
+<h2 id="三、接口介绍"><a name="三、接口介绍" class="anchor-navigation-ex-anchor" href="#三、接口介绍"><i class="fa fa-link" aria-hidden="true"></i></a>三、接口介绍</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.common.annotations.Open;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-comment">/**
+ * Created by kerry on 2019-11-11
+ */</span>
+<span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MultiStyleUIConfigProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"MultiStyleUIConfigProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * 获取配置项list
+     *
+     * <span class="hljs-doctag">@return</span> 配置项list
+     */</span>
+    List&lt;StyleUIConfigProvider&gt; <span class="hljs-title function_">getConfigList</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.base.Style;
+<span class="hljs-keyword">import</span> com.fr.common.annotations.Open;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> javax.swing.JComponent;
+<span class="hljs-keyword">import</span> javax.swing.event.ChangeListener;
+
+<span class="hljs-comment">/**
+ * Created by kerry on 2019-11-11
+ */</span>
+<span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">StyleUIConfigProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CustomStyleUIConfigProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> 配置名
+     */</span>
+    String <span class="hljs-title function_">configName</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> changeListener 需要添加的listener
+     * <span class="hljs-doctag">@return</span> 对应的component
+     */</span>
+    JComponent <span class="hljs-title function_">uiComponent</span><span class="hljs-params">(ChangeListener changeListener)</span>;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@return</span> 更新后的样式
+     */</span>
+    Style <span class="hljs-title function_">updateConfig</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> style 待渲染的样式
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">populateConfig</span><span class="hljs-params">(Style style)</span>;
+}
+</code></pre>
+<h2 id="四、支持版本"><a name="四、支持版本" class="anchor-navigation-ex-anchor" href="#四、支持版本"><i class="fa fa-link" aria-hidden="true"></i></a>四、支持版本</h2>
+<table>
+<thead>
+<tr>
+<th>产品线</th>
+<th>版本</th>
+<th>支持情况</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<h2 id="五、插件注册"><a name="五、插件注册" class="anchor-navigation-ex-anchor" href="#五、插件注册"><i class="fa fa-link" aria-hidden="true"></i></a>五、插件注册</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 批量插入选项卡 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">MultiStyleUIConfigProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="六、原理说明"><a name="六、原理说明" class="anchor-navigation-ex-anchor" href="#六、原理说明"><i class="fa fa-link" aria-hidden="true"></i></a>六、原理说明</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.style;
+
+<span class="hljs-keyword">import</span> com.fr.base.CellBorderStyle;
+<span class="hljs-keyword">import</span> com.fr.base.NameStyle;
+<span class="hljs-keyword">import</span> com.fr.base.ScreenResolution;
+<span class="hljs-keyword">import</span> com.fr.base.Style;
+<span class="hljs-keyword">import</span> com.fr.base.core.StyleUtils;
+<span class="hljs-keyword">import</span> com.fr.design.ExtraDesignClassManager;
+<span class="hljs-keyword">import</span> com.fr.design.beans.BasicBeanPane;
+<span class="hljs-keyword">import</span> com.fr.design.dialog.FineJOptionPane;
+<span class="hljs-keyword">import</span> com.fr.design.fun.MultiStyleUIConfigProvider;
+<span class="hljs-keyword">import</span> com.fr.design.fun.StyleUIConfigProvider;
+<span class="hljs-keyword">import</span> com.fr.design.gui.frpane.UITabbedPane;
+<span class="hljs-keyword">import</span> com.fr.design.layout.FRGUIPaneFactory;
+<span class="hljs-keyword">import</span> com.fr.design.mainframe.ElementCasePane;
+<span class="hljs-keyword">import</span> com.fr.design.style.background.BackgroundPane;
+<span class="hljs-keyword">import</span> com.fr.design.utils.gui.GUICoreUtils;
+<span class="hljs-keyword">import</span> com.fr.grid.selection.CellSelection;
+<span class="hljs-keyword">import</span> com.fr.grid.selection.FloatSelection;
+<span class="hljs-keyword">import</span> com.fr.grid.selection.Selection;
+<span class="hljs-keyword">import</span> com.fr.log.FineLoggerFactory;
+<span class="hljs-keyword">import</span> com.fr.plugin.solution.sandbox.collection.PluginSandboxCollections;
+<span class="hljs-keyword">import</span> com.fr.report.cell.CellElement;
+<span class="hljs-keyword">import</span> com.fr.report.cell.DefaultTemplateCellElement;
+<span class="hljs-keyword">import</span> com.fr.report.cell.FloatElement;
+<span class="hljs-keyword">import</span> com.fr.report.cell.TemplateCellElement;
+<span class="hljs-keyword">import</span> com.fr.report.elementcase.ElementCase;
+<span class="hljs-keyword">import</span> com.fr.report.elementcase.TemplateElementCase;
+
+<span class="hljs-keyword">import</span> javax.swing.JComponent;
+<span class="hljs-keyword">import</span> javax.swing.JPanel;
+<span class="hljs-keyword">import</span> javax.swing.JTabbedPane;
+<span class="hljs-keyword">import</span> javax.swing.event.ChangeEvent;
+<span class="hljs-keyword">import</span> javax.swing.event.ChangeListener;
+<span class="hljs-keyword">import</span> javax.swing.event.ListSelectionEvent;
+<span class="hljs-keyword">import</span> javax.swing.event.ListSelectionListener;
+<span class="hljs-keyword">import</span> java.awt.BorderLayout;
+<span class="hljs-keyword">import</span> java.awt.Color;
+<span class="hljs-keyword">import</span> java.awt.Dimension;
+<span class="hljs-keyword">import</span> java.awt.Graphics;
+<span class="hljs-keyword">import</span> java.awt.Graphics2D;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Set;
+
+<span class="hljs-comment">/**
+ * Style Pane.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StylePane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BasicBeanPane</span>&lt;Style&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ChangeListener</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">BORDER_ARRAY_LENGTH</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">ALIGNMENT_INDEX</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">FONT_INDEX</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">BORDER_INDEX</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">BACKGROUND_INDEX</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">NEXT_TAB_INDEX</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">private</span> ElementCasePane reportPane;
+    <span class="hljs-keyword">protected</span> Style editing;
+    <span class="hljs-keyword">private</span> NameStyle globalStyle;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">FormatPane</span> <span class="hljs-variable">formatPane</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">AlignmentPane</span> <span class="hljs-variable">alignmentPane</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">FRFontPane</span> <span class="hljs-variable">frFontPane</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">BorderPane</span> <span class="hljs-variable">borderPane</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">BackgroundPane</span> <span class="hljs-variable">backgroundPane</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;StyleUIConfigProvider&gt; configList = PluginSandboxCollections.newSandboxList();
+    <span class="hljs-keyword">private</span> PreivewArea previewArea;
+    <span class="hljs-keyword">private</span> JPanel previewPane;
+
+    <span class="hljs-keyword">static</span> {
+        Set&lt;MultiStyleUIConfigProvider&gt; preferenceConfigProviders = ExtraDesignClassManager.getInstance().getArray(MultiStyleUIConfigProvider.XML_TAG);
+        <span class="hljs-keyword">for</span> (MultiStyleUIConfigProvider provider : preferenceConfigProviders) {
+            configList.addAll(provider.getConfigList());
+        }
+    }
+
+    <span class="hljs-comment">/**
+     * Constructor
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">StylePane</span><span class="hljs-params">()</span> {
+        <span class="hljs-built_in">this</span>.setLayout(FRGUIPaneFactory.createBorderLayout());
+
+        previewPane = FRGUIPaneFactory.createBorderLayout_S_Pane();
+        <span class="hljs-built_in">this</span>.add(previewPane, BorderLayout.NORTH);
+        previewPane.setBorder(GUICoreUtils.createTitledBorder(com.fr.design.i18n.Toolkit.i18nText(<span class="hljs-string">"Fine-Design_Basic_Preview"</span>), <span class="hljs-literal">null</span>));
+
+        previewArea = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PreivewArea</span>();
+        previewPane.add(previewArea, BorderLayout.CENTER);
+
+        <span class="hljs-type">JPanel</span> <span class="hljs-variable">previewControlPane</span> <span class="hljs-operator">=</span> FRGUIPaneFactory.createNColumnGridInnerContainer_S_Pane(<span class="hljs-number">1</span>);
+        previewPane.add(previewControlPane, BorderLayout.EAST);
+
+        <span class="hljs-type">UITabbedPane</span> <span class="hljs-variable">mainTabbedPane</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UITabbedPane</span>();
+        <span class="hljs-built_in">this</span>.add(mainTabbedPane, BorderLayout.CENTER);
+
+        mainTabbedPane.addTab(com.fr.design.i18n.Toolkit.i18nText(<span class="hljs-string">"Fine-Design_Chart_Format"</span>), <span class="hljs-built_in">this</span>.getFormatPane());
+        mainTabbedPane.addTab(com.fr.design.i18n.Toolkit.i18nText(<span class="hljs-string">"Fine-Design_Report_Alignment"</span>), FRGUIPaneFactory.createY_AXISBoxInnerContainer_L_Pane());
+        mainTabbedPane.addTab(com.fr.design.i18n.Toolkit.i18nText(<span class="hljs-string">"Fine-Design_Basic_Sytle_FRFont"</span>), FRGUIPaneFactory.createY_AXISBoxInnerContainer_L_Pane());
+        mainTabbedPane.addTab(com.fr.design.i18n.Toolkit.i18nText(<span class="hljs-string">"Fine-Design_Report_Border"</span>), FRGUIPaneFactory.createY_AXISBoxInnerContainer_L_Pane());
+        mainTabbedPane.addTab(com.fr.design.i18n.Toolkit.i18nText(<span class="hljs-string">"Fine-Design_Basic_Background"</span>), FRGUIPaneFactory.createY_AXISBoxInnerContainer_L_Pane());
+
+        <span class="hljs-keyword">for</span> (StyleUIConfigProvider config : configList) {
+            mainTabbedPane.addTab(config.configName(), FRGUIPaneFactory.createY_AXISBoxInnerContainer_L_Pane());
+        }
+        mainTabbedPane.addChangeListener(tabChangeActionListener);
+        <span class="hljs-built_in">this</span>.setPreferredSize(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Dimension</span>(<span class="hljs-number">450</span>, <span class="hljs-number">480</span>));
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> String <span class="hljs-title function_">title4PopupWindow</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> com.fr.design.i18n.Toolkit.i18nText(<span class="hljs-string">"Fine-Design_Basic_Style"</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">stateChanged</span><span class="hljs-params">(ChangeEvent e)</span> {
+        <span class="hljs-built_in">this</span>.updatePreviewArea();
+    }
+
+    <span class="hljs-keyword">protected</span> FormatPane <span class="hljs-title function_">getFormatPane</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.formatPane == <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.formatPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormatPane</span>();
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.editing != <span class="hljs-literal">null</span>) {
+                <span class="hljs-built_in">this</span>.formatPane.populate(<span class="hljs-built_in">this</span>.editing.getFormat());
+            }
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.formatPane;
+    }
+
+    <span class="hljs-keyword">private</span> AlignmentPane <span class="hljs-title function_">getAlignmentPane</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.alignmentPane == <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.alignmentPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AlignmentPane</span>();
+            <span class="hljs-built_in">this</span>.alignmentPane.addChangeListener(<span class="hljs-built_in">this</span>);
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.editing != <span class="hljs-literal">null</span>) {
+                <span class="hljs-built_in">this</span>.alignmentPane.populate(<span class="hljs-built_in">this</span>.editing);
+            }
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.alignmentPane;
+    }
+
+    <span class="hljs-keyword">private</span> FRFontPane <span class="hljs-title function_">getFRFontPane</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.frFontPane == <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.frFontPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FRFontPane</span>();
+            <span class="hljs-built_in">this</span>.frFontPane.addChangeListener(<span class="hljs-built_in">this</span>);
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.editing != <span class="hljs-literal">null</span>) {
+                <span class="hljs-built_in">this</span>.frFontPane.populate(<span class="hljs-built_in">this</span>.editing.getFRFont());
+            }
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.frFontPane;
+    }
+
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">FRFontListSelectionListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ListSelectionListener</span> {
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">valueChanged</span><span class="hljs-params">(ListSelectionEvent e)</span> {
+            updatePreviewArea();
+        }
+    }
+
+    <span class="hljs-keyword">private</span> BorderPane <span class="hljs-title function_">getBorderPane</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.borderPane == <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.borderPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BorderPane</span>();
+            <span class="hljs-built_in">this</span>.borderPane.addChangeListener(<span class="hljs-built_in">this</span>);
+
+            <span class="hljs-comment">// p:borderPane这边比较特殊，单元格的Style的时候，</span>
+            <span class="hljs-comment">// 用reportPane,在全局Style的时候用oldStyle</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.reportPane != <span class="hljs-literal">null</span>) {
+                Object[] fourObjectArray = BorderUtils.createCellBorderObject(reportPane);
+
+                <span class="hljs-keyword">if</span> (fourObjectArray != <span class="hljs-literal">null</span> &amp;&amp; fourObjectArray.length == BORDER_ARRAY_LENGTH) {
+                    <span class="hljs-built_in">this</span>.borderPane.populate((CellBorderStyle) fourObjectArray[<span class="hljs-number">0</span>], ((Boolean) fourObjectArray[<span class="hljs-number">1</span>]).booleanValue(),
+                            ((Integer) fourObjectArray[<span class="hljs-number">2</span>]).intValue(), (Color) fourObjectArray[<span class="hljs-number">3</span>]);
+                }
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.editing != <span class="hljs-literal">null</span>) {
+                    <span class="hljs-built_in">this</span>.borderPane.populate(<span class="hljs-built_in">this</span>.editing);
+                }
+            }
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.borderPane;
+    }
+
+    <span class="hljs-keyword">private</span> BackgroundPane <span class="hljs-title function_">getBackgroundPane</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.backgroundPane == <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.backgroundPane = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BackgroundPane</span>();
+            <span class="hljs-built_in">this</span>.backgroundPane.addChangeListener(<span class="hljs-built_in">this</span>);
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.editing != <span class="hljs-literal">null</span>) {
+                <span class="hljs-built_in">this</span>.backgroundPane.populate(<span class="hljs-built_in">this</span>.editing.getBackground());
+            }
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.backgroundPane;
+    }
+
+    <span class="hljs-keyword">public</span> NameStyle <span class="hljs-title function_">getGlobalStyle</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.globalStyle;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setGlobalStyle</span><span class="hljs-params">(NameStyle globalStyle)</span> {
+        <span class="hljs-built_in">this</span>.globalStyle = globalStyle;
+    }
+
+    <span class="hljs-comment">/**
+     * Populate
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populate</span><span class="hljs-params">(ElementCasePane reportPane)</span> {
+        <span class="hljs-comment">// p:保留ReportPane, 给BorderPane使用.</span>
+        <span class="hljs-built_in">this</span>.reportPane = reportPane;
+        <span class="hljs-built_in">this</span>.populateBean(<span class="hljs-built_in">this</span>.analyzeCurrentStyle(reportPane));
+        updatePreviewArea();
+    }
+
+    <span class="hljs-comment">/**
+     * 分析Style
+     */</span>
+    <span class="hljs-keyword">private</span> Style <span class="hljs-title function_">analyzeCurrentStyle</span><span class="hljs-params">(ElementCasePane reportPane)</span> {
+        <span class="hljs-type">Style</span> <span class="hljs-variable">style</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+
+        <span class="hljs-comment">// p:从选中的CellElement那里先获得原始的Style.</span>
+        <span class="hljs-type">Selection</span> <span class="hljs-variable">sel</span> <span class="hljs-operator">=</span> reportPane.getSelection();
+        <span class="hljs-keyword">if</span> (sel <span class="hljs-keyword">instanceof</span> FloatSelection) {
+            <span class="hljs-comment">// got simple cell element from column and row.</span>
+            <span class="hljs-type">ElementCase</span> <span class="hljs-variable">report</span> <span class="hljs-operator">=</span> reportPane.getEditingElementCase();
+
+            <span class="hljs-type">FloatElement</span> <span class="hljs-variable">selectedFloatElement</span> <span class="hljs-operator">=</span> report.getFloatElement(((FloatSelection) sel).getSelectedFloatName());
+            style = selectedFloatElement.getStyle();
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-type">CellSelection</span> <span class="hljs-variable">cs</span> <span class="hljs-operator">=</span> (CellSelection) sel;
+
+            <span class="hljs-comment">// got simple cell element from column and row.</span>
+            <span class="hljs-type">ElementCase</span> <span class="hljs-variable">report</span> <span class="hljs-operator">=</span> reportPane.getEditingElementCase();
+            <span class="hljs-type">CellElement</span> <span class="hljs-variable">editCellElement</span> <span class="hljs-operator">=</span> report.getCellElement(cs.getColumn(), cs.getRow());
+
+            <span class="hljs-keyword">if</span> (editCellElement != <span class="hljs-literal">null</span> &amp;&amp; editCellElement.getStyle() != <span class="hljs-literal">null</span>) {<span class="hljs-comment">// editCellElement</span>
+                                                                                <span class="hljs-comment">// cellstyle.</span>
+                <span class="hljs-keyword">try</span> {
+                    style = (Style) editCellElement.getStyle().clone();
+                } <span class="hljs-keyword">catch</span> (CloneNotSupportedException e) {
+                    FineLoggerFactory.getLogger().error(e.getMessage(), e);
+                }
+            }
+        }
+
+        <span class="hljs-keyword">if</span> (style == <span class="hljs-literal">null</span>) {
+            <span class="hljs-comment">// peter:获取默认的Style.</span>
+            style = Style.DEFAULT_STYLE;
+        }
+
+        <span class="hljs-keyword">return</span> style;
+    }
+
+    <span class="hljs-comment">/**
+     * 使用全局定义的格式
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">updateGlobalStyle</span><span class="hljs-params">(ElementCasePane reportPane)</span> {
+        updatePreviewArea();
+        <span class="hljs-type">NameStyle</span> <span class="hljs-variable">nameStyle</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.getGlobalStyle();
+
+        <span class="hljs-keyword">return</span> applyStyle(reportPane, <span class="hljs-keyword">new</span> <span class="hljs-title class_">NameStyleG</span>(nameStyle));
+    }
+
+    <span class="hljs-comment">/**
+     * Update. Return whether style changed.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">update</span><span class="hljs-params">(ElementCasePane reportPane)</span> {
+        <span class="hljs-type">Style</span> <span class="hljs-variable">oldStyle</span> <span class="hljs-operator">=</span> analyzeCurrentStyle(reportPane);
+
+        <span class="hljs-keyword">return</span> applyStyle(reportPane, <span class="hljs-keyword">new</span> <span class="hljs-title class_">NormalStyleG</span>(oldStyle, <span class="hljs-built_in">this</span>.updateBean()));
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GStyle</span> {
+        <span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> Style <span class="hljs-title function_">getStyle2Apply</span><span class="hljs-params">(Style styleOfEl)</span>;
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NameStyleG</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">GStyle</span> {
+        NameStyle nameStyle;
+
+        NameStyleG(NameStyle nameStyle) {
+            <span class="hljs-built_in">this</span>.nameStyle = nameStyle;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">protected</span> Style <span class="hljs-title function_">getStyle2Apply</span><span class="hljs-params">(Style styleOfEl)</span> {
+            <span class="hljs-keyword">return</span> nameStyle;
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NormalStyleG</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">GStyle</span> {
+        Style styleOfReportPane;
+        Style newStyle;
+
+        NormalStyleG(Style styleOfReportPane, Style newStyle) {
+            <span class="hljs-built_in">this</span>.styleOfReportPane = styleOfReportPane;
+            <span class="hljs-built_in">this</span>.newStyle = newStyle;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">protected</span> Style <span class="hljs-title function_">getStyle2Apply</span><span class="hljs-params">(Style styleOfEl)</span> {
+            <span class="hljs-keyword">return</span> StyleUtils.applyCellStyle(styleOfReportPane, newStyle, styleOfEl);
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">applyStyle</span><span class="hljs-params">(ElementCasePane reportPane, GStyle gstyle)</span> {
+        <span class="hljs-type">TemplateElementCase</span> <span class="hljs-variable">report</span> <span class="hljs-operator">=</span> reportPane.getEditingElementCase();
+        <span class="hljs-type">Selection</span> <span class="hljs-variable">sel</span> <span class="hljs-operator">=</span> reportPane.getSelection();
+        <span class="hljs-keyword">if</span> (sel <span class="hljs-keyword">instanceof</span> FloatSelection) {
+            <span class="hljs-type">FloatElement</span> <span class="hljs-variable">floatElement</span> <span class="hljs-operator">=</span> report.getFloatElement(((FloatSelection) sel).getSelectedFloatName());
+
+            <span class="hljs-comment">// Apply style.</span>
+            floatElement.setStyle(gstyle.getStyle2Apply(floatElement.getStyle()));
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-type">CellSelection</span> <span class="hljs-variable">cs</span> <span class="hljs-operator">=</span> (CellSelection) sel;
+            <span class="hljs-comment">// Got editCellElement.</span>
+            TemplateCellElement editCellElement;
+
+            <span class="hljs-comment">// 需要先行后列地增加新元素。</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; cs.getRowSpan(); j++) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; cs.getColumnSpan(); i++) {
+                    <span class="hljs-type">int</span> <span class="hljs-variable">column</span> <span class="hljs-operator">=</span> i + cs.getColumn();
+                    <span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> j + cs.getRow();
+
+                    editCellElement = report.getTemplateCellElement(column, row);
+                    <span class="hljs-keyword">if</span> (editCellElement == <span class="hljs-literal">null</span>) {
+                        editCellElement = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultTemplateCellElement</span>(column, row);
+                        report.addCellElement(editCellElement);
+                    }
+
+                    <span class="hljs-comment">// Apply cellstyle.</span>
+                    editCellElement.setStyle(gstyle.getStyle2Apply(editCellElement.getStyle()));
+                }
+            }
+        }
+
+        <span class="hljs-comment">// p:因为borderpane特殊，update borderpane</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.borderPane != <span class="hljs-literal">null</span>) {
+            BorderUtils.update(reportPane, <span class="hljs-built_in">this</span>.borderPane.update());
+        }
+        reportPane.repaint();
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Populate Style
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populateBean</span><span class="hljs-params">(Style ob)</span> {
+        <span class="hljs-built_in">this</span>.editing = ob == <span class="hljs-literal">null</span> ? Style.getInstance() : ob;
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.formatPane != <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.formatPane.populate(editing.getFormat());
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.alignmentPane != <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.alignmentPane.populate(editing);
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.frFontPane != <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.frFontPane.populate(editing.getFRFont());
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.borderPane != <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.borderPane.populate(editing);
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.backgroundPane != <span class="hljs-literal">null</span>) {
+            <span class="hljs-built_in">this</span>.backgroundPane.populate(editing.getBackground());
+        }
+        <span class="hljs-keyword">for</span>(StyleUIConfigProvider tabConfig : configList){
+            tabConfig.populateConfig(<span class="hljs-built_in">this</span>.editing);
+        }
+        updatePreviewArea();
+    }
+
+    <span class="hljs-comment">/**
+     * Update Style
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Style <span class="hljs-title function_">updateBean</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// need the check the valid of CellAlignment pane.</span>
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.alignmentPane != <span class="hljs-literal">null</span>) {
+                <span class="hljs-built_in">this</span>.alignmentPane.checkValid();
+            }
+        } <span class="hljs-keyword">catch</span> (Exception exp) {
+            FineJOptionPane.showMessageDialog(<span class="hljs-built_in">this</span>, exp.getMessage());
+            <span class="hljs-keyword">return</span> editing;
+        }
+
+        <span class="hljs-type">Style</span> <span class="hljs-variable">style</span> <span class="hljs-operator">=</span> editing;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.formatPane != <span class="hljs-literal">null</span>) {
+            style = style.deriveFormat(<span class="hljs-built_in">this</span>.formatPane.update());
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.alignmentPane != <span class="hljs-literal">null</span>) {
+            style = <span class="hljs-built_in">this</span>.alignmentPane.update(style);
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.frFontPane != <span class="hljs-literal">null</span>) {
+            style = style.deriveFRFont(<span class="hljs-built_in">this</span>.frFontPane.update());
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.borderPane != <span class="hljs-literal">null</span>) {
+            style = <span class="hljs-built_in">this</span>.borderPane.update(style);
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.backgroundPane != <span class="hljs-literal">null</span>) {
+            style = style.deriveBackground(<span class="hljs-built_in">this</span>.backgroundPane.update());
+        }
+        <span class="hljs-keyword">for</span>(StyleUIConfigProvider tabConfig : configList){
+            style = tabConfig.updateConfig();
+        }
+
+        <span class="hljs-keyword">return</span> style;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-type">ChangeListener</span> <span class="hljs-variable">tabChangeActionListener</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChangeListener</span>() {
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">stateChanged</span><span class="hljs-params">(ChangeEvent evt)</span> {
+            <span class="hljs-type">Object</span> <span class="hljs-variable">tabObj</span> <span class="hljs-operator">=</span> evt.getSource();
+            <span class="hljs-keyword">if</span> (tabObj == <span class="hljs-literal">null</span> || !(tabObj <span class="hljs-keyword">instanceof</span> JTabbedPane)) {
+                <span class="hljs-keyword">return</span>;
+            }
+            <span class="hljs-type">JTabbedPane</span> <span class="hljs-variable">tabbedPane</span> <span class="hljs-operator">=</span> (JTabbedPane) tabObj;
+
+            <span class="hljs-type">int</span> <span class="hljs-variable">selectedIndex</span> <span class="hljs-operator">=</span> tabbedPane.getSelectedIndex();
+            <span class="hljs-keyword">if</span> (tabbedPane.getComponentAt(selectedIndex).getClass() == JPanel.class) {<span class="hljs-comment">// 是JPanel,需要替换</span>
+                <span class="hljs-keyword">if</span> (selectedIndex == ALIGNMENT_INDEX) {
+                    tabbedPane.setComponentAt(selectedIndex, StylePane.<span class="hljs-built_in">this</span>.getAlignmentPane());
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (selectedIndex == FONT_INDEX) {
+                    tabbedPane.setComponentAt(selectedIndex, StylePane.<span class="hljs-built_in">this</span>.getFRFontPane());
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (selectedIndex == BORDER_INDEX) {
+                    tabbedPane.setComponentAt(selectedIndex, StylePane.<span class="hljs-built_in">this</span>.getBorderPane());
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (selectedIndex == BACKGROUND_INDEX) {
+                    tabbedPane.setComponentAt(selectedIndex, StylePane.<span class="hljs-built_in">this</span>.getBackgroundPane());
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (configList.size() + NEXT_TAB_INDEX &gt; selectedIndex &amp;&amp; configList.get(selectedIndex - NEXT_TAB_INDEX) != <span class="hljs-literal">null</span>) {
+                    tabbedPane.setComponentAt(selectedIndex, configList.get(selectedIndex - NEXT_TAB_INDEX).uiComponent(StylePane.<span class="hljs-built_in">this</span>));
+                    configList.get(selectedIndex - NEXT_TAB_INDEX).populateConfig(StylePane.<span class="hljs-built_in">this</span>.editing);
+                }
+            }
+            updatePreviewArea();
+        }
+    };
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updatePreviewArea</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (editing != <span class="hljs-literal">null</span>) {
+            previewArea.setStyle(<span class="hljs-built_in">this</span>.updateBean());
+        }
+    }
+
+    <span class="hljs-keyword">public</span> PreivewArea <span class="hljs-title function_">getPreviewArea</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.previewArea;
+    }
+
+    <span class="hljs-comment">/**
+     * 预览Style的面板
+     *
+     * <span class="hljs-doctag">@author</span> richer
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PreivewArea</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">JComponent</span> {
+
+        <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">paintText</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Report"</span>;
+        <span class="hljs-keyword">private</span> <span class="hljs-type">Style</span> <span class="hljs-variable">style</span> <span class="hljs-operator">=</span> Style.DEFAULT_STYLE;
+
+        <span class="hljs-keyword">public</span> <span class="hljs-title function_">PreivewArea</span><span class="hljs-params">()</span> {
+            setPreferredSize(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Dimension</span>(<span class="hljs-number">40</span>, <span class="hljs-number">40</span>));
+        }
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setStyle</span><span class="hljs-params">(Style style)</span> {
+            <span class="hljs-built_in">this</span>.style = style;
+            repaint();
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paintComponent</span><span class="hljs-params">(Graphics g)</span> {
+            <span class="hljs-type">Graphics2D</span> <span class="hljs-variable">g2d</span> <span class="hljs-operator">=</span> (Graphics2D) g;
+            <span class="hljs-type">int</span> <span class="hljs-variable">resolution</span> <span class="hljs-operator">=</span> ScreenResolution.getScreenResolution();
+
+            <span class="hljs-keyword">if</span> (style == Style.DEFAULT_STYLE) {
+                <span class="hljs-comment">// 如果是默认的style,就只写"Report"上去</span>
+                Style.paintContent(g2d, paintText, style, getWidth() - <span class="hljs-number">3</span>, getHeight() - <span class="hljs-number">3</span>, resolution);
+                <span class="hljs-keyword">return</span>;
+            }
+
+            Style.paintBackground(g2d, style, getWidth() - <span class="hljs-number">3</span>, getHeight() - <span class="hljs-number">3</span>);
+
+            Style.paintContent(g2d, paintText, style, getWidth() - <span class="hljs-number">3</span>, getHeight() - <span class="hljs-number">3</span>, resolution);
+
+            Style.paintBorder(g2d, style, getWidth() - <span class="hljs-number">3</span>, getHeight() - <span class="hljs-number">3</span>);
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> Dimension <span class="hljs-title function_">getMinimumSize</span><span class="hljs-params">()</span> {
+            <span class="hljs-keyword">return</span> getPreferredSize();
+        }
+    }
+
+}
+</code></pre>
+<h2 id="七、特殊限制说明"><a name="七、特殊限制说明" class="anchor-navigation-ex-anchor" href="#七、特殊限制说明"><i class="fa fa-link" aria-hidden="true"></i></a>七、特殊限制说明</h2>
+<p>StyleUIConfigProvider从形式上看也是一个插件接口，但是实际上目前已经不能单独使用了。统一通过MultiStyleUIConfigProvider引入。</p>
+<h2 id="八、常用链接"><a name="八、常用链接" class="anchor-navigation-ex-anchor" href="#八、常用链接"><i class="fa fa-link" aria-hidden="true"></i></a>八、常用链接</h2>
+<p><a href="https://code.fanruan.com/hugh/demo-multi-style-ui-config-provider" target="_blank">demo-multi-style-ui-config-provider</a></p>
+<h2 id="九、开源案例"><a name="九、开源案例" class="anchor-navigation-ex-anchor" href="#九、开源案例"><i class="fa fa-link" aria-hidden="true"></i></a>九、开源案例</h2>
+<p>免责声明：所有文档中的开源示例，均为开发者自行开发并提供。仅用于参考和学习使用，开发者和官方均无义务对开源案例所涉及的所有成果进行教学和指导。若作为商用一切后果责任由使用者自行承担。</p>
+<p>暂无</p>
+<div id="gitalk-container"></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="MenuHandler.html" class="navigation navigation-prev " aria-label="Previous page: MenuHandler">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ParameterWidgetOptionProvider.html" class="navigation navigation-next " aria-label="Next page: ParameterWidgetOptionProvider">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"MultiStyleUIConfigProvider","level":"2.4.3.1.12","depth":4,"next":{"title":"ParameterWidgetOptionProvider","level":"2.4.3.1.13","depth":4,"path":"tutorial/finereport/designer/ParameterWidgetOptionProvider.md","ref":"tutorial/finereport/designer/ParameterWidgetOptionProvider.md","articles":[]},"previous":{"title":"MenuHandler","level":"2.4.3.1.11","depth":4,"path":"tutorial/finereport/designer/MenuHandler.md","ref":"tutorial/finereport/designer/MenuHandler.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/MultiStyleUIConfigProvider.md","mtime":"2026-06-11T06:23:55.470Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:24:16.279Z"},"basePath":"../../..","book":{"language":"zh"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../../gitbook/gitbook.js"></script>
+    <script src="../../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+        
+    
+        
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-mygitalk/mygitalk.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

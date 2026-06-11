@@ -15,5 +15,8 @@
     "gitbook-plugin-mygitalk": "^0.2.6",
     "gitbook-plugin-pageview-count": "^1.0.1",
     "honkit": "^6.1.6"
+  },
+  "dependencies": {
+    "gitbook-plugin-expandable-chapters-small": "^0.1.7"
   }
 }

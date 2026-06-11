@@ -1,2 +1,6 @@
 node_modules/
 _book/
+.claude/
+.idea/
+scripts/
+
