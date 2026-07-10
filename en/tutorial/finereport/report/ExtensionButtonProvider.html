@@ -3555,10 +3555,274 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#extensionbuttonprovider"><b></b>ExtensionButtonProvider</a></li></ul></div><a href="#extensionbuttonprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="extensionbuttonprovider"><a name="extensionbuttonprovider" class="anchor-navigation-ex-anchor" href="#extensionbuttonprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ExtensionButtonProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#extensionbuttonprovider"><b></b>ExtensionButtonProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-terminology"><b></b>1. Terminology</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-overview"><b></b>3. Interface Overview</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-constraints-and-notes"><b></b>7. Constraints and Notes</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open-Source Examples</a></li></ul></ul></div><a href="#extensionbuttonprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="extensionbuttonprovider"><a name="extensionbuttonprovider" class="anchor-navigation-ex-anchor" href="#extensionbuttonprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ExtensionButtonProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.ExtensionButtonProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/ExtensionButtonProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-terminology"><a name="1-terminology" class="anchor-navigation-ex-anchor" href="#1-terminology"><i class="fa fa-link" aria-hidden="true"></i></a>1. Terminology</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>FineReport allows users to extend the available export file types. This is typically paired with the <code>ToolbarItemProvider</code> interface to add toolbar options in the designer. The <code>ExtensionButtonProvider</code> interface corresponds to extending the export menu button options built into the report's toolbar.</p>
+<p>Because <code>ExtensionButtonProvider</code> cannot function independently, this document also covers the companion interface <code>ExportToolBarProvider</code>.</p>
+<p><a href="images/extension_button_location.png" data-lightbox="e0643576-7736-4614-9dfc-e4f051b17593" data-title="Extension button location diagram"><img src="images/extension_button_location.png" alt="Extension button location diagram"></img></a></p>
+<h2 id="3-interface-overview"><a name="3-interface-overview" class="anchor-navigation-ex-anchor" href="#3-interface-overview"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Overview</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.fun;
+
+<span class="hljs-keyword">import</span> com.fr.form.ui.Widget;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.stable.xml.XMLable;
+
+<span class="hljs-comment">/**
+ * 
+ * <span class="hljs-doctag">@author</span> focus
+ * <span class="hljs-doctag">@date</span> Jul 1, 2015
+ * <span class="hljs-doctag">@since</span> 8.0
+ * Export menu interface for adding additional export modes.
+ * The menu currently supports up to two levels of hierarchy.
+ * 
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ExtensionButtonProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">XMLable</span>, Mutable{
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ExtensionButtonProvider"</span>;
+
+    <span class="hljs-comment">/**
+     * The implementation class for the export menu item;
+     * can extend com.fr.form.ui.ToolBarMenuButton or com.fr.form.ui.ToolBarButton
+     * <span class="hljs-doctag">@return</span> Widget class
+     */</span>
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt; classForDirectoryButton();
+
+    <span class="hljs-comment">/**
+     * Parent directory name
+     * <span class="hljs-doctag">@return</span> Parent directory name
+     */</span>
+     String <span class="hljs-title function_">getParentDirectory</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Current level directory name
+     * 
+     * <span class="hljs-doctag">@return</span> Same as above
+     */</span>
+     String <span class="hljs-title function_">getType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * The checkbox title in the designer corresponding to this menu item
+     * (used to control whether it is shown on the web)
+     * 
+     * <span class="hljs-doctag">@return</span> Same as above
+     */</span>
+     String <span class="hljs-title function_">getRelatedCheckBoxTitle</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Whether this menu item is shown on the web
+     * 
+     * <span class="hljs-doctag">@return</span> Same as above
+     */</span>
+     <span class="hljs-type">boolean</span> <span class="hljs-title function_">isSelected</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Sets whether this menu item is shown on the web
+     * 
+     * <span class="hljs-doctag">@param</span> isSelected Whether to display
+     */</span>
+     <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSelected</span><span class="hljs-params">(<span class="hljs-type">boolean</span> isSelected)</span>;
+
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.plugin.injectable.SpecialLevel;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> javax.swing.*;
+
+<span class="hljs-comment">/**
+ * Designer-side extension for the export toolbar,
+ * used to control whether the menu is displayed on the web
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ExportToolBarProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span>{
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> SpecialLevel.ExportToolBarProvider.getTagName();
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Adds the checkbox panel (for controlling web-side display of the menu) to the given panel
+     * 
+     * <span class="hljs-doctag">@param</span> pane Panel
+     * <span class="hljs-doctag">@return</span> The panel
+     */</span>
+    JPanel <span class="hljs-title function_">updateCenterPane</span><span class="hljs-params">(JPanel pane)</span>;
+
+    <span class="hljs-comment">/**
+     * Updates the UI
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">populate</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Saves the UI settings
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>3.6</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>4.0</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ExtensionButtonProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ExportToolBarProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>When a template is opened and the web properties editor's export button section is loaded, the <code>Export</code> class loads all plugin-declared <code>ExtensionButtonProvider</code> implementations and renders the designer UI using the <code>ExportToolBarProvider</code> interface. Refer to the code below for the specific logic, and pay attention to how interface instances are invoked within <code>selectedOptions</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.web.button;
+
+<span class="hljs-comment">// ... imports omitted for brevity ...</span>
+
+<span class="hljs-comment">/**
+ * The "Export" menu button on the report toolbar in paginated preview mode.
+ * It can have sub-menus: PDF, Excel, Word, Image, HTML.
+ * The Excel sub-menu can further have: paginated export, as-is export, paginated-to-sheet export.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Export</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ToolBarMenuButton</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">pdfAvailable</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">excelPAvailable</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">excelOAvailable</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">excelSAvailable</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">wordAvailable</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">imageAvailable</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">htmlAvailabel</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+
+    <span class="hljs-comment">// Parent directory list</span>
+    <span class="hljs-keyword">private</span> List&lt;ExtensionButtonProvider&gt; parentDerectorys;
+    <span class="hljs-comment">// Parent-child directory mapping</span>
+    <span class="hljs-keyword">private</span> Map&lt;ExtensionButtonProvider, List&lt;ExtensionButtonProvider&gt;&gt; options;
+    <span class="hljs-comment">// Directories with at least one selected child</span>
+    <span class="hljs-keyword">private</span> Map&lt;ExtensionButtonProvider, List&lt;ExtensionButtonProvider&gt;&gt; selectedOptions;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Export</span><span class="hljs-params">()</span> {
+        <span class="hljs-built_in">super</span>(TemplateUtils.i18nTpl(<span class="hljs-string">"Export"</span>), IconManager.EXPORT.getName());
+        initCompoents();
+    }
+
+    <span class="hljs-comment">// Initializes extended directories</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initCompoents</span><span class="hljs-params">()</span> {
+        Set&lt;ExtensionButtonProvider&gt; exportBtnAdapters = ExtraReportClassManager.getInstance().getArray(ExtensionButtonProvider.XML_TAG);
+        initExtraParentDerectory(exportBtnAdapters);
+        initExtraOptions(exportBtnAdapters);
+        initExtraSelectedOptions();
+    }
+
+    <span class="hljs-comment">// ... rest of implementation omitted for brevity ...</span>
+}
+</code></pre>
+<h2 id="7-constraints-and-notes"><a name="7-constraints-and-notes" class="anchor-navigation-ex-anchor" href="#7-constraints-and-notes"><i class="fa fa-link" aria-hidden="true"></i></a>7. Constraints and Notes</h2>
+<p><code>ExtensionButtonProvider</code> almost always requires the companion <code>ExportToolBarProvider</code> interface to function fully, except in very special cases.</p>
+<p>Regarding <code>ExtensionButtonProvider</code>:</p>
+<ol>
+<li>If the extended menu has no second-level sub-menus, extend <code>AbstractExtensionButton</code> directly.</li>
+<li>If the extended menu has second-level sub-menus, extend <code>AbstractExtensionMenuButton</code> and implement its <code>createMenuItems</code> method.</li>
+</ol>
+<p>Due to a current limitation in the interface design, developers must maintain a boolean variable to track the selection state of the menu item, and this variable must default to <code>true</code>.</p>
+<p>The implementation must include a no-arg constructor and a constructor accepting a name and icon alias. The icon must also be registered: <code>SundryKit.loadToolbarIcon(alias, iconPath)</code>.</p>
+<p><code>getParentDirectory()</code> returns the parent menu name. Return <code>null</code> for a top-level menu item; for a second-level item, return the same value as the parent's <code>getType()</code>.</p>
+<p>Developers must implement XML read/write themselves; server-side configuration is not supported by this interface.</p>
+<p>Because the methods to implement and their relationships are fairly complex, it is strongly recommended to closely follow the demo code when getting started.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-extension-button-provider" target="_blank">demo-extension-button-provider</a></p>
+<p>(1) Comparison of three groups of plugin interfaces for exposing web service endpoints</p>
+<p>(1) Comparison of three common plugin interfaces for injecting JS and CSS</p>
+<p>(1) Detailed explanation of export interface relationships and usage</p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open-Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and contributed by community developers, for reference and learning purposes only. Neither the developers nor FineReport are obligated to provide instruction or support for any results from these examples. Commercial use of these examples is at the user's own risk.</p>
+<p><a href="https://code.fanruan.com/fanruan/demo-export-xml/src/branch/master/src/main/java/com/fr/plugin/export/xml/ui/XmlExportToolbarUI.java" target="_blank">demo-export-xml</a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3866,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"next":{"title":"FormatActionProvider","level":"2.4.3.2.13","depth":4,"path":"tutorial/finereport/report/FormatActionProvider.md","ref":"tutorial/finereport/report/FormatActionProvider.md","articles":[]},"previous":{"title":"ExportOperateProvider","level":"2.4.3.2.11","depth":4,"path":"tutorial/finereport/report/ExportOperateProvider.md","ref":"tutorial/finereport/report/ExportOperateProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ExtensionButtonProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"next":{"title":"FormatActionProvider","level":"2.4.3.2.13","depth":4,"path":"tutorial/finereport/report/FormatActionProvider.md","ref":"tutorial/finereport/report/FormatActionProvider.md","articles":[]},"previous":{"title":"ExportOperateProvider","level":"2.4.3.2.11","depth":4,"path":"tutorial/finereport/report/ExportOperateProvider.md","ref":"tutorial/finereport/report/ExportOperateProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ExtensionButtonProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

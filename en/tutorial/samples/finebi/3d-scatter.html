@@ -3555,9 +3555,569 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#3d-scatter"><b></b>3d-scatter</a></li></ul></div><a href="#3d-scatter" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="3d-scatter"><a name="3d-scatter" class="anchor-navigation-ex-anchor" href="#3d-scatter"><i class="fa fa-link" aria-hidden="true"></i></a>3d-scatter</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#custom-chart-map"><b></b>Custom Chart (Map)</a></li><ul><li><span class="title-icon "></span><a href="#plugin-interface"><b></b>Plugin Interface</a></li><ul><li><span class="title-icon "></span><a href="#customcomponentprovider"><b></b>CustomComponentProvider</a></li><li><span class="title-icon "></span><a href="#abstractcustomcomponentprovider"><b></b>AbstractCustomComponentProvider</a></li></ul><li><span class="title-icon "></span><a href="#basic-tutorial"><b></b>Basic Tutorial</a></li><ul><li><span class="title-icon "></span><a href="#step-1-add-a-chart-option-to-the-frontend-chart-type-list"><b></b>Step 1: Add a Chart Option to the Frontend Chart Type List</a></li><li><span class="title-icon "></span><a href="#step-2-add-configuration-for-the-chart-type"><b></b>Step 2: Add Configuration for the Chart Type</a></li><li><span class="title-icon "></span><a href="#step-3-render-the-chart-on-the-frontend-page"><b></b>Step 3: Render the Chart on the Frontend Page</a></li><li><span class="title-icon "></span><a href="#step-4-reading-data-on-the-frontend"><b></b>Step 4: Reading Data on the Frontend</a></li></ul><li><span class="title-icon "></span><a href="#advanced-tutorial"><b></b>Advanced Tutorial</a></li><ul><li><span class="title-icon "></span><a href="#step-1-data-processing-interface"><b></b>Step 1: Data Processing Interface</a></li><li><span class="title-icon "></span><a href="#step-2-page-refresh-interface"><b></b>Step 2: Page Refresh Interface</a></li><li><span class="title-icon "></span><a href="#step-3-save-configuration-interface"><b></b>Step 3: Save Configuration Interface</a></li><li><span class="title-icon "></span><a href="#step-4-component-linkage-dimensionselected-—-supports-jump-and-linkage"><b></b>Step 4: Component Linkage (dimensionSelected — Supports Jump and Linkage)</a></li><li><span class="title-icon "></span><a href="#step-5-custom-component-configuration-item-extension"><b></b>Step 5: Custom Component (Configuration Item Extension)</a></li></ul></ul></ul></div><a href="#custom-chart-map" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="custom-chart-map"><a name="custom-chart-map" class="anchor-navigation-ex-anchor" href="#custom-chart-map"><i class="fa fa-link" aria-hidden="true"></i></a>Custom Chart (Map)</h1>
+<p>This example demonstrates how to implement a custom chart plugin based on Amap (AutoNavi) using the <code>CustomComponentProvider</code> interface, covering the complete development workflow from basic rendering to advanced linkage.</p>
+<hr></hr>
+<h2 id="plugin-interface"><a name="plugin-interface" class="anchor-navigation-ex-anchor" href="#plugin-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Interface</h2>
+<h3 id="customcomponentprovider"><a name="customcomponentprovider" class="anchor-navigation-ex-anchor" href="#customcomponentprovider"><i class="fa fa-link" aria-hidden="true"></i></a>CustomComponentProvider</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.finebi.provider.api.component;
+
+<span class="hljs-keyword">import</span> com.finebi.common.context.OperationContext;
+<span class="hljs-keyword">import</span> com.finebi.provider.api.component.data.DataModel;
+<span class="hljs-keyword">import</span> com.fr.common.annotations.Open;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.web.struct.AssembleComponent;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomComponentProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CustomComponentProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/** Custom chart name */</span>
+    String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Custom chart type */</span>
+    String <span class="hljs-title function_">getType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Custom chart icon */</span>
+    String <span class="hljs-title function_">getIcon</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Placeholder icon for empty custom chart; defaults to icon if not specified */</span>
+    String <span class="hljs-title function_">getPreviewIcon</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Custom chart edit DOM; defaults to preview if not specified */</span>
+    String <span class="hljs-title function_">getEditPageHTML</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** JS/CSS injection for custom chart (edit mode) */</span>
+    AssembleComponent <span class="hljs-title function_">editClient</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** Custom chart preview DOM; inject dependency files and mount node */</span>
+    String <span class="hljs-title function_">getPreviewPageHTML</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** JS/CSS injection for custom chart (preview mode) */</span>
+    AssembleComponent <span class="hljs-title function_">previewClient</span><span class="hljs-params">(OperationContext var1)</span>;
+
+    <span class="hljs-comment">/** Custom chart configuration; returns a JSON string */</span>
+    String <span class="hljs-title function_">config</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Whether custom data processing is required */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">needDataProcess</span><span class="hljs-params">(CustomComponentContext var1)</span>;
+
+    <span class="hljs-comment">/** Custom processing of data computed by BI before it is returned to the frontend */</span>
+    List&lt;DataModel&gt; <span class="hljs-title function_">process</span><span class="hljs-params">(List&lt;DataModel&gt; var1, CustomComponentContext var2)</span>;
+}
+</code></pre>
+<h3 id="abstractcustomcomponentprovider"><a name="abstractcustomcomponentprovider" class="anchor-navigation-ex-anchor" href="#abstractcustomcomponentprovider"><i class="fa fa-link" aria-hidden="true"></i></a>AbstractCustomComponentProvider</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.finebi.provider.api.component;
+
+<span class="hljs-keyword">import</span> com.finebi.common.context.OperationContext;
+<span class="hljs-keyword">import</span> com.finebi.provider.api.component.data.DataModel;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.API;
+<span class="hljs-keyword">import</span> com.fr.web.struct.AssembleComponent;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-meta">@API(level = 1)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractCustomComponentProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CustomComponentProvider</span> {
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPreviewIcon</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getIcon();
+    }
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEditPageHTML</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getPreviewPageHTML(context);
+    }
+
+    <span class="hljs-keyword">public</span> AssembleComponent <span class="hljs-title function_">editClient</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.previewClient(context);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">currentAPILevel</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; }
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">mark4Provider</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getClass().getName(); }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">needDataProcess</span><span class="hljs-params">(CustomComponentContext customComponentContext)</span> { <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; }
+
+    <span class="hljs-keyword">public</span> List&lt;DataModel&gt; <span class="hljs-title function_">process</span><span class="hljs-params">(List&lt;DataModel&gt; dataModels, CustomComponentContext customComponentContext)</span> {
+        <span class="hljs-keyword">return</span> dataModels;
+    }
+}
+</code></pre>
+<hr></hr>
+<h2 id="basic-tutorial"><a name="basic-tutorial" class="anchor-navigation-ex-anchor" href="#basic-tutorial"><i class="fa fa-link" aria-hidden="true"></i></a>Basic Tutorial</h2>
+<h3 id="step-1-add-a-chart-option-to-the-frontend-chart-type-list"><a name="step-1-add-a-chart-option-to-the-frontend-chart-type-list" class="anchor-navigation-ex-anchor" href="#step-1-add-a-chart-option-to-the-frontend-chart-type-list"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Add a Chart Option to the Frontend Chart Type List</h3>
+<p>Extend <code>AbstractCustomComponentProvider</code> and implement the required methods:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// MapHotComponentProvider.java</span>
+<span class="hljs-meta">@EnableMetrics</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MapHotComponentProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCustomComponentProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> PluginConstantsEK.PLUGIN_MAP_NAME;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getType</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> PluginConstantsEK.PLUGIN_MAP_TYPE;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getIcon</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-type">String</span> <span class="hljs-variable">render</span> <span class="hljs-operator">=</span> TemplateUtils.render(<span class="hljs-string">"${fineServletURL}"</span>);
+            <span class="hljs-keyword">return</span> render + <span class="hljs-string">"/resources?path=/com/finebi/plugin/tptj/ivan/chart/demo/amap/icon.png"</span>;
+        } <span class="hljs-keyword">catch</span> (Exception ignore) {}
+        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+    }
+
+    <span class="hljs-meta">@Focus(id = PluginConstantsEK.PLUGIN_ID, text = PluginConstantsEK.PLUGIN_NAME, source = Original.PLUGIN)</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPreviewPageHTML</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;div id=\"amap-demo-container\"&gt;&lt;/div&gt;"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> AssembleComponent <span class="hljs-title function_">previewClient</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> MapHotComponent.KEY;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">config</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> IOUtils.readResourceAsString(<span class="hljs-string">"com/finebi/plugin/tptj/ivan/chart/demo/amap/config/config.json"</span>);
+    }
+}
+</code></pre>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- plugin.xml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">CustomComponentProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.finebi.plugin.tptj.ivan.chart.demo.amap.MapHotComponentProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<p><a href="images/amap_basic_effect.png" data-lightbox="980f349d-2db0-4781-875b-67903b3bc5a7" data-title="Basic chart option result"><img src="images/amap_basic_effect.png" alt="Basic chart option result"></img></a></p>
+<hr></hr>
+<h3 id="step-2-add-configuration-for-the-chart-type"><a name="step-2-add-configuration-for-the-chart-type" class="anchor-navigation-ex-anchor" href="#step-2-add-configuration-for-the-chart-type"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Add Configuration for the Chart Type</h3>
+<p>Implement the <code>config()</code> method to return a JSON-format string.</p>
+<pre><code class="lang-json"><span class="hljs-comment">// config.json (map example)</span>
+{
+  <span class="hljs-string">"dataRegions"</span>: [
+    { <span class="hljs-string">"name"</span>: <span class="hljs-string">"lat"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_LAT"</span> },
+    { <span class="hljs-string">"name"</span>: <span class="hljs-string">"lng"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_LNG"</span> }
+  ],
+  <span class="hljs-string">"attrRegions"</span>: [
+    {
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"Granularity"</span>,
+      <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_FG"</span>,
+      <span class="hljs-string">"multiFields"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">"settings"</span>: []
+    }
+  ],
+  <span class="hljs-string">"chartStyles"</span>: [
+    {
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"mapProp"</span>,
+      <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_MAP_ATTRIBUTE"</span>,
+      <span class="hljs-string">"multiFields"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">"settings"</span>: [
+        { <span class="hljs-string">"name"</span>: <span class="hljs-string">"centerLng"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_CENTER_LNG"</span>, <span class="hljs-string">"type"</span>: <span class="hljs-string">"Input"</span>, <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"102.3716"</span> },
+        { <span class="hljs-string">"name"</span>: <span class="hljs-string">"centerLat"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_CENTER_LAT"</span>, <span class="hljs-string">"type"</span>: <span class="hljs-string">"Input"</span>, <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"36.6808"</span> },
+        { <span class="hljs-string">"name"</span>: <span class="hljs-string">"defaultZoom"</span>, <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_DEFAULT_ZOOM"</span>, <span class="hljs-string">"type"</span>: <span class="hljs-string">"Input"</span>, <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"4"</span> },
+        {
+          <span class="hljs-string">"name"</span>: <span class="hljs-string">"style"</span>,
+          <span class="hljs-string">"text"</span>: <span class="hljs-string">"Plugin-DEMO_WEB_STYLE"</span>,
+          <span class="hljs-string">"type"</span>: <span class="hljs-string">"Select"</span>,
+          <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"normal"</span>,
+          <span class="hljs-string">"items"</span>: [
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Standard"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"normal"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Phantom Black"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"dark"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Moonlight Silver"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"light"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Distant Mountain"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"whitesmoke"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Grass Green"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"fresh"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Scholar Grey"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"grey"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Graffiti"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"graffiti"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Macaron"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"macaron"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Indigo Blue"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"blue"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Dark Night Blue"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"darkblue"</span> },
+            { <span class="hljs-string">"text"</span>: <span class="hljs-string">"Wine"</span>, <span class="hljs-string">"value"</span>: <span class="hljs-string">"wine"</span> }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p><a href="images/amap_config_effect_1.png" data-lightbox="b063aa18-5b90-4e69-a030-f1f154bdbce5" data-title="Configuration panel result 1"><img src="images/amap_config_effect_1.png" alt="Configuration panel result 1"></img></a></p>
+<p><a href="images/amap_config_effect_2.png" data-lightbox="3d12f403-71ba-4de6-8f41-288d8253f6a0" data-title="Configuration panel result 2"><img src="images/amap_config_effect_2.png" alt="Configuration panel result 2"></img></a></p>
+<h4 id="json-configuration-file-reference"><a name="json-configuration-file-reference" class="anchor-navigation-ex-anchor" href="#json-configuration-file-reference"><i class="fa fa-link" aria-hidden="true"></i></a>JSON Configuration File Reference</h4>
+<ul>
+<li><strong>dataRegions</strong> (JSONARRAY): Data regions. Currently supports a maximum of two entries.</li>
+<li><strong>attrRegions</strong> (JSONARRAY): Graphic attribute regions. Supported <code>settings</code> types: <code>JSONARRAY</code>, <code>color</code>, <code>size</code>, <code>symbol</code>, <code>Checkbox</code>, <code>RadioGroup</code>, <code>Segment</code>, <code>Select</code>, <code>ColorPicker</code>, <code>Input</code>.</li>
+<li><strong>chartStyles</strong> (JSONARRAY): Component style regions. Supported <code>type</code> values: <code>Checkbox</code>, <code>RadioGroup</code>, <code>Segment</code>, <code>Select</code>, <code>ColorPicker</code>, <code>Input</code>.</li>
+</ul>
 <blockquote>
-<p>Coming soon.</p>
+<p><strong>Note:</strong> Configuration items do not support custom formats or item interdependencies — only the basic types listed above are supported. <code>name</code> is the ID (the frontend JS retrieves values by <code>name</code>); <code>text</code> is the display label (supports i18n keys).</p>
+</blockquote>
+<details>
+<summary>Full config.json example</summary>
+
+```json
+{
+    "dataRegions": [
+        { "name": "customData1", "text": "i18n-key" },
+        { "name": "customData2" }
+    ],
+    "attrRegions": [
+        { "name": "color1", "multiFields": false, "settings": "color" },
+        { "name": "size1", "multiFields": true, "settings": "size" },
+        { "name": "shape1", "multiFields": false, "settings": "symbol" },
+        {
+            "name": "customOption",
+            "multiFields": false,
+            "settings": [
+                { "name": "Checkbox", "type": "Checkbox", "defaultValue": ["2","3"], "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"},{"text":"Option 3","value":"3"}] },
+                { "name": "RadioGroup", "type": "RadioGroup", "defaultValue": "2", "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"}] },
+                { "name": "Segment", "type": "Segment", "defaultValue": "2", "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"}] },
+                { "name": "Select", "type": "Select", "defaultValue": "1", "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"}] },
+                { "name": "ColorPicker", "type": "ColorPicker", "defaultValue": "#ffffff" },
+                { "name": "Input", "type": "Input", "defaultValue": "test" }
+            ]
+        }
+    ],
+    "chartStyles": [
+        {
+            "name": "customOption",
+            "settings": [
+                { "name": "Checkbox", "type": "Checkbox", "defaultValue": ["2","3"], "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"},{"text":"Option 3","value":"3"}] },
+                { "name": "RadioGroup", "type": "RadioGroup", "defaultValue": "2", "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"}] },
+                { "name": "Segment", "type": "Segment", "defaultValue": "2", "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"}] },
+                { "name": "Select", "type": "Select", "defaultValue": "1", "items": [{"text":"Option 1","value":"1"},{"text":"Option 2","value":"2"}] },
+                { "name": "ColorPicker", "type": "ColorPicker", "defaultValue": "#ffffff" },
+                { "name": "Input", "type": "Input", "defaultValue": "test" }
+            ]
+        }
+    ]
+}
+```
+
+</details>
+
+<hr></hr>
+<h3 id="step-3-render-the-chart-on-the-frontend-page"><a name="step-3-render-the-chart-on-the-frontend-page" class="anchor-navigation-ex-anchor" href="#step-3-render-the-chart-on-the-frontend-page"><i class="fa fa-link" aria-hidden="true"></i></a>Step 3: Render the Chart on the Frontend Page</h3>
+<p>The frontend registers a render function via <code>BIPlugin.init(render)</code>:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// render function signature</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">
+    data,                <span class="hljs-comment">// data</span>
+    config,              <span class="hljs-comment">// configuration</span>
+    saveSessionCallback,
+    closeSessionCallBack,
+    extensionCallBack
+</span>) {}
+
+<span class="hljs-comment">// register the render function</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<p>Amap concrete implementation example:</p>
+<pre><code class="lang-js">(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+    <span class="hljs-comment">// Find the DOM element defined in getPreviewPageHTML</span>
+    <span class="hljs-keyword">const</span> dom = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"amap-demo-container"</span>);
+
+    <span class="hljs-comment">// Width and height must be set; otherwise the chart will not render</span>
+    dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+    dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+
+    <span class="hljs-comment">// Retrieve configuration values</span>
+    <span class="hljs-keyword">const</span> mapAttribute = config[<span class="hljs-string">"chartStyle"</span>][<span class="hljs-string">"Map Attribute"</span>][<span class="hljs-string">"value"</span>];
+
+    <span class="hljs-comment">// Initialize the map component</span>
+    <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, {
+      <span class="hljs-attr">resizeEnable</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">center</span>: [mapAttribute[<span class="hljs-number">0</span>], mapAttribute[<span class="hljs-number">1</span>]],
+      <span class="hljs-attr">zoom</span>: mapAttribute[<span class="hljs-number">2</span>],
+    });
+
+    <span class="hljs-comment">// Apply map style</span>
+    map.<span class="hljs-title function_">setMapStyle</span>(<span class="hljs-string">"amap://styles/"</span> + mapAttribute[<span class="hljs-number">3</span>]);
+
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">"resize"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+      dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+    });
+  }
+
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+})(jQuery);
+</code></pre>
+<p><a href="images/amap_render_effect.png" data-lightbox="7a094ef4-ff69-49c4-bae3-45a17ae0c41b" data-title="Frontend rendering result"><img src="images/amap_render_effect.png" alt="Frontend rendering result"></img></a></p>
+<hr></hr>
+<h3 id="step-4-reading-data-on-the-frontend"><a name="step-4-reading-data-on-the-frontend" class="anchor-navigation-ex-anchor" href="#step-4-reading-data-on-the-frontend"><i class="fa fa-link" aria-hidden="true"></i></a>Step 4: Reading Data on the Frontend</h3>
+<p><code>data</code> contains dimension and measure data; <code>config</code> contains graphic attribute and component style configurations.</p>
+<pre><code class="lang-js">(<span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) {
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+        <span class="hljs-keyword">const</span> dom = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"amap-demo-container"</span>);
+        dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+        dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+
+        <span class="hljs-keyword">const</span> mapAttribute = config[<span class="hljs-string">"chartStyle"</span>][<span class="hljs-string">"Map Attribute"</span>][<span class="hljs-string">"value"</span>];
+
+        <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, {
+            <span class="hljs-attr">resizeEnable</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">center</span>: [mapAttribute[<span class="hljs-number">0</span>], mapAttribute[<span class="hljs-number">1</span>]],
+            <span class="hljs-attr">zoom</span>: mapAttribute[<span class="hljs-number">2</span>],
+        });
+        map.<span class="hljs-title function_">setMapStyle</span>(<span class="hljs-string">"amap://styles/"</span> + mapAttribute[<span class="hljs-number">3</span>]);
+
+        <span class="hljs-comment">// Retrieve all lat/lng point data</span>
+        <span class="hljs-keyword">const</span> points = <span class="hljs-title function_">_getAllPoint</span>(data.<span class="hljs-property">dataMapping</span>, data.<span class="hljs-property">dataModels</span>[<span class="hljs-number">0</span>]);
+
+        <span class="hljs-keyword">if</span> (points != <span class="hljs-literal">null</span>) {
+            <span class="hljs-keyword">var</span> pointCluster = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">MarkerCluster</span>(map, points, {
+                <span class="hljs-attr">gridSize</span>: <span class="hljs-number">60</span>,
+                <span class="hljs-attr">renderClusterMarker</span>: _renderCarClusterMarker,
+                <span class="hljs-attr">renderMarker</span>: _renderMarker,
+            });
+        }
+
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">"resize"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            dom.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span> + <span class="hljs-string">"px"</span>;
+            dom.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span> + <span class="hljs-string">"px"</span>;
+        });
+    }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">_renderCarClusterMarker</span>(<span class="hljs-params">context</span>) {
+        <span class="hljs-keyword">const</span> div = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">'div'</span>);
+        <span class="hljs-keyword">let</span> bgColor;
+        <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">10</span>) bgColor = <span class="hljs-string">'hsla(108,100%,40%,1)'</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">100</span>) bgColor = <span class="hljs-string">'hsl(201,100%,40%)'</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">1000</span>) bgColor = <span class="hljs-string">'hsla(36,100%,50%,1)'</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context.<span class="hljs-property">count</span> &lt; <span class="hljs-number">10000</span>) bgColor = <span class="hljs-string">'hsla(0,100%,60%,1)'</span>;
+        <span class="hljs-keyword">else</span> bgColor = <span class="hljs-string">'hsla(0,100%,40%,1)'</span>;
+        <span class="hljs-keyword">const</span> size = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(<span class="hljs-number">30</span> + <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(context.<span class="hljs-property">count</span> / context.<span class="hljs-property">count</span>, <span class="hljs-number">1</span> / <span class="hljs-number">5</span>) * <span class="hljs-number">20</span>);
+        div.<span class="hljs-property">style</span>.<span class="hljs-property">cssText</span> = <span class="hljs-string">`background-color:<span class="hljs-subst">${bgColor}</span>;width:<span class="hljs-subst">${size}</span>px;height:<span class="hljs-subst">${size}</span>px;border-radius:<span class="hljs-subst">${size/<span class="hljs-number">2</span>}</span>px;line-height:<span class="hljs-subst">${size}</span>px;text-align:center;color:#fff;font-size:14px;`</span>;
+        div.<span class="hljs-property">innerHTML</span> = context.<span class="hljs-property">count</span>;
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setOffset</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Pixel</span>(-size / <span class="hljs-number">2</span>, -size / <span class="hljs-number">2</span>));
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setContent</span>(div);
+    }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">_renderMarker</span>(<span class="hljs-params">context</span>) {
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setContent</span>(<span class="hljs-string">'&lt;div style="background-color:rgba(255,255,178,.9);height:18px;width:18px;border:1px solid rgba(255,255,178,1);border-radius:12px;box-shadow:rgba(0,0,0,1) 0px 0px 3px;"&gt;&lt;/div&gt;'</span>);
+        context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setOffset</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Pixel</span>(-<span class="hljs-number">9</span>, -<span class="hljs-number">9</span>));
+    }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">_getAllPoint</span>(<span class="hljs-params">dataMapping, dataModel</span>) {
+        <span class="hljs-keyword">let</span> lngId = dataMapping[<span class="hljs-string">'Longitude'</span>];
+        <span class="hljs-keyword">let</span> latId = dataMapping[<span class="hljs-string">'Latitude'</span>];
+        <span class="hljs-keyword">let</span> lngIndex, latIndex;
+        dataModel.<span class="hljs-property">fields</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> {
+            <span class="hljs-keyword">if</span> (lngId.<span class="hljs-title function_">indexOf</span>(item.<span class="hljs-property">id</span>) &gt;= <span class="hljs-number">0</span>) lngIndex = index;
+            <span class="hljs-keyword">if</span> (latId.<span class="hljs-title function_">indexOf</span>(item.<span class="hljs-property">id</span>) &gt;= <span class="hljs-number">0</span>) latIndex = index;
+        });
+        <span class="hljs-keyword">const</span> points = [];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; dataModel.<span class="hljs-property">rowCount</span>; i++) {
+            points.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">lnglat</span>: [dataModel.<span class="hljs-property">colData</span>[lngIndex][i], dataModel.<span class="hljs-property">colData</span>[latIndex][i]] });
+        }
+        <span class="hljs-keyword">return</span> points;
+    }
+
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+})(jQuery);
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> The interface cannot directly access raw detail data. To use detail data, convert it to a dimension or add a granularity attribute.</p>
+</blockquote>
+<p><strong>Result using granularity:</strong></p>
+<p><a href="images/amap_data_finegrained.png" data-lightbox="1b41e5ef-82e3-4ee7-8aee-efcf12d95ae8" data-title="Data reading result (granularity)"><img src="images/amap_data_finegrained.png" alt="Data reading result (granularity)"></img></a></p>
+<p><strong>Result using dimension:</strong></p>
+<p><a href="images/amap_data_dimension.png" data-lightbox="ceb83323-bf86-4df3-acf8-e5fec64bdc90" data-title="Data reading result (dimension)"><img src="images/amap_data_dimension.png" alt="Data reading result (dimension)"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.1/0.0.1.zip" target="_blank">Basic Tutorial DEMO source code</a></p>
+</blockquote>
+<hr></hr>
+<h2 id="advanced-tutorial"><a name="advanced-tutorial" class="anchor-navigation-ex-anchor" href="#advanced-tutorial"><i class="fa fa-link" aria-hidden="true"></i></a>Advanced Tutorial</h2>
+<h3 id="step-1-data-processing-interface"><a name="step-1-data-processing-interface" class="anchor-navigation-ex-anchor" href="#step-1-data-processing-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Data Processing Interface</h3>
+<p><strong>Scenario:</strong> The product's built-in data processing does not meet the requirement; you want to perform additional processing before data is returned to the frontend.</p>
+<blockquote>
+<p>Note: The data the plugin receives has already been processed by the product. Plugin processing runs after product processing.</p>
+</blockquote>
+<p>Override <code>needDataProcess</code> and <code>process</code>:</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">needDataProcess</span><span class="hljs-params">(CustomComponentContext customComponentContext)</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}
+
+<span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> List&lt;DataModel&gt; <span class="hljs-title function_">process</span><span class="hljs-params">(List&lt;DataModel&gt; dataModels, CustomComponentContext customComponentContext)</span> {
+    <span class="hljs-comment">// Example: randomly return only one data point each time</span>
+    <span class="hljs-keyword">return</span> dataModels.stream().map(dataModel -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">DataModel</span>() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> List&lt;Dimension&gt; <span class="hljs-title function_">getFields</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> dataModel.getFields(); }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> List&lt;List&lt;Object&gt;&gt; <span class="hljs-title function_">getColData</span><span class="hljs-params">()</span> {
+            List&lt;List&lt;Object&gt;&gt; colData = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(dataModel.getFields().size());
+            dataModel.getColData().forEach(d -&gt;
+                colData.add(Collections.singletonList(d.get((<span class="hljs-type">int</span>)(Math.random() * d.size())))));
+            <span class="hljs-keyword">return</span> colData;
+        }
+    }).collect(Collectors.toList());
+}
+</code></pre>
+<p><a href="images/amap_advanced_dataprocess.png" data-lightbox="af5aef30-3e83-4801-8e56-ef66496c562b" data-title="Data processing interface result"><img src="images/amap_advanced_dataprocess.png" alt="Data processing interface result"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.2/0.0.2.zip" target="_blank">Data Processing DEMO source code</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="step-2-page-refresh-interface"><a name="step-2-page-refresh-interface" class="anchor-navigation-ex-anchor" href="#step-2-page-refresh-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Page Refresh Interface</h3>
+<p><strong>Scenario:</strong> The user needs to manually trigger a chart refresh rather than refreshing the entire page.</p>
+<p>Call <code>extensionCallBack('refresh')</code> to refresh the chart iframe:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">"#amap-demo-click"</span>).<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// Calling this method refreshes the iframe; add logic checks before calling</span>
+        <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">'refresh'</span>);
+    };
+}
+
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<p><a href="images/amap_advanced_refresh.png" data-lightbox="963cbeca-4615-45a7-a47d-42bb31d055a7" data-title="Page refresh result"><img src="images/amap_advanced_refresh.png" alt="Page refresh result"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.3/0.0.3.zip" target="_blank">Refresh Interface DEMO source code</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="step-3-save-configuration-interface"><a name="step-3-save-configuration-interface" class="anchor-navigation-ex-anchor" href="#step-3-save-configuration-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Step 3: Save Configuration Interface</h3>
+<p><strong>Scenario:</strong> After refreshing the chart, you want to preserve the user's previous state (e.g., map center and zoom level).</p>
+<p>Saved configuration is stored in <code>config.customConfig</code> and read on the next render:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveSessionCallback, closeSessionCallBack, extensionCallBack</span>) {
+    <span class="hljs-keyword">let</span> map;
+    <span class="hljs-keyword">const</span> customConfig = config.<span class="hljs-property">customConfig</span>;
+    <span class="hljs-keyword">if</span> (customConfig != <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(customConfig).<span class="hljs-property">length</span> &gt; <span class="hljs-number">2</span>) {
+        <span class="hljs-comment">// Restore the previously saved configuration</span>
+        map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, { <span class="hljs-attr">center</span>: [customConfig.<span class="hljs-property">lng</span>, customConfig.<span class="hljs-property">lat</span>], <span class="hljs-attr">zoom</span>: customConfig.<span class="hljs-property">zoom</span> });
+    } <span class="hljs-keyword">else</span> {
+        map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Map</span>(dom, { <span class="hljs-attr">center</span>: [mapAttribute[<span class="hljs-number">0</span>], mapAttribute[<span class="hljs-number">1</span>]], <span class="hljs-attr">zoom</span>: mapAttribute[<span class="hljs-number">2</span>] });
+    }
+
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">"#amap-demo-click"</span>).<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// Save the current center and zoom level</span>
+        <span class="hljs-title function_">saveSessionCallback</span>({
+            <span class="hljs-attr">zoom</span>: map.<span class="hljs-title function_">getZoom</span>(),
+            <span class="hljs-attr">lng</span>: map.<span class="hljs-title function_">getCenter</span>().<span class="hljs-property">lng</span>,
+            <span class="hljs-attr">lat</span>: map.<span class="hljs-title function_">getCenter</span>().<span class="hljs-property">lat</span>,
+        });
+        <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">'refresh'</span>);
+    };
+}
+
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<p><a href="images/amap_advanced_saveconfig.png" data-lightbox="f0535d49-a5c4-4bd7-a6fc-47e865de0e30" data-title="Save configuration result"><img src="images/amap_advanced_saveconfig.png" alt="Save configuration result"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.4/0.0.4.zip" target="_blank">Save Configuration DEMO source code</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="step-4-component-linkage-dimensionselected-—-supports-jump-and-linkage"><a name="step-4-component-linkage-dimensionselected-—-supports-jump-and-linkage" class="anchor-navigation-ex-anchor" href="#step-4-component-linkage-dimensionselected-—-supports-jump-and-linkage"><i class="fa fa-link" aria-hidden="true"></i></a>Step 4: Component Linkage (dimensionSelected — Supports Jump and Linkage)</h3>
+<p><strong>Scenario:</strong> When clicking a data point on the chart, trigger linkage with other components on the dashboard or navigate to another page.</p>
+<p>Choose the appropriate event based on the user's data type:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Click measure event (use when the data field is a measure [green])</span>
+<span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"pointSelected"</span>, {
+    <span class="hljs-attr">pos</span>: { <span class="hljs-attr">x</span>: mouseX, <span class="hljs-attr">y</span>: mouseY },
+    <span class="hljs-attr">measure</span>: measureId,   <span class="hljs-comment">// dimension id of the clicked measure</span>
+    <span class="hljs-attr">row</span>: currentClicked,  <span class="hljs-comment">// field values of the clicked row { id: fieldValue }</span>
+});
+
+<span class="hljs-comment">// Click dimension event (use when the data field is a dimension [blue])</span>
+<span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"dimensionSelected"</span>, {
+    <span class="hljs-attr">pos</span>: { <span class="hljs-attr">x</span>: mouseX, <span class="hljs-attr">y</span>: mouseY },
+    <span class="hljs-attr">measure</span>: measureId,
+    <span class="hljs-attr">row</span>: currentClicked,
+});
+</code></pre>
+<p>Complete example (click linkage for non-clustered points):</p>
+<pre><code class="lang-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">_renderMarker</span>(<span class="hljs-params">context</span>) {
+    context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setContent</span>(<span class="hljs-string">'...'</span>);
+    context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">setOffset</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AMap</span>.<span class="hljs-title class_">Pixel</span>(-<span class="hljs-number">9</span>, -<span class="hljs-number">9</span>));
+
+    <span class="hljs-keyword">let</span> datum = context.<span class="hljs-property">data</span>[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">const</span> currentClicked = {
+        [datum.<span class="hljs-property">idId</span>]: datum.<span class="hljs-property">idVal</span>,
+        [datum.<span class="hljs-property">lngId</span>]: datum.<span class="hljs-property">lngVal</span>,
+        [datum.<span class="hljs-property">latId</span>]: datum.<span class="hljs-property">latVal</span>
+    };
+    <span class="hljs-keyword">const</span> currentId = datum.<span class="hljs-property">lngId</span>;
+
+    context.<span class="hljs-property">marker</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-params">ev</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> demo = {
+            <span class="hljs-attr">pos</span>: { <span class="hljs-attr">x</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">event</span>.<span class="hljs-property">pageX</span>, <span class="hljs-attr">y</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">event</span>.<span class="hljs-property">pageY</span> },
+            <span class="hljs-attr">measure</span>: currentId,
+            <span class="hljs-attr">row</span>: currentClicked,
+        };
+        <span class="hljs-comment">// Choose the linkage type based on the field type</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> field <span class="hljs-keyword">of</span> data.<span class="hljs-property">dataModels</span>[<span class="hljs-number">0</span>].<span class="hljs-property">fields</span>) {
+            <span class="hljs-keyword">if</span> (field.<span class="hljs-property">id</span> === currentId) {
+                <span class="hljs-keyword">if</span> (field.<span class="hljs-property">isDimension</span>) <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"dimensionSelected"</span>, demo);
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (field.<span class="hljs-property">isMeasure</span>) <span class="hljs-title function_">extensionCallBack</span>(<span class="hljs-string">"pointSelected"</span>, demo);
+                <span class="hljs-keyword">break</span>;
+            }
+        }
+    });
+}
+</code></pre>
+<p><a href="images/amap_advanced_linkage.png" data-lightbox="2d39253f-68c7-4422-83d6-433e1aa011c5" data-title="Component linkage result"><img src="images/amap_advanced_linkage.png" alt="Component linkage result"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.6/0.0.6.zip" target="_blank">Linkage DEMO source code</a></p>
+</blockquote>
+<hr></hr>
+<h3 id="step-5-custom-component-configuration-item-extension"><a name="step-5-custom-component-configuration-item-extension" class="anchor-navigation-ex-anchor" href="#step-5-custom-component-configuration-item-extension"><i class="fa fa-link" aria-hidden="true"></i></a>Step 5: Custom Component (Configuration Item Extension)</h3>
+<p><strong>Scenario:</strong> When you need complex configuration items that exceed the built-in types, specify a custom component type in <code>config.json</code> and inject that component into the subject from the plugin.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Specify a custom component in config.json</span>
+{
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Custom Component"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"bi.test.widget"</span>,
+    <span class="hljs-string">"defaultValue"</span>: <span class="hljs-string">"1"</span>
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Custom component implementation (must be injected into subjectPage)</span>
+!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Demo</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+        <span class="hljs-attr">props</span>: { <span class="hljs-attr">baseCls</span>: <span class="hljs-string">""</span> },
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical"</span>,
+                <span class="hljs-attr">width</span>: <span class="hljs-number">300</span>,
+                <span class="hljs-attr">items</span>: [{
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.vertical_adapt"</span>,
+                        <span class="hljs-attr">items</span>: [
+                            { <span class="hljs-attr">el</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">"Name"</span>, <span class="hljs-attr">textAlign</span>: <span class="hljs-string">"left"</span> }, <span class="hljs-attr">width</span>: <span class="hljs-number">70</span>, <span class="hljs-attr">rgap</span>: <span class="hljs-number">10</span> },
+                            {
+                                <span class="hljs-attr">el</span>: {
+                                    <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.editor"</span>,
+                                    <span class="hljs-attr">value</span>: self.<span class="hljs-property">options</span>.<span class="hljs-property">value</span>,
+                                    <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-border bi-border-radius"</span>,
+                                    <span class="hljs-attr">width</span>: <span class="hljs-number">150</span>,
+                                    <span class="hljs-attr">height</span>: <span class="hljs-number">24</span>,
+                                    <span class="hljs-attr">allowClear</span>: <span class="hljs-literal">false</span>,
+                                    <span class="hljs-attr">listeners</span>: [{
+                                        <span class="hljs-attr">eventName</span>: <span class="hljs-string">"EVENT_CHANGE"</span>,
+                                        <span class="hljs-attr">action</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+                                            self.<span class="hljs-property">options</span>.<span class="hljs-title function_">setValue</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getValue</span>());
+                                        }
+                                    }]
+                                }
+                            }
+                        ]
+                    },
+                    <span class="hljs-attr">tgap</span>: <span class="hljs-number">10</span>
+                }]
+            };
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"bi.amap.demo"</span>, <span class="hljs-title class_">Demo</span>);
+})();
+</code></pre>
+<p><a href="images/amap_custom_widget_config.png" data-lightbox="d6900d5c-e3f5-49ad-bca6-5ba95fcf0d92" data-title="Custom component configuration panel"><img src="images/amap_custom_widget_config.png" alt="Custom component configuration panel"></img></a></p>
+<p><a href="images/amap_custom_widget_effect.png" data-lightbox="ed7ac0e1-2179-4b0b-b411-6cf835727cd1" data-title="Custom component result"><img src="images/amap_custom_widget_effect.png" alt="Custom component result"></img></a></p>
+<blockquote>
+<p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.7/0.0.7.zip" target="_blank">Custom Component DEMO source code</a></p>
 </blockquote>
 <div id="gitalk-container"></div>
                                 
@@ -3602,7 +4162,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FineBI Plugin Samples","level":"3.2.2","depth":2,"next":{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},"previous":{"title":"Custom Widget (Styled Text Box)","level":"3.2.1.4","depth":3,"path":"tutorial/samples/finereport/style-text-widget.md","ref":"tutorial/samples/finereport/style-text-widget.md","articles":[]},"articles":[{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},{"title":"Custom Widget","level":"3.2.2.2","depth":3,"path":"tutorial/samples/finebi/custom-widget.md","ref":"tutorial/samples/finebi/custom-widget.md","articles":[]},{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"path":"tutorial/samples/finebi/custom-filter.md","ref":"tutorial/samples/finebi/custom-filter.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/3d-scatter.md","mtime":"2026-06-11T06:55:37.655Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"FineBI Plugin Samples","level":"3.2.2","depth":2,"next":{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},"previous":{"title":"Custom Widget (Styled Text Box)","level":"3.2.1.4","depth":3,"path":"tutorial/samples/finereport/style-text-widget.md","ref":"tutorial/samples/finereport/style-text-widget.md","articles":[]},"articles":[{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},{"title":"Custom Widget","level":"3.2.2.2","depth":3,"path":"tutorial/samples/finebi/custom-widget.md","ref":"tutorial/samples/finebi/custom-widget.md","articles":[]},{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"path":"tutorial/samples/finebi/custom-filter.md","ref":"tutorial/samples/finebi/custom-filter.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/3d-scatter.md","mtime":"2026-07-10T02:20:31.027Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

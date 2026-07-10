@@ -3555,10 +3555,123 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#set-theme"><b></b>set-theme</a></li></ul></div><a href="#set-theme" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="set-theme"><a name="set-theme" class="anchor-navigation-ex-anchor" href="#set-theme"><i class="fa fa-link" aria-hidden="true"></i></a>set-theme</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#set-theme"><b></b>Set Theme</a></li><ul><li><span class="title-icon "></span><a href="#layout-strategy"><b></b>Layout Strategy</a></li><li><span class="title-icon "></span><a href="#layout-information"><b></b>Layout Information</a></li><li><span class="title-icon "></span><a href="#customize-the-base-mode"><b></b>Customize the Base Mode</a></li></ul></ul></div><a href="#set-theme" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="set-theme"><a name="set-theme" class="anchor-navigation-ex-anchor" href="#set-theme"><i class="fa fa-link" aria-hidden="true"></i></a>Set Theme</h1>
+<p>The platform theme framework configuration includes layout strategy configuration and layout information configuration.</p>
+<p>The platform ships with two built-in modes: <code>classic</code> and <code>modern</code>. You can initialize from either of these modes for customization. Developers are free to choose the level of customization — extending a built-in mode is recommended. If you have an in-depth understanding of FineUI, you can also define a fully custom mode.</p>
+<h2 id="layout-strategy"><a name="layout-strategy" class="anchor-navigation-ex-anchor" href="#layout-strategy"><i class="fa fa-link" aria-hidden="true"></i></a>Layout Strategy</h2>
+<p>The layout strategy configures the overall layout of the platform. The default layout uses absolute positioning in a "top, left, right" pattern, divided into a <code>header</code>, a <code>menu</code> bar, and a <code>body</code> main content area:</p>
+<pre><code class="lang-js"><span class="hljs-attr">type</span>: <span class="hljs-string">"bi.absolute"</span>,
+<span class="hljs-attr">items</span>: [
+    {
+        <span class="hljs-attr">el</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.absolute"</span>,
+            <span class="hljs-attr">items</span>: [
+                {
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.body"</span>
+                    },
+                    <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">left</span>: layoutConfig.<span class="hljs-property">west</span>.<span class="hljs-property">invisible</span> ? <span class="hljs-number">0</span> : layoutConfig.<span class="hljs-property">west</span>.<span class="hljs-property">width</span>
+                }, {
+                    <span class="hljs-attr">el</span>: {
+                        <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.menu"</span>,
+                        <span class="hljs-attr">width</span>: layoutConfig.<span class="hljs-property">west</span>.<span class="hljs-property">width</span>, <span class="hljs-comment">// width, default 70</span>
+                        <span class="hljs-attr">invisible</span>: layoutConfig.<span class="hljs-property">west</span>.<span class="hljs-property">invisible</span>
+                    },
+                    <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>
+                }
+            ]
+        },
+        <span class="hljs-attr">top</span>: layoutConfig.<span class="hljs-property">north</span>.<span class="hljs-property">invisible</span> ? <span class="hljs-number">0</span> : layoutConfig.<span class="hljs-property">north</span>.<span class="hljs-property">height</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span>
+    }, {
+        <span class="hljs-attr">el</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.header"</span>,
+            <span class="hljs-attr">height</span>: layoutConfig.<span class="hljs-property">north</span>.<span class="hljs-property">height</span>,
+            <span class="hljs-attr">invisible</span>: layoutConfig.<span class="hljs-property">north</span>.<span class="hljs-property">invisible</span>
+        },
+        <span class="hljs-attr">height</span>: layoutConfig.<span class="hljs-property">north</span>.<span class="hljs-property">height</span>,
+        <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>
+    }
+]
+</code></pre>
+<p>To configure the layout strategy:</p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.theme"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">inject</span>({
+        <span class="hljs-attr">layoutStrategy</span>: {
+            <span class="hljs-comment">//  custom layout strategy</span>
+        }
+    });
+});
+</code></pre>
+<h2 id="layout-information"><a name="layout-information" class="anchor-navigation-ex-anchor" href="#layout-information"><i class="fa fa-link" aria-hidden="true"></i></a>Layout Information</h2>
+<p>Layout information configures certain properties (width, height, etc.) of the built-in layout strategy. The full configuration object is as follows:</p>
+<pre><code class="lang-js">{
+    <span class="hljs-comment">// Frame layout configuration properties</span>
+    <span class="hljs-attr">config4Frame</span>: {
+        <span class="hljs-attr">north</span>: {  <span class="hljs-comment">// Top bar</span>
+            <span class="hljs-attr">height</span>: <span class="hljs-number">40</span>,
+            <span class="hljs-attr">invisible</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">west</span>: {  <span class="hljs-comment">// Menu</span>
+            <span class="hljs-attr">width</span>: <span class="hljs-number">70</span>,
+            <span class="hljs-attr">invisible</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">center</span>: {
+            <span class="hljs-attr">left</span>: {  <span class="hljs-comment">// Left panel of the main content area</span>
+                <span class="hljs-attr">width</span>: <span class="hljs-number">240</span>,
+                <span class="hljs-attr">maxSize</span>: <span class="hljs-number">500</span>,
+                <span class="hljs-attr">minSize</span>: <span class="hljs-number">240</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>Configuration example: widen the directory panel and increase the maximum width</p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.layout"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">inject</span>({
+        <span class="hljs-attr">layoutConfig</span>: {
+            <span class="hljs-attr">center</span>: {
+                <span class="hljs-attr">left</span>: {
+                    <span class="hljs-attr">width</span>: <span class="hljs-number">340</span>,
+                    <span class="hljs-attr">maxSize</span>: <span class="hljs-number">800</span>
+                }
+            }
+        }
+    });
+});
+</code></pre>
+<h2 id="customize-the-base-mode"><a name="customize-the-base-mode" class="anchor-navigation-ex-anchor" href="#customize-the-base-mode"><i class="fa fa-link" aria-hidden="true"></i></a>Customize the Base Mode</h2>
+<p>You can set the <code>base</code> property to specify the base mode. If you do not want to use a built-in mode and prefer full customization, set <code>base</code> to an empty string and then specify the provider key:</p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.theme"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">inject</span>({
+        <span class="hljs-attr">base</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">provider</span>: <span class="hljs-string">"my.own.provider"</span>
+    });
+});
+
+<span class="hljs-keyword">var</span> <span class="hljs-title class_">Provider</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">$get</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">OB</span>, {
+
+            <span class="hljs-attr">initConfig</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) {
+                <span class="hljs-comment">// Initialize custom settings — this example configures the directory node in classic theme mode</span>
+                <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.menu.items"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+                    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">some</span>(items, <span class="hljs-keyword">function</span> (<span class="hljs-params">index, item</span>) {  <span class="hljs-comment">// some method is similar to lodash's some</span>
+                        <span class="hljs-keyword">if</span> (item.<span class="hljs-property">value</span> === <span class="hljs-string">"directory"</span>) {
+                            item.<span class="hljs-property">cardType</span> = <span class="hljs-string">"dec.frame.classic"</span>;
+                            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+                        }
+                    });
+                    <span class="hljs-keyword">return</span> items;
+                });
+            }
+        });
+    };
+};
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">provider</span>(<span class="hljs-string">"my.own.provider"</span>, <span class="hljs-title class_">Provider</span>);
+</code></pre>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3715,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Set Theme","level":"2.4.2.3.2.1","depth":5,"next":{"title":"Favorites Support for Theme","level":"2.4.2.3.2.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","ref":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","articles":[]},"previous":{"title":"Theme Development API","level":"2.4.2.3.2","depth":4,"path":"tutorial/common-extensions/platform-frontend/theme-api.md","ref":"tutorial/common-extensions/platform-frontend/theme-api.md","articles":[{"title":"Set Theme","level":"2.4.2.3.2.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/set-theme.md","ref":"tutorial/common-extensions/platform-frontend/set-theme.md","articles":[]},{"title":"Favorites Support for Theme","level":"2.4.2.3.2.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","ref":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/set-theme.md","mtime":"2026-06-11T06:55:37.644Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Set Theme","level":"2.4.2.3.2.1","depth":5,"next":{"title":"Favorites Support for Theme","level":"2.4.2.3.2.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","ref":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","articles":[]},"previous":{"title":"Theme Development API","level":"2.4.2.3.2","depth":4,"path":"tutorial/common-extensions/platform-frontend/theme-api.md","ref":"tutorial/common-extensions/platform-frontend/theme-api.md","articles":[{"title":"Set Theme","level":"2.4.2.3.2.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/set-theme.md","ref":"tutorial/common-extensions/platform-frontend/set-theme.md","articles":[]},{"title":"Favorites Support for Theme","level":"2.4.2.3.2.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","ref":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/set-theme.md","mtime":"2026-07-10T02:20:30.969Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

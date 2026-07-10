@@ -3555,10 +3555,92 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#frontend-dev-env"><b></b>frontend-dev-env</a></li></ul></div><a href="#frontend-dev-env" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="frontend-dev-env"><a name="frontend-dev-env" class="anchor-navigation-ex-anchor" href="#frontend-dev-env"><i class="fa fa-link" aria-hidden="true"></i></a>frontend-dev-env</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#set-up-a-pure-frontend-plugin-development-environment"><b></b>Set Up a Pure Frontend Plugin Development Environment</a></li><ul><li><span class="title-icon "></span><a href="#install-nodejs"><b></b>Install NodeJS</a></li><li><span class="title-icon "></span><a href="#install-git"><b></b>Install git</a></li><li><span class="title-icon "></span><a href="#install-the-platform-plugin-development-scaffold"><b></b>Install the Platform Plugin Development Scaffold</a></li><li><span class="title-icon "></span><a href="#create-a-plugin-frontend-project"><b></b>Create a Plugin Frontend Project</a></li></ul></ul></div><a href="#set-up-a-pure-frontend-plugin-development-environment" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="set-up-a-pure-frontend-plugin-development-environment"><a name="set-up-a-pure-frontend-plugin-development-environment" class="anchor-navigation-ex-anchor" href="#set-up-a-pure-frontend-plugin-development-environment"><i class="fa fa-link" aria-hidden="true"></i></a>Set Up a Pure Frontend Plugin Development Environment</h1>
 <blockquote>
-<p>Coming soon.</p>
+<p><strong>Note</strong>: This document is deprecated.<br></br>Demo reference: <a href="https://code.fanruan.com/dailer/javascript-dev-demo" target="_blank">https://code.fanruan.com/dailer/javascript-dev-demo</a></p>
 </blockquote>
+<hr></hr>
+<h2 id="install-nodejs"><a name="install-nodejs" class="anchor-navigation-ex-anchor" href="#install-nodejs"><i class="fa fa-link" aria-hidden="true"></i></a>Install NodeJS</h2>
+<p>If NodeJS is already installed in your environment, skip this step.</p>
+<ol>
+<li><p><strong>Download</strong> Go to the <a href="https://nodejs.org/zh-cn/download/" target="_blank">official download page</a> to download NodeJS. Select the Long-Term Support (LTS) version, then choose the installer for your operating system. This example uses Windows.</p>
+<p><a href="images/nodejs_download.png" data-lightbox="9547b1b1-8dba-49c7-8596-551f2d5fcc8e" data-title="NodeJS download page"><img src="images/nodejs_download.png" alt="NodeJS download page"></img></a></p>
+</li>
+<li><p><strong>Install</strong> Click the downloaded <code>.msi</code> file to install. No special configuration is needed — just click Next through the steps and finish.</p>
+<p><a href="images/nodejs_install.png" data-lightbox="16ee865c-a994-431c-bed0-9f54dc71883a" data-title="NodeJS installation steps"><img src="images/nodejs_install.png" alt="NodeJS installation steps"></img></a></p>
+</li>
+<li><p><strong>Verify</strong> After installation, open a command prompt to check whether NodeJS was installed successfully and added to the PATH. Use <code>node -v</code> to check the current Node version.</p>
+<p><a href="images/nodejs_version_check.png" data-lightbox="c733816d-9687-4eb7-ae93-49dbbfe716ac" data-title="NodeJS version verification"><img src="images/nodejs_version_check.png" alt="NodeJS version verification"></img></a></p>
+</li>
+<li><p><strong>NPM</strong> NPM is the package manager bundled with NodeJS and solves many dependency management problems. For more information, see this <a href="https://www.runoob.com/nodejs/nodejs-npm.html" target="_blank">NPM Introduction</a>. NPM is installed alongside NodeJS. Use <code>npm -v</code> to check the current npm version.</p>
+<p><a href="images/npm_version_check.png" data-lightbox="98d65b3a-8d6f-42ee-8d34-b7ef7744c286" data-title="NPM version verification"><img src="images/npm_version_check.png" alt="NPM version verification"></img></a></p>
+</li>
+</ol>
+<p>For other operating systems, refer to the official site or the <a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank">Node.js Installation Guide</a>.</p>
+<h2 id="install-git"><a name="install-git" class="anchor-navigation-ex-anchor" href="#install-git"><i class="fa fa-link" aria-hidden="true"></i></a>Install git</h2>
+<p>If git is already installed in your environment, skip this step.</p>
+<ol>
+<li><p><strong>Download</strong> Go to the <a href="https://git-scm.com/downloads" target="_blank">official download page</a> to download git for your operating system. Downloads may be slow; you can use the <a href="http://npm.taobao.org/mirrors/git-for-windows/" target="_blank">Taobao mirror</a>. This example uses <a href="http://npm.taobao.org/mirrors/git-for-windows/v2.22.0.windows.1/Git-2.22.0-64-bit.exe" target="_blank">Git-2.22.0-64-bit.exe</a>.</p>
+<p><a href="images/git_download.png" data-lightbox="e4781b57-a9d0-4c72-bea1-e7b64097c4f7" data-title="git download page"><img src="images/git_download.png" alt="git download page"></img></a></p>
+</li>
+<li><p><strong>Install</strong> Click the downloaded installer and proceed through the steps using the default options.</p>
+<p><a href="images/git_install.png" data-lightbox="1d5f2991-30c3-426c-a6c9-a6cea5cd613b" data-title="git installation steps"><img src="images/git_install.png" alt="git installation steps"></img></a></p>
+</li>
+<li><p><strong>Verify</strong> After installation, git commands are available in the command prompt. Several git-related tools will also be added.</p>
+<p><a href="images/git_tools.png" data-lightbox="300cbaad-83fb-4391-bf51-847877021d17" data-title="git tools list"><img src="images/git_tools.png" alt="git tools list"></img></a></p>
+<p><a href="images/git_version_check.png" data-lightbox="e1c4ea6a-a028-48f5-8da2-8ba902aaa72d" data-title="git version verification"><img src="images/git_version_check.png" alt="git version verification"></img></a></p>
+</li>
+<li><p><strong>Basic configuration</strong> A few simple settings are typically required when using git.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># Set username</span>
+git config --global user.name <span class="hljs-string">"Your Name"</span>
+
+<span class="hljs-comment"># Set email</span>
+git config --global user.email <span class="hljs-string">"your@email.com"</span>
+
+<span class="hljs-comment"># View configuration</span>
+git config --list
+</code></pre>
+</li>
+</ol>
+<h2 id="install-the-platform-plugin-development-scaffold"><a name="install-the-platform-plugin-development-scaffold" class="anchor-navigation-ex-anchor" href="#install-the-platform-plugin-development-scaffold"><i class="fa fa-link" aria-hidden="true"></i></a>Install the Platform Plugin Development Scaffold</h2>
+<p>First, install the scaffold globally. If you encounter an error such as <code>Error: EPERM: operation not permitted</code>, open the command prompt as Administrator. On Linux, prefix the command with <code>sudo</code>.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># Install globally</span>
+npm install -g fine-cli
+
+<span class="hljs-comment"># The plugin template uses gulp, so install it globally as well</span>
+npm install -g gulp
+
+<span class="hljs-comment"># After installation, type fine to see related information</span>
+fine
+
+<span class="hljs-comment"># Use fine plugin to see plugin-related information</span>
+fine plugin
+</code></pre>
+<p><a href="images/fine_cli_installed.png" data-lightbox="b2837f99-a9d0-4570-af70-9b65b867442b" data-title="fine-cli installed successfully"><img src="images/fine_cli_installed.png" alt="fine-cli installed successfully"></img></a></p>
+<p><a href="images/fine_cli_overview.png" data-lightbox="fd96a428-4a7c-4bfb-aedc-ac34204065a4" data-title="fine-cli overview"><img src="images/fine_cli_overview.png" alt="fine-cli overview"></img></a></p>
+<p><a href="images/fine_cli_plugin_list.png" data-lightbox="9f97e61b-10d7-45e9-9a07-8f69e6e5f31c" data-title="fine-cli plugin list"><img src="images/fine_cli_plugin_list.png" alt="fine-cli plugin list"></img></a></p>
+<h2 id="create-a-plugin-frontend-project"><a name="create-a-plugin-frontend-project" class="anchor-navigation-ex-anchor" href="#create-a-plugin-frontend-project"><i class="fa fa-link" aria-hidden="true"></i></a>Create a Plugin Frontend Project</h2>
+<p>Use the scaffold installed in the previous step to quickly generate a plugin frontend project.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># fine plugin &lt;template-name&gt; [project-name]</span>
+
+<span class="hljs-comment"># Generate a project named "demo" using the decision-fineui template</span>
+fine plugin simple demo
+
+<span class="hljs-comment"># View all supported plugin templates</span>
+fine plugin -l
+</code></pre>
+<p><a href="images/plugin_scaffold_create_cmd.png" data-lightbox="8e04136a-f062-4ff2-ae32-436a697214f3" data-title="Scaffold create command"><img src="images/plugin_scaffold_create_cmd.png" alt="Scaffold create command"></img></a></p>
+<p><a href="images/plugin_scaffold_created.png" data-lightbox="3d9d8dab-0808-46d2-9c24-864bba5b4ab4" data-title="Scaffold project created"><img src="images/plugin_scaffold_created.png" alt="Scaffold project created"></img></a></p>
+<p>The steps to create a new frontend project are:</p>
+<ol>
+<li>Use <code>fine plugin -l</code> to list available plugin templates.</li>
+<li>Use <code>fine plugin &lt;template-name&gt; [project-name]</code> to generate the project.</li>
+<li>Complete the prompts during the creation process.</li>
+<li>After creation, modify the template content as needed.</li>
+<li>Implement the functionality required for your use case.</li>
+</ol>
+<p>During creation, you will be prompted for: the plugin ID (the final plugin ID); the platform project address (the host portion of the URL when browsing the web page after starting the project); and whether to automatically install dependencies (if you choose not to, install them manually later).</p>
+<p>If you are familiar with FineUI, you can use the <code>xxx-fineui</code> template; for beginners, the <code>simple</code> template is recommended.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3684,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Frontend Plugin Dev Environment","level":"2.4.2.3.1.3","depth":5,"next":{"title":"First Executable Example","level":"2.4.2.3.1.4","depth":5,"path":"tutorial/common-extensions/platform-frontend/first-executable-example.md","ref":"tutorial/common-extensions/platform-frontend/first-executable-example.md","articles":[]},"previous":{"title":"Create First Component","level":"2.4.2.3.1.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/create-first-component.md","ref":"tutorial/common-extensions/platform-frontend/create-first-component.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/frontend-dev-env.md","mtime":"2026-06-11T06:55:37.643Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Frontend Plugin Dev Environment","level":"2.4.2.3.1.3","depth":5,"next":{"title":"First Executable Example","level":"2.4.2.3.1.4","depth":5,"path":"tutorial/common-extensions/platform-frontend/first-executable-example.md","ref":"tutorial/common-extensions/platform-frontend/first-executable-example.md","articles":[]},"previous":{"title":"Create First Component","level":"2.4.2.3.1.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/create-first-component.md","ref":"tutorial/common-extensions/platform-frontend/create-first-component.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/frontend-dev-env.md","mtime":"2026-07-10T02:20:30.964Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

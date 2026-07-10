@@ -3555,10 +3555,213 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#excelexportappprovider"><b></b>ExcelExportAppProvider</a></li></ul></div><a href="#excelexportappprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="excelexportappprovider"><a name="excelexportappprovider" class="anchor-navigation-ex-anchor" href="#excelexportappprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ExcelExportAppProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#excelexportappprovider"><b></b>ExcelExportAppProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-terminology"><b></b>1. Terminology</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-overview"><b></b>3. Interface Overview</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-constraints-and-notes"><b></b>7. Constraints and Notes</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open-Source Examples</a></li></ul></ul></div><a href="#excelexportappprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="excelexportappprovider"><a name="excelexportappprovider" class="anchor-navigation-ex-anchor" href="#excelexportappprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ExcelExportAppProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.ExcelExportAppProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/ExcelExportAppProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-terminology"><a name="1-terminology" class="anchor-navigation-ex-anchor" href="#1-terminology"><i class="fa fa-link" aria-hidden="true"></i></a>1. Terminology</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>In addition to categorizing export file types, FineReport also provides further sub-categories for Excel exports. The three common Excel export modes are: paginated export, as-is export, and paginated-to-sheet export. When a user needs to add another Excel export sub-category or adjust the behavior of an existing one, the <code>ExcelExportAppProvider</code> interface can be used.</p>
+<p>This interface is typically used to adjust one specific Excel export type. It is not recommended for use when the customization applies to all Excel export types.</p>
+<h2 id="3-interface-overview"><a name="3-interface-overview" class="anchor-navigation-ex-anchor" href="#3-interface-overview"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Overview</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.fun;
+
+<span class="hljs-keyword">import</span> com.fr.io.collection.ExportCollection;
+<span class="hljs-keyword">import</span> com.fr.io.exporter.AppExporter;
+<span class="hljs-keyword">import</span> com.fr.io.exporter.ExcelExportType;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.stable.web.SessionProvider;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-comment">/**
+ * Created by richie on 16/1/19.
+ * Excel export sub-type interface
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ExcelExportAppProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ExcelExportAppProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+
+    <span class="hljs-comment">/**
+     * The extype value
+     *
+     * <span class="hljs-doctag">@return</span> Specific Excel export mode
+     */</span>
+    String <span class="hljs-title function_">exportType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Export collection for large-data Excel exports
+     *
+     * <span class="hljs-doctag">@param</span> req            HTTP request
+     * <span class="hljs-doctag">@param</span> res            HTTP response
+     * <span class="hljs-doctag">@param</span> sessionIDInfor Report session information
+     * <span class="hljs-doctag">@param</span> fileName       File name
+     * <span class="hljs-doctag">@param</span> type           Export type
+     * <span class="hljs-doctag">@return</span> Export collection
+     */</span>
+    ExportCollection <span class="hljs-title function_">newLargeDataExportCollection</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res,
+                                                  SessionProvider sessionIDInfor,
+                                                  String fileName, ExcelExportType type)</span>;
+
+    <span class="hljs-comment">/**
+     * Exporter
+     *
+     * <span class="hljs-doctag">@param</span> collection     Export collection
+     * <span class="hljs-doctag">@param</span> exportType     Export type
+     * <span class="hljs-doctag">@param</span> sessionIDInfor Report session information
+     * <span class="hljs-doctag">@return</span> Excel exporter
+     */</span>
+    AppExporter&lt;Boolean&gt; <span class="hljs-title function_">newAppExporter</span><span class="hljs-params">(ExportCollection collection, ExcelExportType exportType, SessionProvider sessionIDInfor)</span>;
+}
+</code></pre>
+<p>ExportCollection reference</p>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>3.6</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>4.0</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Yes</td>
+<td>Does not support BI dashboards</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ExcelExportAppProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>When the Excel export operator <code>ExcelOperate</code> is invoked, its <code>newExportCollection</code> method is called through <code>createExcelExportCollection</code>. There are two export collection creation methods: <code>createExcelExportCollection</code> and <code>createLargeDataExportCollection</code>. Both methods read all plugin-declared Excel sub-type interface implementations and apply them.</p>
+<h2 id="7-constraints-and-notes"><a name="7-constraints-and-notes" class="anchor-navigation-ex-anchor" href="#7-constraints-and-notes"><i class="fa fa-link" aria-hidden="true"></i></a>7. Constraints and Notes</h2>
+<p>This is a <code>Mutable</code> interface, so multiple implementations can be active during a single Excel export.</p>
+<p>Of the three interface methods, only <code>exportType()</code> is required. It specifies which Excel export sub-type this interface handles. The sub-type can be one of the existing built-in types (see the table below) or a newly defined custom type. Returning a built-in type overrides the corresponding built-in Excel export sub-type.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Parameter Flag</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paginated</td>
+<td>ExportConstants.TYPE_PAGE</td>
+<td></td>
+</tr>
+<tr>
+<td>As-is</td>
+<td>ExportConstants.TYPE_SIMPLE</td>
+<td></td>
+</tr>
+<tr>
+<td>Paginated to sheet</td>
+<td>ExportConstants.TYPE_PAGETOSHETT</td>
+<td></td>
+</tr>
+<tr>
+<td>Large data</td>
+<td>ExportConstants.TYPE_LARGEDATA_PAGE</td>
+</tr>
+</tbody>
+</table>
+<p><code>newLargeDataExportCollection</code> is exclusively for the large-data Excel export sub-type. It does not need to be implemented for other built-in or custom Excel export sub-types.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-excel-export-app-provider" target="_blank">demo-excel-export-app-provider</a></p>
+<p>Related interfaces:</p>
+<ul>
+<li><code>com.fr.report.fun.ExportOperateProvider</code></li>
+<li><code>com.fr.report.fun.ExportExtensionProcessor</code></li>
+<li><code>com.fr.stable.fun.ExcelExportCellValueProvider</code></li>
+<li><code>com.fr.form.stable.FormExportProcessor</code></li>
+<li><code>com.fr.report.fun.CommentExcelProcessor</code></li>
+<li><a href="https://wiki.fanruan.com/display/PD/com.fr.io.exporter.PDFExporterCreator" target="_blank">com.fr.io.exporter.PDFExporterCreator</a></li>
+<li><code>com.fr.report.fun.FormatActionProvider</code></li>
+</ul>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open-Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and contributed by community developers, for reference and learning purposes only. Neither the developers nor FineReport are obligated to provide instruction or support for any results from these examples. Commercial use of these examples is at the user's own risk.</p>
+<p>None available.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3805,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ExcelExportAppProvider","level":"2.4.3.2.9","depth":4,"next":{"title":"ExportExtensionProcessor","level":"2.4.3.2.10","depth":4,"path":"tutorial/finereport/report/ExportExtensionProcessor.md","ref":"tutorial/finereport/report/ExportExtensionProcessor.md","articles":[]},"previous":{"title":"ErrorMessageProcessor","level":"2.4.3.2.8","depth":4,"path":"tutorial/finereport/report/ErrorMessageProcessor.md","ref":"tutorial/finereport/report/ErrorMessageProcessor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ExcelExportAppProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ExcelExportAppProvider","level":"2.4.3.2.9","depth":4,"next":{"title":"ExportExtensionProcessor","level":"2.4.3.2.10","depth":4,"path":"tutorial/finereport/report/ExportExtensionProcessor.md","ref":"tutorial/finereport/report/ExportExtensionProcessor.md","articles":[]},"previous":{"title":"ErrorMessageProcessor","level":"2.4.3.2.8","depth":4,"path":"tutorial/finereport/report/ErrorMessageProcessor.md","ref":"tutorial/finereport/report/ErrorMessageProcessor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ExcelExportAppProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

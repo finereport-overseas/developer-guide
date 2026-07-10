@@ -3555,11 +3555,72 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#info-retrieval"><b></b>info-retrieval</a></li></ul></div><a href="#info-retrieval" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="info-retrieval"><a name="info-retrieval" class="anchor-navigation-ex-anchor" href="#info-retrieval"><i class="fa fa-link" aria-hidden="true"></i></a>info-retrieval</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#information-retrieval-providers"><b></b>Information Retrieval Providers</a></li><ul><li><span class="title-icon "></span><a href="#biproviderdesigntemplate"><b></b>bi.provider.design.template</a></li></ul></ul></div><a href="#information-retrieval-providers" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="information-retrieval-providers"><a name="information-retrieval-providers" class="anchor-navigation-ex-anchor" href="#information-retrieval-providers"><i class="fa fa-link" aria-hidden="true"></i></a>Information Retrieval Providers</h1>
+<p>All frontend interfaces provided by FineBI 6.0 are exposed in the form of providers. Information retrieval providers are used to obtain information about dashboards and components.</p>
+<hr></hr>
+<h2 id="biproviderdesigntemplate"><a name="biproviderdesigntemplate" class="anchor-navigation-ex-anchor" href="#biproviderdesigntemplate"><i class="fa fa-link" aria-hidden="true"></i></a><code>bi.provider.design.template</code></h2>
+<p>Retrieve dashboard and component information. Because FineBI 6.0 allows multiple dashboards to be edited simultaneously within a theme page, these providers require an additional dashboard <code>id</code> parameter to identify the target dashboard — unlike the Utils methods in 5.1.x.</p>
 <blockquote>
-<p>Coming soon.</p>
+<p>If there is only one dashboard under the current theme or single page, the <code>id</code> parameter can be omitted.</p>
 </blockquote>
-<div id="gitalk-container"></div>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Signature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getAllWidgetIds</code></td>
+<td><code>getAllWidgetIds(id: string)</code></td>
+<td>Get all component IDs in a dashboard by dashboard ID</td>
+</tr>
+<tr>
+<td><code>getName</code></td>
+<td><code>getName(id: string)</code></td>
+<td>Get the dashboard name by dashboard ID</td>
+</tr>
+<tr>
+<td><code>getWidgetTypeById</code></td>
+<td><code>getWidgetTypeById(id: string)</code></td>
+<td>Get the component type by component ID</td>
+</tr>
+<tr>
+<td><code>getWidgetNameById</code></td>
+<td><code>getWidgetNameById(id: string)</code></td>
+<td>Get the component name by component ID</td>
+</tr>
+<tr>
+<td><code>isUnderPreviewMode</code></td>
+<td><code>isUnderPreviewMode(id: string)</code></td>
+<td>Check whether the current template is in preview mode</td>
+</tr>
+<tr>
+<td><code>getWidgetById</code></td>
+<td><code>getWidgetById(id: string)</code></td>
+<td>Get the detailed configuration of a component by component ID</td>
+</tr>
+<tr>
+<td><code>getControlParamsParsedUrl</code></td>
+<td><code>getControlParamsParsedUrl(id: string, url: string)</code></td>
+<td>Parse control parameter values in a URL using the dashboard ID and URL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong></p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Providers</span>.<span class="hljs-title function_">getProvider</span>(<span class="hljs-string">"bi.provider.design.template"</span>).<span class="hljs-title function_">getAllWidgetIds</span>(<span class="hljs-string">'xxxxxxx'</span>)
+</code></pre>
+<p><strong><code>getControlParamsParsedUrl</code> parameter format</strong></p>
+<p>The URL parameter format is <code>targetControlName={currentControlName}</code>. After parsing, the control value is substituted into the corresponding position:</p>
+<pre><code>// Format: targetControlName={currentControlName}
+TextDropdown={TextDropdown}
+
+// Parsed result example
+TextDropdown={TextDropdown}  ==&gt;  TextDropdown=xxx
+riqi={DateRange}             ==&gt;  riqi_s=xxx&amp;riqi_e=xxx
+</code></pre><div id="gitalk-container"></div>
                                 
                                 </section>
                             
@@ -3602,7 +3663,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Information Retrieval","level":"2.4.4.2.3","depth":4,"next":{"title":"UI Modification","level":"2.4.4.2.4","depth":4,"path":"tutorial/finebi/frontend/ui-modification.md","ref":"tutorial/finebi/frontend/ui-modification.md","articles":[]},"previous":{"title":"Interceptors & Modifiers","level":"2.4.4.2.2","depth":4,"path":"tutorial/finebi/frontend/intercept-modify.md","ref":"tutorial/finebi/frontend/intercept-modify.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finebi/frontend/info-retrieval.md","mtime":"2026-06-11T06:55:37.645Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Information Retrieval","level":"2.4.4.2.3","depth":4,"next":{"title":"UI Modification","level":"2.4.4.2.4","depth":4,"path":"tutorial/finebi/frontend/ui-modification.md","ref":"tutorial/finebi/frontend/ui-modification.md","articles":[]},"previous":{"title":"Interceptors & Modifiers","level":"2.4.4.2.2","depth":4,"path":"tutorial/finebi/frontend/intercept-modify.md","ref":"tutorial/finebi/frontend/intercept-modify.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finebi/frontend/info-retrieval.md","mtime":"2026-07-10T02:20:30.971Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

@@ -3555,10 +3555,135 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#tabledataprovider"><b></b>TableDataProvider</a></li></ul></div><a href="#tabledataprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="tabledataprovider"><a name="tabledataprovider" class="anchor-navigation-ex-anchor" href="#tabledataprovider"><i class="fa fa-link" aria-hidden="true"></i></a>TableDataProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#tabledataprovider"><b></b>TableDataProvider</a></li><ul><li><span class="title-icon "></span><a href="#background-and-use-cases"><b></b>Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#supported-versions"><b></b>Supported Versions</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li><li><span class="title-icon "></span><a href="#how-it-works"><b></b>How It Works</a></li><li><span class="title-icon "></span><a href="#useful-links"><b></b>Useful Links</a></li></ul></ul></div><a href="#tabledataprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="tabledataprovider"><a name="tabledataprovider" class="anchor-navigation-ex-anchor" href="#tabledataprovider"><i class="fa fa-link" aria-hidden="true"></i></a>TableDataProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.stable.fun.TableDataProvider</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-and-use-cases"><a name="background-and-use-cases" class="anchor-navigation-ex-anchor" href="#background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>Background and Use Cases</h2>
+<p>FanRuan Report supports data query datasets with parameterized and expression-parsed queries; frontend parameters can be injected into SQL fragments, which poses an SQL injection risk. Version 10.0 includes built-in injection prevention, but users may still need custom interception handling and data query monitoring. <code>TableDataProvider</code> is the interface opened to meet these needs.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.ParameterProvider;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.stable.script.CalculatorProvider;
+
+<span class="hljs-comment">/**
+ * Dataset parameter pre-processing
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TableDataProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"TableDataProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Modifies parameter values before SQL parsing
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">processParametersBeforeAnalyzeSQL</span><span class="hljs-params">(ParameterProvider[] paras,
+                                           CalculatorProvider calculatorProvider)</span>;
+
+    <span class="hljs-comment">/**
+     * Modifies parameters and SQL before dataset execution
+     */</span>
+    String <span class="hljs-title function_">processTableDataSQL</span><span class="hljs-params">(ParameterProvider[] paras, String sql,
+                               CalculatorProvider calculatorProvider)</span>;
+}
+</code></pre>
+<h2 id="supported-versions"><a name="supported-versions" class="anchor-navigation-ex-anchor" href="#supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Version</th>
+<th>Support</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Supported</td>
+<td>Interface named TableDataProcessor; single instance only</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Supported</td>
+<td>Interface named TableDataProcessor; single instance only</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Supported</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>3.6</td>
+<td>Supported</td>
+<td>Interface named TableDataProcessor; single instance only</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>4.0</td>
+<td>Supported</td>
+<td>Interface named TableDataProcessor; single instance only</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h2>
+<p>Add the following node in <code>plugin.xml</code>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">TableDataProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="how-it-works"><a name="how-it-works" class="anchor-navigation-ex-anchor" href="#how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>How It Works</h2>
+<p>During <code>DBTableData</code> result computation, the system pre-processes parameters and SQL via <code>getStatementSql</code>, retrieves all registered provider instances, and applies the pre-processing operations in sequence.</p>
+<p><strong>Limitation:</strong> This interface only applies to data query datasets or datasets that use the <code>PluginModule</code> interface retrieval mechanism.</p>
+<h2 id="useful-links"><a name="useful-links" class="anchor-navigation-ex-anchor" href="#useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>Useful Links</h2>
+<ul>
+<li>Demo: <a href="https://code.fanruan.com/hugh/demo-table-data-provider" target="_blank">demo-table-data-provider</a></li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3727,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TableDataProvider","level":"2.4.2.1.31","depth":4,"next":{"title":"TransferPackageProvider","level":"2.4.2.1.32","depth":4,"path":"tutorial/common-extensions/core/TransferPackageProvider.md","ref":"tutorial/common-extensions/core/TransferPackageProvider.md","articles":[]},"previous":{"title":"TableDataBuildProvider","level":"2.4.2.1.30","depth":4,"path":"tutorial/common-extensions/core/TableDataBuildProvider.md","ref":"tutorial/common-extensions/core/TableDataBuildProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/TableDataProvider.md","mtime":"2026-06-11T06:55:37.643Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"TableDataProvider","level":"2.4.2.1.31","depth":4,"next":{"title":"TransferPackageProvider","level":"2.4.2.1.32","depth":4,"path":"tutorial/common-extensions/core/TransferPackageProvider.md","ref":"tutorial/common-extensions/core/TransferPackageProvider.md","articles":[]},"previous":{"title":"TableDataBuildProvider","level":"2.4.2.1.30","depth":4,"path":"tutorial/common-extensions/core/TableDataBuildProvider.md","ref":"tutorial/common-extensions/core/TableDataBuildProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/TableDataProvider.md","mtime":"2026-07-10T02:20:30.963Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

@@ -3555,10 +3555,204 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#bidialectprovider"><b></b>BIDialectProvider</a></li></ul></div><a href="#bidialectprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="bidialectprovider"><a name="bidialectprovider" class="anchor-navigation-ex-anchor" href="#bidialectprovider"><i class="fa fa-link" aria-hidden="true"></i></a>BIDialectProvider</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#bidialectprovider"><b></b>BIDialectProvider</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><ul><li><span class="title-icon "></span><a href="#core-bidialect-interface"><b></b>Core BIDialect Interface</a></li></ul><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example-code"><b></b>Example Code</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#bidialectprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="bidialectprovider"><a name="bidialectprovider" class="anchor-navigation-ex-anchor" href="#bidialectprovider"><i class="fa fa-link" aria-hidden="true"></i></a>BIDialectProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>provider</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.finebi.api.dialect.BIDialectProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>An extension point for integrating custom database dialects into FineBI. By providing a mapping function from the platform <code>Dialect</code> to a custom <code>BIDialect</code>, FineBI can generate correct SQL for a specific database.</p>
 <blockquote>
-<p>Coming soon.</p>
+<p><strong>Note</strong>: The FineBI service must be <strong>restarted</strong> after the plugin is enabled for changes to take effect.</p>
 </blockquote>
+<p>For background on related requirements, see: KERNEL-15316 "BI Support for Custom Dialects".</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BIDialectProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"BIDialectProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Returns a function that maps a platform Dialect to a custom BIDialect.
+     * Return Optional.empty() if the current Dialect does not require custom handling.
+     */</span>
+    Function&lt;Dialect, Optional&lt;BIDialect&gt;&gt; <span class="hljs-title function_">getBIDialect</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h3 id="core-bidialect-interface"><a name="core-bidialect-interface" class="anchor-navigation-ex-anchor" href="#core-bidialect-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Core BIDialect Interface</h3>
+<p><code>BIDialect</code> is the core of dialect adaptation. It is recommended to extend <code>AbstractBIDialect</code> and override the following methods as needed:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getDSLContext()</code></td>
+<td><strong>Core method</strong>: Returns a jooq DSLContext used for SQL generation</td>
+</tr>
+<tr>
+<td><code>getFieldInfoSql()</code></td>
+<td>Returns the SQL for retrieving result set field info; return <code>empty</code> to use the default implementation</td>
+</tr>
+<tr>
+<td><code>getDialectResultSet()</code></td>
+<td>Wraps a ResultSet to apply dialect adaptations during data retrieval</td>
+</tr>
+<tr>
+<td><code>isSupportCTE()</code></td>
+<td>Whether CTE is supported</td>
+</tr>
+<tr>
+<td><code>windowFunctionNotSupportXxx()</code></td>
+<td>Window function support for each aggregate (SUM/AVG/MAX/MIN/Variance, etc.)</td>
+</tr>
+<tr>
+<td><code>isTopNConditionByExists()</code></td>
+<td>Whether TopN is implemented via an EXISTS subquery</td>
+</tr>
+<tr>
+<td><code>isTopNUseWindowFunction()</code></td>
+<td>Whether TopN is implemented via a window function</td>
+</tr>
+<tr>
+<td><code>isRowNumberWithoutOrderBy()</code></td>
+<td>Whether <code>row_number</code> can omit ORDER BY</td>
+</tr>
+<tr>
+<td><code>castIntegerWithOverFlow()</code></td>
+<td>Explicit type cast for integer overflow in SUM and similar functions</td>
+</tr>
+<tr>
+<td><code>castIntegerWithPrecision()</code></td>
+<td>Type cast for AVG integer precision issues</td>
+</tr>
+<tr>
+<td><code>checkGroups()</code></td>
+<td>Custom GROUP BY handling logic</td>
+</tr>
+<tr>
+<td><code>isSortNullFirst()</code> / <code>isSortNullLast()</code></td>
+<td>Position of NULL values during sorting</td>
+</tr>
+<tr>
+<td><code>isUseAliasInOrder()</code></td>
+<td>Whether to use aliases in ORDER BY (e.g., Hive)</td>
+</tr>
+<tr>
+<td><code>alwaysUseCrossJoin()</code></td>
+<td>Always use CROSS JOIN syntax</td>
+</tr>
+<tr>
+<td><code>needNullCast()</code></td>
+<td>Whether NULL values require an explicit CAST</td>
+</tr>
+<tr>
+<td><code>isEqualsWithNullAndEmptyString()</code></td>
+<td>Whether NULL and empty string are treated as equivalent</td>
+</tr>
+<tr>
+<td><code>onlySupportCountAll()</code></td>
+<td>Whether only <code>COUNT(*)</code> is supported</td>
+</tr>
+<tr>
+<td><code>previewRemoveLastColumn()</code></td>
+<td>Whether to remove the last column in SQL preview (e.g., Oracle's <code>rn</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Register your implementation class in the plugin's <code>plugin.xml</code> via the <code>extra-core</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">BIDialectProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.YourBIDialectProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="example-code"><a name="example-code" class="anchor-navigation-ex-anchor" href="#example-code"><i class="fa fa-link" aria-hidden="true"></i></a>Example Code</h2>
+<p>The following is a reference implementation for YashanDB dialect adaptation:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 1. Implement BIDialectProvider to map the Yashan Dialect to a custom BIDialect</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">YashanBIDialectProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">BIDialectProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Function&lt;Dialect, Optional&lt;BIDialect&gt;&gt; <span class="hljs-title function_">getBIDialect</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> dialect -&gt; {
+            <span class="hljs-comment">// Check whether this is a YashanDB Dialect</span>
+            <span class="hljs-keyword">if</span> (dialect <span class="hljs-keyword">instanceof</span> YashanDialect) {
+                <span class="hljs-keyword">return</span> Optional.of(<span class="hljs-keyword">new</span> <span class="hljs-title class_">YashanBIDialect</span>(dialect));
+            }
+            <span class="hljs-keyword">return</span> Optional.empty();
+        };
+    }
+}
+
+<span class="hljs-comment">// 2. Extend AbstractBIDialect and override dialect behaviors as needed</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">YashanBIDialect</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractBIDialect</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">YashanBIDialect</span><span class="hljs-params">(Dialect dialect)</span> {
+        <span class="hljs-built_in">super</span>(dialect);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">windowFunctionNotSupportVariance</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <span class="hljs-comment">// YashanDB does not support Variance window functions</span>
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">windowFunctionNotSupportStandardDeviation</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <span class="hljs-comment">// YashanDB does not support StandardDeviation window functions</span>
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEqualsWithNullAndEmptyString</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <span class="hljs-comment">// YashanDB treats NULL and "" as equivalent</span>
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">previewRemoveLastColumn</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> DSLContext <span class="hljs-title function_">getDSLContext</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// Based on Oracle dialect with custom SQL generation logic</span>
+        <span class="hljs-keyword">return</span> DSL.using(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfiguration</span>(SQLDialect.ORACLE,
+            <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultSqlCreator</span>(SQLDialect.ORACLE) { <span class="hljs-comment">/* custom function implementations */</span> }
+        ));
+    }
+}
+</code></pre>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li><code>getDSLContext()</code> is the core of jooq SQL generation. Implementation requires familiarity with jooq; refer to the platform's existing database dialect implementations for guidance.</li>
+<li>In the function returned by <code>getBIDialect()</code>, return <code>Optional.of(...)</code> only for the target <code>Dialect</code> type and <code>Optional.empty()</code> for all others to avoid affecting other databases.</li>
+<li>The FineBI service <strong>must be restarted</strong> after installing or upgrading the plugin for it to take effect.</li>
+<li>Extending <code>AbstractBIDialect</code> provides default implementations for most methods; only override methods where the database behavior differs.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3796,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FineBI Entry Points","level":"2.4.4","depth":2,"next":{"title":"Core Entry Points","level":"2.4.4.1","depth":3,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[{"title":"BIDialectProvider","level":"2.4.4.1.1","depth":4,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[]},{"title":"DatasourceCustomProvider","level":"2.4.4.1.2","depth":4,"path":"tutorial/finebi/core/DatasourceCustomProvider.md","ref":"tutorial/finebi/core/DatasourceCustomProvider.md","articles":[]},{"title":"NumberFormatProvider","level":"2.4.4.1.3","depth":4,"path":"tutorial/finebi/core/NumberFormatProvider.md","ref":"tutorial/finebi/core/NumberFormatProvider.md","articles":[]},{"title":"ExcelRowCreatorProvider","level":"2.4.4.1.4","depth":4,"path":"tutorial/finebi/core/ExcelRowCreatorProvider.md","ref":"tutorial/finebi/core/ExcelRowCreatorProvider.md","articles":[]},{"title":"CustomDatasetProvider","level":"2.4.4.1.5","depth":4,"path":"tutorial/finebi/core/CustomDatasetProvider.md","ref":"tutorial/finebi/core/CustomDatasetProvider.md","articles":[]},{"title":"DateFormatProvider","level":"2.4.4.1.6","depth":4,"path":"tutorial/finebi/core/DateFormatProvider.md","ref":"tutorial/finebi/core/DateFormatProvider.md","articles":[]},{"title":"ActiveAuthorityInheritTriggerProvider","level":"2.4.4.1.7","depth":4,"path":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","ref":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","articles":[]},{"title":"CustomComponentProvider","level":"2.4.4.1.8","depth":4,"path":"tutorial/finebi/core/CustomComponentProvider.md","ref":"tutorial/finebi/core/CustomComponentProvider.md","articles":[]},{"title":"ExportHandleProvider","level":"2.4.4.1.9","depth":4,"path":"tutorial/finebi/core/ExportHandleProvider.md","ref":"tutorial/finebi/core/ExportHandleProvider.md","articles":[]},{"title":"ImportHandlerProvider","level":"2.4.4.1.10","depth":4,"path":"tutorial/finebi/core/ImportHandlerProvider.md","ref":"tutorial/finebi/core/ImportHandlerProvider.md","articles":[]},{"title":"NoticeChannelTypeProvider","level":"2.4.4.1.11","depth":4,"path":"tutorial/finebi/core/NoticeChannelTypeProvider.md","ref":"tutorial/finebi/core/NoticeChannelTypeProvider.md","articles":[]},{"title":"PublicLinkExportProvider","level":"2.4.4.1.12","depth":4,"path":"tutorial/finebi/core/PublicLinkExportProvider.md","ref":"tutorial/finebi/core/PublicLinkExportProvider.md","articles":[]},{"title":"ReportChangeListenProvider","level":"2.4.4.1.13","depth":4,"path":"tutorial/finebi/core/ReportChangeListenProvider.md","ref":"tutorial/finebi/core/ReportChangeListenProvider.md","articles":[]},{"title":"ServerTablesProvider","level":"2.4.4.1.14","depth":4,"path":"tutorial/finebi/core/ServerTablesProvider.md","ref":"tutorial/finebi/core/ServerTablesProvider.md","articles":[]},{"title":"TableChangeListenProvider","level":"2.4.4.1.15","depth":4,"path":"tutorial/finebi/core/TableChangeListenProvider.md","ref":"tutorial/finebi/core/TableChangeListenProvider.md","articles":[]},{"title":"WidgetQueryAspectProvider","level":"2.4.4.1.16","depth":4,"path":"tutorial/finebi/core/WidgetQueryAspectProvider.md","ref":"tutorial/finebi/core/WidgetQueryAspectProvider.md","articles":[]},{"title":"UpdateLoadProvider","level":"2.4.4.1.17","depth":4,"path":"tutorial/finebi/core/UpdateLoadProvider.md","ref":"tutorial/finebi/core/UpdateLoadProvider.md","articles":[]}]},"previous":{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]},"articles":[{"title":"Core Entry Points","level":"2.4.4.1","depth":3,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[{"title":"BIDialectProvider","level":"2.4.4.1.1","depth":4,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[]},{"title":"DatasourceCustomProvider","level":"2.4.4.1.2","depth":4,"path":"tutorial/finebi/core/DatasourceCustomProvider.md","ref":"tutorial/finebi/core/DatasourceCustomProvider.md","articles":[]},{"title":"NumberFormatProvider","level":"2.4.4.1.3","depth":4,"path":"tutorial/finebi/core/NumberFormatProvider.md","ref":"tutorial/finebi/core/NumberFormatProvider.md","articles":[]},{"title":"ExcelRowCreatorProvider","level":"2.4.4.1.4","depth":4,"path":"tutorial/finebi/core/ExcelRowCreatorProvider.md","ref":"tutorial/finebi/core/ExcelRowCreatorProvider.md","articles":[]},{"title":"CustomDatasetProvider","level":"2.4.4.1.5","depth":4,"path":"tutorial/finebi/core/CustomDatasetProvider.md","ref":"tutorial/finebi/core/CustomDatasetProvider.md","articles":[]},{"title":"DateFormatProvider","level":"2.4.4.1.6","depth":4,"path":"tutorial/finebi/core/DateFormatProvider.md","ref":"tutorial/finebi/core/DateFormatProvider.md","articles":[]},{"title":"ActiveAuthorityInheritTriggerProvider","level":"2.4.4.1.7","depth":4,"path":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","ref":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","articles":[]},{"title":"CustomComponentProvider","level":"2.4.4.1.8","depth":4,"path":"tutorial/finebi/core/CustomComponentProvider.md","ref":"tutorial/finebi/core/CustomComponentProvider.md","articles":[]},{"title":"ExportHandleProvider","level":"2.4.4.1.9","depth":4,"path":"tutorial/finebi/core/ExportHandleProvider.md","ref":"tutorial/finebi/core/ExportHandleProvider.md","articles":[]},{"title":"ImportHandlerProvider","level":"2.4.4.1.10","depth":4,"path":"tutorial/finebi/core/ImportHandlerProvider.md","ref":"tutorial/finebi/core/ImportHandlerProvider.md","articles":[]},{"title":"NoticeChannelTypeProvider","level":"2.4.4.1.11","depth":4,"path":"tutorial/finebi/core/NoticeChannelTypeProvider.md","ref":"tutorial/finebi/core/NoticeChannelTypeProvider.md","articles":[]},{"title":"PublicLinkExportProvider","level":"2.4.4.1.12","depth":4,"path":"tutorial/finebi/core/PublicLinkExportProvider.md","ref":"tutorial/finebi/core/PublicLinkExportProvider.md","articles":[]},{"title":"ReportChangeListenProvider","level":"2.4.4.1.13","depth":4,"path":"tutorial/finebi/core/ReportChangeListenProvider.md","ref":"tutorial/finebi/core/ReportChangeListenProvider.md","articles":[]},{"title":"ServerTablesProvider","level":"2.4.4.1.14","depth":4,"path":"tutorial/finebi/core/ServerTablesProvider.md","ref":"tutorial/finebi/core/ServerTablesProvider.md","articles":[]},{"title":"TableChangeListenProvider","level":"2.4.4.1.15","depth":4,"path":"tutorial/finebi/core/TableChangeListenProvider.md","ref":"tutorial/finebi/core/TableChangeListenProvider.md","articles":[]},{"title":"WidgetQueryAspectProvider","level":"2.4.4.1.16","depth":4,"path":"tutorial/finebi/core/WidgetQueryAspectProvider.md","ref":"tutorial/finebi/core/WidgetQueryAspectProvider.md","articles":[]},{"title":"UpdateLoadProvider","level":"2.4.4.1.17","depth":4,"path":"tutorial/finebi/core/UpdateLoadProvider.md","ref":"tutorial/finebi/core/UpdateLoadProvider.md","articles":[]}]},{"title":"Frontend Entry Points","level":"2.4.4.2","depth":3,"path":"tutorial/finebi/frontend/fineui-intro.md","ref":"tutorial/finebi/frontend/fineui-intro.md","articles":[{"title":"FineUI Overview","level":"2.4.4.2.1","depth":4,"path":"tutorial/finebi/frontend/fineui-intro.md","ref":"tutorial/finebi/frontend/fineui-intro.md","articles":[]},{"title":"Interceptors & Modifiers","level":"2.4.4.2.2","depth":4,"path":"tutorial/finebi/frontend/intercept-modify.md","ref":"tutorial/finebi/frontend/intercept-modify.md","articles":[]},{"title":"Information Retrieval","level":"2.4.4.2.3","depth":4,"path":"tutorial/finebi/frontend/info-retrieval.md","ref":"tutorial/finebi/frontend/info-retrieval.md","articles":[]},{"title":"UI Modification","level":"2.4.4.2.4","depth":4,"path":"tutorial/finebi/frontend/ui-modification.md","ref":"tutorial/finebi/frontend/ui-modification.md","articles":[]},{"title":"Other Features","level":"2.4.4.2.5","depth":4,"path":"tutorial/finebi/frontend/other-features.md","ref":"tutorial/finebi/frontend/other-features.md","articles":[]}]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finebi/core/BIDialectProvider.md","mtime":"2026-06-11T06:55:37.645Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"FineBI Entry Points","level":"2.4.4","depth":2,"next":{"title":"Core Entry Points","level":"2.4.4.1","depth":3,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[{"title":"BIDialectProvider","level":"2.4.4.1.1","depth":4,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[]},{"title":"DatasourceCustomProvider","level":"2.4.4.1.2","depth":4,"path":"tutorial/finebi/core/DatasourceCustomProvider.md","ref":"tutorial/finebi/core/DatasourceCustomProvider.md","articles":[]},{"title":"NumberFormatProvider","level":"2.4.4.1.3","depth":4,"path":"tutorial/finebi/core/NumberFormatProvider.md","ref":"tutorial/finebi/core/NumberFormatProvider.md","articles":[]},{"title":"ExcelRowCreatorProvider","level":"2.4.4.1.4","depth":4,"path":"tutorial/finebi/core/ExcelRowCreatorProvider.md","ref":"tutorial/finebi/core/ExcelRowCreatorProvider.md","articles":[]},{"title":"CustomDatasetProvider","level":"2.4.4.1.5","depth":4,"path":"tutorial/finebi/core/CustomDatasetProvider.md","ref":"tutorial/finebi/core/CustomDatasetProvider.md","articles":[]},{"title":"DateFormatProvider","level":"2.4.4.1.6","depth":4,"path":"tutorial/finebi/core/DateFormatProvider.md","ref":"tutorial/finebi/core/DateFormatProvider.md","articles":[]},{"title":"ActiveAuthorityInheritTriggerProvider","level":"2.4.4.1.7","depth":4,"path":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","ref":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","articles":[]},{"title":"CustomComponentProvider","level":"2.4.4.1.8","depth":4,"path":"tutorial/finebi/core/CustomComponentProvider.md","ref":"tutorial/finebi/core/CustomComponentProvider.md","articles":[]},{"title":"ExportHandleProvider","level":"2.4.4.1.9","depth":4,"path":"tutorial/finebi/core/ExportHandleProvider.md","ref":"tutorial/finebi/core/ExportHandleProvider.md","articles":[]},{"title":"ImportHandlerProvider","level":"2.4.4.1.10","depth":4,"path":"tutorial/finebi/core/ImportHandlerProvider.md","ref":"tutorial/finebi/core/ImportHandlerProvider.md","articles":[]},{"title":"NoticeChannelTypeProvider","level":"2.4.4.1.11","depth":4,"path":"tutorial/finebi/core/NoticeChannelTypeProvider.md","ref":"tutorial/finebi/core/NoticeChannelTypeProvider.md","articles":[]},{"title":"PublicLinkExportProvider","level":"2.4.4.1.12","depth":4,"path":"tutorial/finebi/core/PublicLinkExportProvider.md","ref":"tutorial/finebi/core/PublicLinkExportProvider.md","articles":[]},{"title":"ReportChangeListenProvider","level":"2.4.4.1.13","depth":4,"path":"tutorial/finebi/core/ReportChangeListenProvider.md","ref":"tutorial/finebi/core/ReportChangeListenProvider.md","articles":[]},{"title":"ServerTablesProvider","level":"2.4.4.1.14","depth":4,"path":"tutorial/finebi/core/ServerTablesProvider.md","ref":"tutorial/finebi/core/ServerTablesProvider.md","articles":[]},{"title":"TableChangeListenProvider","level":"2.4.4.1.15","depth":4,"path":"tutorial/finebi/core/TableChangeListenProvider.md","ref":"tutorial/finebi/core/TableChangeListenProvider.md","articles":[]},{"title":"WidgetQueryAspectProvider","level":"2.4.4.1.16","depth":4,"path":"tutorial/finebi/core/WidgetQueryAspectProvider.md","ref":"tutorial/finebi/core/WidgetQueryAspectProvider.md","articles":[]},{"title":"UpdateLoadProvider","level":"2.4.4.1.17","depth":4,"path":"tutorial/finebi/core/UpdateLoadProvider.md","ref":"tutorial/finebi/core/UpdateLoadProvider.md","articles":[]}]},"previous":{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]},"articles":[{"title":"Core Entry Points","level":"2.4.4.1","depth":3,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[{"title":"BIDialectProvider","level":"2.4.4.1.1","depth":4,"path":"tutorial/finebi/core/BIDialectProvider.md","ref":"tutorial/finebi/core/BIDialectProvider.md","articles":[]},{"title":"DatasourceCustomProvider","level":"2.4.4.1.2","depth":4,"path":"tutorial/finebi/core/DatasourceCustomProvider.md","ref":"tutorial/finebi/core/DatasourceCustomProvider.md","articles":[]},{"title":"NumberFormatProvider","level":"2.4.4.1.3","depth":4,"path":"tutorial/finebi/core/NumberFormatProvider.md","ref":"tutorial/finebi/core/NumberFormatProvider.md","articles":[]},{"title":"ExcelRowCreatorProvider","level":"2.4.4.1.4","depth":4,"path":"tutorial/finebi/core/ExcelRowCreatorProvider.md","ref":"tutorial/finebi/core/ExcelRowCreatorProvider.md","articles":[]},{"title":"CustomDatasetProvider","level":"2.4.4.1.5","depth":4,"path":"tutorial/finebi/core/CustomDatasetProvider.md","ref":"tutorial/finebi/core/CustomDatasetProvider.md","articles":[]},{"title":"DateFormatProvider","level":"2.4.4.1.6","depth":4,"path":"tutorial/finebi/core/DateFormatProvider.md","ref":"tutorial/finebi/core/DateFormatProvider.md","articles":[]},{"title":"ActiveAuthorityInheritTriggerProvider","level":"2.4.4.1.7","depth":4,"path":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","ref":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","articles":[]},{"title":"CustomComponentProvider","level":"2.4.4.1.8","depth":4,"path":"tutorial/finebi/core/CustomComponentProvider.md","ref":"tutorial/finebi/core/CustomComponentProvider.md","articles":[]},{"title":"ExportHandleProvider","level":"2.4.4.1.9","depth":4,"path":"tutorial/finebi/core/ExportHandleProvider.md","ref":"tutorial/finebi/core/ExportHandleProvider.md","articles":[]},{"title":"ImportHandlerProvider","level":"2.4.4.1.10","depth":4,"path":"tutorial/finebi/core/ImportHandlerProvider.md","ref":"tutorial/finebi/core/ImportHandlerProvider.md","articles":[]},{"title":"NoticeChannelTypeProvider","level":"2.4.4.1.11","depth":4,"path":"tutorial/finebi/core/NoticeChannelTypeProvider.md","ref":"tutorial/finebi/core/NoticeChannelTypeProvider.md","articles":[]},{"title":"PublicLinkExportProvider","level":"2.4.4.1.12","depth":4,"path":"tutorial/finebi/core/PublicLinkExportProvider.md","ref":"tutorial/finebi/core/PublicLinkExportProvider.md","articles":[]},{"title":"ReportChangeListenProvider","level":"2.4.4.1.13","depth":4,"path":"tutorial/finebi/core/ReportChangeListenProvider.md","ref":"tutorial/finebi/core/ReportChangeListenProvider.md","articles":[]},{"title":"ServerTablesProvider","level":"2.4.4.1.14","depth":4,"path":"tutorial/finebi/core/ServerTablesProvider.md","ref":"tutorial/finebi/core/ServerTablesProvider.md","articles":[]},{"title":"TableChangeListenProvider","level":"2.4.4.1.15","depth":4,"path":"tutorial/finebi/core/TableChangeListenProvider.md","ref":"tutorial/finebi/core/TableChangeListenProvider.md","articles":[]},{"title":"WidgetQueryAspectProvider","level":"2.4.4.1.16","depth":4,"path":"tutorial/finebi/core/WidgetQueryAspectProvider.md","ref":"tutorial/finebi/core/WidgetQueryAspectProvider.md","articles":[]},{"title":"UpdateLoadProvider","level":"2.4.4.1.17","depth":4,"path":"tutorial/finebi/core/UpdateLoadProvider.md","ref":"tutorial/finebi/core/UpdateLoadProvider.md","articles":[]}]},{"title":"Frontend Entry Points","level":"2.4.4.2","depth":3,"path":"tutorial/finebi/frontend/fineui-intro.md","ref":"tutorial/finebi/frontend/fineui-intro.md","articles":[{"title":"FineUI Overview","level":"2.4.4.2.1","depth":4,"path":"tutorial/finebi/frontend/fineui-intro.md","ref":"tutorial/finebi/frontend/fineui-intro.md","articles":[]},{"title":"Interceptors & Modifiers","level":"2.4.4.2.2","depth":4,"path":"tutorial/finebi/frontend/intercept-modify.md","ref":"tutorial/finebi/frontend/intercept-modify.md","articles":[]},{"title":"Information Retrieval","level":"2.4.4.2.3","depth":4,"path":"tutorial/finebi/frontend/info-retrieval.md","ref":"tutorial/finebi/frontend/info-retrieval.md","articles":[]},{"title":"UI Modification","level":"2.4.4.2.4","depth":4,"path":"tutorial/finebi/frontend/ui-modification.md","ref":"tutorial/finebi/frontend/ui-modification.md","articles":[]},{"title":"Other Features","level":"2.4.4.2.5","depth":4,"path":"tutorial/finebi/frontend/other-features.md","ref":"tutorial/finebi/frontend/other-features.md","articles":[]}]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finebi/core/BIDialectProvider.md","mtime":"2026-07-10T02:20:30.970Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

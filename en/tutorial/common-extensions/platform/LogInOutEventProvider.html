@@ -3555,10 +3555,114 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#loginouteventprovider"><b></b>LogInOutEventProvider</a></li></ul></div><a href="#loginouteventprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="loginouteventprovider"><a name="loginouteventprovider" class="anchor-navigation-ex-anchor" href="#loginouteventprovider"><i class="fa fa-link" aria-hidden="true"></i></a>LogInOutEventProvider</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#loginouteventprovider"><b></b>LogInOutEventProvider</a></li><ul><li><span class="title-icon "></span><a href="#background-and-use-cases"><b></b>Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#supported-versions"><b></b>Supported Versions</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li><li><span class="title-icon "></span><a href="#how-it-works"><b></b>How It Works</a></li><li><span class="title-icon "></span><a href="#useful-links"><b></b>Useful Links</a></li><li><span class="title-icon "></span><a href="#open-source-examples"><b></b>Open Source Examples</a></li></ul></ul></div><a href="#loginouteventprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="loginouteventprovider"><a name="loginouteventprovider" class="anchor-navigation-ex-anchor" href="#loginouteventprovider"><i class="fa fa-link" aria-hidden="true"></i></a>LogInOutEventProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-decision</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.decision.fun.LogInOutEventProvider</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-and-use-cases"><a name="background-and-use-cases" class="anchor-navigation-ex-anchor" href="#background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>Background and Use Cases</h2>
+<p>This interface is used to monitor and manage user login/logout behavior. It supports scenarios such as <strong>event listening, message push, and redirecting to a specific login page after logout</strong>.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">LogInOutEventProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"LogInOutEventProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;
+
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">loginAction</span><span class="hljs-params">(LogInOutResultInfo result)</span>;
+
+    String <span class="hljs-title function_">logoutAction</span><span class="hljs-params">(LogInOutResultInfo result)</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LogInOutResultInfo</span> {
+    <span class="hljs-keyword">private</span> HttpServletRequest request;
+    <span class="hljs-keyword">private</span> HttpServletResponse response;
+    <span class="hljs-keyword">private</span> String username;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> result;
+    <span class="hljs-comment">// Constructor and getter/setter omitted</span>
+}
+</code></pre>
+<h2 id="supported-versions"><a name="supported-versions" class="anchor-navigation-ex-anchor" href="#supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Support</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Supported</td>
+<td>Requires 10.0.3+; earlier versions use LoginEventProvider</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Supported</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h2>
+<p>Add the following node to <code>plugin.xml</code>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">LogInOutEventProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<h2 id="how-it-works"><a name="how-it-works" class="anchor-navigation-ex-anchor" href="#how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>How It Works</h2>
+<p><code>WebServiceActivator</code> reads all declared implementations at startup and registers them to the LOGIN/LOGOUT events. They are triggered after <code>LoginResource</code> executes the standard login, captcha login, or logout methods.</p>
+<p><strong>Note</strong>: Do not use response redirection in <code>logoutAction</code> to implement post-logout navigation — the logout request is an AJAX call, so redirects will not take effect.</p>
+<h2 id="useful-links"><a name="useful-links" class="anchor-navigation-ex-anchor" href="#useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>Useful Links</h2>
+<ul>
+<li>Demo: <a href="https://code.fanruan.com/hugh/demo-login-out-event-provider" target="_blank">demo-login-out-event-provider</a></li>
+</ul>
+<h2 id="open-source-examples"><a name="open-source-examples" class="anchor-navigation-ex-anchor" href="#open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>Open Source Examples</h2>
 <blockquote>
-<p>Coming soon.</p>
+<p>Disclaimer: All open source examples in this documentation are developed and provided by individual developers for reference and learning purposes only. Neither the developers nor the official team are obligated to provide teaching or guidance on these examples. Commercial use is strictly prohibited; any consequences arising from commercial use are solely the responsibility of the user.</p>
 </blockquote>
+<ul>
+<li><a href="https://code.fanruan.com/hugh/open-JSD-7957" target="_blank">open-JSD-7957</a></li>
+<li><a href="https://code.fanruan.com/hugh/open-JSD-7858" target="_blank">open-JSD-7858</a></li>
+<li><a href="https://code.fanruan.com/hugh/open-JSD-7706" target="_blank">open-JSD-7706</a></li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3706,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LogInOutEventProvider","level":"2.4.2.2.10","depth":4,"next":{"title":"MessageEventProvider","level":"2.4.2.2.11","depth":4,"path":"tutorial/common-extensions/platform/MessageEventProvider.md","ref":"tutorial/common-extensions/platform/MessageEventProvider.md","articles":[]},"previous":{"title":"HttpHandlerProvider","level":"2.4.2.2.9","depth":4,"path":"tutorial/common-extensions/platform/HttpHandlerProvider.md","ref":"tutorial/common-extensions/platform/HttpHandlerProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform/LogInOutEventProvider.md","mtime":"2026-06-11T06:55:37.644Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"LogInOutEventProvider","level":"2.4.2.2.10","depth":4,"next":{"title":"MessageEventProvider","level":"2.4.2.2.11","depth":4,"path":"tutorial/common-extensions/platform/MessageEventProvider.md","ref":"tutorial/common-extensions/platform/MessageEventProvider.md","articles":[]},"previous":{"title":"HttpHandlerProvider","level":"2.4.2.2.9","depth":4,"path":"tutorial/common-extensions/platform/HttpHandlerProvider.md","ref":"tutorial/common-extensions/platform/HttpHandlerProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform/LogInOutEventProvider.md","mtime":"2026-07-10T02:20:30.970Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

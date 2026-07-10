@@ -3555,10 +3555,191 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#charttypeuiprovider"><b></b>ChartTypeUIProvider</a></li></ul></div><a href="#charttypeuiprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="charttypeuiprovider"><a name="charttypeuiprovider" class="anchor-navigation-ex-anchor" href="#charttypeuiprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ChartTypeUIProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#charttypeuiprovider"><b></b>ChartTypeUIProvider</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><ul><li><span class="title-icon "></span><a href="#deprecated-methods"><b></b>Deprecated Methods</a></li></ul><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#charttypeuiprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="charttypeuiprovider"><a name="charttypeuiprovider" class="anchor-navigation-ex-anchor" href="#charttypeuiprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ChartTypeUIProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>provider</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-chart-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.chart.fun.ChartTypeUIProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.design.chart.fun.ChartTypeUIProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>The designer UI interface for custom chart types. It provides a complete property configuration UI for a custom chart type, including the type-switching panel, data configuration panel, and style attribute panel. It is typically used together with <code>ChartTypeProvider</code>.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Custom chart type UI interface
+ * <span class="hljs-doctag">@since</span> 8.0
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ChartTypeUIProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Level</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> ChartXMLTag.CHART_TYPE_UI_PROVIDER;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_API_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;
+
+    <span class="hljs-comment">/**
+     * Chart type definition panel (first Tab in the property sheet)
+     * Return null if no type-switching panel is needed
+     */</span>
+    AbstractChartTypePane <span class="hljs-title function_">getPlotTypePane</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Chart data configuration panel (second Tab in the property sheet)
+     * Return null if no data configuration panel is needed
+     */</span>
+    ChartDataPane <span class="hljs-title function_">getChartDataPane</span><span class="hljs-params">(AttributeChangeListener listener)</span>;
+
+    <span class="hljs-comment">/**
+     * Array of additional style attribute panels (remaining Tabs in the property sheet)
+     * Return an empty array if no additional style panels are needed
+     */</span>
+    AbstractChartAttrPane[] getAttrPaneArray(AttributeChangeListener listener);
+
+    <span class="hljs-comment">/**
+     * Chart type name, e.g., "Bar Chart"
+     */</span>
+    String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Array of chart sub-type names, e.g., ["Bar Chart", "Stacked Bar Chart", "100% Stacked Bar Chart"]
+     */</span>
+    String[] getSubName();
+
+    <span class="hljs-comment">/**
+     * Array of demo image paths (400×225)
+     * 1. Rendered as-is in the chart selection dialog
+     * 2. Rendered with scaling in the chart property type panel
+     */</span>
+    String[] getDemoImagePath();
+
+    <span class="hljs-comment">/**
+     * Small icon path (16×16), used in the form toolbar
+     */</span>
+    String <span class="hljs-title function_">getIconPath</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h3 id="deprecated-methods"><a name="deprecated-methods" class="anchor-navigation-ex-anchor" href="#deprecated-methods"><i class="fa fa-link" aria-hidden="true"></i></a>Deprecated Methods</h3>
+<p>The following methods are marked <code>@Deprecated</code> and do not need to be overridden in new implementations:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getTableDataSourcePane()</code></td>
+<td>Dataset data source panel</td>
+</tr>
+<tr>
+<td><code>getReportDataSourcePane()</code></td>
+<td>Cell data source panel</td>
+</tr>
+<tr>
+<td><code>getPlotConditionPane()</code></td>
+<td>Condition attribute panel</td>
+</tr>
+<tr>
+<td><code>getPlotSeriesPane()</code></td>
+<td>Series panel</td>
+</tr>
+<tr>
+<td><code>getChartEditPane()</code></td>
+<td>Chart edit panel</td>
+</tr>
+<tr>
+<td><code>getChartConfigPane()</code></td>
+<td>Chart config panel</td>
+</tr>
+<tr>
+<td><code>needChartChangePane()</code></td>
+<td>Whether a type-switching panel is needed</td>
+</tr>
+<tr>
+<td><code>isUseDefaultPane()</code></td>
+<td>Whether to use the default panel</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Typically used together with <code>ChartTypeProvider</code>, registered to the <code>extra-chart-designer</code> module:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-chart-designer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ChartTypeUIProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.YourChartTypeUIProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-chart-designer</span>&gt;</span>
+</code></pre>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyChartTypeUIProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ChartTypeUIProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> AbstractChartTypePane <span class="hljs-title function_">getPlotTypePane</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// Return the chart type-switching panel; return null if no switching is needed</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyChartTypePane</span>();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> ChartDataPane <span class="hljs-title function_">getChartDataPane</span><span class="hljs-params">(AttributeChangeListener listener)</span> {
+        <span class="hljs-comment">// Return the data configuration panel</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyChartDataPane</span>(listener);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> AbstractChartAttrPane[] getAttrPaneArray(AttributeChangeListener listener) {
+        <span class="hljs-comment">// Return the array of style attribute panels; return an empty array if no additional styles are needed</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AbstractChartAttrPane</span>[]{
+            <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyChartStylePane</span>(listener)
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"My Custom Chart"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String[] getSubName() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{<span class="hljs-string">"Basic Mode"</span>, <span class="hljs-string">"Advanced Mode"</span>};
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String[] getDemoImagePath() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{
+            <span class="hljs-string">"/com/fr/plugin/xxx/images/demo_basic.png"</span>,
+            <span class="hljs-string">"/com/fr/plugin/xxx/images/demo_advanced.png"</span>
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getIconPath</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"/com/fr/plugin/xxx/images/icon.png"</span>;
+    }
+}
+</code></pre>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>The arrays returned by <code>getSubName()</code> and <code>getDemoImagePath()</code> must have the same length, corresponding to the name and preview image of each sub-type respectively.</li>
+<li>The recommended demo image size is 400×225; the icon size is 16×16.</li>
+<li>All deprecated methods have <code>default</code> implementations and do not need to be overridden. New chart plugins should use <code>getChartDataPane()</code> and <code>getAttrPaneArray()</code> instead of the old data source / condition / series methods.</li>
+<li><code>CURRENT_API_LEVEL = 3</code>: ensure the <code>level()</code> return value is not lower than this when implementing.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3783,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"next":{"title":"Dashboard Report Entry Points","level":"2.4.3.4","depth":3,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]}]},"previous":{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","mtime":"2026-06-11T06:55:37.645Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"next":{"title":"Dashboard Report Entry Points","level":"2.4.3.4","depth":3,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]}]},"previous":{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","mtime":"2026-07-10T02:20:30.971Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

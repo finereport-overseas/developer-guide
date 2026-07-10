@@ -3555,10 +3555,235 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#presentkindprovider"><b></b>PresentKindProvider</a></li></ul></div><a href="#presentkindprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="presentkindprovider"><a name="presentkindprovider" class="anchor-navigation-ex-anchor" href="#presentkindprovider"><i class="fa fa-link" aria-hidden="true"></i></a>PresentKindProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#presentkindprovider"><b></b>PresentKindProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-special-terms"><b></b>1. Special Terms</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-introduction"><b></b>3. Interface Introduction</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-limitations"><b></b>7. Limitations</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open Source Examples</a></li></ul></ul></div><a href="#presentkindprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="presentkindprovider"><a name="presentkindprovider" class="anchor-navigation-ex-anchor" href="#presentkindprovider"><i class="fa fa-link" aria-hidden="true"></i></a>PresentKindProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.fun.PresentKindProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/PresentKindProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-special-terms"><a name="1-special-terms" class="anchor-navigation-ex-anchor" href="#1-special-terms"><i class="fa fa-link" aria-hidden="true"></i></a>1. Special Terms</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p><code>PresentKindProvider</code> is primarily used to extend data presentation modes.</p>
+<p>The most common examples are various barcode and QR code presentation extensions.</p>
+<p><a href="images/present_kind_selector.png" data-lightbox="eb7bec0c-25c9-4d08-86ce-6271e14b90b8" data-title="Export Type Selector"><img src="images/present_kind_selector.png" alt="Export Type Selector"></img></a></p>
+<h2 id="3-interface-introduction"><a name="3-interface-introduction" class="anchor-navigation-ex-anchor" href="#3-interface-introduction"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Introduction</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.base.present.Present;
+<span class="hljs-keyword">import</span> com.fr.design.beans.FurtherBasicBeanPane;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> richie
+ * <span class="hljs-doctag">@date</span> 2015-05-22
+ * <span class="hljs-doctag">@since</span> 8.0
+ * Presentation type interface.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PresentKindProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span>{
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"PresentKindProvider"</span>;
+
+    <span class="hljs-comment">/**
+     * The settings UI for the presentation.
+     * <span class="hljs-doctag">@return</span> presentation settings pane
+     */</span>
+    FurtherBasicBeanPane&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Present</span>&gt; appearanceForPresent();
+
+    <span class="hljs-comment">/**
+     * The name displayed on the presentation settings panel.
+     * <span class="hljs-doctag">@return</span> name
+     */</span>
+    String <span class="hljs-title function_">title</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * The class corresponding to this presentation type.
+     * <span class="hljs-doctag">@return</span> class
+     */</span>
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Present</span>&gt; kindOfPresent();
+
+    <span class="hljs-comment">/**
+     * Keyboard mnemonic for the menu.
+     * <span class="hljs-doctag">@return</span> mnemonic character
+     */</span>
+    <span class="hljs-type">char</span> <span class="hljs-title function_">mnemonic</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.beans;
+
+<span class="hljs-keyword">import</span> com.fr.common.annotations.Open;
+<span class="hljs-keyword">import</span> com.fr.stable.StringUtils;
+
+<span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FurtherBasicBeanPane</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BasicBeanPane</span>&lt;T&gt; {
+    <span class="hljs-comment">/**
+     * Checks whether the given object is of the expected type.
+     *
+     * <span class="hljs-doctag">@param</span> ob object
+     * <span class="hljs-doctag">@return</span> whether the object is of the expected type
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(Object ob)</span>;
+
+    <span class="hljs-comment">/**
+     * The title — used not only as a dialog title, but also when combined with other components.
+     *
+     * <span class="hljs-doctag">@return</span> dialog title
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">title4PopupWindow</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> StringUtils.EMPTY;
+    }
+
+    <span class="hljs-comment">/**
+     * Reset.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">reset</span><span class="hljs-params">()</span>;
+
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.base.present;
+
+<span class="hljs-keyword">import</span> com.fr.base.Style;
+<span class="hljs-keyword">import</span> com.fr.script.Calculator;
+<span class="hljs-keyword">import</span> com.fr.stable.ColumnRow;
+<span class="hljs-keyword">import</span> com.fr.stable.DependenceProvider;
+<span class="hljs-keyword">import</span> com.fr.stable.script.CalculatorProvider;
+<span class="hljs-keyword">import</span> com.fr.stable.script.ExTool;
+<span class="hljs-keyword">import</span> com.fr.stable.xml.XMLable;
+
+<span class="hljs-comment">/**
+ * Presentation. Used to handle objects that have both a real value and a display value,
+ * where the two values may differ.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Present</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">DependenceProvider</span>, XMLable {
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Present"</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the result after applying the presentation to the original value.
+     *
+     * <span class="hljs-doctag">@param</span> value      original value
+     * <span class="hljs-doctag">@param</span> calculator calculator
+     * <span class="hljs-doctag">@return</span> result after presentation computation
+     */</span>
+    Object <span class="hljs-title function_">present</span><span class="hljs-params">(Object value, Calculator calculator)</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the result after applying the presentation to the cell value.
+     *
+     * <span class="hljs-doctag">@param</span> value      original cell value
+     * <span class="hljs-doctag">@param</span> calculator calculator
+     * <span class="hljs-doctag">@param</span> cr         row/column position of the cell
+     * <span class="hljs-doctag">@return</span> result after presentation computation
+     */</span>
+    Object <span class="hljs-title function_">present</span><span class="hljs-params">(Object value, Calculator calculator, ColumnRow cr)</span>;
+
+    <span class="hljs-comment">/**
+     * Records the cells used in the presentation, so that when a cell value changes,
+     * the presentation value is updated accordingly.
+     *
+     * <span class="hljs-doctag">@param</span> calculator calculator
+     * <span class="hljs-doctag">@param</span> exTool     inter-cell relationship computation tool
+     * <span class="hljs-doctag">@param</span> currentCr  current row/column
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">analyzeCorrelative</span><span class="hljs-params">(CalculatorProvider calculator, ExTool exTool, ColumnRow currentCr)</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the prototype of the presentation.
+     * For example, NormalPresent is rendered differently from other presentations in the designer.
+     *
+     * <span class="hljs-doctag">@return</span> presentation prototype
+     */</span>
+    Object <span class="hljs-title function_">getPresentPrototype</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Handles style changes related to the presentation for a given cell.
+     *
+     * <span class="hljs-doctag">@param</span> cellStyle cell style
+     * <span class="hljs-doctag">@param</span> value     cell value
+     */</span>
+    Style <span class="hljs-title function_">modifyCellStyle</span><span class="hljs-params">(Style cellStyle, Object value)</span>;
+
+    <span class="hljs-comment">/**
+     * Pre-processes cell values involved in this presentation.
+     *
+     * <span class="hljs-doctag">@param</span> value      value
+     * <span class="hljs-doctag">@param</span> calculator calculator
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">valuePretreatment</span><span class="hljs-params">(Object value, CalculatorProvider calculator)</span>;
+
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">PresentKindProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>When <code>PresentPane</code> loads the presentation type list, it reads all declared <code>PresentKindProvider</code> instances from plugins and generates a selection list. After the user selects an instance, <code>appearanceForPresent</code> is called to generate the corresponding UI. The presentation configuration is serialized and saved to the <code>.cpt</code>/<code>.frm</code> file. At compute time, it is deserialized and activated.</p>
+<h2 id="7-limitations"><a name="7-limitations" class="anchor-navigation-ex-anchor" href="#7-limitations"><i class="fa fa-link" aria-hidden="true"></i></a>7. Limitations</h2>
+<p>The <code>PresentKindProvider</code> interface methods are fairly clear and straightforward, and the interface itself serves as a bridge. Implementations are relatively simple. Note that when implementing the <code>Present</code> interface, presentations can be classified into three forms: image-based, HTML-based, and others.</p>
+<p>Also, in principle, any <code>PresentKindProvider</code> scenario can be covered by a custom function interface combined with the function presentation. Developers should carefully evaluate whether the simpler function interface is sufficient before choosing <code>PresentKindProvider</code>, to avoid wasting development resources.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-present-kind-provider" target="_blank">demo-present-kind-provider</a></p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and provided by individual developers for reference and learning purposes only. Neither the developers nor the official team are obligated to provide instruction or guidance on any outcomes related to open-source examples. Any commercial use is entirely at the user's own risk.</p>
+<p><a href="https://code.fanruan.com/fanruan/demo-show-present" target="_blank">demo-show-present</a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3827,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PresentKindProvider","level":"2.4.3.1.15","depth":4,"next":{"title":"PreviewProvider","level":"2.4.3.1.16","depth":4,"path":"tutorial/finereport/designer/PreviewProvider.md","ref":"tutorial/finereport/designer/PreviewProvider.md","articles":[]},"previous":{"title":"PluginManagerProvider","level":"2.4.3.1.14","depth":4,"path":"tutorial/finereport/designer/PluginManagerProvider.md","ref":"tutorial/finereport/designer/PluginManagerProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/PresentKindProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"PresentKindProvider","level":"2.4.3.1.15","depth":4,"next":{"title":"PreviewProvider","level":"2.4.3.1.16","depth":4,"path":"tutorial/finereport/designer/PreviewProvider.md","ref":"tutorial/finereport/designer/PreviewProvider.md","articles":[]},"previous":{"title":"PluginManagerProvider","level":"2.4.3.1.14","depth":4,"path":"tutorial/finereport/designer/PluginManagerProvider.md","ref":"tutorial/finereport/designer/PluginManagerProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/PresentKindProvider.md","mtime":"2026-07-10T02:20:30.972Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

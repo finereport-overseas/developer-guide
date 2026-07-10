@@ -3555,10 +3555,144 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#format-standards"><b></b>format-standards</a></li></ul></div><a href="#format-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="format-standards"><a name="format-standards" class="anchor-navigation-ex-anchor" href="#format-standards"><i class="fa fa-link" aria-hidden="true"></i></a>format-standards</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#format-standards---java"><b></b>Format Standards - Java</a></li><ul><li><span class="title-icon "></span><a href="#1-add-spaces-around-keywords-and-parentheses"><b></b>1. Add Spaces Around Keywords and Parentheses</a></li><li><span class="title-icon "></span><a href="#2-brace-style"><b></b>2. Brace Style</a></li><li><span class="title-icon "></span><a href="#3-spaces-around-operators"><b></b>3. Spaces Around Operators</a></li><li><span class="title-icon "></span><a href="#4-space-after-comma-in-method-arguments"><b></b>4. Space After Comma in Method Arguments</a></li><li><span class="title-icon "></span><a href="#5-method-length-must-not-exceed-50-lines"><b></b>5. Method Length Must Not Exceed 50 Lines</a></li><li><span class="title-icon "></span><a href="#6-avoid-complex-expressions-in-if-conditions"><b></b>6. Avoid Complex Expressions in if Conditions</a></li><li><span class="title-icon "></span><a href="#7-no-access-modifiers-on-interface-methods-and-fields"><b></b>7. No Access Modifiers on Interface Methods and Fields</a></li><li><span class="title-icon "></span><a href="#8-json-output-format"><b></b>8. JSON Output Format</a></li><li><span class="title-icon "></span><a href="#9-use-stringutilsempty-for-empty-strings"><b></b>9. Use StringUtils.EMPTY for Empty Strings</a></li><li><span class="title-icon "></span><a href="#10-use-generalutilsobjecttostring-to-convert-objects-to-strings"><b></b>10. Use GeneralUtils.objectToString to Convert Objects to Strings</a></li><li><span class="title-icon "></span><a href="#11-write-equals-and-hashcode-manually-—-do-not-use-ide-auto-generation"><b></b>11. Write equals and hashCode Manually — Do Not Use IDE Auto-Generation</a></li></ul></ul></div><a href="#format-standards---java" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="format-standards---java"><a name="format-standards---java" class="anchor-navigation-ex-anchor" href="#format-standards---java"><i class="fa fa-link" aria-hidden="true"></i></a>Format Standards - Java</h1>
+<hr></hr>
+<h2 id="1-add-spaces-around-keywords-and-parentheses"><a name="1-add-spaces-around-keywords-and-parentheses" class="anchor-navigation-ex-anchor" href="#1-add-spaces-around-keywords-and-parentheses"><i class="fa fa-link" aria-hidden="true"></i></a>1. Add Spaces Around Keywords and Parentheses</h2>
+<p>Reserved words such as <code>if</code>, <code>for</code>, <code>while</code>, <code>switch</code>, and <code>do</code> must have a space before and after parentheses. Operators must also have spaces on both sides:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (xmlFile == <span class="hljs-literal">null</span> || !xmlFile.exists()) {
+    <span class="hljs-keyword">return</span>;
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span>(xmlFile==<span class="hljs-literal">null</span>||!xmlFile.exists()){
+    <span class="hljs-keyword">return</span>;
+}
+</code></pre>
+<hr></hr>
+<h2 id="2-brace-style"><a name="2-brace-style" class="anchor-navigation-ex-anchor" href="#2-brace-style"><i class="fa fa-link" aria-hidden="true"></i></a>2. Brace Style</h2>
+<ul>
+<li>Empty block: <code>{}</code> on one line, no line break.</li>
+<li>Non-empty block: opening brace on the same line (no line break before it), line break after opening brace, line break before closing brace, no line break after closing brace if followed by <code>else</code>.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">calculateCountOfStock</span><span class="hljs-params">()</span> {}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">calculateCountOfStock</span><span class="hljs-params">()</span> {
+    doSomething();
+}
+
+<span class="hljs-comment">// if-else</span>
+<span class="hljs-keyword">if</span> (condition) {
+    doA();
+} <span class="hljs-keyword">else</span> {
+    doB();
+}
+</code></pre>
+<hr></hr>
+<h2 id="3-spaces-around-operators"><a name="3-spaces-around-operators" class="anchor-navigation-ex-anchor" href="#3-spaces-around-operators"><i class="fa fa-link" aria-hidden="true"></i></a>3. Spaces Around Operators</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> a + b;
+<span class="hljs-keyword">return</span> (a + b &gt; <span class="hljs-number">0</span>) ? <span class="hljs-string">"student"</span> : <span class="hljs-string">"teacher"</span>;
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-type">int</span> result=a+b;
+</code></pre>
+<hr></hr>
+<h2 id="4-space-after-comma-in-method-arguments"><a name="4-space-after-comma-in-method-arguments" class="anchor-navigation-ex-anchor" href="#4-space-after-comma-in-method-arguments"><i class="fa fa-link" aria-hidden="true"></i></a>4. Space After Comma in Method Arguments</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+invokeMethod(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>);
+
+<span class="hljs-comment">// Wrong</span>
+invokeMethod(<span class="hljs-string">"a"</span>,<span class="hljs-string">"b"</span>,<span class="hljs-string">"c"</span>);
+</code></pre>
+<hr></hr>
+<h2 id="5-method-length-must-not-exceed-50-lines"><a name="5-method-length-must-not-exceed-50-lines" class="anchor-navigation-ex-anchor" href="#5-method-length-must-not-exceed-50-lines"><i class="fa fa-link" aria-hidden="true"></i></a>5. Method Length Must Not Exceed 50 Lines</h2>
+<p>Long methods are hard to unit test and maintain. Aim for <strong>one method, one responsibility</strong>.</p>
+<hr></hr>
+<h2 id="6-avoid-complex-expressions-in-if-conditions"><a name="6-avoid-complex-expressions-in-if-conditions" class="anchor-navigation-ex-anchor" href="#6-avoid-complex-expressions-in-if-conditions"><i class="fa fa-link" aria-hidden="true"></i></a>6. Avoid Complex Expressions in if Conditions</h2>
+<p>No more than two logical expressions in a condition. Extract longer conditions into a dedicated method:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (shouldDoSomething(a, dim)) {
+    doSomething();
+}
+
+<span class="hljs-type">boolean</span> <span class="hljs-title function_">shouldDoSomething</span><span class="hljs-params">(<span class="hljs-type">int</span> a, Dimension dim)</span> {
+    <span class="hljs-keyword">return</span> a &gt; -<span class="hljs-number">1</span> &amp;&amp; a != <span class="hljs-number">1</span> &amp;&amp; dim.width &gt; <span class="hljs-number">0</span> &amp;&amp; dim.height &gt; <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span> (a &gt; -<span class="hljs-number">1</span> &amp;&amp; a != <span class="hljs-number">1</span> &amp;&amp; dim.width &gt; <span class="hljs-number">0</span> &amp;&amp; dim.height &gt; <span class="hljs-number">0</span>) {
+    doSomething();
+}
+</code></pre>
+<hr></hr>
+<h2 id="7-no-access-modifiers-on-interface-methods-and-fields"><a name="7-no-access-modifiers-on-interface-methods-and-fields" class="anchor-navigation-ex-anchor" href="#7-no-access-modifiers-on-interface-methods-and-fields"><i class="fa fa-link" aria-hidden="true"></i></a>7. No Access Modifiers on Interface Methods and Fields</h2>
+<p>Interface methods and fields should not have <code>public</code> or other access modifiers — keep them concise:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Animal</span> {
+    <span class="hljs-type">int</span> <span class="hljs-title function_">countOfLegs</span><span class="hljs-params">()</span>;
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Animal</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">countOfLegs</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<hr></hr>
+<h2 id="8-json-output-format"><a name="8-json-output-format" class="anchor-navigation-ex-anchor" href="#8-json-output-format"><i class="fa fa-link" aria-hidden="true"></i></a>8. JSON Output Format</h2>
+<p>When outputting JSON from Java code, always use the standard approach. Use <code>JSONArray</code> for arrays:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+{a:<span class="hljs-string">"bb"</span>};
+{<span class="hljs-string">'a'</span>:<span class="hljs-string">"bb"</span>};
+
+<span class="hljs-comment">// Correct</span>
+{<span class="hljs-string">"aa"</span>:<span class="hljs-string">"bb"</span>};
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">// Use JSONArray for arrays (do not put a Java native array into JSONObject)</span>
+<span class="hljs-type">JSONObject</span> <span class="hljs-variable">jo</span> <span class="hljs-operator">=</span> JSONObject.create();
+<span class="hljs-type">JSONArray</span> <span class="hljs-variable">ja</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JSONArray</span>();
+ja.put(<span class="hljs-string">"aaa"</span>).put(<span class="hljs-string">"bbb"</span>).put(<span class="hljs-string">"ccc"</span>);
+jo.put(<span class="hljs-string">"names"</span>, ja);
+</code></pre>
+<hr></hr>
+<h2 id="9-use-stringutilsempty-for-empty-strings"><a name="9-use-stringutilsempty-for-empty-strings" class="anchor-navigation-ex-anchor" href="#9-use-stringutilsempty-for-empty-strings"><i class="fa fa-link" aria-hidden="true"></i></a>9. Use StringUtils.EMPTY for Empty Strings</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span> (name == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+}
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (name == <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">return</span> StringUtils.EMPTY;
+}
+</code></pre>
+<p>Use <code>StringUtils.isEmpty()</code> to check whether a string is empty:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-string">""</span>.equals(name)) { ... }
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (StringUtils.isEmpty(name)) { ... }
+</code></pre>
+<hr></hr>
+<h2 id="10-use-generalutilsobjecttostring-to-convert-objects-to-strings"><a name="10-use-generalutilsobjecttostring-to-convert-objects-to-strings" class="anchor-navigation-ex-anchor" href="#10-use-generalutilsobjecttostring-to-convert-objects-to-strings"><i class="fa fa-link" aria-hidden="true"></i></a>10. Use GeneralUtils.objectToString to Convert Objects to Strings</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong (may throw NullPointerException)</span>
+<span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> key.toString();
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-type">String</span> <span class="hljs-variable">okStr</span> <span class="hljs-operator">=</span> GeneralUtils.objectToString(key);
+</code></pre>
+<hr></hr>
+<h2 id="11-write-equals-and-hashcode-manually-—-do-not-use-ide-auto-generation"><a name="11-write-equals-and-hashcode-manually-—-do-not-use-ide-auto-generation" class="anchor-navigation-ex-anchor" href="#11-write-equals-and-hashcode-manually-—-do-not-use-ide-auto-generation"><i class="fa fa-link" aria-hidden="true"></i></a>11. Write equals and hashCode Manually — Do Not Use IDE Auto-Generation</h2>
+<p>IDE-generated templates are difficult to maintain correctly when new fields are added or special comparisons are required:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct approach</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(Object obj)</span> {
+    <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">instanceof</span> MyObject
+            &amp;&amp; ComparatorUtils.equals(<span class="hljs-built_in">this</span>.src, ((MyObject) obj).src)
+            &amp;&amp; <span class="hljs-built_in">this</span>.isOverflowX() == ((MyObject) obj).isOverflowX()
+            &amp;&amp; <span class="hljs-built_in">this</span>.isOverflowY() == ((MyObject) obj).isOverflowY();
+}
+</code></pre>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3736,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Format Standards","level":"2.2.2.1","depth":3,"next":{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},"previous":{"title":"Java Code Standards","level":"2.2.2","depth":2,"path":"tutorial/coding-standards/java-standards.md","ref":"tutorial/coding-standards/java-standards.md","articles":[{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/format-standards.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Format Standards","level":"2.2.2.1","depth":3,"next":{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},"previous":{"title":"Java Code Standards","level":"2.2.2","depth":2,"path":"tutorial/coding-standards/java-standards.md","ref":"tutorial/coding-standards/java-standards.md","articles":[{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/format-standards.md","mtime":"2026-07-10T02:20:30.961Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

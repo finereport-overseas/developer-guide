@@ -3555,10 +3555,754 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#actorprovider"><b></b>ActorProvider</a></li></ul></div><a href="#actorprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="actorprovider"><a name="actorprovider" class="anchor-navigation-ex-anchor" href="#actorprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ActorProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#actorprovider"><b></b>ActorProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-terminology"><b></b>1. Terminology</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-overview"><b></b>3. Interface Overview</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-constraints-and-notes"><b></b>7. Constraints and Notes</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open-Source Examples</a></li></ul></ul></div><a href="#actorprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="actorprovider"><a name="actorprovider" class="anchor-navigation-ex-anchor" href="#actorprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ActorProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.ActorProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/ActorProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-terminology"><a name="1-terminology" class="anchor-navigation-ex-anchor" href="#1-terminology"><i class="fa fa-link" aria-hidden="true"></i></a>1. Terminology</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>FineReport supports different preview modes so that the same template can serve various display and interaction scenarios. The three common built-in preview modes are: paginated preview, fill-in preview, and data analysis preview. These cover the needs of the vast majority of users. However, some users—due to specific business requirements or unique interaction habits—need to fine-tune the existing preview behavior or introduce an entirely new display mode. In such cases, the <code>ActorProvider</code> interface is the entry point. A typical example is the H5 preview mode found in many plugins.</p>
+<h2 id="3-interface-overview"><a name="3-interface-overview" class="anchor-navigation-ex-anchor" href="#3-interface-overview"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Overview</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.fun;
+
+<span class="hljs-keyword">import</span> com.fr.plugin.injectable.SpecialLevel;
+<span class="hljs-keyword">import</span> com.fr.report.stable.fun.Actor;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.Level;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> : richie
+ * <span class="hljs-doctag">@since</span> : 8.0
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ActorProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Level</span>{
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> SpecialLevel.ActorProvider.getTagName();
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    Actor[] createActor();
+
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.stable.fun;
+
+<span class="hljs-comment">// ... imports omitted for brevity ...</span>
+
+<span class="hljs-comment">/**
+ * Created with IntelliJ IDEA.
+ * User: richie
+ * Date: 14-1-24
+ * Time: 5:26 PM
+ * The operation class for executing different report preview modes
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Actor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Level</span>, OperatorBuilder {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> SpecialLevel.Actor.getTagName();
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * The name corresponding to this operation, e.g. fill-in preview, paginated preview, analysis preview
+     *
+     * <span class="hljs-doctag">@return</span> Operation name
+     */</span>
+    String <span class="hljs-title function_">description</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Whether this operation mode supports on-demand database reads, mainly used by the row-based engine
+     *
+     * <span class="hljs-doctag">@return</span> true if on-demand reads are supported, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">canCalculateOnDemand</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Whether pre-calculation is supported; mainly needed during paginated preview for pre-processing
+     *
+     * <span class="hljs-doctag">@return</span> true if pre-calculation will be performed, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">willPreCalculate</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the box factory used by this preview mode
+     *
+     * <span class="hljs-doctag">@return</span> Box factory
+     */</span>
+    BoxFactory <span class="hljs-title function_">createBoxFactory</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the result report block used by this preview mode
+     *
+     * <span class="hljs-doctag">@return</span> Result report block
+     */</span>
+    ResultECBlock <span class="hljs-title function_">createResultECBlock</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the result report sheet used by this preview mode
+     *
+     * <span class="hljs-doctag">@param</span> se Report calculation engine
+     * <span class="hljs-doctag">@return</span> Result report sheet
+     */</span>
+    AbstractResECWorkSheet <span class="hljs-title function_">createResultECWorkSheet</span><span class="hljs-params">(SE se)</span>;
+
+    <span class="hljs-comment">/**
+     * Caches cells to disk
+     *
+     * <span class="hljs-doctag">@param</span> sheet           Result report sheet
+     * <span class="hljs-doctag">@param</span> maxCount        Maximum number of active cells
+     * <span class="hljs-doctag">@param</span> activePoolCount Maximum capacity of the cache pool
+     * <span class="hljs-doctag">@param</span> cacheFirst      Whether to prioritize caching
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">cacheCellElement</span><span class="hljs-params">(AbstractResECWorkSheet sheet, <span class="hljs-type">int</span> maxCount, <span class="hljs-type">int</span> activePoolCount, <span class="hljs-type">boolean</span> cacheFirst)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether inter-cell relationships need to be established
+     *
+     * <span class="hljs-doctag">@return</span> true if relationships need to be built, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">considerBuildRelation</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Releases resources used during report calculation
+     *
+     * <span class="hljs-doctag">@param</span> se Report calculation engine
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">release</span><span class="hljs-params">(SheetExecutor se)</span>;
+
+    <span class="hljs-comment">/**
+     * Clones the given cell attribute
+     *
+     * <span class="hljs-doctag">@param</span> em Cell attribute
+     * <span class="hljs-doctag">@return</span> Cloned cell attribute
+     */</span>
+    OptionalAttribute <span class="hljs-title function_">cloneOptionalAttribute</span><span class="hljs-params">(OptionalAttribute em)</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the hyperlink attribute for a cell
+     *
+     * <span class="hljs-doctag">@return</span> Cell hyperlink attribute
+     */</span>
+    CellElementAttribute <span class="hljs-title function_">createHyperCellAttr</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the auto-fit attribute for a cell
+     *
+     * <span class="hljs-doctag">@return</span> Cell UI-related attribute
+     */</span>
+    CellElementAttribute <span class="hljs-title function_">createCellGUIAttr</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the widget attribute for a cell
+     *
+     * <span class="hljs-doctag">@return</span> Cell widget attribute
+     */</span>
+    CellElementAttribute <span class="hljs-title function_">createWidgetAttr</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Builds formula-based relationships between cells
+     *
+     * <span class="hljs-doctag">@param</span> exTool     Tool for handling inter-cell relationships
+     * <span class="hljs-doctag">@param</span> calculator Calculator
+     * <span class="hljs-doctag">@param</span> curFa      Current formula
+     * <span class="hljs-doctag">@param</span> oriFa      Original formula
+     * <span class="hljs-doctag">@param</span> boxCe      Two-dimensional cell object
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildRelation</span><span class="hljs-params">(ExTool exTool, Calculator calculator, BaseFormula curFa, BaseFormula oriFa, BoxCEProvider boxCe)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether to dynamically change scripts; mainly applicable in paginated preview
+     *
+     * <span class="hljs-doctag">@return</span> Whether dynamic script modification is needed
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isDynamicJavaScript</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Whether the current preview mode can be used for scheduled tasks
+     *
+     * <span class="hljs-doctag">@return</span> true if it can be used for scheduled tasks, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">canBeUseForSchedule</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Sets the cell value after applying the present (display format) in the current preview mode
+     * (Paginated preview uses the formatted value; fill-in and analysis preview retain the original value)
+     *
+     * <span class="hljs-doctag">@param</span> ce           Current cell
+     * <span class="hljs-doctag">@param</span> present      Display format
+     * <span class="hljs-doctag">@param</span> presentValue Value obtained after applying the format
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">present</span><span class="hljs-params">(CellElement ce, Present present, Object presentValue)</span>;
+
+    <span class="hljs-comment">/**
+     * Sets the cell style after applying the present in the current preview mode
+     *
+     * <span class="hljs-doctag">@param</span> ce           Current cell
+     * <span class="hljs-doctag">@param</span> present      Display format
+     * <span class="hljs-doctag">@param</span> presentStyle Style
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">present</span><span class="hljs-params">(CellElement ce, Present present, Style presentStyle)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether this preview mode may display widgets inside cells
+     *
+     * <span class="hljs-doctag">@return</span> true if widgets may be displayed, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasWidget</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the executor for handling aggregate report blocks
+     *
+     * <span class="hljs-doctag">@param</span> tpl          Aggregate report sheet
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     * <span class="hljs-doctag">@param</span> actor        Preview mode handler
+     * <span class="hljs-doctag">@return</span> Report block executor
+     */</span>
+    PolyWorkSheetExecutor <span class="hljs-title function_">createPolySequenceExecutor</span><span class="hljs-params">(PolyWorkSheet tpl, Map parameterMap, Actor actor)</span>;
+
+    <span class="hljs-comment">/**
+     * Registered function point
+     *
+     * <span class="hljs-doctag">@return</span> The function point restrictions for this preview mode
+     */</span>
+    FunctionPoint <span class="hljs-title function_">getBookFUNC</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates a brand-new result workbook with the specified parameter map
+     *
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     * <span class="hljs-doctag">@return</span> Result workbook
+     */</span>
+    ResultWorkBook <span class="hljs-title function_">createResultBook</span><span class="hljs-params">(Map parameterMap)</span>;
+
+    <span class="hljs-comment">/**
+     * Executes a workbook
+     *
+     * <span class="hljs-doctag">@param</span> workBook     Template workbook
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     * <span class="hljs-doctag">@return</span> Result workbook
+     */</span>
+    ResultWorkBook <span class="hljs-title function_">executeWorkBook</span><span class="hljs-params">(TemplateWorkBook workBook, Map parameterMap)</span>;
+
+    <span class="hljs-comment">/**
+     * Executes a workbook for a specific sheet
+     *
+     * <span class="hljs-doctag">@param</span> workBook     Template workbook
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     * <span class="hljs-doctag">@param</span> sheetIndex   Index of the sheet to calculate
+     * <span class="hljs-doctag">@return</span> Result workbook
+     */</span>
+    ResultWorkBook <span class="hljs-title function_">executeWorkBook</span><span class="hljs-params">(TemplateWorkBook workBook, Map parameterMap, <span class="hljs-type">int</span> sheetIndex)</span>;
+
+    <span class="hljs-comment">/**
+     * Creates a cross-sheet calculator for the workbook
+     *
+     * <span class="hljs-doctag">@param</span> workBook     Template workbook
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     * <span class="hljs-doctag">@return</span> Cross-sheet calculator
+     */</span>
+    WorkBookExecutor <span class="hljs-title function_">createWorkBookExecutor</span><span class="hljs-params">(TemplateWorkBook workBook, Map parameterMap)</span>;
+
+    <span class="hljs-comment">/**
+     * Gets the log record type for this preview mode
+     *
+     * <span class="hljs-doctag">@return</span> Log record type
+     */</span>
+    DeclareRecordType <span class="hljs-title function_">getRecordType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Whether logs generated by this preview mode should be recorded
+     *
+     * <span class="hljs-doctag">@return</span> true if logging is needed, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">shouldRecord</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Updates the cache timestamp
+     *
+     * <span class="hljs-doctag">@param</span> tpl Template
+     * <span class="hljs-doctag">@return</span> New timestamp
+     */</span>
+    <span class="hljs-type">long</span> <span class="hljs-title function_">updateCacheTime</span><span class="hljs-params">(TemplateWorkBook tpl)</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the cache object for a template
+     *
+     * <span class="hljs-doctag">@param</span> tpl          Template workbook
+     * <span class="hljs-doctag">@param</span> reportEntry  Object used for caching the report
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     * <span class="hljs-doctag">@param</span> useCache     Whether report caching is enabled
+     * <span class="hljs-doctag">@return</span> Template cache object
+     */</span>
+    ReportCache <span class="hljs-title function_">createReportCache</span><span class="hljs-params">(TemplateWorkBook tpl,
+                                  ReportEntry reportEntry,
+                                  Map parameterMap,
+                                  <span class="hljs-type">boolean</span> useCache)</span>;
+
+    <span class="hljs-comment">/**
+     * Reads the result workbook from cache if available
+     *
+     * <span class="hljs-doctag">@param</span> tpl          Template workbook
+     * <span class="hljs-doctag">@param</span> tplPath      Template path
+     * <span class="hljs-doctag">@param</span> reportCache  Object used for caching the report
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     * <span class="hljs-doctag">@param</span> sheetIndex   Sheet index
+     * <span class="hljs-doctag">@return</span> Result workbook
+     */</span>
+    ResultWorkBook <span class="hljs-title function_">getResultBookFromCacheIfNeed</span><span class="hljs-params">(TemplateWorkBook tpl,
+                                                String tplPath,
+                                                ReportCache reportCache,
+                                                Map&lt;String, Object&gt; parameterMap,
+                                                <span class="hljs-type">int</span> sheetIndex)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether the page can be scaled; mainly for mobile — paginated preview supports scaling, fill-in does not
+     *
+     * <span class="hljs-doctag">@return</span> true if scaling is not allowed, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">shouldNotBeScale</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Whether to output report content page by page
+     *
+     * <span class="hljs-doctag">@param</span> req HTTP request
+     * <span class="hljs-doctag">@return</span> true if output is page-by-page, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPageByPage</span><span class="hljs-params">(HttpServletRequest req)</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the page set based on the result workbook
+     *
+     * <span class="hljs-doctag">@param</span> wb Result workbook
+     * <span class="hljs-doctag">@return</span> Page set collection
+     */</span>
+    PageSetChainProvider <span class="hljs-title function_">getPageSet</span><span class="hljs-params">(ResultWorkBook wb)</span>;
+
+    <span class="hljs-comment">/**
+     * Gets the toolbars to display for the current preview mode
+     *
+     * <span class="hljs-doctag">@param</span> repo Context
+     * <span class="hljs-doctag">@return</span> Array of toolbar managers
+     */</span>
+    ToolBarManager[] toolbarManagers(Repository repo);
+
+    <span class="hljs-comment">/**
+     * Generates the configuration object for the report parameter panel and report body
+     *
+     * <span class="hljs-doctag">@param</span> repository Context
+     * <span class="hljs-doctag">@return</span> Configuration object
+     * <span class="hljs-doctag">@throws</span> JSONException Thrown if configuration generation fails
+     */</span>
+    JSONObject <span class="hljs-title function_">panelConfig</span><span class="hljs-params">(Repository repository)</span> <span class="hljs-keyword">throws</span> JSONException;
+
+    <span class="hljs-comment">/**
+     * Returns the string representing the current preview mode in JavaScript
+     *
+     * <span class="hljs-doctag">@return</span> String representing the preview mode
+     */</span>
+    String <span class="hljs-title function_">panelType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * The path to the special JS file for each preview mode
+     *
+     * <span class="hljs-doctag">@return</span> Path to the JS file
+     */</span>
+    String <span class="hljs-title function_">mainJavaScriptPath</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Gets the number of report pages from the session; mainly used during paginated preview
+     *
+     * <span class="hljs-doctag">@param</span> repository Session-related context
+     * <span class="hljs-doctag">@return</span> Number of report pages
+     */</span>
+    <span class="hljs-type">int</span> <span class="hljs-title function_">getReportCountInRepo</span><span class="hljs-params">(Repository repository)</span>;
+
+    <span class="hljs-comment">/**
+     * Gets the index of the current report page from the session
+     *
+     * <span class="hljs-doctag">@param</span> repository Session-related context
+     * <span class="hljs-doctag">@return</span> Report page index
+     */</span>
+    <span class="hljs-type">int</span> <span class="hljs-title function_">calculateCurrentSheetIndex</span><span class="hljs-params">(Repository repository)</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the chart block for aggregate reports under different preview modes
+     *
+     * <span class="hljs-doctag">@param</span> chartPainter Chart painter
+     */</span>
+    ResultChartBlock <span class="hljs-title function_">getChartBlock4Ploy</span><span class="hljs-params">(BaseChartPainter chartPainter)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether aggregate reports are supported
+     *
+     * <span class="hljs-doctag">@return</span> true if aggregate reports are supported, false otherwise
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">supportPolyExecute</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Creates the context information map
+     *
+     * <span class="hljs-doctag">@param</span> req            HTTP request
+     * <span class="hljs-doctag">@param</span> sessionIDInfor Report session
+     * <span class="hljs-doctag">@return</span> Context information map
+     */</span>
+    Map&lt;String, Object&gt; <span class="hljs-title function_">createContext4Tpl</span><span class="hljs-params">(HttpServletRequest req, ReportSessionIDInfor sessionIDInfor)</span>;
+
+    <span class="hljs-comment">/**
+     * Outputs HTML
+     *
+     * <span class="hljs-doctag">@param</span> req            HTTP request
+     * <span class="hljs-doctag">@param</span> res            HTTP response
+     * <span class="hljs-doctag">@param</span> map4Tpl        Context information map
+     * <span class="hljs-doctag">@param</span> sessionIDInfor Report session
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">flushHtml</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, Map&lt;String, Object&gt; map4Tpl, ReportSessionIDInfor sessionIDInfor)</span> <span class="hljs-keyword">throws</span> IOException;
+
+    <span class="hljs-comment">/**
+     * Creates the report web attributes for mobile
+     *
+     * <span class="hljs-doctag">@param</span> req            HTTP request
+     * <span class="hljs-doctag">@param</span> sessionIDInfor Report session
+     * <span class="hljs-doctag">@return</span> Report web attributes
+     * <span class="hljs-doctag">@throws</span> JSONException e
+     */</span>
+    JSONObject <span class="hljs-title function_">createReportWebAttr4Mobile</span><span class="hljs-params">(HttpServletRequest req, ReportSessionIDInfor sessionIDInfor)</span> <span class="hljs-keyword">throws</span> JSONException;
+
+    <span class="hljs-comment">/**
+     * Processes the sheet configuration array generated for multi-sheet reports
+     *
+     * <span class="hljs-doctag">@param</span> repository Report session context
+     * <span class="hljs-doctag">@return</span> Sheet configuration array
+     */</span>
+    JSONArray <span class="hljs-title function_">processMultipleSheet</span><span class="hljs-params">(Repository repository)</span>;
+
+    <span class="hljs-comment">/**
+     * Modifies session object properties based on the requirements of different preview modes
+     *
+     * <span class="hljs-doctag">@param</span> repo    Report session context
+     * <span class="hljs-doctag">@param</span> req     Request
+     * <span class="hljs-doctag">@param</span> c       Calculator
+     * <span class="hljs-doctag">@param</span> map     Existing parameter configuration
+     * <span class="hljs-doctag">@param</span> isdebug The __isdebug__ parameter
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">dealWithSessionInfo</span><span class="hljs-params">(Repository repo, HttpServletRequest req, Calculator c, Map&lt;String, Object&gt; map, <span class="hljs-type">boolean</span> isdebug)</span>;
+
+    <span class="hljs-comment">/**
+     * The display type for scheduled task result files
+     */</span>
+    <span class="hljs-type">int</span> <span class="hljs-title function_">getScheduleShowType</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.core.sheet;
+
+<span class="hljs-keyword">import</span> com.fr.main.workbook.ResultWorkBook;
+<span class="hljs-keyword">import</span> com.fr.report.elementcase.ResultElementCase;
+<span class="hljs-keyword">import</span> com.fr.report.report.ResultReport;
+<span class="hljs-keyword">import</span> com.fr.report.report.TemplateReport;
+<span class="hljs-keyword">import</span> com.fr.report.stable.fun.Actor;
+
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-comment">/**
+ * Created by richie on 16/5/11.
+ * Report executor
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">WorkBookExecutor</span> {
+
+    <span class="hljs-comment">/**
+     * Generates a result report
+     * <span class="hljs-doctag">@param</span> currentIndex Index
+     * <span class="hljs-doctag">@param</span> report Template
+     * <span class="hljs-doctag">@return</span> Result report
+     */</span>
+    ResultReport <span class="hljs-title function_">execute</span><span class="hljs-params">(<span class="hljs-type">int</span> currentIndex, TemplateReport report)</span>;
+
+    <span class="hljs-comment">/**
+     * Generates a result workbook
+     * <span class="hljs-doctag">@return</span> Result workbook
+     */</span>
+    ResultWorkBook <span class="hljs-title function_">execute</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Generates the overall result workbook
+     * <span class="hljs-doctag">@return</span> Result workbook
+     */</span>
+    ResultWorkBook <span class="hljs-title function_">result</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Execution type
+     * <span class="hljs-doctag">@return</span> Preview type
+     */</span>
+    Actor <span class="hljs-title function_">getExeType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Adds a sheet
+     * <span class="hljs-doctag">@param</span> index Index
+     * <span class="hljs-doctag">@param</span> resEC Report
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">addResult</span><span class="hljs-params">(<span class="hljs-type">int</span> index, ResultReport resEC)</span>;
+
+    <span class="hljs-comment">/**
+     * Gets the report block at the given index
+     * <span class="hljs-doctag">@param</span> index Index
+     * <span class="hljs-doctag">@return</span> Report block
+     */</span>
+    ResultElementCase <span class="hljs-title function_">getResultByIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span>;
+
+    <span class="hljs-comment">/**
+     * Initializes the result workbook for the current preview mode
+     *
+     * <span class="hljs-doctag">@param</span> parameterMap Parameter map
+     *
+     * <span class="hljs-doctag">@return</span> Result workbook for the current preview mode
+     *
+     */</span>
+    ResultWorkBook <span class="hljs-title function_">initResultBook</span><span class="hljs-params">(Map&lt;String, Object&gt; parameterMap)</span>;
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ActorProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>The product uses <code>ActorFactory</code> to provide the corresponding actor to callers. When <code>ActorFactory</code> is loaded, it declares a plugin monitoring event. Whenever a plugin is registered or deactivated, it reads the <code>ActorProvider</code> interface declared in the plugin and caches it in a map object.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable;
+
+<span class="hljs-comment">// ... imports omitted for brevity ...</span>
+
+<span class="hljs-comment">/**
+ * Created with IntelliJ IDEA.
+ * User: richie
+ * Date: 14-2-14
+ * Time: 3:27 PM
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ActorFactory</span> {
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, Actor&gt; actorMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Actor&gt;();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;Actor, String&gt; typeMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;Actor, String&gt;();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, Actor&gt; reportMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Actor&gt;();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, Actor&gt; extraMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Actor&gt;();
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">ReadWriteLock</span> <span class="hljs-variable">LOCK</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantReadWriteLock</span>();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Lock</span> <span class="hljs-variable">READ</span> <span class="hljs-operator">=</span> LOCK.readLock();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Lock</span> <span class="hljs-variable">WRITE</span> <span class="hljs-operator">=</span> LOCK.writeLock();
+
+    <span class="hljs-keyword">static</span> {
+        GeneralContext.listenPluginRunningChanged(<span class="hljs-keyword">new</span> <span class="hljs-title class_">PluginEventListener</span>() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">on</span><span class="hljs-params">(PluginEvent event)</span> {
+                refresh();
+            }
+        }, <span class="hljs-keyword">new</span> <span class="hljs-title class_">PluginFilter</span>() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(PluginContext context)</span> {
+                <span class="hljs-keyword">return</span> context.contain(Actor.XML_TAG) || context.contain(ActorProvider.XML_TAG);
+            }
+        });
+        refresh();
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">refresh</span><span class="hljs-params">()</span> {
+        refreshExtra();
+        merge();
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">merge</span><span class="hljs-params">()</span> {
+        WRITE.lock();
+        <span class="hljs-keyword">try</span> {
+            actorMap.clear();
+            typeMap.clear();
+            actorMap.putAll(reportMap);
+            actorMap.putAll(extraMap);
+            <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Actor&gt; entry : actorMap.entrySet()) {
+                typeMap.put(entry.getValue(), entry.getKey());
+            }
+        } <span class="hljs-keyword">finally</span> {
+            WRITE.unlock();
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">refreshExtra</span><span class="hljs-params">()</span> {
+        extraMap.clear();
+        Set&lt;Actor&gt; actors = ExtraReportClassManager.getInstance().getActors();
+        <span class="hljs-keyword">for</span> (Actor actor : actors) {
+            extraMap.put(actor.panelType(), actor);
+        }
+        Set&lt;ActorProvider&gt; providers = ExtraReportClassManager.getInstance().getActorProviders();
+        Actor[] providedActors;
+        <span class="hljs-keyword">for</span> (ActorProvider provider : providers) {
+            providedActors = provider.createActor();
+            <span class="hljs-keyword">if</span> (providedActors != <span class="hljs-literal">null</span>) {
+                <span class="hljs-keyword">for</span> (Actor actor : providedActors) {
+                    extraMap.put(actor.panelType(), actor);
+                }
+            }
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-title function_">ActorFactory</span><span class="hljs-params">()</span> {}
+
+    <span class="hljs-comment">/**
+     * Registers the actor for the given type. Plugin actors should not call this method;
+     * the Factory registers them automatically.
+     *
+     * <span class="hljs-doctag">@param</span> type  Preview type
+     * <span class="hljs-doctag">@param</span> actor Preview Actor
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">registerActor</span><span class="hljs-params">(String type, Actor actor)</span> {
+        reportMap.put(type, actor);
+        merge();
+    }
+
+    <span class="hljs-comment">/**
+     * Gets the Actor for the specified type
+     *
+     * <span class="hljs-doctag">@param</span> type Specified type
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Actor <span class="hljs-title function_">getActor</span><span class="hljs-params">(String type)</span> {
+        Actor actor;
+        READ.lock();
+        <span class="hljs-keyword">try</span> {
+            actor = actorMap.get(type);
+            <span class="hljs-keyword">if</span> (actor == <span class="hljs-literal">null</span>) {
+                actor = actorMap.get(ActorConstants.TYPE_PAGE);
+            }
+        } <span class="hljs-keyword">finally</span> {
+            READ.unlock();
+        }
+        <span class="hljs-keyword">return</span> actor;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">getType</span><span class="hljs-params">(Actor actor)</span> {
+        READ.lock();
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-type">String</span> <span class="hljs-variable">type</span> <span class="hljs-operator">=</span> typeMap.get(actor);
+            <span class="hljs-keyword">if</span> (type != <span class="hljs-literal">null</span>) {
+                <span class="hljs-keyword">return</span> type;
+            }
+        } <span class="hljs-keyword">finally</span> {
+            READ.unlock();
+        }
+        <span class="hljs-keyword">return</span> ActorConstants.TYPE_PAGE;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Actor <span class="hljs-title function_">getActor</span><span class="hljs-params">(String type, <span class="hljs-type">boolean</span> isMobile, <span class="hljs-type">boolean</span> isNoPage)</span> {
+        <span class="hljs-keyword">if</span> (ActorConstants.TYPE_VIEW.equalsIgnoreCase(type) &amp;&amp; isMobile) {
+            type = ActorConstants.TYPE_PAGE;
+        }
+        <span class="hljs-keyword">if</span> (ActorConstants.TYPE_PAGE.equalsIgnoreCase(type) &amp;&amp; isNoPage) {
+            type = ActorConstants.TYPE_NO_PAGE;
+        }
+        <span class="hljs-keyword">return</span> getActor(type);
+    }
+
+    <span class="hljs-comment">/**
+     * Gets the Actor from the request
+     *
+     * <span class="hljs-doctag">@param</span> req HTTP request
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Actor <span class="hljs-title function_">getActor</span><span class="hljs-params">(HttpServletRequest req)</span> {
+        <span class="hljs-keyword">return</span> getActor(req, <span class="hljs-literal">null</span>);
+    }
+
+    <span class="hljs-comment">/**
+     * Gets the Actor from the request
+     *
+     * <span class="hljs-doctag">@param</span> req          HTTP request
+     * <span class="hljs-doctag">@param</span> defaultActor Default actor returned when op is empty or unrecognized
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Actor <span class="hljs-title function_">getActor</span><span class="hljs-params">(HttpServletRequest req, Actor defaultActor)</span> {
+        <span class="hljs-type">String</span> <span class="hljs-variable">op</span> <span class="hljs-operator">=</span> WebUtils.getHTTPRequestParameter(req, ParameterConstants.OP);
+        <span class="hljs-comment">// The op for API printing also goes through here: op=getSessionID</span>
+        <span class="hljs-keyword">if</span> (StringUtils.isEmpty(op) || actorMap.get(op) == <span class="hljs-literal">null</span>) {
+            <span class="hljs-comment">// Prefer returning the externally provided defaultActor;</span>
+            <span class="hljs-comment">// otherwise, when previewing via the platform (op=fs_main),</span>
+            <span class="hljs-comment">// ActorFactory.getActor(req) always returns the default PageActor.</span>
+            <span class="hljs-keyword">if</span> (defaultActor != <span class="hljs-literal">null</span>) {
+                <span class="hljs-keyword">return</span> defaultActor;
+            }
+            op = ActorConstants.TYPE_PAGE;
+        }
+        Actor actor;
+        READ.lock();
+        <span class="hljs-keyword">try</span> {
+            actor = actorMap.get(op);
+            <span class="hljs-keyword">if</span> (actor == <span class="hljs-literal">null</span>) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">"Not support op:"</span> + op + <span class="hljs-string">"@"</span> + ActorFactory.class.getName());
+            }
+        } <span class="hljs-keyword">finally</span> {
+            READ.unlock();
+        }
+        <span class="hljs-keyword">return</span> actor;
+    }
+}
+</code></pre>
+<h2 id="7-constraints-and-notes"><a name="7-constraints-and-notes" class="anchor-navigation-ex-anchor" href="#7-constraints-and-notes"><i class="fa fa-link" aria-hidden="true"></i></a>7. Constraints and Notes</h2>
+<p>The <code>ActorProvider</code> interface itself is straightforward; the complexity lies in the implementation of the <code>Actor</code> object.</p>
+<p>The <code>Actor</code> interface covers entry points for almost all key steps in template calculation, meaning that most display and interaction differences can be handled through these entry points. Developing a complete preview mode from scratch requires deep knowledge of FineReport's internal report objects. In practice, this interface is more commonly used to adjust existing preview modes. Most implementations simply extend <code>PageActor</code> (paginated preview), <code>WriteActor</code> (fill-in preview), or <code>ViewActor</code> (data analysis preview), and then override only the relevant entry point.</p>
+<p>The most commonly used entry point is <code>WorkBookExecutor createWorkBookExecutor(TemplateWorkBook workBook, Map parameterMap)</code>. This is the entry point for the entire report calculation process; both pre-calculation template adjustments and post-calculation result adjustments can be made here.</p>
+<p>The preview type is specified via the <code>panelType()</code> method, which corresponds to the <code>op</code> parameter in the preview URL.</p>
+<p>The companion interface <code>WorkBookExecutor</code> is responsible for the actual calculation. Its most commonly used entry point is <code>ResultWorkBook execute()</code>, which is the actual calculation entry point — both pre-processing before calculation and template adjustments after calculation can be handled there.</p>
+<p>Because the two companion interfaces expose many entry points and methods, <code>ActorProvider</code> can achieve a wide range of effects. When implementing a specific scenario, follow the principle of minimal footprint and select the entry point that exactly meets your requirements.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-actor-provider" target="_blank">demo-actor-provider</a></p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open-Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and contributed by community developers, for reference and learning purposes only. Neither the developers nor FineReport are obligated to provide instruction or support for any results from these examples. Commercial use is prohibited; any consequences of commercial use are solely the responsibility of the user.</p>
+<p><a href="https://code.fanruan.com/fanruan/demo-dynamic-sheet" target="_blank">demo-dynamic-sheet</a></p>
+<p><a href="https://code.fanruan.com/hugh/open-JSD-8210" target="_blank">open-JSD-8210</a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +4346,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ActorProvider","level":"2.4.3.2.2","depth":4,"next":{"title":"CellPropertyProvider","level":"2.4.3.2.3","depth":4,"path":"tutorial/finereport/report/CellPropertyProvider.md","ref":"tutorial/finereport/report/CellPropertyProvider.md","articles":[]},"previous":{"title":"WaterMarkProvider","level":"2.4.3.2.1","depth":4,"path":"tutorial/finereport/report/WaterMarkProvider.md","ref":"tutorial/finereport/report/WaterMarkProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ActorProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ActorProvider","level":"2.4.3.2.2","depth":4,"next":{"title":"CellPropertyProvider","level":"2.4.3.2.3","depth":4,"path":"tutorial/finereport/report/CellPropertyProvider.md","ref":"tutorial/finereport/report/CellPropertyProvider.md","articles":[]},"previous":{"title":"WaterMarkProvider","level":"2.4.3.2.1","depth":4,"path":"tutorial/finereport/report/WaterMarkProvider.md","ref":"tutorial/finereport/report/WaterMarkProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ActorProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

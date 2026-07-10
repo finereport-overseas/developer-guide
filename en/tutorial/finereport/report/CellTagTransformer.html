@@ -3555,10 +3555,93 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#celltagtransformer"><b></b>CellTagTransformer</a></li></ul></div><a href="#celltagtransformer" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="celltagtransformer"><a name="celltagtransformer" class="anchor-navigation-ex-anchor" href="#celltagtransformer"><i class="fa fa-link" aria-hidden="true"></i></a>CellTagTransformer</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#celltagtransformer"><b></b>CellTagTransformer</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#default-implementation-reference"><b></b>Default Implementation Reference</a></li><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example-code"><b></b>Example Code</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#celltagtransformer" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="celltagtransformer"><a name="celltagtransformer" class="anchor-navigation-ex-anchor" href="#celltagtransformer"><i class="fa fa-link" aria-hidden="true"></i></a>CellTagTransformer</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>processor</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.CellTagTransformer</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.report.fun.CellTagTransformer" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>Modifies the HTML <code>Tag</code> emitted for a cell, useful for adding tooltip hints, custom HTML attributes, and similar purposes.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Modifies the HTML tag emitted for a cell
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CellTagTransformer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CellTagTransformer"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Processes the cell tooltip effect
+     *
+     * <span class="hljs-doctag">@param</span> c        Calculator
+     * <span class="hljs-doctag">@param</span> tag      Cell HTML tag
+     * <span class="hljs-doctag">@param</span> tooltip  Tooltip content
+     * <span class="hljs-doctag">@param</span> rawValue Raw cell value
+     * <span class="hljs-doctag">@return</span> Processed HTML tag
+     */</span>
+    Tag <span class="hljs-title function_">process</span><span class="hljs-params">(Calculator c, Tag tag, String tooltip, Object rawValue)</span>;
+}
+</code></pre>
+<h2 id="default-implementation-reference"><a name="default-implementation-reference" class="anchor-navigation-ex-anchor" href="#default-implementation-reference"><i class="fa fa-link" aria-hidden="true"></i></a>Default Implementation Reference</h2>
+<p>The built-in default implementation <code>DefaultCellTooltipProcessor</code> sets the tooltip content as the HTML <code>title</code> attribute:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DefaultCellTooltipProcessor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCellTagTransformer</span> {
+
+    <span class="hljs-keyword">public</span> Tag <span class="hljs-title function_">process</span><span class="hljs-params">(Calculator c, Tag tag, String tooltip, Object rawValue)</span> {
+        tag.attr(<span class="hljs-string">"title"</span>, tooltip);
+        <span class="hljs-keyword">return</span> tag;
+    }
+}
+</code></pre>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Register your implementation class in the plugin's <code>plugin.xml</code> using the <code>extra-report</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">CellTagTransformer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.YourClassName"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="example-code"><a name="example-code" class="anchor-navigation-ex-anchor" href="#example-code"><i class="fa fa-link" aria-hidden="true"></i></a>Example Code</h2>
+<p>The following example adds a custom HTML attribute on top of the default tooltip:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCellTagTransformer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCellTagTransformer</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Tag <span class="hljs-title function_">process</span><span class="hljs-params">(Calculator c, Tag tag, String tooltip, Object rawValue)</span> {
+        <span class="hljs-comment">// Preserve the original title attribute</span>
+        tag.attr(<span class="hljs-string">"title"</span>, tooltip);
+        <span class="hljs-comment">// Add a custom data attribute for use by front-end JS</span>
+        tag.attr(<span class="hljs-string">"data-raw-value"</span>, rawValue == <span class="hljs-literal">null</span> ? <span class="hljs-string">""</span> : rawValue.toString());
+        <span class="hljs-keyword">return</span> tag;
+    }
+}
+</code></pre>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>It is recommended to extend <code>AbstractCellTagTransformer</code> rather than implementing the interface directly, to reduce boilerplate code.</li>
+<li>Modifications to <code>tag</code> in <code>process()</code> directly affect the final HTML output. Be careful not to overwrite attributes already set by other plugins.</li>
+<li><code>rawValue</code> is the raw cell value and may be <code>null</code>; always perform a null check before use.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3685,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CellTagTransformer","level":"2.4.3.2.4","depth":4,"next":{"title":"CellValueProvider","level":"2.4.3.2.5","depth":4,"path":"tutorial/finereport/report/CellValueProvider.md","ref":"tutorial/finereport/report/CellValueProvider.md","articles":[]},"previous":{"title":"CellPropertyProvider","level":"2.4.3.2.3","depth":4,"path":"tutorial/finereport/report/CellPropertyProvider.md","ref":"tutorial/finereport/report/CellPropertyProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/CellTagTransformer.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"CellTagTransformer","level":"2.4.3.2.4","depth":4,"next":{"title":"CellValueProvider","level":"2.4.3.2.5","depth":4,"path":"tutorial/finereport/report/CellValueProvider.md","ref":"tutorial/finereport/report/CellValueProvider.md","articles":[]},"previous":{"title":"CellPropertyProvider","level":"2.4.3.2.3","depth":4,"path":"tutorial/finereport/report/CellPropertyProvider.md","ref":"tutorial/finereport/report/CellPropertyProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/CellTagTransformer.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

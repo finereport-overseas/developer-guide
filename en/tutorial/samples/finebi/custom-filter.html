@@ -3555,10 +3555,338 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#custom-filter"><b></b>custom-filter</a></li></ul></div><a href="#custom-filter" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="custom-filter"><a name="custom-filter" class="anchor-navigation-ex-anchor" href="#custom-filter"><i class="fa fa-link" aria-hidden="true"></i></a>custom-filter</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#custom-filter-widget"><b></b>Custom Filter Widget</a></li><ul><li><span class="title-icon "></span><a href="#step-1-register-the-widget-interface"><b></b>Step 1: Register the Widget Interface</a></li><li><span class="title-icon "></span><a href="#step-2-implement-the-filter-widget-logic"><b></b>Step 2: Implement the Filter Widget Logic</a></li><li><span class="title-icon "></span><a href="#plugin-demo"><b></b>Plugin Demo</a></li></ul></ul></div><a href="#custom-filter-widget" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="custom-filter-widget"><a name="custom-filter-widget" class="anchor-navigation-ex-anchor" href="#custom-filter-widget"><i class="fa fa-link" aria-hidden="true"></i></a>Custom Filter Widget</h1>
+<h2 id="step-1-register-the-widget-interface"><a name="step-1-register-the-widget-interface" class="anchor-navigation-ex-anchor" href="#step-1-register-the-widget-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Register the Widget Interface</h2>
+<p>Target effect:</p>
+<p><a href="images/filter1.png" data-lightbox="56042e32-062b-47ae-81d2-31878229c89a" data-title="Custom filter widget injection"><img src="images/filter1.png" alt="Custom filter widget injection"></img></a></p>
+<p>Configure custom widget properties in the plugin by extending <code>AbstractCustomFilterWidgetProvider</code>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FilterProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCustomFilterWidgetProvider</span> {
+
+    <span class="hljs-comment">/**
+     * Configure the custom widget name (supports i18n)
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-type">Locale</span> <span class="hljs-variable">currentLocale</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+            <span class="hljs-type">String</span> <span class="hljs-variable">resourceBaseName</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ru/soundbi/filters/datesliderfilter/resource/locale/locale"</span>;
+            <span class="hljs-keyword">try</span> {
+                InterProviderFactory.getProvider().addResource(resourceBaseName);
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+            }
+            <span class="hljs-type">HttpServletRequest</span> <span class="hljs-variable">req</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">if</span> (RequestContextHolder.getRequestAttributes() != <span class="hljs-literal">null</span>) {
+                    req = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+                }
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+                <span class="hljs-comment">// Ignore the exception and try another approach</span>
+            }
+            <span class="hljs-keyword">if</span> (req != <span class="hljs-literal">null</span>) {
+                currentLocale = ProviderFactory.INSTANCE.getInternationalProvider().getClientLocale(req);
+            }
+            <span class="hljs-keyword">if</span> (currentLocale == <span class="hljs-literal">null</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Plugin-Xml-I18n-Custom-Date-Slider-Plugin-Name"</span>;
+            }
+            <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Plugin-Xml-I18n-Custom-Date-Slider-Plugin-Name"</span>;
+            <span class="hljs-type">String</span> <span class="hljs-variable">localizedText</span> <span class="hljs-operator">=</span> InterProviderFactory.getProvider().getLocText(key, currentLocale);
+            <span class="hljs-keyword">return</span> localizedText;
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Fall back to the key if i18n resources cannot be loaded</span>
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Plugin-Xml-I18n-Custom-Date-Slider-Plugin-Name"</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Configure the xType of this custom widget
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getType</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"bi.custom.date.dateslider"</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Configure the display icon of this custom widget
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getIcon</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"http://webapi.amap.com/theme/v1.3/mapinfo_05.png"</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Configure the option component xtype for this custom widget (can be empty)
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getCustomTool</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>; <span class="hljs-comment">// "bi.plugin.testwidget"</span>
+    }
+
+    <span class="hljs-comment">/**
+     * Configure the preview HTML for this custom widget (can be empty)
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPreviewPageHTML</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"https://fanruan.design/fineui/2.0/fineui.min.css\" /&gt;"</span>
+                + <span class="hljs-string">"&lt;script src=\"https://fanruan.design/fineui/2.0/fineui.min.js\"&gt;&lt;/script&gt;"</span>
+                + <span class="hljs-string">"&lt;div&gt;context: &lt;/div&gt;"</span> + context.getSystemInfo() + context.getUserInfo()
+                + <span class="hljs-string">"&lt;div id=\"container\"&gt;Preview&lt;/div&gt;"</span>;
+    }
+
+    <span class="hljs-comment">/**
+     * Configure the edit HTML for this custom widget (can be empty)
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEditPageHTML</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"https://fanruan.design/fineui/2.0/fineui.min.css\" /&gt;"</span>
+                + <span class="hljs-string">"&lt;script src=\"https://fanruan.design/fineui/2.0/fineui.min.js\"&gt;&lt;/script&gt;"</span>
+                + <span class="hljs-string">"&lt;div&gt;context: &lt;/div&gt;"</span> + context.getSystemInfo().getServletURL() + context.getUserInfo().getDisplayName()
+                + <span class="hljs-string">"&lt;div id=\"container\"&gt;Edit&lt;/div&gt;"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> AssembleComponent <span class="hljs-title function_">previewClient</span><span class="hljs-params">(OperationContext context)</span> {
+        <span class="hljs-keyword">return</span> FilterComponent.KEY;
+    }
+
+    <span class="hljs-comment">/**
+     * Configure the supported field types for this custom widget:
+     * - String type:  BICommonConstants.COLUMN.STRING
+     * - Date type:    BICommonConstants.COLUMN.DATE
+     * - Numeric type: BICommonConstants.COLUMN.NUMBER
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getFilterFieldType</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> BICommonConstants.COLUMN.DATE;
+    }
+}
+</code></pre>
+<h2 id="step-2-implement-the-filter-widget-logic"><a name="step-2-implement-the-filter-widget-logic" class="anchor-navigation-ex-anchor" href="#step-2-implement-the-filter-widget-logic"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Implement the Filter Widget Logic</h2>
+<p>Define the rendering logic for the custom filter widget in the plugin to control display in both edit and preview modes.</p>
+<p>Edit mode:</p>
+<p><a href="images/filter2.png" data-lightbox="2c6fcfa5-14f0-4e16-9d5c-ac59641c5a4a" data-title="Custom filter widget edit mode"><img src="images/filter2.png" alt="Custom filter widget edit mode"></img></a></p>
+<p>Preview mode:</p>
+<p><a href="images/filter3.png" data-lightbox="1d607e56-9d6d-4b0c-9895-d4ae56aaa72c" data-title="Custom filter widget preview mode"><img src="images/filter3.png" alt="Custom filter widget preview mode"></img></a></p>
+<p>The following is a frontend implementation example of a custom date-slider filter widget:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { shortcut, store, extend } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../core'</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ControlFilterModel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'./control.filter.model'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./HTMLComponents/date-picker.js'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./HTMLComponents/scale-selector.js'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./HTMLComponents/date-range-picker.js'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./HTMLComponents/date-range-scale-selector.js'</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ErrorCode</span>, <span class="hljs-variable constant_">RES_STATUS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../contsant/index'</span>;
+<span class="hljs-keyword">import</span> { formatDate, getControlUsedMeasuresAndTableNames, setCssScale, setTransformScale } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../utils'</span>;
+
+<span class="hljs-keyword">export</span> interface <span class="hljs-title class_">ControlStringSingleProps</span> {
+    <span class="hljs-attr">baseCls</span>: string;
+    <span class="hljs-attr">$testId</span>: string;
+    <span class="hljs-attr">height</span>: number;
+    width?: number;
+    <span class="hljs-attr">isPreviewMode</span>: boolean;
+    <span class="hljs-attr">cssScaleGetter</span>: <span class="hljs-function">() =&gt;</span> number;
+}
+
+@<span class="hljs-title function_">shortcut</span>()
+@<span class="hljs-title function_">store</span>(<span class="hljs-title class_">ControlFilterModel</span>)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ControlDateIntervalFilter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">BI.Widget</span> {
+    <span class="hljs-keyword">static</span> xtype = <span class="hljs-string">'bi.custom.date.dateslider'</span>;
+
+    <span class="hljs-keyword">static</span> <span class="hljs-variable constant_">EVENT</span> = {
+        <span class="hljs-attr">EVENT_CHANGE</span>: <span class="hljs-string">'EVENT_CHANGE'</span>,
+    };
+
+    <span class="hljs-attr">props</span>: <span class="hljs-title class_">ControlStringSingleProps</span> = {
+        <span class="hljs-attr">baseCls</span>: <span class="hljs-string">'bi-date-interval-control'</span>,
+        <span class="hljs-attr">$testId</span>: <span class="hljs-string">'bi-date-interval-control'</span>,
+        <span class="hljs-attr">isPreviewMode</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">cssScaleGetter</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-number">1</span>,
+    };
+
+    <span class="hljs-attr">model</span>: <span class="hljs-title class_">ControlFilterModel</span>[<span class="hljs-string">'model'</span>];
+    <span class="hljs-attr">store</span>: <span class="hljs-title class_">ControlFilterModel</span>[<span class="hljs-string">'store'</span>];
+
+    watch = {
+        <span class="hljs-attr">disabled</span>: <span class="hljs-function">() =&gt;</span> {},
+    };
+
+    <span class="hljs-title function_">setMinMaxDate</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">'min-date'</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">minData</span> || <span class="hljs-string">'2022-01-01'</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">'max-date'</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxData</span> || <span class="hljs-string">'2022-12-01'</span>);
+    }
+
+    <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMinMaxDate</span>();
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">closest</span>(<span class="hljs-string">'.bi-show-widget-factory.bi-control-widget,.bi-abs.bi-control-widget.bi-card'</span>)
+                .<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">"overflow"</span>, <span class="hljs-string">"visible"</span>);
+        } <span class="hljs-keyword">catch</span> (e) {}
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">closest</span>(<span class="hljs-string">'.bi-fit-widget.bi-export-widget'</span>).<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">"z-index"</span>, <span class="hljs-string">"100"</span>);
+        } <span class="hljs-keyword">catch</span> (e) {}
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'height'</span>, <span class="hljs-string">'24px'</span>);
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'top'</span>, <span class="hljs-string">"0"</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'left'</span>, <span class="hljs-string">"0"</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'right'</span>, <span class="hljs-string">"0"</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'bottom'</span>, <span class="hljs-string">"0"</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'height'</span>, <span class="hljs-string">'100%'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--scale-text-color'</span>, <span class="hljs-string">'#2c60db'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--scale-border-color'</span>, <span class="hljs-string">'#2c60db'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--scale-tick-color'</span>, <span class="hljs-string">'#2c60db'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--collapse-btn-color'</span>, <span class="hljs-string">'#2c60db'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--collapse-icon-color'</span>, <span class="hljs-string">'#2c60db'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--collapse-btn-color-hover'</span>, <span class="hljs-string">'#2c60db'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--background-item-color'</span>, <span class="hljs-string">'#f2f7fe'</span>);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">'--higher-periods-active-color'</span>, <span class="hljs-string">'#cde1fc'</span>);
+        }, <span class="hljs-number">200</span>);
+    }
+
+    <span class="hljs-title function_">_defaultConfig</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> conf = <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">_defaultConfig</span>(...<span class="hljs-variable language_">arguments</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">extend</span>(conf, {
+            <span class="hljs-attr">baseCls</span>: <span class="hljs-string">``</span>,
+            <span class="hljs-attr">el</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">tagName</span>: <span class="hljs-string">'date-range-scale-selector'</span>,
+            <span class="hljs-attr">listeners</span>: [
+                {
+                    <span class="hljs-attr">eventName</span>: <span class="hljs-string">'range-changed'</span>,
+                    <span class="hljs-title function_">action</span>(<span class="hljs-params">e</span>) {},
+                }
+            ],
+        });
+    }
+
+    <span class="hljs-title function_">date_value_to_str</span>(<span class="hljs-params">v</span>) {
+        <span class="hljs-keyword">if</span> (v == <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>;
+        <span class="hljs-keyword">let</span> <span class="hljs-title function_">p0</span> = (<span class="hljs-params">x</span>) =&gt; <span class="hljs-string">`<span class="hljs-subst">${x &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">'0'</span> : <span class="hljs-string">''</span>}</span><span class="hljs-subst">${x}</span>`</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${p0(v.year)}</span>-<span class="hljs-subst">${p0(v.month)}</span>-<span class="hljs-subst">${p0(v.day)}</span>`</span>;
+    }
+
+    <span class="hljs-comment">// Retrieve the earliest and latest dates</span>
+    private <span class="hljs-title function_">getMinMaxDate</span>(): <span class="hljs-title class_">Promise</span>&lt;{<span class="hljs-attr">minData</span>: any, <span class="hljs-attr">maxData</span>: any}&gt; {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getControlDefaultValueByWidgetInfo</span>(
+            [{ ...<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getRequestParams</span>(), <span class="hljs-attr">originDefaultValue</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">measuresConfig</span>: [] }],
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">templateHelper</span>
+        ).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">minRes</span>) =&gt;</span> {
+            <span class="hljs-keyword">const</span> minData = minRes.<span class="hljs-property">data</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getControlDefaultValueByWidgetInfo</span>(
+                [{ ...<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getRequestParams</span>(), <span class="hljs-attr">originDefaultValue</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">measuresConfig</span>: [] }],
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">templateHelper</span>
+            ).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">maxRes</span>) =&gt;</span> {
+                <span class="hljs-keyword">const</span> maxData = maxRes.<span class="hljs-property">data</span>;
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">minData</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">date_value_to_str</span>(minData[<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(minData)[<span class="hljs-number">0</span>]].<span class="hljs-property">value</span>);
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxData</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">date_value_to_str</span>(maxData[<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(maxData)[<span class="hljs-number">0</span>]].<span class="hljs-property">value</span>);
+                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>) {
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">'min-date'</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">minData</span>);
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">'max-date'</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxData</span>);
+                }
+                <span class="hljs-keyword">return</span> { minData, maxData };
+            });
+        }).<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'Failed to retrieve date range:'</span>, error);
+        });
+    }
+
+    <span class="hljs-comment">// Build request parameters</span>
+    private <span class="hljs-title function_">getRequestParams</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> measurePoolHelper = <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">templateHelper</span>.<span class="hljs-title function_">getMeasurePoolHelper</span>();
+        <span class="hljs-keyword">const</span> measureHelper = measurePoolHelper.<span class="hljs-title function_">getMeasureHelper</span>();
+        <span class="hljs-keyword">let</span> <span class="hljs-attr">fieldIds</span>: string[] = [];
+        <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">each</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">dimensions</span>, <span class="hljs-function">(<span class="hljs-params">_, dimension</span>) =&gt;</span> {
+            <span class="hljs-keyword">const</span> { fieldId, sort } = dimension;
+            fieldIds = [...fieldIds, fieldId, ...measureHelper.<span class="hljs-title function_">getAllUsedCalTargets</span>(fieldId)];
+            <span class="hljs-keyword">if</span> (sort?.<span class="hljs-property">targetFieldId</span>) {
+                fieldIds = [
+                    ...fieldIds,
+                    sort.<span class="hljs-property">targetFieldId</span>,
+                    ...measureHelper.<span class="hljs-title function_">getAllUsedCalTargets</span>(sort.<span class="hljs-property">targetFieldId</span>),
+                ];
+            }
+        });
+
+        <span class="hljs-keyword">const</span> { measures, generaTableNames } = <span class="hljs-title function_">getControlUsedMeasuresAndTableNames</span>(fieldIds, measureHelper);
+        <span class="hljs-keyword">const</span> tableNames = <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">selectedTable</span>;
+        <span class="hljs-keyword">const</span> relationTableNames = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">flatten</span>(
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">templateHelper</span>.<span class="hljs-title function_">getPoolHelper</span>().<span class="hljs-title function_">getRelationModelByTableNames</span>(tableNames)
+        );
+
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">wId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">wId</span>,
+            <span class="hljs-attr">dimensions</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">dimensions</span>,
+            <span class="hljs-attr">view</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">view</span>,
+            <span class="hljs-attr">value</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">value</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">type</span>,
+            <span class="hljs-attr">tableName</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">uniq</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">concat</span>(
+                tableNames,
+                generaTableNames.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">tableName</span> =&gt;</span> relationTableNames.<span class="hljs-title function_">includes</span>(tableName))
+            )),
+            <span class="hljs-attr">measuresConfig</span>: [],
+            <span class="hljs-attr">dateIntervalValue</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">dateIntervalValue</span>,
+            <span class="hljs-attr">useDateInterval</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">useDateInterval</span>,
+            <span class="hljs-attr">showTime</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">showTime</span>,
+        };
+    }
+
+    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>.<span class="hljs-title function_">attr</span>({
+            <span class="hljs-string">"min-date"</span>: <span class="hljs-string">'2020-01-01'</span>,
+            <span class="hljs-string">"max-date"</span>: <span class="hljs-string">'2026-01-01'</span>,
+            <span class="hljs-string">'granularity'</span>: <span class="hljs-string">"month"</span>,
+            <span class="hljs-string">"start-date"</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">date_value_to_str</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">value</span>?.<span class="hljs-property">start</span>?.<span class="hljs-property">value</span>) || <span class="hljs-string">'2022-01-01'</span>,
+            <span class="hljs-string">"end-date"</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">date_value_to_str</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">value</span>?.<span class="hljs-property">end</span>?.<span class="hljs-property">value</span>) || <span class="hljs-string">'2022-12-01'</span>,
+            <span class="hljs-string">'week-numbering'</span>: <span class="hljs-string">'ISO'</span>,
+            <span class="hljs-string">'first-day-of-week'</span>: <span class="hljs-string">'1'</span>
+        });
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">"range-changed"</span>, <span class="hljs-function">(<span class="hljs-params">e: any</span>) =&gt;</span> {
+            <span class="hljs-keyword">let</span> ev = {
+                <span class="hljs-attr">start</span>: e.<span class="hljs-property">originalEvent</span>.<span class="hljs-property">detail</span>.<span class="hljs-property">startDate</span>,
+                <span class="hljs-attr">end</span>: e.<span class="hljs-property">originalEvent</span>.<span class="hljs-property">detail</span>.<span class="hljs-property">endDate</span>,
+            };
+            ev.<span class="hljs-property">start</span> = ev.<span class="hljs-property">start</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"T"</span>)[<span class="hljs-number">0</span>];
+            ev.<span class="hljs-property">end</span> = ev.<span class="hljs-property">end</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"T"</span>)[<span class="hljs-number">0</span>];
+            <span class="hljs-keyword">if</span> ((ev.<span class="hljs-property">start</span> == <span class="hljs-string">""</span>) || (ev.<span class="hljs-property">end</span> == <span class="hljs-string">""</span>)) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">fireEvent</span>(<span class="hljs-title class_">ControlDateIntervalFilter</span>.<span class="hljs-property">EVENT</span>.<span class="hljs-property">EVENT_CHANGE</span>, <span class="hljs-literal">null</span>);
+                <span class="hljs-keyword">return</span>;
+            }
+            ev.<span class="hljs-property">start</span> = {
+                <span class="hljs-attr">type</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">value</span>: {
+                    <span class="hljs-attr">day</span>: <span class="hljs-built_in">parseInt</span>(ev.<span class="hljs-property">start</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"-"</span>)[<span class="hljs-number">2</span>]),
+                    <span class="hljs-attr">month</span>: <span class="hljs-built_in">parseInt</span>(ev.<span class="hljs-property">start</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"-"</span>)[<span class="hljs-number">1</span>]),
+                    <span class="hljs-attr">year</span>: <span class="hljs-built_in">parseInt</span>(ev.<span class="hljs-property">start</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"-"</span>)[<span class="hljs-number">0</span>])
+                }
+            };
+            ev.<span class="hljs-property">end</span> = {
+                <span class="hljs-attr">type</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">value</span>: {
+                    <span class="hljs-attr">day</span>: <span class="hljs-built_in">parseInt</span>(ev.<span class="hljs-property">end</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"-"</span>)[<span class="hljs-number">2</span>]),
+                    <span class="hljs-attr">month</span>: <span class="hljs-built_in">parseInt</span>(ev.<span class="hljs-property">end</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"-"</span>)[<span class="hljs-number">1</span>]),
+                    <span class="hljs-attr">year</span>: <span class="hljs-built_in">parseInt</span>(ev.<span class="hljs-property">end</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">"-"</span>)[<span class="hljs-number">0</span>])
+                }
+            };
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">collapse</span> = e.<span class="hljs-property">originalEvent</span>.<span class="hljs-property">detail</span>.<span class="hljs-property">collapse</span>;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">granularity</span> = e.<span class="hljs-property">originalEvent</span>.<span class="hljs-property">detail</span>.<span class="hljs-property">granularity</span>;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">fireEvent</span>(<span class="hljs-title class_">ControlDateIntervalFilter</span>.<span class="hljs-property">EVENT</span>.<span class="hljs-property">EVENT_CHANGE</span>, ev);
+        });
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-property">overflow</span> = <span class="hljs-string">"visible"</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">"24px"</span>;
+    }
+
+    <span class="hljs-title function_">setValue</span>(<span class="hljs-params">v?: any</span>) {
+        <span class="hljs-keyword">if</span> (v.<span class="hljs-property">start</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">'start-date'</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">date_value_to_str</span>(v.<span class="hljs-property">start</span>.<span class="hljs-property">value</span>));
+        }
+        <span class="hljs-keyword">if</span> (v.<span class="hljs-property">end</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">element</span>[<span class="hljs-number">0</span>].<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">'end-date'</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">date_value_to_str</span>(v.<span class="hljs-property">end</span>.<span class="hljs-property">value</span>));
+        }
+    }
+
+    <span class="hljs-title function_">getValue</span>(<span class="hljs-params"></span>) {}
+
+    <span class="hljs-title function_">reset</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setValue</span>();
+    }
+}
+</code></pre>
+<h2 id="plugin-demo"><a name="plugin-demo" class="anchor-navigation-ex-anchor" href="#plugin-demo"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Demo</h2>
+<p><a href="https://github.com/finereport-overseas/plugin-bi-custom-filter-widget" target="_blank">plugin-bi-custom-filter-widget</a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3930,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"next":{"title":"Platform Plugin Samples","level":"3.2.3","depth":2,"path":"tutorial/samples/platform/platform-theme.md","ref":"tutorial/samples/platform/platform-theme.md","articles":[{"title":"Custom Platform Theme","level":"3.2.3.1","depth":3,"path":"tutorial/samples/platform/platform-theme.md","ref":"tutorial/samples/platform/platform-theme.md","articles":[]}]},"previous":{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/custom-filter.md","mtime":"2026-06-11T06:55:37.655Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"next":{"title":"Platform Plugin Samples","level":"3.2.3","depth":2,"path":"tutorial/samples/platform/platform-theme.md","ref":"tutorial/samples/platform/platform-theme.md","articles":[{"title":"Custom Platform Theme","level":"3.2.3.1","depth":3,"path":"tutorial/samples/platform/platform-theme.md","ref":"tutorial/samples/platform/platform-theme.md","articles":[]}]},"previous":{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/custom-filter.md","mtime":"2026-07-10T02:20:31.027Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

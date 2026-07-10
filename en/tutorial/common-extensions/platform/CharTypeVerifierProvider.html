@@ -3555,10 +3555,99 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#chartypeverifierprovider"><b></b>CharTypeVerifierProvider</a></li></ul></div><a href="#chartypeverifierprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="chartypeverifierprovider"><a name="chartypeverifierprovider" class="anchor-navigation-ex-anchor" href="#chartypeverifierprovider"><i class="fa fa-link" aria-hidden="true"></i></a>CharTypeVerifierProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#chartypeverifierprovider"><b></b>CharTypeVerifierProvider</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example-code"><b></b>Example Code</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#chartypeverifierprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="chartypeverifierprovider"><a name="chartypeverifierprovider" class="anchor-navigation-ex-anchor" href="#chartypeverifierprovider"><i class="fa fa-link" aria-hidden="true"></i></a>CharTypeVerifierProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>provider</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-decision</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.decision.fun.CharTypeVerifierProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.decision.fun.CharTypeVerifierProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>The platform applies regex-based validation to user mobile numbers and email addresses on the backend. This interface allows you to override the validation logic to extend the rules for mobile numbers or email addresses.</p>
+<p>Currently, only the user's mobile number and email (corresponding fields in <code>CharLimitType</code>) are supported. Other <code>CharLimitType</code> fields require adaptation in future major versions.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CharTypeVerifierProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">PlatformScaffoldVerifierProvider</span>, Mutable {
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CharTypeVerifierProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PlatformScaffoldVerifierProvider</span> {
+
+    <span class="hljs-comment">/**
+     * Validate a string
+     *
+     * <span class="hljs-doctag">@param</span> targetStr     the original string
+     * <span class="hljs-doctag">@param</span> charLimitType the validation type
+     * <span class="hljs-doctag">@return</span> whether the string contains illegal characters (true means illegal characters found)
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">containIllegalChars</span><span class="hljs-params">(String targetStr, CharLimitType charLimitType)</span>;
+
+    <span class="hljs-comment">/**
+     * Selector — determines whether this verifier handles the current validation
+     *
+     * <span class="hljs-doctag">@param</span> targetStr     the original string
+     * <span class="hljs-doctag">@param</span> charLimitType the validation type
+     * <span class="hljs-doctag">@return</span> whether this verifier is selected
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(String targetStr, CharLimitType charLimitType)</span>;
+}
+</code></pre>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Register your implementation class in the plugin's <code>plugin.xml</code> using the <code>extra-decision</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">CharTypeVerifierProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.MyCharTypeVerifier"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<h2 id="example-code"><a name="example-code" class="anchor-navigation-ex-anchor" href="#example-code"><i class="fa fa-link" aria-hidden="true"></i></a>Example Code</h2>
+<p>The following example extends mobile number validation to support both mainland China and Hong Kong formats:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCharTypeVerifier</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CharTypeVerifierProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(String targetStr, CharLimitType charLimitType)</span> {
+        <span class="hljs-comment">// Only handle mobile number validation</span>
+        <span class="hljs-keyword">return</span> charLimitType == CharLimitType.MOBILE;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">containIllegalChars</span><span class="hljs-params">(String targetStr, CharLimitType charLimitType)</span> {
+        <span class="hljs-comment">// Custom validation: supports mainland China numbers (11 digits starting with 1) or Hong Kong numbers (starting with +852)</span>
+        <span class="hljs-keyword">if</span> (targetStr == <span class="hljs-literal">null</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-type">boolean</span> <span class="hljs-variable">isMainland</span> <span class="hljs-operator">=</span> targetStr.matches(<span class="hljs-string">"^1[3-9]\\d{9}$"</span>);
+        <span class="hljs-type">boolean</span> <span class="hljs-variable">isHongKong</span> <span class="hljs-operator">=</span> targetStr.matches(<span class="hljs-string">"^\\+852[0-9]{8}$"</span>);
+        <span class="hljs-comment">// Return true if invalid</span>
+        <span class="hljs-keyword">return</span> !isMainland &amp;&amp; !isHongKong;
+    }
+}
+</code></pre>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>The verifier only takes effect when <code>accept()</code> returns <code>true</code>. Use this method to restrict which validation types the verifier handles.</li>
+<li>Only <code>CharLimitType.MOBILE</code> (mobile number) and <code>CharLimitType.EMAIL</code> (email) have been verified. Other types require future major version adaptation.</li>
+<li>When multiple verifiers are registered, the platform calls <code>accept()</code> on each in registration order. The first matching verifier takes effect.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3691,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CharTypeVerifierProvider","level":"2.4.2.2.2","depth":4,"next":{"title":"ComposeWebResourceProvider","level":"2.4.2.2.3","depth":4,"path":"tutorial/common-extensions/platform/ComposeWebResourceProvider.md","ref":"tutorial/common-extensions/platform/ComposeWebResourceProvider.md","articles":[]},"previous":{"title":"AccessProvider","level":"2.4.2.2.1","depth":4,"path":"tutorial/common-extensions/platform/AccessProvider.md","ref":"tutorial/common-extensions/platform/AccessProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform/CharTypeVerifierProvider.md","mtime":"2026-06-11T06:55:37.644Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"CharTypeVerifierProvider","level":"2.4.2.2.2","depth":4,"next":{"title":"ComposeWebResourceProvider","level":"2.4.2.2.3","depth":4,"path":"tutorial/common-extensions/platform/ComposeWebResourceProvider.md","ref":"tutorial/common-extensions/platform/ComposeWebResourceProvider.md","articles":[]},"previous":{"title":"AccessProvider","level":"2.4.2.2.1","depth":4,"path":"tutorial/common-extensions/platform/AccessProvider.md","ref":"tutorial/common-extensions/platform/AccessProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform/CharTypeVerifierProvider.md","mtime":"2026-07-10T02:20:30.969Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

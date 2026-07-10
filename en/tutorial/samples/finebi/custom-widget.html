@@ -3555,10 +3555,107 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#custom-widget"><b></b>custom-widget</a></li></ul></div><a href="#custom-widget" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="custom-widget"><a name="custom-widget" class="anchor-navigation-ex-anchor" href="#custom-widget"><i class="fa fa-link" aria-hidden="true"></i></a>custom-widget</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#custom-widget"><b></b>Custom Widget</a></li><ul><li><span class="title-icon "></span><a href="#step-1-register-the-widget-interface"><b></b>Step 1: Register the Widget Interface</a></li><li><span class="title-icon "></span><a href="#step-2-build-the-render-page"><b></b>Step 2: Build the Render Page</a></li><ul><li><span class="title-icon "></span><a href="#js-specification"><b></b>JS Specification</a></li></ul><li><span class="title-icon "></span><a href="#plugin-demo"><b></b>Plugin Demo</a></li></ul></ul></div><a href="#custom-widget" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="custom-widget"><a name="custom-widget" class="anchor-navigation-ex-anchor" href="#custom-widget"><i class="fa fa-link" aria-hidden="true"></i></a>Custom Widget</h1>
+<h2 id="step-1-register-the-widget-interface"><a name="step-1-register-the-widget-interface" class="anchor-navigation-ex-anchor" href="#step-1-register-the-widget-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Register the Widget Interface</h2>
+<p>Target effect:</p>
+<p><a href="images/preview_widget.png" data-lightbox="3f7d947f-5d4c-4bba-859d-461da5be263a" data-title="Custom widget preview"><img src="images/preview_widget.png" alt="Custom widget preview"></img></a></p>
+<p>Implement a Provider to register the custom widget by extending <code>AbstractCustomWidgetProvider</code>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">XXXProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCustomWidgetProvider</span> {
+
+    <span class="hljs-comment">/** Custom widget name or i18n key */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Custom Widget Demo"</span>;
+    }
+
+    <span class="hljs-comment">/** Custom widget type */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getType</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"demo"</span>;
+    }
+
+    <span class="hljs-comment">/** Custom widget icon */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getIcon</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"http://webapi.amap.com/theme/v1.3/mapinfo_05.png"</span>;
+    }
+
+    <span class="hljs-comment">/** Custom option xtype */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getCustomTool</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"bi.plugin.testwidget"</span>;
+    }
+
+    <span class="hljs-comment">// See Step 2 for the remaining methods</span>
+    ......
+}
+</code></pre>
+<h2 id="step-2-build-the-render-page"><a name="step-2-build-the-render-page" class="anchor-navigation-ex-anchor" href="#step-2-build-the-render-page"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Build the Render Page</h2>
+<p>Provide separate HTML fragments and corresponding frontend Atom entry points for <strong>edit</strong> and <strong>preview</strong> modes:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">XXXProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractCustomWidgetProvider</span> {
+
+    <span class="hljs-comment">/** HTML for the widget edit page; defaults to preview if not specified */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEditPageHTML</span><span class="hljs-params">(XXContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;div id=\"container\"&gt;&lt;/div&gt;"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Atom <span class="hljs-title function_">editClient</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> XXXComponent.KEY;
+    }
+
+    <span class="hljs-comment">/** HTML for the widget preview page */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPreviewPageHTML</span><span class="hljs-params">(XXContext context)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;div id=\"container\"&gt;&lt;/div&gt;"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Atom <span class="hljs-title function_">previewClient</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> XXXComponent.KEY;
+    }
+}
+</code></pre>
+<h3 id="js-specification"><a name="js-specification" class="anchor-navigation-ex-anchor" href="#js-specification"><i class="fa fa-link" aria-hidden="true"></i></a>JS Specification</h3>
+<h4 id="1-implement-the-custom-widget-render-function"><a name="1-implement-the-custom-widget-render-function" class="anchor-navigation-ex-anchor" href="#1-implement-the-custom-widget-render-function"><i class="fa fa-link" aria-hidden="true"></i></a>1. Implement the Custom Widget Render Function</h4>
+<pre><code class="lang-javascript"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@param</span> data   Filter information, including:
+ *               - controlFilterParamsMap: control filter
+ *               - linkageParamsMap: custom linkage filter
+ * <span class="hljs-doctag">@param</span> config Configuration information, including:
+ *               - customWidgetConfig: custom saved configuration
+ *               - customWidgetToolConfig: custom option saved configuration
+ * <span class="hljs-doctag">@param</span> closeSessionCallback      Ends the current page session and returns control to BI
+ * <span class="hljs-doctag">@param</span> saveSessionCallback(json) Save callback; accepts a JSON object, returns a Promise
+ *                                  Example: saveSessionCallback({ renderTimes: renderTimes + 1 })
+ * <span class="hljs-doctag">@param</span> extensionCallBack         Callback for refresh: extensionCallBack('refresh')
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, closeSessionCallback, saveSessionCallback, extensionCallBack</span>) {
+
+}
+
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<h4 id="2-implement-the-custom-option-component"><a name="2-implement-the-custom-option-component" class="anchor-navigation-ex-anchor" href="#2-implement-the-custom-option-component"><i class="fa fa-link" aria-hidden="true"></i></a>2. Implement the Custom Option Component</h4>
+<p>The corresponding JS is injected into the theme edit page. The xtype must match the return value of <code>getCustomTool()</code>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> widget = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+    ......
+    <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// Retrieve custom option config and save method from options</span>
+        <span class="hljs-keyword">const</span> {
+            customWidgetToolConfig = {},
+            saveCustomWidgetToolConfig
+        } = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
+        <span class="hljs-comment">// saveCustomWidgetToolConfig({...}) saves the option configuration</span>
+        ......
+    }
+});
+
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">'bi.plugin.testwidget'</span>, widget);
+</code></pre>
+<h2 id="plugin-demo"><a name="plugin-demo" class="anchor-navigation-ex-anchor" href="#plugin-demo"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Demo</h2>
+<p><a href="https://github.com/finereport-overseas/plugin-bi-custom-widget-demo" target="_blank">plugin-bi-custom-widget-demo</a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3699,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Custom Widget","level":"3.2.2.2","depth":3,"next":{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},"previous":{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/custom-widget.md","mtime":"2026-06-11T06:55:37.655Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Custom Widget","level":"3.2.2.2","depth":3,"next":{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},"previous":{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/custom-widget.md","mtime":"2026-07-10T02:20:31.028Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

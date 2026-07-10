@@ -3555,10 +3555,166 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#smsserviceprovider"><b></b>SMSServiceProvider</a></li></ul></div><a href="#smsserviceprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="smsserviceprovider"><a name="smsserviceprovider" class="anchor-navigation-ex-anchor" href="#smsserviceprovider"><i class="fa fa-link" aria-hidden="true"></i></a>SMSServiceProvider</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#smsserviceprovider"><b></b>SMSServiceProvider</a></li><ul><li><span class="title-icon "></span><a href="#background-and-use-cases"><b></b>Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#supported-versions"><b></b>Supported Versions</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li><li><span class="title-icon "></span><a href="#how-it-works"><b></b>How It Works</a></li><li><span class="title-icon "></span><a href="#useful-links"><b></b>Useful Links</a></li><li><span class="title-icon "></span><a href="#open-source-examples"><b></b>Open Source Examples</a></li></ul></ul></div><a href="#smsserviceprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="smsserviceprovider"><a name="smsserviceprovider" class="anchor-navigation-ex-anchor" href="#smsserviceprovider"><i class="fa fa-link" aria-hidden="true"></i></a>SMSServiceProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.stable.fun.SMSServiceProvider</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-and-use-cases"><a name="background-and-use-cases" class="anchor-navigation-ex-anchor" href="#background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>Background and Use Cases</h2>
+<p>FanRuan's decision-making platform introduced SMS service functionality starting from version 9.0. However, some users already have their own SMS service providers and cannot use FanRuan's built-in SMS service directly. For this reason, version 10.0 opened the <code>SMSServiceProvider</code> interface to support integration with third-party SMS services.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.json.JSONArray;
+<span class="hljs-keyword">import</span> com.fr.json.JSONObject;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Selectable;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SMSServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Selectable</span> {
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"SMSServiceProvider"</span>;
+
+    <span class="hljs-comment">/**
+     * Maps FanRuan SMS template IDs to third-party platform templates
+     */</span>
+    Map&lt;String, String&gt; <span class="hljs-title function_">mapping</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Sends a test SMS
+     */</span>
+    Response <span class="hljs-title function_">sendTest</span><span class="hljs-params">(String mobile)</span>;
+
+    <span class="hljs-comment">/**
+     * Sends an SMS with template parameter substitution
+     */</span>
+    Response <span class="hljs-title function_">send</span><span class="hljs-params">(String template, String mobile, JSONObject para, String receiver)</span> <span class="hljs-keyword">throws</span> Exception;
+
+    <span class="hljs-comment">/**
+     * Sends SMS messages in bulk
+     */</span>
+    Response <span class="hljs-title function_">batchSendSMS</span><span class="hljs-params">(String template, List&lt;String&gt; mobiles, JSONArray params,
+                          List&lt;String&gt; receivers)</span> <span class="hljs-keyword">throws</span> Exception;
+
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Response</span> {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-type">String</span> <span class="hljs-variable">RES_STATUS_SUCCESS</span> <span class="hljs-operator">=</span> <span class="hljs-string">"success"</span>;
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-type">String</span> <span class="hljs-variable">RES_STATUS_FAILED</span> <span class="hljs-operator">=</span> <span class="hljs-string">"failed"</span>;
+
+        <span class="hljs-keyword">private</span> String status;
+        <span class="hljs-keyword">private</span> String msg;
+        <span class="hljs-keyword">private</span> JSONObject content;
+
+        <span class="hljs-comment">// getters/setters and factory method omitted</span>
+    }
+
+    <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Listener</span> {
+        <span class="hljs-keyword">void</span> <span class="hljs-title function_">beforeSend</span><span class="hljs-params">(String text, List&lt;String&gt; mobiles, JSONArray params,
+                        List&lt;String&gt; receivers)</span>;
+        <span class="hljs-keyword">void</span> <span class="hljs-title function_">afterSend</span><span class="hljs-params">(String text, List&lt;String&gt; mobiles, JSONArray params,
+                       List&lt;String&gt; receivers, Response response)</span>;
+    }
+}
+</code></pre>
+<p>The <code>mapping()</code> method must map FanRuan's built-in SMS template IDs to the corresponding templates on the third-party platform. Common template ID examples:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Template ID</th>
+<th>Default Template Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Login verification code</td>
+<td>20</td>
+<td>Verification code: #verifiecode#</td>
+</tr>
+<tr>
+<td>Scheduled task failure alert</td>
+<td>10</td>
+<td>Task #taskname# failed at #time#</td>
+</tr>
+<tr>
+<td>Test SMS</td>
+<td>18</td>
+<td>SMS service configured successfully</td>
+</tr>
+<tr>
+<td>Platform alert</td>
+<td>17</td>
+<td>#webname# memory alert</td>
+</tr>
+</tbody>
+</table>
+<h2 id="supported-versions"><a name="supported-versions" class="anchor-navigation-ex-anchor" href="#supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Version</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h2>
+<p>Add the following node in <code>plugin.xml</code>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">SMSServiceProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="how-it-works"><a name="how-it-works" class="anchor-navigation-ex-anchor" href="#how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>How It Works</h2>
+<p>All third-party SMS extensions are retrieved via:</p>
+<pre><code class="lang-java">Set&lt;SMSServiceProvider&gt; providers = PluginModule.ExtraCore.getAgent()
+    .getArray(SMSServiceProvider.XML_TAG);
+</code></pre>
+<p>The SMS Manager serves as the main entry point, checking plugin extensions first and falling back to the built-in service if none are found.</p>
+<p><strong>Notes:</strong></p>
+<ol>
+<li>A working FanRuan SMS service connection is required</li>
+<li>A complete template ID mapping must be provided in <code>mapping()</code></li>
+<li>The before/after listener events only take effect for third-party services</li>
+</ol>
+<h2 id="useful-links"><a name="useful-links" class="anchor-navigation-ex-anchor" href="#useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>Useful Links</h2>
+<ul>
+<li>Demo (10.0): <a href="https://code.fanruan.com/hugh/demo-sms-provider" target="_blank">demo-sms-provider</a></li>
+<li>Demo (11.0): <a href="https://code.fanruan.com/pioneer/demo-third-sms-v2" target="_blank">demo-third-sms-v2</a></li>
+</ul>
+<h2 id="open-source-examples"><a name="open-source-examples" class="anchor-navigation-ex-anchor" href="#open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>Open Source Examples</h2>
 <blockquote>
-<p>Coming soon.</p>
+<p>Disclaimer: All open source examples in the documentation are developed and provided by developers for reference and learning purposes only. Developers and the official team have no obligation to provide instruction or guidance on open source examples. Commercial use is strictly prohibited; any consequences from commercial use are the sole responsibility of the user.</p>
 </blockquote>
+<ul>
+<li><a href="https://code.fanruan.com/hugh/open-JSD-8144" target="_blank">open-JSD-8144</a></li>
+<li><a href="https://code.fanruan.com/fanruan/demo-third-sms" target="_blank">demo-third-sms</a></li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3758,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SMSServiceProvider","level":"2.4.2.1.24","depth":4,"next":{"title":"Service","level":"2.4.2.1.25","depth":4,"path":"tutorial/common-extensions/core/Service.md","ref":"tutorial/common-extensions/core/Service.md","articles":[]},"previous":{"title":"ResourceRepositoryFactoryProvider","level":"2.4.2.1.23","depth":4,"path":"tutorial/common-extensions/core/ResourceRepositoryFactoryProvider.md","ref":"tutorial/common-extensions/core/ResourceRepositoryFactoryProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/SMSServiceProvider.md","mtime":"2026-06-11T06:55:37.643Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"SMSServiceProvider","level":"2.4.2.1.24","depth":4,"next":{"title":"Service","level":"2.4.2.1.25","depth":4,"path":"tutorial/common-extensions/core/Service.md","ref":"tutorial/common-extensions/core/Service.md","articles":[]},"previous":{"title":"ResourceRepositoryFactoryProvider","level":"2.4.2.1.23","depth":4,"path":"tutorial/common-extensions/core/ResourceRepositoryFactoryProvider.md","ref":"tutorial/common-extensions/core/ResourceRepositoryFactoryProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/SMSServiceProvider.md","mtime":"2026-07-10T02:20:30.963Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

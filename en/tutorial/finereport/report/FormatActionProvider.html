@@ -3555,10 +3555,256 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#formatactionprovider"><b></b>FormatActionProvider</a></li></ul></div><a href="#formatactionprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="formatactionprovider"><a name="formatactionprovider" class="anchor-navigation-ex-anchor" href="#formatactionprovider"><i class="fa fa-link" aria-hidden="true"></i></a>FormatActionProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#formatactionprovider"><b></b>FormatActionProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-terminology"><b></b>1. Terminology</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-overview"><b></b>3. Interface Overview</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-constraints-and-notes"><b></b>7. Constraints and Notes</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open-Source Examples</a></li></ul></ul></div><a href="#formatactionprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="formatactionprovider"><a name="formatactionprovider" class="anchor-navigation-ex-anchor" href="#formatactionprovider"><i class="fa fa-link" aria-hidden="true"></i></a>FormatActionProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.FormatActionProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/FormatActionProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-terminology"><a name="1-terminology" class="anchor-navigation-ex-anchor" href="#1-terminology"><i class="fa fa-link" aria-hidden="true"></i></a>1. Terminology</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>FineReport has several export-related interfaces. <code>FormatActionProvider</code> is a special one that works similarly to a filter: it directly replaces the handling of an export request, allowing developers to intervene in the export logic.</p>
+<p>This interface only takes effect in direct-export scenarios (using <code>viewlet=xxx.cpt&amp;format=xxx</code>, without previewing first).</p>
+<h2 id="3-interface-overview"><a name="3-interface-overview" class="anchor-navigation-ex-anchor" href="#3-interface-overview"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Overview</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-comment">/**
+ * For special format operations in reports (as opposed to standard file exports),
+ * such as direct form submission and JS-based PDF printing.
+ * Created by zack on 2016/3/3.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FormatActionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span>{
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"FormatActionProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Executes the request
+     * <span class="hljs-doctag">@param</span> req Request
+     * <span class="hljs-doctag">@param</span> res Response
+     * <span class="hljs-doctag">@throws</span> Exception Exception
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">doAction</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> Exception;
+
+    <span class="hljs-comment">/**
+     * Defines the key corresponding to this action, similar to cmd; defaults to cmd
+     * <span class="hljs-doctag">@return</span> key
+     */</span>
+    String <span class="hljs-title function_">getCMD</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>3.6</td>
+<td>Yes</td>
+<td>Does not support dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>4.0</td>
+<td>Yes</td>
+<td>Does not support dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Yes</td>
+<td>Does not support dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Yes</td>
+<td>Does not support dashboards</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Yes</td>
+<td>Does not support dashboards</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">FormatActionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>The registration and activation of this interface are straightforward, as illustrated by the following code snippets.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.web.core.reserve;
+
+<span class="hljs-comment">// ... imports omitted for brevity ...</span>
+
+<span class="hljs-comment">/**
+ * Created by zack on 2016/3/3.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormatActionFactory</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">FormatActionProvider</span>&gt;&gt; detailMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">FormatActionProvider</span>&gt;&gt;();
+
+    <span class="hljs-keyword">static</span> {
+        detailMap.put(<span class="hljs-string">"pt_print"</span>, PDFPrintPrintAction.class); <span class="hljs-comment">// PDF printing</span>
+        Set&lt;FormatActionProvider&gt; formatActionProviders = ExtraReportClassManager.getInstance().getArray(FormatActionProvider.XML_TAG);
+        <span class="hljs-keyword">for</span> (FormatActionProvider provider : formatActionProviders) {
+            detailMap.put(provider.getCMD(), provider.getClass());
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">registerActionProvider</span><span class="hljs-params">(String name, Class&lt;? extends FormatActionProvider&gt; clazz)</span> {
+        detailMap.put(name, clazz);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> FormatActionProvider <span class="hljs-title function_">getReqProcessor</span><span class="hljs-params">(String format)</span> {
+        Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">FormatActionProvider</span>&gt; c = detailMap.get(format);
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">if</span> (c != <span class="hljs-literal">null</span>) {
+                <span class="hljs-keyword">return</span> c.newInstance();
+            }
+        } <span class="hljs-keyword">catch</span> (InstantiationException e) {
+            FineLoggerFactory.getLogger().error(e.getMessage(), e);
+        } <span class="hljs-keyword">catch</span> (IllegalAccessException e) {
+            FineLoggerFactory.getLogger().error(e.getMessage(), e);
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.web.core.reserve;
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ReportletDealWith</span> {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-comment">/**
+     * Processes the template
+     *
+     * <span class="hljs-doctag">@param</span> req    HTTP request
+     * <span class="hljs-doctag">@param</span> res    HTTP response
+     * <span class="hljs-doctag">@param</span> weblet Template
+     * <span class="hljs-doctag">@throws</span> Exception e
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dealWithReportlet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, Weblet weblet)</span> <span class="hljs-keyword">throws</span> Exception {
+        <span class="hljs-type">String</span> <span class="hljs-variable">sessionID</span> <span class="hljs-operator">=</span> SessionPoolManager.generateSessionID(req, res, weblet);
+
+        <span class="hljs-comment">// ...</span>
+
+        <span class="hljs-keyword">if</span> (WebUtils.getHTTPRequestParameter(req, <span class="hljs-string">"format"</span>) != <span class="hljs-literal">null</span>) {
+            turnToExportWithSessionKept(req, res, sessionID);
+        } <span class="hljs-keyword">else</span> {
+            dealWithReportlet(req, res, sessionID, <span class="hljs-literal">null</span>);
+        }
+    }
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">turnToExportWithSessionKept</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String sessionID)</span> <span class="hljs-keyword">throws</span> Exception {
+        ExportSessionKeeper.getInstance().keepAlive(sessionID);
+        turnToExport(req, res, sessionID);
+        ExportSessionKeeper.getInstance().close(sessionID);
+    }
+
+
+    <span class="hljs-comment">/**
+     * Redirects to export
+     *
+     * <span class="hljs-doctag">@param</span> req       request
+     * <span class="hljs-doctag">@param</span> res       response
+     * <span class="hljs-doctag">@param</span> sessionID session id
+     * <span class="hljs-doctag">@throws</span> Exception e
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">turnToExport</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String sessionID)</span> <span class="hljs-keyword">throws</span> Exception {
+        <span class="hljs-comment">// Check if the output needs to be in another form, e.g. PDF, PDF_Activex, Excel, etc.</span>
+        <span class="hljs-type">String</span> <span class="hljs-variable">format</span> <span class="hljs-operator">=</span> WebUtils.getHTTPRequestParameter(req, <span class="hljs-string">"format"</span>);
+        <span class="hljs-type">FormatActionProvider</span> <span class="hljs-variable">requestProcessor</span> <span class="hljs-operator">=</span> FormatActionFactory.getReqProcessor(format);
+        <span class="hljs-keyword">if</span> (requestProcessor != <span class="hljs-literal">null</span>) {
+            requestProcessor.doAction(req, res);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-type">String</span> <span class="hljs-variable">embedParameter</span> <span class="hljs-operator">=</span> WebUtils.getHTTPRequestParameter(req, ParameterConstants.EXPORT_PDF_EMBED);
+            <span class="hljs-type">boolean</span> <span class="hljs-variable">embed</span> <span class="hljs-operator">=</span> <span class="hljs-string">"true"</span>.equals(embedParameter); <span class="hljs-comment">// Only embed when the parameter is explicitly "true"</span>
+            ExportService.dealWithExport(req, res, sessionID, embed);
+        }
+    }
+
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h2 id="7-constraints-and-notes"><a name="7-constraints-and-notes" class="anchor-navigation-ex-anchor" href="#7-constraints-and-notes"><i class="fa fa-link" aria-hidden="true"></i></a>7. Constraints and Notes</h2>
+<p><code>FormatActionProvider</code> is a very open interface that gives developers a lot of freedom. However, precisely because it is so open, it is prone to instability and conflicts. If not carefully designed, it can easily cause all other export interfaces to stop working. Use this interface with extreme caution and it is not recommended for marketplace plugins.</p>
+<p>In the product, besides standard exports, PDF printing (<code>PDFPrintPrintAction</code>, format=pt_print) and auto-submit (<code>WriteAutoSubmitAction</code>, format=submit) both use this interface. Developers can use it to replace these two actions for specific requirements.</p>
+<p>As shown in <code>FormatActionFactory</code>, <code>FormatActionProvider</code> can be registered not only via <code>plugin.xml</code> but also programmatically by calling <code>FormatActionFactory.registerActionProvider("mycmd", MyAction.class)</code>. Developers can choose the approach that best fits their needs.</p>
+<p>Although <code>FormatActionProvider</code> is <code>Mutable</code>, at most one implementation takes effect per export call. Later-registered implementations override earlier ones for the same format.</p>
+<p><strong>⚠️ Note: When replacing an existing action's logic, be sure to understand how the original logic works and whether any other interfaces depend on it. If so, you must ensure compatibility in your implementation, or coordinate with users to clarify how conflicts should be avoided.</strong></p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-format-action-provider" target="_blank">demo-format-action-provider</a></p>
+<p>Related interfaces:</p>
+<ul>
+<li><code>com.fr.report.fun.ExportOperateProvider</code></li>
+<li><code>com.fr.report.fun.ExportExtensionProcessor</code></li>
+<li><code>com.fr.stable.fun.ExcelExportCellValueProvider</code></li>
+<li><code>com.fr.form.stable.FormExportProcessor</code></li>
+<li><code>com.fr.report.fun.ExcelExportAppProvider</code></li>
+<li><code>com.fr.report.fun.CommentExcelProcessor</code></li>
+<li><a href="https://wiki.fanruan.com/display/PD/com.fr.io.exporter.PDFExporterCreator" target="_blank">com.fr.io.exporter.PDFExporterCreator</a></li>
+</ul>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open-Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and contributed by community developers, for reference and learning purposes only. Neither the developers nor FineReport are obligated to provide instruction or support for any results from these examples. Commercial use of these examples is at the user's own risk.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3848,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FormatActionProvider","level":"2.4.3.2.13","depth":4,"next":{"title":"JavaScriptFileHandler","level":"2.4.3.2.14","depth":4,"path":"tutorial/finereport/report/JavaScriptFileHandler.md","ref":"tutorial/finereport/report/JavaScriptFileHandler.md","articles":[]},"previous":{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"path":"tutorial/finereport/report/ExtensionButtonProvider.md","ref":"tutorial/finereport/report/ExtensionButtonProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/FormatActionProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"FormatActionProvider","level":"2.4.3.2.13","depth":4,"next":{"title":"JavaScriptFileHandler","level":"2.4.3.2.14","depth":4,"path":"tutorial/finereport/report/JavaScriptFileHandler.md","ref":"tutorial/finereport/report/JavaScriptFileHandler.md","articles":[]},"previous":{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"path":"tutorial/finereport/report/ExtensionButtonProvider.md","ref":"tutorial/finereport/report/ExtensionButtonProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/FormatActionProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

@@ -3555,10 +3555,90 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#reportpretreatmentprocessor"><b></b>ReportPretreatmentProcessor</a></li></ul></div><a href="#reportpretreatmentprocessor" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="reportpretreatmentprocessor"><a name="reportpretreatmentprocessor" class="anchor-navigation-ex-anchor" href="#reportpretreatmentprocessor"><i class="fa fa-link" aria-hidden="true"></i></a>ReportPretreatmentProcessor</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#reportpretreatmentprocessor"><b></b>ReportPretreatmentProcessor</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example-code"><b></b>Example Code</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#reportpretreatmentprocessor" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="reportpretreatmentprocessor"><a name="reportpretreatmentprocessor" class="anchor-navigation-ex-anchor" href="#reportpretreatmentprocessor"><i class="fa fa-link" aria-hidden="true"></i></a>ReportPretreatmentProcessor</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>processor</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.ReportPretreatmentProcessor</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.report.fun.ReportPretreatmentProcessor" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>Performs pre-processing before a report is executed. At this point, the sessionID has been generated but report calculation has not yet begun. This stage is suitable for intercepting, validating, or modifying request parameters.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Pre-processes a report before execution
+ * <span class="hljs-doctag">@since</span> 8.0
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ReportPretreatmentProcessor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Immutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ReportPretreatmentProcessor"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Template pre-processing: the sessionID has been generated, but report calculation has not yet started
+     *
+     * <span class="hljs-doctag">@param</span> req       HTTP request
+     * <span class="hljs-doctag">@param</span> res       HTTP response
+     * <span class="hljs-doctag">@param</span> sessionID The sessionID generated for this request
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">process</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String sessionID)</span>;
+}
+</code></pre>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Register your implementation class in the plugin's <code>plugin.xml</code> using the <code>extra-report</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ReportPretreatmentProcessor</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.YourClassName"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="example-code"><a name="example-code" class="anchor-navigation-ex-anchor" href="#example-code"><i class="fa fa-link" aria-hidden="true"></i></a>Example Code</h2>
+<p>The following example validates the request origin before report execution and blocks access from IPs not on the whitelist:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyReportPretreatmentProcessor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ReportPretreatmentProcessor</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">process</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String sessionID)</span> {
+        <span class="hljs-type">String</span> <span class="hljs-variable">remoteIp</span> <span class="hljs-operator">=</span> req.getRemoteAddr();
+        <span class="hljs-keyword">if</span> (!isAllowed(remoteIp)) {
+            <span class="hljs-keyword">try</span> {
+                res.sendError(HttpServletResponse.SC_FORBIDDEN, <span class="hljs-string">"Access denied"</span>);
+            } <span class="hljs-keyword">catch</span> (IOException e) {
+                FineLoggerFactory.getLogger().error(e.getMessage(), e);
+            }
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isAllowed</span><span class="hljs-params">(String ip)</span> {
+        <span class="hljs-comment">// Custom whitelist validation logic</span>
+        <span class="hljs-keyword">return</span> ip.startsWith(<span class="hljs-string">"192.168."</span>);
+    }
+}
+</code></pre>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>When <code>process()</code> runs, report calculation has not yet started. It is well-suited for parameter validation, authentication, and logging pre-processing.</li>
+<li>This interface extends <code>Immutable</code> and cannot be hot-replaced at runtime.</li>
+<li>To terminate report execution, write a response directly to <code>res</code> inside <code>process()</code> (e.g., using <code>sendError</code>), but be careful to avoid writing to the response more than once, which would cause an exception.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3682,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ReportPretreatmentProcessor","level":"2.4.3.2.19","depth":4,"next":{"title":"ReportSessionHelpProvider","level":"2.4.3.2.20","depth":4,"path":"tutorial/finereport/report/ReportSessionHelpProvider.md","ref":"tutorial/finereport/report/ReportSessionHelpProvider.md","articles":[]},"previous":{"title":"ReportExceptionHandlerProvider","level":"2.4.3.2.18","depth":4,"path":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","ref":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ReportPretreatmentProcessor.md","mtime":"2026-06-11T06:55:37.647Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ReportPretreatmentProcessor","level":"2.4.3.2.19","depth":4,"next":{"title":"ReportSessionHelpProvider","level":"2.4.3.2.20","depth":4,"path":"tutorial/finereport/report/ReportSessionHelpProvider.md","ref":"tutorial/finereport/report/ReportSessionHelpProvider.md","articles":[]},"previous":{"title":"ReportExceptionHandlerProvider","level":"2.4.3.2.18","depth":4,"path":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","ref":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ReportPretreatmentProcessor.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

@@ -3555,10 +3555,152 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#formexportprocessor"><b></b>FormExportProcessor</a></li></ul></div><a href="#formexportprocessor" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="formexportprocessor"><a name="formexportprocessor" class="anchor-navigation-ex-anchor" href="#formexportprocessor"><i class="fa fa-link" aria-hidden="true"></i></a>FormExportProcessor</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#formexportprocessor"><b></b>FormExportProcessor</a></li><ul><li><span class="title-icon "></span><a href="#i-special-terms"><b></b>I. Special Terms</a></li><li><span class="title-icon "></span><a href="#ii-background-and-use-case"><b></b>II. Background and Use Case</a></li><li><span class="title-icon "></span><a href="#iii-interface-definition"><b></b>III. Interface Definition</a></li><li><span class="title-icon "></span><a href="#iv-supported-versions"><b></b>IV. Supported Versions</a></li><li><span class="title-icon "></span><a href="#v-plugin-registration"><b></b>V. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#vi-how-it-works"><b></b>VI. How It Works</a></li><li><span class="title-icon "></span><a href="#vii-limitations"><b></b>VII. Limitations</a></li><li><span class="title-icon "></span><a href="#viii-useful-links"><b></b>VIII. Useful Links</a></li><li><span class="title-icon "></span><a href="#ix-open-source-examples"><b></b>IX. Open Source Examples</a></li></ul></ul></div><a href="#formexportprocessor" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="formexportprocessor"><a name="formexportprocessor" class="anchor-navigation-ex-anchor" href="#formexportprocessor"><i class="fa fa-link" aria-hidden="true"></i></a>FormExportProcessor</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-form</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.form.stable.FormExportProcessor</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/FormExportProcessor" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="i-special-terms"><a name="i-special-terms" class="anchor-navigation-ex-anchor" href="#i-special-terms"><i class="fa fa-link" aria-hidden="true"></i></a>I. Special Terms</h2>
+<p>None</p>
+<h2 id="ii-background-and-use-case"><a name="ii-background-and-use-case" class="anchor-navigation-ex-anchor" href="#ii-background-and-use-case"><i class="fa fa-link" aria-hidden="true"></i></a>II. Background and Use Case</h2>
+<p>As decision-making reports (dashboards) are increasingly used in real-world projects, they have long lacked export support. Some users find it time-consuming to recreate dashboard content as a <code>.cpt</code> report just to enable export, and there has been growing demand for native export support in dashboards. The standard product only supports exporting the report block content within a dashboard. To provide richer extensibility, the official SDK exposes the <code>FormExportProcessor</code> interface for handling dashboard export needs. However, this interface is not yet fully mature — it has many limitations and is not entirely stable. At this stage, it is primarily suited for simple dashboard export scenarios.</p>
+<h2 id="iii-interface-definition"><a name="iii-interface-definition" class="anchor-navigation-ex-anchor" href="#iii-interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>III. Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.form.stable;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Immutable;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-comment">/**
+ * Form export interface. Exports to Excel, PDF, etc. by passing different format parameters.
+ *
+ * Created by Administrator on 2015/12/18 0018.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FormExportProcessor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Immutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"FormExportProcessor"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;
+
+    <span class="hljs-comment">/**
+     * Perform the export
+     *
+     * <span class="hljs-doctag">@param</span> req       HTTP request
+     * <span class="hljs-doctag">@param</span> res       HTTP response
+     * <span class="hljs-doctag">@param</span> sessionID Session ID
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">dealWithExport</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String sessionID)</span>;
+
+}
+</code></pre>
+<h2 id="iv-supported-versions"><a name="iv-supported-versions" class="anchor-navigation-ex-anchor" href="#iv-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>IV. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Support</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Supported</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Supported</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Supported</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Supported</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>3.6</td>
+<td>Supported</td>
+<td>BI dashboards not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>4.0</td>
+<td>Supported</td>
+<td>BI dashboards not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Supported</td>
+<td>BI dashboards not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Supported</td>
+<td>BI dashboards not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Supported</td>
+<td>BI dashboards not supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="v-plugin-registration"><a name="v-plugin-registration" class="anchor-navigation-ex-anchor" href="#v-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>V. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-form</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">FormExportProcessor</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-form</span>&gt;</span>
+</code></pre>
+<h2 id="vi-how-it-works"><a name="vi-how-it-works" class="anchor-navigation-ex-anchor" href="#vi-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>VI. How It Works</h2>
+<p>When a dashboard is previewed, the back-end invokes <code>FormletDealWith#dealWithFormlet</code> via <code>Formlet#dealWeblet</code> to compute and respond. Inside <code>dealWithFormlet</code>, if the request contains a <code>format</code> parameter, it branches into the export handler, retrieves the dashboard export class declared by the plugin, and executes the response.</p>
+<h2 id="vii-limitations"><a name="vii-limitations" class="anchor-navigation-ex-anchor" href="#vii-limitations"><i class="fa fa-link" aria-hidden="true"></i></a>VII. Limitations</h2>
+<p>This interface is <code>Immutable</code>, meaning it is exclusive — if multiple plugins use it, only one will take effect. If no plugin implements this interface, the standard product does not support any form of dashboard export by default.</p>
+<p>When implementing the export, developers can use the <code>sessionID</code> parameter to obtain the dashboard result object and read the layout and component information to produce the desired export output. [<a href="https://code.fanruan.com/hugh/demo-form-export-processor/src/branch/10.0/src/main/java/com/tptj/demo/hg/form/export/processor/Demo.java" target="_blank">See Example</a>]</p>
+<p>This interface only applies to dashboards (decision-making reports).</p>
 <blockquote>
-<p>Coming soon.</p>
+<p>⚠️ Note: This interface has a narrow use case, and developing a fully functional export feature is quite complex — it is tightly coupled to the product and generally unstable. It is not recommended for most developers. Export scenarios should be implemented using <code>.cpt</code> reports whenever possible. Otherwise, as development deepens, you will encounter many difficult issues (adaptation, compatibility, layout, window clipping, etc.).</p>
 </blockquote>
+<h2 id="viii-useful-links"><a name="viii-useful-links" class="anchor-navigation-ex-anchor" href="#viii-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>VIII. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-form-export-processor" target="_blank">demo-form-export-processor</a></p>
+<p>Related interfaces: ExportOperateProvider, ExportExtensionProcessor, ExcelExportAppProvider, ExcelExportCellValueProvider, CommentExcelProcessor</p>
+<h2 id="ix-open-source-examples"><a name="ix-open-source-examples" class="anchor-navigation-ex-anchor" href="#ix-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>IX. Open Source Examples</h2>
+<p>Disclaimer: All open source examples in the documentation are independently developed and provided by community developers. They are for reference and learning purposes only. Neither the developers nor the official team are obligated to provide teaching or guidance on any results related to these open source examples. Any commercial use is at the sole risk and responsibility of the user.</p>
+<p>None available.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3744,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dashboard Report Entry Points","level":"2.4.3.4","depth":3,"next":{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]},"previous":{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","ref":"tutorial/finereport/chart/ChartTypeUIProvider.md","articles":[]},"articles":[{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/form/FormExportProcessor.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Dashboard Report Entry Points","level":"2.4.3.4","depth":3,"next":{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]},"previous":{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","ref":"tutorial/finereport/chart/ChartTypeUIProvider.md","articles":[]},"articles":[{"title":"FormExportProcessor","level":"2.4.3.4.1","depth":4,"path":"tutorial/finereport/form/FormExportProcessor.md","ref":"tutorial/finereport/form/FormExportProcessor.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/form/FormExportProcessor.md","mtime":"2026-07-10T02:20:30.973Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

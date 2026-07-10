@@ -3555,10 +3555,137 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#javascript-standards"><b></b>javascript-standards</a></li></ul></div><a href="#javascript-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="javascript-standards"><a name="javascript-standards" class="anchor-navigation-ex-anchor" href="#javascript-standards"><i class="fa fa-link" aria-hidden="true"></i></a>javascript-standards</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#javascript-code-standards"><b></b>JavaScript Code Standards</a></li><ul><li><span class="title-icon "></span><a href="#1-semicolons-at-end-of-statements"><b></b>1. Semicolons at End of Statements</a></li><li><span class="title-icon "></span><a href="#2-avoid-trailing-commas"><b></b>2. Avoid Trailing Commas</a></li><li><span class="title-icon "></span><a href="#3-always-use-braces-for-loop-and-conditional-bodies"><b></b>3. Always Use Braces for Loop and Conditional Bodies</a></li><li><span class="title-icon "></span><a href="#4-do-not-use-with-void-or-eval"><b></b>4. Do Not Use with, void, or eval</a></li><li><span class="title-icon "></span><a href="#5-avoid-using-new-to-construct-primitive-types"><b></b>5. Avoid Using new to Construct Primitive Types</a></li><li><span class="title-icon "></span><a href="#6-use-for-in-only-for-objects-not-arrays"><b></b>6. Use for-in Only for Objects, Not Arrays</a></li><li><span class="title-icon "></span><a href="#7-always-declare-variables-with-var"><b></b>7. Always Declare Variables with var</a></li><li><span class="title-icon "></span><a href="#8-use-frajax-instead-of-ajax"><b></b>8. Use FR.ajax() Instead of $.ajax()</a></li><li><span class="title-icon "></span><a href="#9-prefix-private-methods-with-an-underscore"><b></b>9. Prefix Private Methods with an Underscore</a></li><li><span class="title-icon "></span><a href="#10-date-constructor"><b></b>10. Date Constructor</a></li></ul></ul></div><a href="#javascript-code-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="javascript-code-standards"><a name="javascript-code-standards" class="anchor-navigation-ex-anchor" href="#javascript-code-standards"><i class="fa fa-link" aria-hidden="true"></i></a>JavaScript Code Standards</h1>
+<p>This section defines the JavaScript coding standards for FanRuan plugin development. All plugins involving frontend development must comply with these rules.</p>
+<hr></hr>
+<h2 id="1-semicolons-at-end-of-statements"><a name="1-semicolons-at-end-of-statements" class="anchor-navigation-ex-anchor" href="#1-semicolons-at-end-of-statements"><i class="fa fa-link" aria-hidden="true"></i></a>1. Semicolons at End of Statements</h2>
+<p><strong>Always</strong> add a semicolon at the end of every statement, except for <code>for</code>, <code>function</code>, <code>if</code>, <code>switch</code>, <code>try</code>, and <code>while</code> blocks.</p>
+<p>Missing semicolons can cause parsing ambiguity:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-title class_">MyClass</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myMethod</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">42</span>;
+}  <span class="hljs-comment">// missing semicolon here</span>
+
+(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// initialization logic</span>
+})();
+<span class="hljs-comment">// The two blocks above will be interpreted as: myMethod is called, returns 42,</span>
+<span class="hljs-comment">// which is then called as a function — resulting in an error</span>
+</code></pre>
+<hr></hr>
+<h2 id="2-avoid-trailing-commas"><a name="2-avoid-trailing-commas" class="anchor-navigation-ex-anchor" href="#2-avoid-trailing-commas"><i class="fa fa-link" aria-hidden="true"></i></a>2. Avoid Trailing Commas</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>,];  <span class="hljs-comment">// trailing comma</span>
+<span class="hljs-variable constant_">FR</span>.<span class="hljs-title class_">Ajax</span>({
+    <span class="hljs-attr">url</span>: <span class="hljs-string">'http://someurl'</span>,
+    <span class="hljs-attr">data</span>: {<span class="hljs-string">'paraA'</span>: <span class="hljs-string">'aa'</span>, <span class="hljs-string">'paraB'</span>: <span class="hljs-string">'bb'</span>},  <span class="hljs-comment">// trailing comma — may cause errors in IE</span>
+});
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">var</span> ajaxConfig = {
+    <span class="hljs-attr">url</span>: <span class="hljs-string">'http://someurl'</span>,
+    <span class="hljs-attr">data</span>: {<span class="hljs-string">'paraA'</span>: <span class="hljs-string">'aa'</span>, <span class="hljs-string">'paraB'</span>: <span class="hljs-string">'bb'</span>}
+};
+</code></pre>
+<hr></hr>
+<h2 id="3-always-use-braces-for-loop-and-conditional-bodies"><a name="3-always-use-braces-for-loop-and-conditional-bodies" class="anchor-navigation-ex-anchor" href="#3-always-use-braces-for-loop-and-conditional-bodies"><i class="fa fa-link" aria-hidden="true"></i></a>3. Always Use Braces for Loop and Conditional Bodies</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// Not recommended</span>
+<span class="hljs-keyword">if</span> (condition) statement;
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (condition) {
+    statement;
+}
+</code></pre>
+<hr></hr>
+<h2 id="4-do-not-use-with-void-or-eval"><a name="4-do-not-use-with-void-or-eval" class="anchor-navigation-ex-anchor" href="#4-do-not-use-with-void-or-eval"><i class="fa fa-link" aria-hidden="true"></i></a>4. Do Not Use with, void, or eval</h2>
+<ul>
+<li><code>eval()</code> executes arbitrary string code, which is extremely dangerous when user input is involved.</li>
+<li><code>with</code> makes scope semantics unclear and can conflict with local variables.</li>
+</ul>
+<hr></hr>
+<h2 id="5-avoid-using-new-to-construct-primitive-types"><a name="5-avoid-using-new-to-construct-primitive-types" class="anchor-navigation-ex-anchor" href="#5-avoid-using-new-to-construct-primitive-types"><i class="fa fa-link" aria-hidden="true"></i></a>5. Avoid Using new to Construct Primitive Types</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// Not recommended</span>
+<span class="hljs-keyword">var</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();
+<span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>();
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">var</span> obj = {};
+<span class="hljs-keyword">var</span> arr = [];
+</code></pre>
+<hr></hr>
+<h2 id="6-use-for-in-only-for-objects-not-arrays"><a name="6-use-for-in-only-for-objects-not-arrays" class="anchor-navigation-ex-anchor" href="#6-use-for-in-only-for-objects-not-arrays"><i class="fa fa-link" aria-hidden="true"></i></a>6. Use for-in Only for Objects, Not Arrays</h2>
+<p><code>for-in</code> iterates over all keys in an object including its prototype chain, making behavior unpredictable on arrays:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'aa'</span>, <span class="hljs-string">'bb'</span>, <span class="hljs-string">'cc'</span>, <span class="hljs-string">'dd'</span>];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> el <span class="hljs-keyword">in</span> arr) {
+    <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'aa'</span>, <span class="hljs-string">'bb'</span>, <span class="hljs-string">'cc'</span>, <span class="hljs-string">'dd'</span>];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = arr.<span class="hljs-property">length</span>; i &lt; len; i++) {
+    <span class="hljs-keyword">var</span> el = arr[i];
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<hr></hr>
+<h2 id="7-always-declare-variables-with-var"><a name="7-always-declare-variables-with-var" class="anchor-navigation-ex-anchor" href="#7-always-declare-variables-with-var"><i class="fa fa-link" aria-hidden="true"></i></a>7. Always Declare Variables with var</h2>
+<p>Variables declared without <code>var</code> leak into the global scope:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-variable constant_">FS</span> = {};
+<span class="hljs-variable constant_">FR</span> = {};
+contentPane = {};
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">FS</span> = {};
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">FR</span> = {};
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">contentPane</span> = {};
+</code></pre>
+<hr></hr>
+<h2 id="8-use-frajax-instead-of-ajax"><a name="8-use-frajax-instead-of-ajax" class="anchor-navigation-ex-anchor" href="#8-use-frajax-instead-of-ajax"><i class="fa fa-link" aria-hidden="true"></i></a>8. Use FR.ajax() Instead of $.ajax()</h2>
+<p><code>FR.ajax()</code> automatically encodes <code>data</code>, preventing parameter encoding errors:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Not recommended</span>
+$.<span class="hljs-title function_">ajax</span>({
+    <span class="hljs-attr">url</span>: <span class="hljs-string">'http://www.baidu.com'</span>,
+    <span class="hljs-attr">data</span>: {<span class="hljs-string">'keywords'</span>: <span class="hljs-string">'Chinese text'</span>},
+    <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {}
+});
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-variable constant_">FR</span>.<span class="hljs-title function_">ajax</span>({
+    <span class="hljs-attr">url</span>: <span class="hljs-string">'http://www.baidu.com'</span>,
+    <span class="hljs-attr">data</span>: {<span class="hljs-string">'keywords'</span>: <span class="hljs-string">'Chinese text'</span>},
+    <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {}
+});
+</code></pre>
+<p>Do not use <code>FR.get()</code>, <code>FR.post()</code>, <code>$.get()</code>, or <code>$.post()</code>.</p>
+<hr></hr>
+<h2 id="9-prefix-private-methods-with-an-underscore"><a name="9-prefix-private-methods-with-an-underscore" class="anchor-navigation-ex-anchor" href="#9-prefix-private-methods-with-an-underscore"><i class="fa fa-link" aria-hidden="true"></i></a>9. Prefix Private Methods with an Underscore</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// Not recommended</span>
+<span class="hljs-variable constant_">FR</span>.<span class="hljs-property">Button</span> = <span class="hljs-variable constant_">FR</span>.<span class="hljs-title function_">extend</span>(<span class="hljs-variable constant_">FR</span>.<span class="hljs-property">Widget</span>, {
+    <span class="hljs-attr">defaultConfig</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {<span class="hljs-attr">cls</span>: <span class="hljs-string">'fr-btn'</span>};
+    }
+});
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-variable constant_">FR</span>.<span class="hljs-property">Button</span> = <span class="hljs-variable constant_">FR</span>.<span class="hljs-title function_">extend</span>(<span class="hljs-variable constant_">FR</span>.<span class="hljs-property">Widget</span>, {
+    <span class="hljs-attr">_defaultConfig</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {<span class="hljs-attr">cls</span>: <span class="hljs-string">'fr-btn'</span>};
+    }
+});
+</code></pre>
+<hr></hr>
+<h2 id="10-date-constructor"><a name="10-date-constructor" class="anchor-navigation-ex-anchor" href="#10-date-constructor"><i class="fa fa-link" aria-hidden="true"></i></a>10. Date Constructor</h2>
+<p><code>new Date("2014-01-01")</code> has browser compatibility issues and is not supported in older versions of IE:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">"2014-01-01"</span>);
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2014</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);  <span class="hljs-comment">// Note: months are zero-indexed</span>
+</code></pre>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3729,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Development Standards","level":"2.2","depth":1,"next":{"title":"JavaScript Code Standards","level":"2.2.1","depth":2,"path":"tutorial/coding-standards/javascript-standards.md","ref":"tutorial/coding-standards/javascript-standards.md","articles":[{"title":"Format Standards","level":"2.2.1.1","depth":3,"path":"tutorial/coding-standards/javascript-format-standards.md","ref":"tutorial/coding-standards/javascript-format-standards.md","articles":[]}]},"previous":{"title":"Upload to App Center","level":"2.1.4.3","depth":3,"path":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","ref":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","articles":[]},"articles":[{"title":"JavaScript Code Standards","level":"2.2.1","depth":2,"path":"tutorial/coding-standards/javascript-standards.md","ref":"tutorial/coding-standards/javascript-standards.md","articles":[{"title":"Format Standards","level":"2.2.1.1","depth":3,"path":"tutorial/coding-standards/javascript-format-standards.md","ref":"tutorial/coding-standards/javascript-format-standards.md","articles":[]}]},{"title":"Java Code Standards","level":"2.2.2","depth":2,"path":"tutorial/coding-standards/java-standards.md","ref":"tutorial/coding-standards/java-standards.md","articles":[{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]}]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/javascript-standards.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Development Standards","level":"2.2","depth":1,"next":{"title":"JavaScript Code Standards","level":"2.2.1","depth":2,"path":"tutorial/coding-standards/javascript-standards.md","ref":"tutorial/coding-standards/javascript-standards.md","articles":[{"title":"Format Standards","level":"2.2.1.1","depth":3,"path":"tutorial/coding-standards/javascript-format-standards.md","ref":"tutorial/coding-standards/javascript-format-standards.md","articles":[]}]},"previous":{"title":"Upload to App Center","level":"2.1.4.3","depth":3,"path":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","ref":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","articles":[]},"articles":[{"title":"JavaScript Code Standards","level":"2.2.1","depth":2,"path":"tutorial/coding-standards/javascript-standards.md","ref":"tutorial/coding-standards/javascript-standards.md","articles":[{"title":"Format Standards","level":"2.2.1.1","depth":3,"path":"tutorial/coding-standards/javascript-format-standards.md","ref":"tutorial/coding-standards/javascript-format-standards.md","articles":[]}]},{"title":"Java Code Standards","level":"2.2.2","depth":2,"path":"tutorial/coding-standards/java-standards.md","ref":"tutorial/coding-standards/java-standards.md","articles":[{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]}]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/javascript-standards.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

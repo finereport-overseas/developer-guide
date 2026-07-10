@@ -3555,10 +3555,432 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#config-api"><b></b>config-api</a></li></ul></div><a href="#config-api" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="config-api"><a name="config-api" class="anchor-navigation-ex-anchor" href="#config-api"><i class="fa fa-link" aria-hidden="true"></i></a>config-api</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#beginner-tutorial---configuration"><b></b>Beginner Tutorial - Configuration</a></li><ul><li><span class="title-icon "></span><a href="#introduction"><b></b>Introduction</a></li><li><span class="title-icon "></span><a href="#store-into-finedb"><b></b>Store into FineDB</a></li><ul><li><span class="title-icon "></span><a href="#basic-type"><b></b>Basic Type</a></li><li><span class="title-icon "></span><a href="#data-model-with-conf-member"><b></b>Data Model with Conf Member</a></li><li><span class="title-icon "></span><a href="#collection-of-basic-type"><b></b>Collection of Basic Type</a></li><li><span class="title-icon "></span><a href="#collection-of-data-model"><b></b>Collection of Data Model</a></li><li><span class="title-icon "></span><a href="#map-of-basic-type"><b></b>Map of Basic Type</a></li><li><span class="title-icon "></span><a href="#map-of-data-model"><b></b>Map of Data Model</a></li></ul><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li><ul><li><span class="title-icon "></span><a href="#configuration-class"><b></b>Configuration Class</a></li><li><span class="title-icon "></span><a href="#save-the-configuration"><b></b>Save the configuration</a></li></ul></ul></ul></div><a href="#beginner-tutorial---configuration" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="beginner-tutorial---configuration"><a name="beginner-tutorial---configuration" class="anchor-navigation-ex-anchor" href="#beginner-tutorial---configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Beginner Tutorial - Configuration</h1>
+<h2 id="introduction"><a name="introduction" class="anchor-navigation-ex-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+<p>Having a place to store custom configuration is a better choice than creating a table every time, especially when the custom data is limited. In this tutorial, we will learn how to store configuration into FineDB.</p>
+<h2 id="store-into-finedb"><a name="store-into-finedb" class="anchor-navigation-ex-anchor" href="#store-into-finedb"><i class="fa fa-link" aria-hidden="true"></i></a>Store into FineDB</h2>
+<p>All the configuration data are stored in the FINE_CONF_ENTITY table of FineDB, such as the data connection config.</p>
+<p>In order to store custom data, we need to wrap our object by <em>com.fr.config.holder.Conf</em>, and pass actual data type by generics. FineReport has provided a factory class <em>com.fr.config.holder.factory.Holders</em> to construct the instance.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.config.holder.factory;
+
+<span class="hljs-keyword">import</span> com.fr.config.holder.Conf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.ColConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.MapConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.ObjConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.ObjectColConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.ObjectMapConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.SimConf;
+
+<span class="hljs-keyword">import</span> java.util.Collection;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-comment">/**
+ * Factory class of the wrapper
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Holders</span> {
+    <span class="hljs-comment">/**
+     * Create a Holder for basic types. It should be used as long as T does not contain a ConfigHolder field
+     *
+     * <span class="hljs-doctag">@param</span> property
+     * <span class="hljs-doctag">@param</span> t
+     * <span class="hljs-doctag">@param</span> nameSpace
+     * <span class="hljs-doctag">@param</span> &lt;T&gt;      
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@see</span> Holders#simple(Object)
+     */</span>
+    <span class="hljs-meta">@Deprecated</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; Conf&lt;T&gt; <span class="hljs-title function_">simple</span><span class="hljs-params">(String property, T t, String nameSpace)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimConf</span>&lt;T&gt;(property, t).setNameSpace(nameSpace);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; Conf&lt;T&gt; <span class="hljs-title function_">simple</span><span class="hljs-params">(T t)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimConf</span>&lt;T&gt;(t);
+    }
+
+    <span class="hljs-comment">/**
+     * Create a Holder for T class. T contains a ConfigHolder field.
+     *
+     * <span class="hljs-doctag">@param</span> property
+     * <span class="hljs-doctag">@param</span> t
+     * <span class="hljs-doctag">@param</span> type
+     * <span class="hljs-doctag">@param</span> nameSpace
+     * <span class="hljs-doctag">@param</span> &lt;T&gt;
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@see</span> Holders#obj(Object, Class)
+     */</span>
+    <span class="hljs-meta">@Deprecated</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; Conf&lt;T&gt; <span class="hljs-title function_">obj</span><span class="hljs-params">(String property, T t, Class&lt;T&gt; type, String nameSpace)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjConf</span>&lt;T&gt;(property, t, type).setNameSpace(nameSpace);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; Conf&lt;T&gt; <span class="hljs-title function_">obj</span><span class="hljs-params">(T t, Class&lt;T&gt; type)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjConf</span>&lt;T&gt;(t, type);
+    }
+
+
+    <span class="hljs-comment">/**
+     * Create a Holder for the collection of basic data types.
+     *
+     * <span class="hljs-doctag">@param</span> property
+     * <span class="hljs-doctag">@param</span> collection
+     * <span class="hljs-doctag">@param</span> valueType
+     * <span class="hljs-doctag">@param</span> nameSpace
+     * <span class="hljs-doctag">@param</span> &lt;K&gt;
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@see</span> Holders#objCollection(Collection, Class)
+     */</span>
+    <span class="hljs-meta">@Deprecated</span>
+    <span class="hljs-meta">@SuppressWarnings("unchecked")</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K&gt; Conf&lt;Collection&lt;K&gt;&gt; <span class="hljs-title function_">collection</span><span class="hljs-params">(String property, Collection&lt;K&gt; collection, Class&lt;K&gt; valueType, String nameSpace)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ColConf</span>(property, collection, valueType).setNameSpace(nameSpace);
+    }
+
+    <span class="hljs-meta">@SuppressWarnings("unchecked")</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K&gt; ColConf&lt;Collection&lt;K&gt;&gt; <span class="hljs-title function_">collection</span><span class="hljs-params">(Collection&lt;K&gt; collection, Class&lt;K&gt; valueType)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ColConf</span>(collection, valueType);
+    }
+
+    <span class="hljs-comment">/**
+     * Create a Holder for the collection of T class.
+     *
+     * <span class="hljs-doctag">@param</span> property   property tag
+     * <span class="hljs-doctag">@param</span> collection
+     * <span class="hljs-doctag">@param</span> type
+     * <span class="hljs-doctag">@param</span> nameSpace  namespace
+     * <span class="hljs-doctag">@param</span> &lt;T&gt;
+     * <span class="hljs-doctag">@return</span> wrapper for the property node
+     * <span class="hljs-doctag">@see</span> Holders#collection(Collection, Class)
+     */</span>
+    <span class="hljs-meta">@Deprecated</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; ObjectColConf&lt;Collection&lt;T&gt;&gt; <span class="hljs-title function_">objCollection</span><span class="hljs-params">(String property, Collection&lt;T&gt; collection, Class&lt;T&gt; type, String nameSpace)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectColConf</span>&lt;Collection&lt;T&gt;&gt;(property, collection, type).setNameSpace(nameSpace);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; ObjectColConf&lt;Collection&lt;T&gt;&gt; <span class="hljs-title function_">objCollection</span><span class="hljs-params">(Collection&lt;T&gt; collection, Class&lt;T&gt; type)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectColConf</span>&lt;Collection&lt;T&gt;&gt;(collection, type);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; ObjectColConf&lt;Collection&lt;T&gt;&gt; <span class="hljs-title function_">objCollection</span><span class="hljs-params">(Collection&lt;T&gt; collection, Class&lt;T&gt; type, <span class="hljs-type">boolean</span> order)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectColConf</span>&lt;Collection&lt;T&gt;&gt;(collection, type, order);
+    }
+
+    <span class="hljs-comment">/**
+     * Create a Holder for the Map which key and value are of basic type.
+     *
+     * <span class="hljs-doctag">@param</span> property
+     * <span class="hljs-doctag">@param</span> map
+     * <span class="hljs-doctag">@param</span> keyType   not null
+     * <span class="hljs-doctag">@param</span> valueType not null
+     * <span class="hljs-doctag">@param</span> nameSpace
+     * <span class="hljs-doctag">@param</span> &lt;K&gt;
+     * <span class="hljs-doctag">@param</span> &lt;V&gt;
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@see</span> Holders#map(Map, Class, Class)
+     */</span>
+    <span class="hljs-meta">@Deprecated</span>
+    <span class="hljs-meta">@SuppressWarnings("unchecked")</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K, V&gt; MapConf&lt;Map&lt;K, V&gt;&gt; <span class="hljs-title function_">map</span><span class="hljs-params">(String property, Map&lt;K, V&gt; map, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType, String nameSpace)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MapConf</span>(property, map, keyType, valueType).setNameSpace(nameSpace);
+    }
+
+    <span class="hljs-meta">@SuppressWarnings("unchecked")</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K, V&gt; MapConf&lt;Map&lt;K, V&gt;&gt; <span class="hljs-title function_">map</span><span class="hljs-params">(Map&lt;K, V&gt; map, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MapConf</span>(map, keyType, valueType);
+    }
+
+    <span class="hljs-comment">/**
+     * Value is a Holder for the Map of V class. V contains a ConfigHolder field.
+     * KeyType can be empty, but the key in the map has to be basic type or String. ValueType can be empty, but it has to be complex type.
+     *
+     * <span class="hljs-doctag">@param</span> property
+     * <span class="hljs-doctag">@param</span> map
+     * <span class="hljs-doctag">@param</span> keyType
+     * <span class="hljs-doctag">@param</span> valueType
+     * <span class="hljs-doctag">@param</span> nameSpace
+     * <span class="hljs-doctag">@param</span> &lt;K&gt;
+     * <span class="hljs-doctag">@param</span> &lt;V&gt;
+     * <span class="hljs-doctag">@return</span>
+     * <span class="hljs-doctag">@see</span> Holders#objMap(Map, Class, Class)
+     */</span>
+    <span class="hljs-meta">@Deprecated</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K, V&gt; ObjectMapConf&lt;Map&lt;K, V&gt;&gt; <span class="hljs-title function_">objMap</span><span class="hljs-params">(String property, Map&lt;K, V&gt; map, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType, String nameSpace)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapConf</span>&lt;Map&lt;K, V&gt;&gt;(property, map, keyType, valueType).setNameSpace(nameSpace);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K, V&gt; ObjectMapConf&lt;Map&lt;K, V&gt;&gt; <span class="hljs-title function_">objMap</span><span class="hljs-params">(Map&lt;K, V&gt; map, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapConf</span>&lt;Map&lt;K, V&gt;&gt;(map, keyType, valueType);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;K, V&gt; ObjectMapConf&lt;Map&lt;K, V&gt;&gt; <span class="hljs-title function_">objMap</span><span class="hljs-params">(Map&lt;K, V&gt; map, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType, <span class="hljs-type">boolean</span> ordered)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapConf</span>&lt;Map&lt;K, V&gt;&gt;(map, keyType, valueType, ordered);
+    }
+}
+</code></pre>
+<h3 id="basic-type"><a name="basic-type" class="anchor-navigation-ex-anchor" href="#basic-type"><i class="fa fa-link" aria-hidden="true"></i></a>Basic Type</h3>
+<p>Use <em>Holders.simple()</em> to create such configuration, Including basic types and String.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> Conf&lt;String&gt; demoString = Holders.simple(StringUtils.EMPTY);
+
+<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDemoString</span><span class="hljs-params">()</span>{
+    <span class="hljs-keyword">return</span> demoString.get();
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDemoString</span><span class="hljs-params">(String s)</span>{
+    demoString.set(s);
+}
+</code></pre>
+<h3 id="data-model-with-conf-member"><a name="data-model-with-conf-member" class="anchor-navigation-ex-anchor" href="#data-model-with-conf-member"><i class="fa fa-link" aria-hidden="true"></i></a>Data Model with Conf Member</h3>
+<p>If we define a data model, which member value also needs to be stored, we should wrap the member with <em>Conf</em>. In addition, the data model has to be created by <em>Holders.obj()</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.plugin.configfile;
+
+<span class="hljs-keyword">import</span> com.fr.config.holder.Conf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.factory.Holders;
+<span class="hljs-keyword">import</span> com.fr.config.utils.UniqueKey;
+<span class="hljs-keyword">import</span> com.fr.stable.StringUtils;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UniqueKey</span> {
+    <span class="hljs-keyword">private</span> Conf&lt;String&gt; simpledata = Holders.simple(StringUtils.EMPTY);
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getSimpledata</span><span class="hljs-params">()</span>{
+        <span class="hljs-keyword">return</span> simpledata.get();
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSimpledata</span><span class="hljs-params">(String simple)</span>{
+        simpledata.set(simple);
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> Conf&lt;CustomConfig&gt; democusConfig = Holders.obj(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfig</span>(),CustomConfig.class);
+
+<span class="hljs-keyword">public</span> CustomConfig <span class="hljs-title function_">getDemocusConfig</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> democusConfig.get();
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDemocusConfig</span><span class="hljs-params">(CustomConfig democusConfig)</span> {
+    <span class="hljs-built_in">this</span>.democusConfig.set(democusConfig);
+}
+</code></pre>
+<h3 id="collection-of-basic-type"><a name="collection-of-basic-type" class="anchor-navigation-ex-anchor" href="#collection-of-basic-type"><i class="fa fa-link" aria-hidden="true"></i></a>Collection of Basic Type</h3>
+<p>Use <em>Holders.collection()</em> as the constructor.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> ColConf&lt;Collection&lt;String&gt;&gt; stringList = Holders.collection(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;(),String.class);
+
+<span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title function_">getStringList</span><span class="hljs-params">()</span>{
+    <span class="hljs-keyword">return</span> (List&lt;String&gt;) <span class="hljs-built_in">this</span>.stringList.get();
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setStringList</span><span class="hljs-params">(List&lt;String&gt; list)</span>{
+    <span class="hljs-built_in">this</span>.stringList.set(list);
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addStringListValue</span><span class="hljs-params">(String s)</span>{
+    <span class="hljs-built_in">this</span>.stringList.add(s);
+}
+</code></pre>
 <blockquote>
-<p>Coming soon.</p>
+<p>Notice: use the add/remove method of <em>ColConf</em> in order to store the modification into the FineDB.</p>
 </blockquote>
+<h3 id="collection-of-data-model"><a name="collection-of-data-model" class="anchor-navigation-ex-anchor" href="#collection-of-data-model"><i class="fa fa-link" aria-hidden="true"></i></a>Collection of Data Model</h3>
+<p>If elements are of the type such as <em>CustomConfig</em> defined above, we should use <em>Holders.objCollection()</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> ObjectColConf&lt;Collection&lt;CustomConfig&gt;&gt; customConfigList = Holders.objCollection(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;CustomConfig&gt;(), CustomConfig.class);
+
+<span class="hljs-keyword">public</span> List&lt;CustomConfig&gt; <span class="hljs-title function_">getCustomConfigList</span><span class="hljs-params">()</span>{
+    <span class="hljs-keyword">return</span> (List&lt;CustomConfig&gt;) <span class="hljs-built_in">this</span>.customConfigList.get();
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCustomConfigList</span><span class="hljs-params">(List&lt;CustomConfig&gt; list)</span>{
+    <span class="hljs-built_in">this</span>.customConfigList.set(list);
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addCustomConfigListValue</span><span class="hljs-params">(CustomConfig config)</span>{
+    <span class="hljs-built_in">this</span>.customConfigList.add(config);
+}
+</code></pre>
+<h3 id="map-of-basic-type"><a name="map-of-basic-type" class="anchor-navigation-ex-anchor" href="#map-of-basic-type"><i class="fa fa-link" aria-hidden="true"></i></a>Map of Basic Type</h3>
+<p>If the data is a map with key and value of basic type, we should use <em>Holders.map()</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> MapConf&lt;Map&lt;String,Integer&gt;&gt; mapString = Holders.map(<span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String,Integer&gt;(),String.class,Integer.class);
+
+<span class="hljs-keyword">public</span> Map&lt;String,Integer&gt; <span class="hljs-title function_">getStringMap</span><span class="hljs-params">()</span>{
+    <span class="hljs-keyword">return</span>  <span class="hljs-built_in">this</span>.mapString.get();
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setStringMap</span><span class="hljs-params">(Map&lt;String,Integer&gt; mapString)</span>{
+    <span class="hljs-built_in">this</span>.mapString.set(mapString);
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">putStringMap</span><span class="hljs-params">(String key,Integer value)</span>{
+    <span class="hljs-built_in">this</span>.mapString.put(key,value);
+}
+</code></pre>
+<blockquote>
+<p>Notice: use the method of MapConf to modify the map.</p>
+</blockquote>
+<h3 id="map-of-data-model"><a name="map-of-data-model" class="anchor-navigation-ex-anchor" href="#map-of-data-model"><i class="fa fa-link" aria-hidden="true"></i></a>Map of Data Model</h3>
+<p>If the key of a map is a basic type and the value is a data model like <em>CustomConfig</em>, we should use <em>Holders.objMap()</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> ObjectMapConf&lt;Map&lt;String,CustomConfig&gt;&gt; mapCustomConfig = Holders.objMap(<span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String,CustomConfig&gt;(),String.class,CustomConfig.class);
+
+<span class="hljs-keyword">public</span> Map&lt;String,CustomConfig&gt; <span class="hljs-title function_">getCustomconfigMap</span><span class="hljs-params">()</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.mapCustomConfig.get();
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCustomconfigMap</span><span class="hljs-params">(Map&lt;String,CustomConfig&gt; map)</span>{
+    <span class="hljs-built_in">this</span>.mapCustomConfig.set(map);
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">putCustomConfigMap</span><span class="hljs-params">(String key,CustomConfig value)</span>{
+    <span class="hljs-built_in">this</span>.mapCustomConfig.put(key,value);
+}
+</code></pre>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<h3 id="configuration-class"><a name="configuration-class" class="anchor-navigation-ex-anchor" href="#configuration-class"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration Class</h3>
+<p>After defining these configs, we need a class to encapsulate them. The configuration class has to inherit <em>com.fr.config.DefaultConfiguration</em>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.plugin.configfile;
+
+<span class="hljs-keyword">import</span> com.fr.config.ConfigContext;
+
+<span class="hljs-keyword">import</span> com.fr.config.holder.Conf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.factory.Holders;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.ColConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.MapConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.ObjectColConf;
+<span class="hljs-keyword">import</span> com.fr.config.holder.impl.ObjectMapConf;
+<span class="hljs-keyword">import</span> com.fr.stable.StringUtils;
+
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Config</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">com</span>.fr.config.DefaultConfiguration {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Config</span> <span class="hljs-variable">config</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">private</span> Conf&lt;String&gt; demoString = Holders.simple(StringUtils.EMPTY);
+    <span class="hljs-keyword">private</span> Conf&lt;CustomConfig&gt; democusConfig = Holders.obj(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfig</span>(), CustomConfig.class);
+    <span class="hljs-keyword">private</span> ColConf&lt;Collection&lt;String&gt;&gt; stringList = Holders.collection(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;(), String.class);
+    <span class="hljs-keyword">private</span> ObjectColConf&lt;Collection&lt;CustomConfig&gt;&gt; customConfigList = Holders.objCollection(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;CustomConfig&gt;(), CustomConfig.class);
+    <span class="hljs-keyword">private</span> MapConf&lt;Map&lt;String, Integer&gt;&gt; mapString = Holders.map(<span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Integer&gt;(), String.class, Integer.class);
+    <span class="hljs-keyword">private</span> ObjectMapConf&lt;Map&lt;String, CustomConfig&gt;&gt; mapCustomConfig = Holders.objMap(<span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, CustomConfig&gt;(), String.class, CustomConfig.class);
+
+    <span class="hljs-comment">// Use singleton to create the instance.</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Config <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (config == <span class="hljs-literal">null</span>) {
+            config = ConfigContext.getConfigInstance(Config.class);
+        }
+        <span class="hljs-keyword">return</span> config;
+    }
+
+    <span class="hljs-comment">// The namespace is the prefix of the config in FINE_CONF_ENTITY</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getNameSpace</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"configFR"</span>;
+    }
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDemoString</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.demoString.get();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDemoString</span><span class="hljs-params">(String s)</span> {
+        <span class="hljs-built_in">this</span>.demoString.set(s);
+    }
+
+    <span class="hljs-keyword">public</span> CustomConfig <span class="hljs-title function_">getDemocusConfig</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> democusConfig.get();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDemocusConfig</span><span class="hljs-params">(CustomConfig democusConfig)</span> {
+        <span class="hljs-built_in">this</span>.democusConfig.set(democusConfig);
+    }
+
+    <span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title function_">getStringList</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> (List&lt;String&gt;) <span class="hljs-built_in">this</span>.stringList.get();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setStringList</span><span class="hljs-params">(List&lt;String&gt; list)</span> {
+        <span class="hljs-built_in">this</span>.stringList.set(list);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addStringListValue</span><span class="hljs-params">(String s)</span> {
+
+        <span class="hljs-built_in">this</span>.stringList.add(s);
+    }
+
+    <span class="hljs-keyword">public</span> List&lt;CustomConfig&gt; <span class="hljs-title function_">getCustomConfigList</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> (List&lt;CustomConfig&gt;) <span class="hljs-built_in">this</span>.customConfigList.get();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCustomConfigList</span><span class="hljs-params">(List&lt;CustomConfig&gt; list)</span> {
+        <span class="hljs-built_in">this</span>.customConfigList.set(list);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addCustomConfigListValue</span><span class="hljs-params">(CustomConfig config)</span> {
+        <span class="hljs-built_in">this</span>.customConfigList.add(config);
+    }
+
+    <span class="hljs-keyword">public</span> Map&lt;String, Integer&gt; <span class="hljs-title function_">getStringMap</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.mapString.get();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setStringMap</span><span class="hljs-params">(Map&lt;String, Integer&gt; mapString)</span> {
+
+        <span class="hljs-built_in">this</span>.mapString.set(mapString);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">putStringMap</span><span class="hljs-params">(String key, Integer value)</span> {
+        <span class="hljs-built_in">this</span>.mapString.put(key, value);
+    }
+
+    <span class="hljs-keyword">public</span> Map&lt;String, CustomConfig&gt; <span class="hljs-title function_">getCustomconfigMap</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.mapCustomConfig.get();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCustomconfigMap</span><span class="hljs-params">(Map&lt;String, CustomConfig&gt; map)</span> {
+        <span class="hljs-built_in">this</span>.mapCustomConfig.set(map);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">putCustomConfigMap</span><span class="hljs-params">(String key, CustomConfig value)</span> {
+        <span class="hljs-built_in">this</span>.mapCustomConfig.put(key, value);
+    }
+
+}
+</code></pre>
+<h3 id="save-the-configuration"><a name="save-the-configuration" class="anchor-navigation-ex-anchor" href="#save-the-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Save the configuration</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseHttpHandler</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> RequestMethod <span class="hljs-title function_">getMethod</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getPath</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"/demo/test"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPublic</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handle</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res)</span> <span class="hljs-keyword">throws</span> Exception {
+
+        <span class="hljs-comment">// Basic data type</span>
+        <span class="hljs-type">Config</span> <span class="hljs-variable">config</span> <span class="hljs-operator">=</span> Config.getInstance();
+        config.setDemoString(<span class="hljs-string">"Demo String"</span>);
+
+        <span class="hljs-comment">// Custom data model</span>
+        <span class="hljs-type">CustomConfig</span> <span class="hljs-variable">demoConfig</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfig</span>(<span class="hljs-string">"Data Model"</span>);
+        config.setDemocusConfig(demoConfig);
+
+        <span class="hljs-comment">// Collection of basic type</span>
+        List&lt;String&gt; stringValues = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;();
+        stringValues.add(<span class="hljs-string">"Data 1"</span>);
+        stringValues.add(<span class="hljs-string">"Data 2"</span>);
+        config.setStringList(stringValues);
+
+        <span class="hljs-comment">// Collection of data model</span>
+        List&lt;CustomConfig&gt; customList=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;CustomConfig&gt;();
+        customList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfig</span>(<span class="hljs-string">"Data Model 1"</span>));
+        customList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfig</span>(<span class="hljs-string">"Data Model 2"</span>));
+        config.setCustomConfigList(customList);
+
+        <span class="hljs-comment">// Map of basic type</span>
+        Map&lt;String,Integer&gt; stringMap=<span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String,Integer&gt;();
+        stringMap.put(<span class="hljs-string">"Basic test 1"</span>,<span class="hljs-number">1</span>);
+        stringMap.put(<span class="hljs-string">"Basic test 2"</span>,<span class="hljs-number">2</span>);
+        config.setStringMap(stringMap);
+
+        <span class="hljs-comment">// Map of data model</span>
+        Map&lt;String,CustomConfig&gt; customConfigMap=<span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String,CustomConfig&gt;();
+        customConfigMap.put(<span class="hljs-string">"Custom test 1"</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfig</span>(<span class="hljs-string">"Custom test 1"</span>));
+        customConfigMap.put(<span class="hljs-string">"Custom test 2"</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomConfig</span>(<span class="hljs-string">"Custom test 2"</span>));
+        config.setCustomconfigMap(customConfigMap);
+
+    }
+}
+</code></pre>
+<p><a href="images/result.png" data-lightbox="31d086a5-0fcf-4ec3-b6f8-64e6c39e7f85" data-title="result"><img src="images/result.png" alt="result"></img></a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +4024,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"3.1","depth":1,"next":{"title":"Common API","level":"3.1.1","depth":2,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[{"title":"Configuration API","level":"3.1.1.1","depth":3,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[]},{"title":"finekit","level":"3.1.1.2","depth":3,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[{"title":"LogKit","level":"3.1.1.2.1","depth":4,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[]},{"title":"FlushKit","level":"3.1.1.2.2","depth":4,"path":"tutorial/api-reference/common/finekit/flush-kit.md","ref":"tutorial/api-reference/common/finekit/flush-kit.md","articles":[]},{"title":"NetworkKit","level":"3.1.1.2.3","depth":4,"path":"tutorial/api-reference/common/finekit/network-kit.md","ref":"tutorial/api-reference/common/finekit/network-kit.md","articles":[]},{"title":"AuthorityKit","level":"3.1.1.2.4","depth":4,"path":"tutorial/api-reference/common/finekit/authority-kit.md","ref":"tutorial/api-reference/common/finekit/authority-kit.md","articles":[]}]}]},"previous":{"title":"Other Features","level":"2.4.4.2.5","depth":4,"path":"tutorial/finebi/frontend/other-features.md","ref":"tutorial/finebi/frontend/other-features.md","articles":[]},"articles":[{"title":"Common API","level":"3.1.1","depth":2,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[{"title":"Configuration API","level":"3.1.1.1","depth":3,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[]},{"title":"finekit","level":"3.1.1.2","depth":3,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[{"title":"LogKit","level":"3.1.1.2.1","depth":4,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[]},{"title":"FlushKit","level":"3.1.1.2.2","depth":4,"path":"tutorial/api-reference/common/finekit/flush-kit.md","ref":"tutorial/api-reference/common/finekit/flush-kit.md","articles":[]},{"title":"NetworkKit","level":"3.1.1.2.3","depth":4,"path":"tutorial/api-reference/common/finekit/network-kit.md","ref":"tutorial/api-reference/common/finekit/network-kit.md","articles":[]},{"title":"AuthorityKit","level":"3.1.1.2.4","depth":4,"path":"tutorial/api-reference/common/finekit/authority-kit.md","ref":"tutorial/api-reference/common/finekit/authority-kit.md","articles":[]}]}]},{"title":"FineReport API","level":"3.1.2","depth":2,"path":"tutorial/api-reference/finereport/designer-api.md","ref":"tutorial/api-reference/finereport/designer-api.md","articles":[{"title":"Designer API (fr-designer)","level":"3.1.2.1","depth":3,"path":"tutorial/api-reference/finereport/designer-api.md","ref":"tutorial/api-reference/finereport/designer-api.md","articles":[]},{"title":"Engine API (fr-engine)","level":"3.1.2.2","depth":3,"url":"https://help.fanruan.com/finereport-en/doc-view-632.html","ref":"https://help.fanruan.com/finereport-en/doc-view-632.html","articles":[]},{"title":"JS API","level":"3.1.2.3","depth":3,"url":"https://help.fanruan.com/finereport-en/doc-view-3935.html","ref":"https://help.fanruan.com/finereport-en/doc-view-3935.html","articles":[]},{"title":"FineReport Frontend Development","level":"3.1.2.4","depth":3,"url":"https://help.fanruan.com/finereport-en/doc-view-594.html","ref":"https://help.fanruan.com/finereport-en/doc-view-594.html","articles":[]}]},{"title":"FineBI API","level":"3.1.3","depth":2,"path":"tutorial/api-reference/finebi/spider-api.md","ref":"tutorial/api-reference/finebi/spider-api.md","articles":[{"title":"Data Preparation API (bi-spider)","level":"3.1.3.1","depth":3,"path":"tutorial/api-reference/finebi/spider-api.md","ref":"tutorial/api-reference/finebi/spider-api.md","articles":[{"title":"TaskEventListener","level":"3.1.3.1.1","depth":4,"path":"tutorial/api-reference/finebi/spider-api.md","ref":"tutorial/api-reference/finebi/spider-api.md","articles":[]}]},{"title":"Visualization API (bi-chart)","level":"3.1.3.2","depth":3,"path":"tutorial/api-reference/finebi/chart-api.md","ref":"tutorial/api-reference/finebi/chart-api.md","articles":[]},{"title":"Engine API (bi-engine)","level":"3.1.3.3","depth":3,"path":"tutorial/api-reference/finebi/engine-api.md","ref":"tutorial/api-reference/finebi/engine-api.md","articles":[]}]},{"title":"Web API","level":"3.1.4","depth":2,"path":"tutorial/api-reference/web-api.md","ref":"tutorial/api-reference/web-api.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/api-reference/common/config-api.md","mtime":"2026-06-11T06:55:37.625Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"3.1","depth":1,"next":{"title":"Common API","level":"3.1.1","depth":2,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[{"title":"Configuration API","level":"3.1.1.1","depth":3,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[]},{"title":"finekit","level":"3.1.1.2","depth":3,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[{"title":"LogKit","level":"3.1.1.2.1","depth":4,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[]},{"title":"FlushKit","level":"3.1.1.2.2","depth":4,"path":"tutorial/api-reference/common/finekit/flush-kit.md","ref":"tutorial/api-reference/common/finekit/flush-kit.md","articles":[]},{"title":"NetworkKit","level":"3.1.1.2.3","depth":4,"path":"tutorial/api-reference/common/finekit/network-kit.md","ref":"tutorial/api-reference/common/finekit/network-kit.md","articles":[]},{"title":"AuthorityKit","level":"3.1.1.2.4","depth":4,"path":"tutorial/api-reference/common/finekit/authority-kit.md","ref":"tutorial/api-reference/common/finekit/authority-kit.md","articles":[]}]}]},"previous":{"title":"Other Features","level":"2.4.4.2.5","depth":4,"path":"tutorial/finebi/frontend/other-features.md","ref":"tutorial/finebi/frontend/other-features.md","articles":[]},"articles":[{"title":"Common API","level":"3.1.1","depth":2,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[{"title":"Configuration API","level":"3.1.1.1","depth":3,"path":"tutorial/api-reference/common/config-api.md","ref":"tutorial/api-reference/common/config-api.md","articles":[]},{"title":"finekit","level":"3.1.1.2","depth":3,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[{"title":"LogKit","level":"3.1.1.2.1","depth":4,"path":"tutorial/api-reference/common/finekit/log-kit.md","ref":"tutorial/api-reference/common/finekit/log-kit.md","articles":[]},{"title":"FlushKit","level":"3.1.1.2.2","depth":4,"path":"tutorial/api-reference/common/finekit/flush-kit.md","ref":"tutorial/api-reference/common/finekit/flush-kit.md","articles":[]},{"title":"NetworkKit","level":"3.1.1.2.3","depth":4,"path":"tutorial/api-reference/common/finekit/network-kit.md","ref":"tutorial/api-reference/common/finekit/network-kit.md","articles":[]},{"title":"AuthorityKit","level":"3.1.1.2.4","depth":4,"path":"tutorial/api-reference/common/finekit/authority-kit.md","ref":"tutorial/api-reference/common/finekit/authority-kit.md","articles":[]}]}]},{"title":"FineReport API","level":"3.1.2","depth":2,"path":"tutorial/api-reference/finereport/designer-api.md","ref":"tutorial/api-reference/finereport/designer-api.md","articles":[{"title":"Designer API (fr-designer)","level":"3.1.2.1","depth":3,"path":"tutorial/api-reference/finereport/designer-api.md","ref":"tutorial/api-reference/finereport/designer-api.md","articles":[]},{"title":"Engine API (fr-engine)","level":"3.1.2.2","depth":3,"url":"https://help.fanruan.com/finereport-en/doc-view-632.html","ref":"https://help.fanruan.com/finereport-en/doc-view-632.html","articles":[]},{"title":"JS API","level":"3.1.2.3","depth":3,"url":"https://help.fanruan.com/finereport-en/doc-view-3935.html","ref":"https://help.fanruan.com/finereport-en/doc-view-3935.html","articles":[]},{"title":"FineReport Frontend Development","level":"3.1.2.4","depth":3,"url":"https://help.fanruan.com/finereport-en/doc-view-594.html","ref":"https://help.fanruan.com/finereport-en/doc-view-594.html","articles":[]}]},{"title":"FineBI API","level":"3.1.3","depth":2,"path":"tutorial/api-reference/finebi/spider-api.md","ref":"tutorial/api-reference/finebi/spider-api.md","articles":[{"title":"Data Preparation API (bi-spider)","level":"3.1.3.1","depth":3,"path":"tutorial/api-reference/finebi/spider-api.md","ref":"tutorial/api-reference/finebi/spider-api.md","articles":[{"title":"TaskEventListener","level":"3.1.3.1.1","depth":4,"path":"tutorial/api-reference/finebi/spider-api.md","ref":"tutorial/api-reference/finebi/spider-api.md","articles":[]}]},{"title":"Visualization API (bi-chart)","level":"3.1.3.2","depth":3,"path":"tutorial/api-reference/finebi/chart-api.md","ref":"tutorial/api-reference/finebi/chart-api.md","articles":[]},{"title":"Engine API (bi-engine)","level":"3.1.3.3","depth":3,"path":"tutorial/api-reference/finebi/engine-api.md","ref":"tutorial/api-reference/finebi/engine-api.md","articles":[]}]},{"title":"Web API","level":"3.1.4","depth":2,"path":"tutorial/api-reference/web-api.md","ref":"tutorial/api-reference/web-api.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/api-reference/common/config-api.md","mtime":"2026-07-10T02:20:30.944Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

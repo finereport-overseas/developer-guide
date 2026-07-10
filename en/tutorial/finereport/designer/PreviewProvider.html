@@ -3555,10 +3555,210 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#previewprovider"><b></b>PreviewProvider</a></li></ul></div><a href="#previewprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="previewprovider"><a name="previewprovider" class="anchor-navigation-ex-anchor" href="#previewprovider"><i class="fa fa-link" aria-hidden="true"></i></a>PreviewProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#previewprovider"><b></b>PreviewProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-special-terms"><b></b>1. Special Terms</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-introduction"><b></b>3. Interface Introduction</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-limitations"><b></b>7. Limitations</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open Source Examples</a></li></ul></ul></div><a href="#previewprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="previewprovider"><a name="previewprovider" class="anchor-navigation-ex-anchor" href="#previewprovider"><i class="fa fa-link" aria-hidden="true"></i></a>PreviewProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.fun.PreviewProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/PreviewProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-special-terms"><a name="1-special-terms" class="anchor-navigation-ex-anchor" href="#1-special-terms"><i class="fa fa-link" aria-hidden="true"></i></a>1. Special Terms</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p><code>PreviewProvider</code> is the designer-side interface for preview modes, used in conjunction with <code>ActorProvider</code>. When a plugin introduces a new preview mode, a corresponding new preview option must be added in the designer. The <code>PreviewProvider</code> interface is used to provide that new preview option in the designer.</p>
+<h2 id="3-interface-introduction"><a name="3-interface-introduction" class="anchor-navigation-ex-anchor" href="#3-interface-introduction"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Introduction</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.design.mainframe.JTemplate;
+<span class="hljs-keyword">import</span> com.fr.stable.Filter;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> richie
+ * <span class="hljs-doctag">@date</span> 2015-03-19
+ * <span class="hljs-doctag">@since</span> 8.0
+ * Custom preview mode interface.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PreviewProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span>, Filter&lt;JTemplate&gt; {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"PreviewProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+
+    <span class="hljs-comment">/**
+     * Name of the dropdown popup menu item.
+     * <span class="hljs-doctag">@return</span> popup menu name
+     */</span>
+    String <span class="hljs-title function_">nameForPopupItem</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Icon path for the dropdown popup menu item.
+     * <span class="hljs-doctag">@return</span> icon path
+     */</span>
+    String <span class="hljs-title function_">iconPathForPopupItem</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Large icon path.
+     * <span class="hljs-doctag">@return</span> large icon path
+     */</span>
+    String <span class="hljs-title function_">iconPathForLarge</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Event triggered when the dropdown menu item is clicked.
+     * <span class="hljs-doctag">@param</span> jt current template object
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClick</span><span class="hljs-params">(JTemplate&lt;?, ?&gt; jt)</span>;
+
+    <span class="hljs-comment">/**
+     * Integer used to identify the preview type.
+     * <span class="hljs-doctag">@return</span> preview type code
+     */</span>
+    <span class="hljs-type">int</span> <span class="hljs-title function_">previewTypeCode</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Default parameter map carried by this preview mode.
+     * <span class="hljs-doctag">@return</span> parameter map
+     */</span>
+    Map&lt;String, Object&gt; <span class="hljs-title function_">parametersForPreview</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * How the template is handled under this preview mode.
+     * Paged/fill-report modes compute and output the template; mobile preview directly outputs the URL.
+     * <span class="hljs-doctag">@return</span> handling mode
+     */</span>
+    String <span class="hljs-title function_">getActionType</span><span class="hljs-params">()</span>;
+
+
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">PreviewProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.mainframe;
+
+...
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JWorkBook</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">JTemplate</span>&lt;WorkBook, WorkBookUndoState&gt; {
+
+   ...
+
+    <span class="hljs-comment">/**
+     * Supported preview modes.
+     *
+     * <span class="hljs-doctag">@return</span> preview interfaces
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> PreviewProvider[] supportPreview() {
+        PreviewProvider[] templatePreviews = <span class="hljs-built_in">super</span>.supportPreview();
+        <span class="hljs-keyword">return</span> ArrayUtils.addAll(<span class="hljs-keyword">new</span> <span class="hljs-title class_">PreviewProvider</span>[]{
+                <span class="hljs-keyword">new</span> <span class="hljs-title class_">PagePreview</span>(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">WritePreview</span>(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">ViewPreview</span>(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">WriteEnhancePreview</span>(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">MobilePreview</span>()
+        }, templatePreviews);
+    }
+
+    <span class="hljs-comment">/**
+     * Preview menu items.
+     *
+     * <span class="hljs-doctag">@return</span> preview menu items
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> UIMenuItem[] createMenuItem4Preview() {
+        List&lt;UIMenuItem&gt; menuItems = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;UIMenuItem&gt;();
+        PreviewProvider[] previewProviders = supportPreview();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">final</span> PreviewProvider provider : previewProviders) {
+            <span class="hljs-type">UIMenuItem</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIMenuItem</span>(provider.nameForPopupItem(), BaseUtils.readIcon(provider.iconPathForPopupItem()));
+            item.addActionListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ActionListener</span>() {
+                <span class="hljs-meta">@Override</span>
+                <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span> {
+                    provider.onClick(JWorkBook.<span class="hljs-built_in">this</span>);
+                }
+            });
+            menuItems.add(item);
+        }
+        <span class="hljs-keyword">return</span> menuItems.toArray(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UIMenuItem</span>[menuItems.size()]);
+    }
+
+
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-comment">/**
+     *
+     */</span>
+    <span class="hljs-keyword">public</span> Icon <span class="hljs-title function_">getPreviewLargeIcon</span><span class="hljs-params">()</span> {
+        <span class="hljs-type">PreviewProvider</span> <span class="hljs-variable">provider</span> <span class="hljs-operator">=</span> getPreviewType();
+        <span class="hljs-type">String</span> <span class="hljs-variable">iconPath</span> <span class="hljs-operator">=</span> provider.iconPathForLarge();
+        <span class="hljs-keyword">return</span> BaseUtils.readIcon(iconPath);
+    }
+
+    ...
+}
+</code></pre>
+<h2 id="7-limitations"><a name="7-limitations" class="anchor-navigation-ex-anchor" href="#7-limitations"><i class="fa fa-link" aria-hidden="true"></i></a>7. Limitations</h2>
+<p><code>previewTypeCode</code> has a design flaw: it does not account for potential conflicts between multiple plugins registering the same type code. Text-based identifiers have clearer semantics and far lower collision probability. It is recommended that developers always return <code>0</code> here and instead use the <code>parametersForPreview</code> method to specify the <code>op</code> parameter, which associates with the corresponding <code>ActorProvider</code>.</p>
+<p><code>getActionType</code> is used to specify the URL parameter that carries the report path. The default value is <code>viewlet</code>. If a corresponding <code>ActorProvider</code> requires a different parameter name, this method can be overridden to specify it.</p>
+<p>The <code>accept</code> interface is the entry point called when the designer preview is clicked, to determine whether this implementation applies. The default behavior does not require override.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-preview-provider" target="_blank">demo-preview-provider</a></p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and provided by individual developers for reference and learning purposes only. Neither the developers nor the official team are obligated to provide instruction or guidance on any outcomes related to open-source examples. Any commercial use is entirely at the user's own risk.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3802,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PreviewProvider","level":"2.4.3.1.16","depth":4,"next":{"title":"RegPaneProvider","level":"2.4.3.1.17","depth":4,"path":"tutorial/finereport/designer/RegPaneProvider.md","ref":"tutorial/finereport/designer/RegPaneProvider.md","articles":[]},"previous":{"title":"PresentKindProvider","level":"2.4.3.1.15","depth":4,"path":"tutorial/finereport/designer/PresentKindProvider.md","ref":"tutorial/finereport/designer/PresentKindProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/PreviewProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"PreviewProvider","level":"2.4.3.1.16","depth":4,"next":{"title":"RegPaneProvider","level":"2.4.3.1.17","depth":4,"path":"tutorial/finereport/designer/RegPaneProvider.md","ref":"tutorial/finereport/designer/RegPaneProvider.md","articles":[]},"previous":{"title":"PresentKindProvider","level":"2.4.3.1.15","depth":4,"path":"tutorial/finereport/designer/PresentKindProvider.md","ref":"tutorial/finereport/designer/PresentKindProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/PreviewProvider.md","mtime":"2026-07-10T02:20:30.972Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

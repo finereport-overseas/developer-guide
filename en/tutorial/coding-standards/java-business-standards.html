@@ -3555,10 +3555,111 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#java-business-standards"><b></b>java-business-standards</a></li></ul></div><a href="#java-business-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="java-business-standards"><a name="java-business-standards" class="anchor-navigation-ex-anchor" href="#java-business-standards"><i class="fa fa-link" aria-hidden="true"></i></a>java-business-standards</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#business-code-standards---java"><b></b>Business Code Standards - Java</a></li><ul><li><span class="title-icon "></span><a href="#1-use-comparatorutilsequals-for-object-comparison"><b></b>1. Use ComparatorUtils.equals for Object Comparison</a></li><li><span class="title-icon "></span><a href="#2-use-isempty-to-check-collections"><b></b>2. Use isEmpty() to Check Collections</a></li><li><span class="title-icon "></span><a href="#3-configuration-properties-must-be-annotated-with-identifier"><b></b>3. Configuration Properties Must Be Annotated with @Identifier</a></li><li><span class="title-icon "></span><a href="#4-use-the-assistutils-template-for-equals-and-hashcode"><b></b>4. Use the AssistUtils Template for equals and hashCode</a></li><li><span class="title-icon "></span><a href="#5-use-assistutilstostring-to-override-tostring"><b></b>5. Use AssistUtils.toString to Override toString</a></li><li><span class="title-icon "></span><a href="#6-do-not-reference-classes-under-comfrreportcore-from-other-packages"><b></b>6. Do Not Reference Classes Under com.fr.report.core from Other Packages</a></li><li><span class="title-icon "></span><a href="#7-prefer-the-enum-pattern-for-singletons"><b></b>7. Prefer the Enum Pattern for Singletons</a></li></ul></ul></div><a href="#business-code-standards---java" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="business-code-standards---java"><a name="business-code-standards---java" class="anchor-navigation-ex-anchor" href="#business-code-standards---java"><i class="fa fa-link" aria-hidden="true"></i></a>Business Code Standards - Java</h1>
+<hr></hr>
+<h2 id="1-use-comparatorutilsequals-for-object-comparison"><a name="1-use-comparatorutilsequals-for-object-comparison" class="anchor-navigation-ex-anchor" href="#1-use-comparatorutilsequals-for-object-comparison"><i class="fa fa-link" aria-hidden="true"></i></a>1. Use ComparatorUtils.equals for Object Comparison</h2>
+<p><code>Object.equals()</code> can throw a NullPointerException. Use the utility method instead:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (ComparatorUtils.equals(a, b)) {
+    <span class="hljs-comment">// do something</span>
+}
+
+<span class="hljs-comment">// Explicit string comparison (string literals are never null, so this is also acceptable)</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-string">"abcde"</span>.equals(op)) {
+    <span class="hljs-comment">// do something</span>
+}
+
+<span class="hljs-comment">// Wrong (a may be null)</span>
+<span class="hljs-keyword">if</span> (a.equals(b)) {
+    <span class="hljs-comment">// do something</span>
+}
+</code></pre>
 <blockquote>
-<p>Coming soon.</p>
+<p>For higher performance, <code>AssistUtils.equals()</code> can be used instead.</p>
 </blockquote>
+<hr></hr>
+<h2 id="2-use-isempty-to-check-collections"><a name="2-use-isempty-to-check-collections" class="anchor-navigation-ex-anchor" href="#2-use-isempty-to-check-collections"><i class="fa fa-link" aria-hidden="true"></i></a>2. Use isEmpty() to Check Collections</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (list.isEmpty()) { ... }
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span> (list.size() == <span class="hljs-number">0</span>) { ... }
+</code></pre>
+<hr></hr>
+<h2 id="3-configuration-properties-must-be-annotated-with-identifier"><a name="3-configuration-properties-must-be-annotated-with-identifier" class="anchor-navigation-ex-anchor" href="#3-configuration-properties-must-be-annotated-with-identifier"><i class="fa fa-link" aria-hidden="true"></i></a>3. Configuration Properties Must Be Annotated with @Identifier</h2>
+<p>This prevents data loss when a property is renamed during refactoring, since the persisted name is preserved:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-meta">@Identifier("privateSHA256Key")</span>
+<span class="hljs-keyword">private</span> Conf&lt;String&gt; privateSHA256Key = Holders.simple(<span class="hljs-string">"aki8r-mk89t-..."</span>);
+
+<span class="hljs-comment">// Wrong (no @Identifier — persisted data cannot be read if the field is renamed)</span>
+<span class="hljs-keyword">private</span> Conf&lt;String&gt; smsAppKey = Holders.simple(StringUtils.EMPTY);
+<span class="hljs-keyword">private</span> Conf&lt;String&gt; smsAppSecret = Holders.simple(StringUtils.EMPTY);
+</code></pre>
+<hr></hr>
+<h2 id="4-use-the-assistutils-template-for-equals-and-hashcode"><a name="4-use-the-assistutils-template-for-equals-and-hashcode" class="anchor-navigation-ex-anchor" href="#4-use-the-assistutils-template-for-equals-and-hashcode"><i class="fa fa-link" aria-hidden="true"></i></a>4. Use the AssistUtils Template for equals and hashCode</h2>
+<p>Do not use IDE-generated code. Use the following template:</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(Object obj)</span> {
+    <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">instanceof</span> ProductVersion
+            &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.nameLocaleKey, ((ProductVersion) obj).nameLocaleKey)
+            &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.name, ((ProductVersion) obj).name)
+            &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.version, ((ProductVersion) obj).version)
+            &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.level, ((ProductVersion) obj).level)
+            &amp;&amp; AssistUtils.equals(<span class="hljs-built_in">this</span>.jarTime, ((ProductVersion) obj).jarTime);
+}
+
+<span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> AssistUtils.hashCode(nameLocaleKey, name);
+}
+</code></pre>
+<hr></hr>
+<h2 id="5-use-assistutilstostring-to-override-tostring"><a name="5-use-assistutilstostring-to-override-tostring" class="anchor-navigation-ex-anchor" href="#5-use-assistutilstostring-to-override-tostring"><i class="fa fa-link" aria-hidden="true"></i></a>5. Use AssistUtils.toString to Override toString</h2>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> AssistUtils.toString(<span class="hljs-built_in">this</span>);
+}
+
+<span class="hljs-comment">// To exclude specific properties</span>
+<span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> AssistUtils.toString(<span class="hljs-built_in">this</span>, <span class="hljs-string">"excludeProperty1"</span>, <span class="hljs-string">"excludeProperty2"</span>);
+}
+</code></pre>
+<hr></hr>
+<h2 id="6-do-not-reference-classes-under-comfrreportcore-from-other-packages"><a name="6-do-not-reference-classes-under-comfrreportcore-from-other-packages" class="anchor-navigation-ex-anchor" href="#6-do-not-reference-classes-under-comfrreportcore-from-other-packages"><i class="fa fa-link" aria-hidden="true"></i></a>6. Do Not Reference Classes Under com.fr.report.core from Other Packages</h2>
+<p>Classes under <code>com.fr.report.core</code> must not be directly referenced from classes in other packages:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">package</span> com.fr.report.execute;
+
+<span class="hljs-keyword">import</span> com.fr.report.core.BoxFactory;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Executor</span> {
+    <span class="hljs-keyword">public</span> BoxFactory <span class="hljs-title function_">createBoxFactory</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BoxFactory</span>();
+    }
+}
+</code></pre>
+<hr></hr>
+<h2 id="7-prefer-the-enum-pattern-for-singletons"><a name="7-prefer-the-enum-pattern-for-singletons" class="anchor-navigation-ex-anchor" href="#7-prefer-the-enum-pattern-for-singletons"><i class="fa fa-link" aria-hidden="true"></i></a>7. Prefer the Enum Pattern for Singletons</h2>
+<p>Enums are inherently thread-safe and concise:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Recommended</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">StateManager</span> {
+
+    INSTANCE;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> state;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getState</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> state;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setState</span><span class="hljs-params">(<span class="hljs-type">int</span> state)</span> {
+        <span class="hljs-built_in">this</span>.state = state;
+    }
+}
+</code></pre>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3703,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"next":{"title":"Plugin Core Concepts","level":"2.3","depth":1,"path":"tutorial/plugin-concepts/plugin-architecture.md","ref":"tutorial/plugin-concepts/plugin-architecture.md","articles":[{"title":"Plugin Architecture","level":"2.3.1","depth":2,"path":"tutorial/plugin-concepts/plugin-architecture.md","ref":"tutorial/plugin-concepts/plugin-architecture.md","articles":[]},{"title":"Plugin Feature Points","level":"2.3.2","depth":2,"path":"tutorial/plugin-concepts/plugin-features.md","ref":"tutorial/plugin-concepts/plugin-features.md","articles":[]},{"title":"Plugin Lifecycle","level":"2.3.3","depth":2,"path":"tutorial/plugin-concepts/plugin-lifecycle.md","ref":"tutorial/plugin-concepts/plugin-lifecycle.md","articles":[]},{"title":"Plugin Context Object","level":"2.3.4","depth":2,"path":"tutorial/plugin-concepts/plugin-context.md","ref":"tutorial/plugin-concepts/plugin-context.md","articles":[]}]},"previous":{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-business-standards.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"next":{"title":"Plugin Core Concepts","level":"2.3","depth":1,"path":"tutorial/plugin-concepts/plugin-architecture.md","ref":"tutorial/plugin-concepts/plugin-architecture.md","articles":[{"title":"Plugin Architecture","level":"2.3.1","depth":2,"path":"tutorial/plugin-concepts/plugin-architecture.md","ref":"tutorial/plugin-concepts/plugin-architecture.md","articles":[]},{"title":"Plugin Feature Points","level":"2.3.2","depth":2,"path":"tutorial/plugin-concepts/plugin-features.md","ref":"tutorial/plugin-concepts/plugin-features.md","articles":[]},{"title":"Plugin Lifecycle","level":"2.3.3","depth":2,"path":"tutorial/plugin-concepts/plugin-lifecycle.md","ref":"tutorial/plugin-concepts/plugin-lifecycle.md","articles":[]},{"title":"Plugin Context Object","level":"2.3.4","depth":2,"path":"tutorial/plugin-concepts/plugin-context.md","ref":"tutorial/plugin-concepts/plugin-context.md","articles":[]}]},"previous":{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-business-standards.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

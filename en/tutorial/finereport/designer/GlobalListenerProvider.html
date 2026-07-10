@@ -3555,10 +3555,220 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#globallistenerprovider"><b></b>GlobalListenerProvider</a></li></ul></div><a href="#globallistenerprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="globallistenerprovider"><a name="globallistenerprovider" class="anchor-navigation-ex-anchor" href="#globallistenerprovider"><i class="fa fa-link" aria-hidden="true"></i></a>GlobalListenerProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#globallistenerprovider"><b></b>GlobalListenerProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-special-terms"><b></b>1. Special Terms</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-introduction"><b></b>3. Interface Introduction</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-limitations"><b></b>7. Limitations</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open Source Examples</a></li></ul></ul></div><a href="#globallistenerprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="globallistenerprovider"><a name="globallistenerprovider" class="anchor-navigation-ex-anchor" href="#globallistenerprovider"><i class="fa fa-link" aria-hidden="true"></i></a>GlobalListenerProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.fun.GlobalListenerProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/GlobalListenerProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-special-terms"><a name="1-special-terms" class="anchor-navigation-ex-anchor" href="#1-special-terms"><i class="fa fa-link" aria-hidden="true"></i></a>1. Special Terms</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>FineReport Designer provides a set of built-in keyboard shortcuts to improve the experience for users who prefer keyboard-based operations. However, different users need different shortcuts, and many designer features are themselves extended through plugins. To provide more flexibility, the designer exposes the <code>GlobalListenerProvider</code> interface, allowing developers to extend keyboard shortcuts in their own plugins. This interface captures global keyboard input events in the designer and is generally not used in isolation — it is more commonly combined with other designer feature implementations.</p>
+<h2 id="3-interface-introduction"><a name="3-interface-introduction" class="anchor-navigation-ex-anchor" href="#3-interface-introduction"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Introduction</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-keyword">import</span> java.awt.event.AWTEventListener;
+
+<span class="hljs-comment">/**
+ * Created by zack on 2015/8/17.
+ * Global event listener.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">GlobalListenerProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span>{
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"GlobalListenerProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Returns an AWT event listener to be registered with the system.
+     * <span class="hljs-doctag">@return</span> AWT event listener
+     */</span>
+    AWTEventListener <span class="hljs-title function_">listener</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun.impl;
+
+<span class="hljs-keyword">import</span> com.fr.design.ExtraDesignClassManager;
+<span class="hljs-keyword">import</span> com.fr.design.fun.GlobalListenerProvider;
+<span class="hljs-keyword">import</span> com.fr.general.GeneralContext;
+<span class="hljs-keyword">import</span> com.fr.plugin.context.PluginContext;
+<span class="hljs-keyword">import</span> com.fr.plugin.context.PluginRuntime;
+<span class="hljs-keyword">import</span> com.fr.plugin.injectable.PluginModule;
+<span class="hljs-keyword">import</span> com.fr.plugin.manage.PluginFilter;
+<span class="hljs-keyword">import</span> com.fr.plugin.observer.PluginEvent;
+<span class="hljs-keyword">import</span> com.fr.plugin.observer.PluginEventListener;
+<span class="hljs-keyword">import</span> com.fr.plugin.observer.PluginEventType;
+
+<span class="hljs-keyword">import</span> java.awt.*;
+<span class="hljs-keyword">import</span> java.awt.event.AWTEventListener;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+<span class="hljs-keyword">import</span> java.util.Map;
+<span class="hljs-keyword">import</span> java.util.Set;
+
+<span class="hljs-comment">/**
+ * Created by juhaoyu on 2017/6/15.
+ * Manages GlobalListenerProvider instances for currently running plugins.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GlobalListenerProviderManager</span> {
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">GlobalListenerProviderManager</span> <span class="hljs-variable">INSTANCE</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GlobalListenerProviderManager</span>();
+
+    <span class="hljs-keyword">private</span> Map&lt;GlobalListenerProvider, AWTEventListener&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+
+    <span class="hljs-keyword">private</span> <span class="hljs-title function_">GlobalListenerProviderManager</span><span class="hljs-params">()</span> {}
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> GlobalListenerProviderManager <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> {
+
+        <span class="hljs-keyword">return</span> INSTANCE;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> {
+
+        Set&lt;GlobalListenerProvider&gt; providers = ExtraDesignClassManager.getInstance().getArray(GlobalListenerProvider.XML_TAG);
+        addAWTEventListeners(providers);
+        listenPlugin();
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">listenPlugin</span><span class="hljs-params">()</span> {
+
+        <span class="hljs-type">PluginFilter</span> <span class="hljs-variable">filter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PluginFilter</span>() {
+
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(PluginContext context)</span> {
+
+                <span class="hljs-keyword">return</span> context.contain(PluginModule.ExtraDesign, GlobalListenerProvider.XML_TAG);
+            }
+        };
+        <span class="hljs-type">PluginEventListener</span> <span class="hljs-variable">onRun</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PluginEventListener</span>() {
+
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">on</span><span class="hljs-params">(PluginEvent event)</span> {
+
+                <span class="hljs-type">PluginRuntime</span> <span class="hljs-variable">runtime</span> <span class="hljs-operator">=</span> event.getContext().getRuntime();
+                Set&lt;GlobalListenerProvider&gt; providers = runtime.get(PluginModule.ExtraDesign, GlobalListenerProvider.XML_TAG);
+                addAWTEventListeners(providers);
+            }
+        };
+        <span class="hljs-type">PluginEventListener</span> <span class="hljs-variable">onStop</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PluginEventListener</span>() {
+
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">on</span><span class="hljs-params">(PluginEvent event)</span> {
+
+                <span class="hljs-type">PluginRuntime</span> <span class="hljs-variable">runtime</span> <span class="hljs-operator">=</span> event.getContext().getRuntime();
+                Set&lt;GlobalListenerProvider&gt; providers = runtime.get(PluginModule.ExtraDesign, GlobalListenerProvider.XML_TAG);
+                removeAWTEventListeners(providers);
+            }
+        };
+        GeneralContext.listenPlugin(PluginEventType.AfterRun, onRun, filter);
+        GeneralContext.listenPlugin(PluginEventType.BeforeStop, onStop, filter);
+
+
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addAWTEventListeners</span><span class="hljs-params">(Set&lt;GlobalListenerProvider&gt; providers)</span> {
+
+        AWTEventListener listener;
+        <span class="hljs-keyword">for</span> (GlobalListenerProvider provider : providers) {
+            listener = provider.listener();
+            Toolkit.getDefaultToolkit().addAWTEventListener(listener, AWTEvent.KEY_EVENT_MASK);
+            add(provider, listener);
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeAWTEventListeners</span><span class="hljs-params">(Set&lt;GlobalListenerProvider&gt; providers)</span> {
+
+        AWTEventListener listener;
+        <span class="hljs-keyword">for</span> (GlobalListenerProvider provider : providers) {
+            listener = pop(provider);
+            Toolkit.getDefaultToolkit().removeAWTEventListener(listener);
+        }
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(GlobalListenerProvider provider, AWTEventListener listener)</span> {
+
+        map.put(provider, listener);
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">synchronized</span> AWTEventListener <span class="hljs-title function_">pop</span><span class="hljs-params">(GlobalListenerProvider provider)</span> {
+
+        <span class="hljs-keyword">return</span> map.remove(provider);
+    }
+
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">GlobalListenerProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>This interface can only be invoked within the designer. Where needed, all declared global event extensions are retrieved via <code>Set&lt;GlobalListenerProvider&gt; providers = ExtraDesignClassManager.getInstance().getArray(GlobalListenerProvider.XML_TAG)</code>.</p>
+<p>In the standard product, the main activation point is the <code>GlobalListenerProviderManager</code> shown above.</p>
+<h2 id="7-limitations"><a name="7-limitations" class="anchor-navigation-ex-anchor" href="#7-limitations"><i class="fa fa-link" aria-hidden="true"></i></a>7. Limitations</h2>
+<p>None</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p><a href="https://code.fanruan.com/hugh/demo-global-listener-provider" target="_blank">demo-global-listener-provider</a></p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and provided by individual developers for reference and learning purposes only. Neither the developers nor the official team are obligated to provide instruction or guidance on any outcomes related to open-source examples. Any commercial use is entirely at the user's own risk.</p>
+<p>None available at this time.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3812,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GlobalListenerProvider","level":"2.4.3.1.8","depth":4,"next":{"title":"HyperlinkProvider","level":"2.4.3.1.9","depth":4,"path":"tutorial/finereport/designer/HyperlinkProvider.md","ref":"tutorial/finereport/designer/HyperlinkProvider.md","articles":[]},"previous":{"title":"ExtraButtonToolBarProvider","level":"2.4.3.1.7","depth":4,"path":"tutorial/finereport/designer/ExtraButtonToolBarProvider.md","ref":"tutorial/finereport/designer/ExtraButtonToolBarProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/GlobalListenerProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"GlobalListenerProvider","level":"2.4.3.1.8","depth":4,"next":{"title":"HyperlinkProvider","level":"2.4.3.1.9","depth":4,"path":"tutorial/finereport/designer/HyperlinkProvider.md","ref":"tutorial/finereport/designer/HyperlinkProvider.md","articles":[]},"previous":{"title":"ExtraButtonToolBarProvider","level":"2.4.3.1.7","depth":4,"path":"tutorial/finereport/designer/ExtraButtonToolBarProvider.md","ref":"tutorial/finereport/designer/ExtraButtonToolBarProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/GlobalListenerProvider.md","mtime":"2026-07-10T02:20:30.971Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

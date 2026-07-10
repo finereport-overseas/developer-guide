@@ -3555,9 +3555,182 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#plugin-license"><b></b>plugin-license</a></li></ul></div><a href="#plugin-license" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="plugin-license"><a name="plugin-license" class="anchor-navigation-ex-anchor" href="#plugin-license"><i class="fa fa-link" aria-hidden="true"></i></a>plugin-license</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#plugin-licensing"><b></b>Plugin Licensing</a></li><ul><li><span class="title-icon "></span><a href="#key-class"><b></b>Key Class</a></li><li><span class="title-icon "></span><a href="#example-implementation"><b></b>Example Implementation</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li><li><span class="title-icon "></span><a href="#self-testing"><b></b>Self-Testing</a></li><li><span class="title-icon "></span><a href="#plugin-bundle-licensing"><b></b>Plugin Bundle Licensing</a></li></ul></ul></div><a href="#plugin-licensing" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="plugin-licensing"><a name="plugin-licensing" class="anchor-navigation-ex-anchor" href="#plugin-licensing"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Licensing</h1>
+<p>When a developer wants users to pay for a plugin, they need to integrate the licensing API into the plugin so that users are prompted to purchase once the trial period expires.</p>
+<hr></hr>
+<h2 id="key-class"><a name="key-class" class="anchor-navigation-ex-anchor" href="#key-class"><i class="fa fa-link" aria-hidden="true"></i></a>Key Class</h2>
+<p>Add the <code>@Authorize</code> annotation to the extension point implementation class. The annotation is defined as follows:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.StringUtils;
+
+<span class="hljs-keyword">import</span> java.lang.annotation.ElementType;
+<span class="hljs-keyword">import</span> java.lang.annotation.Retention;
+<span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;
+<span class="hljs-keyword">import</span> java.lang.annotation.Target;
+
+<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
+<span class="hljs-meta">@Target(ElementType.TYPE)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Authorize {
+
+    <span class="hljs-comment">/**
+     * The verification code obtained by the developer based on the plugin ID.
+     *
+     * <span class="hljs-doctag">@return</span> verification code
+     */</span>
+    String <span class="hljs-title function_">callSignKey</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> StringUtils.EMPTY;
+
+    <span class="hljs-comment">/**
+     * The verification code can be written directly in code or stored in a file.
+     *
+     * <span class="hljs-doctag">@return</span> path to the file containing the verification code
+     */</span>
+    String <span class="hljs-title function_">callSignKeyPath</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> StringUtils.EMPTY;
+}
+</code></pre>
+<hr></hr>
+<h2 id="example-implementation"><a name="example-implementation" class="anchor-navigation-ex-anchor" href="#example-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>Example Implementation</h2>
+<p>Using a theme plugin as an example: the <code>@Authorize</code> annotation marks the plugin as paid, and the following code handles the different logic for authorized and unauthorized states:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span> (PluginContexts.currentContext().isAvailable()) {
+    <span class="hljs-comment">// logic when authorized</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// logic when not authorized</span>
+}
+</code></pre>
+<p>A complete theme plugin implementation:</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Authorize(callSignKey = Constants.PLUING_ID)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ThemeGreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractThemeVariousProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">name</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"AcrossGreen"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">text</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Horizontal Navigation"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">coverPath</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"/com/fr/solution/theme/green/files/cover.png"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">scriptPath</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (PluginContexts.currentContext().isAvailable()) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"/com/fr/solution/theme/green/files/theme.js"</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">stylePath</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">if</span> (PluginContexts.currentContext().isAvailable()) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"/com/fr/solution/theme/green/files/style.css"</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+        }
+    }
+}
+</code></pre>
+<p>In the example above, the value of <code>callSignKey</code> is the plugin ID, which must match the <code>id</code> field in <code>plugin.xml</code>. If the trial period has expired, an empty path is returned so the plugin has no effect. Of course, other approaches can also be used to prompt users to purchase.</p>
+<hr></hr>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ol>
+<li>The annotation and the authorization control code do not have to be in the same class.</li>
+<li>For plugins that include both designer-side and non-designer-side interfaces, the <code>@Authorize</code> annotation should generally only be applied to extension point implementation classes outside the <code>extra-designer</code> tag.</li>
+</ol>
+<hr></hr>
+<h2 id="self-testing"><a name="self-testing" class="anchor-navigation-ex-anchor" href="#self-testing"><i class="fa fa-link" aria-hidden="true"></i></a>Self-Testing</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Report Registration</th>
+<th style="text-align:center">Plugin License</th>
+<th style="text-align:center">Within Trial Period</th>
+<th style="text-align:center">Designer *1</th>
+<th style="text-align:center">Server Env in Designer *2</th>
+<th style="text-align:center">Server Environment *3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Not registered</td>
+<td style="text-align:center">None/Present</td>
+<td style="text-align:center">Unlimited trial</td>
+<td style="text-align:center">Normal</td>
+<td style="text-align:center">Normal</td>
+<td style="text-align:center">Normal</td>
+</tr>
+<tr>
+<td style="text-align:center">Registered</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">Normal</td>
+<td style="text-align:center">Normal</td>
+<td style="text-align:center">Normal</td>
+</tr>
+<tr>
+<td style="text-align:center">Registered</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">Expired</td>
+<td style="text-align:center">Expired</td>
+<td style="text-align:center">Expired</td>
+</tr>
+<tr>
+<td style="text-align:center">Registered</td>
+<td style="text-align:center">Present</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">Licensed</td>
+<td style="text-align:center">Licensed</td>
+<td style="text-align:center">Licensed</td>
+</tr>
+</tbody>
+</table>
+<p><em>1: "Designer" refers to the plugin portion that serves the designer, such as designer menus and dialogs.  
+</em>2: Refers to the plugin portion that serves the server side, running in the Jetty server environment embedded in the designer.<br></br>*3: Refers to the plugin portion that serves the server side, running in an independent Java Web container such as Tomcat.</p>
+<hr></hr>
+<h2 id="plugin-bundle-licensing"><a name="plugin-bundle-licensing" class="anchor-navigation-ex-anchor" href="#plugin-bundle-licensing"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Bundle Licensing</h2>
+<p>Starting from version 10.0.2 (stable-12.27 and later), the concept of a plugin bundle was introduced, allowing customers to purchase a collection of plugins as a group.</p>
+<p>A <code>groupSignKey</code> attribute was added to the <code>@Authorize</code> annotation to mark which plugin group a plugin belongs to:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.StringUtils;
+
+<span class="hljs-keyword">import</span> java.lang.annotation.ElementType;
+<span class="hljs-keyword">import</span> java.lang.annotation.Retention;
+<span class="hljs-keyword">import</span> java.lang.annotation.RetentionPolicy;
+<span class="hljs-keyword">import</span> java.lang.annotation.Target;
+
+<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
+<span class="hljs-meta">@Target(ElementType.TYPE)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Authorize {
+
+    <span class="hljs-comment">/**
+     * The verification code obtained by the developer based on the plugin ID.
+     *
+     * <span class="hljs-doctag">@return</span> verification code
+     */</span>
+    String <span class="hljs-title function_">callSignKey</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> StringUtils.EMPTY;
+
+    <span class="hljs-comment">/**
+     * The verification code can be written directly in code or stored in a file.
+     *
+     * <span class="hljs-doctag">@return</span> path to the file containing the verification code
+     */</span>
+    String <span class="hljs-title function_">callSignKeyPath</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> StringUtils.EMPTY;
+
+    <span class="hljs-comment">/**
+     * The plugin bundle this plugin belongs to.
+     */</span>
+    String <span class="hljs-title function_">groupSignKey</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> StringUtils.EMPTY;
+}
+</code></pre>
 <blockquote>
-<p>Coming soon.</p>
+<p>To protect your revenue share, please confirm with FanRuan officially that your plugin has been assigned to a plugin bundle before adding the bundle annotation.</p>
 </blockquote>
 <div id="gitalk-container"></div>
                                 
@@ -3602,7 +3775,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Plugin Licensing","level":"2.1.4.2","depth":3,"next":{"title":"Upload to App Center","level":"2.1.4.3","depth":3,"path":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","ref":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","articles":[]},"previous":{"title":"Package Plugin","level":"2.1.4.1","depth":3,"path":"tutorial/getting-started/publish-and-deploy/package-plugin.md","ref":"tutorial/getting-started/publish-and-deploy/package-plugin.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/publish-and-deploy/plugin-license.md","mtime":"2026-06-11T06:55:37.655Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Plugin Licensing","level":"2.1.4.2","depth":3,"next":{"title":"Upload to App Center","level":"2.1.4.3","depth":3,"path":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","ref":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","articles":[]},"previous":{"title":"Package Plugin","level":"2.1.4.1","depth":3,"path":"tutorial/getting-started/publish-and-deploy/package-plugin.md","ref":"tutorial/getting-started/publish-and-deploy/package-plugin.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/publish-and-deploy/plugin-license.md","mtime":"2026-07-10T02:20:30.988Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

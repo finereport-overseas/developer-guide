@@ -3555,10 +3555,108 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#transferpackageprovider"><b></b>TransferPackageProvider</a></li></ul></div><a href="#transferpackageprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="transferpackageprovider"><a name="transferpackageprovider" class="anchor-navigation-ex-anchor" href="#transferpackageprovider"><i class="fa fa-link" aria-hidden="true"></i></a>TransferPackageProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#transferpackageprovider"><b></b>TransferPackageProvider</a></li><ul><li><span class="title-icon "></span><a href="#background-and-use-cases"><b></b>Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#supported-versions"><b></b>Supported Versions</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li><li><span class="title-icon "></span><a href="#how-it-works"><b></b>How It Works</a></li><li><span class="title-icon "></span><a href="#useful-links"><b></b>Useful Links</a></li></ul></ul></div><a href="#transferpackageprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="transferpackageprovider"><a name="transferpackageprovider" class="anchor-navigation-ex-anchor" href="#transferpackageprovider"><i class="fa fa-link" aria-hidden="true"></i></a>TransferPackageProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.stable.fun.TransferPackageProvider</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-and-use-cases"><a name="background-and-use-cases" class="anchor-navigation-ex-anchor" href="#background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>Background and Use Cases</h2>
+<p>During the upgrade process from older to newer versions of FanRuan Report, extensive code refactoring was performed, including many package moves. This causes templates from older versions to fail with "class not found" errors when running on a newer version server.</p>
+<p>The <code>TransferPackageProvider</code> interface provides class name conversion: when reading the <code>class</code> attribute from cpt/frm files, it maps old class names to new ones.</p>
+<p>For example, if a template contains <code>&lt;ExampleAttr class="com.fr.xxx.MyClass"/&gt;</code> and <code>MyClass</code> has been moved to <code>com.fr.xxx.moved.MyClass</code>, this interface can be used to perform the substitution automatically.</p>
+<p>Beyond package migration compatibility, this interface can also intercept embedded report objects via class substitution in special cases to influence execution logic.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-comment">/**
+ * Class name converter for package migration compatibility
+ *
+ * Created by loy on 2017/1/18.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TransferPackageProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"TransferPackageProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Whether the given class name should be converted by this transformer
+     * <span class="hljs-doctag">@param</span> oldClassName the old class name read from the file
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(String oldClassName)</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the new class name to use as a replacement
+     * <span class="hljs-doctag">@param</span> oldClassName the old class name read from the file
+     */</span>
+    String <span class="hljs-title function_">transfer</span><span class="hljs-params">(String oldClassName)</span>;
+}
+</code></pre>
+<h2 id="supported-versions"><a name="supported-versions" class="anchor-navigation-ex-anchor" href="#supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Version</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h2>
+<p>Add the following node in <code>plugin.xml</code>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">TransferPackageProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="how-it-works"><a name="how-it-works" class="anchor-navigation-ex-anchor" href="#how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>How It Works</h2>
+<p>The interface takes effect through two main code paths:</p>
+<ol>
+<li><strong><code>TableDataXmlUtils</code></strong>: Applies transformation during dataset object deserialization</li>
+<li><strong><code>GeneralXMLTools</code></strong>: Applies transformation when parsing XMLable objects via <code>readXMLable()</code> and <code>readStringAsXMLable()</code></li>
+</ol>
+<p><strong>Special limitation:</strong> Not all <code>class</code> elements in cpt/frm files are covered by this interface — only elements read via <code>GeneralXMLTools.readXMLable</code> / <code>readStringAsXMLable</code> and template dataset objects are affected.</p>
+<h2 id="useful-links"><a name="useful-links" class="anchor-navigation-ex-anchor" href="#useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>Useful Links</h2>
+<ul>
+<li>Demo: <a href="https://code.fanruan.com/hugh/demo-transfer-package-provider" target="_blank">demo-transfer-package-provider</a></li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3700,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TransferPackageProvider","level":"2.4.2.1.32","depth":4,"next":{"title":"WebLocaleProvider","level":"2.4.2.1.33","depth":4,"path":"tutorial/common-extensions/core/WebLocaleProvider.md","ref":"tutorial/common-extensions/core/WebLocaleProvider.md","articles":[]},"previous":{"title":"TableDataProvider","level":"2.4.2.1.31","depth":4,"path":"tutorial/common-extensions/core/TableDataProvider.md","ref":"tutorial/common-extensions/core/TableDataProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/TransferPackageProvider.md","mtime":"2026-06-11T06:55:37.643Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"TransferPackageProvider","level":"2.4.2.1.32","depth":4,"next":{"title":"WebLocaleProvider","level":"2.4.2.1.33","depth":4,"path":"tutorial/common-extensions/core/WebLocaleProvider.md","ref":"tutorial/common-extensions/core/WebLocaleProvider.md","articles":[]},"previous":{"title":"TableDataProvider","level":"2.4.2.1.31","depth":4,"path":"tutorial/common-extensions/core/TableDataProvider.md","ref":"tutorial/common-extensions/core/TableDataProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/TransferPackageProvider.md","mtime":"2026-07-10T02:20:30.963Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

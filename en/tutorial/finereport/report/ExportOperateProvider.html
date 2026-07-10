@@ -3555,10 +3555,221 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#exportoperateprovider"><b></b>ExportOperateProvider</a></li></ul></div><a href="#exportoperateprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="exportoperateprovider"><a name="exportoperateprovider" class="anchor-navigation-ex-anchor" href="#exportoperateprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ExportOperateProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#exportoperateprovider"><b></b>ExportOperateProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-terminology"><b></b>1. Terminology</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-overview"><b></b>3. Interface Overview</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-constraints-and-notes"><b></b>7. Constraints and Notes</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open-Source Examples</a></li></ul></ul></div><a href="#exportoperateprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="exportoperateprovider"><a name="exportoperateprovider" class="anchor-navigation-ex-anchor" href="#exportoperateprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ExportOperateProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.ExportOperateProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/ExportOperateProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-terminology"><a name="1-terminology" class="anchor-navigation-ex-anchor" href="#1-terminology"><i class="fa fa-link" aria-hidden="true"></i></a>1. Terminology</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>Export is one of the most frequently used and convenient features in FineReport. The product already supports the common file types natively. However, certain industries or scenarios have their own file standards and export specifications. FineReport exposes specific interfaces to address these needs.</p>
+<p>There are several export-related interfaces, and <code>ExportOperateProvider</code> is primarily used to add support for entirely new file types. Usage is consistent with standard product exports—invoked by specifying the <code>format</code> parameter in the URL.</p>
+<p>This interface is suited for single-type export scenarios. For handling multiple export types simultaneously, refer to <code>ExportExtensionProcessor</code>.</p>
+<h2 id="3-interface-overview"><a name="3-interface-overview" class="anchor-navigation-ex-anchor" href="#3-interface-overview"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Overview</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.web.core.reserve.Operate;
+
+<span class="hljs-comment">/**
+ * Created by richie on 16/1/19.
+ * Custom export interface; recommended usage is format=xxx (where xxx is a unique export type identifier)
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ExportOperateProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ExportOperateProvider"</span>;
+
+    <span class="hljs-comment">/**
+     * Export preparation operation
+     *
+     * <span class="hljs-doctag">@return</span> Operation object
+     */</span>
+    Operate <span class="hljs-title function_">operate</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Export type
+     *
+     * <span class="hljs-doctag">@return</span> Type
+     */</span>
+    String <span class="hljs-title function_">markType</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fanruan.api.report.export;
+
+<span class="hljs-keyword">import</span> com.fr.io.collection.ExportCollection;
+<span class="hljs-keyword">import</span> com.fr.stable.web.SessionProvider;
+<span class="hljs-keyword">import</span> com.fr.web.core.reserve.Operate;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> richie
+ * <span class="hljs-doctag">@version</span> 10.0
+ * Created by richie on 2019/9/26
+ * Abstract base class for the export interface
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BaseOperate</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Operate</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setContent</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String fileName, <span class="hljs-type">boolean</span> isEmbed)</span> {
+
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setContent</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, SessionProvider sessionProvider, String fileName, <span class="hljs-type">boolean</span> isEmbed)</span> {
+        <span class="hljs-built_in">this</span>.setContent(req, res, fileName, isEmbed);
+    }
+
+
+    <span class="hljs-comment">/**
+     * The actual export operation
+     *
+     * <span class="hljs-doctag">@param</span> req             HTTP request
+     * <span class="hljs-doctag">@param</span> res             HTTP response
+     * <span class="hljs-doctag">@param</span> sessionProvider Template session information
+     * <span class="hljs-doctag">@param</span> fileName        File name
+     * <span class="hljs-doctag">@return</span> Export collection object
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> ExportCollection <span class="hljs-title function_">newExportCollection</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, SessionProvider sessionProvider, String fileName)</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.web.core.reserve;
+
+<span class="hljs-keyword">import</span> com.fr.io.collection.ExportCollection;
+<span class="hljs-keyword">import</span> com.fr.stable.web.SessionProvider;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-comment">/**
+ * Created by richie on 16/1/19.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Operate</span> {
+
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">setContent</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, String fileName, <span class="hljs-type">boolean</span> isEmbed)</span>;
+
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">setContent</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, SessionProvider sessionIDInfor, String fileName, <span class="hljs-type">boolean</span> isEmbed)</span>;
+
+    ExportCollection <span class="hljs-title function_">newExportCollection</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse res, SessionProvider sessionIDInfor, String fileName)</span>;
+}
+</code></pre>
+<p>ExportCollection reference</p>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>3.6</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>4.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ExportOperateProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p><code>ExportFactory</code> is the factory class for all export types, dispatched by the <code>format</code> parameter. At load time, the factory registers all new export types declared by plugins into the <code>OPERATE_MAP&lt;String, Operate&gt;</code> object. When an export service is called, it uses the <code>format</code> parameter to retrieve the specific export operator and perform the export.</p>
+<h2 id="7-constraints-and-notes"><a name="7-constraints-and-notes" class="anchor-navigation-ex-anchor" href="#7-constraints-and-notes"><i class="fa fa-link" aria-hidden="true"></i></a>7. Constraints and Notes</h2>
+<p>Because plugin instances are registered into <code>OPERATE_MAP&lt;String, Operate&gt;</code> after the built-in export types and directly by the <code>format</code> value, this interface can also be used in special cases to replace existing export operators—simply return the same value as the target operator's type in <code>markType()</code>.</p>
+<p><strong>Note: If used to replace a built-in export operator, the plugin must NOT be published to the marketplace, as this may cause conflicts with other plugins.</strong></p>
+<p>During development, to ensure better compatibility, do not implement the <code>Operate</code> interface directly—extend <code>BaseOperate</code> instead.</p>
+<p><code>BaseOperate#setContent</code> is used to declare the file type, encoding, and other information in the response header. [<a href="https://code.fanruan.com/hugh/demo-export-operate-provider/src/branch/10.0/src/main/java/com/tptj/demo/hg/export/operate/provider/DemoOperate.java" target="_blank">See example</a>]</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-export-operate-provider" target="_blank">demo-export-operate-provider</a></p>
+<p>Related interfaces:</p>
+<ul>
+<li><code>com.fr.report.fun.ExportExtensionProcessor</code></li>
+<li><code>com.fr.stable.fun.ExcelExportCellValueProvider</code></li>
+<li><code>com.fr.form.stable.FormExportProcessor</code></li>
+<li><code>com.fr.report.fun.ExcelExportAppProvider</code></li>
+<li><code>com.fr.report.fun.CommentExcelProcessor</code></li>
+<li><a href="https://wiki.fanruan.com/display/PD/com.fr.io.exporter.PDFExporterCreator" target="_blank">com.fr.io.exporter.PDFExporterCreator</a></li>
+<li><code>com.fr.report.fun.FormatActionProvider</code></li>
+</ul>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open-Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and contributed by community developers, for reference and learning purposes only. Neither the developers nor FineReport are obligated to provide instruction or support for any results from these examples. Commercial use of these examples is at the user's own risk.</p>
+<p><a href="https://code.fanruan.com/fanruan/demo-export-xml" target="_blank">demo-export-xml</a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3813,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ExportOperateProvider","level":"2.4.3.2.11","depth":4,"next":{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"path":"tutorial/finereport/report/ExtensionButtonProvider.md","ref":"tutorial/finereport/report/ExtensionButtonProvider.md","articles":[]},"previous":{"title":"ExportExtensionProcessor","level":"2.4.3.2.10","depth":4,"path":"tutorial/finereport/report/ExportExtensionProcessor.md","ref":"tutorial/finereport/report/ExportExtensionProcessor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ExportOperateProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ExportOperateProvider","level":"2.4.3.2.11","depth":4,"next":{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"path":"tutorial/finereport/report/ExtensionButtonProvider.md","ref":"tutorial/finereport/report/ExtensionButtonProvider.md","articles":[]},"previous":{"title":"ExportExtensionProcessor","level":"2.4.3.2.10","depth":4,"path":"tutorial/finereport/report/ExportExtensionProcessor.md","ref":"tutorial/finereport/report/ExportExtensionProcessor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/ExportOperateProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

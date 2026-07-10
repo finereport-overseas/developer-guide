@@ -3555,10 +3555,115 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#designerframeupbuttonprovider"><b></b>DesignerFrameUpButtonProvider</a></li></ul></div><a href="#designerframeupbuttonprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="designerframeupbuttonprovider"><a name="designerframeupbuttonprovider" class="anchor-navigation-ex-anchor" href="#designerframeupbuttonprovider"><i class="fa fa-link" aria-hidden="true"></i></a>DesignerFrameUpButtonProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#designerframeupbuttonprovider"><b></b>DesignerFrameUpButtonProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-special-terms"><b></b>1. Special Terms</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-introduction"><b></b>3. Interface Introduction</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-limitations"><b></b>7. Limitations</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open Source Examples</a></li></ul></ul></div><a href="#designerframeupbuttonprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="designerframeupbuttonprovider"><a name="designerframeupbuttonprovider" class="anchor-navigation-ex-anchor" href="#designerframeupbuttonprovider"><i class="fa fa-link" aria-hidden="true"></i></a>DesignerFrameUpButtonProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.fun.DesignerFrameUpButtonProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/DesignerFrameUpButtonProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-special-terms"><a name="1-special-terms" class="anchor-navigation-ex-anchor" href="#1-special-terms"><i class="fa fa-link" aria-hidden="true"></i></a>1. Special Terms</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>The <code>DesignerFrameUpButtonProvider</code> interface is primarily used to extend the icon button toolbar at the top of the designer's template editing area.</p>
+<p>It is generally used to add, modify, or delete content in the current workspace, or to perform configuration operations on the template currently being edited.</p>
+<p><a href="images/designer_topbar_button_location.png" data-lightbox="51ea2b7e-02f3-4299-81ac-c5a278514ac8" data-title="Designer Top Bar Button Location"><img src="images/designer_topbar_button_location.png" alt="Designer Top Bar Button Location"></img></a></p>
+<h2 id="3-interface-introduction"><a name="3-interface-introduction" class="anchor-navigation-ex-anchor" href="#3-interface-introduction"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Introduction</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.design.gui.ibutton.UIButton;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-comment">/**
+ * Interface for buttons at the very top of the designer panel (same level as Save, Assign, Undo).
+ * Coder: zack
+ * Date: 2016/9/22
+ * Time: 15:40
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DesignerFrameUpButtonProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"DesignerFrameUpButtonProvider"</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the top-level tool buttons based on the current design state.
+     * <span class="hljs-doctag">@param</span> menuState current design state of the designer
+     * <span class="hljs-doctag">@return</span> buttons
+     */</span>
+    UIButton[] getUpButtons(<span class="hljs-type">int</span> menuState);
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">DesignerFrameUpButtonProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>When the editing area (<code>JTemplate</code>) for report or form design is created or changes its mode, the plugin-declared interface implementations are read and the extended buttons are rendered.</p>
+<h2 id="7-limitations"><a name="7-limitations" class="anchor-navigation-ex-anchor" href="#7-limitations"><i class="fa fa-link" aria-hidden="true"></i></a>7. Limitations</h2>
+<p>The <code>menuState</code> parameter in <code>getUpButtons(int menuState)</code> is currently unused and serves only as a reserved parameter with a fixed value of <code>0</code>. Developers do not need to handle this parameter.</p>
+<p>Since the parameter currently cannot distinguish between scenarios, developers need to obtain the current workspace object to determine whether the context is a CPT report, a decision report, or an aggregate report. [See common designer code patterns.]</p>
+<p>Handle each scenario accordingly.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-designer-frame-up-button-provider" target="_blank">demo-designer-frame-up-button-provider</a></p>
+<p>Common Designer Code Patterns</p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and provided by individual developers for reference and learning purposes only. Neither the developers nor the official team are obligated to provide instruction or guidance on any outcomes related to open-source examples. Any commercial use is entirely at the user's own risk.</p>
+<p>None available at this time.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3707,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DesignerFrameUpButtonProvider","level":"2.4.3.1.4","depth":4,"next":{"title":"DesignerStartOpenFileProcessor","level":"2.4.3.1.5","depth":4,"path":"tutorial/finereport/designer/DesignerStartOpenFileProcessor.md","ref":"tutorial/finereport/designer/DesignerStartOpenFileProcessor.md","articles":[]},"previous":{"title":"ConnectionProvider","level":"2.4.3.1.3","depth":4,"path":"tutorial/finereport/designer/ConnectionProvider.md","ref":"tutorial/finereport/designer/ConnectionProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/DesignerFrameUpButtonProvider.md","mtime":"2026-06-11T06:55:37.645Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"DesignerFrameUpButtonProvider","level":"2.4.3.1.4","depth":4,"next":{"title":"DesignerStartOpenFileProcessor","level":"2.4.3.1.5","depth":4,"path":"tutorial/finereport/designer/DesignerStartOpenFileProcessor.md","ref":"tutorial/finereport/designer/DesignerStartOpenFileProcessor.md","articles":[]},"previous":{"title":"ConnectionProvider","level":"2.4.3.1.3","depth":4,"path":"tutorial/finereport/designer/ConnectionProvider.md","ref":"tutorial/finereport/designer/ConnectionProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/DesignerFrameUpButtonProvider.md","mtime":"2026-07-10T02:20:30.971Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

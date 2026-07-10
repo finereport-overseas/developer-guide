@@ -3555,10 +3555,148 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#charttypeprovider"><b></b>ChartTypeProvider</a></li></ul></div><a href="#charttypeprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="charttypeprovider"><a name="charttypeprovider" class="anchor-navigation-ex-anchor" href="#charttypeprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ChartTypeProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#charttypeprovider"><b></b>ChartTypeProvider</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#charttypeprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="charttypeprovider"><a name="charttypeprovider" class="anchor-navigation-ex-anchor" href="#charttypeprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ChartTypeProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>provider</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-chart</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.chart.fun.ChartTypeProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.chart.fun.ChartTypeProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>The core data interface for defining custom chart types. It defines the chart's data model, the JS/CSS resources required for front-end rendering, and the drawing entry point. It is typically used together with <code>ChartTypeUIProvider</code>, which is responsible for the designer UI.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Chart type interface
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ChartTypeProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Level</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ChartTypeProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_API_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;
+
+    <span class="hljs-comment">/**
+     * Called when the plugin is loaded (initialization)
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Called when the plugin is unloaded (cleanup)
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * All sub-type chart object instances under this chart type.
+     * For example, a bar chart includes: stacked bar chart, 100% stacked bar chart, etc.
+     */</span>
+    ChartProvider[] getChartTypes();
+
+    <span class="hljs-comment">/**
+     * Array of JS file paths required for rendering the chart on the web
+     */</span>
+    String[] getRequiredJS();
+
+    <span class="hljs-comment">/**
+     * Array of JS file paths required when exporting the chart (returns an empty array by default)
+     */</span>
+    <span class="hljs-keyword">default</span> String[] getRequiredExportJS() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">0</span>];
+    }
+
+    <span class="hljs-comment">/**
+     * Array of CSS file paths required for rendering the chart on the web
+     */</span>
+    String[] getRequiredCss();
+
+    <span class="hljs-comment">/**
+     * The name of the JS entry object used for drawing on the web
+     * (typically a function that renders the chart into a specified DOM element)
+     */</span>
+    String <span class="hljs-title function_">getWrapperName</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Typically used together with <code>ChartTypeUIProvider</code>, registered to their respective modules:</p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- Register the data model to extra-chart --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">extra-chart</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ChartTypeProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.YourChartTypeProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-chart</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Register the designer UI to extra-chart-designer --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">extra-chart-designer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ChartTypeUIProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.YourChartTypeUIProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-chart-designer</span>&gt;</span>
+</code></pre>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyChartTypeProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ChartTypeProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// Initialization logic when the plugin is loaded, e.g., registering global configuration</span>
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// Cleanup logic when the plugin is unloaded</span>
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> ChartProvider[] getChartTypes() {
+        <span class="hljs-comment">// Return all sub-type instances under this chart type</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChartProvider</span>[]{
+            <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyBasicChart</span>(),
+            <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyStackedChart</span>()
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String[] getRequiredJS() {
+        <span class="hljs-comment">// Return JS file paths required for web rendering (relative to the plugin resource directory)</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{
+            <span class="hljs-string">"/com/fr/plugin/xxx/js/mychart.js"</span>
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String[] getRequiredCss() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{
+            <span class="hljs-string">"/com/fr/plugin/xxx/css/mychart.css"</span>
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getWrapperName</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// Return the name of the JS function/object responsible for drawing the chart</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"MyChartWrapper"</span>;
+    }
+}
+</code></pre>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>Each <code>ChartProvider</code> instance returned by <code>getChartTypes()</code> corresponds to one sub-type. The count and order must be consistent with <code>ChartTypeUIProvider.getSubName()</code>.</li>
+<li>The JS object returned by <code>getWrapperName()</code> must be defined in the files returned by <code>getRequiredJS()</code>, and must render the chart into the given DOM node.</li>
+<li><code>init()</code> and <code>destroy()</code> are called when the plugin is loaded and unloaded respectively; use them to manage global resources.</li>
+<li><code>CURRENT_API_LEVEL = 3</code>: ensure the <code>level()</code> return value is not lower than this when implementing.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3740,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Chart Entry Points","level":"2.4.3.3","depth":3,"next":{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},"previous":{"title":"WidgetModifyProvider","level":"2.4.3.2.23","depth":4,"path":"tutorial/finereport/report/WidgetModifyProvider.md","ref":"tutorial/finereport/report/WidgetModifyProvider.md","articles":[]},"articles":[{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","ref":"tutorial/finereport/chart/ChartTypeUIProvider.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/chart/ChartTypeProvider.md","mtime":"2026-06-11T06:55:37.645Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Chart Entry Points","level":"2.4.3.3","depth":3,"next":{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},"previous":{"title":"WidgetModifyProvider","level":"2.4.3.2.23","depth":4,"path":"tutorial/finereport/report/WidgetModifyProvider.md","ref":"tutorial/finereport/report/WidgetModifyProvider.md","articles":[]},"articles":[{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","ref":"tutorial/finereport/chart/ChartTypeUIProvider.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/chart/ChartTypeProvider.md","mtime":"2026-07-10T02:20:30.971Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

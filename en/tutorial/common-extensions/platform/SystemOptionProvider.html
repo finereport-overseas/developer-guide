@@ -3555,10 +3555,123 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#systemoptionprovider"><b></b>SystemOptionProvider</a></li></ul></div><a href="#systemoptionprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="systemoptionprovider"><a name="systemoptionprovider" class="anchor-navigation-ex-anchor" href="#systemoptionprovider"><i class="fa fa-link" aria-hidden="true"></i></a>SystemOptionProvider</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#systemoptionprovider"><b></b>SystemOptionProvider</a></li><ul><li><span class="title-icon "></span><a href="#background-and-use-cases"><b></b>Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#supported-versions"><b></b>Supported Versions</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li><li><span class="title-icon "></span><a href="#how-it-works"><b></b>How It Works</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li><li><span class="title-icon "></span><a href="#useful-links"><b></b>Useful Links</a></li><li><span class="title-icon "></span><a href="#open-source-examples"><b></b>Open Source Examples</a></li></ul></ul></div><a href="#systemoptionprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="systemoptionprovider"><a name="systemoptionprovider" class="anchor-navigation-ex-anchor" href="#systemoptionprovider"><i class="fa fa-link" aria-hidden="true"></i></a>SystemOptionProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-decision</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.decision.fun.SystemOptionProvider</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-and-use-cases"><a name="background-and-use-cases" class="anchor-navigation-ex-anchor" href="#background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>Background and Use Cases</h2>
+<p>The decision platform management system provides a wide range of administrative operations. <code>SystemOptionProvider</code> allows developers to extend custom management menu items. This is a functional interface (rather than a business-specific one), suitable for all platform extension scenarios unrelated to particular business logic.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.decision.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.WebCoalition;
+
+<span class="hljs-comment">/**
+ * Decision platform management system menu extension item
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SystemOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WebCoalition</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"SystemOptionProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    String <span class="hljs-title function_">id</span><span class="hljs-params">()</span>;
+    String <span class="hljs-title function_">parentId</span><span class="hljs-params">()</span>;
+    String <span class="hljs-title function_">fullPath</span><span class="hljs-params">()</span>;
+    String <span class="hljs-title function_">displayName</span><span class="hljs-params">()</span>;
+    <span class="hljs-type">int</span> <span class="hljs-title function_">sortIndex</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<p>Frontend menu registration example:</p>
+<pre><code class="lang-javascript"><span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.management.navigation"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+    items.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"hash value in the address bar"</span>,
+        <span class="hljs-attr">id</span>: <span class="hljs-string">"backend module ID for the menu"</span>,
+        <span class="hljs-attr">pId</span>: <span class="hljs-string">"parent node ID, optional for root-level items"</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"display text for the menu item"</span>,
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"component type for the main view of this menu"</span>,
+        <span class="hljs-attr">cls</span>: <span class="hljs-string">"management-directory-font"</span>
+    });
+    <span class="hljs-keyword">return</span> items;
+});
+</code></pre>
+<h2 id="supported-versions"><a name="supported-versions" class="anchor-navigation-ex-anchor" href="#supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h2>
+<p>Add the following node to <code>plugin.xml</code>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-decision</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">SystemOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-decision</span>&gt;</span>
+</code></pre>
+<h2 id="how-it-works"><a name="how-it-works" class="anchor-navigation-ex-anchor" href="#how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>How It Works</h2>
+<p>Backend management permissions and frontend page declarations are implemented separately. The backend manages permissions, while the frontend declares the management pages.</p>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>The backend <code>id</code>/<code>parentId</code> and frontend <code>id</code>/<code>pId</code> must <strong>exactly match</strong>; mismatches will cause permission issues</li>
+<li><code>fullPath</code> is used for backend permission validation, format: <code>root-_-parent</code></li>
+<li>Only data connections and smart operations support child node extension; extending other functions risks breaking existing functionality</li>
+<li>This interface typically needs to be used in conjunction with frontend resource interfaces, database access providers, service interfaces, and internationalization interfaces</li>
+</ul>
+<h2 id="useful-links"><a name="useful-links" class="anchor-navigation-ex-anchor" href="#useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>Useful Links</h2>
+<ul>
+<li>Demo: <a href="https://code.fanruan.com/hugh/demo-system-option-provider" target="_blank">demo-system-option-provider</a></li>
+</ul>
+<h2 id="open-source-examples"><a name="open-source-examples" class="anchor-navigation-ex-anchor" href="#open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>Open Source Examples</h2>
 <blockquote>
-<p>Coming soon.</p>
+<p>Disclaimer: All open source examples in this documentation are developed and provided by individual developers for reference and learning purposes only. Neither the developers nor the official team are obligated to provide teaching or guidance on these examples. Commercial use is strictly prohibited; any consequences arising from commercial use are solely the responsibility of the user.</p>
 </blockquote>
+<ul>
+<li><a href="https://code.fanruan.com/fanruan/demo-system-management" target="_blank">demo-system-management</a></li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3715,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SystemOptionProvider","level":"2.4.2.2.15","depth":4,"next":{"title":"TransferDataSetManagerProvider","level":"2.4.2.2.16","depth":4,"path":"tutorial/common-extensions/platform/TransferDataSetManagerProvider.md","ref":"tutorial/common-extensions/platform/TransferDataSetManagerProvider.md","articles":[]},"previous":{"title":"ReportScheduleResultProvider","level":"2.4.2.2.14","depth":4,"path":"tutorial/common-extensions/platform/ReportScheduleResultProvider.md","ref":"tutorial/common-extensions/platform/ReportScheduleResultProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform/SystemOptionProvider.md","mtime":"2026-06-11T06:55:37.644Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"SystemOptionProvider","level":"2.4.2.2.15","depth":4,"next":{"title":"TransferDataSetManagerProvider","level":"2.4.2.2.16","depth":4,"path":"tutorial/common-extensions/platform/TransferDataSetManagerProvider.md","ref":"tutorial/common-extensions/platform/TransferDataSetManagerProvider.md","articles":[]},"previous":{"title":"ReportScheduleResultProvider","level":"2.4.2.2.14","depth":4,"path":"tutorial/common-extensions/platform/ReportScheduleResultProvider.md","ref":"tutorial/common-extensions/platform/ReportScheduleResultProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform/SystemOptionProvider.md","mtime":"2026-07-10T02:20:30.970Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

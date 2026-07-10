@@ -3555,10 +3555,92 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#java-standards"><b></b>java-standards</a></li></ul></div><a href="#java-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="java-standards"><a name="java-standards" class="anchor-navigation-ex-anchor" href="#java-standards"><i class="fa fa-link" aria-hidden="true"></i></a>java-standards</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#java-code-standards"><b></b>Java Code Standards</a></li><ul><li><span class="title-icon "></span><a href="#maximum-parameters-in-public-methods"><b></b>Maximum Parameters in Public Methods</a></li><li><span class="title-icon "></span><a href="#control-flow-statements-must-use-braces"><b></b>Control Flow Statements Must Use Braces</a></li><li><span class="title-icon "></span><a href="#class-variable-ordering"><b></b>Class Variable Ordering</a></li><li><span class="title-icon "></span><a href="#simplify-boolean-returns"><b></b>Simplify Boolean Returns</a></li><li><span class="title-icon "></span><a href="#wrap-binary-expressions-before-ternary-operators-in-parentheses"><b></b>Wrap Binary Expressions Before Ternary Operators in Parentheses</a></li><li><span class="title-icon "></span><a href="#do-not-override-a-method-with-only-a-super-call"><b></b>Do Not Override a Method with Only a super Call</a></li></ul></ul></div><a href="#java-code-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="java-code-standards"><a name="java-code-standards" class="anchor-navigation-ex-anchor" href="#java-code-standards"><i class="fa fa-link" aria-hidden="true"></i></a>Java Code Standards</h1>
+<p>This section defines the Java coding standards for FanRuan plugin development. All plugins involving Java development must comply with these rules.</p>
+<p>The standards are organized into the following categories:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="format-standards.html">Format Standards</a></td>
+<td>Spacing, indentation, braces, method length, JSON output, string utilities</td>
+</tr>
+<tr>
+<td><a href="java-logging-standards.html">Logging Standards</a></td>
+<td>Logging method selection, format placeholders, exception naming</td>
+</tr>
+<tr>
+<td><a href="java-naming-standards.html">Naming Standards</a></td>
+<td>Naming conventions for classes, methods, variables, constants, and packages</td>
+</tr>
+<tr>
+<td><a href="java-output-standards.html">Output Standards</a></td>
+<td>Standard methods for sending data to the frontend</td>
+</tr>
+<tr>
+<td><a href="java-other-standards.html">Other Standards</a></td>
+<td>Constructors, collection operations, switch, access control, @Override</td>
+</tr>
+<tr>
+<td><a href="java-business-standards.html">Business Code Standards</a></td>
+<td>equals/hashCode, @Identifier, singletons, cross-package reference restrictions</td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="maximum-parameters-in-public-methods"><a name="maximum-parameters-in-public-methods" class="anchor-navigation-ex-anchor" href="#maximum-parameters-in-public-methods"><i class="fa fa-link" aria-hidden="true"></i></a>Maximum Parameters in Public Methods</h2>
+<p><strong>No more than 4 parameters.</strong> Too many parameters make a method harder to understand and use (an exception applies to HTTP handler methods that include <code>Request</code>/<code>Response</code> parameters).</p>
+<h2 id="control-flow-statements-must-use-braces"><a name="control-flow-statements-must-use-braces" class="anchor-navigation-ex-anchor" href="#control-flow-statements-must-use-braces"><i class="fa fa-link" aria-hidden="true"></i></a>Control Flow Statements Must Use Braces</h2>
+<p><code>if</code>, <code>if-else</code>, <code>for</code>, <code>while</code>, <code>do</code>, and <code>switch</code> statements must always be followed by braces <code>{}</code>:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span> (statement) <span class="hljs-keyword">return</span>;
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">if</span> (statement) {
+    <span class="hljs-keyword">return</span>;
+}
+</code></pre>
+<h2 id="class-variable-ordering"><a name="class-variable-ordering" class="anchor-navigation-ex-anchor" href="#class-variable-ordering"><i class="fa fa-link" aria-hidden="true"></i></a>Class Variable Ordering</h2>
+<p>Static variables before instance variables; public → protected → private:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">AAA</span> <span class="hljs-operator">=</span> <span class="hljs-string">"aaa"</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-variable">myData</span> <span class="hljs-operator">=</span> <span class="hljs-string">"data"</span>;
+    <span class="hljs-keyword">protected</span> <span class="hljs-type">String</span> <span class="hljs-variable">myProtectedData</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Protected"</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">myPrivate</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Private"</span>;
+}
+</code></pre>
+<h2 id="simplify-boolean-returns"><a name="simplify-boolean-returns" class="anchor-navigation-ex-anchor" href="#simplify-boolean-returns"><i class="fa fa-link" aria-hidden="true"></i></a>Simplify Boolean Returns</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span> (booleanExpression) {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">return</span> booleanExpression;
+</code></pre>
+<h2 id="wrap-binary-expressions-before-ternary-operators-in-parentheses"><a name="wrap-binary-expressions-before-ternary-operators-in-parentheses" class="anchor-navigation-ex-anchor" href="#wrap-binary-expressions-before-ternary-operators-in-parentheses"><i class="fa fa-link" aria-hidden="true"></i></a>Wrap Binary Expressions Before Ternary Operators in Parentheses</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">return</span> a + b &gt; <span class="hljs-number">0</span> ? <span class="hljs-string">"student"</span> : <span class="hljs-string">"teacher"</span>;
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">return</span> (a + b &gt; <span class="hljs-number">0</span>) ? <span class="hljs-string">"student"</span> : <span class="hljs-string">"teacher"</span>;
+</code></pre>
+<h2 id="do-not-override-a-method-with-only-a-super-call"><a name="do-not-override-a-method-with-only-a-super-call" class="anchor-navigation-ex-anchor" href="#do-not-override-a-method-with-only-a-super-call"><i class="fa fa-link" aria-hidden="true"></i></a>Do Not Override a Method with Only a super Call</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong (no extra logic — equivalent to not overriding at all)</span>
+<span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doSomething</span><span class="hljs-params">()</span> {
+    <span class="hljs-built_in">super</span>.doSomething();
+}
+</code></pre>
+<p>Exception: classes implementing the <code>FClone</code> interface must override <code>clone()</code>. When this conflicts with the rule above, the interface requirement takes precedence.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3684,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java Code Standards","level":"2.2.2","depth":2,"next":{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},"previous":{"title":"Format Standards","level":"2.2.1.1","depth":3,"path":"tutorial/coding-standards/javascript-format-standards.md","ref":"tutorial/coding-standards/javascript-format-standards.md","articles":[]},"articles":[{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-standards.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Java Code Standards","level":"2.2.2","depth":2,"next":{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},"previous":{"title":"Format Standards","level":"2.2.1.1","depth":3,"path":"tutorial/coding-standards/javascript-format-standards.md","ref":"tutorial/coding-standards/javascript-format-standards.md","articles":[]},"articles":[{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},{"title":"Other Standards","level":"2.2.2.5","depth":3,"path":"tutorial/coding-standards/java-other-standards.md","ref":"tutorial/coding-standards/java-other-standards.md","articles":[]},{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-standards.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

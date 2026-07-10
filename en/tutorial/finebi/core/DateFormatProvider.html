@@ -3555,10 +3555,86 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#dateformatprovider"><b></b>DateFormatProvider</a></li></ul></div><a href="#dateformatprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="dateformatprovider"><a name="dateformatprovider" class="anchor-navigation-ex-anchor" href="#dateformatprovider"><i class="fa fa-link" aria-hidden="true"></i></a>DateFormatProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#dateformatprovider"><b></b>DateFormatProvider</a></li><ul><li><span class="title-icon "></span><a href="#purpose"><b></b>Purpose</a></li><li><span class="title-icon "></span><a href="#interface-content"><b></b>Interface Content</a></li><ul><li><span class="title-icon "></span><a href="#main-interface"><b></b>Main Interface</a></li><li><span class="title-icon "></span><a href="#registration"><b></b>Registration</a></li></ul><li><span class="title-icon "></span><a href="#abstract-class-provided-to-plugins"><b></b>Abstract Class Provided to Plugins</a></li></ul></ul></div><a href="#dateformatprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="dateformatprovider"><a name="dateformatprovider" class="anchor-navigation-ex-anchor" href="#dateformatprovider"><i class="fa fa-link" aria-hidden="true"></i></a>DateFormatProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-core (FineBI)</td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/pages/viewpage.action?pageId=158402887" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="purpose"><a name="purpose" class="anchor-navigation-ex-anchor" href="#purpose"><i class="fa fa-link" aria-hidden="true"></i></a>Purpose</h2>
+<p>Provides a plugin-based mechanism for customizing the display format of date-type data in BI, supporting date formats beyond the built-in options (Chinese, "/", "-").</p>
+<h2 id="interface-content"><a name="interface-content" class="anchor-navigation-ex-anchor" href="#interface-content"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Content</h2>
+<h3 id="main-interface"><a name="main-interface" class="anchor-navigation-ex-anchor" href="#main-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Main Interface</h3>
+<pre><code class="lang-java"><span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DateFormatProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Immutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"DateFormatProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Customizes date formatting for dashboards
+     *
+     * <span class="hljs-doctag">@param</span> group date grouping
+     * <span class="hljs-doctag">@param</span> value raw data value
+     * <span class="hljs-doctag">@return</span> formatted date
+     */</span>
+    Object <span class="hljs-title function_">formatDashboardDate</span><span class="hljs-params">(<span class="hljs-type">int</span> group, Object value)</span>;
+
+    <span class="hljs-comment">/**
+     * Customizes date formatting for datasets
+     *
+     * <span class="hljs-doctag">@param</span> group date grouping
+     * <span class="hljs-doctag">@param</span> value raw data value
+     * <span class="hljs-doctag">@return</span> formatted date
+     */</span>
+    Object <span class="hljs-title function_">formatTableDate</span><span class="hljs-params">(<span class="hljs-type">int</span> group, Object value)</span>;
+}
+</code></pre>
+<p>Description of the <code>group</code> type values used in the interface:</p>
+<h3 id="registration"><a name="registration" class="anchor-navigation-ex-anchor" href="#registration"><i class="fa fa-link" aria-hidden="true"></i></a>Registration</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="abstract-class-provided-to-plugins"><a name="abstract-class-provided-to-plugins" class="anchor-navigation-ex-anchor" href="#abstract-class-provided-to-plugins"><i class="fa fa-link" aria-hidden="true"></i></a>Abstract Class Provided to Plugins</h2>
+<pre><code class="lang-java"><span class="hljs-meta">@API(level = DateFormatProvider.CURRENT_LEVEL)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractDateFormatProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">DateFormatProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">currentAPILevel</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> CURRENT_LEVEL;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">layerIndex</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+}
+</code></pre>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3678,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DateFormatProvider","level":"2.4.4.1.6","depth":4,"next":{"title":"ActiveAuthorityInheritTriggerProvider","level":"2.4.4.1.7","depth":4,"path":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","ref":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","articles":[]},"previous":{"title":"CustomDatasetProvider","level":"2.4.4.1.5","depth":4,"path":"tutorial/finebi/core/CustomDatasetProvider.md","ref":"tutorial/finebi/core/CustomDatasetProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finebi/core/DateFormatProvider.md","mtime":"2026-06-11T06:55:37.645Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"DateFormatProvider","level":"2.4.4.1.6","depth":4,"next":{"title":"ActiveAuthorityInheritTriggerProvider","level":"2.4.4.1.7","depth":4,"path":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","ref":"tutorial/finebi/core/ActiveAuthorityInheritTriggerProvider.md","articles":[]},"previous":{"title":"CustomDatasetProvider","level":"2.4.4.1.5","depth":4,"path":"tutorial/finebi/core/CustomDatasetProvider.md","ref":"tutorial/finebi/core/CustomDatasetProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finebi/core/DateFormatProvider.md","mtime":"2026-07-10T02:20:30.970Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

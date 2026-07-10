@@ -3555,10 +3555,43 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#java-logging-standards"><b></b>java-logging-standards</a></li></ul></div><a href="#java-logging-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="java-logging-standards"><a name="java-logging-standards" class="anchor-navigation-ex-anchor" href="#java-logging-standards"><i class="fa fa-link" aria-hidden="true"></i></a>java-logging-standards</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#logging-standards---java"><b></b>Logging Standards - Java</a></li><ul><li><span class="title-icon "></span><a href="#1-use-the-built-in-logger-—-never-call-printstacktrace"><b></b>1. Use the Built-in Logger — Never Call printStackTrace</a></li><li><span class="title-icon "></span><a href="#2-use-format-placeholders-for-info--debug-logs-—-do-not-concatenate-strings"><b></b>2. Use Format Placeholders for INFO / DEBUG Logs — Do Not Concatenate Strings</a></li><li><span class="title-icon "></span><a href="#3-name-intentionally-ignored-exceptions-ignore"><b></b>3. Name Intentionally Ignored Exceptions ignore</a></li></ul></ul></div><a href="#logging-standards---java" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="logging-standards---java"><a name="logging-standards---java" class="anchor-navigation-ex-anchor" href="#logging-standards---java"><i class="fa fa-link" aria-hidden="true"></i></a>Logging Standards - Java</h1>
+<hr></hr>
+<h2 id="1-use-the-built-in-logger-—-never-call-printstacktrace"><a name="1-use-the-built-in-logger-—-never-call-printstacktrace" class="anchor-navigation-ex-anchor" href="#1-use-the-built-in-logger-—-never-call-printstacktrace"><i class="fa fa-link" aria-hidden="true"></i></a>1. Use the Built-in Logger — Never Call printStackTrace</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">try</span> {
+    doSomething();
+} <span class="hljs-keyword">catch</span> (Exception e) {
+    e.printStackTrace();
+}
+
+<span class="hljs-comment">// Correct (FineReport / FineBI plugins)</span>
+<span class="hljs-keyword">try</span> {
+    doSomething();
+} <span class="hljs-keyword">catch</span> (Exception e) {
+    FineLoggerFactory.getLogger().error(e.getMessage(), e);
+}
+</code></pre>
+<hr></hr>
+<h2 id="2-use-format-placeholders-for-info--debug-logs-—-do-not-concatenate-strings"><a name="2-use-format-placeholders-for-info--debug-logs-—-do-not-concatenate-strings" class="anchor-navigation-ex-anchor" href="#2-use-format-placeholders-for-info--debug-logs-—-do-not-concatenate-strings"><i class="fa fa-link" aria-hidden="true"></i></a>2. Use Format Placeholders for INFO / DEBUG Logs — Do Not Concatenate Strings</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+FineLoggerFactory.getLogger().info(<span class="hljs-string">"Hello, I am {}."</span>, <span class="hljs-string">"test"</span>);
+<span class="hljs-comment">// Output: Hello, I am test.</span>
+
+FineLoggerFactory.getLogger().debug(<span class="hljs-string">"Hello, I am {}, it is a {}."</span>, <span class="hljs-string">"test"</span>, <span class="hljs-string">"sheep"</span>);
+<span class="hljs-comment">// Output: Hello, I am test, it is a sheep.</span>
+</code></pre>
+<p>String concatenation is evaluated even when the log level is disabled, wasting CPU. Format-style methods only build the string when the log level is active.</p>
+<hr></hr>
+<h2 id="3-name-intentionally-ignored-exceptions-ignore"><a name="3-name-intentionally-ignored-exceptions-ignore" class="anchor-navigation-ex-anchor" href="#3-name-intentionally-ignored-exceptions-ignore"><i class="fa fa-link" aria-hidden="true"></i></a>3. Name Intentionally Ignored Exceptions ignore</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">try</span> {
+    doSomething();
+} <span class="hljs-keyword">catch</span> (Exception ignore) {
+    <span class="hljs-comment">// Intentionally ignoring this exception</span>
+}
+</code></pre>
+<p>Naming the variable <code>ignore</code> makes it clear that the exception is deliberately not handled, preventing others from mistaking it for an overlooked error.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3635,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Logging Standards","level":"2.2.2.2","depth":3,"next":{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},"previous":{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-logging-standards.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Logging Standards","level":"2.2.2.2","depth":3,"next":{"title":"Naming Standards","level":"2.2.2.3","depth":3,"path":"tutorial/coding-standards/java-naming-standards.md","ref":"tutorial/coding-standards/java-naming-standards.md","articles":[]},"previous":{"title":"Format Standards","level":"2.2.2.1","depth":3,"path":"tutorial/coding-standards/format-standards.md","ref":"tutorial/coding-standards/format-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-logging-standards.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

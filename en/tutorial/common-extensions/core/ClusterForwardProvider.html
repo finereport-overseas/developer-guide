@@ -3555,10 +3555,124 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#clusterforwardprovider"><b></b>ClusterForwardProvider</a></li></ul></div><a href="#clusterforwardprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="clusterforwardprovider"><a name="clusterforwardprovider" class="anchor-navigation-ex-anchor" href="#clusterforwardprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ClusterForwardProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#clusterforwardprovider"><b></b>ClusterForwardProvider</a></li><ul><li><span class="title-icon "></span><a href="#interface-purpose"><b></b>Interface Purpose</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><ul><li><span class="title-icon "></span><a href="#main-interface"><b></b>Main Interface</a></li><li><span class="title-icon "></span><a href="#related-interfaces"><b></b>Related Interfaces</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li></ul><li><span class="title-icon "></span><a href="#example"><b></b>Example</a></li><li><span class="title-icon "></span><a href="#interface-example"><b></b>Interface Example</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#clusterforwardprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="clusterforwardprovider"><a name="clusterforwardprovider" class="anchor-navigation-ex-anchor" href="#clusterforwardprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ClusterForwardProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.stable.fun.ClusterForwardProvider</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-purpose"><a name="interface-purpose" class="anchor-navigation-ex-anchor" href="#interface-purpose"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Purpose</h2>
+<p>Use this interface when a plugin needs to forward a series of special requests to a specific node in the cluster.</p>
+<p>Specific requests issued by a plugin carry information that must be forwarded to the same node. Once this interface is implemented, requests carrying the same information are forwarded to the same node. All other forwarding follows the cluster's default routing logic, such as load-based or random forwarding.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<h3 id="main-interface"><a name="main-interface" class="anchor-navigation-ex-anchor" href="#main-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Main Interface</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> org.jetbrains.annotations.Nullable;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ClusterForwardProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ClusterForwardProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Get the target node ID for forwarding
+     *
+     * <span class="hljs-doctag">@param</span> key cluster shared info key
+     * <span class="hljs-doctag">@return</span> target node ID
+     */</span>
+    <span class="hljs-meta">@Nullable</span>
+    String <span class="hljs-title function_">getTargetNodeID</span><span class="hljs-params">(String key)</span>;
+
+    <span class="hljs-comment">/**
+     * Extract the cluster shared info key from the request
+     * &lt;p&gt;
+     * Returns the shared info key if the request carries one;
+     * returns null otherwise.
+     *
+     * <span class="hljs-doctag">@param</span> request req
+     * <span class="hljs-doctag">@return</span> cluster shared info storage key
+     * <span class="hljs-doctag">@see</span> #accept(HttpServletRequest)
+     */</span>
+    String <span class="hljs-title function_">getKey</span><span class="hljs-params">(HttpServletRequest request)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether this request should be subject to forwarding logic
+     * &lt;p&gt;
+     * Returns &lt;code&gt;true&lt;/code&gt; if the request carries a cluster shared info key
+     * or is a request that creates cluster shared info;
+     * returns &lt;code&gt;false&lt;/code&gt; otherwise.
+     *
+     * <span class="hljs-doctag">@param</span> request req
+     * <span class="hljs-doctag">@return</span> whether forwarding logic should be applied
+     * <span class="hljs-doctag">@see</span> #getKey(HttpServletRequest)
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(HttpServletRequest request)</span>;
+}
+</code></pre>
+<h3 id="related-interfaces"><a name="related-interfaces" class="anchor-navigation-ex-anchor" href="#related-interfaces"><i class="fa fa-link" aria-hidden="true"></i></a>Related Interfaces</h3>
+<p>None</p>
+<h3 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h3>
+<p>Register in <code>plugin.xml</code>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ClusterForwardProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.excel.submit.web.cluster.ExcelSubmitClusterForwardProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<p>Using the <strong>Batch Excel Import plugin</strong> as an example:</p>
+<p>The first request is a preparation phase that generates a <code>processid</code>. Subsequent requests — such as querying the current import status, validating the import, and retrieving import results — all carry this <code>processid</code> and must be handled by the same node.</p>
+<p>After implementing this interface, all requests containing the same <code>processid</code> are forwarded to the same node.</p>
+<p>The demo plugin provides three endpoints:</p>
+<ol>
+<li><code>/req/demo/create</code></li>
+<li><code>/req/demo/search</code></li>
+<li><code>/req/demo/view</code></li>
+</ol>
+<p>The <code>search</code> endpoint requires the <code>id</code> returned by the <code>create</code> endpoint. A <code>search</code> request carrying an <code>id</code> parameter is always forwarded to the node that generated that <code>id</code> — i.e., the node that handled the preceding <code>create</code> request.</p>
+<p>Accessing <code>http://host:port/webroot/decision/url/req/demo/create</code> in the browser returns:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"4da3ca4a-9bb9-5116-dbaf-3d005fc4cab9"</span>,
+  <span class="hljs-string">"isCluster"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"clusterId"</span>: <span class="hljs-string">"M+n28J6oNcJMRUJhC+UczHLb2t1xQWXk2jqx2HHpGu3smaPzPw6DDQ=="</span>,
+  <span class="hljs-string">"taskName"</span>: <span class="hljs-string">"4da3ca4a-9bb9-5116-dbaf-3d005fc4cab9M+n28J6oNcJMRUJhC+UczHLb2t1xQWXk2jqx2HHpGu3smaPzPw6DDQ=="</span>
+}
+</code></pre>
+<p>This request was forwarded to node <code>M+n28J6oNcJMRUJhC+UczHLb2t1xQWXk2jqx2HHpGu3smaPzPw6DDQ==</code> by the cluster forwarding strategy (e.g., random or intelligent forwarding).</p>
+<p>A subsequent browser request to <code>http://host:port/webroot/decision/url/req/demo/search?id=4da3ca4a-9bb9-5116-dbaf-3d005fc4cab9</code> is also forwarded to the same node, returning:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">"id"</span>: <span class="hljs-string">"4da3ca4a-9bb9-5116-dbaf-3d005fc4cab9"</span>,
+  <span class="hljs-string">"isCluster"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"clusterId"</span>: <span class="hljs-string">"M+n28J6oNcJMRUJhC+UczHLb2t1xQWXk2jqx2HHpGu3smaPzPw6DDQ=="</span>,
+  <span class="hljs-string">"taskName"</span>: <span class="hljs-string">"4da3ca4a-9bb9-5116-dbaf-3d005fc4cab9M+n28J6oNcJMRUJhC+UczHLb2t1xQWXk2jqx2HHpGu3smaPzPw6DDQ=="</span>
+}
+</code></pre>
+<p>A request to <code>http://host:port/webroot/decision/url/req/demo/view</code> in the browser is randomly forwarded to a node by the proxy (e.g., nginx).</p>
+<h2 id="interface-example"><a name="interface-example" class="anchor-navigation-ex-anchor" href="#interface-example"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Example</h2>
+<p>Example source code: <a href="https://code.fanruan.com/fanruan/cluster-req-demo" target="_blank">cluster-req-demo</a></p>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>Only intercepts URL paths provided by <code>RequestPreHandleProvider</code> and <code>URLAliasProvider</code> in plugins, i.e., <code>/url/**</code> and <code>/plugin/**</code></li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3716,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ClusterForwardProvider","level":"2.4.2.1.3","depth":4,"next":{"title":"CssFileHandler","level":"2.4.2.1.4","depth":4,"path":"tutorial/common-extensions/core/CssFileHandler.md","ref":"tutorial/common-extensions/core/CssFileHandler.md","articles":[]},"previous":{"title":"AttachmentDownloader","level":"2.4.2.1.2","depth":4,"path":"tutorial/common-extensions/core/AttachmentDownloader.md","ref":"tutorial/common-extensions/core/AttachmentDownloader.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/ClusterForwardProvider.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ClusterForwardProvider","level":"2.4.2.1.3","depth":4,"next":{"title":"CssFileHandler","level":"2.4.2.1.4","depth":4,"path":"tutorial/common-extensions/core/CssFileHandler.md","ref":"tutorial/common-extensions/core/CssFileHandler.md","articles":[]},"previous":{"title":"AttachmentDownloader","level":"2.4.2.1.2","depth":4,"path":"tutorial/common-extensions/core/AttachmentDownloader.md","ref":"tutorial/common-extensions/core/AttachmentDownloader.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/ClusterForwardProvider.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

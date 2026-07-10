@@ -3555,10 +3555,137 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#messageobjectprovider"><b></b>MessageObjectProvider</a></li></ul></div><a href="#messageobjectprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="messageobjectprovider"><a name="messageobjectprovider" class="anchor-navigation-ex-anchor" href="#messageobjectprovider"><i class="fa fa-link" aria-hidden="true"></i></a>MessageObjectProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#messageobjectprovider"><b></b>MessageObjectProvider</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><ul><li><span class="title-icon "></span><a href="#messageimage-related-interface"><b></b>MessageImage Related Interface</a></li></ul><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example-code"><b></b>Example Code</a></li><li><span class="title-icon "></span><a href="#reference-examples"><b></b>Reference Examples</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#messageobjectprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="messageobjectprovider"><a name="messageobjectprovider" class="anchor-navigation-ex-anchor" href="#messageobjectprovider"><i class="fa fa-link" aria-hidden="true"></i></a>MessageObjectProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>provider</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.MessageObjectProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.report.fun.MessageObjectProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>Dedicated to template message plugins, this interface provides a unified message-sending integration point for third-party message platforms such as WeChat and DingTalk. By implementing this interface, report push messages can be routed to a custom messaging channel.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MessageObjectProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"MessageObjectProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Message type (identifies the messaging channel for this implementation)
+     */</span>
+    MessageType <span class="hljs-title function_">getMessageType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Embedded component content (configurable items to display in the configuration UI)
+     */</span>
+    Pair&lt;String, String&gt;[] getValueEditorItems();
+
+    <span class="hljs-comment">/**
+     * Sends a message
+     *
+     * <span class="hljs-doctag">@param</span> messageContent Message configuration content
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendMessage</span><span class="hljs-params">(MessageImage messageContent)</span>;
+}
+</code></pre>
+<h3 id="messageimage-related-interface"><a name="messageimage-related-interface" class="anchor-navigation-ex-anchor" href="#messageimage-related-interface"><i class="fa fa-link" aria-hidden="true"></i></a><code>MessageImage</code> Related Interface</h3>
+<p>The <code>MessageImage</code> object received by <code>sendMessage()</code> contains all the context needed for the message:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getTitle()</code></td>
+<td>Message title</td>
+</tr>
+<tr>
+<td><code>getContent()</code></td>
+<td>Message body content</td>
+</tr>
+<tr>
+<td><code>getLink()</code></td>
+<td>Message redirect URL</td>
+</tr>
+<tr>
+<td><code>getImage()</code></td>
+<td>Message attachment image</td>
+</tr>
+<tr>
+<td><code>getSenderId()</code></td>
+<td>Recipient user ID (in array form; parse accordingly when using)</td>
+</tr>
+<tr>
+<td><code>getApplication()</code></td>
+<td>Application information</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Register your implementation class in the plugin's <code>plugin.xml</code> using the <code>extra-report</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">MessageObjectProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.demo.message.WeChatMessageObject"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="example-code"><a name="example-code" class="anchor-navigation-ex-anchor" href="#example-code"><i class="fa fa-link" aria-hidden="true"></i></a>Example Code</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WeChatMessageObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">MessageObjectProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> MessageType <span class="hljs-title function_">getMessageType</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// Return the custom message type identifier</span>
+        <span class="hljs-keyword">return</span> MessageType.WECHAT;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Pair&lt;String, String&gt;[] getValueEditorItems() {
+        <span class="hljs-comment">// Return the configurable items displayed in the UI (key-label pairs)</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>[]{
+            <span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>&lt;&gt;(<span class="hljs-string">"corpId"</span>, <span class="hljs-string">"Enterprise ID"</span>),
+            <span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>&lt;&gt;(<span class="hljs-string">"agentId"</span>, <span class="hljs-string">"Application AgentID"</span>)
+        };
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendMessage</span><span class="hljs-params">(MessageImage messageContent)</span> {
+        String[] receivers = messageContent.getSenderId().split(<span class="hljs-string">","</span>);
+        <span class="hljs-keyword">for</span> (String receiver : receivers) {
+            <span class="hljs-comment">// Call the Enterprise WeChat API to send a message to each recipient</span>
+            WeChatApi.send(receiver, messageContent.getTitle(), messageContent.getContent());
+        }
+    }
+}
+</code></pre>
+<h2 id="reference-examples"><a name="reference-examples" class="anchor-navigation-ex-anchor" href="#reference-examples"><i class="fa fa-link" aria-hidden="true"></i></a>Reference Examples</h2>
+<p>Official example source code: <a href="http://cloud.finedevelop.com:2015/projects/FD/repos/demo-message-provider/browse" target="_blank">demo-message-provider</a></p>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li><code>getSenderId()</code> returns recipients as a comma-separated string; split it into an array and send messages individually.</li>
+<li>This interface is only for template message push scenarios and is not suitable for other types of notification channels.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3729,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MessageObjectProvider","level":"2.4.3.2.16","depth":4,"next":{"title":"PrintCellValueProvider","level":"2.4.3.2.17","depth":4,"path":"tutorial/finereport/report/PrintCellValueProvider.md","ref":"tutorial/finereport/report/PrintCellValueProvider.md","articles":[]},"previous":{"title":"JavaScriptPlaceHolder","level":"2.4.3.2.15","depth":4,"path":"tutorial/finereport/report/JavaScriptPlaceHolder.md","ref":"tutorial/finereport/report/JavaScriptPlaceHolder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/MessageObjectProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"MessageObjectProvider","level":"2.4.3.2.16","depth":4,"next":{"title":"PrintCellValueProvider","level":"2.4.3.2.17","depth":4,"path":"tutorial/finereport/report/PrintCellValueProvider.md","ref":"tutorial/finereport/report/PrintCellValueProvider.md","articles":[]},"previous":{"title":"JavaScriptPlaceHolder","level":"2.4.3.2.15","depth":4,"path":"tutorial/finereport/report/JavaScriptPlaceHolder.md","ref":"tutorial/finereport/report/JavaScriptPlaceHolder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/MessageObjectProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

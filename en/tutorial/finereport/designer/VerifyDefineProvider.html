@@ -3555,10 +3555,238 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#verifydefineprovider"><b></b>VerifyDefineProvider</a></li></ul></div><a href="#verifydefineprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="verifydefineprovider"><a name="verifydefineprovider" class="anchor-navigation-ex-anchor" href="#verifydefineprovider"><i class="fa fa-link" aria-hidden="true"></i></a>VerifyDefineProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#verifydefineprovider"><b></b>VerifyDefineProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-special-terms"><b></b>1. Special Terms</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-introduction"><b></b>3. Interface Introduction</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-limitations"><b></b>7. Limitations</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open Source Examples</a></li></ul></ul></div><a href="#verifydefineprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="verifydefineprovider"><a name="verifydefineprovider" class="anchor-navigation-ex-anchor" href="#verifydefineprovider"><i class="fa fa-link" aria-hidden="true"></i></a>VerifyDefineProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.fun.VerifyDefineProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/VerifyDefineProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-special-terms"><a name="1-special-terms" class="anchor-navigation-ex-anchor" href="#1-special-terms"><i class="fa fa-link" aria-hidden="true"></i></a>1. Special Terms</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>This interface is primarily used to extend the product's built-in validation presentation effects and message details, or to encapsulate large numbers of repeated validation rules.</p>
+<p><a href="images/verify_rule_list.png" data-lightbox="5b0d524d-bd32-4bad-bce5-ca2285cd8698" data-title="Validation Rule List"><img src="images/verify_rule_list.png" alt="Validation Rule List"></img></a></p>
+<p><a href="images/verify_config_panel.png" data-lightbox="50ca0279-4d7a-45ad-9739-2bfac2bfeb18" data-title="Validation Configuration Panel"><img src="images/verify_config_panel.png" alt="Validation Configuration Panel"></img></a></p>
+<h2 id="3-interface-introduction"><a name="3-interface-introduction" class="anchor-navigation-ex-anchor" href="#3-interface-introduction"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Introduction</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.design.fun;
+
+<span class="hljs-keyword">import</span> com.fr.data.Verifier;
+<span class="hljs-keyword">import</span> com.fr.design.beans.BasicBeanPane;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-comment">/**
+ * Created by richie on 16/6/8.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">VerifyDefineProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"VerifyDefineProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * The corresponding verifier class.
+     * <span class="hljs-doctag">@return</span> verifier class
+     */</span>
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Verifier</span>&gt; classForVerifier();
+
+    <span class="hljs-comment">/**
+     * The validation settings UI.
+     * <span class="hljs-doctag">@return</span> UI class
+     */</span>
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BasicBeanPane</span>&gt; appearanceForVerifier();
+
+    <span class="hljs-comment">/**
+     * The name of this validation type.
+     * <span class="hljs-doctag">@return</span> name
+     */</span>
+    String <span class="hljs-title function_">nameForVerifier</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Menu icon.
+     * <span class="hljs-doctag">@return</span> icon path
+     */</span>
+    String <span class="hljs-title function_">iconPath</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.data;
+
+<span class="hljs-keyword">import</span> com.fr.general.data.MOD_COLUMN_ROW;
+<span class="hljs-keyword">import</span> com.fr.json.JSONException;
+<span class="hljs-keyword">import</span> com.fr.json.JSONObject;
+<span class="hljs-keyword">import</span> com.fr.script.Calculator;
+<span class="hljs-keyword">import</span> com.fr.stable.Nameable;
+<span class="hljs-keyword">import</span> com.fr.stable.script.CalculatorKey;
+<span class="hljs-keyword">import</span> com.fr.stable.xml.XMLable;
+
+<span class="hljs-comment">/**
+ * Used for fill-in data validation.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Verifier</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">XMLable</span>, Nameable {
+
+    <span class="hljs-type">CalculatorKey</span> <span class="hljs-variable">KEY</span> <span class="hljs-operator">=</span> CalculatorKey.createKey(Verifier.class.getName());
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"TopVerifier"</span>;
+
+
+    <span class="hljs-comment">/**
+     * Adds a validation item.
+     *
+     * <span class="hljs-doctag">@param</span> item validation item
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">addVerifyItem</span><span class="hljs-params">(VerifyItem item)</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the validation item at the given index.
+     *
+     * <span class="hljs-doctag">@param</span> index index
+     * <span class="hljs-doctag">@return</span> validation item
+     */</span>
+    VerifyItem <span class="hljs-title function_">getVerifyItem</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span>;
+
+    <span class="hljs-comment">/**
+     * Returns the total number of validation items.
+     *
+     * <span class="hljs-doctag">@return</span> count
+     */</span>
+    <span class="hljs-type">int</span> <span class="hljs-title function_">getVerifyItemsCount</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Clears all validation items.
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">clearVerifyItems</span><span class="hljs-params">()</span>;
+
+
+    <span class="hljs-comment">/**
+     * Executes the validation.
+     *
+     * <span class="hljs-doctag">@param</span> ca calculator
+     * <span class="hljs-doctag">@throws</span> Exception
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">(Calculator ca)</span> <span class="hljs-keyword">throws</span> Exception;
+
+
+    <span class="hljs-comment">/**
+     * Returns whether the validation is valid.
+     *
+     * <span class="hljs-doctag">@return</span> whether valid
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValid</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Returns whether the built-in validation is used.
+     *
+     * <span class="hljs-doctag">@return</span> whether built-in validation is used
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isBuiltInVerify</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Converts to JSON format.
+     *
+     * <span class="hljs-doctag">@return</span> JSON object
+     * <span class="hljs-doctag">@throws</span> JSONException thrown on failure
+     */</span>
+    JSONObject <span class="hljs-title function_">toJSONObjectContent</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> JSONException;
+
+    <span class="hljs-comment">/**
+     * When rows or columns are added/removed, formulas must be updated accordingly.
+     *
+     * <span class="hljs-doctag">@param</span> mod row/column recorder
+     * <span class="hljs-doctag">@return</span> recorder
+     */</span>
+    Object <span class="hljs-title function_">__mod_column_row</span><span class="hljs-params">(MOD_COLUMN_ROW mod)</span>;
+
+    <span class="hljs-keyword">enum</span> <span class="hljs-title class_">Status</span> {
+
+        SUCCESS(<span class="hljs-number">0</span>), ERROR(<span class="hljs-number">1</span>), WARNING(<span class="hljs-number">2</span>);
+
+        <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> type;
+
+        Status(<span class="hljs-type">int</span> type) {
+            <span class="hljs-built_in">this</span>.type = type;
+        }
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Status <span class="hljs-title function_">parse</span><span class="hljs-params">(<span class="hljs-type">int</span> type)</span> {
+            <span class="hljs-keyword">for</span> (Status status : Status.values()) {
+                <span class="hljs-keyword">if</span> (status.type == type) {
+                    <span class="hljs-keyword">return</span> status;
+                }
+            }
+            <span class="hljs-keyword">return</span> Status.SUCCESS;
+        }
+
+    }
+}
+</code></pre>
+<p><em>(The <code>ValueVerifier</code> class source is provided as a reference and is omitted here for brevity.)</em></p>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">VerifyDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>All declared validation type extensions are retrieved in code via <code>Set&lt;VerifyDefineProvider&gt; set = ExtraDesignClassManager.getInstance().getArray(VerifyDefineProvider.MARK_STRING)</code>.</p>
+<p>In the standard product, <code>VerifierListPane#createNameableCreators</code> reads and loads these into the selection list. When the template is saved with configuration, the corresponding verifier object is serialized and saved to the <code>.cpt</code> file. At actual preview/computation time, it is deserialized and activated.</p>
+<h2 id="7-limitations"><a name="7-limitations" class="anchor-navigation-ex-anchor" href="#7-limitations"><i class="fa fa-link" aria-hidden="true"></i></a>7. Limitations</h2>
+<p>When implementing related objects, pay attention to implementing the <code>clone</code> method — otherwise copying will malfunction in the designer!</p>
+<p>This interface is commonly used in conjunction with web resource injection interfaces.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-verify-define-provider" target="_blank">demo-verify-define-provider</a></p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and provided by individual developers for reference and learning purposes only. Neither the developers nor the official team are obligated to provide instruction or guidance on any outcomes related to open-source examples. Any commercial use is entirely at the user's own risk.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3830,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"VerifyDefineProvider","level":"2.4.3.1.24","depth":4,"next":{"title":"Report Entry Points","level":"2.4.3.2","depth":3,"path":"tutorial/finereport/report/WaterMarkProvider.md","ref":"tutorial/finereport/report/WaterMarkProvider.md","articles":[{"title":"WaterMarkProvider","level":"2.4.3.2.1","depth":4,"path":"tutorial/finereport/report/WaterMarkProvider.md","ref":"tutorial/finereport/report/WaterMarkProvider.md","articles":[]},{"title":"ActorProvider","level":"2.4.3.2.2","depth":4,"path":"tutorial/finereport/report/ActorProvider.md","ref":"tutorial/finereport/report/ActorProvider.md","articles":[]},{"title":"CellPropertyProvider","level":"2.4.3.2.3","depth":4,"path":"tutorial/finereport/report/CellPropertyProvider.md","ref":"tutorial/finereport/report/CellPropertyProvider.md","articles":[]},{"title":"CellTagTransformer","level":"2.4.3.2.4","depth":4,"path":"tutorial/finereport/report/CellTagTransformer.md","ref":"tutorial/finereport/report/CellTagTransformer.md","articles":[]},{"title":"CellValueProvider","level":"2.4.3.2.5","depth":4,"path":"tutorial/finereport/report/CellValueProvider.md","ref":"tutorial/finereport/report/CellValueProvider.md","articles":[]},{"title":"CommentExcelProcessor","level":"2.4.3.2.6","depth":4,"path":"tutorial/finereport/report/CommentExcelProcessor.md","ref":"tutorial/finereport/report/CommentExcelProcessor.md","articles":[]},{"title":"CustomI18NProvider","level":"2.4.3.2.7","depth":4,"path":"tutorial/finereport/report/CustomI18NProvider.md","ref":"tutorial/finereport/report/CustomI18NProvider.md","articles":[]},{"title":"ErrorMessageProcessor","level":"2.4.3.2.8","depth":4,"path":"tutorial/finereport/report/ErrorMessageProcessor.md","ref":"tutorial/finereport/report/ErrorMessageProcessor.md","articles":[]},{"title":"ExcelExportAppProvider","level":"2.4.3.2.9","depth":4,"path":"tutorial/finereport/report/ExcelExportAppProvider.md","ref":"tutorial/finereport/report/ExcelExportAppProvider.md","articles":[]},{"title":"ExportExtensionProcessor","level":"2.4.3.2.10","depth":4,"path":"tutorial/finereport/report/ExportExtensionProcessor.md","ref":"tutorial/finereport/report/ExportExtensionProcessor.md","articles":[]},{"title":"ExportOperateProvider","level":"2.4.3.2.11","depth":4,"path":"tutorial/finereport/report/ExportOperateProvider.md","ref":"tutorial/finereport/report/ExportOperateProvider.md","articles":[]},{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"path":"tutorial/finereport/report/ExtensionButtonProvider.md","ref":"tutorial/finereport/report/ExtensionButtonProvider.md","articles":[]},{"title":"FormatActionProvider","level":"2.4.3.2.13","depth":4,"path":"tutorial/finereport/report/FormatActionProvider.md","ref":"tutorial/finereport/report/FormatActionProvider.md","articles":[]},{"title":"JavaScriptFileHandler","level":"2.4.3.2.14","depth":4,"path":"tutorial/finereport/report/JavaScriptFileHandler.md","ref":"tutorial/finereport/report/JavaScriptFileHandler.md","articles":[]},{"title":"JavaScriptPlaceHolder","level":"2.4.3.2.15","depth":4,"path":"tutorial/finereport/report/JavaScriptPlaceHolder.md","ref":"tutorial/finereport/report/JavaScriptPlaceHolder.md","articles":[]},{"title":"MessageObjectProvider","level":"2.4.3.2.16","depth":4,"path":"tutorial/finereport/report/MessageObjectProvider.md","ref":"tutorial/finereport/report/MessageObjectProvider.md","articles":[]},{"title":"PrintCellValueProvider","level":"2.4.3.2.17","depth":4,"path":"tutorial/finereport/report/PrintCellValueProvider.md","ref":"tutorial/finereport/report/PrintCellValueProvider.md","articles":[]},{"title":"ReportExceptionHandlerProvider","level":"2.4.3.2.18","depth":4,"path":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","ref":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","articles":[]},{"title":"ReportPretreatmentProcessor","level":"2.4.3.2.19","depth":4,"path":"tutorial/finereport/report/ReportPretreatmentProcessor.md","ref":"tutorial/finereport/report/ReportPretreatmentProcessor.md","articles":[]},{"title":"ReportSessionHelpProvider","level":"2.4.3.2.20","depth":4,"path":"tutorial/finereport/report/ReportSessionHelpProvider.md","ref":"tutorial/finereport/report/ReportSessionHelpProvider.md","articles":[]},{"title":"StringTypeAttrProvider","level":"2.4.3.2.21","depth":4,"path":"tutorial/finereport/report/StringTypeAttrProvider.md","ref":"tutorial/finereport/report/StringTypeAttrProvider.md","articles":[]},{"title":"StylePlaceHolder","level":"2.4.3.2.22","depth":4,"path":"tutorial/finereport/report/StylePlaceHolder.md","ref":"tutorial/finereport/report/StylePlaceHolder.md","articles":[]},{"title":"WidgetModifyProvider","level":"2.4.3.2.23","depth":4,"path":"tutorial/finereport/report/WidgetModifyProvider.md","ref":"tutorial/finereport/report/WidgetModifyProvider.md","articles":[]}]},"previous":{"title":"ToolbarItemProvider","level":"2.4.3.1.23","depth":4,"path":"tutorial/finereport/designer/ToolbarItemProvider.md","ref":"tutorial/finereport/designer/ToolbarItemProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/VerifyDefineProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"VerifyDefineProvider","level":"2.4.3.1.24","depth":4,"next":{"title":"Report Entry Points","level":"2.4.3.2","depth":3,"path":"tutorial/finereport/report/WaterMarkProvider.md","ref":"tutorial/finereport/report/WaterMarkProvider.md","articles":[{"title":"WaterMarkProvider","level":"2.4.3.2.1","depth":4,"path":"tutorial/finereport/report/WaterMarkProvider.md","ref":"tutorial/finereport/report/WaterMarkProvider.md","articles":[]},{"title":"ActorProvider","level":"2.4.3.2.2","depth":4,"path":"tutorial/finereport/report/ActorProvider.md","ref":"tutorial/finereport/report/ActorProvider.md","articles":[]},{"title":"CellPropertyProvider","level":"2.4.3.2.3","depth":4,"path":"tutorial/finereport/report/CellPropertyProvider.md","ref":"tutorial/finereport/report/CellPropertyProvider.md","articles":[]},{"title":"CellTagTransformer","level":"2.4.3.2.4","depth":4,"path":"tutorial/finereport/report/CellTagTransformer.md","ref":"tutorial/finereport/report/CellTagTransformer.md","articles":[]},{"title":"CellValueProvider","level":"2.4.3.2.5","depth":4,"path":"tutorial/finereport/report/CellValueProvider.md","ref":"tutorial/finereport/report/CellValueProvider.md","articles":[]},{"title":"CommentExcelProcessor","level":"2.4.3.2.6","depth":4,"path":"tutorial/finereport/report/CommentExcelProcessor.md","ref":"tutorial/finereport/report/CommentExcelProcessor.md","articles":[]},{"title":"CustomI18NProvider","level":"2.4.3.2.7","depth":4,"path":"tutorial/finereport/report/CustomI18NProvider.md","ref":"tutorial/finereport/report/CustomI18NProvider.md","articles":[]},{"title":"ErrorMessageProcessor","level":"2.4.3.2.8","depth":4,"path":"tutorial/finereport/report/ErrorMessageProcessor.md","ref":"tutorial/finereport/report/ErrorMessageProcessor.md","articles":[]},{"title":"ExcelExportAppProvider","level":"2.4.3.2.9","depth":4,"path":"tutorial/finereport/report/ExcelExportAppProvider.md","ref":"tutorial/finereport/report/ExcelExportAppProvider.md","articles":[]},{"title":"ExportExtensionProcessor","level":"2.4.3.2.10","depth":4,"path":"tutorial/finereport/report/ExportExtensionProcessor.md","ref":"tutorial/finereport/report/ExportExtensionProcessor.md","articles":[]},{"title":"ExportOperateProvider","level":"2.4.3.2.11","depth":4,"path":"tutorial/finereport/report/ExportOperateProvider.md","ref":"tutorial/finereport/report/ExportOperateProvider.md","articles":[]},{"title":"ExtensionButtonProvider","level":"2.4.3.2.12","depth":4,"path":"tutorial/finereport/report/ExtensionButtonProvider.md","ref":"tutorial/finereport/report/ExtensionButtonProvider.md","articles":[]},{"title":"FormatActionProvider","level":"2.4.3.2.13","depth":4,"path":"tutorial/finereport/report/FormatActionProvider.md","ref":"tutorial/finereport/report/FormatActionProvider.md","articles":[]},{"title":"JavaScriptFileHandler","level":"2.4.3.2.14","depth":4,"path":"tutorial/finereport/report/JavaScriptFileHandler.md","ref":"tutorial/finereport/report/JavaScriptFileHandler.md","articles":[]},{"title":"JavaScriptPlaceHolder","level":"2.4.3.2.15","depth":4,"path":"tutorial/finereport/report/JavaScriptPlaceHolder.md","ref":"tutorial/finereport/report/JavaScriptPlaceHolder.md","articles":[]},{"title":"MessageObjectProvider","level":"2.4.3.2.16","depth":4,"path":"tutorial/finereport/report/MessageObjectProvider.md","ref":"tutorial/finereport/report/MessageObjectProvider.md","articles":[]},{"title":"PrintCellValueProvider","level":"2.4.3.2.17","depth":4,"path":"tutorial/finereport/report/PrintCellValueProvider.md","ref":"tutorial/finereport/report/PrintCellValueProvider.md","articles":[]},{"title":"ReportExceptionHandlerProvider","level":"2.4.3.2.18","depth":4,"path":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","ref":"tutorial/finereport/report/ReportExceptionHandlerProvider.md","articles":[]},{"title":"ReportPretreatmentProcessor","level":"2.4.3.2.19","depth":4,"path":"tutorial/finereport/report/ReportPretreatmentProcessor.md","ref":"tutorial/finereport/report/ReportPretreatmentProcessor.md","articles":[]},{"title":"ReportSessionHelpProvider","level":"2.4.3.2.20","depth":4,"path":"tutorial/finereport/report/ReportSessionHelpProvider.md","ref":"tutorial/finereport/report/ReportSessionHelpProvider.md","articles":[]},{"title":"StringTypeAttrProvider","level":"2.4.3.2.21","depth":4,"path":"tutorial/finereport/report/StringTypeAttrProvider.md","ref":"tutorial/finereport/report/StringTypeAttrProvider.md","articles":[]},{"title":"StylePlaceHolder","level":"2.4.3.2.22","depth":4,"path":"tutorial/finereport/report/StylePlaceHolder.md","ref":"tutorial/finereport/report/StylePlaceHolder.md","articles":[]},{"title":"WidgetModifyProvider","level":"2.4.3.2.23","depth":4,"path":"tutorial/finereport/report/WidgetModifyProvider.md","ref":"tutorial/finereport/report/WidgetModifyProvider.md","articles":[]}]},"previous":{"title":"ToolbarItemProvider","level":"2.4.3.1.23","depth":4,"path":"tutorial/finereport/designer/ToolbarItemProvider.md","ref":"tutorial/finereport/designer/ToolbarItemProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/VerifyDefineProvider.md","mtime":"2026-07-10T02:20:30.972Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

@@ -3555,10 +3555,173 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#java-naming-standards"><b></b>java-naming-standards</a></li></ul></div><a href="#java-naming-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="java-naming-standards"><a name="java-naming-standards" class="anchor-navigation-ex-anchor" href="#java-naming-standards"><i class="fa fa-link" aria-hidden="true"></i></a>java-naming-standards</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#naming-standards---java"><b></b>Naming Standards - Java</a></li><ul><li><span class="title-icon "></span><a href="#1-basic-naming-conventions"><b></b>1. Basic Naming Conventions</a></li><li><span class="title-icon "></span><a href="#2-naming-prohibitions"><b></b>2. Naming Prohibitions</a></li><li><span class="title-icon "></span><a href="#3-special-naming-rules-for-classes"><b></b>3. Special Naming Rules for Classes</a></li><li><span class="title-icon "></span><a href="#4-package-naming"><b></b>4. Package Naming</a></li><li><span class="title-icon "></span><a href="#5-prefixes-for-set--get--is--has-methods"><b></b>5. Prefixes for set / get / is / has Methods</a></li><li><span class="title-icon "></span><a href="#6-no-magic-numbers-—-use-named-constants"><b></b>6. No Magic Numbers — Use Named Constants</a></li><li><span class="title-icon "></span><a href="#7-do-not-use-custom-in-public-interface-names"><b></b>7. Do Not Use "Custom" in Public Interface Names</a></li><li><span class="title-icon "></span><a href="#8-fluent-builder-methods-that-return-this-must-not-start-with-set"><b></b>8. Fluent Builder Methods That Return this Must Not Start with set</a></li></ul></ul></div><a href="#naming-standards---java" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="naming-standards---java"><a name="naming-standards---java" class="anchor-navigation-ex-anchor" href="#naming-standards---java"><i class="fa fa-link" aria-hidden="true"></i></a>Naming Standards - Java</h1>
+<p>Names should broadly reflect what a method or class does. Single meaningless words are not acceptable.</p>
+<hr></hr>
+<h2 id="1-basic-naming-conventions"><a name="1-basic-naming-conventions" class="anchor-navigation-ex-anchor" href="#1-basic-naming-conventions"><i class="fa fa-link" aria-hidden="true"></i></a>1. Basic Naming Conventions</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Style</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class name</td>
+<td>UpperCamelCase</td>
+<td><code>UserDAO</code>, <code>NetworkHelper</code></td>
+</tr>
+<tr>
+<td>Method name</td>
+<td>lowerCamelCase</td>
+<td><code>getPureMessage()</code>, <code>calculateCount()</code></td>
+</tr>
+<tr>
+<td>Variable name</td>
+<td>lowerCamelCase</td>
+<td><code>localValue</code>, <code>userTextField</code></td>
+</tr>
+<tr>
+<td>Constant</td>
+<td>ALL_CAPS_WITH_UNDERSCORES</td>
+<td><code>MAX_STOCK_COUNT</code></td>
+</tr>
+<tr>
+<td>Package name</td>
+<td>all lowercase, singular</td>
+<td><code>com.fr.data.model</code></td>
+</tr>
+</tbody>
+</table>
+<p>Exception: acronyms like <code>URL</code> and <code>HTML</code> remain fully uppercase in class names.</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateWork</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">remainDays</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;  <span class="hljs-comment">// remaining days</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">calculateNameWithData</span><span class="hljs-params">(Data data)</span> {}
+}
+
+<span class="hljs-comment">// Wrong (meaningless abbreviations)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateWork</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">cal</span><span class="hljs-params">(Data data)</span> {}
+}
+</code></pre>
+<hr></hr>
+<h2 id="2-naming-prohibitions"><a name="2-naming-prohibitions" class="anchor-navigation-ex-anchor" href="#2-naming-prohibitions"><i class="fa fa-link" aria-hidden="true"></i></a>2. Naming Prohibitions</h2>
+<ul>
+<li>Names <strong>must not</strong> start or end with an underscore <code>_</code> or dollar sign <code>$</code>.</li>
+<li><strong>Do not</strong> mix pinyin with English, and <strong>never</strong> use Chinese characters directly.</li>
+<li><strong>Do not</strong> use completely non-standard abbreviations that are not self-explanatory.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">max_stock_count</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;  <span class="hljs-comment">// constant not in ALL_CAPS</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MAX_COUNT</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;         <span class="hljs-comment">// incomplete semantics</span>
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MAX_STOCK_COUNT</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;
+</code></pre>
+<hr></hr>
+<h2 id="3-special-naming-rules-for-classes"><a name="3-special-naming-rules-for-classes" class="anchor-navigation-ex-anchor" href="#3-special-naming-rules-for-classes"><i class="fa fa-link" aria-hidden="true"></i></a>3. Special Naming Rules for Classes</h2>
+<ul>
+<li>Abstract classes: prefix with <code>Abstract</code></li>
+<li>Exception classes: suffix with <code>Exception</code></li>
+<li>Test classes: start with the name of the class under test, suffix with <code>Test</code></li>
+<li>Domain models: suffixes such as DO, BO, DTO, VO remain uppercase</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+UserDAO, ParameterNameSpace, NetworkHelper
+
+<span class="hljs-comment">// Wrong</span>
+userDAO, ParameternameSpace, NETworkHelper
+</code></pre>
+<hr></hr>
+<h2 id="4-package-naming"><a name="4-package-naming" class="anchor-navigation-ex-anchor" href="#4-package-naming"><i class="fa fa-link" aria-hidden="true"></i></a>4. Package Naming</h2>
+<p>Package names are all lowercase, with a single semantic word between each dot separator, in singular form:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">package</span> com.fr.data.model;
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">package</span> com.fr.chart.ChartAttr;       <span class="hljs-comment">// contains uppercase letters</span>
+<span class="hljs-keyword">package</span> com.finebi.common.internalimp; <span class="hljs-comment">// multiple semantic words combined</span>
+</code></pre>
+<hr></hr>
+<h2 id="5-prefixes-for-set--get--is--has-methods"><a name="5-prefixes-for-set--get--is--has-methods" class="anchor-navigation-ex-anchor" href="#5-prefixes-for-set--get--is--has-methods"><i class="fa fa-link" aria-hidden="true"></i></a>5. Prefixes for set / get / is / has Methods</h2>
+<ul>
+<li>Setting a property: <code>setXxx()</code></li>
+<li>Getting a boolean property: <code>isXxx()</code> or <code>hasXxx()</code></li>
+<li>Getting other properties: <code>getXxx()</code></li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> male;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isMale</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> male;
+    }
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">getMale</span><span class="hljs-params">()</span> { ... }
+</code></pre>
+<p>Boolean <strong>field names</strong> must not start with <code>is</code> or <code>has</code> (this can cause serialization errors in some frameworks):</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isMale;
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> male;
+<span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isMale</span><span class="hljs-params">()</span> { <span class="hljs-keyword">return</span> male; }
+</code></pre>
+<hr></hr>
+<h2 id="6-no-magic-numbers-—-use-named-constants"><a name="6-no-magic-numbers-—-use-named-constants" class="anchor-navigation-ex-anchor" href="#6-no-magic-numbers-—-use-named-constants"><i class="fa fa-link" aria-hidden="true"></i></a>6. No Magic Numbers — Use Named Constants</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">area</span><span class="hljs-params">(<span class="hljs-type">double</span> r)</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">3.14</span> * r * r;
+}
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">double</span> <span class="hljs-variable">PI</span> <span class="hljs-operator">=</span> <span class="hljs-number">3.14</span>;
+<span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">area</span><span class="hljs-params">(<span class="hljs-type">double</span> r)</span> {
+    <span class="hljs-keyword">return</span> PI * r * r;
+}
+</code></pre>
+<hr></hr>
+<h2 id="7-do-not-use-custom-in-public-interface-names"><a name="7-do-not-use-custom-in-public-interface-names" class="anchor-navigation-ex-anchor" href="#7-do-not-use-custom-in-public-interface-names"><i class="fa fa-link" aria-hidden="true"></i></a>7. Do Not Use "Custom" in Public Interface Names</h2>
+<p>A public interface already implies "customizable implementation" — there is no need to emphasize it:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PasswordHandleProcessor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">XMLable</span>, Immutable {
+    String <span class="hljs-title function_">encrypt</span><span class="hljs-params">(String clientPassword)</span>;
+    String <span class="hljs-title function_">decrypt</span><span class="hljs-params">(String clientPassword)</span>;
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomPasswordCryptProcessor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">XMLable</span>, Immutable {
+    String <span class="hljs-title function_">encodePassword</span><span class="hljs-params">(String clientPassword)</span>;
+    String <span class="hljs-title function_">decodePassword</span><span class="hljs-params">(String clientPassword)</span>;
+}
+</code></pre>
+<hr></hr>
+<h2 id="8-fluent-builder-methods-that-return-this-must-not-start-with-set"><a name="8-fluent-builder-methods-that-return-this-must-not-start-with-set" class="anchor-navigation-ex-anchor" href="#8-fluent-builder-methods-that-return-this-must-not-start-with-set"><i class="fa fa-link" aria-hidden="true"></i></a>8. Fluent Builder Methods That Return this Must Not Start with set</h2>
+<p>Provide two separate methods: a standard setter and a fluent method that returns <code>this</code>:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setIp</span><span class="hljs-params">(String ip)</span> {
+    <span class="hljs-built_in">this</span>.ip = ip;
+}
+
+<span class="hljs-keyword">public</span> BlockIpEntity <span class="hljs-title function_">ip</span><span class="hljs-params">(String ip)</span> {
+    <span class="hljs-built_in">this</span>.setIp(ip);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">public</span> BlockIpEntity <span class="hljs-title function_">setIp</span><span class="hljs-params">(String ip)</span> {
+    <span class="hljs-built_in">this</span>.ip = ip;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;
+}
+</code></pre>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3765,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Naming Standards","level":"2.2.2.3","depth":3,"next":{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},"previous":{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-naming-standards.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Naming Standards","level":"2.2.2.3","depth":3,"next":{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},"previous":{"title":"Logging Standards","level":"2.2.2.2","depth":3,"path":"tutorial/coding-standards/java-logging-standards.md","ref":"tutorial/coding-standards/java-logging-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-naming-standards.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

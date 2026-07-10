@@ -3555,10 +3555,110 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#server-dataset-api"><b></b>server-dataset-api</a></li></ul></div><a href="#server-dataset-api" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="server-dataset-api"><a name="server-dataset-api" class="anchor-navigation-ex-anchor" href="#server-dataset-api"><i class="fa fa-link" aria-hidden="true"></i></a>server-dataset-api</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#server-dataset-api"><b></b>Server Dataset API</a></li><ul><li><span class="title-icon "></span><a href="#provider"><b></b>Provider</a></li><li><span class="title-icon "></span><a href="#register-a-new-dataset-type"><b></b>Register a New Dataset Type</a></li><li><span class="title-icon "></span><a href="#common-methods"><b></b>Common Methods</a></li></ul></ul></div><a href="#server-dataset-api" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="server-dataset-api"><a name="server-dataset-api" class="anchor-navigation-ex-anchor" href="#server-dataset-api"><i class="fa fa-link" aria-hidden="true"></i></a>Server Dataset API</h1>
+<h2 id="provider"><a name="provider" class="anchor-navigation-ex-anchor" href="#provider"><i class="fa fa-link" aria-hidden="true"></i></a>Provider</h2>
+<p><code>dec.provider.data.set</code></p>
+<h2 id="register-a-new-dataset-type"><a name="register-a-new-dataset-type" class="anchor-navigation-ex-anchor" href="#register-a-new-dataset-type"><i class="fa fa-link" aria-hidden="true"></i></a>Register a New Dataset Type</h2>
+<p>Adding a new type means providing an extra option when editing or creating a dataset. The operation targets the edit page; no preview page implementation is required.</p>
+<h4 id="method"><a name="method" class="anchor-navigation-ex-anchor" href="#method"><i class="fa fa-link" aria-hidden="true"></i></a>Method</h4>
+<p><code>registerDataSetType(config)</code></p>
+<h4 id="parameters"><a name="parameters" class="anchor-navigation-ex-anchor" href="#parameters"><i class="fa fa-link" aria-hidden="true"></i></a>Parameters</h4>
+<p><code>config</code>: Object, required. Step object. Contains <code>text</code> (display text), <code>value</code> (identifier), and <code>cardType</code> (shortcut of the component for this dataset type).</p>
+<h4 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h4>
+<pre><code class="lang-js"><span class="hljs-comment">// Register a new type</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.data.set"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">registerDataSetType</span>({
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"plugin"</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"Custom Type"</span>,
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"dec.data.set.type.plugin"</span>
+    });
+});
+</code></pre>
+<p>Page implementation:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Page implementation</span>
+!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Plugin</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+
+        <span class="hljs-attr">_store</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Models</span>.<span class="hljs-title function_">getModel</span>(<span class="hljs-string">"dec.model.data.set.type.plugin"</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>);
+        },
+
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>, o = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>;
+            <span class="hljs-keyword">return</span> {};
+        },
+
+        <span class="hljs-comment">/**
+         * Required.
+         * Only the value specific to this type is needed; datasetName and datasetType are not required.
+         * The returned value will be used as the value of datasetData.
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">{</span>}}
+         */</span>
+        <span class="hljs-attr">getValue</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {};
+        },
+
+        <span class="hljs-comment">/**
+         * Optional validation method.
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">boolean</span>}
+         */</span>
+        <span class="hljs-attr">validation</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.data.set.type.plugin"</span>, <span class="hljs-title class_">Plugin</span>);
+})();
+</code></pre>
+<p>Plugin model:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Plugin model</span>
+!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Model</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-title class_">Fix</span>.<span class="hljs-property">Model</span>, {
+
+        <span class="hljs-comment">// Get the dataset name via dataSetName; modify ableSave to control whether the Save button in the top-right is enabled</span>
+        <span class="hljs-attr">context</span>: [<span class="hljs-string">"dataSetName"</span>, <span class="hljs-string">"ableSave"</span>],
+
+        <span class="hljs-attr">state</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {};
+        },
+
+        <span class="hljs-attr">computed</span>: {},
+
+        <span class="hljs-attr">actions</span>: {}
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">model</span>(<span class="hljs-string">"dec.model.data.set.type.plugin"</span>, <span class="hljs-title class_">Model</span>);
+})();
+</code></pre>
+<p>If a preview feature is needed, use the built-in component <code>dec.data.set.preview</code>, which provides preview, preview success, preview failure, and cancel preview functionality. Pass <code>previewAble</code> via context to dynamically control whether preview is available, and <code>previewedDataSet</code> to update the previewed dataset.</p>
+<h4 id="result"><a name="result" class="anchor-navigation-ex-anchor" href="#result"><i class="fa fa-link" aria-hidden="true"></i></a>Result</h4>
+<p><a href="images/dataset_type_plugin_result.png" data-lightbox="fb067964-b46e-4856-99f8-24b4b3de9d01" data-title="Custom dataset type result"><img src="images/dataset_type_plugin_result.png" alt="Custom dataset type result"></img></a></p>
+<h2 id="common-methods"><a name="common-methods" class="anchor-navigation-ex-anchor" href="#common-methods"><i class="fa fa-link" aria-hidden="true"></i></a>Common Methods</h2>
+<ol>
+<li><p><strong>Check whether a specific dataset type is supported</strong></p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.data.set"</span>).<span class="hljs-title function_">isSupportDataSet</span>(type);
+</code></pre>
+</li>
+<li><p><strong>Get the default value for a parameter of a specific type</strong></p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.data.set"</span>).<span class="hljs-title function_">getDefaultValueByType</span>(type);
+</code></pre>
+</li>
+<li><p><strong>Refresh data parameters</strong> (e.g., parameters in an SQL statement)</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Pass the current dataset request to retrieve parameters, then call getParameters to merge old and new parameters</span>
+<span class="hljs-title class_">Dec</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getDataSetParameters</span>(dataSet, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+    newParameters = <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.data.set"</span>).<span class="hljs-title function_">getParameters</span>(res.<span class="hljs-property">data</span>, oldParameters);
+});
+</code></pre>
+</li>
+<li><p><strong>Create input fields for parameters of different types</strong></p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.data.set"</span>).<span class="hljs-title function_">createParameterValueItem</span>(param, cb);
+</code></pre>
+<p>This method accepts two arguments: <code>param</code> is the current parameter info <code>{type: "param type", value: "param value", name: "param name"}</code>, and <code>cb</code> is a callback triggered when the input value changes.</p>
+</li>
+<li><p><strong>Show the user parameter input dialog</strong></p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.data.set"</span>).<span class="hljs-title function_">showParametersPopover</span>(parameters, cb)
+</code></pre>
+<p>This method accepts two arguments: <code>parameters</code> is the parameter list (each parameter must have <code>name</code> and <code>value</code>), and <code>cb</code> is a callback triggered when the user clicks OK.</p>
+</li>
+</ol>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3702,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Server Dataset API","level":"2.4.2.3.5.2","depth":5,"next":{"title":"User Management & Authentication","level":"2.4.2.3.6","depth":4,"path":"tutorial/common-extensions/platform-frontend/user-auth.md","ref":"tutorial/common-extensions/platform-frontend/user-auth.md","articles":[{"title":"Custom Login Authentication","level":"2.4.2.3.6.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/custom-login-auth.md","ref":"tutorial/common-extensions/platform-frontend/custom-login-auth.md","articles":[]}]},"previous":{"title":"New DB Connection Plugin API","level":"2.4.2.3.5.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","ref":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/server-dataset-api.md","mtime":"2026-06-11T06:55:37.644Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Server Dataset API","level":"2.4.2.3.5.2","depth":5,"next":{"title":"User Management & Authentication","level":"2.4.2.3.6","depth":4,"path":"tutorial/common-extensions/platform-frontend/user-auth.md","ref":"tutorial/common-extensions/platform-frontend/user-auth.md","articles":[{"title":"Custom Login Authentication","level":"2.4.2.3.6.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/custom-login-auth.md","ref":"tutorial/common-extensions/platform-frontend/custom-login-auth.md","articles":[]}]},"previous":{"title":"New DB Connection Plugin API","level":"2.4.2.3.5.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","ref":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/server-dataset-api.md","mtime":"2026-07-10T02:20:30.969Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

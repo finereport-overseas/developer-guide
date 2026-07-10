@@ -3555,10 +3555,182 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#schedule-task-api"><b></b>schedule-task-api</a></li></ul></div><a href="#schedule-task-api" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="schedule-task-api"><a name="schedule-task-api" class="anchor-navigation-ex-anchor" href="#schedule-task-api"><i class="fa fa-link" aria-hidden="true"></i></a>schedule-task-api</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#scheduled-task-frontend-development-api"><b></b>Scheduled Task Frontend Development API</a></li><ul><li><span class="title-icon "></span><a href="#common-module-extensions"><b></b>Common Module Extensions</a></li><ul><li><span class="title-icon "></span><a href="#provider"><b></b>Provider</a></li><li><span class="title-icon "></span><a href="#register-a-new-step"><b></b>Register a New Step</a></li><li><span class="title-icon "></span><a href="#register-a-new-dispatcher-type"><b></b>Register a New Dispatcher Type</a></li><li><span class="title-icon "></span><a href="#register-a-new-file-handling-method"><b></b>Register a New File Handling Method</a></li><li><span class="title-icon "></span><a href="#register-a-new-attachment-archive-method"><b></b>Register a New Attachment Archive Method</a></li></ul><li><span class="title-icon "></span><a href="#changelog"><b></b>Changelog</a></li></ul></ul></div><a href="#scheduled-task-frontend-development-api" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="scheduled-task-frontend-development-api"><a name="scheduled-task-frontend-development-api" class="anchor-navigation-ex-anchor" href="#scheduled-task-frontend-development-api"><i class="fa fa-link" aria-hidden="true"></i></a>Scheduled Task Frontend Development API</h1>
+<h2 id="common-module-extensions"><a name="common-module-extensions" class="anchor-navigation-ex-anchor" href="#common-module-extensions"><i class="fa fa-link" aria-hidden="true"></i></a>Common Module Extensions</h2>
+<h3 id="provider"><a name="provider" class="anchor-navigation-ex-anchor" href="#provider"><i class="fa fa-link" aria-hidden="true"></i></a>Provider</h3>
+<p><code>dec.provider.schedule</code></p>
+<h3 id="register-a-new-step"><a name="register-a-new-step" class="anchor-navigation-ex-anchor" href="#register-a-new-step"><i class="fa fa-link" aria-hidden="true"></i></a>Register a New Step</h3>
+<h4 id="method"><a name="method" class="anchor-navigation-ex-anchor" href="#method"><i class="fa fa-link" aria-hidden="true"></i></a>Method</h4>
+<p><code>registerTaskStep(config[, index])</code></p>
+<h4 id="parameters"><a name="parameters" class="anchor-navigation-ex-anchor" href="#parameters"><i class="fa fa-link" aria-hidden="true"></i></a>Parameters</h4>
+<ul>
+<li><code>config</code>: Object, required. Step object. Contains <code>text</code> (display text), <code>value</code> (identifier), and <code>cardType</code> (shortcut of the component for this step).</li>
+<li><code>index</code>: Number, optional. Insertion position. This is the start index for a <code>splice</code> operation on the array. If omitted, the step is appended at the end.</li>
+</ul>
+<h4 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h4>
+<pre><code class="lang-js"><span class="hljs-comment">// Add a step to the step bar</span>
+<span class="hljs-comment">// First argument: step object</span>
+<span class="hljs-comment">// Second argument: insertion position</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.schedule"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">registerTaskStep</span>({
+        <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"New Step"</span>),
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"plugin_step"</span>,
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"dec.schedule.task.plugin"</span>
+    }, <span class="hljs-number">1</span>);
+});
+</code></pre>
+<p>Page implementation example:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// New step implementation</span>
+!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Plugin</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+
+        <span class="hljs-attr">props</span>: {
+            <span class="hljs-attr">baseCls</span>: <span class="hljs-string">""</span>
+        },
+
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                <span class="hljs-attr">text</span>: <span class="hljs-string">"New Step"</span>
+            };
+        },
+
+        <span class="hljs-comment">/**
+         * Validation function, optional.
+         * Executed when clicking Next or when saving is allowed; invokes callback with the validation result.
+         * <span class="hljs-doctag">@param</span> <span class="hljs-variable">callback</span>
+         */</span>
+        <span class="hljs-attr">validation</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callback</span>) {
+            <span class="hljs-title function_">callback</span>(<span class="hljs-literal">true</span>);
+        },
+
+        <span class="hljs-comment">/**
+         * Value getter, required.
+         * The returned value is merged with the current task value this.model.currTask via BI.extend.
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">{</span>}}
+         */</span>
+        <span class="hljs-attr">getValue</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {};
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.schedule.task.plugin"</span>, <span class="hljs-title class_">Plugin</span>);
+})();
+</code></pre>
+<p>As shown above, there is a global model for the task creation process that stores all currently configured values. Use <code>this.model.currTask</code> to get and modify the value of the task being edited.</p>
+<h4 id="result"><a name="result" class="anchor-navigation-ex-anchor" href="#result"><i class="fa fa-link" aria-hidden="true"></i></a>Result</h4>
+<p><a href="images/schedule_add_step_result.png" data-lightbox="3be87c65-4fb8-4960-ac25-921901f1b0bf" data-title="Add step result"><img src="images/schedule_add_step_result.png" alt="Add step result"></img></a></p>
+<hr></hr>
+<h3 id="register-a-new-dispatcher-type"><a name="register-a-new-dispatcher-type" class="anchor-navigation-ex-anchor" href="#register-a-new-dispatcher-type"><i class="fa fa-link" aria-hidden="true"></i></a>Register a New Dispatcher Type</h3>
+<h4 id="method_1"><a name="method_1" class="anchor-navigation-ex-anchor" href="#method_1"><i class="fa fa-link" aria-hidden="true"></i></a>Method</h4>
+<p><code>registerDispatcher(dispatcher[, handings])</code></p>
+<h4 id="parameters_1"><a name="parameters_1" class="anchor-navigation-ex-anchor" href="#parameters_1"><i class="fa fa-link" aria-hidden="true"></i></a>Parameters</h4>
+<ul>
+<li><code>dispatcher</code>: Object, required. Dispatcher object type. Contains <code>text</code> (display text), <code>value</code> (identifier), and <code>cardType</code> (shortcut of the component for this dispatcher type).</li>
+<li><code>handings</code>: Array, optional. Handling methods for the new dispatcher type. For the definition format, see "Register a New File Handling Method" below. If omitted, no handling methods are registered by default; they can be added later via <code>registerHandingWay</code>.</li>
+</ul>
+<h4 id="example_1"><a name="example_1" class="anchor-navigation-ex-anchor" href="#example_1"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h4>
+<pre><code class="lang-js"><span class="hljs-comment">// Register a new dispatcher object type</span>
+<span class="hljs-comment">// First argument: new dispatcher object</span>
+<span class="hljs-comment">// Second argument: handling methods for the new dispatcher type</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.schedule"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">registerDispatcher</span>({
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"plugin"</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"New Type"</span>,
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"dec.schedule.task.dispatcher.plugin"</span>
+    }, []);
+});
+</code></pre>
+<p><strong>The page implementation is the same as for adding a new step</strong> — implement the required <code>getValue</code> function and the optional <code>validation</code> function.</p>
+<h4 id="result_1"><a name="result_1" class="anchor-navigation-ex-anchor" href="#result_1"><i class="fa fa-link" aria-hidden="true"></i></a>Result</h4>
+<p><a href="images/schedule_add_dispatcher_result.png" data-lightbox="72c910fd-baff-47e6-b9e5-952bf9c3761c" data-title="Add dispatcher type result"><img src="images/schedule_add_dispatcher_result.png" alt="Add dispatcher type result"></img></a></p>
+<hr></hr>
+<h3 id="register-a-new-file-handling-method"><a name="register-a-new-file-handling-method" class="anchor-navigation-ex-anchor" href="#register-a-new-file-handling-method"><i class="fa fa-link" aria-hidden="true"></i></a>Register a New File Handling Method</h3>
+<h4 id="method_2"><a name="method_2" class="anchor-navigation-ex-anchor" href="#method_2"><i class="fa fa-link" aria-hidden="true"></i></a>Method</h4>
+<p><code>registerHandingWay(config, scopes)</code></p>
+<h4 id="parameters_2"><a name="parameters_2" class="anchor-navigation-ex-anchor" href="#parameters_2"><i class="fa fa-link" aria-hidden="true"></i></a>Parameters</h4>
+<ul>
+<li><code>config</code>: Object, required. Handling method. Contains <code>text</code> (display text), <code>value</code> (the <strong><em>actionName</em></strong> synchronized with the backend), and <code>cardType</code> (shortcut of the component for this handling method). The optional <code>actions</code> property can be used when only one handling method is displayed but multiple actions are involved (see <strong>Client Notification</strong> for reference). To make a handling method non-cancellable (similar to scheduled computation), set the optional <code>selected</code> and <code>forceSelected</code> properties to <code>true</code>.</li>
+<li><code>scopes</code>: Array, required. Scope of the handling method. This parameter must be set, otherwise the method will not be registered to any dispatcher type. Valid values are the three built-in types (shown in the example) as well as plugin-registered dispatcher types (the <code>value</code> of the <code>dispatcher</code> parameter in <code>registerDispatcher</code>).</li>
+</ul>
+<h4 id="example_2"><a name="example_2" class="anchor-navigation-ex-anchor" href="#example_2"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h4>
+<pre><code class="lang-js"><span class="hljs-comment">// Register a new handling method</span>
+<span class="hljs-comment">// First argument: new handling method object</span>
+<span class="hljs-comment">// Second argument: scope array; valid values are the three built-in types plus plugin dispatcher types</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.schedule"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">registerHandingWay</span>({
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"New Handling Method"</span>,
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"com.fr.xxxx"</span>, <span class="hljs-comment">// actionName of the plugin</span>
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"dec.schedule.task.file.handling.plugin"</span>,
+        <span class="hljs-attr">actions</span>: [] <span class="hljs-comment">// one handling method with multiple actions</span>
+    }, [<span class="hljs-title class_">DecCst</span>.<span class="hljs-property">Schedule</span>.<span class="hljs-property">TaskType</span>.<span class="hljs-property">DEFAULT</span>, <span class="hljs-title class_">DecCst</span>.<span class="hljs-property">Schedule</span>.<span class="hljs-property">TaskType</span>.<span class="hljs-property">REPORT</span>, <span class="hljs-title class_">DecCst</span>.<span class="hljs-property">Schedule</span>.<span class="hljs-property">TaskType</span>.<span class="hljs-property">BI</span>]);
+});
+</code></pre>
 <blockquote>
-<p>Coming soon.</p>
+<p><strong>Note</strong>: Do not register <code>runType</code>. There is currently compatibility handling for <code>runType</code>, but support for it will be gradually removed in future versions.</p>
 </blockquote>
+<p>Page implementation example:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Handling method implementation</span>
+!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Plugin</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+
+        <span class="hljs-attr">props</span>: {
+            <span class="hljs-attr">baseCls</span>: <span class="hljs-string">""</span>
+        },
+
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                <span class="hljs-attr">text</span>: <span class="hljs-string">"New Type"</span>
+            };
+        },
+
+        <span class="hljs-comment">/**
+         * Validation function, optional.
+         * Returns whether the current handling method passes validation.
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">boolean</span>}
+         */</span>
+        <span class="hljs-attr">validation</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        },
+
+        <span class="hljs-comment">/**
+         * Value getter, required.
+         * The returned value is placed in outputActionList.
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">{</span>}}
+         */</span>
+        <span class="hljs-attr">getValue</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {};
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.schedule.task.file.handling.plugin"</span>, <span class="hljs-title class_">Plugin</span>);
+})();
+</code></pre>
+<hr></hr>
+<h3 id="register-a-new-attachment-archive-method"><a name="register-a-new-attachment-archive-method" class="anchor-navigation-ex-anchor" href="#register-a-new-attachment-archive-method"><i class="fa fa-link" aria-hidden="true"></i></a>Register a New Attachment Archive Method</h3>
+<h4 id="method_3"><a name="method_3" class="anchor-navigation-ex-anchor" href="#method_3"><i class="fa fa-link" aria-hidden="true"></i></a>Method</h4>
+<p><code>registerTaskAttached(config, scopes)</code></p>
+<h4 id="parameters_3"><a name="parameters_3" class="anchor-navigation-ex-anchor" href="#parameters_3"><i class="fa fa-link" aria-hidden="true"></i></a>Parameters</h4>
+<ul>
+<li><code>config</code>: Object, required. Archive method. Contains <code>text</code> (display text) and <code>value</code> (value exchanged with the backend).</li>
+<li><code>scopes</code>: Array, required. Scope of the archive method. This parameter must be set, otherwise the method will not be registered to any dispatcher type. Valid values are the two built-in types (shown in the example) plus plugin-registered dispatcher types.</li>
+</ul>
+<h4 id="example_3"><a name="example_3" class="anchor-navigation-ex-anchor" href="#example_3"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h4>
+<pre><code class="lang-js"><span class="hljs-comment">// Register a new attachment archive method</span>
+<span class="hljs-comment">// First argument: new archive method object</span>
+<span class="hljs-comment">// Second argument: scope array</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.schedule"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">registerTaskAttached</span>({
+        <span class="hljs-attr">value</span>: <span class="hljs-number">11</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"pluginText"</span>
+    }, [<span class="hljs-title class_">DecCst</span>.<span class="hljs-property">Schedule</span>.<span class="hljs-property">TaskType</span>.<span class="hljs-property">REPORT</span>, <span class="hljs-title class_">DecCst</span>.<span class="hljs-property">Schedule</span>.<span class="hljs-property">TaskType</span>.<span class="hljs-property">BI</span>]);
+});
+</code></pre>
+<hr></hr>
+<h2 id="changelog"><a name="changelog" class="anchor-navigation-ex-anchor" href="#changelog"><i class="fa fa-link" aria-hidden="true"></i></a>Changelog</h2>
+<ul>
+<li>2019.10.10: Implemented plugin registration using provider</li>
+<li>2019.11.12: Added attachment archive method registration</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3774,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Add Scheduled Task API","level":"2.4.2.3.4.1","depth":5,"next":{"title":"Data Connection & Dataset Module","level":"2.4.2.3.5","depth":4,"path":"tutorial/common-extensions/platform-frontend/db-conn.md","ref":"tutorial/common-extensions/platform-frontend/db-conn.md","articles":[{"title":"New DB Connection Plugin API","level":"2.4.2.3.5.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","ref":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","articles":[]},{"title":"Server Dataset API","level":"2.4.2.3.5.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/server-dataset-api.md","ref":"tutorial/common-extensions/platform-frontend/server-dataset-api.md","articles":[]}]},"previous":{"title":"Scheduled Tasks Module","level":"2.4.2.3.4","depth":4,"path":"tutorial/common-extensions/platform-frontend/schedule.md","ref":"tutorial/common-extensions/platform-frontend/schedule.md","articles":[{"title":"Add Scheduled Task API","level":"2.4.2.3.4.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/schedule-task-api.md","ref":"tutorial/common-extensions/platform-frontend/schedule-task-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/schedule-task-api.md","mtime":"2026-06-11T06:55:37.644Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Add Scheduled Task API","level":"2.4.2.3.4.1","depth":5,"next":{"title":"Data Connection & Dataset Module","level":"2.4.2.3.5","depth":4,"path":"tutorial/common-extensions/platform-frontend/db-conn.md","ref":"tutorial/common-extensions/platform-frontend/db-conn.md","articles":[{"title":"New DB Connection Plugin API","level":"2.4.2.3.5.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","ref":"tutorial/common-extensions/platform-frontend/db-connection-plugin.md","articles":[]},{"title":"Server Dataset API","level":"2.4.2.3.5.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/server-dataset-api.md","ref":"tutorial/common-extensions/platform-frontend/server-dataset-api.md","articles":[]}]},"previous":{"title":"Scheduled Tasks Module","level":"2.4.2.3.4","depth":4,"path":"tutorial/common-extensions/platform-frontend/schedule.md","ref":"tutorial/common-extensions/platform-frontend/schedule.md","articles":[{"title":"Add Scheduled Task API","level":"2.4.2.3.4.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/schedule-task-api.md","ref":"tutorial/common-extensions/platform-frontend/schedule-task-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/schedule-task-api.md","mtime":"2026-07-10T02:20:30.969Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

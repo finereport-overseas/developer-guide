@@ -3555,10 +3555,90 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#logging-tips"><b></b>logging-tips</a></li></ul></div><a href="#logging-tips" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="logging-tips"><a name="logging-tips" class="anchor-navigation-ex-anchor" href="#logging-tips"><i class="fa fa-link" aria-hidden="true"></i></a>logging-tips</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#logging-tips"><b></b>Logging Tips</a></li><ul><li><span class="title-icon "></span><a href="#writing-log-output-in-a-plugin"><b></b>Writing Log Output in a Plugin</a></li><li><span class="title-icon "></span><a href="#log-file-location"><b></b>Log File Location</a></li><li><span class="title-icon "></span><a href="#viewing-logs-in-the-idea-console"><b></b>Viewing Logs in the IDEA Console</a></li><li><span class="title-icon "></span><a href="#adjusting-the-log-level"><b></b>Adjusting the Log Level</a></li><li><span class="title-icon "></span><a href="#common-troubleshooting-patterns"><b></b>Common Troubleshooting Patterns</a></li><li><span class="title-icon "></span><a href="#tailing-the-log-file-in-real-time"><b></b>Tailing the Log File in Real Time</a></li></ul></ul></div><a href="#logging-tips" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="logging-tips"><a name="logging-tips" class="anchor-navigation-ex-anchor" href="#logging-tips"><i class="fa fa-link" aria-hidden="true"></i></a>Logging Tips</h1>
+<p>In FanRuan plugin development, logs are the most direct way to diagnose issues. FR/BI uses FanRuan's in-house <code>FineLoggerFactory</code> logging framework, which is built on top of Log4j.</p>
+<hr></hr>
+<h2 id="writing-log-output-in-a-plugin"><a name="writing-log-output-in-a-plugin" class="anchor-navigation-ex-anchor" href="#writing-log-output-in-a-plugin"><i class="fa fa-link" aria-hidden="true"></i></a>Writing Log Output in a Plugin</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> com.fr.log.FineLoggerFactory;
+<span class="hljs-keyword">import</span> com.fr.log.FineLogger;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPlugin</span> {
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">FineLogger</span> <span class="hljs-variable">LOGGER</span> <span class="hljs-operator">=</span> FineLoggerFactory.getLogger();
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doSomething</span><span class="hljs-params">()</span> {
+        LOGGER.info(<span class="hljs-string">"Plugin execution started"</span>);
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// ...</span>
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            LOGGER.error(<span class="hljs-string">"Plugin execution error: {}"</span>, e.getMessage(), e);
+        }
+    }
+}
+</code></pre>
+<p>Common log levels (most verbose to least): <code>DEBUG</code> → <code>INFO</code> → <code>WARN</code> → <code>ERROR</code></p>
+<hr></hr>
+<h2 id="log-file-location"><a name="log-file-location" class="anchor-navigation-ex-anchor" href="#log-file-location"><i class="fa fa-link" aria-hidden="true"></i></a>Log File Location</h2>
+<p>FR/BI writes all log output to the <code>logs/</code> subdirectory of the working directory:</p>
+<pre><code>${WORK_HOME}/logs/
+├── fanruan.log          ← today's log (rolling)
+├── fanruan.log.1        ← yesterday
+├── fanruan.log.2        ← two days ago
+└── ...
+</code></pre><p><code>${WORK_HOME}</code> defaults to:</p>
+<ul>
+<li>FineReport Designer: <code>~/FineReport_11.5/</code> (or the working directory specified in the run configuration)</li>
+<li>FineBI Server: <code>webapps/webroot/WEB-INF/</code> under the Tomcat working directory</li>
+</ul>
+<hr></hr>
+<h2 id="viewing-logs-in-the-idea-console"><a name="viewing-logs-in-the-idea-console" class="anchor-navigation-ex-anchor" href="#viewing-logs-in-the-idea-console"><i class="fa fa-link" aria-hidden="true"></i></a>Viewing Logs in the IDEA Console</h2>
+<p>During local debugging, log output is also printed to the IDEA <strong>Run/Debug</strong> console. Use the filter box at the top of the console to search by keyword — for example, enter your plugin package name <code>com.fr.plugin</code> to quickly find related log entries.</p>
+<hr></hr>
+<h2 id="adjusting-the-log-level"><a name="adjusting-the-log-level" class="anchor-navigation-ex-anchor" href="#adjusting-the-log-level"><i class="fa fa-link" aria-hidden="true"></i></a>Adjusting the Log Level</h2>
+<p>Log levels are configured in <code>${WORK_HOME}/resources/log4j2.xml</code> (or <code>log4j.properties</code>):</p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- Lower the log level for a specific package to get more debug output --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Logger</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"com.fr.plugin.mypackage"</span> <span class="hljs-attr">level</span>=<span class="hljs-string">"DEBUG"</span> <span class="hljs-attr">additivity</span>=<span class="hljs-string">"false"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AppenderRef</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"Console"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AppenderRef</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"RollingFile"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Logger</span>&gt;</span>
+</code></pre>
+<p>Restart the server or designer after modifying the configuration for changes to take effect.</p>
+<hr></hr>
+<h2 id="common-troubleshooting-patterns"><a name="common-troubleshooting-patterns" class="anchor-navigation-ex-anchor" href="#common-troubleshooting-patterns"><i class="fa fa-link" aria-hidden="true"></i></a>Common Troubleshooting Patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugin not loading</td>
+<td>Search the log for the plugin ID; look for <code>load plugin</code> or <code>Exception</code> keywords</td>
+</tr>
+<tr>
+<td>Interface not taking effect</td>
+<td>Add an <code>INFO</code> log at the entry point of the interface implementation to confirm it is being called</td>
+</tr>
+<tr>
+<td>Data anomalies</td>
+<td>Print input parameters and intermediate variables at key branching points</td>
+</tr>
+<tr>
+<td>Performance issues</td>
+<td>Log an <code>INFO</code> line before and after the slow operation to measure elapsed time</td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="tailing-the-log-file-in-real-time"><a name="tailing-the-log-file-in-real-time" class="anchor-navigation-ex-anchor" href="#tailing-the-log-file-in-real-time"><i class="fa fa-link" aria-hidden="true"></i></a>Tailing the Log File in Real Time</h2>
+<p>Monitor log output live from the command line:</p>
+<p><strong>Windows (PowerShell):</strong></p>
+<pre><code class="lang-powershell"><span class="hljs-built_in">Get-Content</span> <span class="hljs-string">"<span class="hljs-variable">$</span>{WORK_HOME}\logs\fanruan.log"</span> <span class="hljs-literal">-Wait</span> <span class="hljs-literal">-Tail</span> <span class="hljs-number">100</span>
+</code></pre>
+<p><strong>Linux/Mac:</strong></p>
+<pre><code class="lang-bash"><span class="hljs-built_in">tail</span> -f <span class="hljs-variable">${WORK_HOME}</span>/logs/fanruan.log
+</code></pre>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3682,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Logging Tips","level":"2.1.2.5","depth":3,"next":{"title":"Create Your First Plugin","level":"2.1.3","depth":2,"path":"tutorial/getting-started/first-plugin/create-with-template.md","ref":"tutorial/getting-started/first-plugin/create-with-template.md","articles":[{"title":"Create with Template (Gradle Plugin)","level":"2.1.3.1","depth":3,"path":"tutorial/getting-started/first-plugin/create-with-template.md","ref":"tutorial/getting-started/first-plugin/create-with-template.md","articles":[]},{"title":"plugin.xml Basic Configuration","level":"2.1.3.2","depth":3,"path":"tutorial/getting-started/first-plugin/plugin-xml-config.md","ref":"tutorial/getting-started/first-plugin/plugin-xml-config.md","articles":[]}]},"previous":{"title":"Plugin Installation Failure","level":"2.1.2.4","depth":3,"path":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","ref":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/run-and-debug/logging-tips.md","mtime":"2026-06-11T06:55:37.655Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Logging Tips","level":"2.1.2.5","depth":3,"next":{"title":"Create Your First Plugin","level":"2.1.3","depth":2,"path":"tutorial/getting-started/first-plugin/create-with-template.md","ref":"tutorial/getting-started/first-plugin/create-with-template.md","articles":[{"title":"Create with Template (Gradle Plugin)","level":"2.1.3.1","depth":3,"path":"tutorial/getting-started/first-plugin/create-with-template.md","ref":"tutorial/getting-started/first-plugin/create-with-template.md","articles":[]},{"title":"plugin.xml Basic Configuration","level":"2.1.3.2","depth":3,"path":"tutorial/getting-started/first-plugin/plugin-xml-config.md","ref":"tutorial/getting-started/first-plugin/plugin-xml-config.md","articles":[]}]},"previous":{"title":"Plugin Installation Failure","level":"2.1.2.4","depth":3,"path":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","ref":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/run-and-debug/logging-tips.md","mtime":"2026-07-10T02:20:31.023Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

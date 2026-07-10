@@ -3555,10 +3555,99 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#datasourcedriverloader"><b></b>DataSourceDriverLoader</a></li></ul></div><a href="#datasourcedriverloader" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="datasourcedriverloader"><a name="datasourcedriverloader" class="anchor-navigation-ex-anchor" href="#datasourcedriverloader"><i class="fa fa-link" aria-hidden="true"></i></a>DataSourceDriverLoader</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#datasourcedriverloader"><b></b>DataSourceDriverLoader</a></li><ul><li><span class="title-icon "></span><a href="#interface-purpose"><b></b>Interface Purpose</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><ul><li><span class="title-icon "></span><a href="#main-interface"><b></b>Main Interface</a></li><li><span class="title-icon "></span><a href="#related-interfaces"><b></b>Related Interfaces</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li></ul><li><span class="title-icon "></span><a href="#interface-example"><b></b>Interface Example</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#datasourcedriverloader" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="datasourcedriverloader"><a name="datasourcedriverloader" class="anchor-navigation-ex-anchor" href="#datasourcedriverloader"><i class="fa fa-link" aria-hidden="true"></i></a>DataSourceDriverLoader</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.stable.fun.DataSourceDriverLoader</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-purpose"><a name="interface-purpose" class="anchor-navigation-ex-anchor" href="#interface-purpose"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Purpose</h2>
+<p>To resolve conflicts in big data suites, this interface provides an interceptor that intercepts the ClassLoader of the target driver and sets it directly into the DataSource.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<h3 id="main-interface"><a name="main-interface" class="anchor-navigation-ex-anchor" href="#main-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Main Interface</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+
+<span class="hljs-comment">/**
+ * ClassLoader interceptor provided for plugins
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DataSourceDriverLoader</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-comment">// Determines whether the target driver is matched</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isInterceptAllowed</span><span class="hljs-params">(String databaseType, String url)</span>;
+
+    <span class="hljs-comment">// Returns the specific ClassLoader</span>
+    ClassLoader <span class="hljs-title function_">getClassLoader</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h3 id="related-interfaces"><a name="related-interfaces" class="anchor-navigation-ex-anchor" href="#related-interfaces"><i class="fa fa-link" aria-hidden="true"></i></a>Related Interfaces</h3>
+<p>Utility class that calls this interface:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun.impl;
+
+<span class="hljs-keyword">import</span> com.fr.plugin.ExtraClassManager;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.DataSourceDriverLoader;
+
+<span class="hljs-keyword">import</span> java.util.Set;
+
+<span class="hljs-comment">/**
+ * Utility class that invokes the interface
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataSourceDriverLoaderUtils</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ClassLoader <span class="hljs-title function_">getClassLoader</span><span class="hljs-params">(String databaseType, String url)</span> {
+        Set&lt;DataSourceDriverLoader&gt; dataSourceDriverLoaders = getDataSourceDriverLoader();
+        <span class="hljs-comment">// Non-null means the plugin was loaded successfully</span>
+        <span class="hljs-keyword">if</span> (dataSourceDriverLoaders != <span class="hljs-literal">null</span> &amp;&amp; !dataSourceDriverLoaders.isEmpty()) {
+            FineLoggerFactory.getLogger().debug(<span class="hljs-string">"====== loading classloader plugin ======"</span>);
+            <span class="hljs-keyword">for</span> (DataSourceDriverLoader datasourceDriverLoader : dataSourceDriverLoaders) {
+                <span class="hljs-comment">// Check if it matches the target driver using url and databaseType for more precise matching</span>
+                <span class="hljs-keyword">if</span> (datasourceDriverLoader.isInterceptAllowed(databaseType, url)) {
+                    <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader</span> <span class="hljs-operator">=</span> datasourceDriverLoader.getClassLoader();
+                    <span class="hljs-keyword">return</span> classLoader;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Set&lt;DataSourceDriverLoader&gt; <span class="hljs-title function_">getDataSourceDriverLoader</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> ExtraClassManager.getInstance().getArray(DataSourceDriverLoader.XML_TAG);
+    }
+}
+</code></pre>
+<h3 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h3>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">DataSourceDriverLoader</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.dialect.classloader.{$DatabaseName}ClassLoaderHandler"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="interface-example"><a name="interface-example" class="anchor-navigation-ex-anchor" href="#interface-example"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Example</h2>
+<p>Example source code: <a href="https://git.fanruan.com/fanruan/demo-driver-loader" target="_blank">demo-driver-loader</a></p>
 <blockquote>
-<p>Coming soon.</p>
+<p>The demo outputs log information when the target driver is successfully matched.</p>
 </blockquote>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ol>
+<li>The ClassLoader is only set into the DataSource if the implemented ClassLoader is non-null</li>
+<li>The latest 2.0 isolation plugin requires FR 10.15 or above (release 5.1.2 or later)</li>
+</ol>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3691,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DataSourceDriverLoader","level":"2.4.2.1.6","depth":4,"next":{"title":"DBAccessProvider","level":"2.4.2.1.7","depth":4,"path":"tutorial/common-extensions/core/DBAccessProvider.md","ref":"tutorial/common-extensions/core/DBAccessProvider.md","articles":[]},"previous":{"title":"DSModifyProvider","level":"2.4.2.1.5","depth":4,"path":"tutorial/common-extensions/core/DSModifyProvider.md","ref":"tutorial/common-extensions/core/DSModifyProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/DataSourceDriverLoader.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"DataSourceDriverLoader","level":"2.4.2.1.6","depth":4,"next":{"title":"DBAccessProvider","level":"2.4.2.1.7","depth":4,"path":"tutorial/common-extensions/core/DBAccessProvider.md","ref":"tutorial/common-extensions/core/DBAccessProvider.md","articles":[]},"previous":{"title":"DSModifyProvider","level":"2.4.2.1.5","depth":4,"path":"tutorial/common-extensions/core/DSModifyProvider.md","ref":"tutorial/common-extensions/core/DSModifyProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/DataSourceDriverLoader.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

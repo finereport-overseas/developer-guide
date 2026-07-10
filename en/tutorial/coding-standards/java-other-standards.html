@@ -3555,10 +3555,153 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#java-other-standards"><b></b>java-other-standards</a></li></ul></div><a href="#java-other-standards" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="java-other-standards"><a name="java-other-standards" class="anchor-navigation-ex-anchor" href="#java-other-standards"><i class="fa fa-link" aria-hidden="true"></i></a>java-other-standards</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#other-standards---java"><b></b>Other Standards - Java</a></li><ul><li><span class="title-icon "></span><a href="#1-no-business-logic-in-constructors"><b></b>1. No Business Logic in Constructors</a></li><li><span class="title-icon "></span><a href="#2-do-not-pass-null-to-constructors-or-public-methods"><b></b>2. Do Not Pass null to Constructors or Public Methods</a></li><li><span class="title-icon "></span><a href="#3-internationalize-all-user-visible-text"><b></b>3. Internationalize All User-Visible Text</a></li><li><span class="title-icon "></span><a href="#4-never-return-null-from-array-returning-methods-—-use-an-empty-array"><b></b>4. Never Return null from Array-Returning Methods — Use an Empty Array</a></li><li><span class="title-icon "></span><a href="#5-every-switch-case-must-have-a-corresponding-break-or-return"><b></b>5. Every switch case Must Have a Corresponding break or return</a></li><li><span class="title-icon "></span><a href="#6-hashcode-and-equals-rules"><b></b>6. hashCode and equals Rules</a></li><li><span class="title-icon "></span><a href="#7-use-toarrayt-array-when-converting-a-collection-to-an-array"><b></b>7. Use toArray(T[] array) When Converting a Collection to an Array</a></li><li><span class="title-icon "></span><a href="#8-do-not-add-or-remove-elements-inside-a-foreach-loop"><b></b>8. Do Not add or remove Elements Inside a foreach Loop</a></li><li><span class="title-icon "></span><a href="#9-simplify-boolean-returns"><b></b>9. Simplify Boolean Returns</a></li><li><span class="title-icon "></span><a href="#10-apply-strict-access-control-to-class-members"><b></b>10. Apply Strict Access Control to Class Members</a></li><li><span class="title-icon "></span><a href="#11-always-add-override-when-overriding-a-method"><b></b>11. Always Add @Override When Overriding a Method</a></li></ul></ul></div><a href="#other-standards---java" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="other-standards---java"><a name="other-standards---java" class="anchor-navigation-ex-anchor" href="#other-standards---java"><i class="fa fa-link" aria-hidden="true"></i></a>Other Standards - Java</h1>
+<hr></hr>
+<h2 id="1-no-business-logic-in-constructors"><a name="1-no-business-logic-in-constructors" class="anchor-navigation-ex-anchor" href="#1-no-business-logic-in-constructors"><i class="fa fa-link" aria-hidden="true"></i></a>1. No Business Logic in Constructors</h2>
+<p>Put initialization logic in an <code>init()</code> method and call it from the constructor:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Fish</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Fish</span><span class="hljs-params">()</span> {
+        init();
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// initialization logic</span>
+    }
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Fish</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Fish</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// business logic written directly here</span>
+    }
+}
+</code></pre>
+<hr></hr>
+<h2 id="2-do-not-pass-null-to-constructors-or-public-methods"><a name="2-do-not-pass-null-to-constructors-or-public-methods" class="anchor-navigation-ex-anchor" href="#2-do-not-pass-null-to-constructors-or-public-methods"><i class="fa fa-link" aria-hidden="true"></i></a>2. Do Not Pass null to Constructors or Public Methods</h2>
+<p><code>null</code> arguments are hard to understand from a method signature alone. Provide overloaded methods instead:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Utility method</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Utils</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Border <span class="hljs-title function_">createBorder</span><span class="hljs-params">(Font font, Color color)</span> {
+        <span class="hljs-keyword">if</span> (color == <span class="hljs-literal">null</span>) {
+            color = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Color</span>(<span class="hljs-number">223</span>, <span class="hljs-number">122</span>, <span class="hljs-number">123</span>);
+        }
+        <span class="hljs-comment">// ...</span>
+    }
+}
+
+<span class="hljs-comment">// Correct: add an overload</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Border <span class="hljs-title function_">createBorder</span><span class="hljs-params">(Font font)</span> {
+    <span class="hljs-keyword">return</span> createBorder(font, <span class="hljs-literal">null</span>);
+}
+<span class="hljs-type">Border</span> <span class="hljs-variable">border</span> <span class="hljs-operator">=</span> Utils.createBorder(font);
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-type">Border</span> <span class="hljs-variable">border</span> <span class="hljs-operator">=</span> Utils.createBorder(font, <span class="hljs-literal">null</span>);
+</code></pre>
+<hr></hr>
+<h2 id="3-internationalize-all-user-visible-text"><a name="3-internationalize-all-user-visible-text" class="anchor-navigation-ex-anchor" href="#3-internationalize-all-user-visible-text"><i class="fa fa-link" aria-hidden="true"></i></a>3. Internationalize All User-Visible Text</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-type">String</span> <span class="hljs-variable">shapeName</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Circle"</span>;
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-type">String</span> <span class="hljs-variable">shapeName</span> <span class="hljs-operator">=</span> Inter.getLocText(<span class="hljs-string">"FR-Designer_Chart_Circle"</span>);
+</code></pre>
+<hr></hr>
+<h2 id="4-never-return-null-from-array-returning-methods-—-use-an-empty-array"><a name="4-never-return-null-from-array-returning-methods-—-use-an-empty-array" class="anchor-navigation-ex-anchor" href="#4-never-return-null-from-array-returning-methods-—-use-an-empty-array"><i class="fa fa-link" aria-hidden="true"></i></a>4. Never Return null from Array-Returning Methods — Use an Empty Array</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">public</span> String[] getNames() {
+    <span class="hljs-keyword">if</span> (a) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{<span class="hljs-string">"Alice"</span>, <span class="hljs-string">"Bob"</span>};
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">0</span>];
+    }
+}
+
+<span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">public</span> String[] getNames() {
+    <span class="hljs-keyword">if</span> (a) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]{<span class="hljs-string">"Alice"</span>, <span class="hljs-string">"Bob"</span>};
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;  <span class="hljs-comment">// callers risk a NullPointerException</span>
+    }
+}
+</code></pre>
+<hr></hr>
+<h2 id="5-every-switch-case-must-have-a-corresponding-break-or-return"><a name="5-every-switch-case-must-have-a-corresponding-break-or-return" class="anchor-navigation-ex-anchor" href="#5-every-switch-case-must-have-a-corresponding-break-or-return"><i class="fa fa-link" aria-hidden="true"></i></a>5. Every switch case Must Have a Corresponding break or return</h2>
+<p>Prevent fall-through from causing logic errors:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">switch</span> (type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        someDescription = <span class="hljs-string">"qwe"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        someDescription = <span class="hljs-string">"xyz"</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        someDescription = <span class="hljs-string">"mnx"</span>;
+        <span class="hljs-keyword">break</span>;
+}
+
+<span class="hljs-comment">// Wrong (case 1 falls through into case 2)</span>
+<span class="hljs-keyword">switch</span> (type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        someDescription = <span class="hljs-string">"qwe"</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        someDescription = <span class="hljs-string">"xyz"</span>;
+        <span class="hljs-keyword">break</span>;
+    ...
+}
+</code></pre>
+<hr></hr>
+<h2 id="6-hashcode-and-equals-rules"><a name="6-hashcode-and-equals-rules" class="anchor-navigation-ex-anchor" href="#6-hashcode-and-equals-rules"><i class="fa fa-link" aria-hidden="true"></i></a>6. hashCode and equals Rules</h2>
+<ol>
+<li>If you override <code>equals</code>, you must also override <code>hashCode</code>.</li>
+<li>Objects stored in a <code>Set</code> must override both methods.</li>
+<li>Custom objects used as <code>Map</code> keys must override both <code>hashCode</code> and <code>equals</code>.</li>
+</ol>
+<hr></hr>
+<h2 id="7-use-toarrayt-array-when-converting-a-collection-to-an-array"><a name="7-use-toarrayt-array-when-converting-a-collection-to-an-array" class="anchor-navigation-ex-anchor" href="#7-use-toarrayt-array-when-converting-a-collection-to-an-array"><i class="fa fa-link" aria-hidden="true"></i></a>7. Use toArray(T[] array) When Converting a Collection to an Array</h2>
+<pre><code class="lang-java">List&lt;String&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(<span class="hljs-number">2</span>);
+list.add(<span class="hljs-string">"guan"</span>);
+list.add(<span class="hljs-string">"bao"</span>);
+
+<span class="hljs-comment">// Correct</span>
+String[] array = list.toArray(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">0</span>]);
+
+<span class="hljs-comment">// Wrong</span>
+Object[] array = list.toArray();
+</code></pre>
+<hr></hr>
+<h2 id="8-do-not-add-or-remove-elements-inside-a-foreach-loop"><a name="8-do-not-add-or-remove-elements-inside-a-foreach-loop" class="anchor-navigation-ex-anchor" href="#8-do-not-add-or-remove-elements-inside-a-foreach-loop"><i class="fa fa-link" aria-hidden="true"></i></a>8. Do Not add or remove Elements Inside a foreach Loop</h2>
+<p>Use an <code>Iterator</code> instead. In concurrent scenarios, synchronize on the <code>Iterator</code>.</p>
+<hr></hr>
+<h2 id="9-simplify-boolean-returns"><a name="9-simplify-boolean-returns" class="anchor-navigation-ex-anchor" href="#9-simplify-boolean-returns"><i class="fa fa-link" aria-hidden="true"></i></a>9. Simplify Boolean Returns</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">if</span> (booleanExpression) {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">return</span> booleanExpression;
+</code></pre>
+<hr></hr>
+<h2 id="10-apply-strict-access-control-to-class-members"><a name="10-apply-strict-access-control-to-class-members" class="anchor-navigation-ex-anchor" href="#10-apply-strict-access-control-to-class-members"><i class="fa fa-link" aria-hidden="true"></i></a>10. Apply Strict Access Control to Class Members</h2>
+<ul>
+<li><code>protected</code> fields are prohibited (they cannot be handled compatibly in the future).</li>
+<li>Methods and variables used only within the current class must be declared <code>private</code>.</li>
+</ul>
+<hr></hr>
+<h2 id="11-always-add-override-when-overriding-a-method"><a name="11-always-add-override-when-overriding-a-method" class="anchor-navigation-ex-anchor" href="#11-always-add-override-when-overriding-a-method"><i class="fa fa-link" aria-hidden="true"></i></a>11. Always Add @Override When Overriding a Method</h2>
+<p>This catches incompatibilities when a parent class method signature changes:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Correct</span>
+<span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doSomething</span><span class="hljs-params">()</span> {
+    <span class="hljs-comment">// custom implementation</span>
+}
+</code></pre>
+<p>During plugin development, FanRuan framework upgrades may change interface signatures. <code>@Override</code> ensures such breaking changes are caught at compile time.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3745,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Other Standards","level":"2.2.2.5","depth":3,"next":{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]},"previous":{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-other-standards.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Other Standards","level":"2.2.2.5","depth":3,"next":{"title":"Business Code Standards","level":"2.2.2.6","depth":3,"path":"tutorial/coding-standards/java-business-standards.md","ref":"tutorial/coding-standards/java-business-standards.md","articles":[]},"previous":{"title":"Output Standards","level":"2.2.2.4","depth":3,"path":"tutorial/coding-standards/java-output-standards.md","ref":"tutorial/coding-standards/java-output-standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/coding-standards/java-other-standards.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

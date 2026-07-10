@@ -3555,10 +3555,116 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#rightselectionhandlerprovider"><b></b>RightSelectionHandlerProvider</a></li></ul></div><a href="#rightselectionhandlerprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="rightselectionhandlerprovider"><a name="rightselectionhandlerprovider" class="anchor-navigation-ex-anchor" href="#rightselectionhandlerprovider"><i class="fa fa-link" aria-hidden="true"></i></a>RightSelectionHandlerProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#rightselectionhandlerprovider"><b></b>RightSelectionHandlerProvider</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example-code"><b></b>Example Code</a></li><li><span class="title-icon "></span><a href="#reference"><b></b>Reference</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#rightselectionhandlerprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="rightselectionhandlerprovider"><a name="rightselectionhandlerprovider" class="anchor-navigation-ex-anchor" href="#rightselectionhandlerprovider"><i class="fa fa-link" aria-hidden="true"></i></a>RightSelectionHandlerProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>provider</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.fun.RightSelectionHandlerProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.design.fun.RightSelectionHandlerProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>Extends the right-click context menu for cells or float elements during template creation, to meet custom functionality requirements (e.g., selective paste). Also supports adding, removing, or modifying built-in right-click options in forms and parameter panels.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">RightSelectionHandlerProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"RightSelectionHandlerProvider"</span>;
+
+    <span class="hljs-comment">/**
+     * Adds, removes, or modifies right-click menu items for cells or float elements.
+     *
+     * <span class="hljs-doctag">@param</span> ePane     the selected element
+     * <span class="hljs-doctag">@param</span> popupMenu the right-click main menu
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">dmlMenu</span><span class="hljs-params">(TargetComponent ePane, UIPopupMenu popupMenu)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether this implementation applies to the current element.
+     *
+     * <span class="hljs-doctag">@param</span> selectableElement currently selected element — either CellSelection (cell) or FloatSelection (float element)
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(SelectableElement selectableElement)</span>;
+
+    <span class="hljs-comment">/**
+     * Adds, removes, or modifies built-in right-click actions in forms or parameter panels.
+     *
+     * <span class="hljs-doctag">@param</span> actions default action list; note that actions in this list must be subclasses of UndoableAction
+     */</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">dmlUpdateActions</span><span class="hljs-params">(BaseFormDesigner formDesigner, List&lt;UpdateAction&gt; actions)</span>;
+
+    <span class="hljs-comment">/**
+     * Whether this implementation applies to the current form/parameter panel element.
+     *
+     * <span class="hljs-doctag">@param</span> formDesigner currently selected element — either a form editor or parameter panel
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(BaseFormDesigner formDesigner)</span>;
+}
+</code></pre>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Register the implementation class in the plugin's <code>plugin.xml</code> via the <code>extra-designer</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RightSelectionHandlerProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.designer.MyActionImpl"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="example-code"><a name="example-code" class="anchor-navigation-ex-anchor" href="#example-code"><i class="fa fa-link" aria-hidden="true"></i></a>Example Code</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyRightSelectionHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">RightSelectionHandlerProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dmlMenu</span><span class="hljs-params">(TargetComponent ePane, UIPopupMenu popupMenu)</span> {
+        <span class="hljs-comment">// Append a custom menu item at the end of the right-click menu</span>
+        <span class="hljs-type">UIMenuItem</span> <span class="hljs-variable">myItem</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UIMenuItem</span>(<span class="hljs-string">"Custom Action"</span>);
+        myItem.addActionListener(e -&gt; {
+            <span class="hljs-comment">// Execute custom logic</span>
+        });
+        popupMenu.add(myItem);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(SelectableElement selectableElement)</span> {
+        <span class="hljs-comment">// Only applies to cell selections</span>
+        <span class="hljs-keyword">return</span> selectableElement <span class="hljs-keyword">instanceof</span> CellSelection;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dmlUpdateActions</span><span class="hljs-params">(BaseFormDesigner formDesigner, List&lt;UpdateAction&gt; actions)</span> {
+        <span class="hljs-comment">// Do not handle form right-click menu</span>
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(BaseFormDesigner formDesigner)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+</code></pre>
+<h2 id="reference"><a name="reference" class="anchor-navigation-ex-anchor" href="#reference"><i class="fa fa-link" aria-hidden="true"></i></a>Reference</h2>
+<p>Official example source: <a href="http://git.fanruan.com/fanruan/design-right-selection" target="_blank">design-right-selection</a></p>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li><code>dmlMenu()</code> applies to right-click menu extensions for report cells and float elements.</li>
+<li><code>dmlUpdateActions()</code> applies to right-click menu extensions for forms and parameter panels. Note that the action elements passed in the list must be subclasses of <code>UndoableAction</code>, not <code>UpdateAction</code>.</li>
+<li>The two pairs of <code>accept()</code> methods control the effective scope for different scenarios. Returning <code>true</code> in only one of them is perfectly valid.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3708,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RightSelectionHandlerProvider","level":"2.4.3.1.18","depth":4,"next":{"title":"ServerTableDataDefineProvider","level":"2.4.3.1.19","depth":4,"path":"tutorial/finereport/designer/ServerTableDataDefineProvider.md","ref":"tutorial/finereport/designer/ServerTableDataDefineProvider.md","articles":[]},"previous":{"title":"RegPaneProvider","level":"2.4.3.1.17","depth":4,"path":"tutorial/finereport/designer/RegPaneProvider.md","ref":"tutorial/finereport/designer/RegPaneProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/RightSelectionHandlerProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"RightSelectionHandlerProvider","level":"2.4.3.1.18","depth":4,"next":{"title":"ServerTableDataDefineProvider","level":"2.4.3.1.19","depth":4,"path":"tutorial/finereport/designer/ServerTableDataDefineProvider.md","ref":"tutorial/finereport/designer/ServerTableDataDefineProvider.md","articles":[]},"previous":{"title":"RegPaneProvider","level":"2.4.3.1.17","depth":4,"path":"tutorial/finereport/designer/RegPaneProvider.md","ref":"tutorial/finereport/designer/RegPaneProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/RightSelectionHandlerProvider.md","mtime":"2026-07-10T02:20:30.972Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

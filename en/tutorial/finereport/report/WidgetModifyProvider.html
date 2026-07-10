@@ -3555,10 +3555,184 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#widgetmodifyprovider"><b></b>WidgetModifyProvider</a></li></ul></div><a href="#widgetmodifyprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="widgetmodifyprovider"><a name="widgetmodifyprovider" class="anchor-navigation-ex-anchor" href="#widgetmodifyprovider"><i class="fa fa-link" aria-hidden="true"></i></a>WidgetModifyProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#widgetmodifyprovider"><b></b>WidgetModifyProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-terminology"><b></b>1. Terminology</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-overview"><b></b>3. Interface Overview</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-constraints-and-notes"><b></b>7. Constraints and Notes</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open-Source Examples</a></li></ul></ul></div><a href="#widgetmodifyprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="widgetmodifyprovider"><a name="widgetmodifyprovider" class="anchor-navigation-ex-anchor" href="#widgetmodifyprovider"><i class="fa fa-link" aria-hidden="true"></i></a>WidgetModifyProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-report (stable)</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.stable.fun.WidgetModifyProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/WidgetModifyProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-terminology"><a name="1-terminology" class="anchor-navigation-ex-anchor" href="#1-terminology"><i class="fa fa-link" aria-hidden="true"></i></a>1. Terminology</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>When exporting, FineReport's standard product converts certain widgets to images for PDF export. <code>WidgetModifyProvider</code> is primarily used in scenarios where the product does not support exporting a particular widget type, or where the exported widget's appearance does not meet requirements, during printing or export operations.</p>
+<p>Developers can convert widgets into images with the desired visual style for printing or export.</p>
+<h2 id="3-interface-overview"><a name="3-interface-overview" class="anchor-navigation-ex-anchor" href="#3-interface-overview"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Overview</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.form.ui.Widget;
+<span class="hljs-keyword">import</span> com.fr.report.cell.CellElement;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.stable.script.CalculatorProvider;
+
+<span class="hljs-keyword">import</span> java.awt.image.BufferedImage;
+
+<span class="hljs-comment">/**
+ * This interface is used to modify various properties of a widget
+ *
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">WidgetModifyProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"WidgetModifyProvider"</span>;
+
+    <span class="hljs-comment">/**
+     * Determines whether this provider accepts the given widget type
+     *
+     * <span class="hljs-doctag">@param</span> widget Widget
+     * <span class="hljs-doctag">@return</span> Whether this provider can handle it
+     */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">accept</span><span class="hljs-params">(Widget widget)</span>;
+
+    <span class="hljs-comment">/**
+     * Converts a widget to an image for export and printing
+     *
+     * <span class="hljs-doctag">@param</span> ce         Current cell
+     * <span class="hljs-doctag">@param</span> pxWidth    Width in pixels
+     * <span class="hljs-doctag">@param</span> pxHeight   Height in pixels
+     * <span class="hljs-doctag">@param</span> calculator Calculator
+     * <span class="hljs-doctag">@return</span> Image converted from the widget
+     */</span>
+    BufferedImage <span class="hljs-title function_">toImage</span><span class="hljs-params">(CellElement ce, <span class="hljs-type">int</span> pxWidth, <span class="hljs-type">int</span> pxHeight, CalculatorProvider calculator)</span>;
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">WidgetModifyProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.write.cal;
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WB</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CalculatableResWorkSheet</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">WriteECReport</span>, ShrinkFitable, WBProvider {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-comment">/**
+     * Converts widgets in the result report to images for export and printing
+     *
+     * <span class="hljs-doctag">@param</span> resultbook Result report
+     * <span class="hljs-doctag">@return</span> Processed result report
+     */</span>
+    <span class="hljs-keyword">public</span> ResultECReport <span class="hljs-title function_">processWidgetAsImage</span><span class="hljs-params">(ResultECReport resultbook)</span> {
+        <span class="hljs-keyword">if</span> (!CustomConfigManager.getInstance().isPrintWidget()) {
+            <span class="hljs-keyword">return</span> resultbook;
+        }
+
+        WB cloneWB;
+        <span class="hljs-keyword">try</span> {
+            cloneWB = (WB) resultbook.clone();
+        } <span class="hljs-keyword">catch</span> (CloneNotSupportedException e) {
+            cloneWB = (WB) resultbook;
+        }
+
+        <span class="hljs-type">Iterator</span> <span class="hljs-variable">it</span> <span class="hljs-operator">=</span> cloneWB.cellIterator();
+        <span class="hljs-type">DynamicUnitList</span> <span class="hljs-variable">rowHeightList</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.getRowHeightList_DEC();
+        <span class="hljs-type">DynamicUnitList</span> <span class="hljs-variable">columnWidthList</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.getColumnWidthList_DEC();
+
+        <span class="hljs-keyword">while</span> (it.hasNext()) {
+            <span class="hljs-type">BCE_WRITE</span> <span class="hljs-variable">ce</span> <span class="hljs-operator">=</span> (BCE_WRITE) it.next();
+            <span class="hljs-type">Widget</span> <span class="hljs-variable">widget</span> <span class="hljs-operator">=</span> (Widget) ce.getOptionalAttributes().get(WriteCellElementAttribute.WIDGET);
+            processWidgetAsImage(widget, rowHeightList, columnWidthList, ce);
+        }
+
+        <span class="hljs-keyword">return</span> cloneWB;
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processWidgetAsImage</span><span class="hljs-params">(Widget widget, DynamicUnitList rowHeightList,
+                                      DynamicUnitList columnWidthList, BCE_WRITE ce)</span> {
+        <span class="hljs-keyword">if</span> (widget == <span class="hljs-literal">null</span> || !widget.isVisible()) {
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">resolution</span> <span class="hljs-operator">=</span> Constants.DEFAULT_WEBWRITE_AND_SCREEN_RESOLUTION;
+        <span class="hljs-comment">// Get cell width and height</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">pxHeight</span> <span class="hljs-operator">=</span> rowHeightList.getRangeValue(ce.getRow(), ce.getRow() + ce.getRowSpan()).toPixI(resolution);
+        <span class="hljs-type">int</span> <span class="hljs-variable">pxWidth</span> <span class="hljs-operator">=</span> columnWidthList.getRangeValue(ce.getColumn(), ce.getColumn() + ce.getColumnSpan()).toPixI(resolution);
+        <span class="hljs-comment">// Convert to image</span>
+        <span class="hljs-type">BufferedImage</span> <span class="hljs-variable">image</span> <span class="hljs-operator">=</span> drawWidget(widget, ce, pxHeight, pxWidth);
+
+        <span class="hljs-keyword">if</span> (image != <span class="hljs-literal">null</span>) {
+            <span class="hljs-comment">// Widget is no longer needed after conversion; avoids redundant processing in other print steps</span>
+            ce.setValue(image);
+            <span class="hljs-comment">// If the cell also has a present value defined, clear it as well</span>
+            ce.setPresentValue(image);
+        }
+        ce.getOptionalAttributes().remove(WriteCellElementAttribute.WIDGET);
+    }
+
+    <span class="hljs-keyword">private</span> BufferedImage <span class="hljs-title function_">drawWidget</span><span class="hljs-params">(Widget widget, CellElement ce, <span class="hljs-type">int</span> pxHeight, <span class="hljs-type">int</span> pxWidth)</span> {
+        <span class="hljs-type">ExtraReportClassManager</span> <span class="hljs-variable">extraReportClassManager</span> <span class="hljs-operator">=</span> PluginModule.getAgent(PluginModule.ExtraReport);
+        <span class="hljs-keyword">if</span> (extraReportClassManager != <span class="hljs-literal">null</span>) {
+            Set&lt;WidgetModifyProvider&gt; providers = extraReportClassManager.getArray(WidgetModifyProvider.MARK_STRING);
+            <span class="hljs-keyword">for</span> (WidgetModifyProvider provider : providers) {
+                <span class="hljs-keyword">if</span> (provider.accept(widget)) {
+                    <span class="hljs-keyword">return</span> provider.toImage(ce, pxWidth, pxHeight, <span class="hljs-built_in">this</span>.getCalculator());
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> widget.toImage(ce.getValue(), pxWidth, pxHeight, ce.getStyle(), <span class="hljs-built_in">this</span>.getCalculator());
+    }
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h2 id="7-constraints-and-notes"><a name="7-constraints-and-notes" class="anchor-navigation-ex-anchor" href="#7-constraints-and-notes"><i class="fa fa-link" aria-hidden="true"></i></a>7. Constraints and Notes</h2>
+<p>As shown in the implementation above, widget export requires that <code>CustomConfigManager.getInstance().isPrintWidget()</code> is enabled. To conveniently modify this configuration, install the <a href="https://market.fanruan.com/plugin/1052a471-0239-4cd8-b832-045d53182c5d" target="_blank">Visual Configuration Plugin</a> and set <code>CustomConfig.printWidget</code> to <code>true</code>.</p>
+<p>If the widget is one you developed yourself, the <code>Widget</code> object already has a <code>toImage</code> method. In that case, there is no need to use <code>WidgetModifyProvider</code>—simply implement <code>toImage</code> directly in your widget class.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-widget-modify-provider" target="_blank">demo-widget-modify-provider</a></p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open-Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and contributed by community developers, for reference and learning purposes only. Neither the developers nor FineReport are obligated to provide instruction or support for any results from these examples. Commercial use is prohibited; any consequences of commercial use are solely the responsibility of the user.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3776,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"WidgetModifyProvider","level":"2.4.3.2.23","depth":4,"next":{"title":"Chart Entry Points","level":"2.4.3.3","depth":3,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","ref":"tutorial/finereport/chart/ChartTypeUIProvider.md","articles":[]}]},"previous":{"title":"StylePlaceHolder","level":"2.4.3.2.22","depth":4,"path":"tutorial/finereport/report/StylePlaceHolder.md","ref":"tutorial/finereport/report/StylePlaceHolder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/WidgetModifyProvider.md","mtime":"2026-06-11T06:55:37.647Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"WidgetModifyProvider","level":"2.4.3.2.23","depth":4,"next":{"title":"Chart Entry Points","level":"2.4.3.3","depth":3,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[{"title":"ChartTypeProvider","level":"2.4.3.3.1","depth":4,"path":"tutorial/finereport/chart/ChartTypeProvider.md","ref":"tutorial/finereport/chart/ChartTypeProvider.md","articles":[]},{"title":"ChartTypeUIProvider","level":"2.4.3.3.2","depth":4,"path":"tutorial/finereport/chart/ChartTypeUIProvider.md","ref":"tutorial/finereport/chart/ChartTypeUIProvider.md","articles":[]}]},"previous":{"title":"StylePlaceHolder","level":"2.4.3.2.22","depth":4,"path":"tutorial/finereport/report/StylePlaceHolder.md","ref":"tutorial/finereport/report/StylePlaceHolder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/WidgetModifyProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

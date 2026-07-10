@@ -3555,10 +3555,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#plugin-features"><b></b>plugin-features</a></li></ul></div><a href="#plugin-features" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="plugin-features"><a name="plugin-features" class="anchor-navigation-ex-anchor" href="#plugin-features"><i class="fa fa-link" aria-hidden="true"></i></a>plugin-features</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#plugin-feature-points"><b></b>Plugin Feature Points</a></li><ul><li><span class="title-icon "></span><a href="#step-1-declare-the-recorder-class-in-pluginxml"><b></b>Step 1: Declare the Recorder Class in plugin.xml</a></li><li><span class="title-icon "></span><a href="#step-2-add-annotations-to-the-recorder-class"><b></b>Step 2: Add Annotations to the Recorder Class</a></li><li><span class="title-icon "></span><a href="#result"><b></b>Result</a></li></ul></ul></div><a href="#plugin-feature-points" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="plugin-feature-points"><a name="plugin-feature-points" class="anchor-navigation-ex-anchor" href="#plugin-feature-points"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Feature Points</h1>
+<p>Feature point recording is used to track how end users interact with a developer's plugin. <strong>All plugins must include feature point recording.</strong> Without it, a plugin may appear as "installed and active" in the Plugin Manager but will not function at runtime, and the following error will appear in <code>fanruan.log</code>:</p>
+<p><a href="images/features_error.png" data-lightbox="21107c58-191e-41ab-807d-0513622d367e" data-title="Error when feature point recording is missing"><img src="images/features_error.png" alt="Error when feature point recording is missing"></img></a></p>
+<p>Adding feature point recording requires two steps, illustrated using the <code>plugin-function</code> plugin as an example:</p>
+<hr></hr>
+<h2 id="step-1-declare-the-recorder-class-in-pluginxml"><a name="step-1-declare-the-recorder-class-in-pluginxml" class="anchor-navigation-ex-anchor" href="#step-1-declare-the-recorder-class-in-pluginxml"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Declare the Recorder Class in plugin.xml</h2>
+<pre><code class="lang-xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> standalone=<span class="hljs-string">"no"</span>?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- other fields omitted --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">function-recorder</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.MyAbs"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+</code></pre>
+<p>Add a <code>&lt;function-recorder&gt;</code> node under the <code>&lt;plugin&gt;</code> node. The <code>class</code> attribute points to the class that contains the feature point recording.</p>
 <blockquote>
-<p>Coming soon.</p>
+<p>A plugin may have multiple <code>function-recorder</code> entries if you want to log multiple feature points to the log database.</p>
 </blockquote>
+<hr></hr>
+<h2 id="step-2-add-annotations-to-the-recorder-class"><a name="step-2-add-annotations-to-the-recorder-class" class="anchor-navigation-ex-anchor" href="#step-2-add-annotations-to-the-recorder-class"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Add Annotations to the Recorder Class</h2>
+<ol>
+<li>Add <code>@EnableMetrics</code> on the class to indicate that it contains feature point recording.</li>
+<li>Add <code>@Focus</code> on each method whose usage should be tracked, describing that feature point.</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-meta">@EnableMetrics</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyAbs</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractFunction</span> {
+
+    <span class="hljs-meta">@Focus(id = "com.fr.plugin.function.test", text = "Plugin-Test_Function_Abs", source = Original.PLUGIN)</span>
+    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">run</span><span class="hljs-params">(Object[] args)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+}
+</code></pre>
+<p><code>@Focus</code> annotation parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Unique identifier for the feature point, typically tied to the plugin ID</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>Descriptive text for the feature point, recorded in the log database</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>Source type; use <code>Original.PLUGIN</code> for plugins</td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="result"><a name="result" class="anchor-navigation-ex-anchor" href="#result"><i class="fa fa-link" aria-hidden="true"></i></a>Result</h2>
+<p>Once feature point recording is active, plugin usage is queryable in the log database for statistical analysis:</p>
+<p><a href="images/features_log.png" data-lightbox="bf05931c-62b3-4c27-ba6b-103d1e93f6e3" data-title="Feature point records in the log database"><img src="images/features_log.png" alt="Feature point records in the log database"></img></a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3656,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Plugin Feature Points","level":"2.3.2","depth":2,"next":{"title":"Plugin Lifecycle","level":"2.3.3","depth":2,"path":"tutorial/plugin-concepts/plugin-lifecycle.md","ref":"tutorial/plugin-concepts/plugin-lifecycle.md","articles":[]},"previous":{"title":"Plugin Architecture","level":"2.3.1","depth":2,"path":"tutorial/plugin-concepts/plugin-architecture.md","ref":"tutorial/plugin-concepts/plugin-architecture.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/plugin-concepts/plugin-features.md","mtime":"2026-06-11T06:55:37.655Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Plugin Feature Points","level":"2.3.2","depth":2,"next":{"title":"Plugin Lifecycle","level":"2.3.3","depth":2,"path":"tutorial/plugin-concepts/plugin-lifecycle.md","ref":"tutorial/plugin-concepts/plugin-lifecycle.md","articles":[]},"previous":{"title":"Plugin Architecture","level":"2.3.1","depth":2,"path":"tutorial/plugin-concepts/plugin-architecture.md","ref":"tutorial/plugin-concepts/plugin-architecture.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/plugin-concepts/plugin-features.md","mtime":"2026-07-10T02:20:31.027Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../..","book":{"language":"en"}});
         });
     </script>
 </div>

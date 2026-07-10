@@ -3555,10 +3555,146 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#cellvalueprovider"><b></b>CellValueProvider</a></li></ul></div><a href="#cellvalueprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="cellvalueprovider"><a name="cellvalueprovider" class="anchor-navigation-ex-anchor" href="#cellvalueprovider"><i class="fa fa-link" aria-hidden="true"></i></a>CellValueProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#cellvalueprovider"><b></b>CellValueProvider</a></li><ul><li><span class="title-icon "></span><a href="#1-terminology"><b></b>1. Terminology</a></li><li><span class="title-icon "></span><a href="#2-background-and-use-cases"><b></b>2. Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#3-interface-overview"><b></b>3. Interface Overview</a></li><li><span class="title-icon "></span><a href="#4-supported-versions"><b></b>4. Supported Versions</a></li><li><span class="title-icon "></span><a href="#5-plugin-registration"><b></b>5. Plugin Registration</a></li><li><span class="title-icon "></span><a href="#6-how-it-works"><b></b>6. How It Works</a></li><li><span class="title-icon "></span><a href="#7-constraints-and-notes"><b></b>7. Constraints and Notes</a></li><li><span class="title-icon "></span><a href="#8-useful-links"><b></b>8. Useful Links</a></li><li><span class="title-icon "></span><a href="#9-open-source-examples"><b></b>9. Open-Source Examples</a></li></ul></ul></div><a href="#cellvalueprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="cellvalueprovider"><a name="cellvalueprovider" class="anchor-navigation-ex-anchor" href="#cellvalueprovider"><i class="fa fa-link" aria-hidden="true"></i></a>CellValueProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module</td>
+<td>extra-report</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.report.fun.CellValueProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/CellValueProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="1-terminology"><a name="1-terminology" class="anchor-navigation-ex-anchor" href="#1-terminology"><i class="fa fa-link" aria-hidden="true"></i></a>1. Terminology</h2>
+<p>None</p>
+<h2 id="2-background-and-use-cases"><a name="2-background-and-use-cases" class="anchor-navigation-ex-anchor" href="#2-background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>2. Background and Use Cases</h2>
+<p>The <code>CellValueProvider</code> interface is used to modify the actual value of a cell during template calculation, adjust the physical size of a cell during calculation, and modify the display value rendered in an HTML page (not the cell's display value itself).</p>
+<p>Common use cases include:</p>
+<ol>
+<li>Bulk term escaping and internationalization for display-only reports, converting large numbers of cell values.</li>
+<li>Cell value formatting (primarily used in early versions before rich text was available, for document-style reports).</li>
+<li>Adjusting cell dimensions for cells containing special value types.</li>
+<li>Differentiating display content from export content at scale (scenarios where the on-screen and exported content must differ).</li>
+</ol>
+<h2 id="3-interface-overview"><a name="3-interface-overview" class="anchor-navigation-ex-anchor" href="#3-interface-overview"><i class="fa fa-link" aria-hidden="true"></i></a>3. Interface Overview</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.report.fun;
+
+
+<span class="hljs-keyword">import</span> com.fr.base.Style;
+<span class="hljs-keyword">import</span> com.fr.report.cell.CellElement;
+<span class="hljs-keyword">import</span> com.fr.report.cell.cellattr.CellGUIAttr;
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Mutable;
+<span class="hljs-keyword">import</span> com.fr.stable.script.CalculatorProvider;
+
+<span class="hljs-comment">/**
+ * Cell intermediate processor
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CellValueProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span>{
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CellValueProvider"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Gets the cell value
+     * 
+     * <span class="hljs-doctag">@param</span> oriValue Uncalculated original cell value
+     * <span class="hljs-doctag">@param</span> ca       Calculator
+     * <span class="hljs-doctag">@return</span> Calculated cell value
+     */</span>
+    Object <span class="hljs-title function_">process</span><span class="hljs-params">(Object oriValue, CalculatorProvider ca)</span>;
+
+    <span class="hljs-comment">/**
+     * Processes the cell value before converting to HTML.
+     * For example, if you do not want to use the default display method when outputting a cell
+     * to the web, you can convert it to an image, rich text, etc.
+     *
+     * <span class="hljs-doctag">@param</span> guiAttr  Display attributes
+     * <span class="hljs-doctag">@param</span> height   Cell height
+     * <span class="hljs-doctag">@param</span> oriValue Original value
+     * <span class="hljs-doctag">@param</span> style    Style
+     * <span class="hljs-doctag">@param</span> width    Cell width
+     * <span class="hljs-doctag">@return</span> Processed value
+     */</span>
+    Object <span class="hljs-title function_">processBeforeToTag</span><span class="hljs-params">(Object oriValue, CellGUIAttr guiAttr, Style style, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span>;
+
+    <span class="hljs-comment">/**
+     * Calculates the actual height and width of this cell
+     * <span class="hljs-doctag">@param</span> cellElement Cell element
+     * <span class="hljs-doctag">@param</span> height      Default cell height
+     * <span class="hljs-doctag">@param</span> width       Default cell width
+     * <span class="hljs-doctag">@param</span> mode        Row height / column width adjustment mode for the cell
+     * <span class="hljs-doctag">@return</span> Actual row height or column width, determined by the mode
+     */</span>
+    <span class="hljs-type">int</span> <span class="hljs-title function_">prepare2ShrinkRealWidthOrHeight4Cell</span><span class="hljs-params">(CellElement cellElement,<span class="hljs-type">int</span> height,<span class="hljs-type">int</span> width ,<span class="hljs-type">int</span> mode)</span>;
+}
+</code></pre>
+<h2 id="4-supported-versions"><a name="4-supported-versions" class="anchor-navigation-ex-anchor" href="#4-supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>4. Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product Line</th>
+<th>Version</th>
+<th>Supported</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-plugin-registration"><a name="5-plugin-registration" class="anchor-navigation-ex-anchor" href="#5-plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>5. Plugin Registration</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-report</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">CellValueProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-report</span>&gt;</span>
+</code></pre>
+<h2 id="6-how-it-works"><a name="6-how-it-works" class="anchor-navigation-ex-anchor" href="#6-how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>6. How It Works</h2>
+<p>Where needed, all plugin-declared cell intermediate processor interface instances are retrieved via:
+<code>Set&lt;CellValueProvider&gt; providers = ExtraReportClassManager.getInstance().getArray(CellValueProvider.MARK_STRING);</code></p>
+<p>In the product, these are applied primarily within <code>SE</code>, <code>CellHtmlWriter</code>, and <code>ECReport</code> (the details of this logic involve sensitive implementation information and cannot be disclosed separately; developers only need to understand the relevant use cases and interface behavior).</p>
+<h2 id="7-constraints-and-notes"><a name="7-constraints-and-notes" class="anchor-navigation-ex-anchor" href="#7-constraints-and-notes"><i class="fa fa-link" aria-hidden="true"></i></a>7. Constraints and Notes</h2>
+<p>In <code>Object process(Object oriValue, CalculatorProvider ca)</code>, <code>oriValue</code> is the raw cell value as defined in the template.</p>
+<p>In <code>Object processBeforeToTag(Object oriValue, CellGUIAttr guiAttr, Style style, int width, int height)</code>, <code>oriValue</code> is the value already transformed by <code>process()</code>. <code>processBeforeToTag</code> only affects the content displayed in standard web (non-H5) report previews. It has no effect on print or export. This method only changes what is displayed; it does not change the actual or display value of the cell itself.</p>
+<p>In <code>int prepare2ShrinkRealWidthOrHeight4Cell(CellElement cellElement, int height, int width, int mode)</code>, <code>height</code> and <code>width</code> represent the pixel dimensions of the current cell, and <code>mode</code> indicates whether the cell is set to auto-adjust row height (1) or column width (2). Only the corresponding dimension can be modified (i.e., a single cell cannot have both its row height and column width adjusted simultaneously). At this point, the cell value is also already transformed by <code>process()</code>.</p>
+<h2 id="8-useful-links"><a name="8-useful-links" class="anchor-navigation-ex-anchor" href="#8-useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>8. Useful Links</h2>
+<p>Demo: <a href="https://code.fanruan.com/hugh/demo-cell-value-provider" target="_blank">demo-cell-value-provider</a></p>
+<h2 id="9-open-source-examples"><a name="9-open-source-examples" class="anchor-navigation-ex-anchor" href="#9-open-source-examples"><i class="fa fa-link" aria-hidden="true"></i></a>9. Open-Source Examples</h2>
+<p>Disclaimer: All open-source examples in the documentation are developed and contributed by community developers, for reference and learning purposes only. Neither the developers nor FineReport are obligated to provide instruction or support for any results from these examples. Commercial use of these examples is at the user's own risk.</p>
+<p>None available.</p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3738,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CellValueProvider","level":"2.4.3.2.5","depth":4,"next":{"title":"CommentExcelProcessor","level":"2.4.3.2.6","depth":4,"path":"tutorial/finereport/report/CommentExcelProcessor.md","ref":"tutorial/finereport/report/CommentExcelProcessor.md","articles":[]},"previous":{"title":"CellTagTransformer","level":"2.4.3.2.4","depth":4,"path":"tutorial/finereport/report/CellTagTransformer.md","ref":"tutorial/finereport/report/CellTagTransformer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/CellValueProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"CellValueProvider","level":"2.4.3.2.5","depth":4,"next":{"title":"CommentExcelProcessor","level":"2.4.3.2.6","depth":4,"path":"tutorial/finereport/report/CommentExcelProcessor.md","ref":"tutorial/finereport/report/CommentExcelProcessor.md","articles":[]},"previous":{"title":"CellTagTransformer","level":"2.4.3.2.4","depth":4,"path":"tutorial/finereport/report/CellTagTransformer.md","ref":"tutorial/finereport/report/CellTagTransformer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/report/CellValueProvider.md","mtime":"2026-07-10T02:20:30.974Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

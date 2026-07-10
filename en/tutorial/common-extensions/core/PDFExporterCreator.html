@@ -3555,10 +3555,126 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#pdfexportercreator"><b></b>PDFExporterCreator</a></li></ul></div><a href="#pdfexportercreator" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="pdfexportercreator"><a name="pdfexportercreator" class="anchor-navigation-ex-anchor" href="#pdfexportercreator"><i class="fa fa-link" aria-hidden="true"></i></a>PDFExporterCreator</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#pdfexportercreator"><b></b>PDFExporterCreator</a></li><ul><li><span class="title-icon "></span><a href="#background-and-use-cases"><b></b>Background and Use Cases</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#supported-versions"><b></b>Supported Versions</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li><li><span class="title-icon "></span><a href="#how-it-works"><b></b>How It Works</a></li><li><span class="title-icon "></span><a href="#useful-links"><b></b>Useful Links</a></li></ul></ul></div><a href="#pdfexportercreator" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="pdfexportercreator"><a name="pdfexportercreator" class="anchor-navigation-ex-anchor" href="#pdfexportercreator"><i class="fa fa-link" aria-hidden="true"></i></a>PDFExporterCreator</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.io.exporter.PDFExporterCreator</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="background-and-use-cases"><a name="background-and-use-cases" class="anchor-navigation-ex-anchor" href="#background-and-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>Background and Use Cases</h2>
+<p>FanRuan Report provides fine-grained PDF export scenarios, including common cases such as normal export, print preview, and auto-print. Use the <code>PDFExporterCreator</code> interface when you need to define a custom PDF export type or adjust an existing export type. This interface is intended for targeted adjustments to specific export types, not for uniformly handling all PDF exports.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.io.exporter;
+
+<span class="hljs-keyword">import</span> com.fr.stable.fun.mark.Immutable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PDFExporterCreator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Immutable</span> {
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> <span class="hljs-string">"PDFExporterCreator"</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-meta">@Deprecated</span>
+    PDFExporterProcessor <span class="hljs-title function_">createPDFExporter</span><span class="hljs-params">(<span class="hljs-type">boolean</span> isPrint)</span>;
+
+    <span class="hljs-comment">/**
+     * PDF export
+     * <span class="hljs-doctag">@param</span> exportType export type: normal, print preview, auto-print
+     */</span>
+    PDFExporterProcessor <span class="hljs-title function_">createPDFExporter</span><span class="hljs-params">(PDFExportType exportType)</span>;
+}
+</code></pre>
+<h2 id="supported-versions"><a name="supported-versions" class="anchor-navigation-ex-anchor" href="#supported-versions"><i class="fa fa-link" aria-hidden="true"></i></a>Supported Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Version</th>
+<th>Support</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR</td>
+<td>8.0</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>9.0</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>10.0</td>
+<td>Supported</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>11.0</td>
+<td>Supported</td>
+<td></td>
+</tr>
+<tr>
+<td>BI</td>
+<td>3.6</td>
+<td>Supported</td>
+<td>Dashboard not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>4.0</td>
+<td>Supported</td>
+<td>Dashboard not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1</td>
+<td>Supported</td>
+<td>Dashboard not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.2</td>
+<td>Supported</td>
+<td>Dashboard not supported</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>5.1.3</td>
+<td>Supported</td>
+<td>Dashboard not supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h2>
+<p>Add the following node in <code>plugin.xml</code>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">PDFExporterCreator</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"your class name"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="how-it-works"><a name="how-it-works" class="anchor-navigation-ex-anchor" href="#how-it-works"><i class="fa fa-link" aria-hidden="true"></i></a>How It Works</h2>
+<p>All PDF exports are created through <code>PDFExporterFactory</code>. When <code>PDFExporterFactory</code> loads, it reads the <code>PDFExporterCreator</code> instances declared by plugins. When <code>PDFExporterFactory#getPDFExporter</code> is invoked, it calls the loaded <code>PDFExporterCreator</code> instance to generate the specific export instance.</p>
+<p>This interface is <code>Immutable</code> (exclusive) — only one plugin implementation takes effect in the environment. Ensure there are no conflicting plugins in your environment. <code>PDFExporterProcessor</code> is merely an abstract wrapper over <code>AppExporter</code>; it is recommended to extend <code>PDFExporter</code>, <code>PDFExporterForPrint</code>, or <code>PDFEmbExporter</code> directly.</p>
+<h2 id="useful-links"><a name="useful-links" class="anchor-navigation-ex-anchor" href="#useful-links"><i class="fa fa-link" aria-hidden="true"></i></a>Useful Links</h2>
+<ul>
+<li>Demo: <a href="https://code.fanruan.com/hugh/demo-pdf-exporter-creator" target="_blank">demo-pdf-exporter-creator</a></li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3718,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PDFExporterCreator","level":"2.4.2.1.19","depth":4,"next":{"title":"RequestInterceptor","level":"2.4.2.1.20","depth":4,"path":"tutorial/common-extensions/core/RequestInterceptor.md","ref":"tutorial/common-extensions/core/RequestInterceptor.md","articles":[]},"previous":{"title":"LocaleFinder","level":"2.4.2.1.18","depth":4,"path":"tutorial/common-extensions/core/LocaleFinder.md","ref":"tutorial/common-extensions/core/LocaleFinder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/PDFExporterCreator.md","mtime":"2026-06-11T06:55:37.643Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"PDFExporterCreator","level":"2.4.2.1.19","depth":4,"next":{"title":"RequestInterceptor","level":"2.4.2.1.20","depth":4,"path":"tutorial/common-extensions/core/RequestInterceptor.md","ref":"tutorial/common-extensions/core/RequestInterceptor.md","articles":[]},"previous":{"title":"LocaleFinder","level":"2.4.2.1.18","depth":4,"path":"tutorial/common-extensions/core/LocaleFinder.md","ref":"tutorial/common-extensions/core/LocaleFinder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/PDFExporterCreator.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

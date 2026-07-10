@@ -3555,10 +3555,108 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#theme-favorites-support"><b></b>theme-favorites-support</a></li></ul></div><a href="#theme-favorites-support" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="theme-favorites-support"><a name="theme-favorites-support" class="anchor-navigation-ex-anchor" href="#theme-favorites-support"><i class="fa fa-link" aria-hidden="true"></i></a>theme-favorites-support</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#favorites-support-in-theme-development"><b></b>Favorites Support in Theme Development</a></li><ul><li><span class="title-icon "></span><a href="#skeleton-code"><b></b>Skeleton Code</a></li><li><span class="title-icon "></span><a href="#zxltabs-wrapper-implementation"><b></b>zxl.tabs Wrapper Implementation</a></li></ul></ul></div><a href="#favorites-support-in-theme-development" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="favorites-support-in-theme-development"><a name="favorites-support-in-theme-development" class="anchor-navigation-ex-anchor" href="#favorites-support-in-theme-development"><i class="fa fa-link" aria-hidden="true"></i></a>Favorites Support in Theme Development</h1>
+<p>In the new FineUI backend framework, <code>type: "dec.provider.tab_pane"</code> is used to display template content and web pages. However, when doing custom theme development, you cannot use it directly — you need to wrap it in a parent component.</p>
+<p>This article walks through a theme example with the following overall appearance:</p>
+<p><a href="images/theme_layout_overview.png" data-lightbox="7e081ba3-4219-4f77-b8f6-6bf249f57bc8" data-title="Theme overall layout"><img src="images/theme_layout_overview.png" alt="Theme overall layout"></img></a></p>
+<p>The area highlighted in red is the <code>type: "dec.provider.tab_pane"</code> component.</p>
+<h2 id="skeleton-code"><a name="skeleton-code" class="anchor-navigation-ex-anchor" href="#skeleton-code"><i class="fa fa-link" aria-hidden="true"></i></a>Skeleton Code</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// Theme skeleton</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.provider.layout"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">provider</span>) {
+    provider.<span class="hljs-title function_">setConfig</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.absolute"</span>,
+        <span class="hljs-attr">cls</span>: <span class="hljs-string">"demo-background"</span>,
+        <span class="hljs-attr">items</span>: [
+            {
+                <span class="hljs-attr">el</span>: {
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"zxl.tabs"</span>, <span class="hljs-comment">// The tabs display is a wrapper around dec.provider.tab_pane</span>
+                },
+                <span class="hljs-attr">top</span>: <span class="hljs-number">120</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span>
+            }, {
+                <span class="hljs-attr">el</span>: {
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"dec.header"</span> <span class="hljs-comment">// Custom header</span>
+                },
+                <span class="hljs-attr">height</span>: <span class="hljs-number">120</span>,
+                <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>
+            },
+        ]
+    });
+    <span class="hljs-keyword">return</span> provider;
+}());
+</code></pre>
+<p>The code above uses <code>zxl.tabs</code>, which is a wrapper around <code>dec.provider.tab_pane</code>. <strong>Using <code>dec.provider.tab_pane</code> directly will prevent templates from opening</strong> when calling:</p>
+<pre><code class="lang-js"><span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.frame.tab_pane"</span>).<span class="hljs-title function_">addItem</span>(item)
+</code></pre>
+<h2 id="zxltabs-wrapper-implementation"><a name="zxltabs-wrapper-implementation" class="anchor-navigation-ex-anchor" href="#zxltabs-wrapper-implementation"><i class="fa fa-link" aria-hidden="true"></i></a>zxl.tabs Wrapper Implementation</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// zxl.tabs</span>
+(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Widget</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+
+        <span class="hljs-attr">_store</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Models</span>.<span class="hljs-title function_">getModel</span>(<span class="hljs-string">"dec.zxl.tabs"</span>)
+        },
+        <span class="hljs-attr">beforeInit</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">store</span>.<span class="hljs-title function_">initFavs</span>(e); <span class="hljs-comment">// Initialize favorites and full directory tree</span>
+        },
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.absolute"</span>,
+                <span class="hljs-attr">items</span>: [{
+                    <span class="hljs-attr">el</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Providers</span>.<span class="hljs-title function_">getProvider</span>(<span class="hljs-string">"dec.provider.tab_pane"</span>).<span class="hljs-title function_">getTabPaneComponent</span>({
+                        <span class="hljs-comment">// Do not use type:"dec.provider.tab_pane" directly; use Providers to get the el</span>
+                        <span class="hljs-attr">ref</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) {
+                            <span class="hljs-title function_">initHomepage</span>(); <span class="hljs-comment">// Initialize the homepage</span>
+                        },
+                        <span class="hljs-attr">showTabBar</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">cls</span>: <span class="hljs-string">"bi-background-tab"</span>,
+                    }),
+                    <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>
+                }]
+            };
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"zxl.tabs"</span>, <span class="hljs-title class_">Widget</span>);
+})();
+</code></pre>
+<p>There are two key points here:</p>
+<ol>
+<li>A custom model is defined.</li>
+<li><code>BI.Providers.getProvider("dec.provider.tab_pane").getTabPaneComponent</code> is used — <strong>do not use <code>type: "dec.provider.tab_pane"</code> directly; use Providers to get the el</strong>.</li>
+</ol>
+<p>The reason a custom model is required is that <code>dec.provider.tab_pane</code> needs two context values: <code>favorites</code> and <code>entries</code>. The code is as follows:</p>
+<pre><code class="lang-js">(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> e = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-title class_">Fix</span>.<span class="hljs-property">Model</span>, {
+        <span class="hljs-attr">state</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> { <span class="hljs-comment">// Define two properties</span>
+                <span class="hljs-attr">favorites</span>: [],
+                <span class="hljs-attr">entries</span>: []
+            }
+        },
+        <span class="hljs-attr">childContext</span>: [<span class="hljs-string">"favorites"</span>, <span class="hljs-string">"entries"</span>], <span class="hljs-comment">// Pass these two properties to child widget models</span>
+        <span class="hljs-attr">actions</span>: {
+            <span class="hljs-attr">initFavs</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">callBack</span>) {
+                <span class="hljs-keyword">var</span> self = <span class="hljs-variable language_">this</span>;
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">true</span>;
+                <span class="hljs-comment">// Initialize favorites and the complete directory tree — both required by dec.provider.tab_pane</span>
+                <span class="hljs-title class_">Dec</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getFavoritesList</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+                    self.<span class="hljs-property">model</span>.<span class="hljs-property">favorites</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.frame.entry"</span>).<span class="hljs-title function_">normalizeEntries</span>(e.<span class="hljs-property">data</span>, <span class="hljs-literal">false</span>);
+                    <span class="hljs-title function_">callBack</span>();
+                    self.<span class="hljs-property">model</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">false</span>;
+                });
+                <span class="hljs-title class_">Dec</span>.<span class="hljs-property">Utils</span>.<span class="hljs-title function_">getCompleteDirectoryTree</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+                    self.<span class="hljs-property">model</span>.<span class="hljs-property">entries</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Tree</span>.<span class="hljs-title function_">transformToTreeFormat</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Services</span>.<span class="hljs-title function_">getService</span>(<span class="hljs-string">"dec.service.frame.entry"</span>).<span class="hljs-title function_">normalizeEntries</span>(e.<span class="hljs-property">data</span>))
+                })
+            }
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">model</span>(<span class="hljs-string">"dec.zxl.tabs"</span>, e)
+})();
+</code></pre>
+<p>Note: in the code above, <code>Dec.Utils.getFavoritesList</code> and <code>Dec.Utils.getCompleteDirectoryTree</code> are called to initialize the two properties required by <code>dec.provider.tab_pane</code>, which are then passed to child widgets via <code>childContext</code>.</p>
+<p>At this point, the favorites and unfavorite functionality should be working:</p>
+<p><a href="images/theme_favorites_toggle.gif" data-lightbox="6ec7b1b9-8866-46f2-889e-9a7e6cb64002" data-title="Favorites toggle demo"><img src="images/theme_favorites_toggle.gif" alt="Favorites toggle demo"></img></a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3700,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Favorites Support for Theme","level":"2.4.2.3.2.2","depth":5,"next":{"title":"Sidebar & Admin Module","level":"2.4.2.3.3","depth":4,"path":"tutorial/common-extensions/platform-frontend/left-options.md","ref":"tutorial/common-extensions/platform-frontend/left-options.md","articles":[{"title":"Add Sidebar Node","level":"2.4.2.3.3.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/add-sidebar-node.md","ref":"tutorial/common-extensions/platform-frontend/add-sidebar-node.md","articles":[]},{"title":"Add Admin Node","level":"2.4.2.3.3.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/add-management-node.md","ref":"tutorial/common-extensions/platform-frontend/add-management-node.md","articles":[]}]},"previous":{"title":"Set Theme","level":"2.4.2.3.2.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/set-theme.md","ref":"tutorial/common-extensions/platform-frontend/set-theme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","mtime":"2026-06-11T06:55:37.644Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Favorites Support for Theme","level":"2.4.2.3.2.2","depth":5,"next":{"title":"Sidebar & Admin Module","level":"2.4.2.3.3","depth":4,"path":"tutorial/common-extensions/platform-frontend/left-options.md","ref":"tutorial/common-extensions/platform-frontend/left-options.md","articles":[{"title":"Add Sidebar Node","level":"2.4.2.3.3.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/add-sidebar-node.md","ref":"tutorial/common-extensions/platform-frontend/add-sidebar-node.md","articles":[]},{"title":"Add Admin Node","level":"2.4.2.3.3.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/add-management-node.md","ref":"tutorial/common-extensions/platform-frontend/add-management-node.md","articles":[]}]},"previous":{"title":"Set Theme","level":"2.4.2.3.2.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/set-theme.md","ref":"tutorial/common-extensions/platform-frontend/set-theme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/theme-favorites-support.md","mtime":"2026-07-10T02:20:30.969Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

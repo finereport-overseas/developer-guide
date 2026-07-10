@@ -3555,10 +3555,287 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#rest-api-connector"><b></b>rest-api-connector</a></li></ul></div><a href="#rest-api-connector" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="rest-api-connector"><a name="rest-api-connector" class="anchor-navigation-ex-anchor" href="#rest-api-connector"><i class="fa fa-link" aria-hidden="true"></i></a>rest-api-connector</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#custom-dataset"><b></b>Custom Dataset</a></li><ul><li><span class="title-icon "></span><a href="#frontend"><b></b>Frontend</a></li><li><span class="title-icon "></span><a href="#backend"><b></b>Backend</a></li><ul><li><span class="title-icon "></span><a href="#step-1-register-the-plugin-manager"><b></b>Step 1: Register the Plugin Manager</a></li><li><span class="title-icon "></span><a href="#step-2-implement-the-dataset-generator"><b></b>Step 2: Implement the Dataset Generator</a></li><li><span class="title-icon "></span><a href="#step-3-implement-the-frontend-page-generator"><b></b>Step 3: Implement the Frontend Page Generator</a></li><li><span class="title-icon "></span><a href="#step-4-core-implement-the-data-retrieval-logic"><b></b>Step 4 (Core): Implement the Data Retrieval Logic</a></li></ul><li><span class="title-icon "></span><a href="#open-source-demo"><b></b>Open-Source Demo</a></li><li><span class="title-icon "></span><a href="#version-notes"><b></b>Version Notes</a></li></ul></ul></div><a href="#custom-dataset" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="custom-dataset"><a name="custom-dataset" class="anchor-navigation-ex-anchor" href="#custom-dataset"><i class="fa fa-link" aria-hidden="true"></i></a>Custom Dataset</h1>
+<h2 id="frontend"><a name="frontend" class="anchor-navigation-ex-anchor" href="#frontend"><i class="fa fa-link" aria-hidden="true"></i></a>Frontend</h2>
+<p>The backend Step 3 injects frontend resources: HTML and a Component (which includes JS and CSS).</p>
+<p>To implement the frontend panel, define a <code>render</code> method in JS and initialize it via <code>new BIPlugin().init(render)</code>.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"test"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * data: If the dataset has been saved previously, this will contain the developer's saved data; null for a new dataset.
+ * config: Configuration information, such as the template environment. Future property extensions will also be placed here.
+ * saveSessionCallback(data: Object): Promise — Save callback; accepts a JSON object, returns a Promise indicating success or failure.
+ * closeSessionCallback: Calling this ends the current page session and returns control to BI.
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params">data, config, saveFn, closeFn</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'data:'</span>, data);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'config:'</span>, config);
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'test'</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-string">`
+        jsonContext: &lt;input id="jsonContext" value='<span class="hljs-subst">${data.jsonContext}</span>' /&gt;&lt;br /&gt;
+        transferName: &lt;input id="transferName" value='<span class="hljs-subst">${data.transferName}</span>'&gt;
+        &lt;button id="save" type="button"&gt;save&lt;/button&gt;
+        &lt;button id="close" type="button"&gt;close&lt;/button&gt;`</span>;
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'save'</span>).<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> jsonContext = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'jsonContext'</span>).<span class="hljs-property">value</span>;
+        <span class="hljs-keyword">const</span> transferName = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'transferName'</span>).<span class="hljs-property">value</span>;
+        <span class="hljs-title function_">saveFn</span>({ jsonContext, transferName }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res));
+    };
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'close'</span>).<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-title function_">closeFn</span>();
+    };
+}
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
+</code></pre>
+<h2 id="backend"><a name="backend" class="anchor-navigation-ex-anchor" href="#backend"><i class="fa fa-link" aria-hidden="true"></i></a>Backend</h2>
+<h3 id="step-1-register-the-plugin-manager"><a name="step-1-register-the-plugin-manager" class="anchor-navigation-ex-anchor" href="#step-1-register-the-plugin-manager"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Register the Plugin Manager</h3>
+<p>Extend <code>AbstractCustomDatasetProvider</code> to implement a custom subclass for integration with the plugin manager.</p>
+<pre><code class="lang-java"><span class="hljs-comment">// CustomDatasetProvider interface</span>
+<span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomDatasetProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"CustomDatasetProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * Custom dataset generator
+     */</span>
+    CustomDatasetGenerator <span class="hljs-title function_">getGenerator</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">// AbstractCustomDatasetProvider abstract class</span>
+<span class="hljs-meta">@API(level = CustomDatasetProvider.CURRENT_LEVEL)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractCustomDatasetProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CustomDatasetProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">currentAPILevel</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> CustomDatasetProvider.CURRENT_LEVEL;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">mark4Provider</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> getClass().getName();
+    }
+}
+</code></pre>
+<h3 id="step-2-implement-the-dataset-generator"><a name="step-2-implement-the-dataset-generator" class="anchor-navigation-ex-anchor" href="#step-2-implement-the-dataset-generator"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Implement the Dataset Generator</h3>
+<p>Extend <code>AbstractCustomDatasetGenerator</code> to implement a custom subclass for providing the dataset's own properties (name, i18n, frontend resource configuration, and backend data retrieval logic).</p>
 <blockquote>
-<p>Coming soon.</p>
+<p><code>name</code> must be strictly unique — each plugin within the same project must have a distinct value.</p>
 </blockquote>
+<pre><code class="lang-java"><span class="hljs-comment">// CustomDatasetGenerator interface</span>
+<span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomDatasetGenerator</span> {
+
+    <span class="hljs-meta">@NotNull</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">match</span><span class="hljs-params">(String name)</span>;
+
+    <span class="hljs-comment">/** Custom dataset name — unique identifier */</span>
+    <span class="hljs-meta">@NotNull</span>
+    String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Display name for the new custom dataset type; override with your own i18n key */</span>
+    <span class="hljs-meta">@NotNull</span>
+    <span class="hljs-keyword">default</span> String <span class="hljs-title function_">getDisplayName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> getName();
+    }
+
+    <span class="hljs-comment">/** Frontend page generator */</span>
+    <span class="hljs-meta">@NotNull</span>
+    CustomDatasetPageGenerator <span class="hljs-title function_">getPageGenerator</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Data source generator */</span>
+    <span class="hljs-meta">@NotNull</span>
+    CustomDatasetDatasourceGenerator <span class="hljs-title function_">getDatasourceGenerator</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * When used as a built-in data source in a self-service dataset,
+     * whether the data source needs to be re-extracted during self-service dataset extraction.
+     * jsonContext is the custom jsonContext defined by the developer in the custom dataset.
+     */</span>
+    <span class="hljs-keyword">default</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">needExtractSourceData</span><span class="hljs-params">(String jsonContext)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">// AbstractCustomDatasetGenerator abstract class</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractCustomDatasetGenerator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CustomDatasetGenerator</span>, Serializable {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">match</span><span class="hljs-params">(String name)</span> {
+        <span class="hljs-keyword">return</span> CompareUtils.isEqual(name, getName());
+    }
+}
+</code></pre>
+<h3 id="step-3-implement-the-frontend-page-generator"><a name="step-3-implement-the-frontend-page-generator" class="anchor-navigation-ex-anchor" href="#step-3-implement-the-frontend-page-generator"><i class="fa fa-link" aria-hidden="true"></i></a>Step 3: Implement the Frontend Page Generator</h3>
+<p>Implement the <code>CustomDatasetPageGenerator</code> interface to provide frontend-related content: the plugin name, icon, and the frontend page displayed when creating a new dataset.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomDatasetPageGenerator</span> {
+
+    <span class="hljs-comment">/** Get the icon */</span>
+    String <span class="hljs-title function_">getIcon</span><span class="hljs-params">(CustomDatasetContext datasetContext)</span>;
+
+    <span class="hljs-comment">/** Get the HTML */</span>
+    String <span class="hljs-title function_">getEditPageHTML</span><span class="hljs-params">(CustomDatasetContext datasetContext)</span>;
+
+    <span class="hljs-comment">/** Get the Component */</span>
+    AssembleComponent <span class="hljs-title function_">getComponent</span><span class="hljs-params">(CustomDatasetContext datasetContext)</span>;
+}
+</code></pre>
+<h3 id="step-4-core-implement-the-data-retrieval-logic"><a name="step-4-core-implement-the-data-retrieval-logic" class="anchor-navigation-ex-anchor" href="#step-4-core-implement-the-data-retrieval-logic"><i class="fa fa-link" aria-hidden="true"></i></a>Step 4 (Core): Implement the Data Retrieval Logic</h3>
+<p>Choose the appropriate abstract class to extend based on whether the data source supports SQL:</p>
+<ul>
+<li><strong>SQL-supported</strong>: Extend <code>AbstractSqlSupportedDatasourceGenerator</code>. BI operations (filtering, grouping, joining, etc.) generate SQL based on the plugin-provided Dialect and delegate execution to the plugin, which returns streaming data.</li>
+<li><strong>SQL-not-supported</strong>: Extend <code>AbstractDefaultDatasourceGenerator</code> (suitable for most scenarios). The plugin is treated as a single data unit; the main pipeline reads streaming data from the plugin via Spark and uses SparkDialect to interpret BI operation queries.</li>
+<li><strong>Multi-plugin join</strong>: Always treated as SQL-not-supported.</li>
+</ul>
+<h4 id="about-jsoncontext"><a name="about-jsoncontext" class="anchor-navigation-ex-anchor" href="#about-jsoncontext"><i class="fa fa-link" aria-hidden="true"></i></a>About jsonContext</h4>
+<p><code>jsonContext</code> is a highly customizable JSON string. The framework only handles storing and retrieving it; the plugin is responsible for parsing.</p>
+<p>Example: the user enters parameterized SQL, and the plugin receives the following <code>jsonContext</code>:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">"sql"</span>: <span class="hljs-string">"select * from customer_db_info where driver in ('{$driver}')"</span>
+}
+</code></pre>
+<h4 id="customdatasetcontext"><a name="customdatasetcontext" class="anchor-navigation-ex-anchor" href="#customdatasetcontext"><i class="fa fa-link" aria-hidden="true"></i></a>CustomDatasetContext</h4>
+<p>BI parameters passed to the plugin (user information, roles, SQL-related parameters, and placeholders):</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomDatasetContext</span> {
+
+    <span class="hljs-comment">/** Logged-in user's username parameter */</span>
+    String <span class="hljs-title function_">getUserName</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Display name (username) of the logged-in user */</span>
+    String <span class="hljs-title function_">getDisplayName</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Role parameter of the logged-in user */</span>
+    String <span class="hljs-title function_">getFineRole</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Organizational unit collection parameter of the logged-in user */</span>
+    String <span class="hljs-title function_">getFinePosition</span><span class="hljs-params">()</span>;
+
+    Integer <span class="hljs-title function_">getEngineType</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/** Dataset table ID (used for plugin instrumentation) */</span>
+    String <span class="hljs-title function_">getTableId</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Variable parameters such as URL and SQL; include as available.
+     * Currently the Object value is of type List&lt;String&gt; or String.
+     */</span>
+    Map&lt;String, Object&gt; <span class="hljs-title function_">getParameterMap</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * For SQL-supported data sources, the FROM table, JOIN table, and other parts of the SQL
+     * are replaced via table_placeholder; null for non-SQL data sources.
+     */</span>
+    String <span class="hljs-title function_">getTablePlaceholder</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<p>Example SQL issued by BI for SQL-supported data sources:</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">select</span>
+  `T_46896E9E82384F679DF06`.`driver` <span class="hljs-keyword">as</span> `__fcol_0`,
+  <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> `__fcol_1`
+<span class="hljs-keyword">from</span> `<span class="hljs-number">46896e9</span>e82384f679df06a84c6c02a8e` <span class="hljs-keyword">as</span> `T_46896E9E82384F679DF06`
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-number">1</span>
+</code></pre>
+<h4 id="customdatasetdatasourcegenerator"><a name="customdatasetdatasourcegenerator" class="anchor-navigation-ex-anchor" href="#customdatasetdatasourcegenerator"><i class="fa fa-link" aria-hidden="true"></i></a>CustomDatasetDatasourceGenerator</h4>
+<p>Top-level interface for the backend data retrieval logic:</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Open</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomDatasetDatasourceGenerator</span> {
+
+    <span class="hljs-comment">/** Whether the data source supports SQL */</span>
+    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isSupportedSql</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Stream-based result set retrieval (non-SQL scenario)
+     * <span class="hljs-doctag">@param</span> jsonContext    User-defined information
+     * <span class="hljs-doctag">@param</span> datasetContext Context information
+     * <span class="hljs-doctag">@param</span> columnInfos    Field configuration from table creation
+     */</span>
+    RowIterator <span class="hljs-title function_">getRowIterator</span><span class="hljs-params">(String jsonContext, CustomDatasetContext datasetContext, ColumnInformation[] columnInfos)</span>;
+
+    <span class="hljs-comment">/**
+     * Stream-based result set retrieval (SQL scenario; may involve multiple joined SQL queries)
+     * <span class="hljs-doctag">@param</span> jsonContexts    List of user-defined information
+     * <span class="hljs-doctag">@param</span> datasetContexts List of context information
+     * <span class="hljs-doctag">@param</span> sql             BI query SQL
+     * <span class="hljs-doctag">@param</span> columnInfos     List of field configurations from table creation
+     */</span>
+    RowIterator <span class="hljs-title function_">getRowIterator</span><span class="hljs-params">(List&lt;String&gt; jsonContexts, List&lt;CustomDatasetContext&gt; datasetContexts,
+                               String sql, List&lt;ColumnInformation[]&gt; columnInfos)</span>;
+
+    <span class="hljs-comment">/**
+     * Get the data source dialect
+     */</span>
+    Dialect <span class="hljs-title function_">getDialect</span><span class="hljs-params">(String jsonContext, CustomDatasetContext datasetContext)</span>;
+
+    <span class="hljs-comment">/**
+     * Get data source parameters
+     * <span class="hljs-doctag">@return</span> Plugin parameters [key:type]; type includes Number, String, Date
+     */</span>
+    Map&lt;String, Class&lt;?&gt;&gt; getParameters(String jsonContext, CustomDatasetContext datasetContexts);
+
+    <span class="hljs-comment">/**
+     * Column information retrieval
+     * <span class="hljs-doctag">@return</span> columnType uses {<span class="hljs-doctag">@link</span> java.sql.Types}
+     */</span>
+    ColumnInformation[] createColumnInfos(String jsonContext, CustomDatasetContext datasetContexts);
+}
+</code></pre>
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li><code>ColumnInformation.columnType</code> uses the int values from <code>java.sql.Types</code></li>
+<li>In <code>getParameters</code>, use <code>java.lang.Number</code>, <code>java.lang.String</code>, <code>java.util.Date</code> for the Class</li>
+<li>Each data retrieval call includes <code>columnInfos</code> (field information from table creation) so the plugin can perform data corrections during retrieval</li>
+</ul>
+</blockquote>
+<p>Two abstract classes are provided based on this interface — choose one to extend:</p>
+<p><strong>SQL-not-supported (suitable for most custom data sources):</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractDefaultDatasourceGenerator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CustomDatasetDatasourceGenerator</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isSupportedSql</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> RowIterator <span class="hljs-title function_">getRowIterator</span><span class="hljs-params">(List&lt;String&gt; jsonContexts, List&lt;CustomDatasetContext&gt; datasetContexts,
+                                            String sql, List&lt;ColumnInformation[]&gt; columnInfos)</span> {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsupportedOperationException</span>(<span class="hljs-string">"getRowIterator with sql not supported."</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> Dialect <span class="hljs-title function_">getDialect</span><span class="hljs-params">(String jsonContext, CustomDatasetContext datasetContext)</span> {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsupportedOperationException</span>(<span class="hljs-string">"getDialect with sql not supported."</span>);
+    }
+
+    <span class="hljs-comment">// Subclasses only need to implement non-SQL methods</span>
+}
+</code></pre>
+<p><strong>SQL-supported (SQL is delegated to the plugin for execution):</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractSqlSupportedDatasourceGenerator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CustomDatasetDatasourceGenerator</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isSupportedSql</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> RowIterator <span class="hljs-title function_">getRowIterator</span><span class="hljs-params">(String jsonContext, CustomDatasetContext datasetContext,
+                                            ColumnInformation[] columnInfos)</span> {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsupportedOperationException</span>(<span class="hljs-string">"getRowIterator without sql not supported."</span>);
+    }
+
+    <span class="hljs-comment">// Subclasses only need to implement SQL-related methods</span>
+}
+</code></pre>
+<h2 id="open-source-demo"><a name="open-source-demo" class="anchor-navigation-ex-anchor" href="#open-source-demo"><i class="fa fa-link" aria-hidden="true"></i></a>Open-Source Demo</h2>
+<p><a href="https://code.fineres.com/projects/PG2/repos/plugin-bi-custom-dataset-demo/browse" target="_blank">plugin-bi-custom-dataset-demo</a> (MySQL data retrieval example)</p>
+<h2 id="version-notes"><a name="version-notes" class="anchor-navigation-ex-anchor" href="#version-notes"><i class="fa fa-link" aria-hidden="true"></i></a>Version Notes</h2>
+<ul>
+<li><code>&gt;= 6017</code>: No restart required after plugin installation</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3879,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"next":{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"path":"tutorial/samples/finebi/custom-filter.md","ref":"tutorial/samples/finebi/custom-filter.md","articles":[]},"previous":{"title":"Custom Widget","level":"3.2.2.2","depth":3,"path":"tutorial/samples/finebi/custom-widget.md","ref":"tutorial/samples/finebi/custom-widget.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/rest-api-connector.md","mtime":"2026-06-11T06:55:37.655Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"next":{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"path":"tutorial/samples/finebi/custom-filter.md","ref":"tutorial/samples/finebi/custom-filter.md","articles":[]},"previous":{"title":"Custom Widget","level":"3.2.2.2","depth":3,"path":"tutorial/samples/finebi/custom-widget.md","ref":"tutorial/samples/finebi/custom-widget.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/rest-api-connector.md","mtime":"2026-07-10T02:20:31.178Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

@@ -3555,10 +3555,111 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#parameterwidgetoptionprovider"><b></b>ParameterWidgetOptionProvider</a></li></ul></div><a href="#parameterwidgetoptionprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="parameterwidgetoptionprovider"><a name="parameterwidgetoptionprovider" class="anchor-navigation-ex-anchor" href="#parameterwidgetoptionprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ParameterWidgetOptionProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#parameterwidgetoptionprovider"><b></b>ParameterWidgetOptionProvider</a></li><ul><li><span class="title-icon "></span><a href="#overview"><b></b>Overview</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><li><span class="title-icon "></span><a href="#usage"><b></b>Usage</a></li><li><span class="title-icon "></span><a href="#example-code"><b></b>Example Code</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#parameterwidgetoptionprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="parameterwidgetoptionprovider"><a name="parameterwidgetoptionprovider" class="anchor-navigation-ex-anchor" href="#parameterwidgetoptionprovider"><i class="fa fa-link" aria-hidden="true"></i></a>ParameterWidgetOptionProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>provider</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-designer</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.design.fun.ParameterWidgetOptionProvider</code></td>
+</tr>
+<tr>
+<td>Official Docs</td>
+<td><a href="https://wiki.fanruan.com/display/PD/com.fr.design.fun.ParameterWidgetOptionProvider" target="_blank">View Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overview"><a name="overview" class="anchor-navigation-ex-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview</h2>
+<p>Adds a new custom widget type to the parameter panel, cell widget, or form widget selection.</p>
+<p>This is the base interface for parameter widget extensions. It has two sub-interfaces:</p>
+<ul>
+<li><code>CellWidgetOptionProvider</code>: for cell widgets</li>
+<li><code>FormWidgetOptionProvider</code>: for form widgets</li>
+</ul>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ParameterWidgetOptionProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mutable</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">XML_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">"ParameterWidgetOptionProvider"</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">CURRENT_LEVEL</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * The actual class for the custom parameter widget; must extend com.fr.form.ui.Widget.
+     * If the widget has a value property, it must also implement the DataControl interface;
+     * otherwise, it may not be discoverable in the value editor widget selector.
+     */</span>
+    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt; classForWidget();
+
+    <span class="hljs-comment">/**
+     * The design UI class for the custom parameter widget;
+     * must extend com.fr.form.designer.creator.XWidgetCreator.
+     */</span>
+    Class&lt;?&gt; appearanceForWidget();
+
+    <span class="hljs-comment">/**
+     * Icon path for the custom parameter widget in the designer.
+     */</span>
+    String <span class="hljs-title function_">iconPathForWidget</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">/**
+     * Display name of the custom parameter widget.
+     */</span>
+    String <span class="hljs-title function_">nameForWidget</span><span class="hljs-params">()</span>;
+}
+</code></pre>
+<h2 id="usage"><a name="usage" class="anchor-navigation-ex-anchor" href="#usage"><i class="fa fa-link" aria-hidden="true"></i></a>Usage</h2>
+<p>Register the implementation class in the plugin's <code>plugin.xml</code> via the <code>extra-designer</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-designer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ParameterWidgetOptionProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.xxx.YourClassName"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-designer</span>&gt;</span>
+</code></pre>
+<h2 id="example-code"><a name="example-code" class="anchor-navigation-ex-anchor" href="#example-code"><i class="fa fa-link" aria-hidden="true"></i></a>Example Code</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyParameterWidgetOptionProvider</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ParameterWidgetOptionProvider</span> {
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Widget</span>&gt; classForWidget() {
+        <span class="hljs-comment">// Returns the custom widget data class (extends Widget)</span>
+        <span class="hljs-keyword">return</span> MyWidget.class;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> Class&lt;?&gt; appearanceForWidget() {
+        <span class="hljs-comment">// Returns the custom widget design UI class (extends XWidgetCreator)</span>
+        <span class="hljs-keyword">return</span> MyWidgetCreator.class;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">iconPathForWidget</span><span class="hljs-params">()</span> {
+        <span class="hljs-comment">// Returns the widget icon path (relative to the plugin resource directory)</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"/com/fr/plugin/xxx/images/widget_icon.png"</span>;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">nameForWidget</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"My Custom Widget"</span>;
+    }
+}
+</code></pre>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<ul>
+<li>The class returned by <code>classForWidget()</code> must extend <code>com.fr.form.ui.Widget</code>.</li>
+<li>If the widget needs to support value binding (e.g., so it can be selected in the value editor), the corresponding Widget class must also implement the <code>DataControl</code> interface; otherwise it will not be discoverable.</li>
+<li>The class returned by <code>appearanceForWidget()</code> must extend <code>com.fr.form.designer.creator.XWidgetCreator</code>.</li>
+<li>To extend cell widgets, use the sub-interface <code>CellWidgetOptionProvider</code>; to extend form widgets, use the sub-interface <code>FormWidgetOptionProvider</code>.</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3703,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ParameterWidgetOptionProvider","level":"2.4.3.1.13","depth":4,"next":{"title":"PluginManagerProvider","level":"2.4.3.1.14","depth":4,"path":"tutorial/finereport/designer/PluginManagerProvider.md","ref":"tutorial/finereport/designer/PluginManagerProvider.md","articles":[]},"previous":{"title":"MultiStyleUIConfigProvider","level":"2.4.3.1.12","depth":4,"path":"tutorial/finereport/designer/MultiStyleUIConfigProvider.md","ref":"tutorial/finereport/designer/MultiStyleUIConfigProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/ParameterWidgetOptionProvider.md","mtime":"2026-06-11T06:55:37.646Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"ParameterWidgetOptionProvider","level":"2.4.3.1.13","depth":4,"next":{"title":"PluginManagerProvider","level":"2.4.3.1.14","depth":4,"path":"tutorial/finereport/designer/PluginManagerProvider.md","ref":"tutorial/finereport/designer/PluginManagerProvider.md","articles":[]},"previous":{"title":"MultiStyleUIConfigProvider","level":"2.4.3.1.12","depth":4,"path":"tutorial/finereport/designer/MultiStyleUIConfigProvider.md","ref":"tutorial/finereport/designer/MultiStyleUIConfigProvider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/finereport/designer/ParameterWidgetOptionProvider.md","mtime":"2026-07-10T02:20:30.971Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

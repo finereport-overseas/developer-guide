@@ -3555,10 +3555,111 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#functiondefineprovider"><b></b>FunctionDefineProvider</a></li></ul></div><a href="#functiondefineprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="functiondefineprovider"><a name="functiondefineprovider" class="anchor-navigation-ex-anchor" href="#functiondefineprovider"><i class="fa fa-link" aria-hidden="true"></i></a>FunctionDefineProvider</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#functiondefineprovider"><b></b>FunctionDefineProvider</a></li><ul><li><span class="title-icon "></span><a href="#interface-purpose"><b></b>Interface Purpose</a></li><li><span class="title-icon "></span><a href="#interface-definition"><b></b>Interface Definition</a></li><ul><li><span class="title-icon "></span><a href="#main-interface"><b></b>Main Interface</a></li><li><span class="title-icon "></span><a href="#related-interfaces"><b></b>Related Interfaces</a></li><li><span class="title-icon "></span><a href="#plugin-registration"><b></b>Plugin Registration</a></li></ul><li><span class="title-icon "></span><a href="#interface-example"><b></b>Interface Example</a></li><li><span class="title-icon "></span><a href="#notes"><b></b>Notes</a></li></ul></ul></div><a href="#functiondefineprovider" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="functiondefineprovider"><a name="functiondefineprovider" class="anchor-navigation-ex-anchor" href="#functiondefineprovider"><i class="fa fa-link" aria-hidden="true"></i></a>FunctionDefineProvider</h1>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Type</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>extra-core</td>
+</tr>
+<tr>
+<td>Full Class Name</td>
+<td><code>com.fr.stable.fun.FunctionDefineProvider</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface-purpose"><a name="interface-purpose" class="anchor-navigation-ex-anchor" href="#interface-purpose"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Purpose</h2>
+<p>Provides a plugin-based interface for extending functions.</p>
+<h2 id="interface-definition"><a name="interface-definition" class="anchor-navigation-ex-anchor" href="#interface-definition"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Definition</h2>
+<h3 id="main-interface"><a name="main-interface" class="anchor-navigation-ex-anchor" href="#main-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Main Interface</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.stable.fun;
+
+<span class="hljs-keyword">import</span> com.fr.plugin.injectable.SpecialLevel;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FunctionDefineProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Level</span> {
+
+    <span class="hljs-type">String</span> <span class="hljs-variable">MARK_STRING</span> <span class="hljs-operator">=</span> SpecialLevel.FunctionDefineProvider.getTagName();
+}
+</code></pre>
+<h3 id="related-interfaces"><a name="related-interfaces" class="anchor-navigation-ex-anchor" href="#related-interfaces"><i class="fa fa-link" aria-hidden="true"></i></a>Related Interfaces</h3>
+<p>When implementing a custom function, extend <code>AbstractFunction</code>:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.fr.script;
+
+<span class="hljs-keyword">import</span> com.fr.stable.UtilEvalError;
+<span class="hljs-keyword">import</span> com.fr.stable.script.Node;
+
+<span class="hljs-comment">/**
+ * Function arguments are evaluated in order.
+ * Example: SQRT(ABS(99) + 1)
+ * Execution order: first ABS(99)=99, then 99+1=100, finally SQRT(100)=10
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractFunction</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CalculatorEmbeddedFunction</span> {
+
+    <span class="hljs-comment">/**
+     * Evaluates the function result with the given arguments
+     *
+     * <span class="hljs-doctag">@param</span> arguments the arguments
+     * <span class="hljs-doctag">@return</span> the computed result
+     * <span class="hljs-doctag">@throws</span> UtilEvalError thrown if an unresolvable value is encountered during evaluation
+     */</span>
+    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">evalExpression</span><span class="hljs-params">(Node[] arguments)</span> <span class="hljs-keyword">throws</span> UtilEvalError {
+        Object returnValue;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.getType() == HA) {
+            <span class="hljs-comment">// Hierarchical coordinate series are not eval'd here</span>
+            returnValue = run(arguments);
+        } <span class="hljs-keyword">else</span> {
+            Object[] args = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[arguments.length];
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arguments.length; i++) {
+                args[i] = <span class="hljs-built_in">this</span>.getCalculator().evalValue(arguments[i]);
+            }
+            returnValue = run(args);
+        }
+
+        <span class="hljs-keyword">if</span> (returnValue == Primitive.ERROR_VALUE || returnValue == Primitive.ERROR_NAME) {
+            FineLoggerFactory.getLogger().error(
+                InterProviderFactory.getProvider().getLocText(<span class="hljs-string">"Fine-Core_Base_NS_Cell_Formula"</span>) + <span class="hljs-built_in">this</span>.toString()
+            );
+        }
+
+        <span class="hljs-keyword">return</span> returnValue;
+    }
+
+    <span class="hljs-comment">/**
+     * Computes the function result
+     *
+     * Usage example:
+     *     SUM sum = new SUM();
+     *     System.out.println(sum.run(new Object[]{1, 2, 3}));
+     *
+     * <span class="hljs-doctag">@param</span> args the function arguments (already evaluated by the calculator)
+     * <span class="hljs-doctag">@return</span> the computed result
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> Object <span class="hljs-title function_">run</span><span class="hljs-params">(Object[] args)</span>;
+}
+</code></pre>
+<h3 id="plugin-registration"><a name="plugin-registration" class="anchor-navigation-ex-anchor" href="#plugin-registration"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin Registration</h3>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">extra-core</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">FunctionDefineProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fr.plugin.function.fib.Fibonacci"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Fibonacci"</span> <span class="hljs-attr">description</span>=<span class="hljs-string">"Computes the Fibonacci value."</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
+</code></pre>
+<h2 id="interface-example"><a name="interface-example" class="anchor-navigation-ex-anchor" href="#interface-example"><i class="fa fa-link" aria-hidden="true"></i></a>Interface Example</h2>
+<p>Example source code: <a href="https://code.fanruan.com/fanruan/demo-function-fibonacci" target="_blank">demo-function-fibonacci</a></p>
+<h2 id="notes"><a name="notes" class="anchor-navigation-ex-anchor" href="#notes"><i class="fa fa-link" aria-hidden="true"></i></a>Notes</h2>
+<p>This interface primarily serves as a marker. When implementing a custom function, you still need to:</p>
+<ul>
+<li><strong>Recommended</strong>: Extend <code>com.fr.script.AbstractFunction</code></li>
+<li><strong>Not recommended</strong>: Implement the <code>com.fr.stable.script.Function</code> interface</li>
+</ul>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3703,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FunctionDefineProvider","level":"2.4.2.1.13","depth":4,"next":{"title":"IOFileAttrMark","level":"2.4.2.1.14","depth":4,"path":"tutorial/common-extensions/core/IOFileAttrMark.md","ref":"tutorial/common-extensions/core/IOFileAttrMark.md","articles":[]},"previous":{"title":"FunctionDefContainer","level":"2.4.2.1.12","depth":4,"path":"tutorial/common-extensions/core/FunctionGroup.md","ref":"tutorial/common-extensions/core/FunctionGroup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/FunctionDefineProvider.md","mtime":"2026-06-11T06:55:37.642Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"FunctionDefineProvider","level":"2.4.2.1.13","depth":4,"next":{"title":"IOFileAttrMark","level":"2.4.2.1.14","depth":4,"path":"tutorial/common-extensions/core/IOFileAttrMark.md","ref":"tutorial/common-extensions/core/IOFileAttrMark.md","articles":[]},"previous":{"title":"FunctionDefContainer","level":"2.4.2.1.12","depth":4,"path":"tutorial/common-extensions/core/FunctionGroup.md","ref":"tutorial/common-extensions/core/FunctionGroup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/core/FunctionDefineProvider.md","mtime":"2026-07-10T02:20:30.962Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

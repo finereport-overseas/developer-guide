@@ -3555,10 +3555,74 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#cluster-config"><b></b>cluster-config</a></li></ul></div><a href="#cluster-config" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="cluster-config"><a name="cluster-config" class="anchor-navigation-ex-anchor" href="#cluster-config"><i class="fa fa-link" aria-hidden="true"></i></a>cluster-config</h1>
-<blockquote>
-<p>Coming soon.</p>
-</blockquote>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#add-cluster-configuration"><b></b>Add Cluster Configuration</a></li><ul><li><span class="title-icon "></span><a href="#add-a-cache-system"><b></b>Add a Cache System</a></li><li><span class="title-icon "></span><a href="#add-a-file-server"><b></b>Add a File Server</a></li></ul></ul></div><a href="#add-cluster-configuration" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="add-cluster-configuration"><a name="add-cluster-configuration" class="anchor-navigation-ex-anchor" href="#add-cluster-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Add Cluster Configuration</h1>
+<h2 id="add-a-cache-system"><a name="add-a-cache-system" class="anchor-navigation-ex-anchor" href="#add-a-cache-system"><i class="fa fa-link" aria-hidden="true"></i></a>Add a Cache System</h2>
+<p><strong>Key</strong></p>
+<p><code>dec.constant.intelligence.cluster.state.server</code></p>
+<p><strong>Example</strong></p>
+<pre><code class="lang-js"><span class="hljs-comment">// Add configuration for a cache system</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.intelligence.cluster.state.server"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+    items.<span class="hljs-title function_">unshift</span>({
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"ehcache"</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">i18nText</span>(<span class="hljs-string">"Built-in Ehcache"</span>),
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"dec.plugin.intelligence.cluster.state.ehcache"</span>
+    });
+    <span class="hljs-keyword">return</span> items;
+});
+</code></pre>
+<p>Page implementation:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Page implementation</span>
+!(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-title class_">Plugin</span> = <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">inherit</span>(<span class="hljs-variable constant_">BI</span>.<span class="hljs-property">Widget</span>, {
+
+        <span class="hljs-attr">props</span>: {
+            <span class="hljs-attr">baseCls</span>: <span class="hljs-string">""</span>
+        },
+
+        <span class="hljs-attr">render</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">"bi.label"</span>,
+                <span class="hljs-attr">text</span>: <span class="hljs-string">"New Cache System"</span>
+            };
+        },
+
+        <span class="hljs-comment">/**
+         * Validation function, optional.
+         * The connection test and save are only performed when this returns true.
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">boolean</span>}
+         */</span>
+        <span class="hljs-attr">validation</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        },
+
+        <span class="hljs-comment">/**
+         * Value getter, required.
+         * The returned value will be merged with {open: Boolean, system: String}.
+         * <span class="hljs-doctag">@returns</span> {<span class="hljs-type">{</span>}}
+         */</span>
+        <span class="hljs-attr">getValue</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> {};
+        }
+    });
+    <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"dec.schedule.task.plugin"</span>, <span class="hljs-title class_">Plugin</span>);
+})();
+</code></pre>
+<h2 id="add-a-file-server"><a name="add-a-file-server" class="anchor-navigation-ex-anchor" href="#add-a-file-server"><i class="fa fa-link" aria-hidden="true"></i></a>Add a File Server</h2>
+<p><strong>Key</strong></p>
+<p><code>dec.constant.intelligence.cluster.file.server</code></p>
+<p><strong>Example</strong></p>
+<pre><code class="lang-js"><span class="hljs-comment">// Add configuration for a file server</span>
+<span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">config</span>(<span class="hljs-string">"dec.constant.intelligence.cluster.file.server"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">items</span>) {
+    items.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">value</span>: <span class="hljs-string">"xx"</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-string">"XX File Protocol"</span>,
+        <span class="hljs-attr">cardType</span>: <span class="hljs-string">"dec.plugin.intelligence.cluster.file.xx"</span>
+    });
+    <span class="hljs-keyword">return</span> items;
+});
+</code></pre>
+<p>The page implementation is similar to the state server above. The difference is that the plugin-defined page is not the full page but only a portion of it, and the returned <code>value</code> is passed into a property named <code>config</code>.</p>
+<p><a href="https://kms.finedevelop.com/download/attachments/75970377/image2019-8-20_16-59-10.png?version=1&amp;modificationDate=1566291561000&amp;api=v2" data-lightbox="62ac05fb-178f-4792-abb1-20cd151bd19c" data-title="File server configuration page example" target="_blank"><img src="https://kms.finedevelop.com/download/attachments/75970377/image2019-8-20_16-59-10.png?version=1&amp;modificationDate=1566291561000&amp;api=v2" alt="File server configuration page example"></img></a></p>
 <div id="gitalk-container"></div>
                                 
                                 </section>
@@ -3602,7 +3666,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Add Cluster Configuration","level":"2.4.2.3.7.1","depth":5,"next":{"title":"Guide & API","level":"2.4.2.3.8","depth":4,"path":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","articles":[{"title":"Global Service","level":"2.4.2.3.8.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","articles":[{"title":"dec.service.frame.tab_pane","level":"2.4.2.3.8.1.1","depth":6,"path":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","articles":[]},{"title":"dec.service.global","level":"2.4.2.3.8.1.2","depth":6,"path":"tutorial/common-extensions/platform-frontend/guide_api/global-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/global-service.md","articles":[]}]},{"title":"Module Component - Shortcut","level":"2.4.2.3.8.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/guide_api/module-shortcut.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/module-shortcut.md","articles":[]}]},"previous":{"title":"Cluster Configuration","level":"2.4.2.3.7","depth":4,"path":"tutorial/common-extensions/platform-frontend/cluster.md","ref":"tutorial/common-extensions/platform-frontend/cluster.md","articles":[{"title":"Add Cluster Configuration","level":"2.4.2.3.7.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/cluster-config.md","ref":"tutorial/common-extensions/platform-frontend/cluster-config.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/cluster-config.md","mtime":"2026-06-11T06:55:37.643Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-06-11T06:55:53.821Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Add Cluster Configuration","level":"2.4.2.3.7.1","depth":5,"next":{"title":"Guide & API","level":"2.4.2.3.8","depth":4,"path":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","articles":[{"title":"Global Service","level":"2.4.2.3.8.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","articles":[{"title":"dec.service.frame.tab_pane","level":"2.4.2.3.8.1.1","depth":6,"path":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/tab-pane-service.md","articles":[]},{"title":"dec.service.global","level":"2.4.2.3.8.1.2","depth":6,"path":"tutorial/common-extensions/platform-frontend/guide_api/global-service.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/global-service.md","articles":[]}]},{"title":"Module Component - Shortcut","level":"2.4.2.3.8.2","depth":5,"path":"tutorial/common-extensions/platform-frontend/guide_api/module-shortcut.md","ref":"tutorial/common-extensions/platform-frontend/guide_api/module-shortcut.md","articles":[]}]},"previous":{"title":"Cluster Configuration","level":"2.4.2.3.7","depth":4,"path":"tutorial/common-extensions/platform-frontend/cluster.md","ref":"tutorial/common-extensions/platform-frontend/cluster.md","articles":[{"title":"Add Cluster Configuration","level":"2.4.2.3.7.1","depth":5,"path":"tutorial/common-extensions/platform-frontend/cluster-config.md","ref":"tutorial/common-extensions/platform-frontend/cluster-config.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/common-extensions/platform-frontend/cluster-config.md","mtime":"2026-07-10T02:20:30.964Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>
