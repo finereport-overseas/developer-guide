@@ -1,3 +1,3 @@
-# developer-forum
+# Developer Forum
 
 > Coming soon.

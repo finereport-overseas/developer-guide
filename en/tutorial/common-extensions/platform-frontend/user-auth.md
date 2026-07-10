@@ -1,3 +1,5 @@
-# user-auth
+# User Management and Authentication Module
 
-> Coming soon.
+This section describes the frontend extension interfaces for user management and login authentication in the decision-making platform.
+
+- [Custom Login Authentication Method](./custom-login-auth.md)

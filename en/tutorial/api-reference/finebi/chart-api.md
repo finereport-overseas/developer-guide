@@ -1,3 +1,3 @@
-# chart-api
+# Visualization API (bi-chart)
 
 > Coming soon.

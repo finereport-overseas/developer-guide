@@ -1,3 +1,3 @@
-# fineui-intro
+# Understanding FineUI
 
-> Coming soon.
+See: [Beginner - FineUI](../../插件接入点/公共接入点/平台前端接入点/fineui-beginner.md)

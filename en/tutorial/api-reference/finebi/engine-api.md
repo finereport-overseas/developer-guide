@@ -1,3 +1,3 @@
-# engine-api
+# Engine API (bi-engine)
 
 > Coming soon.

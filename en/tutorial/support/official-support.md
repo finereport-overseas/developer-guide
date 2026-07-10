@@ -1,3 +1,3 @@
-# official-support
+# Official Technical Support
 
 > Coming soon.
