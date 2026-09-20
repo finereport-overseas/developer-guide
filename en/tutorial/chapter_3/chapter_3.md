@@ -75,6 +75,60 @@ Then, since FR is built on various modules, our interface implementation has to 
 
 > Note: Different modules can be declared in one plugin, and implementations of different interfaces can also be declared under the same module label. 
 
+## Reference: Common Nodes of plugin.xml
+
+The example above only shows the nodes you will use most often. The following tables list the first-level child nodes of `<plugin>` that may appear in a plugin.xml.
+
+> Frequency is derived from a scan of 50 plugin.xml files in this repository: **Required** = present in (almost) every file, **Common** = widely used, **Optional** = only used in specific scenarios.
+
+### Metadata Nodes
+
+| Node | Frequency | Description |
+|---|---|---|
+| `id` | Required | Unique identifier of the plugin |
+| `name` | Required | Display name of the plugin |
+| `version` | Required | Version of the plugin itself |
+| `env-version` | Required | Platform versions the plugin applies to. Two formats are supported: `8.0` means 8.0 and above, `9.0~10.0` means from 9.0 to 10.0 |
+| `vendor` | Required | Developer/vendor of the plugin, the `email` attribute is supported |
+| `active` | Required | `yes`/`no`, whether the plugin is activated by default |
+| `jartime` | Required | Earliest release date of the platform JAR files supported by the plugin |
+| `description` | Common | Short description of the plugin |
+| `change-notes` | Common | Changelog of the plugin |
+| `main-package` | Common | Main package of the plugin |
+| `bi-env-version` | Optional | FineBI versions the plugin applies to |
+| `bijartime` | Optional | Earliest release date of the FineBI JAR files supported by the plugin |
+| `hidden` | Optional | Whether the plugin is hidden from the plugin list |
+| `group` | Optional | Group the plugin belongs to |
+| `auto-update` | Optional | Whether the plugin is updated automatically |
+| `prefer-package` / `prefer-packages` | Optional | Packages that are loaded with priority |
+| `app-name` | Optional | Name of the application the plugin belongs to |
+| `verif` | Optional | Verification information |
+| `designer-pack-version` | Optional | Version of the designer package |
+| `workspace-independent` | Optional | Whether the plugin is independent of the workspace |
+
+### Function Configuration Nodes
+
+| Node | Frequency | Description |
+|---|---|---|
+| `function-recorder` | Common | Recorder of the plugin's function points |
+| `lifecycle-monitor` | Common | Listener of the plugin lifecycle |
+| `plugin-xml-i18n` | Optional | Internationalization configuration of plugin.xml |
+| `conditional-trigger` | Optional | Conditional trigger |
+| `sync` | Optional | Synchronization configuration |
+
+### Extension Point Nodes
+
+Each module owns one `extra-XXX` label, and the interface implementations must be declared under the label of the module they belong to.
+
+| Node | Description |
+|---|---|
+| `extra-core` | Core module extension points |
+| `extra-decision` | Decision platform extension points |
+| `extra-report` | Report module extension points |
+| `extra-designer` | Designer module extension points |
+| `extra-form` | Form module extension points |
+| `extra-chart` | Chart module extension points |
+
 At this point, this chapter is over. In fact, there are some special configurations, but generally, they are not used much. Therefore we will introduce them when we meet them in the future.
 
 
