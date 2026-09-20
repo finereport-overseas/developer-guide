@@ -3560,17 +3560,17 @@
 <hr></hr>
 <h2 id="alert-debugging"><a name="alert-debugging" class="anchor-navigation-ex-anchor" href="#alert-debugging"><i class="fa fa-link" aria-hidden="true"></i></a>Alert Debugging</h2>
 <p>Alert is the most primitive debugging method. In the early era dominated by IE6, JS debugging tools were extremely limited, and developers relied on <code>window.alert()</code> for debugging:</p>
-<p><a href="images/js_alert.gif" data-lightbox="3b0c121f-fccc-4635-b6cd-038a74e98782" data-title="Alert debugging example"><img src="images/js_alert.gif" alt="Alert debugging example"></img></a></p>
+<p><a href="images/js_alert.gif" data-lightbox="4da385aa-e2c7-412e-8f37-4e2ea2d91558" data-title="Alert debugging example"><img src="images/js_alert.gif" alt="Alert debugging example"></img></a></p>
 <p>Although primitive, alert still has its place in certain scenarios even today.</p>
 <hr></hr>
 <h2 id="console-debugging"><a name="console-debugging" class="anchor-navigation-ex-anchor" href="#console-debugging"><i class="fa fa-link" aria-hidden="true"></i></a>Console Debugging</h2>
 <p>As frontend development grew more complex, the drawbacks of alert became apparent: modal dialogs block the page, interrupt rendering, and require manual cleanup. Modern browsers introduced JS debugging consoles, supporting <code>console.log(xxx)</code> to print debug information.</p>
 <p>Example in IE:</p>
-<p><a href="images/js_console_ie.gif" data-lightbox="fc2e8937-1eb8-4165-a33c-77af1ea5e7ec" data-title="Console in IE"><img src="images/js_console_ie.gif" alt="Console in IE"></img></a></p>
+<p><a href="images/js_console_ie.gif" data-lightbox="d4dda688-044d-4ff1-9909-d465fbf554ee" data-title="Console in IE"><img src="images/js_console_ie.gif" alt="Console in IE"></img></a></p>
 <p>Chrome extends Console with richer functionality:</p>
-<p><a href="images/js_console_chrome.gif" data-lightbox="3a62dc8d-3eb6-4d9c-a47f-e6523356b2a0" data-title="Console in Chrome"><img src="images/js_console_chrome.gif" alt="Console in Chrome"></img></a></p>
+<p><a href="images/js_console_chrome.gif" data-lightbox="96436cb2-31a8-4633-90a5-92c33a684fa1" data-title="Console in Chrome"><img src="images/js_console_chrome.gif" alt="Console in Chrome"></img></a></p>
 <p>The Chrome dev team went even further:</p>
-<p><a href="images/js_console_advanced.gif" data-lightbox="7f40f024-dc31-4cfa-a5dd-007c503380a4" data-title="Advanced Console usage"><img src="images/js_console_advanced.gif" alt="Advanced Console usage"></img></a></p>
+<p><a href="images/js_console_advanced.gif" data-lightbox="e18d095c-5f73-4812-b810-2cbb330c60bf" data-title="Advanced Console usage"><img src="images/js_console_advanced.gif" alt="Advanced Console usage"></img></a></p>
 <blockquote>
 <p><strong>Tip</strong>: Adding an existence check before using the <code>console</code> object means debug code won't affect business logic even if left in. That said, it's still good practice to remove debug statements after you're done.</p>
 </blockquote>
@@ -3581,10 +3581,10 @@
 </blockquote>
 <p>JS breakpoint debugging means setting breakpoints in the browser DevTools to pause JS execution at a specific line, allowing you to inspect variables and trace logic.</p>
 <p>Example code — a function that takes two numbers, adds a random integer, and returns the total:</p>
-<p><a href="images/js_breakpoint_code.gif" data-lightbox="fe124d7e-ace9-4e5b-9902-1aac1f98e126" data-title="Breakpoint example code"><img src="images/js_breakpoint_code.gif" alt="Breakpoint example code"></img></a></p>
+<p><a href="images/js_breakpoint_code.gif" data-lightbox="e6ab16df-0bfe-4ac3-9b36-100cf6fe5b54" data-title="Breakpoint example code"><img src="images/js_breakpoint_code.gif" alt="Breakpoint example code"></img></a></p>
 <h3 id="method-1-console-verification"><a name="method-1-console-verification" class="anchor-navigation-ex-anchor" href="#method-1-console-verification"><i class="fa fa-link" aria-hidden="true"></i></a>Method 1: Console Verification</h3>
 <p>Insert <code>console.log()</code> statements to print variables and verify logic:</p>
-<p><a href="images/js_console_verify.gif" data-lightbox="4934ea83-824e-418f-b61c-796b5dd1bfa5" data-title="Console verification method"><img src="images/js_console_verify.gif" alt="Console verification method"></img></a></p>
+<p><a href="images/js_console_verify.gif" data-lightbox="1e90211f-b628-454d-b3d8-e142d998192b" data-title="Console verification method"><img src="images/js_console_verify.gif" alt="Console verification method"></img></a></p>
 <h3 id="method-2-sources-breakpoints"><a name="method-2-sources-breakpoints" class="anchor-navigation-ex-anchor" href="#method-2-sources-breakpoints"><i class="fa fa-link" aria-hidden="true"></i></a>Method 2: Sources Breakpoints</h3>
 <p>Add breakpoints directly in Chrome DevTools' Sources panel:</p>
 <ol>
@@ -3593,10 +3593,10 @@
 <li>Find the target file in the left file tree</li>
 <li>Click the line number gutter to add or remove a breakpoint</li>
 </ol>
-<p><a href="images/js_sources_breakpoint.gif" data-lightbox="67a33f6c-f718-45d5-aecc-9d10f42a0fe3" data-title="Adding a breakpoint in Sources"><img src="images/js_sources_breakpoint.gif" alt="Adding a breakpoint in Sources"></img></a></p>
+<p><a href="images/js_sources_breakpoint.gif" data-lightbox="6d86528d-da67-458b-8bf8-d89137c4e333" data-title="Adding a breakpoint in Sources"><img src="images/js_sources_breakpoint.gif" alt="Adding a breakpoint in Sources"></img></a></p>
 <p>Once the breakpoint is hit, the Sources panel displays all variables and their values in the current scope.</p>
 <h4 id="control-panel"><a name="control-panel" class="anchor-navigation-ex-anchor" href="#control-panel"><i class="fa fa-link" aria-hidden="true"></i></a>Control Panel</h4>
-<p><a href="images/js_sources_panels.gif" data-lightbox="76f460e0-4bd3-4584-8898-b877a7389ec7" data-title="Sources panel control buttons"><img src="images/js_sources_panels.gif" alt="Sources panel control buttons"></img></a></p>
+<p><a href="images/js_sources_panels.gif" data-lightbox="c7a58efb-c5a1-4c80-8f4f-75687bf26803" data-title="Sources panel control buttons"><img src="images/js_sources_panels.gif" alt="Sources panel control buttons"></img></a></p>
 <p>Button functions (left to right):</p>
 <table>
 <thead>
@@ -3633,9 +3633,9 @@
 </tbody>
 </table>
 <p>Stepping through code line by line to watch variable changes:</p>
-<p><a href="images/js_step_through.gif" data-lightbox="a2871af5-4871-411e-afda-ea504821f51b" data-title="Step-through debugging"><img src="images/js_step_through.gif" alt="Step-through debugging"></img></a></p>
+<p><a href="images/js_step_through.gif" data-lightbox="8caadb1c-a6b8-450a-8dfc-7addd6fa8cc2" data-title="Step-through debugging"><img src="images/js_step_through.gif" alt="Step-through debugging"></img></a></p>
 <p>Other control button demos:</p>
-<p><a href="images/js_function_controls.gif" data-lightbox="0c32d2c8-27b2-4f13-b9d2-a59ea4d77baf" data-title="Function debugging controls demo"><img src="images/js_function_controls.gif" alt="Function debugging controls demo"></img></a></p>
+<p><a href="images/js_function_controls.gif" data-lightbox="f54cbd4d-0b6c-487a-a1a4-be59dab63a69" data-title="Function debugging controls demo"><img src="images/js_function_controls.gif" alt="Function debugging controls demo"></img></a></p>
 <blockquote>
 <p><strong>Note</strong>: Inspecting variable values while paused at a breakpoint is a feature of newer Chrome versions. In older versions, hover over the variable name, right-click and choose <strong>Add to watch</strong> to view it in the Watch panel, or switch to the Console panel and type the variable name directly.</p>
 </blockquote>
@@ -3643,7 +3643,7 @@
 <h2 id="debugger-breakpoints"><a name="debugger-breakpoints" class="anchor-navigation-ex-anchor" href="#debugger-breakpoints"><i class="fa fa-link" aria-hidden="true"></i></a>Debugger Breakpoints</h2>
 <p>Insert a <code>debugger;</code> statement into your code. When execution reaches that line, it pauses automatically — identical to a Sources panel breakpoint.</p>
 <p><strong>Use case</strong>: For JS code embedded in dynamically or asynchronously loaded HTML fragments, the corresponding file may not appear in the Sources panel, making direct breakpoints impossible. The <code>debugger;</code> statement is the solution in these cases.</p>
-<p><a href="images/js_debugger_statement.gif" data-lightbox="e3d74c64-6d75-4299-9b04-9837835a9f1c" data-title="Debugger statement breakpoint"><img src="images/js_debugger_statement.gif" alt="Debugger statement breakpoint"></img></a></p>
+<p><a href="images/js_debugger_statement.gif" data-lightbox="e5af518a-74fe-4628-8370-869ffd0a4ee6" data-title="Debugger statement breakpoint"><img src="images/js_debugger_statement.gif" alt="Debugger statement breakpoint"></img></a></p>
 <blockquote>
 <p>Remove <code>debugger;</code> statements after debugging is complete.</p>
 </blockquote>
@@ -3653,13 +3653,13 @@
 <p>In Chrome DevTools' <strong>Elements</strong> panel, right-click a DOM node to set a DOM breakpoint.</p>
 <h3 id="break-on-subtree-modifications"><a name="break-on-subtree-modifications" class="anchor-navigation-ex-anchor" href="#break-on-subtree-modifications"><i class="fa fa-link" aria-hidden="true"></i></a>Break on Subtree Modifications</h3>
 <p>Triggers when child nodes are added, removed, or reordered:</p>
-<p><a href="images/js_dom_subtree.gif" data-lightbox="360f4d00-e08a-4d8a-8b55-319548dcd97c" data-title="Subtree modification breakpoint"><img src="images/js_dom_subtree.gif" alt="Subtree modification breakpoint"></img></a></p>
+<p><a href="images/js_dom_subtree.gif" data-lightbox="22096bc1-72ab-4071-beaa-7017bf992f30" data-title="Subtree modification breakpoint"><img src="images/js_dom_subtree.gif" alt="Subtree modification breakpoint"></img></a></p>
 <blockquote>
 <p>Note: Modifying a child node's <strong>attributes</strong> or <strong>text content</strong> does not trigger this breakpoint.</p>
 </blockquote>
 <h3 id="break-on-attribute-modifications"><a name="break-on-attribute-modifications" class="anchor-navigation-ex-anchor" href="#break-on-attribute-modifications"><i class="fa fa-link" aria-hidden="true"></i></a>Break on Attribute Modifications</h3>
 <p>Triggers when the node's attributes (including <code>data-*</code> custom attributes) change:</p>
-<p><a href="images/js_dom_attribute.gif" data-lightbox="3bb2aad1-a185-4623-bfae-5c5ace69be07" data-title="Attribute modification breakpoint"><img src="images/js_dom_attribute.gif" alt="Attribute modification breakpoint"></img></a></p>
+<p><a href="images/js_dom_attribute.gif" data-lightbox="2dc4d3b2-fadb-4333-a7c4-03c97a1bdb38" data-title="Attribute modification breakpoint"><img src="images/js_dom_attribute.gif" alt="Attribute modification breakpoint"></img></a></p>
 <blockquote>
 <p>Note: Attribute changes on <strong>child nodes</strong> do not trigger this breakpoint on the parent.</p>
 </blockquote>
@@ -3668,13 +3668,13 @@
 <hr></hr>
 <h2 id="xhr-breakpoints"><a name="xhr-breakpoints" class="anchor-navigation-ex-anchor" href="#xhr-breakpoints"><i class="fa fa-link" aria-hidden="true"></i></a>XHR Breakpoints</h2>
 <p>A breakpoint feature specifically designed for async requests.</p>
-<p><a href="images/js_xhr_breakpoint.gif" data-lightbox="3e4b70c1-acdc-43c5-8b41-ace4a817f315" data-title="XHR breakpoint demo"><img src="images/js_xhr_breakpoint.gif" alt="XHR breakpoint demo"></img></a></p>
+<p><a href="images/js_xhr_breakpoint.gif" data-lightbox="31ae861f-13ca-4f3b-85d4-a2632d30f361" data-title="XHR breakpoint demo"><img src="images/js_xhr_breakpoint.gif" alt="XHR breakpoint demo"></img></a></p>
 <p>Click the <code>+</code> button next to <strong>XHR Breakpoints</strong> to add a condition. When an async request's URL matches the condition, execution pauses at the <code>xhr.send()</code> call.</p>
 <p><strong>Advantage</strong>: You can define custom rules to target a specific request, a group of requests, or all async requests.</p>
 <hr></hr>
 <h2 id="event-listener-breakpoints"><a name="event-listener-breakpoints" class="anchor-navigation-ex-anchor" href="#event-listener-breakpoints"><i class="fa fa-link" aria-hidden="true"></i></a>Event Listener Breakpoints</h2>
 <p>Event listener breakpoints pause execution based on event names. When the event fires, execution stops at the location where the listener was bound. Supports mouse, keyboard, animation, timer, XHR, and all other page/script events.</p>
-<p><a href="images/js_event_listener.gif" data-lightbox="23fc9486-1ee4-4b0c-87a6-783dd074ddd1" data-title="Event listener breakpoint demo"><img src="images/js_event_listener.gif" alt="Event listener breakpoint demo"></img></a></p>
+<p><a href="images/js_event_listener.gif" data-lightbox="993909cb-1301-4106-94bf-be7db6678442" data-title="Event listener breakpoint demo"><img src="images/js_event_listener.gif" alt="Event listener breakpoint demo"></img></a></p>
 <p>The demo shows:</p>
 <ul>
 <li>Pausing when a <code>click</code> event fires</li>
@@ -3725,7 +3725,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Run & Debug","level":"2.1.2","depth":2,"next":{"title":"JavaScript Debugging","level":"2.1.2.1","depth":3,"path":"tutorial/getting-started/run-and-debug/javascript-debug.md","ref":"tutorial/getting-started/run-and-debug/javascript-debug.md","articles":[]},"previous":{"title":"Configure FineBI Plugin Dev Environment","level":"2.1.1.3","depth":3,"path":"tutorial/getting-started/environment-setup/finebi-dev-env.md","ref":"tutorial/getting-started/environment-setup/finebi-dev-env.md","articles":[]},"articles":[{"title":"JavaScript Debugging","level":"2.1.2.1","depth":3,"path":"tutorial/getting-started/run-and-debug/javascript-debug.md","ref":"tutorial/getting-started/run-and-debug/javascript-debug.md","articles":[]},{"title":"FineReport Designer Debugging","level":"2.1.2.2","depth":3,"path":"tutorial/getting-started/run-and-debug/debug-finereport-designer.md","ref":"tutorial/getting-started/run-and-debug/debug-finereport-designer.md","articles":[]},{"title":"Remote Design Debugging","level":"2.1.2.3","depth":3,"path":"tutorial/getting-started/run-and-debug/remote-debug.md","ref":"tutorial/getting-started/run-and-debug/remote-debug.md","articles":[]},{"title":"Plugin Installation Failure","level":"2.1.2.4","depth":3,"path":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","ref":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","articles":[]},{"title":"Logging Tips","level":"2.1.2.5","depth":3,"path":"tutorial/getting-started/run-and-debug/logging-tips.md","ref":"tutorial/getting-started/run-and-debug/logging-tips.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/run-and-debug/javascript-debug.md","mtime":"2026-07-10T02:20:31.023Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Run & Debug","level":"2.1.2","depth":2,"next":{"title":"JavaScript Debugging","level":"2.1.2.1","depth":3,"path":"tutorial/getting-started/run-and-debug/javascript-debug.md","ref":"tutorial/getting-started/run-and-debug/javascript-debug.md","articles":[]},"previous":{"title":"Configure FineBI Plugin Dev Environment","level":"2.1.1.3","depth":3,"path":"tutorial/getting-started/environment-setup/finebi-dev-env.md","ref":"tutorial/getting-started/environment-setup/finebi-dev-env.md","articles":[]},"articles":[{"title":"JavaScript Debugging","level":"2.1.2.1","depth":3,"path":"tutorial/getting-started/run-and-debug/javascript-debug.md","ref":"tutorial/getting-started/run-and-debug/javascript-debug.md","articles":[]},{"title":"FineReport Designer Debugging","level":"2.1.2.2","depth":3,"path":"tutorial/getting-started/run-and-debug/debug-finereport-designer.md","ref":"tutorial/getting-started/run-and-debug/debug-finereport-designer.md","articles":[]},{"title":"Remote Design Debugging","level":"2.1.2.3","depth":3,"path":"tutorial/getting-started/run-and-debug/remote-debug.md","ref":"tutorial/getting-started/run-and-debug/remote-debug.md","articles":[]},{"title":"Plugin Installation Failure","level":"2.1.2.4","depth":3,"path":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","ref":"tutorial/getting-started/run-and-debug/plugin-install-failure.md","articles":[]},{"title":"Logging Tips","level":"2.1.2.5","depth":3,"path":"tutorial/getting-started/run-and-debug/logging-tips.md","ref":"tutorial/getting-started/run-and-debug/logging-tips.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/run-and-debug/javascript-debug.md","mtime":"2026-09-20T07:50:39.119Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-09-20T07:50:55.459Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>

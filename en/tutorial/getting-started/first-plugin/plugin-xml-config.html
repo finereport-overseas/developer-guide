@@ -3555,7 +3555,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#introduction-of-pluginxml"><b></b>Introduction of plugin.xml</a></li></ul></div><a href="#introduction-of-pluginxml" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="introduction-of-pluginxml"><a name="introduction-of-pluginxml" class="anchor-navigation-ex-anchor" href="#introduction-of-pluginxml"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction of plugin.xml</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#introduction-of-pluginxml"><b></b>Introduction of plugin.xml</a></li><ul><li><span class="title-icon "></span><a href="#reference-common-nodes-of-pluginxml"><b></b>Reference: Common Nodes of plugin.xml</a></li><ul><li><span class="title-icon "></span><a href="#metadata-nodes"><b></b>Metadata Nodes</a></li><li><span class="title-icon "></span><a href="#function-configuration-nodes"><b></b>Function Configuration Nodes</a></li><li><span class="title-icon "></span><a href="#extension-point-nodes"><b></b>Extension Point Nodes</a></li></ul></ul></ul></div><a href="#introduction-of-pluginxml" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="introduction-of-pluginxml"><a name="introduction-of-pluginxml" class="anchor-navigation-ex-anchor" href="#introduction-of-pluginxml"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction of plugin.xml</h1>
 <blockquote>
 <p>This is a chapter that will not give you any sense of accomplishment, and it is also kind of boring. But if you are a developer who has just been exposed to FR plugins, please be patient.</p>
 </blockquote>
@@ -3620,6 +3620,196 @@
 <blockquote>
 <p>Note: Different modules can be declared in one plugin, and implementations of different interfaces can also be declared under the same module label.</p>
 </blockquote>
+<h2 id="reference-common-nodes-of-pluginxml"><a name="reference-common-nodes-of-pluginxml" class="anchor-navigation-ex-anchor" href="#reference-common-nodes-of-pluginxml"><i class="fa fa-link" aria-hidden="true"></i></a>Reference: Common Nodes of plugin.xml</h2>
+<p>The example above only shows the nodes you will use most often. The following tables list the first-level child nodes of <code>&lt;plugin&gt;</code> that may appear in a plugin.xml.</p>
+<blockquote>
+<p>Frequency is derived from a scan of 50 plugin.xml files in this repository: <strong>Required</strong> = present in (almost) every file, <strong>Common</strong> = widely used, <strong>Optional</strong> = only used in specific scenarios.</p>
+</blockquote>
+<h3 id="metadata-nodes"><a name="metadata-nodes" class="anchor-navigation-ex-anchor" href="#metadata-nodes"><i class="fa fa-link" aria-hidden="true"></i></a>Metadata Nodes</h3>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Frequency</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Required</td>
+<td>Unique identifier of the plugin</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Required</td>
+<td>Display name of the plugin</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Required</td>
+<td>Version of the plugin itself</td>
+</tr>
+<tr>
+<td><code>env-version</code></td>
+<td>Required</td>
+<td>Platform versions the plugin applies to. Two formats are supported: <code>8.0</code> means 8.0 and above, <code>9.0~10.0</code> means from 9.0 to 10.0</td>
+</tr>
+<tr>
+<td><code>vendor</code></td>
+<td>Required</td>
+<td>Developer/vendor of the plugin, the <code>email</code> attribute is supported</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>Required</td>
+<td><code>yes</code>/<code>no</code>, whether the plugin is activated by default</td>
+</tr>
+<tr>
+<td><code>jartime</code></td>
+<td>Required</td>
+<td>Earliest release date of the platform JAR files supported by the plugin</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Common</td>
+<td>Short description of the plugin</td>
+</tr>
+<tr>
+<td><code>change-notes</code></td>
+<td>Common</td>
+<td>Changelog of the plugin</td>
+</tr>
+<tr>
+<td><code>main-package</code></td>
+<td>Common</td>
+<td>Main package of the plugin</td>
+</tr>
+<tr>
+<td><code>bi-env-version</code></td>
+<td>Optional</td>
+<td>FineBI versions the plugin applies to</td>
+</tr>
+<tr>
+<td><code>bijartime</code></td>
+<td>Optional</td>
+<td>Earliest release date of the FineBI JAR files supported by the plugin</td>
+</tr>
+<tr>
+<td><code>hidden</code></td>
+<td>Optional</td>
+<td>Whether the plugin is hidden from the plugin list</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>Optional</td>
+<td>Group the plugin belongs to</td>
+</tr>
+<tr>
+<td><code>auto-update</code></td>
+<td>Optional</td>
+<td>Whether the plugin is updated automatically</td>
+</tr>
+<tr>
+<td><code>prefer-package</code> / <code>prefer-packages</code></td>
+<td>Optional</td>
+<td>Packages that are loaded with priority</td>
+</tr>
+<tr>
+<td><code>app-name</code></td>
+<td>Optional</td>
+<td>Name of the application the plugin belongs to</td>
+</tr>
+<tr>
+<td><code>verif</code></td>
+<td>Optional</td>
+<td>Verification information</td>
+</tr>
+<tr>
+<td><code>designer-pack-version</code></td>
+<td>Optional</td>
+<td>Version of the designer package</td>
+</tr>
+<tr>
+<td><code>workspace-independent</code></td>
+<td>Optional</td>
+<td>Whether the plugin is independent of the workspace</td>
+</tr>
+</tbody>
+</table>
+<h3 id="function-configuration-nodes"><a name="function-configuration-nodes" class="anchor-navigation-ex-anchor" href="#function-configuration-nodes"><i class="fa fa-link" aria-hidden="true"></i></a>Function Configuration Nodes</h3>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Frequency</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>function-recorder</code></td>
+<td>Common</td>
+<td>Recorder of the plugin's function points</td>
+</tr>
+<tr>
+<td><code>lifecycle-monitor</code></td>
+<td>Common</td>
+<td>Listener of the plugin lifecycle</td>
+</tr>
+<tr>
+<td><code>plugin-xml-i18n</code></td>
+<td>Optional</td>
+<td>Internationalization configuration of plugin.xml</td>
+</tr>
+<tr>
+<td><code>conditional-trigger</code></td>
+<td>Optional</td>
+<td>Conditional trigger</td>
+</tr>
+<tr>
+<td><code>sync</code></td>
+<td>Optional</td>
+<td>Synchronization configuration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="extension-point-nodes"><a name="extension-point-nodes" class="anchor-navigation-ex-anchor" href="#extension-point-nodes"><i class="fa fa-link" aria-hidden="true"></i></a>Extension Point Nodes</h3>
+<p>Each module owns one <code>extra-XXX</code> label, and the interface implementations must be declared under the label of the module they belong to.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extra-core</code></td>
+<td>Core module extension points</td>
+</tr>
+<tr>
+<td><code>extra-decision</code></td>
+<td>Decision platform extension points</td>
+</tr>
+<tr>
+<td><code>extra-report</code></td>
+<td>Report module extension points</td>
+</tr>
+<tr>
+<td><code>extra-designer</code></td>
+<td>Designer module extension points</td>
+</tr>
+<tr>
+<td><code>extra-form</code></td>
+<td>Form module extension points</td>
+</tr>
+<tr>
+<td><code>extra-chart</code></td>
+<td>Chart module extension points</td>
+</tr>
+</tbody>
+</table>
 <p>At this point, this chapter is over. In fact, there are some special configurations, but generally, they are not used much. Therefore we will introduce them when we meet them in the future.</p>
 <p>Please read carefully to ensure that you are clear about every configuration. Of course, if you have already known about the structure of plugin.xml, you can jump to the next tutorial.</p>
 <div id="gitalk-container"></div>
@@ -3665,7 +3855,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"plugin.xml Basic Configuration","level":"2.1.3.2","depth":3,"next":{"title":"Publish & Deploy","level":"2.1.4","depth":2,"path":"tutorial/getting-started/publish-and-deploy/package-plugin.md","ref":"tutorial/getting-started/publish-and-deploy/package-plugin.md","articles":[{"title":"Package Plugin","level":"2.1.4.1","depth":3,"path":"tutorial/getting-started/publish-and-deploy/package-plugin.md","ref":"tutorial/getting-started/publish-and-deploy/package-plugin.md","articles":[]},{"title":"Plugin Licensing","level":"2.1.4.2","depth":3,"path":"tutorial/getting-started/publish-and-deploy/plugin-license.md","ref":"tutorial/getting-started/publish-and-deploy/plugin-license.md","articles":[]},{"title":"Upload to App Center","level":"2.1.4.3","depth":3,"path":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","ref":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","articles":[]}]},"previous":{"title":"Create with Template (Gradle Plugin)","level":"2.1.3.1","depth":3,"path":"tutorial/getting-started/first-plugin/create-with-template.md","ref":"tutorial/getting-started/first-plugin/create-with-template.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/first-plugin/plugin-xml-config.md","mtime":"2026-07-10T02:20:30.987Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-07-10T02:20:54.421Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"plugin.xml Basic Configuration","level":"2.1.3.2","depth":3,"next":{"title":"Publish & Deploy","level":"2.1.4","depth":2,"path":"tutorial/getting-started/publish-and-deploy/package-plugin.md","ref":"tutorial/getting-started/publish-and-deploy/package-plugin.md","articles":[{"title":"Package Plugin","level":"2.1.4.1","depth":3,"path":"tutorial/getting-started/publish-and-deploy/package-plugin.md","ref":"tutorial/getting-started/publish-and-deploy/package-plugin.md","articles":[]},{"title":"Plugin Licensing","level":"2.1.4.2","depth":3,"path":"tutorial/getting-started/publish-and-deploy/plugin-license.md","ref":"tutorial/getting-started/publish-and-deploy/plugin-license.md","articles":[]},{"title":"Upload to App Center","level":"2.1.4.3","depth":3,"path":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","ref":"tutorial/getting-started/publish-and-deploy/upload-to-app-center.md","articles":[]}]},"previous":{"title":"Create with Template (Gradle Plugin)","level":"2.1.3.1","depth":3,"path":"tutorial/getting-started/first-plugin/create-with-template.md","ref":"tutorial/getting-started/first-plugin/create-with-template.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/getting-started/first-plugin/plugin-xml-config.md","mtime":"2026-09-20T07:50:39.103Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-09-20T07:50:55.459Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>
