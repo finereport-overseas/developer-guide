@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" font-family="-apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="660" fill="#fafbfc"/>
+  <text x="500" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2d3d">帆软插件框架架构图</text>
+
+  <!-- Layer 1: Platform -->
+  <rect x="350" y="50" width="300" height="48" rx="8" fill="#4C78A8" stroke="#345b80"/>
+  <text x="500" y="73" text-anchor="middle" font-size="15" fill="#fff" font-weight="600">FineReport / FineBI 平台（设计器 / 服务器）</text>
+  <text x="500" y="88" text-anchor="middle" font-size="12" fill="#eaf1f8">环境切入即启动，切出即关闭</text>
+
+  <!-- arrow platform -> manager -->
+  <line x1="500" y1="98" x2="500" y2="138" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- PluginManager -->
+  <rect x="395" y="138" width="210" height="44" rx="8" fill="#F58518" stroke="#c66a09"/>
+  <text x="500" y="165" text-anchor="middle" font-size="15" fill="#fff" font-weight="600">PluginManager（bridge 入口）</text>
+
+  <line x1="500" y1="182" x2="260" y2="218" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="500" y1="182" x2="740" y2="218" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Left column header -->
+  <rect x="40" y="218" width="440" height="38" rx="6" fill="#DCE9F7" stroke="#4C78A8"/>
+  <text x="260" y="242" text-anchor="middle" font-size="14" font-weight="700" fill="#1f3b5c">接口定义层（stable 模块）· 外部可访问</text>
+
+  <!-- Right column header -->
+  <rect x="520" y="218" width="440" height="38" rx="6" fill="#FDE9D9" stroke="#F58518"/>
+  <text x="740" y="242" text-anchor="middle" font-size="14" font-weight="700" fill="#7a3d05">引擎实现层（插件引擎内部）· 经 PluginManager 访问</text>
+
+  <!-- Left boxes -->
+  <rect x="40" y="278" width="440" height="54" rx="6" fill="#fff" stroke="#4C78A8"/>
+  <text x="260" y="310" text-anchor="middle" font-size="14" fill="#1f2d3d">插件上下文接口（功能与获取方式）</text>
+
+  <rect x="40" y="346" width="440" height="54" rx="6" fill="#fff" stroke="#4C78A8"/>
+  <text x="260" y="368" text-anchor="middle" font-size="14" fill="#1f2d3d" font-weight="600">管理器 Manager</text>
+  <text x="260" y="387" text-anchor="middle" font-size="12" fill="#56708a">Controller · 插件资源池 · 插件上下文对象</text>
+
+  <rect x="40" y="414" width="440" height="54" rx="6" fill="#fff" stroke="#4C78A8"/>
+  <text x="260" y="436" text-anchor="middle" font-size="14" fill="#1f2d3d" font-weight="600">observer</text>
+  <text x="260" y="455" text-anchor="middle" font-size="12" fill="#56708a">插件事件监听 · 热部署对象清理/资源释放/缓存更新</text>
+
+  <rect x="40" y="482" width="440" height="54" rx="6" fill="#fff" stroke="#4C78A8"/>
+  <text x="260" y="504" text-anchor="middle" font-size="14" fill="#1f2d3d" font-weight="600">solution · pack / transformer</text>
+  <text x="260" y="523" text-anchor="middle" font-size="12" fill="#56708a">热部署通用方案 · 打包与字节码处理接口</text>
+
+  <!-- Right boxes -->
+  <rect x="520" y="278" width="440" height="46" rx="6" fill="#fff" stroke="#F58518"/>
+  <text x="740" y="305" text-anchor="middle" font-size="14" fill="#1f2d3d">bridge（引擎入口，连接 PluginManager）</text>
+
+  <rect x="520" y="334" width="440" height="46" rx="6" fill="#fff" stroke="#F58518"/>
+  <text x="740" y="361" text-anchor="middle" font-size="14" fill="#1f2d3d">control（运行/禁用/更新/删除 · 热部署）</text>
+
+  <rect x="520" y="390" width="440" height="54" rx="6" fill="#fff" stroke="#F58518"/>
+  <text x="740" y="412" text-anchor="middle" font-size="14" fill="#1f2d3d" font-weight="600">core</text>
+  <text x="740" y="431" text-anchor="middle" font-size="12" fill="#8a5a2b">Plugin · PluginContext · 自定义 PluginClassLoader</text>
+
+  <rect x="520" y="458" width="440" height="46" rx="6" fill="#fff" stroke="#F58518"/>
+  <text x="740" y="485" text-anchor="middle" font-size="14" fill="#1f2d3d">env（插件文件系统抽象 · 跨部署环境）</text>
+
+  <rect x="520" y="514" width="440" height="54" rx="6" fill="#fff" stroke="#F58518"/>
+  <text x="740" y="536" text-anchor="middle" font-size="14" fill="#1f2d3d" font-weight="600">pretreatment / transformer / encryption</text>
+  <text x="740" y="555" text-anchor="middle" font-size="12" fill="#8a5a2b">javassist 字节码处理 · 加密解密 · 标签解析</text>
+
+  <!-- dotted link core -> classloader flow -->
+  <line x1="740" y1="444" x2="670" y2="600" stroke="#bbb" stroke-width="1.2" stroke-dasharray="5,4"/>
+
+  <!-- Bottom flow -->
+  <rect x="40" y="600" width="150" height="40" rx="6" fill="#E2EFDA" stroke="#5a9b46"/>
+  <text x="115" y="625" text-anchor="middle" font-size="13" fill="#27531a">plugin.xml</text>
+
+  <line x1="190" y1="620" x2="228" y2="620" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="230" y="600" width="110" height="40" rx="6" fill="#E2EFDA" stroke="#5a9b46"/>
+  <text x="285" y="625" text-anchor="middle" font-size="13" fill="#27531a">解析读取</text>
+
+  <line x1="340" y1="620" x2="378" y2="620" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="380" y="600" width="180" height="40" rx="6" fill="#E2EFDA" stroke="#5a9b46"/>
+  <text x="470" y="625" text-anchor="middle" font-size="13" fill="#27531a">启动即实例化对象</text>
+
+  <line x1="560" y1="620" x2="598" y2="620" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="600" y="600" width="170" height="40" rx="6" fill="#E2EFDA" stroke="#5a9b46"/>
+  <text x="685" y="625" text-anchor="middle" font-size="13" fill="#27531a">独立 PluginClassLoader</text>
+
+  <line x1="770" y1="620" x2="808" y2="620" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="810" y="600" width="150" height="40" rx="6" fill="#E2EFDA" stroke="#5a9b46"/>
+  <text x="885" y="625" text-anchor="middle" font-size="13" fill="#27531a">运行 / 热部署</text>
+</svg>
