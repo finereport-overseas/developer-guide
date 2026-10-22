@@ -208,6 +208,13 @@
       * [信息获取类](tutorial/finebi/frontend/info-retrieval.md)
       * [UI 修改类](tutorial/finebi/frontend/ui-modification.md)
       * [其他功能](tutorial/finebi/frontend/other-features.md)
+      * [FineBI 7.0 前端接口](tutorial/finebi/frontend/data-catalog-table-tab.md)
+        * [数据目录前端接口](tutorial/finebi/frontend/data-catalog-table-tab.md)
+
+  * [FineDataLink 接入点](tutorial/finedatalink/connector-datasource.md)
+    * [数据源连接器取数接口](tutorial/finedatalink/connector-datasource.md)
+      * [前端开发指南](tutorial/finedatalink/connector-datasource-frontend.md)
+      * [后端开发指南](tutorial/finedatalink/connector-datasource-backend.md)
 
 ---
 

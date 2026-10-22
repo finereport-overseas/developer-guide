@@ -208,6 +208,13 @@
       * [Information Retrieval](tutorial/finebi/frontend/info-retrieval.md)
       * [UI Modification](tutorial/finebi/frontend/ui-modification.md)
       * [Other Features](tutorial/finebi/frontend/other-features.md)
+      * [FineBI 7.0 Frontend](tutorial/finebi/frontend/data-catalog-table-tab.md)
+        * [Data Catalog Frontend Interface](tutorial/finebi/frontend/data-catalog-table-tab.md)
+
+  * [FineDataLink Access Points](tutorial/finedatalink/connector-datasource.md)
+    * [Connector Data Source Fetch Interface](tutorial/finedatalink/connector-datasource.md)
+      * [Frontend Development Guide](tutorial/finedatalink/connector-datasource-frontend.md)
+      * [Backend Development Guide](tutorial/finedatalink/connector-datasource-backend.md)
 
 ---
 

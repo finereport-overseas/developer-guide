@@ -73,4 +73,7 @@ interface_information_copy
 | ExcelRowCreatorProvider | provider | extra-core | https://wiki.fanruan.com/display/PD/com.finebi.dashboard.api.service.export.provider.ExcelRowCreatorProvider | com.finebi.dashboard.api.service.export.provider.ExcelRowCreatorProvider | 
 | NumberFormatProvider | provider | extra-core | https://wiki.fanruan.com/display/PD/com.finebi.common.impl.transform.provider.NumberFormatProvider | com.finebi.common.impl.transform.provider.NumberFormatProvider | 
 | NoticeChannelTypeProvider | provider | extra-fdl |  |  | 
+| InputNodeTypeProvider | provider | extra-fdl | https://kms.fineres.com/pages/viewpage.action?pageId=1161905113 |  | 
+| PluginNRdbmsConnectionConf | provider | extra-fdl | https://kms.fineres.com/pages/viewpage.action?pageId=1161905113 |  | 
+| NRdbmsDatasourceProvider | provider | extra-fdl | https://kms.fineres.com/pages/viewpage.action?pageId=1161905113 |  | 
 | BIDialectProvider | provider | extra-core |  | com.finebi.api.dialect.BIDialectProvider | 

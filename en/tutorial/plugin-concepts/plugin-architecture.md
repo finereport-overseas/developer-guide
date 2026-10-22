@@ -1,5 +1,15 @@
 # Plugin Architecture
 
+![FineReport/FineBI Plugin Framework Architecture](./images/architecture_diagram.svg)
+
+## Architecture Overview
+
+The FineReport/FineBI plugin framework consists of two parts: the **interface definition layer (stable module)** and the **engine implementation layer (inside the plugin engine)**.
+
+- The **interface layer** is open to the outside world and defines all interfaces, managers, listener models, and packaging/bytecode extension points that a plugin may use. Plugin developers depend only on this layer.
+- The **engine layer** is loaded through a custom `ClassLoader` and is not directly accessible; every interaction must go through `PluginManager` (whose entry point is `bridge`). It is responsible for loading, running, hot-deploying, bytecode-processing, and encrypting/decrypting plugins.
+- The platform (designer/server) **starts the plugin engine when the environment is entered** and stops it on exit. Objects described in `plugin.xml` are all instantiated at startup, each with its own `PluginClassLoader` — this is the foundation for hot deployment and class isolation.
+
 ## Key Characteristics
 
 - **Hot deployment** — introduces challenges around object cleanup, resource release, and cache invalidation.
