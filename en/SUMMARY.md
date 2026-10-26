@@ -9,6 +9,7 @@
     * [Essential Tools Setup](tutorial/getting-started/environment-setup/essential-tools.md)
     * [Configure FineReport Plugin Dev Environment](tutorial/getting-started/environment-setup/plugin-dev-env.md)
     * [Configure FineBI Plugin Dev Environment](tutorial/getting-started/environment-setup/finebi-dev-env.md)
+    * [Configure FineDataLink Plugin Dev Environment](tutorial/getting-started/environment-setup/fdl-dev-env.md)
   * [Run & Debug](tutorial/getting-started/run-and-debug/javascript-debug.md)
     * [JavaScript Debugging](tutorial/getting-started/run-and-debug/javascript-debug.md)
     * [FineReport Designer Debugging](tutorial/getting-started/run-and-debug/debug-finereport-designer.md)

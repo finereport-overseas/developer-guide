@@ -9,6 +9,7 @@
     * [必备工具安装和配置](tutorial/getting-started/environment-setup/essential-tools.md)
     * [配置 FineReport 插件开发环境](tutorial/getting-started/environment-setup/plugin-dev-env.md)
     * [配置 FineBI 插件开发环境](tutorial/getting-started/environment-setup/finebi-dev-env.md)
+    * [配置 FineDataLink 插件开发环境](tutorial/getting-started/environment-setup/fdl-dev-env.md)
   * [运行与调试](tutorial/getting-started/run-and-debug/javascript-debug.md)
     * [JavaScript 调试](tutorial/getting-started/run-and-debug/javascript-debug.md)
     * [FineReport 设计器调试](tutorial/getting-started/run-and-debug/debug-finereport-designer.md)
