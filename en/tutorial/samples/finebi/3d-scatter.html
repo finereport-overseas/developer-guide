@@ -199,6 +199,19 @@
             
         </li>
     
+        <li class="chapter " data-level="2.1.1.4" data-path="../../getting-started/environment-setup/fdl-dev-env.html">
+            
+                <a href="../../getting-started/environment-setup/fdl-dev-env.html">
+            
+                    
+                    Configure FineDataLink Plugin Dev Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -3788,7 +3801,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">CustomComponentProvider</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.finebi.plugin.tptj.ivan.chart.demo.amap.MapHotComponentProvider"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">extra-core</span>&gt;</span>
 </code></pre>
-<p><a href="images/amap_basic_effect.png" data-lightbox="aaa506ea-0d5c-4e13-bbd8-68c9a3d54dc5" data-title="Basic chart option result"><img src="images/amap_basic_effect.png" alt="Basic chart option result"></img></a></p>
+<p><a href="images/amap_basic_effect.png" data-lightbox="4fd5e1f8-fa7e-44b7-b70d-3a51d27827d0" data-title="Basic chart option result"><img src="images/amap_basic_effect.png" alt="Basic chart option result"></img></a></p>
 <hr></hr>
 <h3 id="step-2-add-configuration-for-the-chart-type"><a name="step-2-add-configuration-for-the-chart-type" class="anchor-navigation-ex-anchor" href="#step-2-add-configuration-for-the-chart-type"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Add Configuration for the Chart Type</h3>
 <p>Implement the <code>config()</code> method to return a JSON-format string.</p>
@@ -3839,8 +3852,8 @@
   ]
 }
 </code></pre>
-<p><a href="images/amap_config_effect_1.png" data-lightbox="562283f4-97f4-408a-81ed-e84d6eabbab9" data-title="Configuration panel result 1"><img src="images/amap_config_effect_1.png" alt="Configuration panel result 1"></img></a></p>
-<p><a href="images/amap_config_effect_2.png" data-lightbox="3df43ddc-1db7-4d3d-8df7-1bee03e13411" data-title="Configuration panel result 2"><img src="images/amap_config_effect_2.png" alt="Configuration panel result 2"></img></a></p>
+<p><a href="images/amap_config_effect_1.png" data-lightbox="72bdd6e7-f1b7-4fa8-8ac7-8085feba9d4d" data-title="Configuration panel result 1"><img src="images/amap_config_effect_1.png" alt="Configuration panel result 1"></img></a></p>
+<p><a href="images/amap_config_effect_2.png" data-lightbox="b88ab74e-3249-4da1-a95c-9fdd76e98eb2" data-title="Configuration panel result 2"><img src="images/amap_config_effect_2.png" alt="Configuration panel result 2"></img></a></p>
 <h4 id="json-configuration-file-reference"><a name="json-configuration-file-reference" class="anchor-navigation-ex-anchor" href="#json-configuration-file-reference"><i class="fa fa-link" aria-hidden="true"></i></a>JSON Configuration File Reference</h4>
 <ul>
 <li><strong>dataRegions</strong> (JSONARRAY): Data regions. Currently supports a maximum of two entries.</li>
@@ -3941,7 +3954,7 @@
   <span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
 })(jQuery);
 </code></pre>
-<p><a href="images/amap_render_effect.png" data-lightbox="f1f546c0-edc2-4bbc-b0cc-75299824b123" data-title="Frontend rendering result"><img src="images/amap_render_effect.png" alt="Frontend rendering result"></img></a></p>
+<p><a href="images/amap_render_effect.png" data-lightbox="14c572dc-21a0-4ee2-80d0-aa77d60e6783" data-title="Frontend rendering result"><img src="images/amap_render_effect.png" alt="Frontend rendering result"></img></a></p>
 <hr></hr>
 <h3 id="step-4-reading-data-on-the-frontend"><a name="step-4-reading-data-on-the-frontend" class="anchor-navigation-ex-anchor" href="#step-4-reading-data-on-the-frontend"><i class="fa fa-link" aria-hidden="true"></i></a>Step 4: Reading Data on the Frontend</h3>
 <p><code>data</code> contains dimension and measure data; <code>config</code> contains graphic attribute and component style configurations.</p>
@@ -4019,9 +4032,9 @@
 <p><strong>Note:</strong> The interface cannot directly access raw detail data. To use detail data, convert it to a dimension or add a granularity attribute.</p>
 </blockquote>
 <p><strong>Result using granularity:</strong></p>
-<p><a href="images/amap_data_finegrained.png" data-lightbox="fca29989-2561-49db-b034-b9eddfcc7e03" data-title="Data reading result (granularity)"><img src="images/amap_data_finegrained.png" alt="Data reading result (granularity)"></img></a></p>
+<p><a href="images/amap_data_finegrained.png" data-lightbox="f2791ff4-2199-4037-81df-516c48a75791" data-title="Data reading result (granularity)"><img src="images/amap_data_finegrained.png" alt="Data reading result (granularity)"></img></a></p>
 <p><strong>Result using dimension:</strong></p>
-<p><a href="images/amap_data_dimension.png" data-lightbox="502c766a-9322-4f63-a030-9c6c4854b00c" data-title="Data reading result (dimension)"><img src="images/amap_data_dimension.png" alt="Data reading result (dimension)"></img></a></p>
+<p><a href="images/amap_data_dimension.png" data-lightbox="f7dbbf79-e1b8-4d2c-a08a-167a12035203" data-title="Data reading result (dimension)"><img src="images/amap_data_dimension.png" alt="Data reading result (dimension)"></img></a></p>
 <blockquote>
 <p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.1/0.0.1.zip" target="_blank">Basic Tutorial DEMO source code</a></p>
 </blockquote>
@@ -4055,7 +4068,7 @@
     }).collect(Collectors.toList());
 }
 </code></pre>
-<p><a href="images/amap_advanced_dataprocess.png" data-lightbox="8adaa12d-3218-476f-87d2-2af17497f132" data-title="Data processing interface result"><img src="images/amap_advanced_dataprocess.png" alt="Data processing interface result"></img></a></p>
+<p><a href="images/amap_advanced_dataprocess.png" data-lightbox="8cf00557-fb4a-4053-9bd5-b8f662c0cbb0" data-title="Data processing interface result"><img src="images/amap_advanced_dataprocess.png" alt="Data processing interface result"></img></a></p>
 <blockquote>
 <p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.2/0.0.2.zip" target="_blank">Data Processing DEMO source code</a></p>
 </blockquote>
@@ -4073,7 +4086,7 @@
 
 <span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
 </code></pre>
-<p><a href="images/amap_advanced_refresh.png" data-lightbox="aee41bca-3136-43e1-9a2c-46d931a59452" data-title="Page refresh result"><img src="images/amap_advanced_refresh.png" alt="Page refresh result"></img></a></p>
+<p><a href="images/amap_advanced_refresh.png" data-lightbox="500ba778-d961-42e1-8f1a-9aef3aba9c3b" data-title="Page refresh result"><img src="images/amap_advanced_refresh.png" alt="Page refresh result"></img></a></p>
 <blockquote>
 <p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.3/0.0.3.zip" target="_blank">Refresh Interface DEMO source code</a></p>
 </blockquote>
@@ -4104,7 +4117,7 @@
 
 <span class="hljs-keyword">new</span> <span class="hljs-title class_">BIPlugin</span>().<span class="hljs-title function_">init</span>(render);
 </code></pre>
-<p><a href="images/amap_advanced_saveconfig.png" data-lightbox="03c94d28-547b-478f-8152-636b3bf70622" data-title="Save configuration result"><img src="images/amap_advanced_saveconfig.png" alt="Save configuration result"></img></a></p>
+<p><a href="images/amap_advanced_saveconfig.png" data-lightbox="4b6c9094-a06d-40dd-aeea-8eb0380bde09" data-title="Save configuration result"><img src="images/amap_advanced_saveconfig.png" alt="Save configuration result"></img></a></p>
 <blockquote>
 <p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.4/0.0.4.zip" target="_blank">Save Configuration DEMO source code</a></p>
 </blockquote>
@@ -4156,7 +4169,7 @@
     });
 }
 </code></pre>
-<p><a href="images/amap_advanced_linkage.png" data-lightbox="10f80ee2-b93e-478b-a158-6406fcf3e259" data-title="Component linkage result"><img src="images/amap_advanced_linkage.png" alt="Component linkage result"></img></a></p>
+<p><a href="images/amap_advanced_linkage.png" data-lightbox="3d9ad51d-ce98-47fb-8eae-aea6f725172b" data-title="Component linkage result"><img src="images/amap_advanced_linkage.png" alt="Component linkage result"></img></a></p>
 <blockquote>
 <p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.6/0.0.6.zip" target="_blank">Linkage DEMO source code</a></p>
 </blockquote>
@@ -4210,8 +4223,8 @@
     <span class="hljs-variable constant_">BI</span>.<span class="hljs-title function_">shortcut</span>(<span class="hljs-string">"bi.amap.demo"</span>, <span class="hljs-title class_">Demo</span>);
 })();
 </code></pre>
-<p><a href="images/amap_custom_widget_config.png" data-lightbox="a4187ccc-f13c-4fae-a52e-1854d5756170" data-title="Custom component configuration panel"><img src="images/amap_custom_widget_config.png" alt="Custom component configuration panel"></img></a></p>
-<p><a href="images/amap_custom_widget_effect.png" data-lightbox="814b483a-5031-4cf3-b489-ac83329db7cd" data-title="Custom component result"><img src="images/amap_custom_widget_effect.png" alt="Custom component result"></img></a></p>
+<p><a href="images/amap_custom_widget_config.png" data-lightbox="43b0d097-1770-4a4e-876c-a7dc45307453" data-title="Custom component configuration panel"><img src="images/amap_custom_widget_config.png" alt="Custom component configuration panel"></img></a></p>
+<p><a href="images/amap_custom_widget_effect.png" data-lightbox="5e3a29e2-5c1b-421c-841c-21a9ccfb2173" data-title="Custom component result"><img src="images/amap_custom_widget_effect.png" alt="Custom component result"></img></a></p>
 <blockquote>
 <p><a href="https://code.fanruan.com/Ivan.Guo/bi.chart.demo.v6/src/branch/master/%E8%AF%B4%E6%98%8E/0.0.7/0.0.7.zip" target="_blank">Custom Component DEMO source code</a></p>
 </blockquote>
@@ -4258,7 +4271,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FineBI Plugin Samples","level":"3.2.2","depth":2,"next":{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},"previous":{"title":"Custom Widget (Styled Text Box)","level":"3.2.1.4","depth":3,"path":"tutorial/samples/finereport/style-text-widget.md","ref":"tutorial/samples/finereport/style-text-widget.md","articles":[]},"articles":[{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},{"title":"Custom Widget","level":"3.2.2.2","depth":3,"path":"tutorial/samples/finebi/custom-widget.md","ref":"tutorial/samples/finebi/custom-widget.md","articles":[]},{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"path":"tutorial/samples/finebi/custom-filter.md","ref":"tutorial/samples/finebi/custom-filter.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/3d-scatter.md","mtime":"2026-10-22T11:08:04.898Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-10-22T11:08:26.265Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"FineBI Plugin Samples","level":"3.2.2","depth":2,"next":{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},"previous":{"title":"Custom Widget (Styled Text Box)","level":"3.2.1.4","depth":3,"path":"tutorial/samples/finereport/style-text-widget.md","ref":"tutorial/samples/finereport/style-text-widget.md","articles":[]},"articles":[{"title":"Custom Chart (Map)","level":"3.2.2.1","depth":3,"path":"tutorial/samples/finebi/3d-scatter.md","ref":"tutorial/samples/finebi/3d-scatter.md","articles":[]},{"title":"Custom Widget","level":"3.2.2.2","depth":3,"path":"tutorial/samples/finebi/custom-widget.md","ref":"tutorial/samples/finebi/custom-widget.md","articles":[]},{"title":"Custom Data Source","level":"3.2.2.3","depth":3,"path":"tutorial/samples/finebi/rest-api-connector.md","ref":"tutorial/samples/finebi/rest-api-connector.md","articles":[]},{"title":"Custom Filter Widget","level":"3.2.2.4","depth":3,"path":"tutorial/samples/finebi/custom-filter.md","ref":"tutorial/samples/finebi/custom-filter.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","anchor-navigation-ex","code","pageview-count","lightbox","mygitalk"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"lightbox":{"jquery":true,"sameUuid":false},"pageview-count":{},"expandable-chapters-small":{},"mygitalk":{"flipMoveOptions":{},"clientID":"08230253bee67abb4384","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["finereport-joe"],"createIssueManually":false,"distractionFreeMode":false,"repo":"developer-guide","owner":"finereport-overseas","enableHotKey":true,"clientSecret":"509e24756efaf3cc4423400c03fa755c1bcf2785","pagerDirection":"last","labels":["Gitalk"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"tutorial/samples/finebi/3d-scatter.md","mtime":"2026-10-26T09:40:20.271Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-10-26T09:41:02.580Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>
